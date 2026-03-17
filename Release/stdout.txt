@@ -1,2 +1,3 @@
 game run
 window init ok
+jump to game

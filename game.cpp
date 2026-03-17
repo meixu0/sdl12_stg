@@ -2,7 +2,6 @@
 Uint32 Game::lastUpdate = 0;
 TTF_Font* Game::fpsFont = NULL;
 SDL_Surface* Game::fpsSurface = NULL;
-SDL_Color Game::yellow = {255, 255, 0};
 Game::Game(){
 	frameCounter = 0;
 	fpsLimited = true;
@@ -22,6 +21,15 @@ void Game::show_fps(Uint32 current_fps){
 	lastUpdate = now;
 	*/
 
+}
+void Game::init_game(SDL_Surface* dest){
+	SDL_Rect wholeScreen;
+	wholeScreen.x = 0;
+	wholeScreen.y = 0;
+	wholeScreen.w = 800;
+	wholeScreen.h = 600;
+	Uint32 black = SDL_MapRGB(dest->format, 0, 0, 0);
+	SDL_FillRect(dest, &wholeScreen, black);
 }
 void Game::run(){
 	lastUpdate = 0;
@@ -53,10 +61,12 @@ void Game::run(){
 	}
 	lastUpdate = 0;
 	while(gameState == STATE_GAME){
+		init_game(screen);
 		fps.start();
 		while(SDL_PollEvent(&event)){
 			
 		}
+		if(SDL_Flip(screen) == -1)	throw std::runtime_error("flip error in game loop");
 		if((fpsLimited == true) && (fps.get_ticks() < 1000 / FRAMES_PER_SECOND)){
 			SDL_Delay((1000 / FRAMES_PER_SECOND) - fps.get_ticks());
 		}

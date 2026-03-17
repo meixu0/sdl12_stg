@@ -18,7 +18,6 @@ private:
 	//static Uint32 menuFpsLastUpdate;
 	Timer fpsUpdate;
 	MainMenu mainMenu;
-	static const SDL_Color yellow;
 protected:
 	static Uint32 lastUpdate;
 	static TTF_Font* fpsFont;	//a surface to storage pre-rendered fps font
@@ -26,6 +25,7 @@ protected:
 public:
 	Game();
 	void show_fps(Uint32 currentFps);
+	void init_game(SDL_Surface* dest);
 	void run();
 };
 #endif

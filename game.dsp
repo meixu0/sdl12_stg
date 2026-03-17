@@ -103,6 +103,10 @@ SOURCE=.\main_menu.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\player.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\timer.cpp
 # End Source File
 # Begin Source File
@@ -120,6 +124,10 @@ SOURCE=.\game.h
 # Begin Source File
 
 SOURCE=.\main_menu.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\player.h
 # End Source File
 # Begin Source File
 
