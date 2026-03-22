@@ -107,6 +107,10 @@ SOURCE=.\player.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\PlayerBullet.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\timer.cpp
 # End Source File
 # Begin Source File
@@ -128,6 +132,10 @@ SOURCE=.\main_menu.h
 # Begin Source File
 
 SOURCE=.\player.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\PlayerBullet.h
 # End Source File
 # Begin Source File
 
