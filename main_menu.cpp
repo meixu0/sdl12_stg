@@ -5,9 +5,11 @@ void jump_to_game(){
 	std::cout << "jump to game" << std::endl;
 	gameState = STATE_GAME;
 	static SDL_Surface* gameBackground = NULL;
+	/*
 	gameBackground = load_image("res/game_background.png", 800, 600);
 	if(gameBackground == NULL)	std::cout << "load game background error" << std::endl;
 	if(gameBackground != NULL)	apply_surface(0, 0, gameBackground, screen);
+	*/
 	if(SDL_Flip(screen) == -1)	std::cout << "flip error in jump_to_game" << std::endl;
 	//SDL_Delay(10000);
 }

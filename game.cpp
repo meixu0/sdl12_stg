@@ -22,6 +22,15 @@ void Game::show_fps(Uint32 current_fps){
 	*/
 
 }
+void Game::init_info_area(SDL_Surface* dest){
+	SDL_Rect infoArea;
+	infoArea.x = 544;
+	infoArea.y = 0;
+	infoArea.w = 256;
+	infoArea.h = 600;
+	Uint32 white = SDL_MapRGB(dest->format, 255, 255, 255);
+	SDL_FillRect(dest, &infoArea, white);
+}
 void Game::init_game(SDL_Surface* dest){
 	SDL_Rect wholeScreen;
 	wholeScreen.x = 0;
@@ -62,6 +71,7 @@ void Game::run(){
 	lastUpdate = 0;
 	while(gameState == STATE_GAME){
 		init_game(screen);
+		init_info_area(screen);
 		fps.start();
 		while(SDL_PollEvent(&event)){
 			player1.handle_input(event);

@@ -27,6 +27,7 @@ protected:
 public:
 	Game();
 	void show_fps(Uint32 currentFps);
+	void init_info_area(SDL_Surface* dest);
 	void init_game(SDL_Surface* dest);
 	void run();
 };
