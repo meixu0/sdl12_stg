@@ -64,8 +64,11 @@ void Game::run(){
 		init_game(screen);
 		fps.start();
 		while(SDL_PollEvent(&event)){
-			
+			player1.handle_input(event);
+			if(event.type == SDL_QUIT)	gameState = STATE_EXIT;
 		}
+		player1.player_move();
+		player1.show();
 		if(SDL_Flip(screen) == -1)	throw std::runtime_error("flip error in game loop");
 		if((fpsLimited == true) && (fps.get_ticks() < 1000 / FRAMES_PER_SECOND)){
 			SDL_Delay((1000 / FRAMES_PER_SECOND) - fps.get_ticks());

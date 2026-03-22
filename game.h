@@ -2,6 +2,7 @@
 #include "timer.h"
 #include "UI.h"
 #include "main_menu.h"
+#include "player.h"
 #include <string>
 #ifndef GAME_H
 #define GAME_H
@@ -18,6 +19,7 @@ private:
 	//static Uint32 menuFpsLastUpdate;
 	Timer fpsUpdate;
 	MainMenu mainMenu;
+	Player player1;
 protected:
 	static Uint32 lastUpdate;
 	static TTF_Font* fpsFont;	//a surface to storage pre-rendered fps font
