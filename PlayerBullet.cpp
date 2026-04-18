@@ -1,5 +1,4 @@
 #include "PlayerBullet.h"
-
 int fireInterval;
 float xOffset;
 float yOffset;
