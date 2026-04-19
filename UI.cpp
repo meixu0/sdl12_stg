@@ -101,7 +101,6 @@ void render_win98(SDL_Rect* box, SDL_Surface* dest, int state, std::string title
 		}
 		
 	}
-	
 }
 SDL_Surface *load_image(std::string filename, double targetW, double targetH){
 	SDL_Surface* loadedImage = NULL;

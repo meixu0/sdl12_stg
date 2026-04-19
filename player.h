@@ -14,6 +14,7 @@ private:
 	static bool bombInUse;
 	static int playerPowerData;
 	static SDL_Surface* player;
+	//static SDL_Surface* simplePlayerBulletImage;
 public:
 	Player();
 	void simple_shoot_pressed();

@@ -8,16 +8,20 @@ int Player::simpleShootTimer = 0;
 int Player::currentPowerLevel = 0;
 bool Player::bombInUse = false;
 SDL_Surface* Player::player = NULL;
+//SDL_Surface* Player::simplePlayerBulletImage = NULL;
 Player::Player(){
 	x = 272;
 	y = 553;
 	xVel = 0;
 	yVel = 0;
-	init_playerSimpleBulletData();
+	//init_playerSimpleBulletData();
 	player = load_image("res/player1.png", double(PLAYER_HEIGHT), double(PLAYER_WIDTH));
+	//simplePlayerBulletImage = load_image("res/playersimplebullet1.png", 10.0, 10.0);
+	PlayerBulletPool playerBulletPool;
 }
 void Player::simple_shoot_pressed(){
 	if(!bombInUse){
+		/*
 		simpleShootTimer++;
 		if(playerPowerData <= 8)	currentPowerLevel = 0;
 		else if (playerPowerData > 8 && playerPowerData <= 16)	currentPowerLevel = 1;
@@ -31,6 +35,9 @@ void Player::simple_shoot_pressed(){
 			float spawnY = y + PLAYER_HEIGHT + playerSimpleBulletData[currentPowerLevel].yOffset;
 			//todo:play shoot sound
 		}
+		*/
+		simpleShootTimer++;
+		playerBulletPool.create()
 	}	
 }
 void Player::simple_shoot_released(){

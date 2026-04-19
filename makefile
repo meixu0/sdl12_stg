@@ -1,6 +1,5 @@
-# Variables
 CXX = clang++
-CXXFLAGS = -Wall -std=c++17 -I/opt/homebrew/include/SDL
+CXXFLAGS = -Wall -std=c++20 -I/opt/homebrew/include/SDL
 LDFLAGS = -L/opt/homebrew/lib
 LIBS = $(shell /opt/homebrew/bin/sdl-config --libs) -lSDL_image -lSDL_ttf -lSDL_mixer -lSDL_gfx -lphysfs -liconv
 TARGET = Release/stg
