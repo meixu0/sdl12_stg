@@ -1,9 +1,14 @@
 #include "PlayerBullet.h"
-SDL_Surface* PlayerBullet::simplePlayerBulletImage = load_image("res/playersimplebullet1.png", 10.0, 10.0);
+SDL_Surface* PlayerBullet::simplePlayerBulletImage = NULL;
 PlayerBullet::PlayerBullet(){
 	isHit = false;
+	isActive = false;
+	framesLeft = 0;
+	x_ = 0;
+	y_ = 0;
 }
 void PlayerBullet::init(PlayerBulletConfig& config){
+	isActive = true;
 	fireInterval_ = config.fireInterval;
 	xOffset_ = config.xOffset;
 	yOffset_ = config.yOffset;
@@ -22,20 +27,28 @@ void PlayerBullet::init(PlayerBulletConfig& config){
 	framesLeft = y_ / speed_;
 }
 bool PlayerBullet::bullet_move(){
-	if((!inUse()))	return false;
+	if(!isActive)	return false;
 	framesLeft--;
 	y_ -= speed_;
-	apply_surface(x_, y_, simplePlayerBulletImage);
-	return framesLeft == 0;
+	if(framesLeft <= 0 || isHit){//death condition
+		isActive = false;
+		return true;
+	}
+	return false;
 }
 bool PlayerBullet::inUse() const{
-	return ((!isHit) || (framesLeft > 0));
+	return isActive;
 }
 PlayerBullet* PlayerBullet::gen_next() const{
 	return next_;
 }
 void PlayerBullet::set_next(PlayerBullet* next){
 	next_ = next;
+}
+void PlayerBullet::render(){
+	if(!inUse())	return;
+	if(simplePlayerBulletImage == NULL)	simplePlayerBulletImage = load_image("res/playersimplebullet1.png", 10.0, 10.0);
+	apply_surface(x_, y_, simplePlayerBulletImage, screen);
 }
 
 PlayerBulletPool::PlayerBulletPool(){
@@ -52,11 +65,16 @@ PlayerBullet *PlayerBulletPool::create(PlayerBulletConfig& config_){
 	newBullet->init(config_);
 	return newBullet;
 }
-void PlayerBulletPool::render(){
+void PlayerBulletPool::update(){
 	for(int i = 0; i < POOL_SIZE; i++){
 		if(bullet[i].bullet_move()){
 			bullet[i].set_next(firstAvailable);
 			firstAvailable = &bullet[i];
 		}
+	}
+}
+void PlayerBulletPool::render(){
+	for(int i = 0; i < POOL_SIZE; i++){
+		bullet[i].render();
 	}
 }

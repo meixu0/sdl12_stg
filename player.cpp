@@ -4,7 +4,6 @@ const int Player::PLAYER_WIDTH = 31;
 const int Player::PLAY_HEIGHT = 600;
 const int Player::PLAY_WIDTH = 544;
 int Player::playerPowerData = 0;
-int Player::simpleShootTimer = 0;
 int Player::currentPowerLevel = 0;
 bool Player::bombInUse = false;
 SDL_Surface* Player::player = NULL;
@@ -17,31 +16,10 @@ Player::Player(){
 	//init_playerSimpleBulletData();
 	player = load_image("res/player1.png", double(PLAYER_HEIGHT), double(PLAYER_WIDTH));
 	//simplePlayerBulletImage = load_image("res/playersimplebullet1.png", 10.0, 10.0);
-	PlayerBulletPool playerBulletPool;
+	isShooting = false;
 }
-void Player::simple_shoot_pressed(){
-	if(!bombInUse){
-		/*
-		simpleShootTimer++;
-		if(playerPowerData <= 8)	currentPowerLevel = 0;
-		else if (playerPowerData > 8 && playerPowerData <= 16)	currentPowerLevel = 1;
-		else if (playerPowerData > 16 && playerPowerData <= 32)	currentPowerLevel = 2;
-		else if (playerPowerData > 32 && playerPowerData <= 64)	currentPowerLevel = 3;
-		else if (playerPowerData > 64 && playerPowerData <= 128)	currentPowerLevel = 4;
-		else	currentPowerLevel = 8;//todo:more levels data set
-		if(simpleShootTimer % playerSimpleBulletData[currentPowerLevel].fireInterval == 0){
-			//compute bullet absolute coordinate
-			float spawnX = x + PLAYER_WIDTH + playerSimpleBulletData[currentPowerLevel].xOffset;
-			float spawnY = y + PLAYER_HEIGHT + playerSimpleBulletData[currentPowerLevel].yOffset;
-			//todo:play shoot sound
-		}
-		*/
-		simpleShootTimer++;
-		playerBulletPool.create()
-	}	
-}
-void Player::simple_shoot_released(){
-	simpleShootTimer = 0;
+void Player::init_player_bullet_pool(PlayerBulletPool *poolPtr){
+	playerBulletPool_ = poolPtr;
 }
 void Player::handle_input(SDL_Event &e){
 	if(e.type == SDL_KEYDOWN){//when a key pressed
@@ -51,7 +29,7 @@ void Player::handle_input(SDL_Event &e){
 			case SDLK_LEFT: xVel -= PLAYER_WIDTH / 2; break;
 			case SDLK_RIGHT: xVel += PLAYER_WIDTH / 2; break;
 			//shoot key pressed
-			case SDLK_z: simple_shoot_pressed(); break;
+			case SDLK_z: isShooting = true; break;
 		}
 	}else if(e.type == SDL_KEYUP){//when a key released
 		    switch( e.key.keysym.sym ){
@@ -59,7 +37,7 @@ void Player::handle_input(SDL_Event &e){
 				case SDLK_DOWN: yVel -= PLAYER_HEIGHT / 2; break;
 				case SDLK_LEFT: xVel += PLAYER_WIDTH / 2; break;
 				case SDLK_RIGHT: xVel -= PLAYER_WIDTH / 2; break;  
-				case SDLK_z: simple_shoot_released(); break;
+				case SDLK_z: isShooting = false; break;
         }        
 	}
 }
@@ -68,6 +46,20 @@ void Player::player_move(){
 	if((x < 0) || (x + PLAYER_WIDTH > PLAY_WIDTH))	x -= xVel;
 	y += yVel;
 	if((y < 0) || (y + PLAYER_HEIGHT > PLAY_HEIGHT))	y -= yVel;
+}
+void Player::update_simple_shoot(){
+	if(simpleShootCoolDown > 0)	simpleShootCoolDown--;
+	if(isShooting && simpleShootCoolDown == 0){
+		PlayerBulletConfig currentConfig;
+		currentConfig.x = x + (PLAYER_WIDTH / 2);
+		currentConfig.y = y;
+		currentConfig.speed = 20;
+		currentConfig.damage = 1;
+		//todo: more image res
+		playerBulletPool_->create(currentConfig);
+		//todo:more simple power damage value and cd value
+		simpleShootCoolDown = 5;//5 bullets per frame
+	}
 }
 void Player::show(){
 	apply_surface(x, y, player, screen);

@@ -19,13 +19,14 @@ private:
 	//static Uint32 menuFpsLastUpdate;
 	Timer fpsUpdate;
 	MainMenu mainMenu;
-	Player player1;
 protected:
 	static Uint32 lastUpdate;
 	static TTF_Font* fpsFont;	//a surface to storage pre-rendered fps font
 	static SDL_Surface* fpsSurface;
 public:
 	Game();
+	PlayerBulletPool playerBulletPool_;
+	Player player1;
 	void show_fps(Uint32 currentFps);
 	void init_info_area(SDL_Surface* dest);
 	void init_game(SDL_Surface* dest);

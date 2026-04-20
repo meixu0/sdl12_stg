@@ -19,6 +19,7 @@ struct PlayerBulletConfig{
 };
 class PlayerBullet{
 private:
+	bool isActive;
 	int fireInterval_;
 	float x_;
 	float y_;
@@ -44,6 +45,7 @@ public:
 	bool inUse() const;
 	PlayerBullet* gen_next() const;
 	void set_next(PlayerBullet* next);
+	void render();
 };
 class PlayerBulletPool{
 private:
@@ -53,5 +55,6 @@ private:
 public:
 	PlayerBulletPool();
 	PlayerBullet* create(PlayerBulletConfig& config_);
+	void update();
 	void render();
 };

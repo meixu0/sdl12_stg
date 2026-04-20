@@ -20,7 +20,6 @@ void Game::show_fps(Uint32 current_fps){
 	fpsSurface = TTF_RenderText_Blended(fpsFont, fps_text, yellow);
 	lastUpdate = now;
 	*/
-
 }
 void Game::init_info_area(SDL_Surface* dest){
 	SDL_Rect infoArea;
@@ -39,6 +38,7 @@ void Game::init_game(SDL_Surface* dest){
 	wholeScreen.h = 600;
 	Uint32 black = SDL_MapRGB(dest->format, 0, 0, 0);
 	SDL_FillRect(dest, &wholeScreen, black);
+	player1.init_player_bullet_pool(&playerBulletPool_);
 }
 void Game::run(){
 	lastUpdate = 0;
@@ -69,16 +69,23 @@ void Game::run(){
 		}
 	}
 	lastUpdate = 0;
+	init_game(screen);
+	init_info_area(screen);
+	static const int PLAY_AREA_WIDTH = 544;
+	static const int PLAY_AREA_HEIGHT = 600;
+	SDL_Rect playArea = {0, 0, PLAY_AREA_WIDTH, PLAY_AREA_HEIGHT};
 	while(gameState == STATE_GAME){
-		init_game(screen);
-		init_info_area(screen);
 		fps.start();
 		while(SDL_PollEvent(&event)){
 			player1.handle_input(event);
 			if(event.type == SDL_QUIT)	gameState = STATE_EXIT;
 		}
 		player1.player_move();
+		player1.update_simple_shoot();
+		playerBulletPool_.update();
+		SDL_FillRect(screen, &playArea, SDL_MapRGB(screen->format, 0, 0, 0));
 		player1.show();
+		playerBulletPool_.render();
 		if(SDL_Flip(screen) == -1)	throw std::runtime_error("flip error in game loop");
 		if((fpsLimited == true) && (fps.get_ticks() < 1000 / FRAMES_PER_SECOND)){
 			SDL_Delay((1000 / FRAMES_PER_SECOND) - fps.get_ticks());
