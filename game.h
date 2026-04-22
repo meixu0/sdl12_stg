@@ -3,6 +3,7 @@
 #include "UI.h"
 #include "main_menu.h"
 #include "player.h"
+#include "GameBackground.h"
 #include <string>
 #ifndef GAME_H
 #define GAME_H

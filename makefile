@@ -3,7 +3,7 @@ CXXFLAGS = -Wall -std=c++20 -I/opt/homebrew/include/SDL
 LDFLAGS = -L/opt/homebrew/lib
 LIBS = $(shell /opt/homebrew/bin/sdl-config --libs) -lSDL_image -lSDL_ttf -lSDL_mixer -lSDL_gfx -lphysfs -liconv
 TARGET = Release/stg
-SOURCES = main.cpp game.cpp MainMenu.cpp PlayerBullet.cpp player.cpp timer.cpp UI.cpp
+SOURCES = main.cpp game.cpp MainMenu.cpp PlayerBullet.cpp player.cpp timer.cpp UI.cpp GameBackground.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
 # Default target

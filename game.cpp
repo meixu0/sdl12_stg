@@ -74,16 +74,19 @@ void Game::run(){
 	static const int PLAY_AREA_WIDTH = 544;
 	static const int PLAY_AREA_HEIGHT = 600;
 	SDL_Rect playArea = {0, 0, PLAY_AREA_WIDTH, PLAY_AREA_HEIGHT};
+	GameBackground gameBackground;
 	while(gameState == STATE_GAME){
 		fps.start();
 		while(SDL_PollEvent(&event)){
 			player1.handle_input(event);
 			if(event.type == SDL_QUIT)	gameState = STATE_EXIT;
 		}
+		gameBackground.background_update();
 		player1.player_move();
 		player1.update_simple_shoot();
 		playerBulletPool_.update();
 		SDL_FillRect(screen, &playArea, SDL_MapRGB(screen->format, 0, 0, 0));
+		gameBackground.background_update();
 		player1.show();
 		playerBulletPool_.render();
 		if(SDL_Flip(screen) == -1)	throw std::runtime_error("flip error in game loop");
