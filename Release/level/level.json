@@ -1,0 +1,20 @@
+{
+  "stage_1": [
+    {
+      "id": "fairy_01",
+      "spawn_time": 120, 
+      "start_pos": [150, 20],   
+      "hp": 50,
+      "move_pattern": {
+        "type": "curve_left",   
+        "speed": 3.0
+      },
+      "bullet_pattern": {
+        "type": "ring_aim",   
+        "fire_rate": 30,          
+        "bullet_id": "rice_red"   
+      },
+      "drop_items": ["power", "point"] 
+    }
+  ]
+}

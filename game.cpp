@@ -56,14 +56,6 @@ void Game::run(){
 		if(SDL_Flip(screen) == -1)	throw std::runtime_error("flip error in main loop");
 	    menuFrameCounter++;
 		Uint32 currentFps = menuFrameCounter / (menuFps.get_ticks() / 1000);
-		//fps display start
-		/*update_fps(currentFps);
-		if(fpsSurface){
-			SDL_Rect dest = {800 - fpsSurface->w - 15, 10, 0, 0};
-			SDL_BlitSurface(fpsSurface, NULL, screen, &dest);
-		}*/
-		//fps display end
-		
 		if((fpsLimited == true) && (menuFps.get_ticks() < 1000 / FRAMES_PER_SECOND)){
 			SDL_Delay((1000 / FRAMES_PER_SECOND) - menuFps.get_ticks());
 		}
@@ -75,6 +67,9 @@ void Game::run(){
 	static const int PLAY_AREA_HEIGHT = 600;
 	SDL_Rect playArea = {0, 0, PLAY_AREA_WIDTH, PLAY_AREA_HEIGHT};
 	GameBackground gameBackground;
+	Uint32 gameStartTime = SDL_GetTicks();
+	frameCounter = 0;
+	//todo: fps monitor
 	while(gameState == STATE_GAME){
 		fps.start();
 		while(SDL_PollEvent(&event)){
@@ -86,12 +81,14 @@ void Game::run(){
 		player1.update_simple_shoot();
 		playerBulletPool_.update();
 		SDL_FillRect(screen, &playArea, SDL_MapRGB(screen->format, 0, 0, 0));
-		gameBackground.background_update();
+		gameBackground.background_show();
 		player1.show();
 		playerBulletPool_.render();
 		if(SDL_Flip(screen) == -1)	throw std::runtime_error("flip error in game loop");
-		if((fpsLimited == true) && (fps.get_ticks() < 1000 / FRAMES_PER_SECOND)){
-			SDL_Delay((1000 / FRAMES_PER_SECOND) - fps.get_ticks());
+		if((fpsLimited == true)){
+			Uint32 currentFrameTicks = SDL_GetTicks();
+			Uint32 targetTicks = gameStartTime + ((frameCounter + 1) * 1000) / FRAMES_PER_SECOND;
+			if(currentFrameTicks < targetTicks)	SDL_Delay(targetTicks - currentFrameTicks);
 		}
 		frameCounter++;
 	}
