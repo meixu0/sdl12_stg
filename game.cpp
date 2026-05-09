@@ -67,6 +67,7 @@ void Game::run(){
 	static const int PLAY_AREA_HEIGHT = 600;
 	SDL_Rect playArea = {0, 0, PLAY_AREA_WIDTH, PLAY_AREA_HEIGHT};
 	GameBackground gameBackground;
+	Uint32 lastTime = SDL_GetTicks();
 	Uint32 gameStartTime = SDL_GetTicks();
 	frameCounter = 0;
 	//todo: fps monitor
@@ -76,7 +77,8 @@ void Game::run(){
 			player1.handle_input(event);
 			if(event.type == SDL_QUIT)	gameState = STATE_EXIT;
 		}
-		gameBackground.background_update();
+		float dt = 1.0 / FRAMES_PER_SECOND;
+		gameBackground.background_update(dt);
 		player1.player_move();
 		player1.update_simple_shoot();
 		playerBulletPool_.update();

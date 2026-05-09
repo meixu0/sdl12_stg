@@ -1,0 +1,1 @@
+#define ZAKO 0
