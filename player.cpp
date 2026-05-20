@@ -64,3 +64,10 @@ void Player::update_simple_shoot(){
 void Player::show(){
 	apply_surface(x, y, player, screen);
 }
+
+PlayerPosition Player::get_player_position() const {
+	PlayerPosition pos;
+	pos.x = static_cast<float>(x + PLAYER_WIDTH / 2);   // 返回玩家中心x坐标
+	pos.y = static_cast<float>(y + PLAYER_HEIGHT / 2);  // 返回玩家中心y坐标
+	return pos;
+}

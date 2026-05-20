@@ -9,17 +9,10 @@ Game::Game(){
 	fpsSurface = NULL;
 	lastUpdate = 0;
 	fpsFont = load_font("res/FSEX300.ttf", 16);
+	levelManager.read_stage_data("Release/level/level.json");
 }
 void Game::show_fps(Uint32 current_fps){
-	/*
-	Uint32 now = SDL_GetTicks();
-	if(fpsSurface)	SDL_FreeSurface(fpsSurface);
-	char fps_text[16];
-	sprintf(fps_text, "FPS: %u", current_fps);
-	SDL_Color yellow = {255, 255, 0};
-	fpsSurface = TTF_RenderText_Blended(fpsFont, fps_text, yellow);
-	lastUpdate = now;
-	*/
+	//todo: fps monitor
 }
 void Game::init_info_area(SDL_Surface* dest){
 	SDL_Rect infoArea;

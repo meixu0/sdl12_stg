@@ -1,10 +1,11 @@
 #include <iostream>
+#include <string>
 #include "timer.h"
 #include "UI.h"
 #include "main_menu.h"
 #include "player.h"
 #include "GameBackground.h"
-#include <string>
+#include "LevelManager.h"
 #ifndef GAME_H
 #define GAME_H
 static const int FRAMES_PER_SECOND = 60;
@@ -20,6 +21,7 @@ private:
 	//static Uint32 menuFpsLastUpdate;
 	Timer fpsUpdate;
 	MainMenu mainMenu;
+	LevelManager levelManager;
 protected:
 	static Uint32 lastUpdate;
 	static TTF_Font* fpsFont;	//a surface to storage pre-rendered fps font

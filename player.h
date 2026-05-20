@@ -1,6 +1,11 @@
 #include "UI.h"
 #include "PlayerBullet.h"
 #include <vector>
+
+struct PlayerPosition {
+    float x;
+    float y;
+};
 class Player{
 private:
 	int x, y;//player's coordinate
@@ -26,4 +31,5 @@ public:
 	void player_move();
 	void update_simple_shoot();
 	void show();
+	PlayerPosition get_player_position() const;  // 获取玩家实时位置
 };

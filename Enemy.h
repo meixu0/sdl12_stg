@@ -1,7 +1,7 @@
 #include "UI.h"
 #include "EnemyType.h"
 #include "MovePattern.h"
-static SDL_Surface* zakoImage;
+#include <cmath>
 struct EnemyConfig{
     int hp;
     int movePattern;
@@ -13,17 +13,22 @@ struct EnemyConfig{
     float speedY;
     float targetX;
     float targetY;
+    float startX;
+    float startY;
 };
 class Enemy{
 private:
     float x;
     float y;
+    float startX;
+    float startY;
     float playerX;
     float playerY;
     int hp;
     bool isActive;
     float speedX;
     float speedY;
+    float timeAlive;        // 敌机存活时间（秒）
     float durationTime;
     float hitboxWidth;
     float hitboxHeight;
