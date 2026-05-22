@@ -10,6 +10,7 @@ Game::Game(){
 	lastUpdate = 0;
 	fpsFont = load_font("res/FSEX300.ttf", 16);
 	levelManager.read_stage_data("Release/level/level.json");
+	levelManager.init_enemy_pool();
 }
 void Game::show_fps(Uint32 current_fps){
 	//todo: fps monitor
@@ -79,6 +80,10 @@ void Game::run(){
 		gameBackground.background_show();
 		player1.show();
 		playerBulletPool_.render();
+		PlayerPosition playerPosition;
+		levelManager.update_all_enemies(playerPosition.x, playerPosition.y, frameCounter);
+		levelManager.move_all_enemies();
+		levelManager.show_all_enemies();
 		if(SDL_Flip(screen) == -1)	throw std::runtime_error("flip error in game loop");
 		if((fpsLimited == true)){
 			Uint32 currentFrameTicks = SDL_GetTicks();

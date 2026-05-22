@@ -1,4 +1,5 @@
 #include "Enemy.h"
+#include "player.h"  // 只在.cpp中包含，不会导致循环引用
 static SDL_Surface* zakoImage = NULL;
 Enemy::Enemy() : x(0.0), y(0.0), startX(0.0), startY(0.0), playerX(0.0), playerY(0.0), hp(0), isActive(false), speedX(0.0), speedY(0.0), timeAlive(0.0), durationTime(0.0), targetX(0.0), targetY(0.0), type(0){
     if(zakoImage == NULL)   zakoImage = load_image("res/zako.png", 40.0, 40.0);
@@ -18,9 +19,12 @@ void Enemy::init(EnemyConfig config, float x_, float y_){
     speedY = config.speedY;
     emergeSpeedY = 5.0;
     timeAlive = 0.0;    // 初始化存活时间
-    isActive = true;
+    isActive = false;
     targetX = config.targetX;
     targetY = config.targetY;
+}
+bool Enemy::is_active(){
+    return isActive;
 }
 
 // 线性移动：直线向下运动
@@ -134,8 +138,21 @@ void Enemy::interception_move(){
         }
     }
 }
+void Enemy::update_player_info(float px, float py, size_t frameCounter__){
+    frameCounter_ = frameCounter__;
+    playerX = px;
+    playerY = py;
+}
 void Enemy::enemy_move(){
+    if(x + 40 >= 544 || y + 40 >= 800 || frameCounter_ <= emergeTime || frameCounter_ >= emergeTime + durationTime)  isActive = false;
+    else    isActive = true;
     if(isActive){
+        // 如果设置了player指针，介取最新坐标
+        if(playerPtr != NULL){
+            PlayerPosition playerPos = playerPtr->get_player_position();
+            playerX = playerPos.x;
+            playerY = playerPos.y;
+        }
         timeAlive += (1.0f / 60.0f);  // 假设60fps，每帧增加1/60秒
         
         switch (movePattern){

@@ -2,11 +2,12 @@
 #include "EnemyType.h"
 #include "MovePattern.h"
 #include <cmath>
+class Player;
 struct EnemyConfig{
     int hp;
     int movePattern;
-    float emergeTime;
-    float durationTime;
+    size_t emergeTime;
+    size_t durationTime;
     int hitboxWidth;
     int hitboxHeight;
     float speedX;
@@ -28,16 +29,18 @@ private:
     bool isActive;
     float speedX;
     float speedY;
-    float timeAlive;        // 敌机存活时间（秒）
+    float timeAlive;  
     float durationTime;
     float hitboxWidth;
     float hitboxHeight;
     int movePattern;
-    float emergeTime;
+    size_t emergeTime;
     float emergeSpeedY;
     float targetX;
     float targetY;
     int type;
+    Player* playerPtr;
+    size_t frameCounter_;
     void linear_move();
     void sin_wave_move();
     void u_turn_move();
@@ -47,6 +50,7 @@ private:
 public:
     Enemy();
     void init(EnemyConfig config_, float x_, float y_);
+    void update_player_info(float px, float py, size_t frameCounter__);
     void enemy_move();
     void enemy_show();
     void enemy_attack();

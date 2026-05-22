@@ -4,7 +4,10 @@
       "id": "zako_01",
       "type": 0,
       "spawn_time": 60,
-      "start_pos": [100, -20],
+      "start_pos": [
+        100,
+        -20
+      ],
       "hp": 10,
       "movePattern": 0,
       "durationTime": 300,
@@ -19,7 +22,10 @@
       "id": "zako_02",
       "type": 0,
       "spawn_time": 75,
-      "start_pos": [150, -20],
+      "start_pos": [
+        150,
+        -20
+      ],
       "hp": 10,
       "movePattern": 0,
       "durationTime": 300,
@@ -34,7 +40,10 @@
       "id": "zako_03",
       "type": 0,
       "spawn_time": 90,
-      "start_pos": [200, -20],
+      "start_pos": [
+        200,
+        -20
+      ],
       "hp": 10,
       "movePattern": 0,
       "durationTime": 300,
@@ -49,7 +58,10 @@
       "id": "zako_wave2_01",
       "type": 0,
       "spawn_time": 180,
-      "start_pos": [80, -20],
+      "start_pos": [
+        80,
+        -20
+      ],
       "hp": 15,
       "movePattern": 1,
       "durationTime": 300,
@@ -64,7 +76,10 @@
       "id": "zako_wave2_02",
       "type": 0,
       "spawn_time": 200,
-      "start_pos": [220, -20],
+      "start_pos": [
+        220,
+        -20
+      ],
       "hp": 15,
       "movePattern": 1,
       "durationTime": 300,
@@ -79,7 +94,10 @@
       "id": "zako_wave3_01",
       "type": 0,
       "spawn_time": 300,
-      "start_pos": [50, -20],
+      "start_pos": [
+        50,
+        -20
+      ],
       "hp": 20,
       "movePattern": 2,
       "durationTime": 350,
@@ -94,7 +112,10 @@
       "id": "zako_wave3_02",
       "type": 0,
       "spawn_time": 320,
-      "start_pos": [250, -20],
+      "start_pos": [
+        250,
+        -20
+      ],
       "hp": 20,
       "movePattern": 2,
       "durationTime": 350,
@@ -109,7 +130,10 @@
       "id": "zako_wave3_03",
       "type": 0,
       "spawn_time": 340,
-      "start_pos": [150, -20],
+      "start_pos": [
+        150,
+        -20
+      ],
       "hp": 20,
       "movePattern": 0,
       "durationTime": 350,
@@ -124,7 +148,10 @@
       "id": "zako_wave4_01",
       "type": 0,
       "spawn_time": 420,
-      "start_pos": [80, -20],
+      "start_pos": [
+        80,
+        -20
+      ],
       "hp": 15,
       "movePattern": 0,
       "durationTime": 300,
@@ -139,7 +166,10 @@
       "id": "zako_wave4_02",
       "type": 0,
       "spawn_time": 430,
-      "start_pos": [120, -20],
+      "start_pos": [
+        120,
+        -20
+      ],
       "hp": 15,
       "movePattern": 0,
       "durationTime": 300,
@@ -154,7 +184,10 @@
       "id": "zako_wave4_03",
       "type": 0,
       "spawn_time": 440,
-      "start_pos": [160, -20],
+      "start_pos": [
+        160,
+        -20
+      ],
       "hp": 15,
       "movePattern": 0,
       "durationTime": 300,
@@ -169,7 +202,10 @@
       "id": "zako_wave4_04",
       "type": 0,
       "spawn_time": 450,
-      "start_pos": [200, -20],
+      "start_pos": [
+        200,
+        -20
+      ],
       "hp": 15,
       "movePattern": 0,
       "durationTime": 300,
@@ -184,7 +220,10 @@
       "id": "zako_wave4_05",
       "type": 0,
       "spawn_time": 460,
-      "start_pos": [240, -20],
+      "start_pos": [
+        240,
+        -20
+      ],
       "hp": 15,
       "movePattern": 0,
       "durationTime": 300,
@@ -199,7 +238,10 @@
       "id": "zako_wave5_01",
       "type": 0,
       "spawn_time": 540,
-      "start_pos": [60, -20],
+      "start_pos": [
+        60,
+        -20
+      ],
       "hp": 20,
       "movePattern": 3,
       "durationTime": 360,
@@ -214,7 +256,10 @@
       "id": "zako_wave5_02",
       "type": 0,
       "spawn_time": 560,
-      "start_pos": [260, -20],
+      "start_pos": [
+        260,
+        -20
+      ],
       "hp": 20,
       "movePattern": 3,
       "durationTime": 360,
@@ -229,7 +274,10 @@
       "id": "zako_wave6_01",
       "type": 0,
       "spawn_time": 660,
-      "start_pos": [70, -20],
+      "start_pos": [
+        70,
+        -20
+      ],
       "hp": 25,
       "movePattern": 1,
       "durationTime": 400,
@@ -244,7 +292,10 @@
       "id": "zako_wave6_02",
       "type": 0,
       "spawn_time": 680,
-      "start_pos": [150, -20],
+      "start_pos": [
+        150,
+        -20
+      ],
       "hp": 25,
       "movePattern": 0,
       "durationTime": 400,
@@ -259,7 +310,10 @@
       "id": "zako_wave6_03",
       "type": 0,
       "spawn_time": 700,
-      "start_pos": [230, -20],
+      "start_pos": [
+        230,
+        -20
+      ],
       "hp": 25,
       "movePattern": 1,
       "durationTime": 400,
@@ -269,6 +323,3606 @@
       "speedY": 2.2,
       "targetX": 100,
       "targetY": 350
+    },
+    {
+      "id": "zako_extra_001",
+      "type": 0,
+      "spawn_time": 2410,
+      "start_pos": [
+        128,
+        -20
+      ],
+      "hp": 30,
+      "movePattern": 2,
+      "durationTime": 351,
+      "hitboxWidth": 20,
+      "hitboxHeight": 20,
+      "speedX": 0.4,
+      "speedY": 3.0,
+      "targetX": 156,
+      "targetY": 181
+    },
+    {
+      "id": "zako_extra_002",
+      "type": 0,
+      "spawn_time": 1690,
+      "start_pos": [
+        2,
+        -20
+      ],
+      "hp": 19,
+      "movePattern": 0,
+      "durationTime": 293,
+      "hitboxWidth": 22,
+      "hitboxHeight": 22,
+      "speedX": -2.3,
+      "speedY": 2.6,
+      "targetX": 123,
+      "targetY": 337
+    },
+    {
+      "id": "zako_extra_003",
+      "type": 0,
+      "spawn_time": 1793,
+      "start_pos": [
+        247,
+        -20
+      ],
+      "hp": 15,
+      "movePattern": 0,
+      "durationTime": 388,
+      "hitboxWidth": 26,
+      "hitboxHeight": 26,
+      "speedX": 1.9,
+      "speedY": 4.4,
+      "targetX": 203,
+      "targetY": 217
+    },
+    {
+      "id": "zako_extra_004",
+      "type": 0,
+      "spawn_time": 2221,
+      "start_pos": [
+        2,
+        -20
+      ],
+      "hp": 29,
+      "movePattern": 2,
+      "durationTime": 384,
+      "hitboxWidth": 23,
+      "hitboxHeight": 23,
+      "speedX": 1.5,
+      "speedY": 1.7,
+      "targetX": 261,
+      "targetY": 305
+    },
+    {
+      "id": "zako_extra_005",
+      "type": 0,
+      "spawn_time": 2268,
+      "start_pos": [
+        228,
+        -20
+      ],
+      "hp": 20,
+      "movePattern": 3,
+      "durationTime": 395,
+      "hitboxWidth": 25,
+      "hitboxHeight": 25,
+      "speedX": -2.5,
+      "speedY": 3.1,
+      "targetX": 82,
+      "targetY": 203
+    },
+    {
+      "id": "zako_extra_006",
+      "type": 0,
+      "spawn_time": 3578,
+      "start_pos": [
+        37,
+        -20
+      ],
+      "hp": 31,
+      "movePattern": 5,
+      "durationTime": 305,
+      "hitboxWidth": 21,
+      "hitboxHeight": 21,
+      "speedX": -2.1,
+      "speedY": 3.9,
+      "targetX": 62,
+      "targetY": 219
+    },
+    {
+      "id": "zako_extra_007",
+      "type": 0,
+      "spawn_time": 1736,
+      "start_pos": [
+        8,
+        -20
+      ],
+      "hp": 27,
+      "movePattern": 2,
+      "durationTime": 321,
+      "hitboxWidth": 20,
+      "hitboxHeight": 20,
+      "speedX": 1.7,
+      "speedY": 4.2,
+      "targetX": 70,
+      "targetY": 295
+    },
+    {
+      "id": "zako_extra_008",
+      "type": 0,
+      "spawn_time": 2900,
+      "start_pos": [
+        110,
+        -20
+      ],
+      "hp": 12,
+      "movePattern": 3,
+      "durationTime": 262,
+      "hitboxWidth": 21,
+      "hitboxHeight": 21,
+      "speedX": -2.6,
+      "speedY": 2.5,
+      "targetX": 39,
+      "targetY": 112
+    },
+    {
+      "id": "zako_extra_009",
+      "type": 0,
+      "spawn_time": 1461,
+      "start_pos": [
+        166,
+        -20
+      ],
+      "hp": 29,
+      "movePattern": 1,
+      "durationTime": 327,
+      "hitboxWidth": 20,
+      "hitboxHeight": 20,
+      "speedX": 0.4,
+      "speedY": 2.9,
+      "targetX": 193,
+      "targetY": 135
+    },
+    {
+      "id": "zako_extra_010",
+      "type": 0,
+      "spawn_time": 1718,
+      "start_pos": [
+        139,
+        -20
+      ],
+      "hp": 13,
+      "movePattern": 5,
+      "durationTime": 306,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": -1.2,
+      "speedY": 1.5,
+      "targetX": 201,
+      "targetY": 347
+    },
+    {
+      "id": "zako_extra_011",
+      "type": 0,
+      "spawn_time": 2761,
+      "start_pos": [
+        145,
+        -20
+      ],
+      "hp": 31,
+      "movePattern": 1,
+      "durationTime": 318,
+      "hitboxWidth": 20,
+      "hitboxHeight": 20,
+      "speedX": 0.7,
+      "speedY": 1.9,
+      "targetX": 158,
+      "targetY": 222
+    },
+    {
+      "id": "zako_extra_012",
+      "type": 0,
+      "spawn_time": 2017,
+      "start_pos": [
+        247,
+        -20
+      ],
+      "hp": 11,
+      "movePattern": 2,
+      "durationTime": 283,
+      "hitboxWidth": 20,
+      "hitboxHeight": 20,
+      "speedX": 0.6,
+      "speedY": 2.4,
+      "targetX": 218,
+      "targetY": 171
+    },
+    {
+      "id": "zako_extra_013",
+      "type": 0,
+      "spawn_time": 3943,
+      "start_pos": [
+        44,
+        -20
+      ],
+      "hp": 32,
+      "movePattern": 1,
+      "durationTime": 352,
+      "hitboxWidth": 22,
+      "hitboxHeight": 22,
+      "speedX": -1.7,
+      "speedY": 2.5,
+      "targetX": 57,
+      "targetY": 318
+    },
+    {
+      "id": "zako_extra_014",
+      "type": 0,
+      "spawn_time": 3995,
+      "start_pos": [
+        17,
+        -20
+      ],
+      "hp": 31,
+      "movePattern": 4,
+      "durationTime": 285,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": -0.2,
+      "speedY": 3.9,
+      "targetX": 109,
+      "targetY": 138
+    },
+    {
+      "id": "zako_extra_015",
+      "type": 0,
+      "spawn_time": 3387,
+      "start_pos": [
+        231,
+        -20
+      ],
+      "hp": 29,
+      "movePattern": 3,
+      "durationTime": 387,
+      "hitboxWidth": 22,
+      "hitboxHeight": 22,
+      "speedX": 0.1,
+      "speedY": 2.4,
+      "targetX": 228,
+      "targetY": 330
+    },
+    {
+      "id": "zako_extra_016",
+      "type": 0,
+      "spawn_time": 819,
+      "start_pos": [
+        112,
+        -20
+      ],
+      "hp": 13,
+      "movePattern": 3,
+      "durationTime": 343,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": 1.8,
+      "speedY": 2.0,
+      "targetX": 268,
+      "targetY": 237
+    },
+    {
+      "id": "zako_extra_017",
+      "type": 0,
+      "spawn_time": 3148,
+      "start_pos": [
+        5,
+        -20
+      ],
+      "hp": 19,
+      "movePattern": 4,
+      "durationTime": 305,
+      "hitboxWidth": 22,
+      "hitboxHeight": 22,
+      "speedX": -2.2,
+      "speedY": 3.2,
+      "targetX": 24,
+      "targetY": 203
+    },
+    {
+      "id": "zako_extra_018",
+      "type": 0,
+      "spawn_time": 3823,
+      "start_pos": [
+        157,
+        -20
+      ],
+      "hp": 31,
+      "movePattern": 4,
+      "durationTime": 333,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": -3.0,
+      "speedY": 3.6,
+      "targetX": 238,
+      "targetY": 127
+    },
+    {
+      "id": "zako_extra_019",
+      "type": 0,
+      "spawn_time": 2463,
+      "start_pos": [
+        128,
+        -20
+      ],
+      "hp": 17,
+      "movePattern": 2,
+      "durationTime": 371,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": 1.9,
+      "speedY": 2.0,
+      "targetX": 14,
+      "targetY": 343
+    },
+    {
+      "id": "zako_extra_020",
+      "type": 0,
+      "spawn_time": 3149,
+      "start_pos": [
+        253,
+        -20
+      ],
+      "hp": 23,
+      "movePattern": 5,
+      "durationTime": 379,
+      "hitboxWidth": 25,
+      "hitboxHeight": 25,
+      "speedX": -0.2,
+      "speedY": 4.2,
+      "targetX": 84,
+      "targetY": 360
+    },
+    {
+      "id": "zako_extra_021",
+      "type": 0,
+      "spawn_time": 2438,
+      "start_pos": [
+        163,
+        -20
+      ],
+      "hp": 20,
+      "movePattern": 3,
+      "durationTime": 289,
+      "hitboxWidth": 21,
+      "hitboxHeight": 21,
+      "speedX": 0.9,
+      "speedY": 4.1,
+      "targetX": 204,
+      "targetY": 221
+    },
+    {
+      "id": "zako_extra_022",
+      "type": 0,
+      "spawn_time": 3890,
+      "start_pos": [
+        152,
+        -20
+      ],
+      "hp": 16,
+      "movePattern": 4,
+      "durationTime": 350,
+      "hitboxWidth": 22,
+      "hitboxHeight": 22,
+      "speedX": 0.3,
+      "speedY": 4.0,
+      "targetX": 238,
+      "targetY": 373
+    },
+    {
+      "id": "zako_extra_023",
+      "type": 0,
+      "spawn_time": 2490,
+      "start_pos": [
+        144,
+        -20
+      ],
+      "hp": 30,
+      "movePattern": 1,
+      "durationTime": 285,
+      "hitboxWidth": 26,
+      "hitboxHeight": 26,
+      "speedX": 0.3,
+      "speedY": 3.1,
+      "targetX": 188,
+      "targetY": 126
+    },
+    {
+      "id": "zako_extra_024",
+      "type": 0,
+      "spawn_time": 2121,
+      "start_pos": [
+        59,
+        -20
+      ],
+      "hp": 27,
+      "movePattern": 3,
+      "durationTime": 389,
+      "hitboxWidth": 26,
+      "hitboxHeight": 26,
+      "speedX": -0.2,
+      "speedY": 2.3,
+      "targetX": 92,
+      "targetY": 247
+    },
+    {
+      "id": "zako_extra_025",
+      "type": 0,
+      "spawn_time": 2440,
+      "start_pos": [
+        192,
+        -20
+      ],
+      "hp": 12,
+      "movePattern": 2,
+      "durationTime": 340,
+      "hitboxWidth": 23,
+      "hitboxHeight": 23,
+      "speedX": -2.7,
+      "speedY": 3.1,
+      "targetX": 197,
+      "targetY": 297
+    },
+    {
+      "id": "zako_extra_026",
+      "type": 0,
+      "spawn_time": 3680,
+      "start_pos": [
+        175,
+        -20
+      ],
+      "hp": 27,
+      "movePattern": 5,
+      "durationTime": 379,
+      "hitboxWidth": 21,
+      "hitboxHeight": 21,
+      "speedX": -2.9,
+      "speedY": 1.8,
+      "targetX": 45,
+      "targetY": 179
+    },
+    {
+      "id": "zako_extra_027",
+      "type": 0,
+      "spawn_time": 3195,
+      "start_pos": [
+        27,
+        -20
+      ],
+      "hp": 31,
+      "movePattern": 2,
+      "durationTime": 250,
+      "hitboxWidth": 25,
+      "hitboxHeight": 25,
+      "speedX": -2.8,
+      "speedY": 1.8,
+      "targetX": 192,
+      "targetY": 110
+    },
+    {
+      "id": "zako_extra_028",
+      "type": 0,
+      "spawn_time": 1969,
+      "start_pos": [
+        250,
+        -20
+      ],
+      "hp": 18,
+      "movePattern": 4,
+      "durationTime": 391,
+      "hitboxWidth": 25,
+      "hitboxHeight": 25,
+      "speedX": 0.5,
+      "speedY": 1.9,
+      "targetX": 197,
+      "targetY": 362
+    },
+    {
+      "id": "zako_extra_029",
+      "type": 0,
+      "spawn_time": 2389,
+      "start_pos": [
+        109,
+        -20
+      ],
+      "hp": 35,
+      "movePattern": 5,
+      "durationTime": 355,
+      "hitboxWidth": 22,
+      "hitboxHeight": 22,
+      "speedX": -2.4,
+      "speedY": 3.8,
+      "targetX": 119,
+      "targetY": 141
+    },
+    {
+      "id": "zako_extra_030",
+      "type": 0,
+      "spawn_time": 1419,
+      "start_pos": [
+        265,
+        -20
+      ],
+      "hp": 35,
+      "movePattern": 4,
+      "durationTime": 346,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": -2.5,
+      "speedY": 2.4,
+      "targetX": 185,
+      "targetY": 225
+    },
+    {
+      "id": "zako_extra_031",
+      "type": 0,
+      "spawn_time": 3734,
+      "start_pos": [
+        231,
+        -20
+      ],
+      "hp": 30,
+      "movePattern": 4,
+      "durationTime": 350,
+      "hitboxWidth": 22,
+      "hitboxHeight": 22,
+      "speedX": 1.1,
+      "speedY": 1.8,
+      "targetX": 275,
+      "targetY": 216
+    },
+    {
+      "id": "zako_extra_032",
+      "type": 0,
+      "spawn_time": 920,
+      "start_pos": [
+        275,
+        -20
+      ],
+      "hp": 18,
+      "movePattern": 2,
+      "durationTime": 356,
+      "hitboxWidth": 22,
+      "hitboxHeight": 22,
+      "speedX": 1.5,
+      "speedY": 1.8,
+      "targetX": 4,
+      "targetY": 240
+    },
+    {
+      "id": "zako_extra_033",
+      "type": 0,
+      "spawn_time": 2784,
+      "start_pos": [
+        30,
+        -20
+      ],
+      "hp": 22,
+      "movePattern": 2,
+      "durationTime": 289,
+      "hitboxWidth": 25,
+      "hitboxHeight": 25,
+      "speedX": -2.6,
+      "speedY": 2.2,
+      "targetX": 100,
+      "targetY": 294
+    },
+    {
+      "id": "zako_extra_034",
+      "type": 0,
+      "spawn_time": 2434,
+      "start_pos": [
+        232,
+        -20
+      ],
+      "hp": 15,
+      "movePattern": 3,
+      "durationTime": 300,
+      "hitboxWidth": 26,
+      "hitboxHeight": 26,
+      "speedX": 2.5,
+      "speedY": 2.5,
+      "targetX": 82,
+      "targetY": 286
+    },
+    {
+      "id": "zako_extra_035",
+      "type": 0,
+      "spawn_time": 3632,
+      "start_pos": [
+        263,
+        -20
+      ],
+      "hp": 32,
+      "movePattern": 1,
+      "durationTime": 307,
+      "hitboxWidth": 25,
+      "hitboxHeight": 25,
+      "speedX": 0.9,
+      "speedY": 4.4,
+      "targetX": 144,
+      "targetY": 274
+    },
+    {
+      "id": "zako_extra_036",
+      "type": 0,
+      "spawn_time": 1979,
+      "start_pos": [
+        1,
+        -20
+      ],
+      "hp": 15,
+      "movePattern": 4,
+      "durationTime": 345,
+      "hitboxWidth": 23,
+      "hitboxHeight": 23,
+      "speedX": -0.3,
+      "speedY": 2.9,
+      "targetX": 216,
+      "targetY": 220
+    },
+    {
+      "id": "zako_extra_037",
+      "type": 0,
+      "spawn_time": 1951,
+      "start_pos": [
+        210,
+        -20
+      ],
+      "hp": 11,
+      "movePattern": 1,
+      "durationTime": 339,
+      "hitboxWidth": 22,
+      "hitboxHeight": 22,
+      "speedX": 2.5,
+      "speedY": 3.6,
+      "targetX": 189,
+      "targetY": 295
+    },
+    {
+      "id": "zako_extra_038",
+      "type": 0,
+      "spawn_time": 3849,
+      "start_pos": [
+        118,
+        -20
+      ],
+      "hp": 17,
+      "movePattern": 5,
+      "durationTime": 263,
+      "hitboxWidth": 26,
+      "hitboxHeight": 26,
+      "speedX": -0.7,
+      "speedY": 4.5,
+      "targetX": 191,
+      "targetY": 198
+    },
+    {
+      "id": "zako_extra_039",
+      "type": 0,
+      "spawn_time": 2907,
+      "start_pos": [
+        115,
+        -20
+      ],
+      "hp": 28,
+      "movePattern": 2,
+      "durationTime": 308,
+      "hitboxWidth": 22,
+      "hitboxHeight": 22,
+      "speedX": 2.5,
+      "speedY": 3.6,
+      "targetX": 217,
+      "targetY": 352
+    },
+    {
+      "id": "zako_extra_040",
+      "type": 0,
+      "spawn_time": 3966,
+      "start_pos": [
+        67,
+        -20
+      ],
+      "hp": 12,
+      "movePattern": 0,
+      "durationTime": 251,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": -2.7,
+      "speedY": 1.6,
+      "targetX": 241,
+      "targetY": 198
+    },
+    {
+      "id": "zako_extra_041",
+      "type": 0,
+      "spawn_time": 1833,
+      "start_pos": [
+        8,
+        -20
+      ],
+      "hp": 34,
+      "movePattern": 5,
+      "durationTime": 289,
+      "hitboxWidth": 23,
+      "hitboxHeight": 23,
+      "speedX": 0.8,
+      "speedY": 2.9,
+      "targetX": 53,
+      "targetY": 234
+    },
+    {
+      "id": "zako_extra_042",
+      "type": 0,
+      "spawn_time": 2311,
+      "start_pos": [
+        10,
+        -20
+      ],
+      "hp": 19,
+      "movePattern": 4,
+      "durationTime": 313,
+      "hitboxWidth": 25,
+      "hitboxHeight": 25,
+      "speedX": -1.3,
+      "speedY": 2.6,
+      "targetX": 38,
+      "targetY": 366
+    },
+    {
+      "id": "zako_extra_043",
+      "type": 0,
+      "spawn_time": 3577,
+      "start_pos": [
+        280,
+        -20
+      ],
+      "hp": 10,
+      "movePattern": 2,
+      "durationTime": 267,
+      "hitboxWidth": 21,
+      "hitboxHeight": 21,
+      "speedX": 1.4,
+      "speedY": 4.3,
+      "targetX": 188,
+      "targetY": 124
+    },
+    {
+      "id": "zako_extra_044",
+      "type": 0,
+      "spawn_time": 1267,
+      "start_pos": [
+        25,
+        -20
+      ],
+      "hp": 18,
+      "movePattern": 3,
+      "durationTime": 379,
+      "hitboxWidth": 23,
+      "hitboxHeight": 23,
+      "speedX": -1.6,
+      "speedY": 3.2,
+      "targetX": 178,
+      "targetY": 372
+    },
+    {
+      "id": "zako_extra_045",
+      "type": 0,
+      "spawn_time": 3105,
+      "start_pos": [
+        203,
+        -20
+      ],
+      "hp": 11,
+      "movePattern": 3,
+      "durationTime": 294,
+      "hitboxWidth": 26,
+      "hitboxHeight": 26,
+      "speedX": -1.8,
+      "speedY": 2.8,
+      "targetX": 194,
+      "targetY": 257
+    },
+    {
+      "id": "zako_extra_046",
+      "type": 0,
+      "spawn_time": 3067,
+      "start_pos": [
+        69,
+        -20
+      ],
+      "hp": 28,
+      "movePattern": 0,
+      "durationTime": 346,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": 1.9,
+      "speedY": 2.8,
+      "targetX": 142,
+      "targetY": 289
+    },
+    {
+      "id": "zako_extra_047",
+      "type": 0,
+      "spawn_time": 2233,
+      "start_pos": [
+        109,
+        -20
+      ],
+      "hp": 30,
+      "movePattern": 2,
+      "durationTime": 327,
+      "hitboxWidth": 25,
+      "hitboxHeight": 25,
+      "speedX": 0.7,
+      "speedY": 1.7,
+      "targetX": 53,
+      "targetY": 104
+    },
+    {
+      "id": "zako_extra_048",
+      "type": 0,
+      "spawn_time": 1546,
+      "start_pos": [
+        215,
+        -20
+      ],
+      "hp": 34,
+      "movePattern": 0,
+      "durationTime": 299,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": -2.9,
+      "speedY": 1.8,
+      "targetX": 189,
+      "targetY": 306
+    },
+    {
+      "id": "zako_extra_049",
+      "type": 0,
+      "spawn_time": 2853,
+      "start_pos": [
+        253,
+        -20
+      ],
+      "hp": 30,
+      "movePattern": 0,
+      "durationTime": 383,
+      "hitboxWidth": 25,
+      "hitboxHeight": 25,
+      "speedX": -0.2,
+      "speedY": 4.4,
+      "targetX": 191,
+      "targetY": 384
+    },
+    {
+      "id": "zako_extra_050",
+      "type": 0,
+      "spawn_time": 3037,
+      "start_pos": [
+        238,
+        -20
+      ],
+      "hp": 29,
+      "movePattern": 5,
+      "durationTime": 394,
+      "hitboxWidth": 26,
+      "hitboxHeight": 26,
+      "speedX": 2.9,
+      "speedY": 1.7,
+      "targetX": 110,
+      "targetY": 266
+    },
+    {
+      "id": "zako_extra_051",
+      "type": 0,
+      "spawn_time": 3455,
+      "start_pos": [
+        184,
+        -20
+      ],
+      "hp": 10,
+      "movePattern": 0,
+      "durationTime": 344,
+      "hitboxWidth": 23,
+      "hitboxHeight": 23,
+      "speedX": 0.7,
+      "speedY": 3.0,
+      "targetX": 153,
+      "targetY": 203
+    },
+    {
+      "id": "zako_extra_052",
+      "type": 0,
+      "spawn_time": 852,
+      "start_pos": [
+        30,
+        -20
+      ],
+      "hp": 22,
+      "movePattern": 5,
+      "durationTime": 278,
+      "hitboxWidth": 20,
+      "hitboxHeight": 20,
+      "speedX": 1.5,
+      "speedY": 2.3,
+      "targetX": 270,
+      "targetY": 131
+    },
+    {
+      "id": "zako_extra_053",
+      "type": 0,
+      "spawn_time": 3846,
+      "start_pos": [
+        37,
+        -20
+      ],
+      "hp": 35,
+      "movePattern": 1,
+      "durationTime": 263,
+      "hitboxWidth": 21,
+      "hitboxHeight": 21,
+      "speedX": 1.0,
+      "speedY": 2.1,
+      "targetX": 8,
+      "targetY": 320
+    },
+    {
+      "id": "zako_extra_054",
+      "type": 0,
+      "spawn_time": 1831,
+      "start_pos": [
+        267,
+        -20
+      ],
+      "hp": 21,
+      "movePattern": 0,
+      "durationTime": 316,
+      "hitboxWidth": 23,
+      "hitboxHeight": 23,
+      "speedX": 1.6,
+      "speedY": 1.8,
+      "targetX": 7,
+      "targetY": 361
+    },
+    {
+      "id": "zako_extra_055",
+      "type": 0,
+      "spawn_time": 1206,
+      "start_pos": [
+        258,
+        -20
+      ],
+      "hp": 30,
+      "movePattern": 2,
+      "durationTime": 327,
+      "hitboxWidth": 26,
+      "hitboxHeight": 26,
+      "speedX": 1.7,
+      "speedY": 3.0,
+      "targetX": 133,
+      "targetY": 263
+    },
+    {
+      "id": "zako_extra_056",
+      "type": 0,
+      "spawn_time": 1832,
+      "start_pos": [
+        31,
+        -20
+      ],
+      "hp": 13,
+      "movePattern": 3,
+      "durationTime": 313,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": 1.5,
+      "speedY": 4.2,
+      "targetX": 183,
+      "targetY": 163
+    },
+    {
+      "id": "zako_extra_057",
+      "type": 0,
+      "spawn_time": 3782,
+      "start_pos": [
+        91,
+        -20
+      ],
+      "hp": 16,
+      "movePattern": 1,
+      "durationTime": 373,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": -0.7,
+      "speedY": 4.1,
+      "targetX": 77,
+      "targetY": 104
+    },
+    {
+      "id": "zako_extra_058",
+      "type": 0,
+      "spawn_time": 2652,
+      "start_pos": [
+        230,
+        -20
+      ],
+      "hp": 31,
+      "movePattern": 5,
+      "durationTime": 310,
+      "hitboxWidth": 26,
+      "hitboxHeight": 26,
+      "speedX": 0.5,
+      "speedY": 1.6,
+      "targetX": 201,
+      "targetY": 169
+    },
+    {
+      "id": "zako_extra_059",
+      "type": 0,
+      "spawn_time": 3257,
+      "start_pos": [
+        151,
+        -20
+      ],
+      "hp": 21,
+      "movePattern": 4,
+      "durationTime": 291,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": -0.9,
+      "speedY": 2.6,
+      "targetX": 201,
+      "targetY": 335
+    },
+    {
+      "id": "zako_extra_060",
+      "type": 0,
+      "spawn_time": 2836,
+      "start_pos": [
+        69,
+        -20
+      ],
+      "hp": 23,
+      "movePattern": 3,
+      "durationTime": 332,
+      "hitboxWidth": 20,
+      "hitboxHeight": 20,
+      "speedX": -0.3,
+      "speedY": 3.4,
+      "targetX": 220,
+      "targetY": 191
+    },
+    {
+      "id": "zako_extra_061",
+      "type": 0,
+      "spawn_time": 1251,
+      "start_pos": [
+        44,
+        -20
+      ],
+      "hp": 21,
+      "movePattern": 2,
+      "durationTime": 275,
+      "hitboxWidth": 20,
+      "hitboxHeight": 20,
+      "speedX": 0.2,
+      "speedY": 1.7,
+      "targetX": 250,
+      "targetY": 123
+    },
+    {
+      "id": "zako_extra_062",
+      "type": 0,
+      "spawn_time": 1210,
+      "start_pos": [
+        50,
+        -20
+      ],
+      "hp": 12,
+      "movePattern": 5,
+      "durationTime": 310,
+      "hitboxWidth": 22,
+      "hitboxHeight": 22,
+      "speedX": 0.9,
+      "speedY": 2.1,
+      "targetX": 176,
+      "targetY": 218
+    },
+    {
+      "id": "zako_extra_063",
+      "type": 0,
+      "spawn_time": 2805,
+      "start_pos": [
+        171,
+        -20
+      ],
+      "hp": 13,
+      "movePattern": 4,
+      "durationTime": 324,
+      "hitboxWidth": 25,
+      "hitboxHeight": 25,
+      "speedX": -2.1,
+      "speedY": 2.5,
+      "targetX": 190,
+      "targetY": 110
+    },
+    {
+      "id": "zako_extra_064",
+      "type": 0,
+      "spawn_time": 3847,
+      "start_pos": [
+        86,
+        -20
+      ],
+      "hp": 34,
+      "movePattern": 3,
+      "durationTime": 334,
+      "hitboxWidth": 26,
+      "hitboxHeight": 26,
+      "speedX": 0.9,
+      "speedY": 2.4,
+      "targetX": 204,
+      "targetY": 261
+    },
+    {
+      "id": "zako_extra_065",
+      "type": 0,
+      "spawn_time": 1326,
+      "start_pos": [
+        277,
+        -20
+      ],
+      "hp": 26,
+      "movePattern": 1,
+      "durationTime": 393,
+      "hitboxWidth": 22,
+      "hitboxHeight": 22,
+      "speedX": 2.9,
+      "speedY": 1.8,
+      "targetX": 149,
+      "targetY": 195
+    },
+    {
+      "id": "zako_extra_066",
+      "type": 0,
+      "spawn_time": 1093,
+      "start_pos": [
+        217,
+        -20
+      ],
+      "hp": 26,
+      "movePattern": 2,
+      "durationTime": 262,
+      "hitboxWidth": 25,
+      "hitboxHeight": 25,
+      "speedX": 0.5,
+      "speedY": 3.2,
+      "targetX": 229,
+      "targetY": 128
+    },
+    {
+      "id": "zako_extra_067",
+      "type": 0,
+      "spawn_time": 3628,
+      "start_pos": [
+        137,
+        -20
+      ],
+      "hp": 12,
+      "movePattern": 0,
+      "durationTime": 331,
+      "hitboxWidth": 23,
+      "hitboxHeight": 23,
+      "speedX": -1.9,
+      "speedY": 2.8,
+      "targetX": 137,
+      "targetY": 360
+    },
+    {
+      "id": "zako_extra_068",
+      "type": 0,
+      "spawn_time": 1431,
+      "start_pos": [
+        209,
+        -20
+      ],
+      "hp": 15,
+      "movePattern": 1,
+      "durationTime": 284,
+      "hitboxWidth": 22,
+      "hitboxHeight": 22,
+      "speedX": 1.4,
+      "speedY": 3.4,
+      "targetX": 176,
+      "targetY": 399
+    },
+    {
+      "id": "zako_extra_069",
+      "type": 0,
+      "spawn_time": 2955,
+      "start_pos": [
+        238,
+        -20
+      ],
+      "hp": 12,
+      "movePattern": 5,
+      "durationTime": 378,
+      "hitboxWidth": 26,
+      "hitboxHeight": 26,
+      "speedX": -2.7,
+      "speedY": 3.7,
+      "targetX": 48,
+      "targetY": 218
+    },
+    {
+      "id": "zako_extra_070",
+      "type": 0,
+      "spawn_time": 3871,
+      "start_pos": [
+        151,
+        -20
+      ],
+      "hp": 27,
+      "movePattern": 1,
+      "durationTime": 254,
+      "hitboxWidth": 22,
+      "hitboxHeight": 22,
+      "speedX": 1.5,
+      "speedY": 2.8,
+      "targetX": 27,
+      "targetY": 354
+    },
+    {
+      "id": "zako_extra_071",
+      "type": 0,
+      "spawn_time": 3580,
+      "start_pos": [
+        184,
+        -20
+      ],
+      "hp": 32,
+      "movePattern": 4,
+      "durationTime": 367,
+      "hitboxWidth": 23,
+      "hitboxHeight": 23,
+      "speedX": -2.8,
+      "speedY": 2.1,
+      "targetX": 234,
+      "targetY": 265
+    },
+    {
+      "id": "zako_extra_072",
+      "type": 0,
+      "spawn_time": 1391,
+      "start_pos": [
+        242,
+        -20
+      ],
+      "hp": 24,
+      "movePattern": 4,
+      "durationTime": 377,
+      "hitboxWidth": 26,
+      "hitboxHeight": 26,
+      "speedX": -1.0,
+      "speedY": 3.5,
+      "targetX": 179,
+      "targetY": 334
+    },
+    {
+      "id": "zako_extra_073",
+      "type": 0,
+      "spawn_time": 3502,
+      "start_pos": [
+        217,
+        -20
+      ],
+      "hp": 16,
+      "movePattern": 1,
+      "durationTime": 391,
+      "hitboxWidth": 22,
+      "hitboxHeight": 22,
+      "speedX": -2.2,
+      "speedY": 4.2,
+      "targetX": 265,
+      "targetY": 246
+    },
+    {
+      "id": "zako_extra_074",
+      "type": 0,
+      "spawn_time": 3667,
+      "start_pos": [
+        57,
+        -20
+      ],
+      "hp": 17,
+      "movePattern": 4,
+      "durationTime": 331,
+      "hitboxWidth": 23,
+      "hitboxHeight": 23,
+      "speedX": -2.5,
+      "speedY": 3.9,
+      "targetX": 78,
+      "targetY": 305
+    },
+    {
+      "id": "zako_extra_075",
+      "type": 0,
+      "spawn_time": 1794,
+      "start_pos": [
+        128,
+        -20
+      ],
+      "hp": 35,
+      "movePattern": 4,
+      "durationTime": 307,
+      "hitboxWidth": 25,
+      "hitboxHeight": 25,
+      "speedX": -2.9,
+      "speedY": 2.2,
+      "targetX": 137,
+      "targetY": 192
+    },
+    {
+      "id": "zako_extra_076",
+      "type": 0,
+      "spawn_time": 1590,
+      "start_pos": [
+        177,
+        -20
+      ],
+      "hp": 13,
+      "movePattern": 3,
+      "durationTime": 275,
+      "hitboxWidth": 26,
+      "hitboxHeight": 26,
+      "speedX": 0.1,
+      "speedY": 1.7,
+      "targetX": 137,
+      "targetY": 381
+    },
+    {
+      "id": "zako_extra_077",
+      "type": 0,
+      "spawn_time": 3962,
+      "start_pos": [
+        124,
+        -20
+      ],
+      "hp": 11,
+      "movePattern": 1,
+      "durationTime": 276,
+      "hitboxWidth": 21,
+      "hitboxHeight": 21,
+      "speedX": -0.8,
+      "speedY": 1.6,
+      "targetX": 273,
+      "targetY": 376
+    },
+    {
+      "id": "zako_extra_078",
+      "type": 0,
+      "spawn_time": 2825,
+      "start_pos": [
+        147,
+        -20
+      ],
+      "hp": 28,
+      "movePattern": 2,
+      "durationTime": 359,
+      "hitboxWidth": 26,
+      "hitboxHeight": 26,
+      "speedX": -1.9,
+      "speedY": 3.6,
+      "targetX": 85,
+      "targetY": 308
+    },
+    {
+      "id": "zako_extra_079",
+      "type": 0,
+      "spawn_time": 1133,
+      "start_pos": [
+        20,
+        -20
+      ],
+      "hp": 24,
+      "movePattern": 5,
+      "durationTime": 285,
+      "hitboxWidth": 26,
+      "hitboxHeight": 26,
+      "speedX": -1.0,
+      "speedY": 2.9,
+      "targetX": 202,
+      "targetY": 331
+    },
+    {
+      "id": "zako_extra_080",
+      "type": 0,
+      "spawn_time": 1041,
+      "start_pos": [
+        190,
+        -20
+      ],
+      "hp": 19,
+      "movePattern": 1,
+      "durationTime": 294,
+      "hitboxWidth": 22,
+      "hitboxHeight": 22,
+      "speedX": -1.5,
+      "speedY": 1.8,
+      "targetX": 133,
+      "targetY": 221
+    },
+    {
+      "id": "zako_extra_081",
+      "type": 0,
+      "spawn_time": 2796,
+      "start_pos": [
+        10,
+        -20
+      ],
+      "hp": 17,
+      "movePattern": 3,
+      "durationTime": 283,
+      "hitboxWidth": 26,
+      "hitboxHeight": 26,
+      "speedX": 1.2,
+      "speedY": 3.7,
+      "targetX": 261,
+      "targetY": 145
+    },
+    {
+      "id": "zako_extra_082",
+      "type": 0,
+      "spawn_time": 2256,
+      "start_pos": [
+        100,
+        -20
+      ],
+      "hp": 20,
+      "movePattern": 4,
+      "durationTime": 377,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": -1.6,
+      "speedY": 4.0,
+      "targetX": 14,
+      "targetY": 365
+    },
+    {
+      "id": "zako_extra_083",
+      "type": 0,
+      "spawn_time": 1001,
+      "start_pos": [
+        0,
+        -20
+      ],
+      "hp": 16,
+      "movePattern": 0,
+      "durationTime": 376,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": -1.2,
+      "speedY": 2.3,
+      "targetX": 216,
+      "targetY": 366
+    },
+    {
+      "id": "zako_extra_084",
+      "type": 0,
+      "spawn_time": 1590,
+      "start_pos": [
+        266,
+        -20
+      ],
+      "hp": 27,
+      "movePattern": 3,
+      "durationTime": 365,
+      "hitboxWidth": 26,
+      "hitboxHeight": 26,
+      "speedX": 2.6,
+      "speedY": 1.5,
+      "targetX": 104,
+      "targetY": 163
+    },
+    {
+      "id": "zako_extra_085",
+      "type": 0,
+      "spawn_time": 1254,
+      "start_pos": [
+        108,
+        -20
+      ],
+      "hp": 29,
+      "movePattern": 3,
+      "durationTime": 399,
+      "hitboxWidth": 21,
+      "hitboxHeight": 21,
+      "speedX": 2.3,
+      "speedY": 2.7,
+      "targetX": 183,
+      "targetY": 127
+    },
+    {
+      "id": "zako_extra_086",
+      "type": 0,
+      "spawn_time": 2119,
+      "start_pos": [
+        264,
+        -20
+      ],
+      "hp": 26,
+      "movePattern": 0,
+      "durationTime": 391,
+      "hitboxWidth": 26,
+      "hitboxHeight": 26,
+      "speedX": 2.3,
+      "speedY": 3.3,
+      "targetX": 53,
+      "targetY": 325
+    },
+    {
+      "id": "zako_extra_087",
+      "type": 0,
+      "spawn_time": 2150,
+      "start_pos": [
+        5,
+        -20
+      ],
+      "hp": 33,
+      "movePattern": 1,
+      "durationTime": 294,
+      "hitboxWidth": 22,
+      "hitboxHeight": 22,
+      "speedX": -1.2,
+      "speedY": 4.0,
+      "targetX": 194,
+      "targetY": 399
+    },
+    {
+      "id": "zako_extra_088",
+      "type": 0,
+      "spawn_time": 1685,
+      "start_pos": [
+        84,
+        -20
+      ],
+      "hp": 26,
+      "movePattern": 5,
+      "durationTime": 358,
+      "hitboxWidth": 22,
+      "hitboxHeight": 22,
+      "speedX": -1.2,
+      "speedY": 4.2,
+      "targetX": 200,
+      "targetY": 118
+    },
+    {
+      "id": "zako_extra_089",
+      "type": 0,
+      "spawn_time": 1380,
+      "start_pos": [
+        230,
+        -20
+      ],
+      "hp": 14,
+      "movePattern": 0,
+      "durationTime": 327,
+      "hitboxWidth": 25,
+      "hitboxHeight": 25,
+      "speedX": -1.6,
+      "speedY": 3.8,
+      "targetX": 228,
+      "targetY": 114
+    },
+    {
+      "id": "zako_extra_090",
+      "type": 0,
+      "spawn_time": 2081,
+      "start_pos": [
+        81,
+        -20
+      ],
+      "hp": 15,
+      "movePattern": 2,
+      "durationTime": 384,
+      "hitboxWidth": 22,
+      "hitboxHeight": 22,
+      "speedX": -2.2,
+      "speedY": 2.0,
+      "targetX": 211,
+      "targetY": 279
+    },
+    {
+      "id": "zako_extra_091",
+      "type": 0,
+      "spawn_time": 2044,
+      "start_pos": [
+        184,
+        -20
+      ],
+      "hp": 31,
+      "movePattern": 5,
+      "durationTime": 259,
+      "hitboxWidth": 25,
+      "hitboxHeight": 25,
+      "speedX": 1.0,
+      "speedY": 3.1,
+      "targetX": 118,
+      "targetY": 399
+    },
+    {
+      "id": "zako_extra_092",
+      "type": 0,
+      "spawn_time": 1404,
+      "start_pos": [
+        60,
+        -20
+      ],
+      "hp": 26,
+      "movePattern": 5,
+      "durationTime": 352,
+      "hitboxWidth": 26,
+      "hitboxHeight": 26,
+      "speedX": 1.0,
+      "speedY": 3.5,
+      "targetX": 172,
+      "targetY": 178
+    },
+    {
+      "id": "zako_extra_093",
+      "type": 0,
+      "spawn_time": 3496,
+      "start_pos": [
+        84,
+        -20
+      ],
+      "hp": 22,
+      "movePattern": 4,
+      "durationTime": 324,
+      "hitboxWidth": 21,
+      "hitboxHeight": 21,
+      "speedX": -0.7,
+      "speedY": 2.8,
+      "targetX": 224,
+      "targetY": 242
+    },
+    {
+      "id": "zako_extra_094",
+      "type": 0,
+      "spawn_time": 2495,
+      "start_pos": [
+        30,
+        -20
+      ],
+      "hp": 23,
+      "movePattern": 2,
+      "durationTime": 267,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": 2.8,
+      "speedY": 1.7,
+      "targetX": 81,
+      "targetY": 209
+    },
+    {
+      "id": "zako_extra_095",
+      "type": 0,
+      "spawn_time": 1952,
+      "start_pos": [
+        69,
+        -20
+      ],
+      "hp": 31,
+      "movePattern": 4,
+      "durationTime": 377,
+      "hitboxWidth": 25,
+      "hitboxHeight": 25,
+      "speedX": -2.8,
+      "speedY": 2.9,
+      "targetX": 52,
+      "targetY": 340
+    },
+    {
+      "id": "zako_extra_096",
+      "type": 0,
+      "spawn_time": 2803,
+      "start_pos": [
+        151,
+        -20
+      ],
+      "hp": 32,
+      "movePattern": 3,
+      "durationTime": 298,
+      "hitboxWidth": 23,
+      "hitboxHeight": 23,
+      "speedX": 2.7,
+      "speedY": 3.9,
+      "targetX": 41,
+      "targetY": 245
+    },
+    {
+      "id": "zako_extra_097",
+      "type": 0,
+      "spawn_time": 3875,
+      "start_pos": [
+        150,
+        -20
+      ],
+      "hp": 33,
+      "movePattern": 3,
+      "durationTime": 355,
+      "hitboxWidth": 20,
+      "hitboxHeight": 20,
+      "speedX": 2.9,
+      "speedY": 2.1,
+      "targetX": 190,
+      "targetY": 112
+    },
+    {
+      "id": "zako_extra_098",
+      "type": 0,
+      "spawn_time": 3151,
+      "start_pos": [
+        225,
+        -20
+      ],
+      "hp": 24,
+      "movePattern": 4,
+      "durationTime": 280,
+      "hitboxWidth": 20,
+      "hitboxHeight": 20,
+      "speedX": -2.0,
+      "speedY": 1.6,
+      "targetX": 271,
+      "targetY": 338
+    },
+    {
+      "id": "zako_extra_099",
+      "type": 0,
+      "spawn_time": 1556,
+      "start_pos": [
+        174,
+        -20
+      ],
+      "hp": 12,
+      "movePattern": 4,
+      "durationTime": 394,
+      "hitboxWidth": 22,
+      "hitboxHeight": 22,
+      "speedX": -1.4,
+      "speedY": 3.4,
+      "targetX": 165,
+      "targetY": 252
+    },
+    {
+      "id": "zako_extra_100",
+      "type": 0,
+      "spawn_time": 2950,
+      "start_pos": [
+        60,
+        -20
+      ],
+      "hp": 30,
+      "movePattern": 3,
+      "durationTime": 293,
+      "hitboxWidth": 20,
+      "hitboxHeight": 20,
+      "speedX": -0.2,
+      "speedY": 3.5,
+      "targetX": 229,
+      "targetY": 282
+    },
+    {
+      "id": "zako_extra_101",
+      "type": 0,
+      "spawn_time": 1720,
+      "start_pos": [
+        1,
+        -20
+      ],
+      "hp": 19,
+      "movePattern": 1,
+      "durationTime": 327,
+      "hitboxWidth": 23,
+      "hitboxHeight": 23,
+      "speedX": -1.6,
+      "speedY": 2.9,
+      "targetX": 126,
+      "targetY": 159
+    },
+    {
+      "id": "zako_extra_102",
+      "type": 0,
+      "spawn_time": 3190,
+      "start_pos": [
+        75,
+        -20
+      ],
+      "hp": 21,
+      "movePattern": 0,
+      "durationTime": 260,
+      "hitboxWidth": 23,
+      "hitboxHeight": 23,
+      "speedX": -0.6,
+      "speedY": 2.9,
+      "targetX": 31,
+      "targetY": 139
+    },
+    {
+      "id": "zako_extra_103",
+      "type": 0,
+      "spawn_time": 2021,
+      "start_pos": [
+        150,
+        -20
+      ],
+      "hp": 19,
+      "movePattern": 4,
+      "durationTime": 275,
+      "hitboxWidth": 21,
+      "hitboxHeight": 21,
+      "speedX": -0.2,
+      "speedY": 2.3,
+      "targetX": 232,
+      "targetY": 348
+    },
+    {
+      "id": "zako_extra_104",
+      "type": 0,
+      "spawn_time": 2196,
+      "start_pos": [
+        201,
+        -20
+      ],
+      "hp": 24,
+      "movePattern": 4,
+      "durationTime": 264,
+      "hitboxWidth": 23,
+      "hitboxHeight": 23,
+      "speedX": -2.5,
+      "speedY": 2.8,
+      "targetX": 28,
+      "targetY": 324
+    },
+    {
+      "id": "zako_extra_105",
+      "type": 0,
+      "spawn_time": 3738,
+      "start_pos": [
+        1,
+        -20
+      ],
+      "hp": 18,
+      "movePattern": 1,
+      "durationTime": 255,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": -0.9,
+      "speedY": 2.9,
+      "targetX": 125,
+      "targetY": 239
+    },
+    {
+      "id": "zako_extra_106",
+      "type": 0,
+      "spawn_time": 2969,
+      "start_pos": [
+        248,
+        -20
+      ],
+      "hp": 11,
+      "movePattern": 2,
+      "durationTime": 400,
+      "hitboxWidth": 25,
+      "hitboxHeight": 25,
+      "speedX": -1.5,
+      "speedY": 3.9,
+      "targetX": 237,
+      "targetY": 302
+    },
+    {
+      "id": "zako_extra_107",
+      "type": 0,
+      "spawn_time": 2980,
+      "start_pos": [
+        69,
+        -20
+      ],
+      "hp": 16,
+      "movePattern": 4,
+      "durationTime": 287,
+      "hitboxWidth": 21,
+      "hitboxHeight": 21,
+      "speedX": -2.4,
+      "speedY": 3.0,
+      "targetX": 198,
+      "targetY": 214
+    },
+    {
+      "id": "zako_extra_108",
+      "type": 0,
+      "spawn_time": 1781,
+      "start_pos": [
+        156,
+        -20
+      ],
+      "hp": 20,
+      "movePattern": 3,
+      "durationTime": 321,
+      "hitboxWidth": 26,
+      "hitboxHeight": 26,
+      "speedX": 0.8,
+      "speedY": 2.0,
+      "targetX": 48,
+      "targetY": 231
+    },
+    {
+      "id": "zako_extra_109",
+      "type": 0,
+      "spawn_time": 3010,
+      "start_pos": [
+        199,
+        -20
+      ],
+      "hp": 30,
+      "movePattern": 4,
+      "durationTime": 291,
+      "hitboxWidth": 22,
+      "hitboxHeight": 22,
+      "speedX": 0.2,
+      "speedY": 4.4,
+      "targetX": 161,
+      "targetY": 229
+    },
+    {
+      "id": "zako_extra_110",
+      "type": 0,
+      "spawn_time": 3221,
+      "start_pos": [
+        129,
+        -20
+      ],
+      "hp": 30,
+      "movePattern": 0,
+      "durationTime": 261,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": -2.2,
+      "speedY": 2.6,
+      "targetX": 40,
+      "targetY": 252
+    },
+    {
+      "id": "zako_extra_111",
+      "type": 0,
+      "spawn_time": 3018,
+      "start_pos": [
+        269,
+        -20
+      ],
+      "hp": 25,
+      "movePattern": 1,
+      "durationTime": 299,
+      "hitboxWidth": 26,
+      "hitboxHeight": 26,
+      "speedX": -1.1,
+      "speedY": 2.3,
+      "targetX": 73,
+      "targetY": 276
+    },
+    {
+      "id": "zako_extra_112",
+      "type": 0,
+      "spawn_time": 1298,
+      "start_pos": [
+        206,
+        -20
+      ],
+      "hp": 27,
+      "movePattern": 2,
+      "durationTime": 284,
+      "hitboxWidth": 20,
+      "hitboxHeight": 20,
+      "speedX": 1.2,
+      "speedY": 2.2,
+      "targetX": 153,
+      "targetY": 229
+    },
+    {
+      "id": "zako_extra_113",
+      "type": 0,
+      "spawn_time": 1176,
+      "start_pos": [
+        230,
+        -20
+      ],
+      "hp": 28,
+      "movePattern": 1,
+      "durationTime": 271,
+      "hitboxWidth": 26,
+      "hitboxHeight": 26,
+      "speedX": -2.3,
+      "speedY": 2.0,
+      "targetX": 26,
+      "targetY": 209
+    },
+    {
+      "id": "zako_extra_114",
+      "type": 0,
+      "spawn_time": 2268,
+      "start_pos": [
+        45,
+        -20
+      ],
+      "hp": 20,
+      "movePattern": 4,
+      "durationTime": 303,
+      "hitboxWidth": 22,
+      "hitboxHeight": 22,
+      "speedX": 0.8,
+      "speedY": 2.8,
+      "targetX": 204,
+      "targetY": 383
+    },
+    {
+      "id": "zako_extra_115",
+      "type": 0,
+      "spawn_time": 3224,
+      "start_pos": [
+        146,
+        -20
+      ],
+      "hp": 14,
+      "movePattern": 3,
+      "durationTime": 257,
+      "hitboxWidth": 26,
+      "hitboxHeight": 26,
+      "speedX": 0.1,
+      "speedY": 2.9,
+      "targetX": 159,
+      "targetY": 116
+    },
+    {
+      "id": "zako_extra_116",
+      "type": 0,
+      "spawn_time": 3510,
+      "start_pos": [
+        182,
+        -20
+      ],
+      "hp": 11,
+      "movePattern": 3,
+      "durationTime": 393,
+      "hitboxWidth": 20,
+      "hitboxHeight": 20,
+      "speedX": 1.0,
+      "speedY": 4.3,
+      "targetX": 272,
+      "targetY": 182
+    },
+    {
+      "id": "zako_extra_117",
+      "type": 0,
+      "spawn_time": 3416,
+      "start_pos": [
+        248,
+        -20
+      ],
+      "hp": 24,
+      "movePattern": 3,
+      "durationTime": 348,
+      "hitboxWidth": 26,
+      "hitboxHeight": 26,
+      "speedX": -2.6,
+      "speedY": 4.4,
+      "targetX": 134,
+      "targetY": 314
+    },
+    {
+      "id": "zako_extra_118",
+      "type": 0,
+      "spawn_time": 813,
+      "start_pos": [
+        14,
+        -20
+      ],
+      "hp": 18,
+      "movePattern": 1,
+      "durationTime": 386,
+      "hitboxWidth": 22,
+      "hitboxHeight": 22,
+      "speedX": 0.9,
+      "speedY": 2.0,
+      "targetX": 123,
+      "targetY": 400
+    },
+    {
+      "id": "zako_extra_119",
+      "type": 0,
+      "spawn_time": 2887,
+      "start_pos": [
+        19,
+        -20
+      ],
+      "hp": 23,
+      "movePattern": 1,
+      "durationTime": 359,
+      "hitboxWidth": 26,
+      "hitboxHeight": 26,
+      "speedX": -2.5,
+      "speedY": 3.1,
+      "targetX": 43,
+      "targetY": 336
+    },
+    {
+      "id": "zako_extra_120",
+      "type": 0,
+      "spawn_time": 1328,
+      "start_pos": [
+        201,
+        -20
+      ],
+      "hp": 26,
+      "movePattern": 1,
+      "durationTime": 309,
+      "hitboxWidth": 22,
+      "hitboxHeight": 22,
+      "speedX": -1.5,
+      "speedY": 3.3,
+      "targetX": 148,
+      "targetY": 168
+    },
+    {
+      "id": "zako_extra_121",
+      "type": 0,
+      "spawn_time": 2164,
+      "start_pos": [
+        146,
+        -20
+      ],
+      "hp": 29,
+      "movePattern": 5,
+      "durationTime": 400,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": 0.5,
+      "speedY": 2.8,
+      "targetX": 41,
+      "targetY": 135
+    },
+    {
+      "id": "zako_extra_122",
+      "type": 0,
+      "spawn_time": 2743,
+      "start_pos": [
+        131,
+        -20
+      ],
+      "hp": 32,
+      "movePattern": 1,
+      "durationTime": 371,
+      "hitboxWidth": 20,
+      "hitboxHeight": 20,
+      "speedX": 0.1,
+      "speedY": 3.0,
+      "targetX": 211,
+      "targetY": 211
+    },
+    {
+      "id": "zako_extra_123",
+      "type": 0,
+      "spawn_time": 954,
+      "start_pos": [
+        42,
+        -20
+      ],
+      "hp": 34,
+      "movePattern": 5,
+      "durationTime": 378,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": 1.9,
+      "speedY": 4.4,
+      "targetX": 193,
+      "targetY": 380
+    },
+    {
+      "id": "zako_extra_124",
+      "type": 0,
+      "spawn_time": 1599,
+      "start_pos": [
+        230,
+        -20
+      ],
+      "hp": 16,
+      "movePattern": 1,
+      "durationTime": 372,
+      "hitboxWidth": 22,
+      "hitboxHeight": 22,
+      "speedX": 2.3,
+      "speedY": 2.6,
+      "targetX": 211,
+      "targetY": 208
+    },
+    {
+      "id": "zako_extra_125",
+      "type": 0,
+      "spawn_time": 1002,
+      "start_pos": [
+        65,
+        -20
+      ],
+      "hp": 33,
+      "movePattern": 2,
+      "durationTime": 296,
+      "hitboxWidth": 21,
+      "hitboxHeight": 21,
+      "speedX": -2.1,
+      "speedY": 1.6,
+      "targetX": 134,
+      "targetY": 334
+    },
+    {
+      "id": "zako_extra_126",
+      "type": 0,
+      "spawn_time": 1537,
+      "start_pos": [
+        83,
+        -20
+      ],
+      "hp": 28,
+      "movePattern": 1,
+      "durationTime": 258,
+      "hitboxWidth": 25,
+      "hitboxHeight": 25,
+      "speedX": -0.5,
+      "speedY": 2.9,
+      "targetX": 183,
+      "targetY": 244
+    },
+    {
+      "id": "zako_extra_127",
+      "type": 0,
+      "spawn_time": 1598,
+      "start_pos": [
+        254,
+        -20
+      ],
+      "hp": 17,
+      "movePattern": 2,
+      "durationTime": 379,
+      "hitboxWidth": 22,
+      "hitboxHeight": 22,
+      "speedX": -1.0,
+      "speedY": 4.5,
+      "targetX": 200,
+      "targetY": 375
+    },
+    {
+      "id": "zako_extra_128",
+      "type": 0,
+      "spawn_time": 3732,
+      "start_pos": [
+        153,
+        -20
+      ],
+      "hp": 14,
+      "movePattern": 5,
+      "durationTime": 265,
+      "hitboxWidth": 20,
+      "hitboxHeight": 20,
+      "speedX": -0.3,
+      "speedY": 3.2,
+      "targetX": 168,
+      "targetY": 258
+    },
+    {
+      "id": "zako_extra_129",
+      "type": 0,
+      "spawn_time": 960,
+      "start_pos": [
+        223,
+        -20
+      ],
+      "hp": 13,
+      "movePattern": 0,
+      "durationTime": 399,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": 2.6,
+      "speedY": 3.6,
+      "targetX": 115,
+      "targetY": 395
+    },
+    {
+      "id": "zako_extra_130",
+      "type": 0,
+      "spawn_time": 3551,
+      "start_pos": [
+        229,
+        -20
+      ],
+      "hp": 30,
+      "movePattern": 1,
+      "durationTime": 297,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": 1.2,
+      "speedY": 2.1,
+      "targetX": 221,
+      "targetY": 192
+    },
+    {
+      "id": "zako_extra_131",
+      "type": 0,
+      "spawn_time": 1533,
+      "start_pos": [
+        137,
+        -20
+      ],
+      "hp": 17,
+      "movePattern": 4,
+      "durationTime": 296,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": 0.1,
+      "speedY": 3.4,
+      "targetX": 111,
+      "targetY": 399
+    },
+    {
+      "id": "zako_extra_132",
+      "type": 0,
+      "spawn_time": 1306,
+      "start_pos": [
+        37,
+        -20
+      ],
+      "hp": 28,
+      "movePattern": 1,
+      "durationTime": 262,
+      "hitboxWidth": 26,
+      "hitboxHeight": 26,
+      "speedX": -1.2,
+      "speedY": 2.8,
+      "targetX": 151,
+      "targetY": 102
+    },
+    {
+      "id": "zako_extra_133",
+      "type": 0,
+      "spawn_time": 2415,
+      "start_pos": [
+        80,
+        -20
+      ],
+      "hp": 24,
+      "movePattern": 4,
+      "durationTime": 270,
+      "hitboxWidth": 23,
+      "hitboxHeight": 23,
+      "speedX": -3.0,
+      "speedY": 4.1,
+      "targetX": 208,
+      "targetY": 130
+    },
+    {
+      "id": "zako_extra_134",
+      "type": 0,
+      "spawn_time": 975,
+      "start_pos": [
+        221,
+        -20
+      ],
+      "hp": 27,
+      "movePattern": 3,
+      "durationTime": 347,
+      "hitboxWidth": 20,
+      "hitboxHeight": 20,
+      "speedX": -1.4,
+      "speedY": 2.8,
+      "targetX": 257,
+      "targetY": 379
+    },
+    {
+      "id": "zako_extra_135",
+      "type": 0,
+      "spawn_time": 1508,
+      "start_pos": [
+        211,
+        -20
+      ],
+      "hp": 27,
+      "movePattern": 3,
+      "durationTime": 255,
+      "hitboxWidth": 20,
+      "hitboxHeight": 20,
+      "speedX": 1.2,
+      "speedY": 3.9,
+      "targetX": 65,
+      "targetY": 106
+    },
+    {
+      "id": "zako_extra_136",
+      "type": 0,
+      "spawn_time": 2489,
+      "start_pos": [
+        280,
+        -20
+      ],
+      "hp": 15,
+      "movePattern": 0,
+      "durationTime": 311,
+      "hitboxWidth": 21,
+      "hitboxHeight": 21,
+      "speedX": -1.1,
+      "speedY": 4.2,
+      "targetX": 76,
+      "targetY": 117
+    },
+    {
+      "id": "zako_extra_137",
+      "type": 0,
+      "spawn_time": 1323,
+      "start_pos": [
+        87,
+        -20
+      ],
+      "hp": 11,
+      "movePattern": 0,
+      "durationTime": 374,
+      "hitboxWidth": 26,
+      "hitboxHeight": 26,
+      "speedX": -0.8,
+      "speedY": 2.0,
+      "targetX": 176,
+      "targetY": 125
+    },
+    {
+      "id": "zako_extra_138",
+      "type": 0,
+      "spawn_time": 1651,
+      "start_pos": [
+        165,
+        -20
+      ],
+      "hp": 35,
+      "movePattern": 5,
+      "durationTime": 396,
+      "hitboxWidth": 26,
+      "hitboxHeight": 26,
+      "speedX": -1.0,
+      "speedY": 3.4,
+      "targetX": 22,
+      "targetY": 257
+    },
+    {
+      "id": "zako_extra_139",
+      "type": 0,
+      "spawn_time": 1070,
+      "start_pos": [
+        151,
+        -20
+      ],
+      "hp": 33,
+      "movePattern": 5,
+      "durationTime": 252,
+      "hitboxWidth": 26,
+      "hitboxHeight": 26,
+      "speedX": 1.4,
+      "speedY": 3.8,
+      "targetX": 11,
+      "targetY": 357
+    },
+    {
+      "id": "zako_extra_140",
+      "type": 0,
+      "spawn_time": 1735,
+      "start_pos": [
+        239,
+        -20
+      ],
+      "hp": 28,
+      "movePattern": 1,
+      "durationTime": 265,
+      "hitboxWidth": 22,
+      "hitboxHeight": 22,
+      "speedX": -0.8,
+      "speedY": 3.3,
+      "targetX": 207,
+      "targetY": 194
+    },
+    {
+      "id": "zako_extra_141",
+      "type": 0,
+      "spawn_time": 1475,
+      "start_pos": [
+        197,
+        -20
+      ],
+      "hp": 20,
+      "movePattern": 2,
+      "durationTime": 278,
+      "hitboxWidth": 21,
+      "hitboxHeight": 21,
+      "speedX": -2.3,
+      "speedY": 2.5,
+      "targetX": 50,
+      "targetY": 316
+    },
+    {
+      "id": "zako_extra_142",
+      "type": 0,
+      "spawn_time": 2058,
+      "start_pos": [
+        268,
+        -20
+      ],
+      "hp": 10,
+      "movePattern": 4,
+      "durationTime": 336,
+      "hitboxWidth": 25,
+      "hitboxHeight": 25,
+      "speedX": -1.1,
+      "speedY": 2.4,
+      "targetX": 55,
+      "targetY": 363
+    },
+    {
+      "id": "zako_extra_143",
+      "type": 0,
+      "spawn_time": 2781,
+      "start_pos": [
+        146,
+        -20
+      ],
+      "hp": 32,
+      "movePattern": 2,
+      "durationTime": 281,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": -0.2,
+      "speedY": 2.8,
+      "targetX": 219,
+      "targetY": 352
+    },
+    {
+      "id": "zako_extra_144",
+      "type": 0,
+      "spawn_time": 1754,
+      "start_pos": [
+        239,
+        -20
+      ],
+      "hp": 34,
+      "movePattern": 5,
+      "durationTime": 367,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": 0.5,
+      "speedY": 2.6,
+      "targetX": 120,
+      "targetY": 223
+    },
+    {
+      "id": "zako_extra_145",
+      "type": 0,
+      "spawn_time": 1776,
+      "start_pos": [
+        209,
+        -20
+      ],
+      "hp": 35,
+      "movePattern": 1,
+      "durationTime": 254,
+      "hitboxWidth": 23,
+      "hitboxHeight": 23,
+      "speedX": 0.3,
+      "speedY": 4.2,
+      "targetX": 173,
+      "targetY": 120
+    },
+    {
+      "id": "zako_extra_146",
+      "type": 0,
+      "spawn_time": 3207,
+      "start_pos": [
+        38,
+        -20
+      ],
+      "hp": 34,
+      "movePattern": 0,
+      "durationTime": 319,
+      "hitboxWidth": 26,
+      "hitboxHeight": 26,
+      "speedX": -1.6,
+      "speedY": 3.3,
+      "targetX": 198,
+      "targetY": 279
+    },
+    {
+      "id": "zako_extra_147",
+      "type": 0,
+      "spawn_time": 2653,
+      "start_pos": [
+        51,
+        -20
+      ],
+      "hp": 14,
+      "movePattern": 0,
+      "durationTime": 303,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": -1.8,
+      "speedY": 4.5,
+      "targetX": 235,
+      "targetY": 271
+    },
+    {
+      "id": "zako_extra_148",
+      "type": 0,
+      "spawn_time": 3022,
+      "start_pos": [
+        254,
+        -20
+      ],
+      "hp": 13,
+      "movePattern": 4,
+      "durationTime": 328,
+      "hitboxWidth": 23,
+      "hitboxHeight": 23,
+      "speedX": 0.3,
+      "speedY": 2.1,
+      "targetX": 206,
+      "targetY": 181
+    },
+    {
+      "id": "zako_extra_149",
+      "type": 0,
+      "spawn_time": 1576,
+      "start_pos": [
+        207,
+        -20
+      ],
+      "hp": 25,
+      "movePattern": 3,
+      "durationTime": 262,
+      "hitboxWidth": 25,
+      "hitboxHeight": 25,
+      "speedX": -1.1,
+      "speedY": 4.2,
+      "targetX": 234,
+      "targetY": 329
+    },
+    {
+      "id": "zako_extra_150",
+      "type": 0,
+      "spawn_time": 1181,
+      "start_pos": [
+        190,
+        -20
+      ],
+      "hp": 28,
+      "movePattern": 5,
+      "durationTime": 267,
+      "hitboxWidth": 26,
+      "hitboxHeight": 26,
+      "speedX": -2.8,
+      "speedY": 2.2,
+      "targetX": 45,
+      "targetY": 378
+    },
+    {
+      "id": "zako_extra_151",
+      "type": 0,
+      "spawn_time": 3980,
+      "start_pos": [
+        2,
+        -20
+      ],
+      "hp": 26,
+      "movePattern": 0,
+      "durationTime": 315,
+      "hitboxWidth": 23,
+      "hitboxHeight": 23,
+      "speedX": 2.3,
+      "speedY": 2.0,
+      "targetX": 124,
+      "targetY": 194
+    },
+    {
+      "id": "zako_extra_152",
+      "type": 0,
+      "spawn_time": 2029,
+      "start_pos": [
+        235,
+        -20
+      ],
+      "hp": 10,
+      "movePattern": 3,
+      "durationTime": 259,
+      "hitboxWidth": 26,
+      "hitboxHeight": 26,
+      "speedX": 0.3,
+      "speedY": 2.9,
+      "targetX": 17,
+      "targetY": 175
+    },
+    {
+      "id": "zako_extra_153",
+      "type": 0,
+      "spawn_time": 1619,
+      "start_pos": [
+        277,
+        -20
+      ],
+      "hp": 24,
+      "movePattern": 2,
+      "durationTime": 326,
+      "hitboxWidth": 23,
+      "hitboxHeight": 23,
+      "speedX": -2.7,
+      "speedY": 4.2,
+      "targetX": 186,
+      "targetY": 250
+    },
+    {
+      "id": "zako_extra_154",
+      "type": 0,
+      "spawn_time": 2918,
+      "start_pos": [
+        44,
+        -20
+      ],
+      "hp": 16,
+      "movePattern": 4,
+      "durationTime": 313,
+      "hitboxWidth": 20,
+      "hitboxHeight": 20,
+      "speedX": -1.0,
+      "speedY": 3.9,
+      "targetX": 206,
+      "targetY": 137
+    },
+    {
+      "id": "zako_extra_155",
+      "type": 0,
+      "spawn_time": 1068,
+      "start_pos": [
+        243,
+        -20
+      ],
+      "hp": 28,
+      "movePattern": 4,
+      "durationTime": 351,
+      "hitboxWidth": 20,
+      "hitboxHeight": 20,
+      "speedX": 1.0,
+      "speedY": 3.6,
+      "targetX": 65,
+      "targetY": 277
+    },
+    {
+      "id": "zako_extra_156",
+      "type": 0,
+      "spawn_time": 3776,
+      "start_pos": [
+        216,
+        -20
+      ],
+      "hp": 17,
+      "movePattern": 3,
+      "durationTime": 357,
+      "hitboxWidth": 20,
+      "hitboxHeight": 20,
+      "speedX": 2.4,
+      "speedY": 4.0,
+      "targetX": 207,
+      "targetY": 237
+    },
+    {
+      "id": "zako_extra_157",
+      "type": 0,
+      "spawn_time": 2976,
+      "start_pos": [
+        162,
+        -20
+      ],
+      "hp": 35,
+      "movePattern": 3,
+      "durationTime": 328,
+      "hitboxWidth": 25,
+      "hitboxHeight": 25,
+      "speedX": -0.6,
+      "speedY": 1.8,
+      "targetX": 57,
+      "targetY": 331
+    },
+    {
+      "id": "zako_extra_158",
+      "type": 0,
+      "spawn_time": 3167,
+      "start_pos": [
+        40,
+        -20
+      ],
+      "hp": 24,
+      "movePattern": 1,
+      "durationTime": 280,
+      "hitboxWidth": 20,
+      "hitboxHeight": 20,
+      "speedX": 2.7,
+      "speedY": 2.6,
+      "targetX": 84,
+      "targetY": 268
+    },
+    {
+      "id": "zako_extra_159",
+      "type": 0,
+      "spawn_time": 2344,
+      "start_pos": [
+        219,
+        -20
+      ],
+      "hp": 17,
+      "movePattern": 1,
+      "durationTime": 387,
+      "hitboxWidth": 20,
+      "hitboxHeight": 20,
+      "speedX": 1.4,
+      "speedY": 3.9,
+      "targetX": 140,
+      "targetY": 173
+    },
+    {
+      "id": "zako_extra_160",
+      "type": 0,
+      "spawn_time": 3013,
+      "start_pos": [
+        36,
+        -20
+      ],
+      "hp": 26,
+      "movePattern": 2,
+      "durationTime": 254,
+      "hitboxWidth": 23,
+      "hitboxHeight": 23,
+      "speedX": 1.9,
+      "speedY": 3.2,
+      "targetX": 100,
+      "targetY": 387
+    },
+    {
+      "id": "zako_extra_161",
+      "type": 0,
+      "spawn_time": 973,
+      "start_pos": [
+        81,
+        -20
+      ],
+      "hp": 26,
+      "movePattern": 4,
+      "durationTime": 334,
+      "hitboxWidth": 21,
+      "hitboxHeight": 21,
+      "speedX": -2.4,
+      "speedY": 2.3,
+      "targetX": 65,
+      "targetY": 155
+    },
+    {
+      "id": "zako_extra_162",
+      "type": 0,
+      "spawn_time": 1945,
+      "start_pos": [
+        205,
+        -20
+      ],
+      "hp": 15,
+      "movePattern": 1,
+      "durationTime": 368,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": 1.5,
+      "speedY": 2.9,
+      "targetX": 184,
+      "targetY": 273
+    },
+    {
+      "id": "zako_extra_163",
+      "type": 0,
+      "spawn_time": 3209,
+      "start_pos": [
+        97,
+        -20
+      ],
+      "hp": 19,
+      "movePattern": 1,
+      "durationTime": 314,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": -1.0,
+      "speedY": 1.9,
+      "targetX": 49,
+      "targetY": 371
+    },
+    {
+      "id": "zako_extra_164",
+      "type": 0,
+      "spawn_time": 2524,
+      "start_pos": [
+        222,
+        -20
+      ],
+      "hp": 30,
+      "movePattern": 0,
+      "durationTime": 334,
+      "hitboxWidth": 25,
+      "hitboxHeight": 25,
+      "speedX": 2.3,
+      "speedY": 2.1,
+      "targetX": 198,
+      "targetY": 394
+    },
+    {
+      "id": "zako_extra_165",
+      "type": 0,
+      "spawn_time": 3944,
+      "start_pos": [
+        148,
+        -20
+      ],
+      "hp": 23,
+      "movePattern": 4,
+      "durationTime": 318,
+      "hitboxWidth": 22,
+      "hitboxHeight": 22,
+      "speedX": -0.6,
+      "speedY": 3.7,
+      "targetX": 66,
+      "targetY": 169
+    },
+    {
+      "id": "zako_extra_166",
+      "type": 0,
+      "spawn_time": 2015,
+      "start_pos": [
+        120,
+        -20
+      ],
+      "hp": 14,
+      "movePattern": 0,
+      "durationTime": 260,
+      "hitboxWidth": 23,
+      "hitboxHeight": 23,
+      "speedX": -0.5,
+      "speedY": 3.8,
+      "targetX": 166,
+      "targetY": 316
+    },
+    {
+      "id": "zako_extra_167",
+      "type": 0,
+      "spawn_time": 878,
+      "start_pos": [
+        5,
+        -20
+      ],
+      "hp": 29,
+      "movePattern": 1,
+      "durationTime": 390,
+      "hitboxWidth": 23,
+      "hitboxHeight": 23,
+      "speedX": 2.3,
+      "speedY": 4.1,
+      "targetX": 197,
+      "targetY": 367
+    },
+    {
+      "id": "zako_extra_168",
+      "type": 0,
+      "spawn_time": 2086,
+      "start_pos": [
+        34,
+        -20
+      ],
+      "hp": 29,
+      "movePattern": 3,
+      "durationTime": 266,
+      "hitboxWidth": 23,
+      "hitboxHeight": 23,
+      "speedX": 1.4,
+      "speedY": 2.4,
+      "targetX": 131,
+      "targetY": 115
+    },
+    {
+      "id": "zako_extra_169",
+      "type": 0,
+      "spawn_time": 3833,
+      "start_pos": [
+        124,
+        -20
+      ],
+      "hp": 15,
+      "movePattern": 3,
+      "durationTime": 306,
+      "hitboxWidth": 25,
+      "hitboxHeight": 25,
+      "speedX": 2.2,
+      "speedY": 2.1,
+      "targetX": 227,
+      "targetY": 304
+    },
+    {
+      "id": "zako_extra_170",
+      "type": 0,
+      "spawn_time": 3579,
+      "start_pos": [
+        208,
+        -20
+      ],
+      "hp": 17,
+      "movePattern": 0,
+      "durationTime": 397,
+      "hitboxWidth": 25,
+      "hitboxHeight": 25,
+      "speedX": -0.4,
+      "speedY": 3.4,
+      "targetX": 23,
+      "targetY": 331
+    },
+    {
+      "id": "zako_extra_171",
+      "type": 0,
+      "spawn_time": 1671,
+      "start_pos": [
+        221,
+        -20
+      ],
+      "hp": 15,
+      "movePattern": 4,
+      "durationTime": 394,
+      "hitboxWidth": 23,
+      "hitboxHeight": 23,
+      "speedX": -2.5,
+      "speedY": 4.0,
+      "targetX": 251,
+      "targetY": 221
+    },
+    {
+      "id": "zako_extra_172",
+      "type": 0,
+      "spawn_time": 1317,
+      "start_pos": [
+        24,
+        -20
+      ],
+      "hp": 22,
+      "movePattern": 1,
+      "durationTime": 274,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": 1.5,
+      "speedY": 1.9,
+      "targetX": 120,
+      "targetY": 303
+    },
+    {
+      "id": "zako_extra_173",
+      "type": 0,
+      "spawn_time": 1563,
+      "start_pos": [
+        262,
+        -20
+      ],
+      "hp": 18,
+      "movePattern": 3,
+      "durationTime": 338,
+      "hitboxWidth": 22,
+      "hitboxHeight": 22,
+      "speedX": -0.0,
+      "speedY": 2.7,
+      "targetX": 215,
+      "targetY": 236
+    },
+    {
+      "id": "zako_extra_174",
+      "type": 0,
+      "spawn_time": 1743,
+      "start_pos": [
+        62,
+        -20
+      ],
+      "hp": 13,
+      "movePattern": 2,
+      "durationTime": 372,
+      "hitboxWidth": 26,
+      "hitboxHeight": 26,
+      "speedX": 1.3,
+      "speedY": 3.9,
+      "targetX": 144,
+      "targetY": 174
+    },
+    {
+      "id": "zako_extra_175",
+      "type": 0,
+      "spawn_time": 2754,
+      "start_pos": [
+        171,
+        -20
+      ],
+      "hp": 13,
+      "movePattern": 1,
+      "durationTime": 372,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": 1.8,
+      "speedY": 4.4,
+      "targetX": 190,
+      "targetY": 253
+    },
+    {
+      "id": "zako_extra_176",
+      "type": 0,
+      "spawn_time": 1161,
+      "start_pos": [
+        216,
+        -20
+      ],
+      "hp": 17,
+      "movePattern": 3,
+      "durationTime": 300,
+      "hitboxWidth": 23,
+      "hitboxHeight": 23,
+      "speedX": -1.2,
+      "speedY": 2.2,
+      "targetX": 216,
+      "targetY": 382
+    },
+    {
+      "id": "zako_extra_177",
+      "type": 0,
+      "spawn_time": 3349,
+      "start_pos": [
+        80,
+        -20
+      ],
+      "hp": 34,
+      "movePattern": 3,
+      "durationTime": 314,
+      "hitboxWidth": 25,
+      "hitboxHeight": 25,
+      "speedX": -2.0,
+      "speedY": 1.9,
+      "targetX": 191,
+      "targetY": 129
+    },
+    {
+      "id": "zako_extra_178",
+      "type": 0,
+      "spawn_time": 2487,
+      "start_pos": [
+        193,
+        -20
+      ],
+      "hp": 19,
+      "movePattern": 3,
+      "durationTime": 356,
+      "hitboxWidth": 25,
+      "hitboxHeight": 25,
+      "speedX": 2.9,
+      "speedY": 2.5,
+      "targetX": 24,
+      "targetY": 205
+    },
+    {
+      "id": "zako_extra_179",
+      "type": 0,
+      "spawn_time": 3053,
+      "start_pos": [
+        193,
+        -20
+      ],
+      "hp": 31,
+      "movePattern": 3,
+      "durationTime": 349,
+      "hitboxWidth": 22,
+      "hitboxHeight": 22,
+      "speedX": -0.6,
+      "speedY": 1.7,
+      "targetX": 46,
+      "targetY": 231
+    },
+    {
+      "id": "zako_extra_180",
+      "type": 0,
+      "spawn_time": 1920,
+      "start_pos": [
+        138,
+        -20
+      ],
+      "hp": 30,
+      "movePattern": 2,
+      "durationTime": 385,
+      "hitboxWidth": 23,
+      "hitboxHeight": 23,
+      "speedX": -1.2,
+      "speedY": 2.2,
+      "targetX": 103,
+      "targetY": 112
+    },
+    {
+      "id": "zako_extra_181",
+      "type": 0,
+      "spawn_time": 3592,
+      "start_pos": [
+        114,
+        -20
+      ],
+      "hp": 18,
+      "movePattern": 5,
+      "durationTime": 344,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": 1.6,
+      "speedY": 3.8,
+      "targetX": 275,
+      "targetY": 189
+    },
+    {
+      "id": "zako_extra_182",
+      "type": 0,
+      "spawn_time": 3084,
+      "start_pos": [
+        187,
+        -20
+      ],
+      "hp": 14,
+      "movePattern": 3,
+      "durationTime": 344,
+      "hitboxWidth": 20,
+      "hitboxHeight": 20,
+      "speedX": 1.7,
+      "speedY": 2.0,
+      "targetX": 25,
+      "targetY": 286
+    },
+    {
+      "id": "zako_extra_183",
+      "type": 0,
+      "spawn_time": 3432,
+      "start_pos": [
+        140,
+        -20
+      ],
+      "hp": 33,
+      "movePattern": 0,
+      "durationTime": 358,
+      "hitboxWidth": 26,
+      "hitboxHeight": 26,
+      "speedX": 0.4,
+      "speedY": 3.8,
+      "targetX": 136,
+      "targetY": 304
+    },
+    {
+      "id": "zako_extra_184",
+      "type": 0,
+      "spawn_time": 3252,
+      "start_pos": [
+        249,
+        -20
+      ],
+      "hp": 32,
+      "movePattern": 3,
+      "durationTime": 258,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": 2.9,
+      "speedY": 1.8,
+      "targetX": 94,
+      "targetY": 281
+    },
+    {
+      "id": "zako_extra_185",
+      "type": 0,
+      "spawn_time": 1609,
+      "start_pos": [
+        114,
+        -20
+      ],
+      "hp": 10,
+      "movePattern": 0,
+      "durationTime": 306,
+      "hitboxWidth": 22,
+      "hitboxHeight": 22,
+      "speedX": -1.5,
+      "speedY": 4.4,
+      "targetX": 75,
+      "targetY": 192
+    },
+    {
+      "id": "zako_extra_186",
+      "type": 0,
+      "spawn_time": 3107,
+      "start_pos": [
+        219,
+        -20
+      ],
+      "hp": 32,
+      "movePattern": 4,
+      "durationTime": 369,
+      "hitboxWidth": 21,
+      "hitboxHeight": 21,
+      "speedX": 2.7,
+      "speedY": 3.8,
+      "targetX": 252,
+      "targetY": 179
+    },
+    {
+      "id": "zako_extra_187",
+      "type": 0,
+      "spawn_time": 2959,
+      "start_pos": [
+        123,
+        -20
+      ],
+      "hp": 24,
+      "movePattern": 2,
+      "durationTime": 303,
+      "hitboxWidth": 21,
+      "hitboxHeight": 21,
+      "speedX": 2.6,
+      "speedY": 2.3,
+      "targetX": 266,
+      "targetY": 264
+    },
+    {
+      "id": "zako_extra_188",
+      "type": 0,
+      "spawn_time": 2309,
+      "start_pos": [
+        100,
+        -20
+      ],
+      "hp": 27,
+      "movePattern": 4,
+      "durationTime": 299,
+      "hitboxWidth": 21,
+      "hitboxHeight": 21,
+      "speedX": -0.9,
+      "speedY": 2.5,
+      "targetX": 29,
+      "targetY": 284
+    },
+    {
+      "id": "zako_extra_189",
+      "type": 0,
+      "spawn_time": 1214,
+      "start_pos": [
+        207,
+        -20
+      ],
+      "hp": 27,
+      "movePattern": 2,
+      "durationTime": 290,
+      "hitboxWidth": 23,
+      "hitboxHeight": 23,
+      "speedX": 2.8,
+      "speedY": 3.3,
+      "targetX": 219,
+      "targetY": 272
+    },
+    {
+      "id": "zako_extra_190",
+      "type": 0,
+      "spawn_time": 3693,
+      "start_pos": [
+        83,
+        -20
+      ],
+      "hp": 23,
+      "movePattern": 5,
+      "durationTime": 254,
+      "hitboxWidth": 23,
+      "hitboxHeight": 23,
+      "speedX": 1.9,
+      "speedY": 3.0,
+      "targetX": 241,
+      "targetY": 198
+    },
+    {
+      "id": "zako_extra_191",
+      "type": 0,
+      "spawn_time": 1305,
+      "start_pos": [
+        189,
+        -20
+      ],
+      "hp": 12,
+      "movePattern": 1,
+      "durationTime": 301,
+      "hitboxWidth": 20,
+      "hitboxHeight": 20,
+      "speedX": -0.8,
+      "speedY": 1.7,
+      "targetX": 61,
+      "targetY": 347
+    },
+    {
+      "id": "zako_extra_192",
+      "type": 0,
+      "spawn_time": 1106,
+      "start_pos": [
+        60,
+        -20
+      ],
+      "hp": 14,
+      "movePattern": 2,
+      "durationTime": 305,
+      "hitboxWidth": 22,
+      "hitboxHeight": 22,
+      "speedX": -2.4,
+      "speedY": 1.8,
+      "targetX": 220,
+      "targetY": 307
+    },
+    {
+      "id": "zako_extra_193",
+      "type": 0,
+      "spawn_time": 3017,
+      "start_pos": [
+        101,
+        -20
+      ],
+      "hp": 11,
+      "movePattern": 3,
+      "durationTime": 384,
+      "hitboxWidth": 21,
+      "hitboxHeight": 21,
+      "speedX": 1.6,
+      "speedY": 4.4,
+      "targetX": 106,
+      "targetY": 176
+    },
+    {
+      "id": "zako_extra_194",
+      "type": 0,
+      "spawn_time": 1743,
+      "start_pos": [
+        249,
+        -20
+      ],
+      "hp": 30,
+      "movePattern": 4,
+      "durationTime": 293,
+      "hitboxWidth": 20,
+      "hitboxHeight": 20,
+      "speedX": 3.0,
+      "speedY": 1.9,
+      "targetX": 6,
+      "targetY": 132
+    },
+    {
+      "id": "zako_extra_195",
+      "type": 0,
+      "spawn_time": 3581,
+      "start_pos": [
+        175,
+        -20
+      ],
+      "hp": 35,
+      "movePattern": 5,
+      "durationTime": 294,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": -0.0,
+      "speedY": 1.5,
+      "targetX": 9,
+      "targetY": 325
+    },
+    {
+      "id": "zako_extra_196",
+      "type": 0,
+      "spawn_time": 1914,
+      "start_pos": [
+        75,
+        -20
+      ],
+      "hp": 35,
+      "movePattern": 0,
+      "durationTime": 310,
+      "hitboxWidth": 21,
+      "hitboxHeight": 21,
+      "speedX": 1.6,
+      "speedY": 3.3,
+      "targetX": 82,
+      "targetY": 382
+    },
+    {
+      "id": "zako_extra_197",
+      "type": 0,
+      "spawn_time": 3434,
+      "start_pos": [
+        153,
+        -20
+      ],
+      "hp": 19,
+      "movePattern": 4,
+      "durationTime": 278,
+      "hitboxWidth": 21,
+      "hitboxHeight": 21,
+      "speedX": 1.2,
+      "speedY": 2.4,
+      "targetX": 243,
+      "targetY": 135
+    },
+    {
+      "id": "zako_extra_198",
+      "type": 0,
+      "spawn_time": 3979,
+      "start_pos": [
+        217,
+        -20
+      ],
+      "hp": 19,
+      "movePattern": 5,
+      "durationTime": 350,
+      "hitboxWidth": 23,
+      "hitboxHeight": 23,
+      "speedX": -2.0,
+      "speedY": 3.9,
+      "targetX": 246,
+      "targetY": 121
+    },
+    {
+      "id": "zako_extra_199",
+      "type": 0,
+      "spawn_time": 3159,
+      "start_pos": [
+        242,
+        -20
+      ],
+      "hp": 10,
+      "movePattern": 4,
+      "durationTime": 320,
+      "hitboxWidth": 23,
+      "hitboxHeight": 23,
+      "speedX": -2.7,
+      "speedY": 3.2,
+      "targetX": 179,
+      "targetY": 210
+    },
+    {
+      "id": "zako_extra_200",
+      "type": 0,
+      "spawn_time": 1706,
+      "start_pos": [
+        180,
+        -20
+      ],
+      "hp": 28,
+      "movePattern": 5,
+      "durationTime": 283,
+      "hitboxWidth": 23,
+      "hitboxHeight": 23,
+      "speedX": 2.4,
+      "speedY": 3.6,
+      "targetX": 173,
+      "targetY": 128
     }
   ]
 }
