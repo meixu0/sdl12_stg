@@ -1,2 +1,0 @@
-game run
-window init ok
