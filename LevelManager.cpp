@@ -91,6 +91,21 @@ void LevelManager::init_enemy_pool() {
         
         // Parse enemy configuration from JSON
         EnemyConfig config;
+        memset(&config, 0, sizeof(config));
+
+        // Look up defaults from enemy_types by enemyType field
+        cJSON* enemy_types = cJSON_GetObjectItem(stage_enemies_data, "enemy_types");
+        cJSON* type_name = cJSON_GetObjectItem(enemy_item, "enemyType");
+        cJSON* defaults = NULL;
+        if (enemy_types && type_name && cJSON_IsString(type_name))
+            defaults = cJSON_GetObjectItem(enemy_types, type_name->valuestring);
+        if (!defaults || !cJSON_IsObject(defaults))
+            defaults = enemy_item;
+
+#define GET_FLD(obj, field, def) \
+    cJSON* _##field = cJSON_GetObjectItem(enemy_item, #field); \
+    if (!_##field && defaults != enemy_item) _##field = cJSON_GetObjectItem(defaults, #field); \
+    float field = (_##field && cJSON_IsNumber(_##field)) ? (float)_##field->valuedouble : (float)def;
         
         // Extract hp
         cJSON* hp_item = cJSON_GetObjectItem(enemy_item, "hp");
@@ -106,52 +121,143 @@ void LevelManager::init_enemy_pool() {
             start_x = (pos_x && cJSON_IsNumber(pos_x)) ? (float)pos_x->valuedouble : 0.0f;
             start_y = (pos_y && cJSON_IsNumber(pos_y)) ? (float)pos_y->valuedouble : 0.0f;
         }
-        
-        // Extract move_pattern
-        cJSON* move_pattern = cJSON_GetObjectItem(enemy_item, "move_pattern");
+        // Extract move pattern
         int move_type = LINER;  // Default move pattern
-        if (move_pattern && cJSON_IsObject(move_pattern)) {
-            cJSON* speed_item = cJSON_GetObjectItem(move_pattern, "speed");
-            speed = (speed_item && cJSON_IsNumber(speed_item)) ? (float)speed_item->valuedouble : 3.0f;
-            
-            cJSON* type_item = cJSON_GetObjectItem(move_pattern, "type");
-            if (type_item && cJSON_IsString(type_item)) {
-                std::string type_str = type_item->valuestring;
-                if (type_str == "curve_left") {
-                    move_type = SINWAVE;  // Use sine wave for curve movement
-                } else if (type_str == "linear") {
-                    move_type = LINER;
-                } else if (type_str == "uturn") {
-                    move_type = UTURN;
-                } else if (type_str == "homing") {
-                    move_type = HOMING;
+        cJSON* move_pattern_value = cJSON_GetObjectItem(enemy_item, "movePattern");
+        if (move_pattern_value && cJSON_IsNumber(move_pattern_value)) {
+            move_type = (int)move_pattern_value->valuedouble;
+        } else {
+            cJSON* move_pattern = cJSON_GetObjectItem(enemy_item, "move_pattern");
+            if (move_pattern && cJSON_IsObject(move_pattern)) {
+                cJSON* type_item = cJSON_GetObjectItem(move_pattern, "type");
+                if (type_item && cJSON_IsString(type_item)) {
+                    std::string type_str = type_item->valuestring;
+                    if (type_str == "curve_left") {
+                        move_type = SINWAVE;
+                    } else if (type_str == "linear") {
+                        move_type = LINER;
+                    } else if (type_str == "bezier") {
+                        move_type = BEZIER;
+                    } else if (type_str == "homing") {
+                        move_type = HOMING;
+                    }
                 }
             }
         }
 
-        //extract spawn_time
+        // extract spawn_time
+        size_t emergeTime = 0;
         cJSON* spawn_time = cJSON_GetObjectItem(enemy_item, "spawn_time");
-        size_t emergeTime;
-        if(spawn_time && cJSON_IsObject(spawn_time)){
-            emergeTime = spawn_time->valueint;
+        if (spawn_time && cJSON_IsNumber(spawn_time)) {
+            emergeTime = (size_t)spawn_time->valuedouble;
         }
 
-        //extract speed
-        float speedX, speedY;
-        
-        
-        // Set default configuration values
+        // extract durationTime
+        float durationTime = 12.0f;
+        cJSON* duration_time_item = cJSON_GetObjectItem(enemy_item, "durationTime");
+        if (duration_time_item && cJSON_IsNumber(duration_time_item)) {
+            durationTime = (float)duration_time_item->valuedouble;
+        }
+
+        // extract hitbox size
+        int hitboxWidth = 40;
+        int hitboxHeight = 40;
+        cJSON* hitbox_width_item = cJSON_GetObjectItem(enemy_item, "hitboxWidth");
+        cJSON* hitbox_height_item = cJSON_GetObjectItem(enemy_item, "hitboxHeight");
+        if (hitbox_width_item && cJSON_IsNumber(hitbox_width_item)) {
+            hitboxWidth = (int)hitbox_width_item->valuedouble;
+        }
+        if (hitbox_height_item && cJSON_IsNumber(hitbox_height_item)) {
+            hitboxHeight = (int)hitbox_height_item->valuedouble;
+        }
+
+        // extract speedX and speedY
+        float speedX = 0.0f;
+        float speedY = 1.0f;
+        cJSON* speedX_item = cJSON_GetObjectItem(enemy_item, "speedX");
+        cJSON* speedY_item = cJSON_GetObjectItem(enemy_item, "speedY");
+        if (speedX_item && cJSON_IsNumber(speedX_item)) {
+            speedX = (float)speedX_item->valuedouble;
+        }
+        if (speedY_item && cJSON_IsNumber(speedY_item)) {
+            speedY = (float)speedY_item->valuedouble;
+        }
+
+        // extract targetX and targetY
+        float targetX = start_x;
+        float targetY = start_y;
+        cJSON* targetX_item = cJSON_GetObjectItem(enemy_item, "targetX");
+        cJSON* targetY_item = cJSON_GetObjectItem(enemy_item, "targetY");
+        if (targetX_item && cJSON_IsNumber(targetX_item)) {
+            targetX = (float)targetX_item->valuedouble;
+        }
+        if (targetY_item && cJSON_IsNumber(targetY_item)) {
+            targetY = (float)targetY_item->valuedouble;
+        }
+
+        // Set configuration values
         config.movePattern = move_type;
         config.emergeTime = emergeTime;
-        config.durationTime = 10.0f;
-        config.hitboxWidth = 40;
-        config.hitboxHeight = 40;
+        config.durationTime = durationTime;
+        config.hitboxWidth = hitboxWidth;
+        config.hitboxHeight = hitboxHeight;
         config.speedX = speedX;
         config.speedY = speedY;
-        config.targetX = start_x;
-        config.targetY = start_y;
+        config.targetX = targetX;
+        config.targetY = targetY;
         config.startX = start_x;
         config.startY = start_y;
+
+        float halfLife = 0.0f;
+        cJSON* halfLife_item = cJSON_GetObjectItem(enemy_item, "halfLife");
+        if (halfLife_item && cJSON_IsNumber(halfLife_item))
+            halfLife = (float)halfLife_item->valuedouble;
+        config.halfLife = halfLife;
+
+        float vertAmplitude = 0.0f, vertPeriod = 1.0f, horizAmplitude = 0.0f, horizPeriod = 1.0f;
+        cJSON* va = cJSON_GetObjectItem(enemy_item, "vertAmplitude");
+        cJSON* vp = cJSON_GetObjectItem(enemy_item, "vertPeriod");
+        cJSON* ha = cJSON_GetObjectItem(enemy_item, "horizAmplitude");
+        cJSON* hp = cJSON_GetObjectItem(enemy_item, "horizPeriod");
+        if (va && cJSON_IsNumber(va)) vertAmplitude = (float)va->valuedouble;
+        if (vp && cJSON_IsNumber(vp)) vertPeriod   = (float)vp->valuedouble;
+        if (ha && cJSON_IsNumber(ha)) horizAmplitude = (float)ha->valuedouble;
+        if (hp && cJSON_IsNumber(hp)) horizPeriod   = (float)hp->valuedouble;
+        config.vertAmplitude  = vertAmplitude;
+        config.vertPeriod     = vertPeriod;
+        config.horizAmplitude = horizAmplitude;
+        config.horizPeriod    = horizPeriod;
+
+        float bezierP1x = 0, bezierP1y = 0, bezierP2x = 0, bezierP2y = 0;
+        float bezierEndX = 0, bezierEndY = 0, bezierDuration = 1.0f;
+        cJSON* bezier = cJSON_GetObjectItem(enemy_item, "bezier");
+        if (bezier && cJSON_IsObject(bezier)) {
+            cJSON* p1 = cJSON_GetObjectItem(bezier, "p1");
+            if (p1 && cJSON_IsArray(p1)) {
+                bezierP1x = (float)cJSON_GetArrayItem(p1, 0)->valuedouble;
+                bezierP1y = (float)cJSON_GetArrayItem(p1, 1)->valuedouble;
+            }
+            cJSON* p2 = cJSON_GetObjectItem(bezier, "p2");
+            if (p2 && cJSON_IsArray(p2)) {
+                bezierP2x = (float)cJSON_GetArrayItem(p2, 0)->valuedouble;
+                bezierP2y = (float)cJSON_GetArrayItem(p2, 1)->valuedouble;
+            }
+            cJSON* end = cJSON_GetObjectItem(bezier, "end");
+            if (end && cJSON_IsArray(end)) {
+                bezierEndX = (float)cJSON_GetArrayItem(end, 0)->valuedouble;
+                bezierEndY = (float)cJSON_GetArrayItem(end, 1)->valuedouble;
+            }
+            cJSON* dur = cJSON_GetObjectItem(bezier, "duration");
+            if (dur && cJSON_IsNumber(dur))
+                bezierDuration = (float)dur->valuedouble;
+        }
+        config.bezierP1x = bezierP1x;
+        config.bezierP1y = bezierP1y;
+        config.bezierP2x = bezierP2x;
+        config.bezierP2y = bezierP2y;
+        config.bezierEndX = bezierEndX;
+        config.bezierEndY = bezierEndY;
+        config.bezierDuration = bezierDuration;
         
         // Create Enemy object and initialize
         Enemy* new_enemy = new Enemy();
@@ -161,7 +267,7 @@ void LevelManager::init_enemy_pool() {
         enemy_pool.push_back(new_enemy);
         
         std::cout << "Enemy " << i << " created: hp=" << config.hp 
-                  << ", pos=(" << start_x << "," << start_y << ")" << std::endl;
+                  << ", pos=(" << start_x << "," << start_y << ")" << " emergeTime=" << config.emergeTime << std::endl;
     }
     
     std::cout << "Enemy pool initialized with " << enemy_pool.size() << " enemies" << std::endl;
@@ -186,10 +292,10 @@ void LevelManager::update_all_enemies(float px, float py, size_t frameCounter_) 
     }
 }
 
-void LevelManager::move_all_enemies() {
+void LevelManager::move_all_enemies(float dt_) {
     for (size_t i = 0; i < enemy_pool.size(); ++i) {
         if (enemy_pool[i] != NULL) {
-            enemy_pool[i]->enemy_move();
+            enemy_pool[i]->enemy_move(dt_);
         }
     }
 }

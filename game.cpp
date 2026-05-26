@@ -66,12 +66,14 @@ void Game::run(){
 	frameCounter = 0;
 	//todo: fps monitor
 	while(gameState == STATE_GAME){
+		Uint32 frameStart = SDL_GetTicks();
 		fps.start();
 		while(SDL_PollEvent(&event)){
 			player1.handle_input(event);
 			if(event.type == SDL_QUIT)	gameState = STATE_EXIT;
 		}
-		float dt = 1.0 / FRAMES_PER_SECOND;
+		float dt = (frameStart - lastTime) / 1000.0f;
+		if (dt > 1.0f / 15.0f) dt = 1.0f / 30.0f;
 		gameBackground.background_update(dt);
 		player1.player_move();
 		player1.update_simple_shoot();
@@ -82,7 +84,7 @@ void Game::run(){
 		playerBulletPool_.render();
 		PlayerPosition playerPosition;
 		levelManager.update_all_enemies(playerPosition.x, playerPosition.y, frameCounter);
-		levelManager.move_all_enemies();
+		levelManager.move_all_enemies(dt);
 		levelManager.show_all_enemies();
 		if(SDL_Flip(screen) == -1)	throw std::runtime_error("flip error in game loop");
 		if((fpsLimited == true)){
@@ -90,6 +92,7 @@ void Game::run(){
 			Uint32 targetTicks = gameStartTime + ((frameCounter + 1) * 1000) / FRAMES_PER_SECOND;
 			if(currentFrameTicks < targetTicks)	SDL_Delay(targetTicks - currentFrameTicks);
 		}
+		lastTime = frameStart;
 		frameCounter++;
 	}
 }

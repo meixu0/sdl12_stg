@@ -22,6 +22,6 @@ public:
     int get_enemy_count() const;
     Enemy* get_enemy(int index);
     void update_all_enemies(float px, float py, size_t frameCounter_);
-    void move_all_enemies();
+    void move_all_enemies(float dt_);
     void show_all_enemies();
 };

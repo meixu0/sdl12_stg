@@ -2,12 +2,13 @@
 #include "EnemyType.h"
 #include "MovePattern.h"
 #include <cmath>
+#define PI 3.14159265
 class Player;
 struct EnemyConfig{
     int hp;
     int movePattern;
     size_t emergeTime;
-    size_t durationTime;
+    float durationTime;
     int hitboxWidth;
     int hitboxHeight;
     float speedX;
@@ -16,6 +17,15 @@ struct EnemyConfig{
     float targetY;
     float startX;
     float startY;
+    float vertAmplitude;
+    float vertPeriod;
+    float horizAmplitude;
+    float horizPeriod;
+    float halfLife;
+    float bezierP1x, bezierP1y;
+    float bezierP2x, bezierP2y;
+    float bezierEndX, bezierEndY;
+    float bezierDuration;
 };
 class Enemy{
 private:
@@ -41,17 +51,25 @@ private:
     int type;
     Player* playerPtr;
     size_t frameCounter_;
-    void linear_move();
-    void sin_wave_move();
-    void u_turn_move();
-    void stop_and_go_move();
-    void homing_move();
-    void interception_move();
+    float vertAmplitude;
+    float vertPeriod;
+    float horizAmplitude;
+    float horizPeriod;
+    float homingRate;
+    float bezierP1x, bezierP1y;
+    float bezierP2x, bezierP2y;
+    float bezierEndX, bezierEndY;
+    float bezierDuration;
+    float bezierTime;
+    float stateStartX, stateStartY;
+    float clamp(float value, float min_, float max_);
+    float cubicBezier(float t, float p0, float p1, float p2, float p3);
 public:
     Enemy();
     void init(EnemyConfig config_, float x_, float y_);
     void update_player_info(float px, float py, size_t frameCounter__);
-    void enemy_move();
+    void apply_movement(float dt);
+    void enemy_move(float dt);
     void enemy_show();
     void enemy_attack();
     bool is_active();
