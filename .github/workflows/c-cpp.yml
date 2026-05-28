@@ -10,13 +10,33 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-latest, windows-latest]
     
     runs-on: ${{ matrix.os }}
+
+    defaults:
+      run:
+        shell: ${{ matrix.os == 'windows-latest' && 'msys2 {0}' || 'bash' }}
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+
+    - name: Setup MSYS2 and Install Dependencies (Windows)
+      if: runner.os == 'Windows'
+      uses: msys2/setup-msys2@v2
+      with:
+        msystem: MINGW64
+        update: true
+        install: >-
+          mingw-w64-x86_64-gcc
+          mingw-w64-x86_64-make
+          mingw-w64-x86_64-SDL
+          mingw-w64-x86_64-SDL_image
+          mingw-w64-x86_64-SDL_ttf
+          mingw-w64-x86_64-SDL_mixer
+          mingw-w64-x86_64-SDL_gfx
+          mingw-w64-x86_64-physfs
 
     - name: Install Dependencies (Linux)
       if: runner.os == 'Linux'
@@ -31,19 +51,22 @@ jobs:
           libsdl-gfx1.2-dev \
           libphysfs-dev
 
-    - name: Install Dependencies (macOS)
-      if: runner.os == 'macOS'
-      run: |
-        brew update
-        brew install sdl12-compat sdl_image sdl_ttf sdl_mixer sdl_gfx physfs
-
-    - name: Compile Game
+    - name: Compile Game (Linux)
+      if: runner.os == 'Linux'
       run: |
         make clean
-        make -j$(nproc || sysctl -n hw.ncpu)
+        make -j$(nproc)
+
+    - name: Compile Game (Windows)
+      if: runner.os == 'Windows'
+      run: |
+        mingw32-make clean
+        mingw32-make -j$(nproc)
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
         name: game-executable-${{ matrix.os }}
-        path: Release/stg
+        path: |
+          Release/stg
+          Release/stg.exe
