@@ -23,5 +23,7 @@ public:
     Enemy* get_enemy(int index);
     void update_all_enemies(float px, float py, size_t frameCounter_);
     void move_all_enemies(float dt_);
+    void attack_all_enemies(float dt_);
+    void set_bullet_manager_for_all(EnemyBulletManager* mgr);
     void show_all_enemies();
 };

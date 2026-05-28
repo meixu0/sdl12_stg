@@ -64,6 +64,8 @@ void Game::run(){
 	Uint32 lastTime = SDL_GetTicks();
 	Uint32 gameStartTime = SDL_GetTicks();
 	frameCounter = 0;
+	EnemyBulletManager enemyBulletManager;
+	levelManager.set_bullet_manager_for_all(&enemyBulletManager);
 	//todo: fps monitor
 	while(gameState == STATE_GAME){
 		Uint32 frameStart = SDL_GetTicks();
@@ -85,7 +87,10 @@ void Game::run(){
 		PlayerPosition playerPosition;
 		levelManager.update_all_enemies(playerPosition.x, playerPosition.y, frameCounter);
 		levelManager.move_all_enemies(dt);
+			levelManager.attack_all_enemies(dt);
+		enemyBulletManager.update(dt);
 		levelManager.show_all_enemies();
+		enemyBulletManager.render();
 		if(SDL_Flip(screen) == -1)	throw std::runtime_error("flip error in game loop");
 		if((fpsLimited == true)){
 			Uint32 currentFrameTicks = SDL_GetTicks();

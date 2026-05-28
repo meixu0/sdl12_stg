@@ -42,6 +42,12 @@ void Enemy::init(EnemyConfig config, float x_, float y_){
     bezierTime = 0.0f;
     stateStartX = x_;
     stateStartY = y_;
+    emitterRuntime.resize(emitterConfig.size());
+    for (size_t i = 0; i < emitterRuntime.size(); i++) {
+        emitterRuntime[i].timer = 0.0f;
+        emitterRuntime[i].burstRemaining = 0;
+        emitterRuntime[i].cycleCount = 0;
+    }
 }
 bool Enemy::is_active(){
     return isActive;
@@ -74,6 +80,7 @@ void Enemy::enemy_move(float dt){
         switch (movePattern){
             case(LINER): y += speedY * dt; break; 
             case(SINWAVE): y += sin(timeAlive * 2*PI / vertPeriod) * vertAmplitude * dt; x += speedX * dt + cos(timeAlive * 2*PI / horizPeriod) * horizAmplitude * dt; break;
+            // todo: 修改 Enemy.cpp 里的 HOMING 移动，让敌机朝玩家飞过去，并且在飞行过程中逐渐调整方向，增加游戏的挑战性。
             case(HOMING): x += clamp((playerX - x) * homingRate * dt, -speedX, speedX); y += clamp((playerY - y) * homingRate * dt, -speedY, speedY); break;
 	            case(BEZIER):
 	                bezierTime += dt;
@@ -86,6 +93,52 @@ void Enemy::enemy_move(float dt){
         }    
     }
 }
+void Enemy::enemy_attack(float dt){
+    if (!isActive || bulletManager == NULL) return;
+    if (emitterConfig.size() != emitterRuntime.size()) return;
+
+    for (size_t i = 0; i < emitterConfig.size(); i++) {
+        EmitterConfig& ec = emitterConfig[i];
+        EmitterRuntime& rt = emitterRuntime[i];
+
+        rt.timer += dt;
+        if (rt.timer < ec.startDelay) continue;
+
+        float activeTime = rt.timer - ec.startDelay;
+        int  burstMax   = (ec.burstCount > 0) ? ec.burstCount : 1;
+
+        if (burstMax == 1) {
+            // 简单模式：每 emitInterval 发射一发
+            if (activeTime >= ec.emitInterval) {
+                bulletManager->spawn_pattern(ec.patternDesc, x, y, playerX, playerY);
+                rt.timer = ec.startDelay;
+            }
+            continue;
+        }
+
+        // 爆发模式：burstCount 发以 burstInterval 间隔连射，然后等 emitInterval
+        if (rt.burstRemaining <= 0) {
+            // 等待下一轮爆发周期
+            if (activeTime >= ec.emitInterval) {
+                rt.burstRemaining = burstMax;
+                rt.timer = ec.startDelay;
+                activeTime = 0.0f;
+            } else {
+                continue;
+            }
+        }
+
+        if (activeTime >= ec.burstInterval) {
+            bulletManager->spawn_pattern(ec.patternDesc, x, y, playerX, playerY);
+            rt.burstRemaining--;
+            rt.timer = ec.startDelay;
+            if (rt.burstRemaining > 0) {
+                rt.timer = ec.startDelay;
+            }
+        }
+    }
+}
+
 void Enemy::enemy_show(){
     if(isActive){
         switch (type){

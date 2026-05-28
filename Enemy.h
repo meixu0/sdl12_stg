@@ -1,6 +1,7 @@
 #include "UI.h"
 #include "EnemyType.h"
 #include "MovePattern.h"
+#include "EnemyBulletManager.h"
 #include <cmath>
 #define PI 3.14159265
 class Player;
@@ -64,14 +65,22 @@ private:
     float stateStartX, stateStartY;
     float clamp(float value, float min_, float max_);
     float cubicBezier(float t, float p0, float p1, float p2, float p3);
+    struct EmitterRuntime {
+        float timer;       
+        int burstRemaining;   
+        int cycleCount;       // 已完成的主循环次数
+    };
 public:
+    std::vector<EmitterConfig> emitterConfig;
+    std::vector<EmitterRuntime> emitterRuntime;
+    EnemyBulletManager* bulletManager;
     Enemy();
     void init(EnemyConfig config_, float x_, float y_);
     void update_player_info(float px, float py, size_t frameCounter__);
     void apply_movement(float dt);
     void enemy_move(float dt);
     void enemy_show();
-    void enemy_attack();
+    void enemy_attack(float dt);
     bool is_active();
     void test_enemy();
 };

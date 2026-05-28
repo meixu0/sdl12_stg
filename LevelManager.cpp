@@ -258,9 +258,51 @@ void LevelManager::init_enemy_pool() {
         config.bezierEndX = bezierEndX;
         config.bezierEndY = bezierEndY;
         config.bezierDuration = bezierDuration;
-        
+
         // Create Enemy object and initialize
         Enemy* new_enemy = new Enemy();
+
+        // --- emitterConfig parsing ---
+        cJSON* emitters_json = cJSON_GetObjectItem(enemy_item, "emitters");
+        if (!emitters_json && defaults != enemy_item)
+            emitters_json = cJSON_GetObjectItem(defaults, "emitters");
+        if (emitters_json && cJSON_IsArray(emitters_json)) {
+            int em_cnt = cJSON_GetArraySize(emitters_json);
+            for (int e = 0; e < em_cnt; e++) {
+                cJSON* ej = cJSON_GetArrayItem(emitters_json, e);
+                if (!ej || !cJSON_IsObject(ej)) continue;
+                EmitterConfig ec;
+
+                cJSON* v;
+                #define GET(key, def) ((v = cJSON_GetObjectItem(ej, #key)) && cJSON_IsNumber(v)) ? (float)v->valuedouble : (float)(def)
+                ec.startDelay    = GET(startDelay, 0.0f);
+                ec.emitInterval  = GET(emitInterval, 1.0f);
+                ec.burstCount    = (int)GET(burstCount, 1);
+                ec.burstInterval = GET(burstInterval, 0.05f);
+                #undef GET
+
+                cJSON* pd = cJSON_GetObjectItem(ej, "patternDesc");
+                if (pd && cJSON_IsObject(pd)) {
+                    #define GET(key, def) ((v = cJSON_GetObjectItem(pd, #key)) && cJSON_IsNumber(v)) ? (float)v->valuedouble : (float)(def)
+                    ec.patternDesc.patternType   = (int)GET(patternType, 0);
+                    ec.patternDesc.mainCnt       = (int)GET(mainCnt, 6);
+                    ec.patternDesc.subCnt        = (int)GET(subCnt, 1);
+                    ec.patternDesc.angleOffset   = GET(angleOffset, 0.0f);
+                    ec.patternDesc.angleInterval = GET(angleInterval, 0.15f);
+                    ec.patternDesc.speed1        = GET(speed1, 100.0f);
+                    ec.patternDesc.speed2        = GET(speed2, 50.0f);
+                    ec.patternDesc.spriteID      = (int)GET(spriteID, 0);
+                    ec.patternDesc.hitboxRadius  = GET(hitboxRadius, 4.0f);
+                    ec.patternDesc.lifeTime      = GET(lifeTime, 6.0f);
+                    ec.patternDesc.spawnEffect   = (int)GET(spawnEffect, 0);
+                    ec.patternDesc.soundEffect   = (int)GET(soundEffect, 0);
+                    ec.patternDesc.reboundEffect = (int)GET(reboundEffect, 0);
+                    #undef GET
+                }
+                new_enemy->emitterConfig.push_back(ec);
+            }
+        }
+
         new_enemy->init(config, start_x, start_y);
         
         // Add to pool
@@ -296,6 +338,22 @@ void LevelManager::move_all_enemies(float dt_) {
     for (size_t i = 0; i < enemy_pool.size(); ++i) {
         if (enemy_pool[i] != NULL) {
             enemy_pool[i]->enemy_move(dt_);
+        }
+    }
+}
+
+void LevelManager::attack_all_enemies(float dt_) {
+    for (size_t i = 0; i < enemy_pool.size(); ++i) {
+        if (enemy_pool[i] != NULL && enemy_pool[i]->is_active()) {
+            enemy_pool[i]->enemy_attack(dt_);
+        }
+    }
+}
+
+void LevelManager::set_bullet_manager_for_all(EnemyBulletManager* mgr) {
+    for (size_t i = 0; i < enemy_pool.size(); ++i) {
+        if (enemy_pool[i] != NULL) {
+            enemy_pool[i]->bulletManager = mgr;
         }
     }
 }
