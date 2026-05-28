@@ -51,6 +51,12 @@ jobs:
           libsdl-gfx1.2-dev \
           libphysfs-dev
 
+    - name: Compile Game (Linux)
+      if: runner.os == 'Linux'
+      run: |
+        make clean
+        make -j$(nproc)
+
     - name: Compile Game and Bundle DLLs (Windows)
       if: runner.os == 'Windows'
       run: |
@@ -60,13 +66,6 @@ jobs:
         echo "Bundling DLLs for Windows..."
         ldd Release/stg.exe | grep -i "mingw64" | awk '{print $3}' | xargs -I '{}' cp '{}' Release/
 
-
-    - name: Compile Game (Windows)
-      if: runner.os == 'Windows'
-      run: |
-        mingw32-make clean
-        mingw32-make -j$(nproc)
-
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
@@ -74,3 +73,4 @@ jobs:
         path: |
           Release/stg
           Release/stg.exe
+          Release/*.dll
