@@ -1,0 +1,49 @@
+name: Build Game
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install Dependencies (Linux)
+      if: runner.os == 'Linux'
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+          build-essential \
+          libsdl1.2-dev \
+          libsdl-image1.2-dev \
+          libsdl-ttf2.0-dev \
+          libsdl-mixer1.2-dev \
+          libsdl-gfx1.2-dev \
+          libphysfs-dev
+
+    - name: Install Dependencies (macOS)
+      if: runner.os == 'macOS'
+      run: |
+        brew update
+        brew install sdl12-compat sdl_image sdl_ttf sdl_mixer sdl_gfx physfs
+
+    - name: Compile Game
+      run: |
+        make clean
+        make -j$(nproc || sysctl -n hw.ncpu)
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: game-executable-${{ matrix.os }}
+        path: Release/stg
