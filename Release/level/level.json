@@ -1,7 +1,7 @@
 {
   "enemy_types": {
     "zako_small": {
-      "_desc": "Sub0 - homing approach then slow track, etFanAimed + etOnAuto",
+      "_desc": "Sub0 - 平滑转向追踪玩家，保持80px距离不重叠",
       "movePattern": 4,
       "hp": 20,
       "hitboxWidth": 24,
@@ -9,6 +9,8 @@
       "speedX": 120,
       "speedY": 120,
       "halfLife": 0.8,
+      "angularVelocity": 3.0,
+      "minPlayerDist": 80,
       "score": 1000,
       "emitters": [
         {
@@ -56,21 +58,23 @@
       "speedX": 100,
       "speedY": 100,
       "halfLife": 0.6,
+      "angularVelocity": 2.5,
+      "minPlayerDist": 100,
       "score": 1000
     },
 
     "fairy_blue": {
-      "_desc": "Sub1 - etFanAimed burst + etRing + etOnAuto(60f=1s)",
+      "_desc": "Sub1 - moveDirTime down→ sinewave, etFanAimed + etRing",
       "movePattern": 1,
       "hp": 150,
       "hitboxWidth": 24,
       "hitboxHeight": 24,
-      "speedX": 40,
-      "speedY": 132,
-      "vertAmplitude": 20,
+      "speedX": 30,
+      "speedY": 60,
+      "vertAmplitude": 30,
       "vertPeriod": 2.0,
-      "horizAmplitude": 40,
-      "horizPeriod": 3.0,
+      "horizAmplitude": 60,
+      "horizPeriod": 3.5,
       "halfLife": 0,
       "score": 1500,
       "emitters": [

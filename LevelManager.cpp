@@ -259,6 +259,21 @@ void LevelManager::init_enemy_pool() {
         config.bezierEndY = bezierEndY;
         config.bezierDuration = bezierDuration;
 
+        // 新追踪字段
+        float moveAngle = 0.0f, angularVelocity = 0.0f, acceleration = 0.0f, minPlayerDist = 80.0f;
+        cJSON* ma = cJSON_GetObjectItem(enemy_item, "moveAngle");
+        cJSON* av = cJSON_GetObjectItem(enemy_item, "angularVelocity");
+        cJSON* ac = cJSON_GetObjectItem(enemy_item, "acceleration");
+        cJSON* md = cJSON_GetObjectItem(enemy_item, "minPlayerDist");
+        if (ma && cJSON_IsNumber(ma)) moveAngle = (float)ma->valuedouble;
+        if (av && cJSON_IsNumber(av)) angularVelocity = (float)av->valuedouble;
+        if (ac && cJSON_IsNumber(ac)) acceleration = (float)ac->valuedouble;
+        if (md && cJSON_IsNumber(md)) minPlayerDist = (float)md->valuedouble;
+        config.moveAngle = moveAngle;
+        config.angularVelocity = angularVelocity;
+        config.acceleration = acceleration;
+        config.minPlayerDist = minPlayerDist;
+
         // Create Enemy object and initialize
         Enemy* new_enemy = new Enemy();
 

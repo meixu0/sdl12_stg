@@ -8,7 +8,7 @@ class Player;
 struct EnemyConfig{
     int hp;
     int movePattern;
-    size_t emergeTime;
+    float emergeTime;
     float durationTime;
     int hitboxWidth;
     int hitboxHeight;
@@ -27,6 +27,11 @@ struct EnemyConfig{
     float bezierP2x, bezierP2y;
     float bezierEndX, bezierEndY;
     float bezierDuration;
+    // 新追踪参数
+    float moveAngle;
+    float angularVelocity;
+    float acceleration;      // 标量加速度 px/s²
+    float minPlayerDist;     // 与玩家最小距离
 };
 class Enemy{
 private:
@@ -40,12 +45,12 @@ private:
     bool isActive;
     float speedX;
     float speedY;
-    float timeAlive;  
+    float timeAlive;
     float durationTime;
     float hitboxWidth;
     float hitboxHeight;
     int movePattern;
-    size_t emergeTime;
+    float emergeTime;
     float emergeSpeedY;
     float targetX;
     float targetY;
@@ -63,17 +68,26 @@ private:
     float bezierDuration;
     float bezierTime;
     float stateStartX, stateStartY;
+    // th06 风格运动字段
+    float moveAngle;          // 当前运动角度 (弧度)
+    float angularVelocity;    // 角速度 (rad/s)
+    float accel;              // 标量加速度 (px/s²)
+    float minPlayerDist;      // 与玩家保持的最小距离
     float clamp(float value, float min_, float max_);
-    float cubicBezier(float t, float p0, float p1, float p2, float p3);
-    struct EmitterRuntime {
-        float timer;       
-        int burstRemaining;   
-        int cycleCount;       // 已完成的主循环次数
-    };
+    float cubic_bezier(float t, float p0, float p1, float p2, float p3);
+    void compute_axis_speed();  // 根据 movePattern 计算 axisSpeed
+    float axisSpeedX;         // 本帧速度 x 分量
+    float axisSpeedY;         // 本帧速度 y 分量
 public:
+    struct EmitterRuntime {
+        float timer;
+        int burstRemaining;
+        int cycleCount;
+    };
     std::vector<EmitterConfig> emitterConfig;
     std::vector<EmitterRuntime> emitterRuntime;
     EnemyBulletManager* bulletManager;
+public:
     Enemy();
     void init(EnemyConfig config_, float x_, float y_);
     void update_player_info(float px, float py, size_t frameCounter__);

@@ -84,7 +84,7 @@ void Game::run(){
 		gameBackground.background_show();
 		player1.show();
 		playerBulletPool_.render();
-		PlayerPosition playerPosition;
+		PlayerPosition playerPosition = player1.get_player_position();
 		levelManager.update_all_enemies(playerPosition.x, playerPosition.y, frameCounter);
 		levelManager.move_all_enemies(dt);
 			levelManager.attack_all_enemies(dt);

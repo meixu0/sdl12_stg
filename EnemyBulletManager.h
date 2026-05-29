@@ -54,4 +54,5 @@ public:
     void update(float dt);
     void render();
     void clear_all();
+    void despawn_all_for_spellcard();
 };

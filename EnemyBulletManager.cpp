@@ -89,10 +89,8 @@ void EnemyBulletManager::spawn_pattern(const EnemyBulletPatternDesc& desc, float
 void EnemyBulletManager::update(float dt){
     for (int i = 0; i < POOL_SIZE; i++) {
         if (bullets[i].state != ALIVE) continue;
-
         Bullet& b = bullets[i];
 
-        // 转向 + 变速（只算一次 sqrt/atan2，避免重复计算）
         if (b.acceleration != 0.0f || b.angularVelocity != 0.0f) {
             float curSpeed = sqrtf(b.speedX * b.speedX + b.speedY * b.speedY);
             float curAngle = atan2f(b.speedY, b.speedX);
@@ -106,8 +104,29 @@ void EnemyBulletManager::update(float dt){
         b.x += b.speedX * dt;
         b.y += b.speedY * dt;
         b.lifeTime -= dt;
-        if (b.lifeTime <= 0.0f || b.x < -32 || b.x > 576 || b.y < -32 || b.y > 632) {
+
+        // 子弹贴图 4x4，半个边长 = 2
+        // 只检查下边界和左右边界：子弹可以向上飞出屏幕外不回收
+        // 敌机经常在屏幕上方（y < 0）生成子弹，不能用上界直接杀弹
+        bool outOfBounds = (b.x + 2.0f > 544.0f)   // 右端出界
+                        || (b.y + 2.0f > 600.0f)   // 下端出界
+                        || (b.x - 2.0f < 0.0f);    // 左端出界
+
+        // 上端：只回收明显飞远的（防内存泄漏）
+        if (b.y + 2.0f < -64.0f) outOfBounds = true;
+
+        // 在游戏区域内 → 不根据 lifeTime 销毁，仅边界回收
+        // lifeTime 留给符卡回收 (despawn_all_for_spellcard)
+        if (outOfBounds) {
             b.state = SLEEPING;
+        }
+    }
+}
+
+void EnemyBulletManager::despawn_all_for_spellcard(){
+    for (int i = 0; i < POOL_SIZE; i++) {
+        if (bullets[i].state == ALIVE) {
+            bullets[i].state = SLEEPING;
         }
     }
 }
@@ -119,8 +138,6 @@ void EnemyBulletManager::render(){
     for (int i = 0; i < POOL_SIZE; i++) {
         if (bullets[i].state != ALIVE) continue;
         Bullet& b = bullets[i];
-        // todo: 替换为精灵渲染
-        //filledCircleRGBA(screen, (Sint16)b.x, (Sint16)b.y, 4, 255, 255, 255, 255); 改成渲染贴图
         apply_surface((int)(b.x - 2), (int)(b.y - 2), simpleBulletImage, screen);
     }
 }
