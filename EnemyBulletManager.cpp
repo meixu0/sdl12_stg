@@ -112,7 +112,7 @@ void EnemyBulletManager::update(float dt){
                         || (b.y + 2.0f > 600.0f)   // 下端出界
                         || (b.x - 2.0f < 0.0f);    // 左端出界
 
-        // 上端：只回收明显飞远的（防内存泄漏）
+        // 上端：只回收明显飞远的
         if (b.y + 2.0f < -64.0f) outOfBounds = true;
 
         // 在游戏区域内 → 不根据 lifeTime 销毁，仅边界回收

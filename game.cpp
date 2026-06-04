@@ -8,8 +8,8 @@ Game::Game(){
 	menuFrameCounter = 0;
 	fpsSurface = NULL;
 	lastUpdate = 0;
-	fpsFont = load_font("res/FSEX300.ttf", 16);
-	levelManager.read_stage_data("Release/level/level.json");
+	fpsFont = load_font("res/menufont.ttf", 16);
+	levelManager.read_stage_data("level/level.json");
 	levelManager.init_enemy_pool();
 }
 void Game::show_fps(Uint32 current_fps){

@@ -18,7 +18,8 @@ MainMenu::MainMenu()
 :gameStartButton(500, 200, 200, 100, render_win98, NULL, jump_to_game, "game start", NULL)
 {
 	if(mainMenuFont == NULL){
-		mainMenuFont = load_font("res/main_menu_font.ttf", 20);
+		mainMenuFont = load_font("res/menufont.ttf", 20);
+		if(mainMenuFont == NULL)	std::cout << "load main menu font error" << std::endl;
 	}
 	gameStartButton.messageFont = mainMenuFont;
 	background = load_image("res/menu_background.png", 800, 600);
