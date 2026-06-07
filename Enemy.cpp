@@ -1,14 +1,57 @@
 #include "Enemy.h"
 #include "player.h"
 #include <iostream>
-static SDL_Surface* zakoImage = NULL;
+#include <algorithm>
+static const int SPRITE_COLS = 16;
+static const int SPRITE_ROWS = 16;
+static SDL_Surface* zakoSprites[SPRITE_ROWS][SPRITE_COLS] = {{NULL}};
+static bool spritesLoaded = false;
+
+static void init_zako_sprites() {
+    if (spritesLoaded) return;
+    for (int row = 0; row < SPRITE_ROWS; row++) {
+        if (row >= 4 && row <= 7) continue;
+        if (row >= 12) continue;
+        for (int col = 0; col < SPRITE_COLS; col++) {
+            zakoSprites[row][col] = load_sprite(
+                "res/stgenm/enemy.png",
+                col * 32, row * 32, 32, 32,
+                32.0, 32.0);
+        }
+    }
+    spritesLoaded = true;
+}
+
+static SDL_Surface* get_zako_sprite(int row, int col) {
+    if (zakoSprites[row][col] == NULL) {
+        zakoSprites[row][col] = load_sprite(
+            "res/stgenm/enemy.png",
+            col * 32, row * 32, 32, 32,
+            32.0, 32.0);
+    }
+    return zakoSprites[row][col];
+}
+
+namespace {
+    inline float easeLinear(float t) { return 1.0f - t; }
+    inline float easeDecelerate(float t) { return 1.0f - t * t; }
+    inline float easeDecelerateFast(float t) {
+        float t2 = t * t;
+        return 1.0f - t2 * t2;
+    }
+    inline float easeAccelerate(float t) {
+        float u = 1.0f - t;
+        return u * u;
+    }
+}
 Enemy::Enemy() : x(0.0), y(0.0), startX(0.0), startY(0.0), playerX(0.0), playerY(0.0), hp(0), isActive(false),
     speedX(0.0), speedY(0.0), timeAlive(0.0), durationTime(0.0), targetX(0.0), targetY(0.0), type(0),
     bezierP1x(0), bezierP1y(0), bezierP2x(0), bezierP2y(0), bezierEndX(0), bezierEndY(0),
     bezierDuration(0), bezierTime(0), stateStartX(0), stateStartY(0),
     moveAngle(0), angularVelocity(0), accel(0), minPlayerDist(80.0f),
+    spriteRow(0), spriteAnimTimer(0.0f),
     axisSpeedX(0), axisSpeedY(0) {
-    if(zakoImage == NULL)   zakoImage = load_image("res/zako.png", 40.0, 40.0);
+    init_zako_sprites();
 }
 void Enemy::init(EnemyConfig config, float x_, float y_){
     x = x_;
@@ -50,6 +93,10 @@ void Enemy::init(EnemyConfig config, float x_, float y_){
     angularVelocity = config.angularVelocity;
     accel = config.acceleration;
     minPlayerDist = (config.minPlayerDist > 0.0f) ? config.minPlayerDist : 80.0f;
+    int seed = ((int)(config.emergeTime * 100.0f)) % 100;
+    int zakoRows[] = {0, 1, 2, 3, 8, 9, 10, 11};
+    spriteRow = zakoRows[seed % 8];
+    spriteAnimTimer = 0.0f;
     emitterRuntime.resize(emitterConfig.size());
     for (size_t i = 0; i < emitterRuntime.size(); i++) {
         emitterRuntime[i].timer = 0.0f;
@@ -95,26 +142,36 @@ void Enemy::compute_axis_speed(){
             if (dist > 0.1f) {
                 float targetAngle = atan2f(dy, dx);
 
-                // 平滑转向：角速度限制
-                if (angularVelocity > 0.0f && fabsf(targetAngle - moveAngle) > 0.001f) {
+                if (dist < minPlayerDist * 1.2f) {
+                    float nx = dx / dist;
+                    float ny = dy / dist;
+                    float aimX = playerX - nx * minPlayerDist;
+                    float aimY = playerY - ny * minPlayerDist;
+                    targetAngle = atan2f(aimY - y, aimX - x);
+                }
+                if (homingRate > 0.0f) {
                     float diff = targetAngle - moveAngle;
-                    // 角度标准化到 [-PI, PI]
+                    while (diff > PI)  diff -= 2.0f * PI;
+                    while (diff < -PI) diff += 2.0f * PI;
+                    moveAngle += diff * (1.0f - expf(-homingRate * (1.0f / 60.0f)));
+                } else if (angularVelocity > 0.0f && fabsf(targetAngle - moveAngle) > 0.001f) {
+                    float diff = targetAngle - moveAngle;
                     while (diff > PI)  diff -= 2.0f * PI;
                     while (diff < -PI) diff += 2.0f * PI;
                     float maxTurn = angularVelocity * (1.0f / 60.0f);
-                    if (diff > maxTurn)       moveAngle += maxTurn;
-                    else if (diff < -maxTurn) moveAngle -= maxTurn;
-                    else                       moveAngle = targetAngle;
+                    diff = std::max(-maxTurn, std::min(maxTurn, diff));
+                    moveAngle += diff;
                 } else {
                     moveAngle = targetAngle;
                 }
-
-                // 距离越近速度越慢，小于 minPlayerDist 就停
-                float curSpeed = speedX; 
-                if (dist < minPlayerDist) {
-                    curSpeed = speedX * (dist / minPlayerDist);
+                float curSpeed = speedX;
+                if (dist < minPlayerDist * 0.4f) {
+                    curSpeed = 0.0f;
+                } else if (dist < minPlayerDist) {
+                    float t = (dist - minPlayerDist * 0.4f) / (minPlayerDist * 0.6f);
+                    curSpeed = speedX * easeDecelerate(1.0f - t);
                 }
-                // 加速度
+
                 curSpeed += accel * (1.0f / 60.0f);
                 if (curSpeed < 0.0f) curSpeed = 0.0f;
 
@@ -151,37 +208,57 @@ void Enemy::compute_axis_speed(){
             }
             break;
 
-        case INTERCEPTION:
-            // 预判玩家位置，类似 homing 但瞄准预测点
-            {
-                float predictTime = 0.5f;
-                float predX = playerX; 
-                float predY = playerY;
-                float dx = predX - x;
-                float dy = predY - y;
-                float dist = sqrtf(dx*dx + dy*dy);
-                if (dist > 0.1f) {
-                    float targetAngle = atan2f(dy, dx);
-                    if (angularVelocity > 0.0f) {
-                        float diff = targetAngle - moveAngle;
-                        while (diff > PI)  diff -= 2.0f * PI;
-                        while (diff < -PI) diff += 2.0f * PI;
-                        float maxTurn = angularVelocity * (1.0f / 60.0f);
-                        diff = clamp(diff, -maxTurn, maxTurn);
-                        moveAngle += diff;
-                    } else {
-                        moveAngle = targetAngle;
-                    }
-                    float curSpeed = speedX;
-                    if (dist < minPlayerDist) curSpeed = speedX * (dist / minPlayerDist);
-                    axisSpeedX = cosf(moveAngle) * curSpeed;
-                    axisSpeedY = sinf(moveAngle) * curSpeed;
-                } else {
-                    axisSpeedX = 0.0f;
-                    axisSpeedY = 0.0f;
+        case INTERCEPTION: {
+            float predictTime = 0.5f;
+            float predX = playerX;
+            float predY = playerY;
+            float dx = predX - x;
+            float dy = predY - y;
+            float dist = sqrtf(dx*dx + dy*dy);
+            if (dist > 0.1f) {
+                float targetAngle = atan2f(dy, dx);
+                if (dist < minPlayerDist * 1.2f) {
+                    float nx = dx / dist;
+                    float ny = dy / dist;
+                    float aimX = predX - nx * minPlayerDist;
+                    float aimY = predY - ny * minPlayerDist;
+                    targetAngle = atan2f(aimY - y, aimX - x);
                 }
+                if (homingRate > 0.0f) {
+                    float diff = targetAngle - moveAngle;
+                    while (diff > PI)  diff -= 2.0f * PI;
+                    while (diff < -PI) diff += 2.0f * PI;
+                    moveAngle += diff * (1.0f - expf(-homingRate * (1.0f / 60.0f)));
+                } else if (angularVelocity > 0.0f) {
+                    float diff = targetAngle - moveAngle;
+                    while (diff > PI)  diff -= 2.0f * PI;
+                    while (diff < -PI) diff += 2.0f * PI;
+                    float maxTurn = angularVelocity * (1.0f / 60.0f);
+                    diff = std::max(-maxTurn, std::min(maxTurn, diff));
+                    moveAngle += diff;
+                } else {
+                    moveAngle = targetAngle;
+                }
+
+                float curSpeed = speedX;
+                if (dist < minPlayerDist * 0.4f) {
+                    curSpeed = 0.0f;
+                } else if (dist < minPlayerDist) {
+                    float t = (dist - minPlayerDist * 0.4f) / (minPlayerDist * 0.6f);
+                    curSpeed = speedX * easeDecelerate(1.0f - t);
+                }
+
+                curSpeed += accel * (1.0f / 60.0f);
+                if (curSpeed < 0.0f) curSpeed = 0.0f;
+
+                axisSpeedX = cosf(moveAngle) * curSpeed;
+                axisSpeedY = sinf(moveAngle) * curSpeed;
+            } else {
+                axisSpeedX = 0.0f;
+                axisSpeedY = 0.0f;
             }
             break;
+        }
 
         default:
             axisSpeedX = 0.0f;
@@ -200,6 +277,8 @@ void Enemy::enemy_move(float dt){
     }
     if(!isActive) return;
 
+    spriteAnimTimer += dt;
+
     if(playerPtr != NULL){
         PlayerPosition playerPos = playerPtr->get_player_position();
         playerX = playerPos.x;
@@ -207,8 +286,6 @@ void Enemy::enemy_move(float dt){
     }
 
     compute_axis_speed();
-
-    // 统一应用位移
     x += axisSpeedX * dt;
     y += axisSpeedY * dt;
 
@@ -262,10 +339,20 @@ void Enemy::enemy_attack(float dt){
 }
 
 void Enemy::enemy_show(){
-    if(isActive){
-        switch (type){
-            case(ZAKO): apply_surface((int)x, int(y), zakoImage, screen);
-            std::cout << "enemy show at " << x << "," << y << " time is"<< timeAlive << std::endl;
-        }
-    }else return;
+    if(!isActive) return;
+    int colBase;
+    float threshold = 5.0f;
+    if (axisSpeedX < -threshold)          colBase = 12;
+    else if (axisSpeedX > threshold)      colBase = 4;
+    else if (axisSpeedY > threshold)      colBase = 8;
+    else                                  colBase = 0;
+
+    int tick = ((int)(spriteAnimTimer * 4.0f)) % 8;
+    int frameIndex = (tick > 3) ? (7 - tick) : tick;
+
+    int col = colBase + frameIndex;
+    SDL_Surface* sprite = get_zako_sprite(spriteRow, col);
+    if (sprite) {
+        apply_surface((int)x, (int)y, sprite, screen);
+    }
 }

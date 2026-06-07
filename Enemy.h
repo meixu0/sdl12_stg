@@ -73,6 +73,8 @@ private:
     float angularVelocity;    // 角速度 (rad/s)
     float accel;              // 标量加速度 (px/s²)
     float minPlayerDist;      // 与玩家保持的最小距离
+    int spriteRow;            // 精灵图行索引 (0-15)
+    float spriteAnimTimer;    // 动画计时器
     float clamp(float value, float min_, float max_);
     float cubic_bezier(float t, float p0, float p1, float p2, float p3);
     void compute_axis_speed();  // 根据 movePattern 计算 axisSpeed

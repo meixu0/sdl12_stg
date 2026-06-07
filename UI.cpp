@@ -29,13 +29,11 @@ Button::Button(int x, int y, int w, int h, RenderCallback render, ButtonActionCa
 	mOnRender = render;
 }
 void Button::handle_events(SDL_Event &e){
-	int x = 0, y = 0;//default mouse coordinate
-	//if mouse move occurs
+	int x = 0, y = 0;
 	if(e.type == SDL_MOUSEMOTION){
 		x = e.motion.x;
 		y = e.motion.y;
 	}else{
-		//get the coordinate been pressed
 		x = e.button.x;
 		y = e.button.y;
 	}
@@ -43,12 +41,12 @@ void Button::handle_events(SDL_Event &e){
 	if(!isInside){
 		state = 0;
 	}else{
-		if(e.type == SDL_MOUSEMOTION){//if a mouse button is pressed
+		if(e.type == SDL_MOUSEMOTION){
 			state = 1;
-			if(mOnHover != NULL)	mOnHover();//triggle hover behavior
-		}else if(e.type == SDL_MOUSEBUTTONDOWN){//mouse is been pressing
+			if(mOnHover != NULL)	mOnHover();
+		}else if(e.type == SDL_MOUSEBUTTONDOWN){
 			state = 2;
-		}else if(e.type == SDL_MOUSEBUTTONUP && state == 2){//mouse pops up
+		}else if(e.type == SDL_MOUSEBUTTONUP && state == 2){
 			state = 1;
 			if(mOnClick != NULL)	mOnClick();
 		}
@@ -115,6 +113,37 @@ SDL_Surface *load_image(std::string filename, double targetW, double targetH){
 	double scaleH = targetH / optimizedImage->h;
 	double scaleRate = (scaleW < scaleH) ? scaleW : scaleH;
 	SDL_Surface* zoomedImage = rotozoomSurface(optimizedImage, 0.0, scaleRate, 1);
+	return zoomedImage;
+}
+SDL_Surface *load_sprite(std::string filename, int srcX, int srcY, int srcW, int srcH, double targetW, double targetH){
+	SDL_Surface* loadedImage = IMG_Load(filename.c_str());
+	if(loadedImage == NULL)	return NULL;
+	SDL_Surface* clippedImage = SDL_CreateRGBSurface(SDL_SWSURFACE,
+		srcW, srcH,
+		loadedImage->format->BitsPerPixel,
+		loadedImage->format->Rmask,
+		loadedImage->format->Gmask,
+		loadedImage->format->Bmask,
+		loadedImage->format->Amask);
+	if(clippedImage == NULL){
+		SDL_FreeSurface(loadedImage);
+		return NULL;
+	}
+	SDL_FillRect(clippedImage, NULL, SDL_MapRGB(clippedImage->format, 0, 0, 0));
+	SDL_Rect clip = {(Sint16)srcX, (Sint16)srcY, (Uint16)srcW, (Uint16)srcH};
+	SDL_BlitSurface(loadedImage, &clip, clippedImage, NULL);
+	SDL_FreeSurface(loadedImage);
+	SDL_Surface* formattedImage = SDL_DisplayFormat(clippedImage);
+	SDL_FreeSurface(clippedImage);
+	if(formattedImage == NULL)	return NULL;
+	double scaleW = targetW / formattedImage->w;
+	double scaleH = targetH / formattedImage->h;
+	double scaleRate = (scaleW < scaleH) ? scaleW : scaleH;
+	SDL_Surface* zoomedImage = rotozoomSurface(formattedImage, 0.0, scaleRate, 1);
+	SDL_FreeSurface(formattedImage);
+	if(zoomedImage == NULL)	return NULL;
+	SDL_SetColorKey(zoomedImage, SDL_SRCCOLORKEY,
+		SDL_MapRGB(zoomedImage->format, 0, 0, 0));
 	return zoomedImage;
 }
 TTF_Font* load_font(std::string filename, int fontsize){

@@ -38,6 +38,7 @@ public:
 void draw_line(SDL_Surface* dest, int x1,int y1, int x2, int y2, Uint32 color);
 void render_win98(SDL_Rect* box, SDL_Surface* dest, int state, std::string buttonTitle, TTF_Font* font);
 SDL_Surface *load_image(std::string filename, double targetW, double targetH);
+SDL_Surface *load_sprite(std::string filename, int srcX, int srcY, int srcW, int srcH, double targetW, double targetH);
 bool load_font(std::string fontfile);
 TTF_Font* load_font(std::string filename, int fontsize);
 #endif

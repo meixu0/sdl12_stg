@@ -105,17 +105,12 @@ void EnemyBulletManager::update(float dt){
         b.y += b.speedY * dt;
         b.lifeTime -= dt;
 
-        // 子弹贴图 4x4，半个边长 = 2
-        // 只检查下边界和左右边界：子弹可以向上飞出屏幕外不回收
-        // 敌机经常在屏幕上方（y < 0）生成子弹，不能用上界直接杀弹
-        bool outOfBounds = (b.x + 2.0f > 544.0f)   // 右端出界
-                        || (b.y + 2.0f > 600.0f)   // 下端出界
-                        || (b.x - 2.0f < 0.0f);    // 左端出界
+        bool outOfBounds = (b.x + 2.0f > 544.0f)
+                        || (b.y + 2.0f > 600.0f)
+                        || (b.x - 2.0f < 0.0f);
 
-        // 上端：只回收明显飞远的（防内存泄漏）
         if (b.y + 2.0f < -64.0f) outOfBounds = true;
 
-        // 在游戏区域内 → 不根据 lifeTime 销毁，仅边界回收
         // lifeTime 留给符卡回收 (despawn_all_for_spellcard)
         if (outOfBounds) {
             b.state = SLEEPING;
