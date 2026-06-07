@@ -3,7 +3,7 @@
 
 # Release
 /Release/stg
-/Release/res/
+#/Release/res/
 
 # binary
 *.o
