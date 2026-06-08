@@ -39,13 +39,20 @@ SOURCES = main.cpp game.cpp MainMenu.cpp PlayerBullet.cpp player.cpp timer.cpp U
 OBJECTS = $(SOURCES:.cpp=.o)
 OBJECTS := $(OBJECTS:.c=.o)
 
-all: create_dir $(TARGET)
+.PHONY: all clean create_dir bundle
+
+all: create_dir $(TARGET) bundle
 
 create_dir:
 	@mkdir -p $(TARGET_DIR)
 
 $(TARGET): $(OBJECTS)
 	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJECTS) $(LDFLAGS) $(LIBS)
+
+bundle:
+	@echo "Bundling resources..."
+	@cp -r res $(TARGET_DIR)/res 2>/dev/null || true
+	@cp -r level $(TARGET_DIR)/level 2>/dev/null || true
 
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
