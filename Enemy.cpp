@@ -2,6 +2,9 @@
 #include "player.h"
 #include <iostream>
 #include <algorithm>
+
+Enemy* Enemy::onScreenList[256] = {NULL};
+int Enemy::onScreenCount = 0;
 static const int SPRITE_COLS = 16;
 static const int SPRITE_ROWS = 16;
 static SDL_Surface* zakoSprites[SPRITE_ROWS][SPRITE_COLS] = {{NULL}};
@@ -50,6 +53,7 @@ Enemy::Enemy() : x(0.0), y(0.0), startX(0.0), startY(0.0), playerX(0.0), playerY
     bezierDuration(0), bezierTime(0), stateStartX(0), stateStartY(0),
     moveAngle(0), angularVelocity(0), accel(0), minPlayerDist(80.0f),
     spriteRow(0), spriteAnimTimer(0.0f),
+    isDead(false),
     axisSpeedX(0), axisSpeedY(0) {
     init_zako_sprites();
 }
@@ -69,6 +73,7 @@ void Enemy::init(EnemyConfig config, float x_, float y_){
     emergeSpeedY = 5.0;
     timeAlive = 0.0;
     isActive = false;
+    isDead = false;
     targetX = config.targetX;
     targetY = config.targetY;
     vertAmplitude = config.vertAmplitude;
@@ -268,12 +273,25 @@ void Enemy::compute_axis_speed(){
 }
 
 void Enemy::enemy_move(float dt){
+    bool wasActive = isActive;
     timeAlive += dt;
-    if(x + 40 < 0 || x >= 544 - 40 || y + 40 < 0 || y >= 800 - 40 ||
+    if (isDead) { isActive = false; }
+    else if(x + 40 < 0 || x >= 544 - 40 || y + 40 < 0 || y >= 800 - 40 ||
        timeAlive < emergeTime || timeAlive >= emergeTime + durationTime) {
         isActive = false;
     } else {
         isActive = true;
+    }
+    // 跟踪屏幕上的敌机列表
+    if (!wasActive && isActive) {
+        if (onScreenCount < 256) onScreenList[onScreenCount++] = this;
+    } else if (wasActive && !isActive) {
+        for (int i = 0; i < onScreenCount; i++) {
+            if (onScreenList[i] == this) {
+                onScreenList[i] = onScreenList[--onScreenCount];
+                break;
+            }
+        }
     }
     if(!isActive) return;
 
@@ -355,4 +373,34 @@ void Enemy::enemy_show(){
     if (sprite) {
         apply_surface((int)x, (int)y, sprite, screen);
     }
+}
+
+void Enemy::deactivate(){
+    isDead = true;
+    if (isActive) {
+        isActive = false;
+        for (int i = 0; i < onScreenCount; i++) {
+            if (onScreenList[i] == this) {
+                onScreenList[i] = onScreenList[--onScreenCount];
+                break;
+            }
+        }
+    }
+}
+
+bool Enemy::check_bullet_hit(float bx, float by, float bhw, float bhh){
+    float eLeft = x;
+    float eRight = x + hitboxWidth;
+    float eTop = y;
+    float eBottom = y + hitboxHeight;
+    float bLeft = bx - bhw;
+    float bRight = bx + bhw;
+    float bTop = by - bhh;
+    float bBottom = by + bhh;
+    return !(bRight < eLeft || bLeft > eRight || bBottom < eTop || bTop > eBottom);
+}
+
+int Enemy::take_damage(int dmg){
+    hp -= dmg;
+    return hp;
 }

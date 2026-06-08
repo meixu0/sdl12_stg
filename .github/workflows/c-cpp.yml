@@ -56,15 +56,21 @@ jobs:
       run: |
         make clean
         make -j$(nproc)
+        cp -r res Release/res
+        cp -r level Release/level
 
     - name: Compile Game and Bundle DLLs (Windows)
       if: runner.os == 'Windows'
       run: |
         mingw32-make clean
         mingw32-make -j$(nproc)
-        
+
         echo "Bundling DLLs for Windows..."
         ldd Release/stg.exe | grep -i "mingw64" | awk '{print $3}' | xargs -I '{}' cp '{}' Release/
+
+        echo "Bundling res and level..."
+        cp -r res Release/res
+        cp -r level Release/level
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
@@ -74,3 +80,5 @@ jobs:
           Release/stg
           Release/stg.exe
           Release/*.dll
+          Release/res/**
+          Release/level/**

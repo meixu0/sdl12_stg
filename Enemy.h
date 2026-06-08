@@ -43,6 +43,7 @@ private:
     float playerY;
     int hp;
     bool isActive;
+    bool isDead;   // 被击破后阻止 enemy_move 重新激活
     float speedX;
     float speedY;
     float timeAlive;
@@ -98,5 +99,18 @@ public:
     void enemy_show();
     void enemy_attack(float dt);
     bool is_active();
+    void deactivate();
+    float get_x() const { return x; }
+    float get_y() const { return y; }
+    float get_hitbox_w() const { return hitboxWidth; }
+    float get_hitbox_h() const { return hitboxHeight; }
+    // 屏幕敌机追踪: 碰撞检测遍历此列表
+    static Enemy* onScreenList[256];
+    static int onScreenCount;
+    int  get_hp() const { return hp; }
+    // AABB 碰撞检测: 子弹矩形 vs 敌机判定矩形
+    bool check_bullet_hit(float bx, float by, float bhw, float bhh);
+    // 受到伤害, 返回剩余 hp
+    int take_damage(int dmg);
     void test_enemy();
 };

@@ -377,7 +377,7 @@ void LevelManager::show_all_enemies() {
     for (size_t i = 0; i < enemy_pool.size(); ++i) {
         if (enemy_pool[i] != NULL && enemy_pool[i]->is_active()) {
             enemy_pool[i]->enemy_show();
-            std::cout << i << " " << "is rendered" << std::endl;
+            //std::cout << i << " " << "is rendered" << std::endl;
         }
     }
 }

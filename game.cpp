@@ -36,9 +36,9 @@ void Game::init_game(SDL_Surface* dest){
 }
 void Game::run(){
 	lastUpdate = 0;
-	std::cout << "game run" << std::endl;
+	//std::cout << "game run" << std::endl;
 	if(SDL_Flip(screen) == -1)	throw std::runtime_error("flip error");
-	std::cout << "window init ok" << std::endl;
+	//std::cout << "window init ok" << std::endl;
 	while(gameState == STATE_MENU){
 		menuFps.start();
 		menuFpsUpdate.start();
@@ -78,6 +78,32 @@ void Game::run(){
 		if (dt > 1.0f / 15.0f) dt = 1.0f / 30.0f;
 		gameBackground.background_update(dt);
 		player1.player_move();
+		// 子机子弹追踪目标: 左移→最左敌机, 右移→最右敌机
+		{
+			float bestX = -1;
+			bool found = false;
+			int enemyCount = levelManager.get_enemy_count();
+			for (int i = 0; i < enemyCount; i++) {
+				Enemy* e = levelManager.get_enemy(i);
+				if (!e || !e->is_active()) continue;
+				float ex = e->get_x();
+				if (!found) { bestX = ex; found = true; continue; }
+				if (player1.get_player_x_vel() < 0 && ex < bestX) bestX = ex;       // 左移→最左
+				else if (player1.get_player_x_vel() > 0 && ex > bestX) bestX = ex;  // 右移→最右
+			}
+			if (found) {
+				for (int i = 0; i < enemyCount; i++) {
+					Enemy* e = levelManager.get_enemy(i);
+					if (!e || !e->is_active()) continue;
+					if (e->get_x() == bestX) {
+						player1.set_homing_target(e->get_x(), e->get_y());
+						break;
+					}
+				}
+			} else {
+				player1.set_homing_target(272, 0);
+			}
+		}
 		player1.update_simple_shoot();
 		playerBulletPool_.update();
 		SDL_FillRect(screen, &playArea, SDL_MapRGB(screen->format, 0, 0, 0));

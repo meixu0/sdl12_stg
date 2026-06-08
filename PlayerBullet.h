@@ -17,6 +17,12 @@ struct PlayerBulletConfig{
 	float x;
 	float y;
 };
+struct PlayerPowerRank {
+	int numBullets;
+	int powerThreshold;
+	PlayerBulletConfig* bullets;
+};
+extern PlayerPowerRank g_PlayerPowerRanks[6];
 class PlayerBullet{
 private:
 	bool isActive;
@@ -28,7 +34,7 @@ private:
 	float wHitbox_;
 	float hHitbox_;
 	float angle_;
-	float speed_;//pixels per frame
+	float speed_;
 	int damage_;
 	int bulletType_;
 	int imageId_;
@@ -37,12 +43,20 @@ private:
 	int framesLeft;
 	PlayerBullet* next_;
 	bool isHit;
+	float velX_, velY_;  // 预计算速度分量
 public:
 	PlayerBullet();
-    static SDL_Surface* simplePlayerBulletImage;
+	static SDL_Surface* bulletSprites[16];
 	void init(PlayerBulletConfig& config);
 	bool bullet_move();
 	bool inUse() const;
+	// 碰撞检测用
+	float get_x() const { return x_; }
+	float get_y() const { return y_; }
+	float get_hw() const { return wHitbox_ / 2.0f; }
+	float get_hh() const { return hHitbox_ / 2.0f; }
+	int   get_damage() const { return damage_; }
+	void on_hit();  // 击中敌机: 速度÷8, 标记回收
 	PlayerBullet* gen_next() const;
 	void set_next(PlayerBullet* next);
 	void render();
@@ -57,4 +71,6 @@ public:
 	PlayerBullet* create(PlayerBulletConfig& config_);
 	void update();
 	void render();
+	PlayerBullet* bullets() { return bullet; }
+	int pool_size() const { return POOL_SIZE; }
 };
