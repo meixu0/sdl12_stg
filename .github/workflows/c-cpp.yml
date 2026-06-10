@@ -51,7 +51,7 @@ jobs:
           libsdl-gfx1.2-dev \
           libphysfs-dev
 
-    - name: Compile Game and Bundle (Linux)
+    - name: Compile Game (Linux)
       if: runner.os == 'Linux'
       run: |
         make clean
@@ -64,15 +64,15 @@ jobs:
         mingw32-make -j$(nproc)
 
         echo "Bundling DLLs for Windows..."
-        ldd Release/stg.exe | grep -i "mingw64" | awk '{print $3}' | xargs -I '{}' cp '{}' Release/
+        ldd stg.exe | grep -i "mingw64" | awk '{print $3}' | xargs -I '{}' cp '{}' .
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
         name: game-executable-${{ matrix.os }}
         path: |
-          Release/stg
-          Release/stg.exe
-          Release/*.dll
-          Release/res/**
-          Release/level/**
+          stg
+          stg.exe
+          *.dll
+          res/**
+          level/**

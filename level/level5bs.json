@@ -1,0 +1,114 @@
+{
+  "boss_types": {
+    "boss_sakuya_Sub1": {
+      "_desc": "符卡预留 - ecldata5sp Sub1",
+      "movePattern": 3,
+      "hp": 2000,
+      "hitboxWidth": 48,
+      "hitboxHeight": 48,
+      "speedX": 0,
+      "speedY": 30,
+      "halfLife": 0,
+      "score": 100000
+    },
+    "boss_sakuya_Sub2": {
+      "_desc": "符卡预留 - ecldata5sp Sub2",
+      "movePattern": 3,
+      "hp": 2000,
+      "hitboxWidth": 48,
+      "hitboxHeight": 48,
+      "speedX": 0,
+      "speedY": 30,
+      "halfLife": 0,
+      "score": 100000
+    },
+    "boss_sakuya_Sub4": {
+      "_desc": "符卡预留 - ecldata5sp Sub4",
+      "movePattern": 3,
+      "hp": 2000,
+      "hitboxWidth": 48,
+      "hitboxHeight": 48,
+      "speedX": 0,
+      "speedY": 30,
+      "halfLife": 0,
+      "score": 100000
+    },
+    "boss_sakuya_Sub6": {
+      "_desc": "符卡预留 - ecldata5sp Sub6",
+      "movePattern": 3,
+      "hp": 2000,
+      "hitboxWidth": 48,
+      "hitboxHeight": 48,
+      "speedX": 0,
+      "speedY": 30,
+      "halfLife": 0,
+      "score": 100000
+    },
+    "boss_sakuya_Sub9": {
+      "_desc": "符卡预留 - ecldata5sp Sub9",
+      "movePattern": 3,
+      "hp": 2000,
+      "hitboxWidth": 48,
+      "hitboxHeight": 48,
+      "speedX": 0,
+      "speedY": 30,
+      "halfLife": 0,
+      "score": 100000
+    },
+    "boss_sakuya_Sub13": {
+      "_desc": "符卡预留 - ecldata5sp Sub13",
+      "movePattern": 3,
+      "hp": 2000,
+      "hitboxWidth": 48,
+      "hitboxHeight": 48,
+      "speedX": 0,
+      "speedY": 30,
+      "halfLife": 0,
+      "score": 100000
+    },
+    "boss_sakuya_Sub15": {
+      "_desc": "符卡预留 - ecldata5sp Sub15",
+      "movePattern": 3,
+      "hp": 2000,
+      "hitboxWidth": 48,
+      "hitboxHeight": 48,
+      "speedX": 0,
+      "speedY": 30,
+      "halfLife": 0,
+      "score": 100000
+    },
+    "boss_sakuya_Sub16": {
+      "_desc": "符卡预留 - ecldata5sp Sub16",
+      "movePattern": 3,
+      "hp": 2000,
+      "hitboxWidth": 48,
+      "hitboxHeight": 48,
+      "speedX": 0,
+      "speedY": 30,
+      "halfLife": 0,
+      "score": 100000
+    },
+    "boss_sakuya_Sub19": {
+      "_desc": "符卡预留 - ecldata5sp Sub19",
+      "movePattern": 3,
+      "hp": 2000,
+      "hitboxWidth": 48,
+      "hitboxHeight": 48,
+      "speedX": 0,
+      "speedY": 30,
+      "halfLife": 0,
+      "score": 100000
+    },
+    "boss_sakuya_Sub27": {
+      "_desc": "符卡预留 - ecldata5sp Sub27",
+      "movePattern": 3,
+      "hp": 2000,
+      "hitboxWidth": 48,
+      "hitboxHeight": 48,
+      "speedX": 0,
+      "speedY": 30,
+      "halfLife": 0,
+      "score": 100000
+    }
+  }
+}

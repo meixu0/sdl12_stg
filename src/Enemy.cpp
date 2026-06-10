@@ -8,6 +8,7 @@ int Enemy::onScreenCount = 0;
 static const int SPRITE_COLS = 16;
 static const int SPRITE_ROWS = 16;
 static SDL_Surface* zakoSprites[SPRITE_ROWS][SPRITE_COLS] = {{NULL}};
+static SDL_Surface* zakoRingSprite[2][2] = {{NULL}};
 static bool spritesLoaded = false;
 
 static void init_zako_sprites() {
@@ -22,6 +23,10 @@ static void init_zako_sprites() {
                 32.0, 32.0);
         }
     }
+    zakoRingSprite[0][0] = load_sprite("res/stgenm/enemy.png", 32, 64, 16, 16, 16.0, 16.0);//blue ring
+    zakoRingSprite[0][1] = load_sprite("res/stgenm/enemy.png", 48, 64, 16, 16, 16.0, 16.0);//red ring
+    zakoRingSprite[1][0] = load_sprite("res/stgenm/enemy.png", 32, 80, 16, 16, 16.0, 16.0);//green ring
+    zakoRingSprite[1][1] = load_sprite("res/stgenm/enemy.png", 48, 80, 16, 16, 16.0, 16.0);//yellow ring
     spritesLoaded = true;
 }
 

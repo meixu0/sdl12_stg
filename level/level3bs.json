@@ -1,0 +1,125 @@
+{
+  "boss_types": {
+    "boss_cirno_Sub1": {
+      "_desc": "符卡预留 - ecldata3sp Sub1",
+      "movePattern": 3,
+      "hp": 2000,
+      "hitboxWidth": 48,
+      "hitboxHeight": 48,
+      "speedX": 0,
+      "speedY": 30,
+      "halfLife": 0,
+      "score": 100000
+    },
+    "boss_cirno_Sub6": {
+      "_desc": "符卡预留 - ecldata3sp Sub6",
+      "movePattern": 3,
+      "hp": 2000,
+      "hitboxWidth": 48,
+      "hitboxHeight": 48,
+      "speedX": 0,
+      "speedY": 30,
+      "halfLife": 0,
+      "score": 100000
+    },
+    "boss_cirno_Sub7": {
+      "_desc": "符卡预留 - ecldata3sp Sub7",
+      "movePattern": 3,
+      "hp": 2000,
+      "hitboxWidth": 48,
+      "hitboxHeight": 48,
+      "speedX": 0,
+      "speedY": 30,
+      "halfLife": 0,
+      "score": 100000
+    },
+    "boss_cirno_Sub8": {
+      "_desc": "符卡预留 - ecldata3sp Sub8",
+      "movePattern": 3,
+      "hp": 2000,
+      "hitboxWidth": 48,
+      "hitboxHeight": 48,
+      "speedX": 0,
+      "speedY": 30,
+      "halfLife": 0,
+      "score": 100000
+    },
+    "boss_cirno_Sub9": {
+      "_desc": "符卡预留 - ecldata3sp Sub9",
+      "movePattern": 3,
+      "hp": 2000,
+      "hitboxWidth": 48,
+      "hitboxHeight": 48,
+      "speedX": 0,
+      "speedY": 30,
+      "halfLife": 0,
+      "score": 100000
+    },
+    "boss_cirno_Sub10": {
+      "_desc": "符卡预留 - ecldata3sp Sub10",
+      "movePattern": 3,
+      "hp": 2000,
+      "hitboxWidth": 48,
+      "hitboxHeight": 48,
+      "speedX": 0,
+      "speedY": 30,
+      "halfLife": 0,
+      "score": 100000
+    },
+    "boss_cirno_Sub11": {
+      "_desc": "符卡预留 - ecldata3sp Sub11",
+      "movePattern": 3,
+      "hp": 2000,
+      "hitboxWidth": 48,
+      "hitboxHeight": 48,
+      "speedX": 0,
+      "speedY": 30,
+      "halfLife": 0,
+      "score": 100000
+    },
+    "boss_cirno_Sub15": {
+      "_desc": "符卡预留 - ecldata3sp Sub15",
+      "movePattern": 3,
+      "hp": 2000,
+      "hitboxWidth": 48,
+      "hitboxHeight": 48,
+      "speedX": 0,
+      "speedY": 30,
+      "halfLife": 0,
+      "score": 100000
+    },
+    "boss_cirno_Sub16": {
+      "_desc": "符卡预留 - ecldata3sp Sub16",
+      "movePattern": 3,
+      "hp": 2000,
+      "hitboxWidth": 48,
+      "hitboxHeight": 48,
+      "speedX": 0,
+      "speedY": 30,
+      "halfLife": 0,
+      "score": 100000
+    },
+    "boss_cirno_Sub19": {
+      "_desc": "符卡预留 - ecldata3sp Sub19",
+      "movePattern": 3,
+      "hp": 2000,
+      "hitboxWidth": 48,
+      "hitboxHeight": 48,
+      "speedX": 0,
+      "speedY": 30,
+      "halfLife": 0,
+      "score": 100000
+    },
+    "boss_cirno_Sub24": {
+      "_desc": "符卡预留 - ecldata3sp Sub24",
+      "movePattern": 3,
+      "hp": 2000,
+      "hitboxWidth": 48,
+      "hitboxHeight": 48,
+      "speedX": 0,
+      "speedY": 30,
+      "halfLife": 0,
+      "score": 100000
+    }
+  }
+}

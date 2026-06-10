@@ -1,0 +1,417 @@
+{
+  "boss_types": {
+    "boss_rumia": {
+      "_desc": "Sub25 - Boss Rumia multi-phase (符卡预留)",
+      "movePattern": 3,
+      "hp": 1600,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": 0,
+      "speedY": 30,
+      "halfLife": 0,
+      "score": 100000
+    },
+    "boss_final": {
+      "_desc": "Sub37 - Final Boss entry (符卡预留)",
+      "movePattern": 3,
+      "hp": 2400,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": 0,
+      "speedY": 30,
+      "halfLife": 0,
+      "score": 100000
+    },
+    "boss_rumia_fan": {
+      "_desc": "ecldata1 Sub16",
+      "movePattern": 3,
+      "hp": 150,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": 0,
+      "speedY": 120,
+      "halfLife": 0,
+      "score": 1000,
+      "emitters": [
+        {
+          "_desc": "etFanAimed: 13way x10rows",
+          "startDelay": 0,
+          "emitInterval": 1,
+          "burstCount": 1,
+          "burstInterval": 0.05,
+          "patternDesc": {
+            "patternType": 0,
+            "mainCnt": 13,
+            "subCnt": 10,
+            "angleOffset": 0,
+            "angleInterval": 0.314,
+            "speed1": 80,
+            "speed2": 50,
+            "spriteID": 2,
+            "hitboxRadius": 4,
+            "lifeTime": 6,
+            "spawnEffect": 0,
+            "soundEffect": 0,
+            "reboundEffect": 0
+          }
+        },
+        {
+          "_desc": "etFanAimed: 13way x12rows",
+          "startDelay": 0,
+          "emitInterval": 1,
+          "burstCount": 1,
+          "burstInterval": 0.05,
+          "patternDesc": {
+            "patternType": 0,
+            "mainCnt": 13,
+            "subCnt": 12,
+            "angleOffset": 0,
+            "angleInterval": 0.224,
+            "speed1": 80,
+            "speed2": 50,
+            "spriteID": 2,
+            "hitboxRadius": 4,
+            "lifeTime": 6,
+            "spawnEffect": 0,
+            "soundEffect": 0,
+            "reboundEffect": 0
+          }
+        },
+        {
+          "_desc": "etFanAimed: 13way x20rows",
+          "startDelay": 0,
+          "emitInterval": 1,
+          "burstCount": 1,
+          "burstInterval": 0.05,
+          "patternDesc": {
+            "patternType": 0,
+            "mainCnt": 13,
+            "subCnt": 20,
+            "angleOffset": 0,
+            "angleInterval": 0.196,
+            "speed1": 80,
+            "speed2": 50,
+            "spriteID": 2,
+            "hitboxRadius": 4,
+            "lifeTime": 6,
+            "spawnEffect": 0,
+            "soundEffect": 0,
+            "reboundEffect": 0
+          }
+        },
+        {
+          "_desc": "etFanAimed: 8way x10rows",
+          "startDelay": 0,
+          "emitInterval": 1,
+          "burstCount": 1,
+          "burstInterval": 0.05,
+          "patternDesc": {
+            "patternType": 0,
+            "mainCnt": 8,
+            "subCnt": 10,
+            "angleOffset": 0,
+            "angleInterval": 0.314,
+            "speed1": 80,
+            "speed2": 50,
+            "spriteID": 2,
+            "hitboxRadius": 4,
+            "lifeTime": 6,
+            "spawnEffect": 0,
+            "soundEffect": 0,
+            "reboundEffect": 0
+          }
+        },
+        {
+          "_desc": "etFanAimed: 8way x12rows",
+          "startDelay": 0,
+          "emitInterval": 1,
+          "burstCount": 1,
+          "burstInterval": 0.05,
+          "patternDesc": {
+            "patternType": 0,
+            "mainCnt": 8,
+            "subCnt": 12,
+            "angleOffset": 0,
+            "angleInterval": 0.224,
+            "speed1": 80,
+            "speed2": 50,
+            "spriteID": 2,
+            "hitboxRadius": 4,
+            "lifeTime": 6,
+            "spawnEffect": 0,
+            "soundEffect": 0,
+            "reboundEffect": 0
+          }
+        },
+        {
+          "_desc": "etFanAimed: 8way x20rows",
+          "startDelay": 0,
+          "emitInterval": 1,
+          "burstCount": 1,
+          "burstInterval": 0.05,
+          "patternDesc": {
+            "patternType": 0,
+            "mainCnt": 8,
+            "subCnt": 20,
+            "angleOffset": 0,
+            "angleInterval": 0.196,
+            "speed1": 80,
+            "speed2": 50,
+            "spriteID": 2,
+            "hitboxRadius": 4,
+            "lifeTime": 6,
+            "spawnEffect": 0,
+            "soundEffect": 0,
+            "reboundEffect": 0
+          }
+        }
+      ]
+    },
+    "boss_rumia_ring": {
+      "_desc": "ecldata1 Sub17",
+      "movePattern": 0,
+      "hp": 150,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": 0,
+      "speedY": 120,
+      "halfLife": 0,
+      "score": 1000,
+      "emitters": [
+        {
+          "_desc": "etRing: 32way x1rows",
+          "startDelay": 0,
+          "emitInterval": 1,
+          "burstCount": 1,
+          "burstInterval": 0.05,
+          "patternDesc": {
+            "patternType": 3,
+            "mainCnt": 32,
+            "subCnt": 1,
+            "angleOffset": 0,
+            "angleInterval": 0.035,
+            "speed1": 200,
+            "speed2": 90,
+            "spriteID": 1,
+            "hitboxRadius": 4,
+            "lifeTime": 6,
+            "spawnEffect": 0,
+            "soundEffect": 0,
+            "reboundEffect": 0
+          }
+        }
+      ]
+    },
+    "boss_rumia_Sub22": {
+      "_desc": "符卡预留 - ecldata1 Sub22",
+      "movePattern": 3,
+      "hp": 2000,
+      "hitboxWidth": 48,
+      "hitboxHeight": 48,
+      "speedX": 0,
+      "speedY": 30,
+      "halfLife": 0,
+      "score": 100000
+    },
+    "boss_final_fan": {
+      "_desc": "ecldata1 Sub27",
+      "movePattern": 0,
+      "hp": 150,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": 0,
+      "speedY": 120,
+      "halfLife": 0,
+      "score": 1000,
+      "emitters": [
+        {
+          "_desc": "etFanAimed: 8way x1rows",
+          "startDelay": 0,
+          "emitInterval": 1,
+          "burstCount": 1,
+          "burstInterval": 0.05,
+          "patternDesc": {
+            "patternType": 0,
+            "mainCnt": 8,
+            "subCnt": 1,
+            "angleOffset": 0,
+            "angleInterval": 0.143,
+            "speed1": 80,
+            "speed2": 50,
+            "spriteID": 2,
+            "hitboxRadius": 4,
+            "lifeTime": 6,
+            "spawnEffect": 0,
+            "soundEffect": 0,
+            "reboundEffect": 0
+          }
+        },
+        {
+          "_desc": "etFanAimed: 13way x1rows",
+          "startDelay": 0,
+          "emitInterval": 1,
+          "burstCount": 1,
+          "burstInterval": 0.05,
+          "patternDesc": {
+            "patternType": 0,
+            "mainCnt": 13,
+            "subCnt": 1,
+            "angleOffset": 0,
+            "angleInterval": 0.143,
+            "speed1": 80,
+            "speed2": 50,
+            "spriteID": 2,
+            "hitboxRadius": 4,
+            "lifeTime": 6,
+            "spawnEffect": 0,
+            "soundEffect": 0,
+            "reboundEffect": 0
+          }
+        }
+      ]
+    },
+    "boss_rumia_Sub33": {
+      "_desc": "符卡预留 - ecldata1 Sub33",
+      "movePattern": 3,
+      "hp": 2000,
+      "hitboxWidth": 48,
+      "hitboxHeight": 48,
+      "speedX": 0,
+      "speedY": 30,
+      "halfLife": 0,
+      "score": 100000
+    },
+    "boss_rumia_Sub44": {
+      "_desc": "符卡预留 - ecldata1 Sub44",
+      "movePattern": 3,
+      "hp": 2000,
+      "hitboxWidth": 48,
+      "hitboxHeight": 48,
+      "speedX": 0,
+      "speedY": 30,
+      "halfLife": 0,
+      "score": 100000
+    },
+    "boss_rumia_Sub1": {
+      "_desc": "符卡预留 - ecldata1sp Sub1",
+      "movePattern": 3,
+      "hp": 2000,
+      "hitboxWidth": 48,
+      "hitboxHeight": 48,
+      "speedX": 0,
+      "speedY": 30,
+      "halfLife": 0,
+      "score": 100000
+    },
+    "boss_rumia_Sub4": {
+      "_desc": "符卡预留 - ecldata1sp Sub4",
+      "movePattern": 3,
+      "hp": 2000,
+      "hitboxWidth": 48,
+      "hitboxHeight": 48,
+      "speedX": 0,
+      "speedY": 30,
+      "halfLife": 0,
+      "score": 100000
+    },
+    "boss_rumia_Sub11": {
+      "_desc": "符卡预留 - ecldata1sp Sub11",
+      "movePattern": 3,
+      "hp": 2000,
+      "hitboxWidth": 48,
+      "hitboxHeight": 48,
+      "speedX": 0,
+      "speedY": 30,
+      "halfLife": 0,
+      "score": 100000
+    },
+    "boss_rumia_Sub12": {
+      "_desc": "符卡预留 - ecldata1sp Sub12",
+      "movePattern": 3,
+      "hp": 2000,
+      "hitboxWidth": 48,
+      "hitboxHeight": 48,
+      "speedX": 0,
+      "speedY": 30,
+      "halfLife": 0,
+      "score": 100000
+    },
+    "boss_rumia_Sub19": {
+      "_desc": "符卡预留 - ecldata1sp Sub19",
+      "movePattern": 3,
+      "hp": 2000,
+      "hitboxWidth": 48,
+      "hitboxHeight": 48,
+      "speedX": 0,
+      "speedY": 30,
+      "halfLife": 0,
+      "score": 100000
+    },
+    "boss_rumia_Sub23": {
+      "_desc": "符卡预留 - ecldata1sp Sub23",
+      "movePattern": 3,
+      "hp": 2000,
+      "hitboxWidth": 48,
+      "hitboxHeight": 48,
+      "speedX": 0,
+      "speedY": 30,
+      "halfLife": 0,
+      "score": 100000
+    },
+    "boss_rumia_Sub24": {
+      "_desc": "符卡预留 - ecldata1sp Sub24",
+      "movePattern": 3,
+      "hp": 2000,
+      "hitboxWidth": 48,
+      "hitboxHeight": 48,
+      "speedX": 0,
+      "speedY": 30,
+      "halfLife": 0,
+      "score": 100000
+    },
+    "boss_rumia_Sub39": {
+      "_desc": "符卡预留 - ecldata1sp Sub39",
+      "movePattern": 3,
+      "hp": 2000,
+      "hitboxWidth": 48,
+      "hitboxHeight": 48,
+      "speedX": 0,
+      "speedY": 30,
+      "halfLife": 0,
+      "score": 100000
+    },
+    "boss_rumia_Sub40": {
+      "_desc": "符卡预留 - ecldata1sp Sub40",
+      "movePattern": 3,
+      "hp": 2000,
+      "hitboxWidth": 48,
+      "hitboxHeight": 48,
+      "speedX": 0,
+      "speedY": 30,
+      "halfLife": 0,
+      "score": 100000
+    },
+    "boss_rumia_Sub41": {
+      "_desc": "符卡预留 - ecldata1sp Sub41",
+      "movePattern": 3,
+      "hp": 2000,
+      "hitboxWidth": 48,
+      "hitboxHeight": 48,
+      "speedX": 0,
+      "speedY": 30,
+      "halfLife": 0,
+      "score": 100000
+    },
+    "boss_rumia_Sub42": {
+      "_desc": "符卡预留 - ecldata1sp Sub42",
+      "movePattern": 3,
+      "hp": 2000,
+      "hitboxWidth": 48,
+      "hitboxHeight": 48,
+      "speedX": 0,
+      "speedY": 30,
+      "halfLife": 0,
+      "score": 100000
+    }
+  }
+}

@@ -1,24 +1,39 @@
 #include "player.h"
 #include "LevelManager.h"
-const int Player::PLAYER_HEIGHT = 47;
-const int Player::PLAYER_WIDTH = 31;
+const int Player::PLAYER_HEIGHT = 48;
+const int Player::PLAYER_WIDTH = 32;
 const int Player::PLAY_HEIGHT = 600;
 const int Player::PLAY_WIDTH = 544;
 int Player::playerPowerData = 32;
-int Player::currentPowerLevel = 8;
+int Player::currentPowerLevel = 3;
 bool Player::bombInUse = false;
 SDL_Surface* Player::player = NULL;
+SDL_Surface* Player::reimuImageMiddle[4] = {NULL};
+SDL_Surface* Player::reimuImageSide[7] = {NULL};
+SDL_Surface* Player::reimuBulletSide = NULL;
 Player::Player(){
 	x = 272;
 	y = 553;
 	xVel = 0;
 	yVel = 0;
-	player = load_image("res/player1.png", double(PLAYER_HEIGHT), double(PLAYER_WIDTH));
+	for(int i = 0;i < 3; i++){
+		reimuImageMiddle[i] = load_sprite("res/player00/player00.png", i * PLAYER_WIDTH, 0, PLAYER_WIDTH, PLAYER_HEIGHT, double(PLAYER_HEIGHT), double(PLAYER_WIDTH));
+	}
+	for(int i = 0;i < 7; i++){
+		reimuImageSide[i] = load_sprite("res/player00/player00.png", i * PLAYER_WIDTH, PLAYER_HEIGHT, PLAYER_WIDTH, PLAYER_HEIGHT, double(PLAYER_HEIGHT), double(PLAYER_WIDTH));
+	}
+	{
+		SDL_Surface* raw = load_sprite("res/player00/player00.png", 0, 144, 64, 16, 64.0, 16.0);
+		reimuBulletSide = rotate_image(raw, 90.0);
+		if (raw) SDL_FreeSurface(raw);
+	}
 	isShooting = false;
 	simpleShootCoolDown = 0;
+	animTimer = 0.0f;
 	targetEnemyX = 272;
 	targetEnemyY = 0;
 	hasTarget = false;
+	optionStreamAngle_ = -1.5707963f;
 	for (int i = 0; i < MAX_BULLETS_PER_RANK; i++) {
 		bulletFireTimers[i] = 0;
 	}
@@ -29,18 +44,18 @@ void Player::init_player_bullet_pool(PlayerBulletPool *poolPtr){
 void Player::handle_input(SDL_Event &e){
 	if(e.type == SDL_KEYDOWN){
 		switch(e.key.keysym.sym){
-			case SDLK_UP: yVel -= PLAYER_HEIGHT / 2; break;
-			case SDLK_DOWN: yVel += PLAYER_HEIGHT / 2; break;
-			case SDLK_LEFT: xVel -= PLAYER_WIDTH / 2; break;
-			case SDLK_RIGHT: xVel += PLAYER_WIDTH / 2; break;
+			case SDLK_UP: yVel -= PLAYER_HEIGHT / 4; break;
+			case SDLK_DOWN: yVel += PLAYER_HEIGHT / 4; break;
+			case SDLK_LEFT: xVel -= PLAYER_WIDTH / 4; break;
+			case SDLK_RIGHT: xVel += PLAYER_WIDTH / 4; break;
 			case SDLK_z: isShooting = true; break;
 		}
 	}else if(e.type == SDL_KEYUP){
 		    switch( e.key.keysym.sym ){
-				case SDLK_UP: yVel += PLAYER_HEIGHT / 2; break;
-				case SDLK_DOWN: yVel -= PLAYER_HEIGHT / 2; break;
-				case SDLK_LEFT: xVel += PLAYER_WIDTH / 2; break;
-				case SDLK_RIGHT: xVel -= PLAYER_WIDTH / 2; break;  
+				case SDLK_UP: yVel += PLAYER_HEIGHT / 4; break;
+				case SDLK_DOWN: yVel -= PLAYER_HEIGHT / 4; break;
+				case SDLK_LEFT: xVel += PLAYER_WIDTH / 4; break;
+				case SDLK_RIGHT: xVel -= PLAYER_WIDTH / 4; break;  
 				case SDLK_z: isShooting = false; break;
         }        
 	}
@@ -50,6 +65,7 @@ void Player::player_move(){
 	if((x < 0) || (x + PLAYER_WIDTH > PLAY_WIDTH))	x -= xVel;
 	y += yVel;
 	if((y < 0) || (y + PLAYER_HEIGHT > PLAY_HEIGHT))	y -= yVel;
+	animTimer += 1.0f / 60.0f;
 }
 void Player::update_simple_shoot(){
 	PlayerPowerRank* rank = &g_PlayerPowerRanks[0];
@@ -65,6 +81,8 @@ void Player::update_simple_shoot(){
 
 	float spawnX = (float)(x + PLAYER_WIDTH / 2);
 	float spawnY = (float)y;
+	float leftSideX = x - 12.0;
+	float rightSideX = x + PLAYER_WIDTH + 12.0;
 
 	for (int i = 0; i < rank->numBullets; i++) {
 		update_player_bullet_collision_detection();
@@ -76,22 +94,26 @@ void Player::update_simple_shoot(){
 		}
 
 		PlayerBulletConfig cfg = rank->bullets[i];
-
-		// 子机子弹: 保留配置的左右散开角度, 朝目标微调
-		if (cfg.bulletType == 1 && hasTarget) {
-			float baseAngle = cfg.angle;
-			float dx = targetEnemyX - (spawnX + cfg.xOffset);
-			float dy = targetEnemyY - (spawnY + cfg.yOffset);
-			float targetAngle = atan2f(dy, dx);
-			float diff = targetAngle - baseAngle;
-			while (diff > 3.14159265f)  diff -= 6.2831853f;
-			while (diff < -3.14159265f) diff += 6.2831853f;
-			cfg.angle = baseAngle + diff * 0.3f;
-		}
-
 		cfg.x = spawnX + cfg.xOffset;
 		cfg.y = spawnY + cfg.yOffset;
 
+		if(cfg.bulletType == 1){
+			if(hasTarget){
+				float dx = targetEnemyX - spawnX;
+				float dy = targetEnemyY - spawnY;
+				float desiredAngle = atan2f(dy, dx);
+				float diff = desiredAngle - optionStreamAngle_;
+				while(diff > 3.14159265f) diff -= 6.2831853f;
+				while(diff < -3.14159265f) diff += 6.2831853f;
+				optionStreamAngle_ += diff * 0.08f;
+			} else {
+				float diff = -1.5707963f - optionStreamAngle_;
+				while(diff > 3.14159265f) diff -= 6.2831853f;
+				while(diff < -3.14159265f) diff += 6.2831853f;
+				optionStreamAngle_ += diff * 0.05f;
+			}
+			cfg.angle = optionStreamAngle_;
+		}
 		playerBulletPool_->create(cfg);
 		bulletFireTimers[i] = cfg.fireInterval;
 	}
@@ -109,8 +131,7 @@ void Player::update_player_bullet_collision_detection(){
 	PlayerBullet* bullets = playerBulletPool_->bullets();
 	int poolSize = playerBulletPool_->pool_size();
 
-	// 遍历当前屏幕上的全部敌机 (Enemy 静态列表)
-	for (int ei = 0; ei < Enemy::onScreenCount; ei++) {
+		for (int ei = 0; ei < Enemy::onScreenCount; ei++) {
 		Enemy* e = Enemy::onScreenList[ei];
 		if (!e) continue;
 
@@ -134,7 +155,32 @@ void Player::update_player_bullet_collision_detection(){
 }
 
 void Player::show(){
-	apply_surface(x, y, player, screen);
+	int frameCount;
+	SDL_Surface** frames;
+	bool mirror = false;
+
+	if (xVel > 0) {
+		frameCount = 7;
+		frames = reimuImageSide;
+	} else if (xVel < 0) {
+		frameCount = 7;
+		frames = reimuImageSide;
+		mirror = true;
+	} else {
+		frameCount = 3;
+		frames = reimuImageMiddle;
+	}
+
+	int tick = ((int)(animTimer * 4.0f)) % (frameCount * 2 - 2);
+	int idx = (tick > frameCount - 1) ? (frameCount * 2 - 2 - tick) : tick;
+
+	SDL_Surface* sprite = frames[idx];
+	if (sprite == NULL) return;
+
+	if (mirror)
+		apply_surface_mirror(x, y, sprite, screen);
+	else
+		apply_surface(x, y, sprite, screen);
 }
 
 PlayerPosition Player::get_player_position() const {

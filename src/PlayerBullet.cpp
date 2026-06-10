@@ -5,46 +5,46 @@
 // 每个 Rank 定义一组子弹：{间隔, x偏, y偏, 宽, 高, 角度, 速度, 伤害, 弹型, 贴图, 音效, Power要求, 初始x, 初始y}
 
 static PlayerBulletConfig g_Rank1_Bullets[] = {
-	{5, 0, 0, 12, 12, -1.5708f, 12.0f, 48, 0, 0, 0, 0, 0, 0},
+	{5, 0, 0, 12, 48, -1.5708f, 12.0f, 48, 0, 0, 0, 0, 0, 0, 0, 0},
 };
 
 static PlayerBulletConfig g_Rank2_Bullets[] = {
-	{5, 0, 0, 12, 12, -1.5708f, 12.0f, 48, 0, 0, 0, 0, 0, 0},
-	{5, 0, 0, 12, 12, -2.0944f, 10.0f, 14, 1, 1, -1, 0, 0, 0},
-	{5, 0, 0, 12, 12, -1.0472f, 10.0f, 14, 1, 2, -1, 0, 0, 0},
+	{5, 0, 0, 12, 48, -1.5708f, 12.0f, 48, 0, 0, 0, 0, 0, 0, 0, 0},
+	{5, 0, 0, 12, 48, -2.8798f, 10.0f, 14, 1, 1, -1, 0, 0, 0, 0, 0},
+	{5, 0, 0, 12, 48, -0.2618f, 10.0f, 14, 1, 2, -1, 0, 0, 0, 0, 0},
 };
 
 static PlayerBulletConfig g_Rank3_Bullets[] = {
-	{5, -4, 0, 12, 12, -1.5882f, 12.0f, 30, 0, 0, -1, 0, 0, 0},
-	{5, 4, 0, 12, 12, -1.5533f, 12.0f, 30, 0, 0, -1, 0, 0, 0},
-	{5, 0, 0, 12, 12, -2.0944f, 10.0f, 14, 1, 1, -1, 0, 0, 0},
-	{5, 0, 0, 12, 12, -1.0472f, 10.0f, 14, 1, 2, -1, 0, 0, 0},
+	{5, -4, 0, 12, 48, -1.5882f, 12.0f, 30, 0, 0, -1, 0, 0, 0, 0, 0},
+	{5, 4, 0, 12, 48, -1.5533f, 12.0f, 30, 0, 0, -1, 0, 0, 0, 0, 0},
+	{5, 0, 0, 12, 48, -2.8798f, 10.0f, 14, 1, 1, -1, 0, 0, 0, 0, 0},
+	{5, 0, 0, 12, 48, -0.2618f, 10.0f, 14, 1, 2, -1, 0, 0, 0, 0, 0},
 };
 
 static PlayerBulletConfig g_Rank4_Bullets[] = {
-	{5, 0, 0, 12, 12, -1.6755f, 12.0f, 24, 0, 0, 0, 0, 0, 0},
-	{5, 0, 0, 12, 12, -1.5708f, 12.0f, 30, 0, 0, -1, 0, 0, 0},
-	{5, 0, 0, 12, 12, -1.4661f, 12.0f, 24, 0, 0, -1, 0, 0, 0},
-	{5, 0, 0, 12, 12, -2.0944f, 10.0f, 14, 1, 1, -1, 0, 0, 0},
-	{5, 0, 0, 12, 12, -1.0472f, 10.0f, 14, 1, 2, -1, 0, 0, 0},
+	{5, 0, 0, 12, 48, -1.6755f, 12.0f, 24, 0, 0, 0, 0, 0, 0, 0, 0},
+	{5, 0, 0, 12, 48, -1.5708f, 12.0f, 30, 0, 0, -1, 0, 0, 0, 0, 0},
+	{5, 0, 0, 12, 48, -1.4661f, 12.0f, 24, 0, 0, -1, 0, 0, 0, 0, 0},
+	{5, 0, 0, 12, 48, -2.8798f, 10.0f, 14, 1, 1, -1, 0, 0, 0, 0, 0},
+	{5, 0, 0, 12, 48, -0.2618f, 10.0f, 14, 1, 2, -1, 0, 0, 0, 0, 0},
 };
 
 static PlayerBulletConfig g_Rank5_Bullets[] = {
-	{5, 0, 0, 12, 12, -1.6755f, 12.0f, 24, 0, 0, 0, 0, 0, 0},
-	{5, 0, 0, 12, 12, -1.5708f, 12.0f, 30, 0, 0, -1, 0, 0, 0},
-	{5, 0, 0, 12, 12, -1.4661f, 12.0f, 24, 0, 0, -1, 0, 0, 0},
-	{5, 0, 0, 12, 12, -2.0944f, 10.0f, 12, 1, 1, -1, 0, 0, 0},
-	{5, 0, 0, 12, 12, -1.0472f, 10.0f, 12, 1, 2, -1, 0, 0, 0},
+	{5, 0, 0, 12, 48, -1.6755f, 12.0f, 24, 0, 0, 0, 0, 0, 0, 0, 0},
+	{5, 0, 0, 12, 48, -1.5708f, 12.0f, 30, 0, 0, -1, 0, 0, 0, 0, 0},
+	{5, 0, 0, 12, 48, -1.4661f, 12.0f, 24, 0, 0, -1, 0, 0, 0, 0, 0},
+	{5, 0, 0, 12, 48, -2.8798f, 10.0f, 12, 1, 1, -1, 0, 0, 0, 0, 0},
+	{5, 0, 0, 12, 48, -0.2618f, 10.0f, 12, 1, 2, -1, 0, 0, 0, 0, 0},
 };
 
 static PlayerBulletConfig g_Rank6_Bullets[] = {
-	{5, 0, 0, 12, 12, -1.5882f, 12.0f, 24, 0, 0, -1, 0, 0, 0},
-	{5, 0, 0, 12, 12, -1.5708f, 12.0f, 29, 0, 0, -1, 0, 0, 0},
-	{5, 0, 0, 12, 12, -1.5533f, 12.0f, 24, 0, 0, -1, 0, 0, 0},
-	{5, 0, 0, 12, 12, -2.0944f, 10.0f, 9,  1, 1, -1, 0, 0, 0},
-	{5, 0, 0, 12, 12, -1.0472f, 10.0f, 9,  1, 2, -1, 0, 0, 0},
-	{5, 0, 0, 12, 12, -2.0944f, 10.0f, 12, 1, 1, -1, 0, 0, 0},
-	{5, 0, 0, 12, 12, -1.0472f, 10.0f, 12, 1, 2, -1, 0, 0, 0},
+	{5, 0, 0, 12, 48, -1.5882f, 12.0f, 24, 0, 0, -1, 0, 0, 0, 0, 0},
+	{5, 0, 0, 12, 48, -1.5708f, 12.0f, 29, 0, 0, -1, 0, 0, 0, 0, 0},
+	{5, 0, 0, 12, 48, -1.5533f, 12.0f, 24, 0, 0, -1, 0, 0, 0, 0, 0},
+	{5, 0, 0, 12, 48, -2.8798f, 10.0f, 9,  1, 1, -1, 0, 0, 0, 0, 0},
+	{5, 0, 0, 12, 48, -0.2618f, 10.0f, 9,  1, 2, -1, 0, 0, 0, 0, 0},
+	{5, 0, 0, 12, 48, -2.8798f, 10.0f, 12, 1, 1, -1, 0, 0, 0, 0, 0},
+	{5, 0, 0, 12, 48, -0.2618f, 10.0f, 12, 1, 2, -1, 0, 0, 0, 0, 0},
 };
 
 PlayerPowerRank g_PlayerPowerRanks[6] = {
@@ -58,6 +58,8 @@ PlayerPowerRank g_PlayerPowerRanks[6] = {
 
 SDL_Surface* PlayerBullet::bulletSprites[16] = {NULL};
 static SDL_Surface* etamaSheet = NULL;
+SDL_Surface* PlayerBullet::reimuBulletSideRaw = NULL;
+SDL_Surface* PlayerBullet::reimuBulletSide = NULL;
 
 PlayerBullet::PlayerBullet(){
 	isHit = false;
@@ -67,6 +69,15 @@ PlayerBullet::PlayerBullet(){
 	y_ = 0;
 	velX_ = 0;
 	velY_ = 0;
+	targetX_ = 0;
+	targetY_ = 0;
+	homingSpeed_ = 0;
+	reimuBulletSideRaw = load_sprite("res/player00/player00.png", 0, 144, 64, 16, 64.0, 16.0);
+	reimuBulletSide = rotate_image(reimuBulletSideRaw, -90.0);
+	sideBulletRotateAngle_ = 0.0f;
+	rotatedSurface_ = NULL;
+	pivotX_ = 0.0f;
+	pivotY_ = 0.0f;
 }
 void PlayerBullet::init(PlayerBulletConfig& config){
 	isActive = true;
@@ -87,25 +98,80 @@ void PlayerBullet::init(PlayerBulletConfig& config){
 	y_ = config.y;
 	velX_ = cosf(angle_) * speed_;
 	velY_ = sinf(angle_) * speed_;
+	targetX_ = config.targetX;
+	targetY_ = config.targetY;
+	homingSpeed_ = speed_;
 	framesLeft = (int)(600.0f / speed_);
 }
 bool PlayerBullet::bullet_move(){
 	if(!isActive)	return false;
 	framesLeft--;
+	if (bulletType_ == 1 && targetY_ > 0) {
+		float dx = targetX_ - x_;
+		float dy = targetY_ - y_;
+		float dist = sqrtf(dx*dx + dy*dy);
+		if (dist > 1.0f) {
+			float tx = dx / dist;
+			float ty = dy / dist;
+			float curSpeed = sqrtf(velX_*velX_ + velY_*velY_);
+			float blend = dist / (homingSpeed_ / 4.0f);
+			if (blend < 1.0f) blend = 1.0f;
+			float nvx = velX_ + tx * homingSpeed_ / blend;
+			float nvy = velY_ + ty * homingSpeed_ / blend;
+			float nsp = sqrtf(nvx*nvx + nvy*nvy);
+			if (nsp > homingSpeed_) {
+				nvx = nvx / nsp * homingSpeed_;
+				nvy = nvy / nsp * homingSpeed_;
+			}
+			velX_ = nvx;
+			velY_ = nvy;
+		}
+	}
+
 	x_ += velX_;
 	y_ += velY_;
-	// 出界回收
-	if(x_ < -16 || x_ > 528 || y_ < -16 || y_ > 616 || framesLeft <= 0 || isHit){
+
+	if (bulletType_ == 1 && reimuBulletSide != NULL) {
+		if (rotatedSurface_ != NULL) SDL_FreeSurface(rotatedSurface_);
+		float bw = (float)reimuBulletSide->w;
+		float bh = (float)reimuBulletSide->h;
+		float rotRad = atan2f(velY_, velX_) + 1.5707963f;
+		double rotDeg = rotRad * 180.0 / 3.14159265;
+		SDL_Surface* rotated = rotozoomSurface(reimuBulletSide, -rotDeg, 1.0, 0);
+		if (rotated != NULL) {
+			if (reimuBulletSide->flags & SDL_SRCCOLORKEY)
+				SDL_SetColorKey(rotated, SDL_SRCCOLORKEY, reimuBulletSide->format->colorkey);
+			rotatedSurface_ = rotate_image(rotated, 180.0);
+			SDL_FreeSurface(rotated);
+			if (rotatedSurface_ != NULL) {
+				float c = cosf(rotRad);
+				float s = sinf(rotRad);
+				float dx = -bw * 0.5f * c - bh * 0.5f * s;
+				float dy = -bw * 0.5f * s + bh * 0.5f * c;
+				pivotX_ = (float)rotatedSurface_->w * 0.5f + dx;
+				pivotY_ = (float)rotatedSurface_->h * 0.5f + dy;
+			}
+		}
+	}
+	int sprLeft = (int)x_ - (int)pivotX_;
+	int sprTop  = (int)y_ - (int)pivotY_;
+	int sprRight = sprLeft + (rotatedSurface_ ? rotatedSurface_->w : 16);
+	int sprBottom = sprTop  + (rotatedSurface_ ? rotatedSurface_->h : 64);
+	if(x_ < -16 || x_ > 528 || y_ < -16 || y_ > 616 || framesLeft <= 0 || isHit ||
+	   sprRight < -32 || sprLeft > 576 - 64 || sprBottom < -32 || sprTop > 632){
+		if (rotatedSurface_ != NULL)	SDL_FreeSurface(rotatedSurface_); rotatedSurface_ = NULL; 
 		isActive = false;
 		return true;
 	}
+	
 	return false;
 }
 void PlayerBullet::on_hit(){
 	velX_ /= 8.0f;
 	velY_ /= 8.0f;
 	isHit = true;
-	isActive = false;  // 立即从碰撞检测中移除, 避免同一颗子弹多次命中
+	if (rotatedSurface_ != NULL) { SDL_FreeSurface(rotatedSurface_); rotatedSurface_ = NULL; }
+	isActive = false;
 }
 bool PlayerBullet::inUse() const{
 	return isActive;
@@ -118,50 +184,25 @@ void PlayerBullet::set_next(PlayerBullet* next){
 }
 void PlayerBullet::render(){
 	if(!inUse())	return;
-	// 加载整张 etama.png，用 colorkey 做透明（与 zako 同样方式）
-	if (etamaSheet == NULL) {
-		SDL_Surface* raw = IMG_Load("res/etama/etama.png");
-		if (raw != NULL) {
-			etamaSheet = SDL_DisplayFormat(raw);
-			SDL_FreeSurface(raw);
-			SDL_SetColorKey(etamaSheet, SDL_SRCCOLORKEY,
-				SDL_MapRGB(etamaSheet->format, 0, 0, 0));
-		}
-	}
-	if (etamaSheet == NULL) return;
 
 	if (bulletType_ == 0) {
-		// 主弹: col1, 始终正上, 无需旋转
-		SDL_Rect srcRect = {(Sint16)16, 0, 16, 16};
-		SDL_Rect dstRect = {(Sint16)((int)x_ - 8), (Sint16)((int)y_ - 8), 16, 16};
-		SDL_BlitSurface(etamaSheet, &srcRect, screen, &dstRect);
-	} else {
-		// 子机弹: col5, 旋转到速度方向
-		SDL_Rect srcRect = {(Sint16)(5 * 16), 0, 16, 16};
-		SDL_Surface* baseSprite = SDL_CreateRGBSurface(SDL_SWSURFACE,
-			16, 16, etamaSheet->format->BitsPerPixel,
-			etamaSheet->format->Rmask, etamaSheet->format->Gmask,
-			etamaSheet->format->Bmask, 0);
-		if (baseSprite != NULL) {
-			SDL_BlitSurface(etamaSheet, &srcRect, baseSprite, NULL);
-			SDL_SetColorKey(baseSprite, SDL_SRCCOLORKEY,
-				SDL_MapRGB(baseSprite->format, 0, 0, 0));
-			// 旋转角度: 速度方向 - 原图朝上(-PI/2)
-			float rotRad = atan2f(velY_, velX_) + 1.5707964f;
-			double rotDeg = rotRad * 180.0 / 3.14159265;
-			SDL_Surface* rotated = rotozoomSurface(baseSprite, rotDeg, 1.0, 0);
-			SDL_FreeSurface(baseSprite);
-			if (rotated != NULL) {
-				SDL_SetColorKey(rotated, SDL_SRCCOLORKEY,
-					SDL_MapRGB(rotated->format, 0, 0, 0));
-				SDL_Rect dstRect = {(Sint16)((int)x_ - rotated->w / 2),
-				                    (Sint16)((int)y_ - rotated->h / 2),
-				                    (Uint16)rotated->w, (Uint16)rotated->h};
-				SDL_BlitSurface(rotated, NULL, screen, &dstRect);
-				SDL_FreeSurface(rotated);
-				std::cout << "render bullet at (" << x_ << ", " << y_ << ") with angle " << rotDeg << std::endl;
-			}
+		static SDL_Surface* mainBulletBase = NULL;
+		if (mainBulletBase == NULL) {
+			SDL_Surface* raw = load_sprite("res/player00/player00.png", 0, 160, 64, 16, 64.0, 16.0);
+			mainBulletBase = rotate_image(raw, -90.0);
+			if (raw) SDL_FreeSurface(raw);
 		}
+		if (mainBulletBase == NULL) return;
+		SDL_Rect dstRect = {(Sint16)((int)x_ - mainBulletBase->w / 2 - 6),
+		                    (Sint16)((int)y_ - mainBulletBase->h / 2 - 6),
+		                    (Uint16)mainBulletBase->w, (Uint16)mainBulletBase->h};
+		SDL_BlitSurface(mainBulletBase, NULL, screen, &dstRect);
+	} else {
+		if (rotatedSurface_ == NULL) return;
+		SDL_Rect dstRect = {(Sint16)((int)x_ - pivotX_),
+		                    (Sint16)((int)y_ - pivotY_),
+		                    (Uint16)rotatedSurface_->w, (Uint16)rotatedSurface_->h};
+		SDL_BlitSurface(rotatedSurface_, NULL, screen, &dstRect);
 	}
 }
 

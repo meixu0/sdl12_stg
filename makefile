@@ -1,7 +1,7 @@
 CXX ?= clang++
 CC ?= clang
-CXXFLAGS = -Wall -std=c++20
-CFLAGS = -Wall
+CXXFLAGS = -Wall -std=c++20 -Isrc
+CFLAGS = -Wall -Isrc
 
 EXT =
 
@@ -26,38 +26,33 @@ else
     else
         CXXFLAGS += $(shell sdl-config --cflags)
         CFLAGS += $(shell sdl-config --cflags)
-        LDFLAGS = 
+        LDFLAGS =
         LIBS = $(shell sdl-config --libs) $(LIBS_BASE)
     endif
 endif
 
-TARGET_DIR = Release
-TARGET = $(TARGET_DIR)/stg$(EXT)
+SRC_DIR = src
+TARGET = stg$(EXT)
 
 SOURCES = main.cpp game.cpp MainMenu.cpp PlayerBullet.cpp player.cpp timer.cpp UI.cpp GameBackground.cpp cJSON.cpp cJSON_Utils.cpp LevelManager.cpp Enemy.cpp EnemyBulletManager.cpp
+SOURCES := $(addprefix $(SRC_DIR)/, $(SOURCES))
 
 OBJECTS = $(SOURCES:.cpp=.o)
 OBJECTS := $(OBJECTS:.c=.o)
 
-.PHONY: all clean create_dir bundle
+.PHONY: all clean
 
-all: create_dir $(TARGET) bundle
-
-create_dir:
-	@mkdir -p $(TARGET_DIR)
+all: $(TARGET)
+	@echo "Build complete: $(TARGET)"
+	@rm -f $(OBJECTS)
 
 $(TARGET): $(OBJECTS)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJECTS) $(LDFLAGS) $(LIBS)
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS) $(LIBS)
 
-bundle:
-	@echo "Bundling resources..."
-	@cp -r res $(TARGET_DIR)/res 2>/dev/null || true
-	@cp -r level $(TARGET_DIR)/level 2>/dev/null || true
-
-%.o: %.cpp
+$(SRC_DIR)/%.o: $(SRC_DIR)/%.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-%.o: %.c
+$(SRC_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:

@@ -22,11 +22,16 @@ private:
 	static bool bombInUse;
 	static int playerPowerData;
 	static SDL_Surface* player;
+	static SDL_Surface* reimuImageMiddle[4];
+	static SDL_Surface* reimuImageSide[7];
+	static SDL_Surface* reimuBulletSide;  // 子机子弹贴图 (64×16 → 旋转90° → 16×64)
 	bool isShooting;
 	int simpleShootCoolDown;
 	int bulletFireTimers[MAX_BULLETS_PER_RANK];
-	float targetEnemyX, targetEnemyY;  // 子机子弹追踪目标
-	bool hasTarget;                    // 是否有有效目标
+	float animTimer;  // 自机动画计时器
+	float targetEnemyX, targetEnemyY;
+	bool hasTarget;
+	float optionStreamAngle_;
 public:
 	Player();
 	PlayerBulletPool* playerBulletPool_;

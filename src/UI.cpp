@@ -17,6 +17,18 @@ void apply_surface(int x,int y, SDL_Surface *source, SDL_Surface *destination){
 	offset.y = y;
 	SDL_BlitSurface(source, NULL, destination, &offset);
 }
+void apply_surface_mirror(int x, int y, SDL_Surface* source, SDL_Surface* destination){
+	if (source == NULL || destination == NULL) return;
+	SDL_Surface* flipped = rotozoomSurfaceXY(source, 0.0, -1.0, 1.0, 0);
+	if (flipped == NULL) return;
+	if (source->flags & SDL_SRCCOLORKEY)
+		SDL_SetColorKey(flipped, SDL_SRCCOLORKEY, source->format->colorkey);
+	SDL_Rect offset;
+	offset.x = (Sint16)(x - flipped->w);
+	offset.y = (Sint16)y;
+	SDL_BlitSurface(flipped, NULL, destination, &offset);
+	SDL_FreeSurface(flipped);
+}
 Button::Button(int x, int y, int w, int h, RenderCallback render, ButtonActionCallback hover, ButtonActionCallback click, std::string buttonTitle, TTF_Font* font){
 	title = buttonTitle;
 	messageFont = font;
@@ -146,6 +158,14 @@ SDL_Surface *load_sprite(std::string filename, int srcX, int srcY, int srcW, int
 		SDL_MapRGB(zoomedImage->format, 0, 0, 0));
 	return zoomedImage;
 }
+SDL_Surface* rotate_image(SDL_Surface* src, double degrees){
+	if (src == NULL) return NULL;
+	SDL_Surface* rotated = rotozoomSurface(src, degrees, 1.0, 0);
+	if (rotated != NULL && (src->flags & SDL_SRCCOLORKEY))
+		SDL_SetColorKey(rotated, SDL_SRCCOLORKEY, src->format->colorkey);
+	return rotated;
+}
+
 TTF_Font* load_font(std::string filename, int fontsize){
 	TTF_Font* font = NULL;
 	font = TTF_OpenFont(filename.c_str(), fontsize);

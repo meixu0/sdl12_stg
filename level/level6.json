@@ -1,0 +1,110 @@
+{
+  "enemy_types": {
+    "s6_Sub2": {
+      "_desc": "ecldata6 Sub2",
+      "movePattern": 0,
+      "hp": 150,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": 0,
+      "speedY": 120,
+      "halfLife": 0,
+      "score": 1000,
+      "emitters": [
+        {
+          "_desc": "etRing: 6way x1rows",
+          "startDelay": 0,
+          "emitInterval": 1,
+          "burstCount": 1,
+          "burstInterval": 0.05,
+          "patternDesc": {
+            "patternType": 3,
+            "mainCnt": 6,
+            "subCnt": 1,
+            "angleOffset": 0,
+            "angleInterval": 0.185,
+            "speed1": 100,
+            "speed2": 80,
+            "spriteID": 2,
+            "hitboxRadius": 4,
+            "lifeTime": 6,
+            "spawnEffect": 0,
+            "soundEffect": 0,
+            "reboundEffect": 0
+          }
+        }
+      ]
+    },
+    "s6_Sub6": {
+      "_desc": "ecldata6 Sub6",
+      "movePattern": 0,
+      "hp": 150,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": 0,
+      "speedY": 120,
+      "halfLife": 0,
+      "score": 1000,
+      "emitters": [
+        {
+          "_desc": "etRing: 3way x1rows",
+          "startDelay": 0,
+          "emitInterval": 1,
+          "burstCount": 1,
+          "burstInterval": 0.05,
+          "patternDesc": {
+            "patternType": 3,
+            "mainCnt": 3,
+            "subCnt": 1,
+            "angleOffset": 0,
+            "angleInterval": 0.185,
+            "speed1": 80,
+            "speed2": 120,
+            "spriteID": 1,
+            "hitboxRadius": 4,
+            "lifeTime": 6,
+            "spawnEffect": 0,
+            "soundEffect": 0,
+            "reboundEffect": 0
+          }
+        }
+      ]
+    },
+    "s6_Sub10": {
+      "_desc": "ecldata6 Sub10",
+      "movePattern": 0,
+      "hp": 150,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": 0,
+      "speedY": 120,
+      "halfLife": 0,
+      "score": 1000,
+      "emitters": [
+        {
+          "_desc": "etRing: 6way x1rows",
+          "startDelay": 0,
+          "emitInterval": 1,
+          "burstCount": 1,
+          "burstInterval": 0.05,
+          "patternDesc": {
+            "patternType": 3,
+            "mainCnt": 6,
+            "subCnt": 1,
+            "angleOffset": 0,
+            "angleInterval": 0.185,
+            "speed1": 320,
+            "speed2": 80,
+            "spriteID": 5,
+            "hitboxRadius": 4,
+            "lifeTime": 6,
+            "spawnEffect": 0,
+            "soundEffect": 0,
+            "reboundEffect": 0
+          }
+        }
+      ]
+    }
+  },
+  "stage_6": []
+}

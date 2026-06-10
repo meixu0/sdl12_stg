@@ -4,7 +4,7 @@ const int GameBackground::BG_HEIGHT = 600;
 SDL_Surface* GameBackground::backgroundImage = NULL;
 GameBackground::GameBackground(){
     backgroundImage = NULL;
-    backgroundImage = load_image("level/game_background.jpeg", 544,600);
+    //backgroundImage = load_image("level/game_background.jpeg", 544,600);
     bgX = 0.0;
     bgY = 0.0;
     scrollSpeed = 300.0;
@@ -17,6 +17,7 @@ void GameBackground::background_update(float dt){
     }
 }
 void GameBackground::background_show(){
-    apply_surface(bgX, (int)bgY - BG_HEIGHT, backgroundImage, screen);
-    apply_surface(bgX, (int)bgY, backgroundImage, screen);
+    //apply_surface(bgX, (int)bgY - BG_HEIGHT, backgroundImage, screen);
+    //apply_surface(bgX, (int)bgY, backgroundImage, screen);
+    //todo:背景效果
 }

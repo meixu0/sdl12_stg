@@ -20,6 +20,7 @@ typedef void (*ButtonActionCallback)();
 typedef void (*RenderCallback)(SDL_Rect* box, SDL_Surface* dest, int state, std::string title, TTF_Font* messageFont);
 bool init();
 void apply_surface(int x,int y,SDL_Surface *source,SDL_Surface *destination);
+void apply_surface_mirror(int x, int y, SDL_Surface* source, SDL_Surface* destination);
 //button class
 class Button{
 private:
@@ -39,6 +40,7 @@ void draw_line(SDL_Surface* dest, int x1,int y1, int x2, int y2, Uint32 color);
 void render_win98(SDL_Rect* box, SDL_Surface* dest, int state, std::string buttonTitle, TTF_Font* font);
 SDL_Surface *load_image(std::string filename, double targetW, double targetH);
 SDL_Surface *load_sprite(std::string filename, int srcX, int srcY, int srcW, int srcH, double targetW, double targetH);
+SDL_Surface *rotate_image(SDL_Surface* src, double degrees);
 bool load_font(std::string fontfile);
 TTF_Font* load_font(std::string filename, int fontsize);
 #endif

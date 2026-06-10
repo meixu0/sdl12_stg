@@ -9,8 +9,9 @@ Game::Game(){
 	fpsSurface = NULL;
 	lastUpdate = 0;
 	fpsFont = load_font("res/menufont.ttf", 16);
-	levelManager.read_stage_data("level/level.json");
+	levelManager.load_stage(1);
 	levelManager.init_enemy_pool();
+	levelManager.start_stage();
 }
 void Game::show_fps(Uint32 current_fps){
 	//todo: fps monitor
@@ -78,31 +79,35 @@ void Game::run(){
 		if (dt > 1.0f / 15.0f) dt = 1.0f / 30.0f;
 		gameBackground.background_update(dt);
 		player1.player_move();
-		// 子机子弹追踪目标: 左移→最左敌机, 右移→最右敌机
+		// 子机子弹追踪目标: 取离屏幕边缘最远的敌机（中轴左侧→距左边界, 右侧→距右边界, 取大者）
 		{
-			float bestX = -1;
+			static const float PLAY_CENTER_X = 272.0f;
+			static const float PLAY_WIDTH_F  = 544.0f;
+			float bestDist = -1.0f;
+			float bestEnemyX = 0, bestEnemyY = 0;
 			bool found = false;
 			int enemyCount = levelManager.get_enemy_count();
 			for (int i = 0; i < enemyCount; i++) {
 				Enemy* e = levelManager.get_enemy(i);
 				if (!e || !e->is_active()) continue;
-				float ex = e->get_x();
-				if (!found) { bestX = ex; found = true; continue; }
-				if (player1.get_player_x_vel() < 0 && ex < bestX) bestX = ex;       // 左移→最左
-				else if (player1.get_player_x_vel() > 0 && ex > bestX) bestX = ex;  // 右移→最右
-			}
-			if (found) {
-				for (int i = 0; i < enemyCount; i++) {
-					Enemy* e = levelManager.get_enemy(i);
-					if (!e || !e->is_active()) continue;
-					if (e->get_x() == bestX) {
-						player1.set_homing_target(e->get_x(), e->get_y());
-						break;
-					}
+				float cx = e->get_x() + e->get_hitbox_w() * 0.5f;
+				float cy = e->get_y() + e->get_hitbox_h() * 0.5f;
+				float dist;
+				if (cx < PLAY_CENTER_X)
+					dist = cx;
+				else
+					dist = PLAY_WIDTH_F - cx;
+				if (dist > bestDist) {
+					bestDist = dist;
+					bestEnemyX = cx;
+					bestEnemyY = cy;
+					found = true;
 				}
-			} else {
-				player1.set_homing_target(272, 0);
 			}
+			if (found)
+				player1.set_homing_target(bestEnemyX, bestEnemyY);
+			else
+				player1.set_homing_target(272, 0);
 		}
 		player1.update_simple_shoot();
 		playerBulletPool_.update();

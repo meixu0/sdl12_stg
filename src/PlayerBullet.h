@@ -16,6 +16,9 @@ struct PlayerBulletConfig{
 	int pPointRequire;
 	float x;
 	float y;
+	float targetX;
+	float targetY;
+	float sideBulletRotateAngle;
 };
 struct PlayerPowerRank {
 	int numBullets;
@@ -43,14 +46,20 @@ private:
 	int framesLeft;
 	PlayerBullet* next_;
 	bool isHit;
-	float velX_, velY_;  // 预计算速度分量
+	float sideBulletRotateAngle_;
+	float velX_, velY_;     // 预计算速度分量
+	float targetX_, targetY_; // 子机弹追踪目标
+	float homingSpeed_;      // 当前追踪速度
+	SDL_Surface* rotatedSurface_; // 子机弹预旋转贴图
+	float pivotX_, pivotY_;  // 左下角旋转中心在贴图中的偏移
 public:
 	PlayerBullet();
 	static SDL_Surface* bulletSprites[16];
+	static SDL_Surface* reimuBulletSideRaw;
+	static SDL_Surface* reimuBulletSide;
 	void init(PlayerBulletConfig& config);
 	bool bullet_move();
 	bool inUse() const;
-	// 碰撞检测用
 	float get_x() const { return x_; }
 	float get_y() const { return y_; }
 	float get_hw() const { return wHitbox_ / 2.0f; }

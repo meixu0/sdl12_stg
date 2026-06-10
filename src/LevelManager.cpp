@@ -1,6 +1,38 @@
 #include "LevelManager.h"
 
-LevelManager::LevelManager() : stage_enemies_data(NULL) {
+LevelManager::LevelManager() : stage_enemies_data(NULL), current_stage(1), stage_state(STAGE_LOADING) {
+}
+
+// ── 关卡状态机 ──
+
+void LevelManager::start_stage() {
+    stage_state = STAGE_RUNNING;
+    std::cout << "Stage " << current_stage << " started." << std::endl;
+}
+
+void LevelManager::trigger_boss() {
+    stage_state = STAGE_BOSS;
+    std::cout << "Stage " << current_stage << " boss triggered." << std::endl;
+}
+
+void LevelManager::clear_stage() {
+    stage_state = STAGE_CLEAR;
+    std::cout << "Stage " << current_stage << " cleared!" << std::endl;
+    // TODO: 掉落结算、分数统计
+}
+
+void LevelManager::next_stage() {
+    if (current_stage >= TOTAL_STAGES) {
+        stage_state = STAGE_ALL_CLEAR;
+        std::cout << "All stages cleared!" << std::endl;
+        return;
+    }
+    clear_enemy_pool();
+    current_stage++;
+    load_stage(current_stage);
+    init_enemy_pool();
+    stage_state = STAGE_RUNNING;
+    std::cout << "Stage " << current_stage << " started." << std::endl;
 }
 
 LevelManager::~LevelManager() {
@@ -9,6 +41,10 @@ LevelManager::~LevelManager() {
         cJSON_Delete(stage_enemies_data);
         stage_enemies_data = NULL;
     }
+}
+
+std::string LevelManager::stage_key() const {
+    return "stage_" + std::to_string(current_stage);
 }
 
 void LevelManager::clear_enemy_pool() {
@@ -21,28 +57,29 @@ void LevelManager::clear_enemy_pool() {
     enemy_pool.clear();
 }
 
-void LevelManager::read_stage_data(const std::string file_path) {
+void LevelManager::load_stage(int stage) {
+    current_stage = stage;
+    stage_state = STAGE_LOADING;
+    std::string file_path = "level/level" + std::to_string(stage) + ".json";
+
     std::ifstream file(file_path);
     if (!file.is_open()) {
         std::cerr << "Failed to open file: " << file_path << std::endl;
         return;
     }
-    
-    // Read entire file into a string using getline
+
     std::string json_string;
     std::string line;
     while (std::getline(file, line)) {
         json_string += line;
     }
     file.close();
-    
-    // Delete old data if exists
+
     if (stage_enemies_data != NULL) {
         cJSON_Delete(stage_enemies_data);
         stage_enemies_data = NULL;
     }
-    
-    // Parse JSON string
+
     stage_enemies_data = cJSON_Parse(json_string.c_str());
     if (stage_enemies_data == NULL) {
         const char* error_ptr = cJSON_GetErrorPtr();
@@ -51,16 +88,16 @@ void LevelManager::read_stage_data(const std::string file_path) {
         }
         return;
     }
-    
-    // Get stage_1 array from the root object
-    cJSON* stage_1 = cJSON_GetObjectItem(stage_enemies_data, "stage_1");
-    if (!cJSON_IsArray(stage_1)) {
-        std::cerr << "stage_1 is not a valid array in JSON" << std::endl;
+
+    std::string key = stage_key();
+    cJSON* stage_array = cJSON_GetObjectItem(stage_enemies_data, key.c_str());
+    if (!cJSON_IsArray(stage_array)) {
+        std::cerr << key << " is not a valid array in JSON" << std::endl;
         return;
     }
-    
-    std::cout << "Successfully loaded enemy data from: " << file_path << std::endl;
-    std::cout << "Total enemies in stage_1: " << cJSON_GetArraySize(stage_1) << std::endl;
+
+    std::cout << "Successfully loaded: " << file_path << std::endl;
+    std::cout << "Total enemies in " << key << ": " << cJSON_GetArraySize(stage_array) << std::endl;
 }
 
 void LevelManager::init_enemy_pool() {
@@ -72,19 +109,20 @@ void LevelManager::init_enemy_pool() {
     // Clear existing pool
     clear_enemy_pool();
     
-    // Get stage_1 array
-    cJSON* stage_1 = cJSON_GetObjectItem(stage_enemies_data, "stage_1");
-    if (!cJSON_IsArray(stage_1)) {
-        std::cerr << "Error: stage_1 is not a valid array in JSON" << std::endl;
+    // Get stage array by current stage key
+    std::string key = stage_key();
+    cJSON* stage_array = cJSON_GetObjectItem(stage_enemies_data, key.c_str());
+    if (!cJSON_IsArray(stage_array)) {
+        std::cerr << "Error: " << key << " is not a valid array in JSON" << std::endl;
         return;
     }
-    
-    int array_size = cJSON_GetArraySize(stage_1);
+
+    int array_size = cJSON_GetArraySize(stage_array);
     
     // Iterate through each enemy in stage_1
     cJSON* enemy_item = NULL;
     for (int i = 0; i < array_size; ++i) {
-        enemy_item = cJSON_GetArrayItem(stage_1, i);
+        enemy_item = cJSON_GetArrayItem(stage_array, i);
         if (enemy_item == NULL) {
             continue;
         }
@@ -259,7 +297,6 @@ void LevelManager::init_enemy_pool() {
         config.bezierEndY = bezierEndY;
         config.bezierDuration = bezierDuration;
 
-        // 新追踪字段
         float moveAngle = 0.0f, angularVelocity = 0.0f, acceleration = 0.0f, minPlayerDist = 80.0f;
         cJSON* ma = cJSON_GetObjectItem(enemy_item, "moveAngle");
         cJSON* av = cJSON_GetObjectItem(enemy_item, "angularVelocity");
@@ -274,7 +311,6 @@ void LevelManager::init_enemy_pool() {
         config.acceleration = acceleration;
         config.minPlayerDist = minPlayerDist;
 
-        // Create Enemy object and initialize
         Enemy* new_enemy = new Enemy();
 
         // --- emitterConfig parsing ---
