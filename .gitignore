@@ -7,6 +7,7 @@
 # binary
 *.o
 *.obj
+/stg
 
 # .DS_Store
 .DS_Store

@@ -1,0 +1,7 @@
+#define ITEM_POWER_SMALL 0
+#define ITEM_POINT 1
+#define ITEM_POEWR_BIG 2
+#define ITEM_BOMB 3
+#define ITEM_FULL_POWER 4
+#define ITEM_LIFE 5
+#define ITEM_POINT_BULLET 6
