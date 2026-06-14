@@ -29,17 +29,6 @@ static void init_zako_sprites() {
     zakoRingSprite[1][1] = load_sprite("res/stgenm/enemy.png", 48, 80, 16, 16, 16.0, 16.0);//yellow ring
     spritesLoaded = true;
 }
-
-static SDL_Surface* get_zako_sprite(int row, int col) {
-    if (zakoSprites[row][col] == NULL) {
-        zakoSprites[row][col] = load_sprite(
-            "res/stgenm/enemy.png",
-            col * 32, row * 32, 32, 32,
-            32.0, 32.0);
-    }
-    return zakoSprites[row][col];
-}
-
 namespace {
     inline float easeLinear(float t) { return 1.0f - t; }
     inline float easeDecelerate(float t) { return 1.0f - t * t; }
@@ -59,8 +48,11 @@ Enemy::Enemy() : x(0.0), y(0.0), startX(0.0), startY(0.0), playerX(0.0), playerY
     moveAngle(0), angularVelocity(0), accel(0), minPlayerDist(80.0f),
     spriteRow(0), spriteAnimTimer(0.0f),
     isDead(false),
-    axisSpeedX(0), axisSpeedY(0) {
+    axisSpeedX(0), axisSpeedY(0), enemyType(0), enemyID(0) {
     init_zako_sprites();
+}
+SDL_Surface* Enemy::get_zako_sprite(int col) {
+    return zakoSprites[enemyType][col];
 }
 void Enemy::init(EnemyConfig config, float x_, float y_){
     x = x_;
@@ -71,6 +63,8 @@ void Enemy::init(EnemyConfig config, float x_, float y_){
     movePattern = config.movePattern;
     emergeTime = config.emergeTime;
     durationTime = config.durationTime;
+    enemyType = config.enemyType;
+    enemyID = config.enemyID;
     hitboxHeight = config.hitboxHeight;
     hitboxWidth = config.hitboxWidth;
     speedX = config.speedX;
@@ -334,7 +328,7 @@ void Enemy::enemy_attack(float dt){
 
         if (burstMax == 1) {
             if (activeTime >= ec.emitInterval) {
-                bulletManager->spawn_pattern(ec.patternDesc, x, y, playerX, playerY);
+                bulletManager->spawn_pattern(ec.patternDesc, x, y, playerX, playerY, enemyType, enemyID);
                 rt.timer = ec.startDelay;
             }
             continue;
@@ -351,7 +345,7 @@ void Enemy::enemy_attack(float dt){
         }
 
         if (activeTime >= ec.burstInterval) {
-            bulletManager->spawn_pattern(ec.patternDesc, x, y, playerX, playerY);
+            bulletManager->spawn_pattern(ec.patternDesc, x, y, playerX, playerY, enemyType, enemyID);
             rt.burstRemaining--;
             rt.timer = ec.startDelay;
             if (rt.burstRemaining > 0) {
@@ -374,7 +368,7 @@ void Enemy::enemy_show(){
     int frameIndex = (tick > 3) ? (7 - tick) : tick;
 
     int col = colBase + frameIndex;
-    SDL_Surface* sprite = get_zako_sprite(spriteRow, col);
+    SDL_Surface* sprite = get_zako_sprite(col);
     if (sprite) {
         apply_surface((int)x, (int)y, sprite, screen);
     }

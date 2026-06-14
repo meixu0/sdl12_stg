@@ -11,13 +11,14 @@ struct Bullet{
     float y;
     float speedX;
     float speedY;
-    int enemyID;
     int state;
     float lifeTime;
     float hitboxRadius;
     int color;
     float acceleration;
     float angularVelocity;
+    int enemyType;
+    int enemyID;
 };
 struct EnemyBulletPatternDesc{
     int patternType;
@@ -49,8 +50,8 @@ private:
 public:
     EnemyBulletManager();
     ~EnemyBulletManager();
-    void spawn_bullet(float x, float y, float angle, float speed, int spriteID, float hitboxRadius, float lifeTime, int spawnEffect, int soundEffect, int reboundEffect);
-    void spawn_pattern(const EnemyBulletPatternDesc& desc, float originX, float originY, float playerX, float playerY);
+    void spawn_bullet(float x, float y, float angle, float speed, int spriteID, float hitboxRadius, float lifeTime, int spawnEffect, int soundEffect, int reboundEffect, int enemyType, int enemyID);
+    void spawn_pattern(const EnemyBulletPatternDesc& desc, float originX, float originY, float playerX, float playerY, int enemyType, int enemyID);
     void update(float dt);
     void render();
     void clear_all();

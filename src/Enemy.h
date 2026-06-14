@@ -32,6 +32,8 @@ struct EnemyConfig{
     float angularVelocity;
     float acceleration;      // 标量加速度 px/s²
     float minPlayerDist;     // 与玩家最小距离
+    int enemyType;
+    int enemyID;
 };
 class Enemy{
 private:
@@ -42,6 +44,8 @@ private:
     float playerX;
     float playerY;
     int hp;
+    int enemyType;
+    int enemyID;
     bool isActive;
     bool isDead;   // 被击破后阻止 enemy_move 重新激活
     float speedX;
@@ -81,6 +85,7 @@ private:
     void compute_axis_speed();  // 根据 movePattern 计算 axisSpeed
     float axisSpeedX;         // 本帧速度 x 分量
     float axisSpeedY;         // 本帧速度 y 分量
+    SDL_Surface* get_zako_sprite(int row);
 public:
     struct EmitterRuntime {
         float timer;

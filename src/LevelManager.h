@@ -4,6 +4,7 @@
 #include <string>
 #include "cJSON.h"
 #include "Enemy.h"
+#include "EnemyType.h"
 
 enum StageState {
     STAGE_LOADING,   // 关卡加载中

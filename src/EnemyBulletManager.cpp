@@ -1,5 +1,8 @@
 #include "EnemyBulletManager.h"
-static SDL_Surface* simpleBulletImage = NULL;
+static SDL_Surface* redBulletImage = NULL;
+static SDL_Surface* greenBulletImage = NULL;
+static SDL_Surface* blueBulletImage = NULL;
+static SDL_Surface* yellowBulletImage = NULL;
 static float randf() {
     return (float)rand() / (float)RAND_MAX;
 }
@@ -15,7 +18,7 @@ EnemyBulletManager::~EnemyBulletManager(){
 }
 
 void EnemyBulletManager::spawn_bullet(float originX, float originY, float angle, float speed,
-    int spriteID, float hitboxRadius, float lifeTime, int spawnEffect, int soundEffect, int reboundEffect) {
+    int spriteID, float hitboxRadius, float lifeTime, int spawnEffect, int soundEffect, int reboundEffect, int enemyType, int enemyID) {
     // 从 nextBulletIndex 开始找空闲槽位
     for (int i = 0; i < POOL_SIZE; i++) {
         int idx = (nextBulletIndex + i) % POOL_SIZE;
@@ -31,13 +34,15 @@ void EnemyBulletManager::spawn_bullet(float originX, float originY, float angle,
             b.color = spriteID;
             b.acceleration = 0.0f;
             b.angularVelocity = 0.0f;
+            b.enemyType = enemyType;
+            b.enemyID = enemyID;
             nextBulletIndex = (idx + 1) % POOL_SIZE;
             return;
         }
     }
 }
 
-void EnemyBulletManager::spawn_pattern(const EnemyBulletPatternDesc& desc, float originX, float originY, float playerX, float playerY){
+void EnemyBulletManager::spawn_pattern(const EnemyBulletPatternDesc& desc, float originX, float originY, float playerX, float playerY, int enemyType, int enemyID) {
     float aimAngle = atan2f(playerY - originY, playerX - originX);
     for(int layer=0; layer < desc.subCnt; layer++){
         float layerSpeed = desc.speed1;
@@ -81,7 +86,7 @@ void EnemyBulletManager::spawn_pattern(const EnemyBulletPatternDesc& desc, float
                     speed = layerSpeed;
                     break;
             }
-            spawn_bullet(originX, originY, angle, speed, desc.spriteID, desc.hitboxRadius, desc.lifeTime, desc.spawnEffect, desc.soundEffect, desc.reboundEffect);
+            spawn_bullet(originX, originY, angle, speed, desc.spriteID, desc.hitboxRadius, desc.lifeTime, desc.spawnEffect, desc.soundEffect, desc.reboundEffect, enemyType, enemyID);
         }
     }
 }
@@ -105,11 +110,11 @@ void EnemyBulletManager::update(float dt){
         b.y += b.speedY * dt;
         b.lifeTime -= dt;
 
-        bool outOfBounds = (b.x + 2.0f > 544.0f)
-                        || (b.y + 2.0f > 600.0f)
-                        || (b.x - 2.0f < 0.0f);
+        bool outOfBounds = (b.x + 16.0f > 544.0f)
+                        || (b.y + 16.0f > 600.0f)
+                        || (b.x - 16.0f < 0.0f);
 
-        if (b.y + 2.0f < -64.0f) outOfBounds = true;
+        if (b.y + 16.0f < -64.0f) outOfBounds = true;
 
         // lifeTime 留给符卡回收 (despawn_all_for_spellcard)
         if (outOfBounds) {
@@ -127,13 +132,35 @@ void EnemyBulletManager::despawn_all_for_spellcard(){
 }
 
 void EnemyBulletManager::render(){
-    if(simpleBulletImage == NULL){
-        simpleBulletImage = load_image("res/simple_bullet.png", 4.0, 4.0);
+    if(redBulletImage == NULL){
+        redBulletImage = load_sprite("res/stgenm/enemy.png", 256, 128, 32, 32, 16, 16);
+    }
+    if(greenBulletImage == NULL){
+        greenBulletImage = load_sprite("res/stgenm/enemy.png", 256, 160, 32, 32, 16, 16);
+    }
+    if(blueBulletImage == NULL){
+        blueBulletImage = load_sprite("res/stgenm/enemy.png", 256, 192, 32, 32, 16, 16);
+    }
+    if(yellowBulletImage == NULL){
+        yellowBulletImage = load_sprite("res/stgenm/enemy.png", 256, 224, 32, 32, 16, 16);
     }
     for (int i = 0; i < POOL_SIZE; i++) {
         if (bullets[i].state != ALIVE) continue;
         Bullet& b = bullets[i];
-        apply_surface((int)(b.x - 2), (int)(b.y - 2), simpleBulletImage, screen);
+        switch (b.enemyType) {
+            case 0:
+                apply_surface((int)(b.x - 2), (int)(b.y - 2), redBulletImage, screen);
+                break;
+            case 1:
+                apply_surface((int)(b.x - 2), (int)(b.y - 2), greenBulletImage, screen);
+                break;
+            case 2:
+                apply_surface((int)(b.x - 2), (int)(b.y - 2), blueBulletImage, screen);
+                break;
+            case 3:
+                apply_surface((int)(b.x - 2), (int)(b.y - 2), yellowBulletImage, screen);
+                break;
+        }
     }
 }
 

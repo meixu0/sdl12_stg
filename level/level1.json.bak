@@ -34,8 +34,7 @@
             "reboundEffect": 0
           }
         }
-      ],
-      "itemDrop": "random"
+      ]
     },
     "zako_stream": {
       "_desc": "Sub13 - fast random dash, no shooting",
@@ -46,8 +45,7 @@
       "speedX": 0,
       "speedY": 222,
       "halfLife": 0,
-      "score": 500,
-      "itemDrop": "random"
+      "score": 500
     },
     "zako_initial": {
       "_desc": "Sub14 - first zako, no shooting",
@@ -60,8 +58,7 @@
       "halfLife": 0.6,
       "score": 1000,
       "angularVelocity": 2.5,
-      "minPlayerDist": 100,
-      "itemDrop": "power_small"
+      "minPlayerDist": 100
     },
     "fairy_blue": {
       "_desc": "Sub1 - moveDirTime down→ sinewave, etFanAimed + etRing",
@@ -122,8 +119,7 @@
             "reboundEffect": 0
           }
         }
-      ],
-      "itemDrop": "power_big"
+      ]
     },
     "fairy_red": {
       "_desc": "Sub3 - same as Sub1, different bullet counts per difficulty",
@@ -184,8 +180,7 @@
             "reboundEffect": 0
           }
         }
-      ],
-      "itemDrop": "power_big"
+      ]
     },
     "fairy_green": {
       "_desc": "Sub5 - etRing burst + 4 familiars",
@@ -220,8 +215,7 @@
             "reboundEffect": 0
           }
         }
-      ],
-      "itemDrop": "power_big"
+      ]
     },
     "fairy_purple": {
       "_desc": "Sub11 - etRing + 4 familiars",
@@ -256,8 +250,7 @@
             "reboundEffect": 0
           }
         }
-      ],
-      "itemDrop": "power_big"
+      ]
     },
     "midboss_rumia": {
       "_desc": "Sub15 - midboss entry, spellcard trigger",
@@ -268,8 +261,7 @@
       "speedX": 0,
       "speedY": 90,
       "halfLife": 0,
-      "score": 100000,
-      "itemDrop": "full_power"
+      "score": 100000
     },
     "zako_ring": {
       "_desc": "ecldata1 Sub23",
@@ -304,8 +296,7 @@
             "reboundEffect": 0
           }
         }
-      ],
-      "itemDrop": "random"
+      ]
     },
     "fairy_yellow": {
       "_desc": "ecldata1 Sub29",
@@ -340,8 +331,7 @@
             "reboundEffect": 0
           }
         }
-      ],
-      "itemDrop": "power_small"
+      ]
     },
     "fairy_ring": {
       "_desc": "ecldata1 Sub30",
@@ -376,8 +366,7 @@
             "reboundEffect": 0
           }
         }
-      ],
-      "itemDrop": "random"
+      ]
     },
     "zako_ring_slow": {
       "_desc": "ecldata1 Sub31",
@@ -412,8 +401,7 @@
             "reboundEffect": 0
           }
         }
-      ],
-      "itemDrop": "random"
+      ]
     },
     "fairy_ringaimed": {
       "_desc": "ecldata1 Sub34",
@@ -448,8 +436,7 @@
             "reboundEffect": 0
           }
         }
-      ],
-      "itemDrop": "power_small"
+      ]
     },
     "zako_ring_fast": {
       "_desc": "ecldata1 Sub40",
@@ -484,8 +471,7 @@
             "reboundEffect": 0
           }
         }
-      ],
-      "itemDrop": "random"
+      ]
     },
     "zako_ring_wide": {
       "_desc": "ecldata1 Sub41",
@@ -520,8 +506,7 @@
             "reboundEffect": 0
           }
         }
-      ],
-      "itemDrop": "random"
+      ]
     },
     "zako_fan": {
       "_desc": "ecldata1 Sub42",
@@ -556,8 +541,7 @@
             "reboundEffect": 0
           }
         }
-      ],
-      "itemDrop": "random"
+      ]
     },
     "zako_ring_dense": {
       "_desc": "ecldata1 Sub47",
@@ -592,8 +576,7 @@
             "reboundEffect": 0
           }
         }
-      ],
-      "itemDrop": "random"
+      ]
     },
     "zako_ring_sparse": {
       "_desc": "ecldata1 Sub49",
@@ -628,8 +611,7 @@
             "reboundEffect": 0
           }
         }
-      ],
-      "itemDrop": "random"
+      ]
     }
   },
   "stage_1": [
@@ -740,7 +722,7 @@
     },
     {
       "id": "blue_01",
-      "enemyType": "fairy_red",
+      "enemyType": "fairy_blue",
       "spawn_time": 8.5,
       "start_pos": [
         320,
@@ -1028,7 +1010,7 @@
     },
     {
       "id": "blue_02",
-      "enemyType": "fairy_red",
+      "enemyType": "fairy_blue",
       "spawn_time": 16.83,
       "start_pos": [
         120,
@@ -1775,7 +1757,7 @@
     },
     {
       "id": "phase2_blue",
-      "enemyType": "fairy_red",
+      "enemyType": "fairy_blue",
       "spawn_time": 43.83,
       "start_pos": [
         80,
@@ -2016,39 +1998,5 @@
         128
       ]
     }
-  ],
-  "randomItemTable": [
-    "power_small",
-    "power_small",
-    "point",
-    "power_small",
-    "point",
-    "power_small",
-    "power_small",
-    "point",
-    "point",
-    "point",
-    "power_small",
-    "power_small",
-    "power_small",
-    "point",
-    "point",
-    "power_small",
-    "point",
-    "power_small",
-    "point",
-    "power_small",
-    "point",
-    "power_small",
-    "point",
-    "power_small",
-    "point",
-    "power_small",
-    "power_small",
-    "point",
-    "point",
-    "point",
-    "power_small",
-    "power_big"
   ]
 }

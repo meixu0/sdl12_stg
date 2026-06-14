@@ -233,6 +233,22 @@ void LevelManager::init_enemy_pool() {
             targetY = (float)targetY_item->valuedouble;
         }
 
+        //extract enemyType
+        int enemyType_ = 0;
+        cJSON* enemyType_item = cJSON_GetObjectItem(enemy_item, "enemyType");
+        if (enemyType_item && cJSON_IsString(enemyType_item)) {
+            std::string enemyType_str = enemyType_item->valuestring;
+            if (enemyType_str == "zako_blue") {
+                enemyType_ = ZAKO_BLUE;
+            } else if (enemyType_str == "fairy_red") {
+                enemyType_ = FAIRY_RED;
+            } else if (enemyType_str == "fairy_green") {
+                enemyType_ = FAIRY_GREEN;
+            } else if (enemyType_str == "fairy_blue") {
+                enemyType_ = FAIRY_BLUE;
+            }
+        }
+
         // Set configuration values
         config.movePattern = move_type;
         config.emergeTime = emergeTime;
@@ -245,6 +261,7 @@ void LevelManager::init_enemy_pool() {
         config.targetY = targetY;
         config.startX = start_x;
         config.startY = start_y;
+        config.enemyType = enemyType_;
 
         float halfLife = 0.0f;
         cJSON* halfLife_item = cJSON_GetObjectItem(enemy_item, "halfLife");
@@ -360,7 +377,7 @@ void LevelManager::init_enemy_pool() {
         enemy_pool.push_back(new_enemy);
         
         std::cout << "Enemy " << i << " created: hp=" << config.hp 
-                  << ", pos=(" << start_x << "," << start_y << ")" << " emergeTime=" << config.emergeTime << std::endl;
+                  << ", pos=(" << start_x << "," << start_y << ")" << " emergeTime=" << config.emergeTime<< " enemyType=" << config.enemyType << std::endl;
     }
     
     std::cout << "Enemy pool initialized with " << enemy_pool.size() << " enemies" << std::endl;
