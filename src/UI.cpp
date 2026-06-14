@@ -144,6 +144,32 @@ SDL_Surface *load_sprite(std::string filename, int srcX, int srcY, int srcW, int
 	SDL_FillRect(clippedImage, NULL, SDL_MapRGB(clippedImage->format, 0, 0, 0));
 	SDL_Rect clip = {(Sint16)srcX, (Sint16)srcY, (Uint16)srcW, (Uint16)srcH};
 	SDL_BlitSurface(loadedImage, &clip, clippedImage, NULL);
+
+	// Scan outermost ring for first non-transparent pixel to use as color key
+	Uint8 keyR = 0, keyG = 0, keyB = 0;
+	if (SDL_MUSTLOCK(clippedImage)) SDL_LockSurface(clippedImage);
+	SDL_PixelFormat *keyFmt = clippedImage->format;
+	bool hasAlpha = (keyFmt->Amask != 0);
+	#define KEY_ALPHA(p) (hasAlpha ? (Uint8)(((p) & keyFmt->Amask) >> keyFmt->Ashift) : 255)
+	#define KEY_PIXEL(surf, x, y) ((Uint32 *)((Uint8 *)(surf)->pixels + (y) * (surf)->pitch))[x]
+
+	for (int sx = 0; sx < srcW; sx++) {
+		Uint32 p = KEY_PIXEL(clippedImage, sx, 0);
+		if (KEY_ALPHA(p) != 0) { SDL_GetRGB(p, keyFmt, &keyR, &keyG, &keyB); goto keyfound; }
+		p = KEY_PIXEL(clippedImage, sx, srcH - 1);
+		if (KEY_ALPHA(p) != 0) { SDL_GetRGB(p, keyFmt, &keyR, &keyG, &keyB); goto keyfound; }
+	}
+	for (int sy = 1; sy < srcH - 1; sy++) {
+		Uint32 p = KEY_PIXEL(clippedImage, 0, sy);
+		if (KEY_ALPHA(p) != 0) { SDL_GetRGB(p, keyFmt, &keyR, &keyG, &keyB); goto keyfound; }
+		p = KEY_PIXEL(clippedImage, srcW - 1, sy);
+		if (KEY_ALPHA(p) != 0) { SDL_GetRGB(p, keyFmt, &keyR, &keyG, &keyB); goto keyfound; }
+	}
+	keyfound:
+	if (SDL_MUSTLOCK(clippedImage)) SDL_UnlockSurface(clippedImage);
+	#undef KEY_ALPHA
+	#undef KEY_PIXEL
+
 	SDL_FreeSurface(loadedImage);
 	SDL_Surface* formattedImage = SDL_DisplayFormat(clippedImage);
 	SDL_FreeSurface(clippedImage);
@@ -155,7 +181,7 @@ SDL_Surface *load_sprite(std::string filename, int srcX, int srcY, int srcW, int
 	SDL_FreeSurface(formattedImage);
 	if(zoomedImage == NULL)	return NULL;
 	SDL_SetColorKey(zoomedImage, SDL_SRCCOLORKEY,
-		SDL_MapRGB(zoomedImage->format, 0, 0, 0));
+		SDL_MapRGB(zoomedImage->format, keyR, keyG, keyB));
 	return zoomedImage;
 }
 SDL_Surface* rotate_image(SDL_Surface* src, double degrees){
