@@ -106,6 +106,8 @@ void Player::update_simple_shoot(){
 				while(diff > 3.14159265f) diff -= 6.2831853f;
 				while(diff < -3.14159265f) diff += 6.2831853f;
 				optionStreamAngle_ += diff * 0.08f;
+				cfg.targetX = targetEnemyX;
+				cfg.targetY = targetEnemyY;
 			} else {
 				float diff = -1.5707963f - optionStreamAngle_;
 				while(diff > 3.14159265f) diff -= 6.2831853f;
@@ -183,9 +185,9 @@ void Player::show(){
 		apply_surface(x, y, sprite, screen);
 }
 
-PlayerPosition Player::get_player_position() const {
+PlayerPosition Player::get_player_position(){
 	PlayerPosition pos;
-	pos.x = static_cast<float>(x + PLAYER_WIDTH / 2);
-	pos.y = static_cast<float>(y + PLAYER_HEIGHT / 2);
+	pos.x = (float)(x + PLAYER_WIDTH / 2);
+	pos.y = (float)(y + PLAYER_HEIGHT / 2);
 	return pos;
 }

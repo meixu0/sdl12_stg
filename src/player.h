@@ -43,5 +43,5 @@ public:
 	void update_player_bullet_collision_detection();
 	void show();
 	int get_player_x_vel() const { return xVel; }
-	PlayerPosition get_player_position() const;
+	PlayerPosition get_player_position();
 };

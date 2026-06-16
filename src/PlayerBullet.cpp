@@ -72,8 +72,14 @@ PlayerBullet::PlayerBullet(){
 	targetX_ = 0;
 	targetY_ = 0;
 	homingSpeed_ = 0;
+	if(reimuBulletSideRaw == NULL){
+		reimuBulletSideRaw = load_sprite("res/player00/player00.png", 0, 144, 64, 16, 64.0, 16.0);
+		reimuBulletSide = rotate_image(reimuBulletSideRaw, -90.0);
+	}
+	/*
 	reimuBulletSideRaw = load_sprite("res/player00/player00.png", 0, 144, 64, 16, 64.0, 16.0);
 	reimuBulletSide = rotate_image(reimuBulletSideRaw, -90.0);
+	*/
 	sideBulletRotateAngle_ = 0.0f;
 	rotatedSurface_ = NULL;
 	pivotX_ = 0.0f;
@@ -158,7 +164,7 @@ bool PlayerBullet::bullet_move(){
 	int sprRight = sprLeft + (rotatedSurface_ ? rotatedSurface_->w : 16);
 	int sprBottom = sprTop  + (rotatedSurface_ ? rotatedSurface_->h : 64);
 	if(x_ < -16 || x_ > 528 || y_ < -16 || y_ > 616 || framesLeft <= 0 || isHit ||
-	   sprRight < -32 || sprLeft > 576 - 64 || sprBottom < -32 || sprTop > 632){
+	   sprRight < -32 || sprRight > 576 || sprBottom < -32 || sprBottom > 632){
 		if (rotatedSurface_ != NULL)	SDL_FreeSurface(rotatedSurface_); rotatedSurface_ = NULL; 
 		isActive = false;
 		return true;
