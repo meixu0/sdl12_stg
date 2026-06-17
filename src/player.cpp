@@ -1,5 +1,6 @@
 #include "player.h"
 #include "LevelManager.h"
+#include "ItemManager.h"
 const int Player::PLAYER_HEIGHT = 48;
 const int Player::PLAYER_WIDTH = 32;
 const int Player::PLAY_HEIGHT = 600;
@@ -34,6 +35,7 @@ Player::Player(){
 	targetEnemyY = 0;
 	hasTarget = false;
 	optionStreamAngle_ = -1.5707963f;
+	itemMgr = NULL;
 	for (int i = 0; i < MAX_BULLETS_PER_RANK; i++) {
 		bulletFireTimers[i] = 0;
 	}
@@ -144,8 +146,11 @@ void Player::update_player_bullet_collision_detection(){
 				b.on_hit();
 				int remainHp = e->take_damage(dmg);
 				if (remainHp <= 0) {
-					// TODO: 掉落P点
-					// TODO: 消失动画回调
+					if (itemMgr != NULL) {
+						float ex = e->get_x() + e->get_hitbox_w() * 0.5f;
+						float ey = e->get_y() + e->get_hitbox_h() * 0.5f;
+						itemMgr->spawn_item(ex, ey, ITEM_POWER_SMALL, 2);
+					}
 					e->deactivate();
 				}
 				break;

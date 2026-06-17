@@ -67,6 +67,8 @@ void Game::run(){
 	frameCounter = 0;
 	EnemyBulletManager enemyBulletManager;
 	levelManager.set_bullet_manager_for_all(&enemyBulletManager);
+	itemManager.set_player(&player1);
+	player1.set_item_manager(&itemManager);
 	//todo: fps monitor
 	while(gameState == STATE_GAME){
 		Uint32 frameStart = SDL_GetTicks();
@@ -79,7 +81,6 @@ void Game::run(){
 		if (dt > 1.0f / 15.0f) dt = 1.0f / 30.0f;
 		gameBackground.background_update(dt);
 		player1.player_move();
-		// 子机子弹追踪目标: 取离屏幕边缘最远的敌机（中轴左侧→距左边界, 右侧→距右边界, 取大者）
 		{
 			static const float PLAY_CENTER_X = 272.0f;
 			static const float PLAY_WIDTH_F  = 544.0f;
@@ -120,8 +121,10 @@ void Game::run(){
 		levelManager.move_all_enemies(dt);
 			levelManager.attack_all_enemies(dt);
 		enemyBulletManager.update(dt);
+		itemManager.update(dt);
 		levelManager.show_all_enemies();
 		enemyBulletManager.render();
+		itemManager.render();
 		if(SDL_Flip(screen) == -1)	throw std::runtime_error("flip error in game loop");
 		if((fpsLimited == true)){
 			Uint32 currentFrameTicks = SDL_GetTicks();

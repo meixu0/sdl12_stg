@@ -5,6 +5,7 @@
 #define MAX_BULLETS_PER_RANK 12
 
 class LevelManager;
+class ItemManager;
 
 struct PlayerPosition {
     float x;
@@ -32,6 +33,7 @@ private:
 	float targetEnemyX, targetEnemyY;
 	bool hasTarget;
 	float optionStreamAngle_;
+	ItemManager* itemMgr;
 public:
 	Player();
 	PlayerBulletPool* playerBulletPool_;
@@ -44,4 +46,7 @@ public:
 	void show();
 	int get_player_x_vel() const { return xVel; }
 	PlayerPosition get_player_position() const;
+	void set_item_manager(ItemManager* mgr) { itemMgr = mgr; }
+	static int get_power() { return playerPowerData; }
+	static void set_power(int p) { playerPowerData = p; }
 };

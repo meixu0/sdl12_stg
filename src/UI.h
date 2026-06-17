@@ -5,6 +5,7 @@
 #include "SDL_rotozoom.h"
 #include <string>
 #include <stdexcept>
+#include <cstdlib>
 #define UI_H
 #ifdef UI_H
 #define STATE_MENU 0
