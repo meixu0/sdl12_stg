@@ -48,7 +48,7 @@ Enemy::Enemy() : x(0.0), y(0.0), startX(0.0), startY(0.0), playerX(0.0), playerY
     moveAngle(0), angularVelocity(0), accel(0), minPlayerDist(80.0f),
     spriteRow(0), spriteAnimTimer(0.0f),
     isDead(false),
-    axisSpeedX(0), axisSpeedY(0), enemyType(0), enemyID(0) {
+    axisSpeedX(0), axisSpeedY(0), enemyType(0), enemyID(0), playerPtr(NULL) {
     init_zako_sprites();
 }
 SDL_Surface* Enemy::get_zako_sprite(int col) {

@@ -45,7 +45,7 @@ public:
 	void update_player_bullet_collision_detection();
 	void show();
 	int get_player_x_vel() const { return xVel; }
-	PlayerPosition get_player_position() const;
+	PlayerPosition get_player_position();
 	void set_item_manager(ItemManager* mgr) { itemMgr = mgr; }
 	static int get_power() { return playerPowerData; }
 	static void set_power(int p) { playerPowerData = p; }
