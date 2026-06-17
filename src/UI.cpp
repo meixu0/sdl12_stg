@@ -3,6 +3,9 @@ SDL_Surface* screen = NULL;
 SDL_Event event;
 bool quit = false;
 int gameState = STATE_MENU;
+const SDL_Surface* numbersImage[10] = {NULL};
+const SDL_Surface* uppercaseImage[26] = {NULL};
+const SDL_Surface* lowercaseImage[26] = {NULL};
 bool init(){
 	if(SDL_Init(SDL_INIT_EVERYTHING) == -1)	return false;
 	if(TTF_Init() == -1)	return false;

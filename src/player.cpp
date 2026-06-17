@@ -1,12 +1,12 @@
 #include "player.h"
 #include "LevelManager.h"
 #include "ItemManager.h"
-const int Player::PLAYER_HEIGHT = 48;
-const int Player::PLAYER_WIDTH = 32;
+const float Player::PLAYER_HEIGHT = 48*1.5625f;  // 48px → 75px
+const float Player::PLAYER_WIDTH = 32*1.5625f;  // 32px → 50px
 const int Player::PLAY_HEIGHT = 600;
 const int Player::PLAY_WIDTH = 544;
-int Player::playerPowerData = 32;
-int Player::currentPowerLevel = 3;
+int Player::playerPowerData = 0;
+int Player::currentPowerLevel = 0;
 bool Player::bombInUse = false;
 SDL_Surface* Player::player = NULL;
 SDL_Surface* Player::reimuImageMiddle[4] = {NULL};
@@ -14,20 +14,18 @@ SDL_Surface* Player::reimuImageSide[7] = {NULL};
 SDL_Surface* Player::reimuBulletSide = NULL;
 Player::Player(){
 	x = 272;
-	y = 553;
+	y = 600 - (int)PLAYER_WIDTH - 10;
 	xVel = 0;
 	yVel = 0;
 	for(int i = 0;i < 3; i++){
-		reimuImageMiddle[i] = load_sprite("res/player00/player00.png", i * PLAYER_WIDTH, 0, PLAYER_WIDTH, PLAYER_HEIGHT, double(PLAYER_HEIGHT), double(PLAYER_WIDTH));
+		reimuImageMiddle[i] = load_sprite("res/player00/player00.png", i * 32, 0, 32, 48, PLAYER_HEIGHT, PLAYER_WIDTH);
 	}
 	for(int i = 0;i < 7; i++){
-		reimuImageSide[i] = load_sprite("res/player00/player00.png", i * PLAYER_WIDTH, PLAYER_HEIGHT, PLAYER_WIDTH, PLAYER_HEIGHT, double(PLAYER_HEIGHT), double(PLAYER_WIDTH));
+		reimuImageSide[i] = load_sprite("res/player00/player00.png", i * 32, 48, 32, 48, PLAYER_HEIGHT, PLAYER_WIDTH);
 	}
-	{
-		SDL_Surface* raw = load_sprite("res/player00/player00.png", 0, 144, 64, 16, 64.0, 16.0);
-		reimuBulletSide = rotate_image(raw, 90.0);
-		if (raw) SDL_FreeSurface(raw);
-	}
+	SDL_Surface* raw = load_sprite("res/player00/player00.png", 0, 144, 64, 16, 64.0, 16.0);
+	reimuBulletSide = rotate_image(raw, 90.0);
+	if (raw) SDL_FreeSurface(raw);
 	isShooting = false;
 	simpleShootCoolDown = 0;
 	animTimer = 0.0f;
@@ -64,9 +62,9 @@ void Player::handle_input(SDL_Event &e){
 }
 void Player::player_move(){
 	x += xVel;
-	if((x < 0) || (x + PLAYER_WIDTH > PLAY_WIDTH))	x -= xVel;
+	if((x < 0) || (x + PLAYER_HEIGHT > PLAY_WIDTH))	x -= xVel;
 	y += yVel;
-	if((y < 0) || (y + PLAYER_HEIGHT > PLAY_HEIGHT))	y -= yVel;
+	if((y < 0) || (y + PLAYER_WIDTH > PLAY_HEIGHT))	y -= yVel;
 	animTimer += 1.0f / 60.0f;
 }
 void Player::update_simple_shoot(){

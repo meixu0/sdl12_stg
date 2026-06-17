@@ -130,14 +130,17 @@ void ItemManager::update(float dt) {
             }
         }
 
-        if (it->state == 1 || (autoCollect && it->state == 0)) {
+        // proximity magnet: items within 100px of player center auto-collect
+        float pdx = px - it->x;
+        float pdy = py - it->y;
+        float pdist = sqrtf(pdx * pdx + pdy * pdy);
+        bool nearPlayer = (pdist < 100.0f);
+
+        if (it->state == 1 || (it->state == 0 && (autoCollect || nearPlayer))) {
             it->state = 1;
-            float dx = px - it->x;
-            float dy = py - it->y;
-            float dist = sqrtf(dx * dx + dy * dy);
-            if (dist > 1.0f) {
-                it->x += (dx / dist) * MAGNET_SPEED * dt;
-                it->y += (dy / dist) * MAGNET_SPEED * dt;
+            if (pdist > 1.0f) {
+                it->x += (pdx / pdist) * MAGNET_SPEED * dt;
+                it->y += (pdy / pdist) * MAGNET_SPEED * dt;
             }
         }
 

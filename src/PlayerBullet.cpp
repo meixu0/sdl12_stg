@@ -1,7 +1,6 @@
 #include "PlayerBullet.h"
+#include "Enemy.h"
 #include <iostream>
-
-// ── Power 等级子弹配置 ──────────────────────────────────────────
 // 每个 Rank 定义一组子弹：{间隔, x偏, y偏, 宽, 高, 角度, 速度, 伤害, 弹型, 贴图, 音效, Power要求, 初始x, 初始y}
 
 static PlayerBulletConfig g_Rank1_Bullets[] = {
@@ -76,10 +75,6 @@ PlayerBullet::PlayerBullet(){
 		reimuBulletSideRaw = load_sprite("res/player00/player00.png", 0, 144, 64, 16, 64.0, 16.0);
 		reimuBulletSide = rotate_image(reimuBulletSideRaw, -90.0);
 	}
-	/*
-	reimuBulletSideRaw = load_sprite("res/player00/player00.png", 0, 144, 64, 16, 64.0, 16.0);
-	reimuBulletSide = rotate_image(reimuBulletSideRaw, -90.0);
-	*/
 	sideBulletRotateAngle_ = 0.0f;
 	rotatedSurface_ = NULL;
 	pivotX_ = 0.0f;
@@ -113,10 +108,27 @@ bool PlayerBullet::bullet_move(){
 	if(!isActive)	return false;
 	framesLeft--;
 	if (bulletType_ == 1 && targetY_ > 0) {
-		float dx = targetX_ - x_;
-		float dy = targetY_ - y_;
-		float dist = sqrtf(dx*dx + dy*dy);
-		if (dist > 1.0f) {
+		// check if tracked enemy is still alive
+		bool targetAlive = false;
+		for (int ei = 0; ei < Enemy::onScreenCount; ei++) {
+			Enemy* e = Enemy::onScreenList[ei];
+			if (!e || !e->is_active()) continue;
+			float edx = targetX_ - (e->get_x() + e->get_hitbox_w() * 0.5f);
+			float edy = targetY_ - (e->get_y() + e->get_hitbox_h() * 0.5f);
+			if (fabsf(edx) < 48.0f && fabsf(edy) < 48.0f) {
+				targetAlive = true;
+				break;
+			}
+		}
+		if (!targetAlive) {
+			targetY_ = 0;
+		} else {
+			float dx = targetX_ - x_;
+			float dy = targetY_ - y_;
+			float dist = sqrtf(dx*dx + dy*dy);
+			if (dist < 8.0f) {
+				targetY_ = 0;
+			} else {
 			float tx = dx / dist;
 			float ty = dy / dist;
 			float curSpeed = sqrtf(velX_*velX_ + velY_*velY_);
@@ -131,6 +143,7 @@ bool PlayerBullet::bullet_move(){
 			}
 			velX_ = nvx;
 			velY_ = nvy;
+			}
 		}
 	}
 

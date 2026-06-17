@@ -1,3 +1,6 @@
+#ifndef PLAYER_H
+#define PLAYER_H
+
 #include "UI.h"
 #include "PlayerBullet.h"
 #include <vector>
@@ -15,8 +18,8 @@ class Player{
 private:
 	int x, y;
 	int xVel, yVel;
-	static const int PLAYER_HEIGHT;
-	static const int PLAYER_WIDTH;
+	static const float PLAYER_HEIGHT;
+	static const float PLAYER_WIDTH;
 	static const int PLAY_HEIGHT;
 	static const int PLAY_WIDTH;
 	static int currentPowerLevel;
@@ -50,3 +53,5 @@ public:
 	static int get_power() { return playerPowerData; }
 	static void set_power(int p) { playerPowerData = p; }
 };
+
+#endif

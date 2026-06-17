@@ -1,6 +1,6 @@
 #include "game.h"
 Uint32 Game::lastUpdate = 0;
-TTF_Font* Game::fpsFont = NULL;
+//TTF_Font* Game::fpsFont = NULL;
 SDL_Surface* Game::fpsSurface = NULL;
 Game::Game(){
 	frameCounter = 0;
@@ -8,22 +8,25 @@ Game::Game(){
 	menuFrameCounter = 0;
 	fpsSurface = NULL;
 	lastUpdate = 0;
-	fpsFont = load_font("res/menufont.ttf", 16);
+	//fpsFont = load_font("res/menufont.ttf", 16);
+	for(int i = 0; i < 10; i++)	numbersImage[i] = load_sprite("res/ascii/ascii.png", i * 16, 48, 16, 16, 16.0f, 16.0f);
+	for(int i = 0; i < 15; i++)	uppercaseImage[i] = load_sprite("res/ascii/ascii.png", (i+1) * 16, 64, 16, 16, 16.0f, 16.0f);
+	for(int i = 0; i < 11; i++)	uppercaseImage[i+15] = load_sprite("res/ascii/ascii.png", i*16, 80, 16, 16, 16.0f, 16.0f);
+	for(int i = 0; i < 15; i++)	lowercaseImage[i] = load_sprite("res/ascii/ascii.png", (i+1) * 16, 96, 16, 16, 16.0f, 16.0f);
+	for(int i = 0; i < 11; i++)	lowercaseImage[i+15] = load_sprite("res/ascii/ascii.png", i*16, 112, 16, 16, 16.0f, 16.0f);
 	levelManager.load_stage(1);
 	levelManager.init_enemy_pool();
 	levelManager.start_stage();
 }
-void Game::show_fps(Uint32 current_fps){
-	//todo: fps monitor
-}
 void Game::init_info_area(SDL_Surface* dest){
-	SDL_Rect infoArea;
-	infoArea.x = 544;
-	infoArea.y = 0;
-	infoArea.w = 256;
-	infoArea.h = 600;
+	SDL_Rect infoArea_;
+	infoArea_.x = 544;
+	infoArea_.y = 0;
+	infoArea_.w = 256;
+	infoArea_.h = 600;
 	Uint32 white = SDL_MapRGB(dest->format, 255, 255, 255);
-	SDL_FillRect(dest, &infoArea, white);
+	SDL_FillRect(dest, &infoArea_, white);
+	infoArea.render();
 }
 void Game::init_game(SDL_Surface* dest){
 	SDL_Rect wholeScreen;
@@ -124,6 +127,10 @@ void Game::run(){
 		itemManager.update(dt);
 		levelManager.show_all_enemies();
 		enemyBulletManager.render();
+		infoArea.update_score(ItemManager::get_score());
+		infoArea.update_lives(ItemManager::get_lives());
+		infoArea.update_spell(ItemManager::get_bombs());
+		infoArea.render();
 		itemManager.render();
 		if(SDL_Flip(screen) == -1)	throw std::runtime_error("flip error in game loop");
 		if((fpsLimited == true)){

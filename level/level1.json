@@ -2000,15 +2000,6 @@
     },
     {
       "id": "boss_entry",
-      "enemyType": "boss_rumia",
-      "spawn_time": 69.58,
-      "start_pos": [
-        192,
-        -16
-      ]
-    },
-    {
-      "id": "boss_final_entry",
       "enemyType": "boss_final",
       "spawn_time": 69.62,
       "start_pos": [
