@@ -1,18 +1,19 @@
 {
-  "boss_types": {
-    "boss_unknown_Sub1": {
-      "_desc": "符卡预留 - ecldata4asp Sub1",
+  "enemy_types": {
+    "boss_patchouli": {
+      "_desc": "Boss patchouli entry",
       "movePattern": 3,
-      "hp": 2000,
+      "hp": 2500,
       "hitboxWidth": 48,
       "hitboxHeight": 48,
       "speedX": 0,
       "speedY": 30,
       "halfLife": 0,
-      "score": 100000
+      "score": 100000,
+      "itemDrop": "full_power"
     },
-    "boss_unknown_Sub2": {
-      "_desc": "符卡预留 - ecldata4asp Sub2",
+    "boss_patchouli_phase1": {
+      "_desc": "Phase 1 (Sub21) - \"u~L[EFCv\"",
       "movePattern": 3,
       "hp": 2000,
       "hitboxWidth": 48,
@@ -20,10 +21,35 @@
       "speedX": 0,
       "speedY": 30,
       "halfLife": 0,
-      "score": 100000
+      "score": 100000,
+      "itemDrop": "full_power",
+      "emitters": [
+        {
+          "_desc": "etRing: 4way x1rows",
+          "startDelay": 0,
+          "emitInterval": 1,
+          "burstCount": 1,
+          "burstInterval": 0.05,
+          "patternDesc": {
+            "patternType": 3,
+            "mainCnt": 4,
+            "subCnt": 1,
+            "angleOffset": 0,
+            "angleInterval": 0.0491,
+            "speed1": 180,
+            "speed2": 90,
+            "spriteID": 2,
+            "hitboxRadius": 4,
+            "lifeTime": 6,
+            "spawnEffect": 0,
+            "soundEffect": 0,
+            "reboundEffect": 0
+          }
+        }
+      ]
     },
-    "boss_unknown_Sub4": {
-      "_desc": "符卡预留 - ecldata4asp Sub4",
+    "boss_patchouli_phase2": {
+      "_desc": "Phase 2 (Sub32) - \"öumfBNVi[U[v\"",
       "movePattern": 3,
       "hp": 2000,
       "hitboxWidth": 48,
@@ -31,10 +57,35 @@
       "speedX": 0,
       "speedY": 30,
       "halfLife": 0,
-      "score": 100000
+      "score": 100000,
+      "itemDrop": "full_power",
+      "emitters": [
+        {
+          "_desc": "etRing: 1way x1rows",
+          "startDelay": 0,
+          "emitInterval": 1,
+          "burstCount": 1,
+          "burstInterval": 0.05,
+          "patternDesc": {
+            "patternType": 3,
+            "mainCnt": 1,
+            "subCnt": 1,
+            "angleOffset": 0,
+            "angleInterval": 0.0491,
+            "speed1": 300,
+            "speed2": 90,
+            "spriteID": 2,
+            "hitboxRadius": 4,
+            "lifeTime": 6,
+            "spawnEffect": 0,
+            "soundEffect": 0,
+            "reboundEffect": 0
+          }
+        }
+      ]
     },
-    "boss_unknown_Sub7": {
-      "_desc": "符卡预留 - ecldata4asp Sub7",
+    "boss_patchouli_phase3": {
+      "_desc": "Phase 3 (Sub40) - \"öu}X^[Xp[Nv\"",
       "movePattern": 3,
       "hp": 2000,
       "hitboxWidth": 48,
@@ -42,10 +93,35 @@
       "speedX": 0,
       "speedY": 30,
       "halfLife": 0,
-      "score": 100000
+      "score": 100000,
+      "itemDrop": "full_power",
+      "emitters": [
+        {
+          "_desc": "etRing: 10way x1rows",
+          "startDelay": 0,
+          "emitInterval": 1,
+          "burstCount": 1,
+          "burstInterval": 0.05,
+          "patternDesc": {
+            "patternType": 3,
+            "mainCnt": 10,
+            "subCnt": 1,
+            "angleOffset": 0,
+            "angleInterval": 0.2094,
+            "speed1": 200,
+            "speed2": 10,
+            "spriteID": 2,
+            "hitboxRadius": 4,
+            "lifeTime": 6,
+            "spawnEffect": 0,
+            "soundEffect": 0,
+            "reboundEffect": 0
+          }
+        }
+      ]
     },
-    "boss_unknown_Sub8": {
-      "_desc": "符卡预留 - ecldata4asp Sub8",
+    "boss_patchouli_phase4": {
+      "_desc": "Phase 4 (Sub47) - \"õuA[XCgCv\"",
       "movePattern": 3,
       "hp": 2000,
       "hitboxWidth": 48,
@@ -53,10 +129,101 @@
       "speedX": 0,
       "speedY": 30,
       "halfLife": 0,
-      "score": 100000
+      "score": 100000,
+      "itemDrop": "full_power",
+      "emitters": [
+        {
+          "_desc": "etRingAimed: 1way x32rows",
+          "startDelay": 0,
+          "emitInterval": 1,
+          "burstCount": 1,
+          "burstInterval": 0.05,
+          "patternDesc": {
+            "patternType": 7,
+            "mainCnt": 1,
+            "subCnt": 32,
+            "angleOffset": -2.0944,
+            "angleInterval": 0.2244,
+            "speed1": 350,
+            "speed2": 50,
+            "spriteID": 2,
+            "hitboxRadius": 4,
+            "lifeTime": 6,
+            "spawnEffect": 0,
+            "soundEffect": 0,
+            "reboundEffect": 0
+          }
+        },
+        {
+          "_desc": "etRingAimed: 1way x32rows",
+          "startDelay": 0,
+          "emitInterval": 1,
+          "burstCount": 1,
+          "burstInterval": 0.05,
+          "patternDesc": {
+            "patternType": 7,
+            "mainCnt": 1,
+            "subCnt": 32,
+            "angleOffset": 2.0944,
+            "angleInterval": 0.2,
+            "speed1": 350,
+            "speed2": 50,
+            "spriteID": 2,
+            "hitboxRadius": 4,
+            "lifeTime": 6,
+            "spawnEffect": 0,
+            "soundEffect": 0,
+            "reboundEffect": 0
+          }
+        },
+        {
+          "_desc": "etFanAimed: 13way x3rows",
+          "startDelay": 0,
+          "emitInterval": 1,
+          "burstCount": 1,
+          "burstInterval": 0.05,
+          "patternDesc": {
+            "patternType": 0,
+            "mainCnt": 13,
+            "subCnt": 3,
+            "angleOffset": 0.0,
+            "angleInterval": 0.0748,
+            "speed1": 220,
+            "speed2": 100,
+            "spriteID": 2,
+            "hitboxRadius": 4,
+            "lifeTime": 6,
+            "spawnEffect": 0,
+            "soundEffect": 0,
+            "reboundEffect": 0
+          }
+        },
+        {
+          "_desc": "etFanAimed: 13way x5rows",
+          "startDelay": 0,
+          "emitInterval": 1,
+          "burstCount": 1,
+          "burstInterval": 0.05,
+          "patternDesc": {
+            "patternType": 0,
+            "mainCnt": 13,
+            "subCnt": 5,
+            "angleOffset": 0.0,
+            "angleInterval": 0.5236,
+            "speed1": 150,
+            "speed2": 50,
+            "spriteID": 2,
+            "hitboxRadius": 4,
+            "lifeTime": 6,
+            "spawnEffect": 0,
+            "soundEffect": 0,
+            "reboundEffect": 0
+          }
+        }
+      ]
     },
-    "boss_unknown_Sub9": {
-      "_desc": "符卡预留 - ecldata4asp Sub9",
+    "boss_patchouli_phase5": {
+      "_desc": "Phase 5 (Sub52) - \"Cut@CiXp[Nv\"",
       "movePattern": 3,
       "hp": 2000,
       "hitboxWidth": 48,
@@ -64,84 +231,44 @@
       "speedX": 0,
       "speedY": 30,
       "halfLife": 0,
-      "score": 100000
-    },
-    "boss_unknown_Sub10": {
-      "_desc": "符卡预留 - ecldata4asp Sub10",
-      "movePattern": 3,
-      "hp": 2000,
-      "hitboxWidth": 48,
-      "hitboxHeight": 48,
-      "speedX": 0,
-      "speedY": 30,
-      "halfLife": 0,
-      "score": 100000
-    },
-    "boss_unknown_Sub11": {
-      "_desc": "符卡预留 - ecldata4asp Sub11",
-      "movePattern": 3,
-      "hp": 2000,
-      "hitboxWidth": 48,
-      "hitboxHeight": 48,
-      "speedX": 0,
-      "speedY": 30,
-      "halfLife": 0,
-      "score": 100000
-    },
-    "boss_unknown_Sub12": {
-      "_desc": "符卡预留 - ecldata4asp Sub12",
-      "movePattern": 3,
-      "hp": 2000,
-      "hitboxWidth": 48,
-      "hitboxHeight": 48,
-      "speedX": 0,
-      "speedY": 30,
-      "halfLife": 0,
-      "score": 100000
-    },
-    "boss_unknown_Sub13": {
-      "_desc": "符卡预留 - ecldata4asp Sub13",
-      "movePattern": 3,
-      "hp": 2000,
-      "hitboxWidth": 48,
-      "hitboxHeight": 48,
-      "speedX": 0,
-      "speedY": 30,
-      "halfLife": 0,
-      "score": 100000
-    },
-    "boss_unknown_Sub15": {
-      "_desc": "符卡预留 - ecldata4asp Sub15",
-      "movePattern": 3,
-      "hp": 2000,
-      "hitboxWidth": 48,
-      "hitboxHeight": 48,
-      "speedX": 0,
-      "speedY": 30,
-      "halfLife": 0,
-      "score": 100000
-    },
-    "boss_unknown_Sub16": {
-      "_desc": "符卡预留 - ecldata4bsp Sub16",
-      "movePattern": 3,
-      "hp": 2000,
-      "hitboxWidth": 48,
-      "hitboxHeight": 48,
-      "speedX": 0,
-      "speedY": 30,
-      "halfLife": 0,
-      "score": 100000
-    },
-    "boss_unknown_Sub20": {
-      "_desc": "符卡预留 - ecldata4bsp Sub20",
-      "movePattern": 3,
-      "hp": 2000,
-      "hitboxWidth": 48,
-      "hitboxHeight": 48,
-      "speedX": 0,
-      "speedY": 30,
-      "halfLife": 0,
-      "score": 100000
+      "score": 100000,
+      "itemDrop": "full_power",
+      "emitters": [
+        {
+          "_desc": "etRing: 8way x1rows",
+          "startDelay": 0,
+          "emitInterval": 1,
+          "burstCount": 1,
+          "burstInterval": 0.05,
+          "patternDesc": {
+            "patternType": 3,
+            "mainCnt": 8,
+            "subCnt": 1,
+            "angleOffset": 0,
+            "angleInterval": 0.0491,
+            "speed1": 180,
+            "speed2": 90,
+            "spriteID": 2,
+            "hitboxRadius": 4,
+            "lifeTime": 6,
+            "spawnEffect": 0,
+            "soundEffect": 0,
+            "reboundEffect": 0
+          }
+        }
+      ]
     }
-  }
+  },
+  "stage_4": [
+    {
+      "id": "boss_patchouli",
+      "enemyType": "boss_patchouli",
+      "spawn_time": 0,
+      "start_pos": [
+        272,
+        -32
+      ],
+      "durationTime": 99
+    }
+  ]
 }

@@ -27,13 +27,13 @@ struct EnemyConfig{
     float bezierP2x, bezierP2y;
     float bezierEndX, bezierEndY;
     float bezierDuration;
-    // 新追踪参数
     float moveAngle;
     float angularVelocity;
     float acceleration;      // 标量加速度 px/s²
     float minPlayerDist;     // 与玩家最小距离
     int enemyType;
     int enemyID;
+    bool isMidboss;
 };
 class Enemy{
 private:
@@ -47,7 +47,10 @@ private:
     int enemyType;
     int enemyID;
     bool isActive;
-    bool isDead;   // 被击破后阻止 enemy_move 重新激活
+    bool isDead;
+    bool isMidboss;
+    bool isEntering;
+    float entryTargetY;
     float speedX;
     float speedY;
     float timeAlive;
@@ -73,7 +76,6 @@ private:
     float bezierDuration;
     float bezierTime;
     float stateStartX, stateStartY;
-    // th06 风格运动字段
     float moveAngle;          // 当前运动角度 (弧度)
     float angularVelocity;    // 角速度 (rad/s)
     float accel;              // 标量加速度 (px/s²)
@@ -86,6 +88,7 @@ private:
     float axisSpeedX;         // 本帧速度 x 分量
     float axisSpeedY;         // 本帧速度 y 分量
     SDL_Surface* get_zako_sprite(int row);
+    SDL_Surface* get_boss_sprite(int col);
 public:
     struct EmitterRuntime {
         float timer;
@@ -95,27 +98,28 @@ public:
     std::vector<EmitterConfig> emitterConfig;
     std::vector<EmitterRuntime> emitterRuntime;
     EnemyBulletManager* bulletManager;
-public:
     Enemy();
     void init(EnemyConfig config_, float x_, float y_);
     void update_player_info(float px, float py, size_t frameCounter__);
     void apply_movement(float dt);
+    void force_retreat();
     void enemy_move(float dt);
     void enemy_show();
     void enemy_attack(float dt);
     bool is_active();
     void deactivate();
+    void boss_entry();
     float get_x() const { return x; }
     float get_y() const { return y; }
     float get_hitbox_w() const { return hitboxWidth; }
     float get_hitbox_h() const { return hitboxHeight; }
-    // 屏幕敌机追踪: 碰撞检测遍历此列表
     static Enemy* onScreenList[256];
     static int onScreenCount;
     int  get_hp() const { return hp; }
-    // AABB 碰撞检测: 子弹矩形 vs 敌机判定矩形
+    bool get_is_midboss() const { return isMidboss; }
+    void adjust_time_alive(float offset) { timeAlive += offset; }
+    bool has_pending_spawn() const { return !isDead && timeAlive < emergeTime; }
     bool check_bullet_hit(float bx, float by, float bhw, float bhh);
-    // 受到伤害, 返回剩余 hp
     int take_damage(int dmg);
     void test_enemy();
 };

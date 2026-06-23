@@ -703,7 +703,325 @@
           }
         }
       ]
+    },
+    "midboss_cirno": {
+      "_desc": "Midboss midboss_cirno",
+      "movePattern": 3,
+      "hp": 700,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": 0,
+      "speedY": 90,
+      "halfLife": 0,
+      "midboss": true,
+      "score": 100000,
+      "itemDrop": "full_power"
     }
   },
-  "stage_3": []
+  "stage_3": [
+    {
+      "id": "e3_0001",
+      "spawn_time": 0.017,
+      "start_pos": [
+        30.0,
+        -16.0
+      ],
+      "movePattern": 0,
+      "hp": 20,
+      "speedX": 0,
+      "speedY": 120,
+      "halfLife": 0,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24
+    },
+    {
+      "id": "e3_0009",
+      "enemyType": "s3_Sub7",
+      "spawn_time": 21.333,
+      "start_pos": [
+        64.0,
+        -16.0
+      ],
+      "hp": 300
+    },
+    {
+      "id": "e3_0010",
+      "enemyType": "s3_Sub7",
+      "spawn_time": 22.833,
+      "start_pos": [
+        64.0,
+        -16.0
+      ],
+      "hp": 300
+    },
+    {
+      "id": "e3_0011",
+      "enemyType": "s3_Sub7",
+      "spawn_time": 22.833,
+      "start_pos": [
+        320.0,
+        -16.0
+      ],
+      "hp": 300
+    },
+    {
+      "id": "e3_0012",
+      "enemyType": "s3_Sub7",
+      "spawn_time": 24.333,
+      "start_pos": [
+        64.0,
+        -16.0
+      ],
+      "hp": 300
+    },
+    {
+      "id": "e3_0013",
+      "enemyType": "s3_Sub7",
+      "spawn_time": 26.833,
+      "start_pos": [
+        320.0,
+        -16.0
+      ],
+      "hp": 300
+    },
+    {
+      "id": "e3_0014",
+      "enemyType": "s3_Sub7",
+      "spawn_time": 27.833,
+      "start_pos": [
+        320.0,
+        -16.0
+      ],
+      "hp": 300
+    },
+    {
+      "id": "e3_0015",
+      "enemyType": "s3_Sub7",
+      "spawn_time": 27.833,
+      "start_pos": [
+        64.0,
+        -16.0
+      ],
+      "hp": 300
+    },
+    {
+      "id": "e3_0016",
+      "enemyType": "s3_Sub7",
+      "spawn_time": 28.833,
+      "start_pos": [
+        320.0,
+        -16.0
+      ],
+      "hp": 300
+    },
+    {
+      "id": "e3_0018",
+      "enemyType": "s3_Sub7",
+      "spawn_time": 32.5,
+      "start_pos": [
+        64.0,
+        -16.0
+      ],
+      "hp": 350
+    },
+    {
+      "id": "e3_0019",
+      "enemyType": "s3_Sub7",
+      "spawn_time": 32.833,
+      "start_pos": [
+        320.0,
+        -16.0
+      ],
+      "hp": 350
+    },
+    {
+      "id": "e3_0020",
+      "enemyType": "s3_Sub7",
+      "spawn_time": 33.167,
+      "start_pos": [
+        64.0,
+        -16.0
+      ],
+      "hp": 350
+    },
+    {
+      "id": "e3_0021",
+      "enemyType": "s3_Sub7",
+      "spawn_time": 33.5,
+      "start_pos": [
+        320.0,
+        -16.0
+      ],
+      "hp": 350
+    },
+    {
+      "id": "e3_0024",
+      "enemyType": "s3_Sub14",
+      "spawn_time": 36.5,
+      "start_pos": [
+        320.0,
+        -16.0
+      ],
+      "hp": 600
+    },
+    {
+      "id": "e3_0025",
+      "enemyType": "s3_Sub13",
+      "spawn_time": 40.5,
+      "start_pos": [
+        64.0,
+        -16.0
+      ],
+      "hp": 600
+    },
+    {
+      "id": "e3_0026",
+      "enemyType": "s3_Sub14",
+      "spawn_time": 44.667,
+      "start_pos": [
+        320.0,
+        -16.0
+      ],
+      "hp": 600
+    },
+    {
+      "id": "e3_0027",
+      "spawn_time": 51.333,
+      "start_pos": [
+        192.0,
+        -16.0
+      ],
+      "movePattern": 0,
+      "hp": 10,
+      "speedX": 0,
+      "speedY": 120,
+      "halfLife": 0,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24
+    },
+    {
+      "id": "e3_0031",
+      "enemyType": "s3_Sub7",
+      "spawn_time": 53.383,
+      "start_pos": [
+        320.0,
+        -16.0
+      ],
+      "hp": 300
+    },
+    {
+      "id": "e3_0037",
+      "enemyType": "s3_Sub7",
+      "spawn_time": 57.717,
+      "start_pos": [
+        64.0,
+        -16.0
+      ],
+      "hp": 300
+    },
+    {
+      "id": "e3_0040",
+      "enemyType": "s3_Sub13",
+      "spawn_time": 62.05,
+      "start_pos": [
+        64.0,
+        -16.0
+      ],
+      "hp": 600
+    },
+    {
+      "id": "e3_0041",
+      "enemyType": "s3_Sub14",
+      "spawn_time": 64.05,
+      "start_pos": [
+        320.0,
+        -16.0
+      ],
+      "hp": 600
+    },
+    {
+      "id": "e3_0042",
+      "enemyType": "s3_Sub13",
+      "spawn_time": 69.383,
+      "start_pos": [
+        128.0,
+        -16.0
+      ],
+      "hp": 500
+    },
+    {
+      "id": "e3_0043",
+      "enemyType": "s3_Sub14",
+      "spawn_time": 69.383,
+      "start_pos": [
+        256.0,
+        -16.0
+      ],
+      "hp": 500
+    },
+    {
+      "id": "e3_0044",
+      "spawn_time": 77.717,
+      "start_pos": [
+        192.0,
+        -16.0
+      ],
+      "movePattern": 0,
+      "hp": 10,
+      "speedX": 0,
+      "speedY": 120,
+      "halfLife": 0,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24
+    },
+    {
+      "id": "e3_0045",
+      "spawn_time": 77.717,
+      "start_pos": [
+        192.0,
+        128.0
+      ],
+      "movePattern": 0,
+      "hp": 10,
+      "speedX": 0,
+      "speedY": 120,
+      "halfLife": 0,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24
+    }
+  ],
+  "randomItemTable": [
+    "power_small",
+    "power_small",
+    "point",
+    "power_small",
+    "point",
+    "power_small",
+    "power_small",
+    "point",
+    "point",
+    "point",
+    "power_small",
+    "power_small",
+    "power_small",
+    "point",
+    "point",
+    "power_small",
+    "point",
+    "power_small",
+    "point",
+    "power_small",
+    "point",
+    "power_small",
+    "point",
+    "power_small",
+    "point",
+    "power_small",
+    "power_small",
+    "point",
+    "point",
+    "point",
+    "power_small",
+    "power_big"
+  ]
 }

@@ -1,18 +1,19 @@
 {
-  "boss_types": {
-    "boss_flandre_Sub0": {
-      "_desc": "符卡预留 - ecldata7sp Sub0",
+  "enemy_types": {
+    "boss_flandre": {
+      "_desc": "Boss flandre entry",
       "movePattern": 3,
-      "hp": 2000,
+      "hp": 16000,
       "hitboxWidth": 48,
       "hitboxHeight": 48,
       "speedX": 0,
       "speedY": 30,
       "halfLife": 0,
-      "score": 100000
+      "score": 100000,
+      "itemDrop": "full_power"
     },
-    "boss_flandre_Sub1": {
-      "_desc": "符卡预留 - ecldata7sp Sub1",
+    "boss_flandre_phase1": {
+      "_desc": "Phase 1 (Sub45) - \"ïèu§ÌäÎÌ«  -Ó¯ÊÓv-v\"",
       "movePattern": 3,
       "hp": 2000,
       "hitboxWidth": 48,
@@ -20,10 +21,57 @@
       "speedX": 0,
       "speedY": 30,
       "halfLife": 0,
-      "score": 100000
+      "score": 100000,
+      "itemDrop": "full_power",
+      "emitters": [
+        {
+          "_desc": "etRing: 64way x1rows",
+          "startDelay": 0,
+          "emitInterval": 1,
+          "burstCount": 1,
+          "burstInterval": 0.05,
+          "patternDesc": {
+            "patternType": 3,
+            "mainCnt": 64,
+            "subCnt": 1,
+            "angleOffset": 0,
+            "angleInterval": 0.0,
+            "speed1": 400,
+            "speed2": 80,
+            "spriteID": 2,
+            "hitboxRadius": 4,
+            "lifeTime": 6,
+            "spawnEffect": 0,
+            "soundEffect": 0,
+            "reboundEffect": 0
+          }
+        },
+        {
+          "_desc": "etRing: 1way x1rows",
+          "startDelay": 0,
+          "emitInterval": 1,
+          "burstCount": 1,
+          "burstInterval": 0.05,
+          "patternDesc": {
+            "patternType": 3,
+            "mainCnt": 1,
+            "subCnt": 1,
+            "angleOffset": 0,
+            "angleInterval": 0.0,
+            "speed1": 200,
+            "speed2": 80,
+            "spriteID": 2,
+            "hitboxRadius": 4,
+            "lifeTime": 6,
+            "spawnEffect": 0,
+            "soundEffect": 0,
+            "reboundEffect": 0
+          }
+        }
+      ]
     },
-    "boss_flandre_Sub2": {
-      "_desc": "符卡预留 - ecldata7sp Sub2",
+    "boss_flandre_phase2": {
+      "_desc": "Phase 2 (Sub51) - \"ïèuÎlÌçß  -ÅêÊS-v\"",
       "movePattern": 3,
       "hp": 2000,
       "hitboxWidth": 48,
@@ -31,10 +79,57 @@
       "speedX": 0,
       "speedY": 30,
       "halfLife": 0,
-      "score": 100000
+      "score": 100000,
+      "itemDrop": "full_power",
+      "emitters": [
+        {
+          "_desc": "etFan: 1way x3rows",
+          "startDelay": 0,
+          "emitInterval": 1,
+          "burstCount": 1,
+          "burstInterval": 0.05,
+          "patternDesc": {
+            "patternType": 1,
+            "mainCnt": 1,
+            "subCnt": 3,
+            "angleOffset": 0,
+            "angleInterval": 0.3142,
+            "speed1": 50,
+            "speed2": 50,
+            "spriteID": 1,
+            "hitboxRadius": 4,
+            "lifeTime": 6,
+            "spawnEffect": 0,
+            "soundEffect": 0,
+            "reboundEffect": 0
+          }
+        },
+        {
+          "_desc": "etFan: 1way x2rows",
+          "startDelay": 0,
+          "emitInterval": 1,
+          "burstCount": 1,
+          "burstInterval": 0.05,
+          "patternDesc": {
+            "patternType": 1,
+            "mainCnt": 1,
+            "subCnt": 2,
+            "angleOffset": 0,
+            "angleInterval": 0.3142,
+            "speed1": 50,
+            "speed2": 50,
+            "spriteID": 1,
+            "hitboxRadius": 4,
+            "lifeTime": 6,
+            "spawnEffect": 0,
+            "soundEffect": 0,
+            "reboundEffect": 0
+          }
+        }
+      ]
     },
-    "boss_flandre_Sub4": {
-      "_desc": "符卡预留 - ecldata7sp Sub4",
+    "boss_flandre_phase3": {
+      "_desc": "Phase 3 (Sub57) - \"ïèuÌqÀL  -i½ü-v\"",
       "movePattern": 3,
       "hp": 2000,
       "hitboxWidth": 48,
@@ -42,10 +137,35 @@
       "speedX": 0,
       "speedY": 30,
       "halfLife": 0,
-      "score": 100000
+      "score": 100000,
+      "itemDrop": "full_power",
+      "emitters": [
+        {
+          "_desc": "etFan: 2way x80rows",
+          "startDelay": 0,
+          "emitInterval": 1,
+          "burstCount": 1,
+          "burstInterval": 0.05,
+          "patternDesc": {
+            "patternType": 1,
+            "mainCnt": 2,
+            "subCnt": 80,
+            "angleOffset": -1.5708,
+            "angleInterval": 0.0561,
+            "speed1": 300,
+            "speed2": 150,
+            "spriteID": 2,
+            "hitboxRadius": 4,
+            "lifeTime": 6,
+            "spawnEffect": 0,
+            "soundEffect": 0,
+            "reboundEffect": 0
+          }
+        }
+      ]
     },
-    "boss_flandre_Sub5": {
-      "_desc": "符卡预留 - ecldata7sp Sub5",
+    "boss_flandre_phase4": {
+      "_desc": "Phase 4 (Sub61) - \"ïèuHÌeÌ}  -øFÌe-v\"",
       "movePattern": 3,
       "hp": 2000,
       "hitboxWidth": 48,
@@ -53,10 +173,35 @@
       "speedX": 0,
       "speedY": 30,
       "halfLife": 0,
-      "score": 100000
+      "score": 100000,
+      "itemDrop": "full_power",
+      "emitters": [
+        {
+          "_desc": "etRing: 16way x1rows",
+          "startDelay": 0,
+          "emitInterval": 1,
+          "burstCount": 1,
+          "burstInterval": 0.05,
+          "patternDesc": {
+            "patternType": 3,
+            "mainCnt": 16,
+            "subCnt": 1,
+            "angleOffset": 0,
+            "angleInterval": 0.0491,
+            "speed1": 100,
+            "speed2": 50,
+            "spriteID": 2,
+            "hitboxRadius": 4,
+            "lifeTime": 6,
+            "spawnEffect": 0,
+            "soundEffect": 0,
+            "reboundEffect": 0
+          }
+        }
+      ]
     },
-    "boss_flandre_Sub9": {
-      "_desc": "符卡预留 - ecldata7sp Sub9",
+    "boss_flandre_phase5": {
+      "_desc": "Phase 5 (Sub67) - \"uiéÔµ  --v\"",
       "movePattern": 3,
       "hp": 2000,
       "hitboxWidth": 48,
@@ -64,10 +209,57 @@
       "speedX": 0,
       "speedY": 30,
       "halfLife": 0,
-      "score": 100000
+      "score": 100000,
+      "itemDrop": "full_power",
+      "emitters": [
+        {
+          "_desc": "etRing: 56way x1rows",
+          "startDelay": 0,
+          "emitInterval": 1,
+          "burstCount": 1,
+          "burstInterval": 0.05,
+          "patternDesc": {
+            "patternType": 3,
+            "mainCnt": 56,
+            "subCnt": 1,
+            "angleOffset": 0,
+            "angleInterval": 0.0491,
+            "speed1": 100,
+            "speed2": 50,
+            "spriteID": 2,
+            "hitboxRadius": 4,
+            "lifeTime": 6,
+            "spawnEffect": 0,
+            "soundEffect": 0,
+            "reboundEffect": 0
+          }
+        },
+        {
+          "_desc": "etFan: 1way x1rows",
+          "startDelay": 0,
+          "emitInterval": 1,
+          "burstCount": 1,
+          "burstInterval": 0.05,
+          "patternDesc": {
+            "patternType": 1,
+            "mainCnt": 1,
+            "subCnt": 1,
+            "angleOffset": 3.1416,
+            "angleInterval": 0.0491,
+            "speed1": 300,
+            "speed2": 50,
+            "spriteID": 2,
+            "hitboxRadius": 4,
+            "lifeTime": 6,
+            "spawnEffect": 0,
+            "soundEffect": 0,
+            "reboundEffect": 0
+          }
+        }
+      ]
     },
-    "boss_flandre_Sub57": {
-      "_desc": "符卡预留 - ecldata7sp Sub57",
+    "boss_flandre_phase6": {
+      "_desc": "Phase 6 (Sub70) - \"uiéÔµ  -qÌ-v\"",
       "movePattern": 3,
       "hp": 2000,
       "hitboxWidth": 48,
@@ -75,10 +267,57 @@
       "speedX": 0,
       "speedY": 30,
       "halfLife": 0,
-      "score": 100000
+      "score": 100000,
+      "itemDrop": "full_power",
+      "emitters": [
+        {
+          "_desc": "etRing: 48way x1rows",
+          "startDelay": 0,
+          "emitInterval": 1,
+          "burstCount": 1,
+          "burstInterval": 0.05,
+          "patternDesc": {
+            "patternType": 3,
+            "mainCnt": 48,
+            "subCnt": 1,
+            "angleOffset": 0,
+            "angleInterval": 0.0491,
+            "speed1": 100,
+            "speed2": 50,
+            "spriteID": 2,
+            "hitboxRadius": 4,
+            "lifeTime": 6,
+            "spawnEffect": 0,
+            "soundEffect": 0,
+            "reboundEffect": 0
+          }
+        },
+        {
+          "_desc": "etRingAimed: 1way x1rows",
+          "startDelay": 0,
+          "emitInterval": 1,
+          "burstCount": 1,
+          "burstInterval": 0.05,
+          "patternDesc": {
+            "patternType": 7,
+            "mainCnt": 1,
+            "subCnt": 1,
+            "angleOffset": 0.0,
+            "angleInterval": 0.0491,
+            "speed1": 100,
+            "speed2": 50,
+            "spriteID": 2,
+            "hitboxRadius": 4,
+            "lifeTime": 6,
+            "spawnEffect": 0,
+            "soundEffect": 0,
+            "reboundEffect": 0
+          }
+        }
+      ]
     },
-    "boss_flandre_Sub60": {
-      "_desc": "符卡预留 - ecldata7sp Sub60",
+    "boss_flandre_phase7": {
+      "_desc": "Phase 7 (Sub72) - \"uiéÔµ  -NÌ-v\"",
       "movePattern": 3,
       "hp": 2000,
       "hitboxWidth": 48,
@@ -86,10 +325,35 @@
       "speedX": 0,
       "speedY": 30,
       "halfLife": 0,
-      "score": 100000
+      "score": 100000,
+      "itemDrop": "full_power",
+      "emitters": [
+        {
+          "_desc": "etRing: 8way x1rows",
+          "startDelay": 0,
+          "emitInterval": 1,
+          "burstCount": 1,
+          "burstInterval": 0.05,
+          "patternDesc": {
+            "patternType": 3,
+            "mainCnt": 8,
+            "subCnt": 1,
+            "angleOffset": 0,
+            "angleInterval": 0.0491,
+            "speed1": 100,
+            "speed2": 50,
+            "spriteID": 2,
+            "hitboxRadius": 4,
+            "lifeTime": 6,
+            "spawnEffect": 0,
+            "soundEffect": 0,
+            "reboundEffect": 0
+          }
+        }
+      ]
     },
-    "boss_flandre_Sub61": {
-      "_desc": "符卡预留 - ecldata7sp Sub61",
+    "boss_flandre_phase8": {
+      "_desc": "Phase 8 (Sub74) - \"uiéÔµ  -ÐÌ-v\"",
       "movePattern": 3,
       "hp": 2000,
       "hitboxWidth": 48,
@@ -97,7 +361,102 @@
       "speedX": 0,
       "speedY": 30,
       "halfLife": 0,
-      "score": 100000
+      "score": 100000,
+      "itemDrop": "full_power",
+      "emitters": [
+        {
+          "_desc": "etRing: 48way x1rows",
+          "startDelay": 0,
+          "emitInterval": 1,
+          "burstCount": 1,
+          "burstInterval": 0.05,
+          "patternDesc": {
+            "patternType": 3,
+            "mainCnt": 48,
+            "subCnt": 1,
+            "angleOffset": 0,
+            "angleInterval": 0.0,
+            "speed1": 500,
+            "speed2": 50,
+            "spriteID": 2,
+            "hitboxRadius": 4,
+            "lifeTime": 6,
+            "spawnEffect": 0,
+            "soundEffect": 0,
+            "reboundEffect": 0
+          }
+        },
+        {
+          "_desc": "etFan: 0way x1rows",
+          "startDelay": 0,
+          "emitInterval": 1,
+          "burstCount": 1,
+          "burstInterval": 0.05,
+          "patternDesc": {
+            "patternType": 1,
+            "mainCnt": 0,
+            "subCnt": 1,
+            "angleOffset": 3.1416,
+            "angleInterval": 0.0491,
+            "speed1": 300,
+            "speed2": 50,
+            "spriteID": 2,
+            "hitboxRadius": 4,
+            "lifeTime": 6,
+            "spawnEffect": 0,
+            "soundEffect": 0,
+            "reboundEffect": 0
+          }
+        }
+      ]
+    },
+    "boss_flandre_phase9": {
+      "_desc": "Phase 9 (Sub79) - \"uHÌ÷Cv\"",
+      "movePattern": 3,
+      "hp": 2000,
+      "hitboxWidth": 48,
+      "hitboxHeight": 48,
+      "speedX": 0,
+      "speedY": 30,
+      "halfLife": 0,
+      "score": 100000,
+      "itemDrop": "full_power",
+      "emitters": [
+        {
+          "_desc": "etRing: 16way x1rows",
+          "startDelay": 0,
+          "emitInterval": 1,
+          "burstCount": 1,
+          "burstInterval": 0.05,
+          "patternDesc": {
+            "patternType": 3,
+            "mainCnt": 16,
+            "subCnt": 1,
+            "angleOffset": 0,
+            "angleInterval": 0.0491,
+            "speed1": 250,
+            "speed2": 50,
+            "spriteID": 2,
+            "hitboxRadius": 4,
+            "lifeTime": 6,
+            "spawnEffect": 0,
+            "soundEffect": 0,
+            "reboundEffect": 0
+          }
+        }
+      ]
     }
-  }
+  },
+  "stage_7": [
+    {
+      "id": "boss_flandre",
+      "enemyType": "boss_flandre",
+      "spawn_time": 0,
+      "start_pos": [
+        272,
+        -32
+      ],
+      "durationTime": 99
+    }
+  ]
 }

@@ -1,9 +1,7 @@
 #include "LevelManager.h"
 
-LevelManager::LevelManager() : stage_enemies_data(NULL), current_stage(1), stage_state(STAGE_LOADING) {
+LevelManager::LevelManager() : stage_enemies_data(NULL), current_stage(1), stage_state(STAGE_LOADING), isClearingForMidboss(true), midbossIndex_(1e5) {
 }
-
-// ── 关卡状态机 ──
 
 void LevelManager::start_stage() {
     stage_state = STAGE_RUNNING;
@@ -13,6 +11,15 @@ void LevelManager::start_stage() {
 void LevelManager::trigger_boss() {
     stage_state = STAGE_BOSS;
     std::cout << "Stage " << current_stage << " boss triggered." << std::endl;
+}
+
+void LevelManager::trigger_midboss() {
+    stage_state = STAGE_MIDBOSS;
+}
+
+bool LevelManager::update_stage_state() {
+    int activeCounter;
+    
 }
 
 void LevelManager::clear_stage() {
@@ -98,6 +105,37 @@ void LevelManager::load_stage(int stage) {
 
     std::cout << "Successfully loaded: " << file_path << std::endl;
     std::cout << "Total enemies in " << key << ": " << cJSON_GetArraySize(stage_array) << std::endl;
+}
+
+void LevelManager::load_boss_stage(int stage) {
+    current_stage = stage;
+    stage_state = STAGE_LOADING;
+    std::string file_path = "level/level" + std::to_string(stage) + "bs.json";
+
+    std::ifstream file(file_path);
+    if (!file.is_open()) {
+        std::cerr << "Failed to open file: " << file_path << std::endl;
+        return;
+    }
+
+    std::string json_string;
+    std::string line;
+    while (std::getline(file, line))
+        json_string += line;
+    file.close();
+
+    if (stage_enemies_data != NULL) {
+        cJSON_Delete(stage_enemies_data);
+        stage_enemies_data = NULL;
+    }
+    stage_enemies_data = cJSON_Parse(json_string.c_str());
+    if (stage_enemies_data == NULL) {
+        const char* error_ptr = cJSON_GetErrorPtr();
+        if (error_ptr != NULL)
+            std::cerr << "JSON parse error: " << error_ptr << std::endl;
+        return;
+    }
+    std::cout << "Successfully loaded: " << file_path << std::endl;
 }
 
 void LevelManager::init_enemy_pool() {
@@ -233,7 +271,7 @@ void LevelManager::init_enemy_pool() {
             targetY = (float)targetY_item->valuedouble;
         }
 
-        //extract enemyType
+        //extract enemyType — exact match first, then strip _Sub* suffix
         int enemyType_ = 0;
         cJSON* enemyType_item = cJSON_GetObjectItem(enemy_item, "enemyType");
         if (enemyType_item && cJSON_IsString(enemyType_item)) {
@@ -246,9 +284,58 @@ void LevelManager::init_enemy_pool() {
                 enemyType_ = FAIRY_GREEN;
             } else if (enemyType_str == "fairy_blue") {
                 enemyType_ = FAIRY_BLUE;
+            } else if (enemyType_str == "boss_entry") {
+                enemyType_ = BOSS_ENTRY;
+            } else if (enemyType_str == "boss_rumia") {
+                enemyType_ = BOSS_RUMIA;
+            } else if (enemyType_str == "boss_final") {
+                enemyType_ = BOSS_FINAL;
+            } else if (enemyType_str == "boss_rumia_fan") {
+                enemyType_ = BOSS_RUMIA;
+            } else if (enemyType_str == "boss_rumia_ring") {
+                enemyType_ = BOSS_RUMIA;
+            } else if (enemyType_str == "boss_final_fan") {
+                enemyType_ = BOSS_FINAL;
+            } else if (enemyType_str == "boss_daiyousei") {
+                enemyType_ = BOSS_DAIYOUSEI;
+            } else if (enemyType_str == "boss_cirno") {
+                enemyType_ = BOSS_CIRNO;
+            } else if (enemyType_str == "boss_patchouli") {
+                enemyType_ = BOSS_PATCHOULI;
+            } else if (enemyType_str == "boss_sakuya") {
+                enemyType_ = BOSS_SAKUYA;
+            } else if (enemyType_str == "boss_remilia") {
+                enemyType_ = BOSS_REMILIA;
+            } else if (enemyType_str == "boss_flandre") {
+                enemyType_ = BOSS_FLANDRE;
+            } else if (enemyType_str == "boss_extra") {
+                enemyType_ = BOSS_EXTRA;
+            } else {
+                // strip _Sub* suffix and retry (e.g. boss_rumia_Sub22 → boss_rumia)
+                size_t subPos = enemyType_str.find("_Sub");
+                if (subPos != std::string::npos) {
+                    std::string base = enemyType_str.substr(0, subPos);
+                    if (base == "boss_rumia")       enemyType_ = BOSS_RUMIA;
+                    else if (base == "boss_final")  enemyType_ = BOSS_FINAL;
+                    else if (base == "boss_daiyousei") enemyType_ = BOSS_DAIYOUSEI;
+                    else if (base == "boss_cirno")  enemyType_ = BOSS_CIRNO;
+                    else if (base == "boss_patchouli") enemyType_ = BOSS_PATCHOULI;
+                    else if (base == "boss_sakuya") enemyType_ = BOSS_SAKUYA;
+                    else if (base == "boss_remilia") enemyType_ = BOSS_REMILIA;
+                    else if (base == "boss_flandre") enemyType_ = BOSS_FLANDRE;
+                    else if (base == "boss_extra")  enemyType_ = BOSS_EXTRA;
+                }
             }
         }
 
+        // extract isMidboss flag (from defaults or per-instance)
+        bool isMidboss = false;
+        cJSON* isMidboss_item = cJSON_GetObjectItem(enemy_item, "isMidboss");
+        if (!isMidboss_item && defaults != enemy_item)           isMidboss_item = cJSON_GetObjectItem(defaults, "isMidboss");
+        if (isMidboss_item && cJSON_IsBool(isMidboss_item)) {
+            isMidboss = cJSON_IsTrue(isMidboss_item);
+        }
+        
         // Set configuration values
         config.movePattern = move_type;
         config.emergeTime = emergeTime;
@@ -262,6 +349,7 @@ void LevelManager::init_enemy_pool() {
         config.startX = start_x;
         config.startY = start_y;
         config.enemyType = enemyType_;
+        config.isMidboss = isMidboss;
 
         float halfLife = 0.0f;
         cJSON* halfLife_item = cJSON_GetObjectItem(enemy_item, "halfLife");
@@ -377,7 +465,7 @@ void LevelManager::init_enemy_pool() {
         enemy_pool.push_back(new_enemy);
         
         std::cout << "Enemy " << i << " created: hp=" << config.hp 
-                  << ", pos=(" << start_x << "," << start_y << ")" << " emergeTime=" << config.emergeTime<< " enemyType=" << config.enemyType << std::endl;
+                  << ", pos=(" << start_x << "," << start_y << ")" << " emergeTime=" << config.emergeTime<< " enemyType=" << config.enemyType <<" isMidboss"<< config.isMidboss<< std::endl;
     }
     
     std::cout << "Enemy pool initialized with " << enemy_pool.size() << " enemies" << std::endl;
@@ -394,10 +482,25 @@ Enemy* LevelManager::get_enemy(int index) {
     return NULL;
 }
 
-void LevelManager::update_all_enemies(float px, float py, size_t frameCounter_) {
+void LevelManager::trigger_midboss_clear(Uint32 &frameCounter, Uint32 &midbossEnterFrame_, StageState &prevStageState, StageState &currentStageState){
+    isClearingForMidboss = false;
+    midbossEnterFrame_ = (Uint32)frameCounter;
+    for(int i = 0; i < midbossIndex_; i++)  enemy_pool[i]->deactivate();
+
+
+}
+
+void LevelManager::update_all_enemies(float px, float py, Uint32 &frameCounter_, Uint32 &midbossEnterFrame_, float dt_, StageState &prevStageState, StageState &currentStageState) {
     for (size_t i = 0; i < enemy_pool.size(); ++i) {
+        if(enemy_pool[i] == NULL)   continue;
+
         if (enemy_pool[i] != NULL) {
             enemy_pool[i]->update_player_info(px, py, frameCounter_);
+        }
+        if(enemy_pool[i] != NULL && enemy_pool[i]->get_is_midboss() && enemy_pool[i]->is_active() && isClearingForMidboss){
+            midbossIndex_ = i;
+            std::cout<<"it's time to trigger clear";
+            trigger_midboss_clear(frameCounter_, midbossEnterFrame_, prevStageState, currentStageState);
         }
     }
 }

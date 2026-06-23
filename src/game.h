@@ -3,6 +3,7 @@
 #include "timer.h"
 #include "UI.h"
 #include "main_menu.h"
+#include "StartMenu.h"
 #include "player.h"
 #include "GameBackground.h"
 #include "LevelManager.h"
@@ -21,14 +22,20 @@ private:
 	//FPS update
 	Timer menuFpsUpdate;
 	MainMenu mainMenu;
-	LevelManager levelManager;
-	ItemManager itemManager;
+	LevelManager* levelManager;
+	ItemManager* itemManager;
 	InfoArea infoArea;
+	int currentStage;
+	StageState prevStageState;
+	Uint32 midbossEnterFrame;
+
+	void rebuild_managers(EnemyBulletManager* bulletMgr);
 protected:
 	static Uint32 lastUpdate;
 	static SDL_Surface* fpsSurface;
 public:
 	Game();
+	~Game();
 	PlayerBulletPool playerBulletPool_;
 	Player player1;
 	void show_fps(Uint32 currentFps);

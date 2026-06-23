@@ -106,6 +106,7 @@ void PlayerBullet::init(PlayerBulletConfig& config){
 }
 bool PlayerBullet::bullet_move(){
 	if(!isActive)	return false;
+	if(isHit)      { isActive = false; return true; }
 	framesLeft--;
 	if (bulletType_ == 1 && targetY_ > 0) {
 		// check if tracked enemy is still alive
@@ -190,7 +191,6 @@ void PlayerBullet::on_hit(){
 	velY_ /= 8.0f;
 	isHit = true;
 	if (rotatedSurface_ != NULL) { SDL_FreeSurface(rotatedSurface_); rotatedSurface_ = NULL; }
-	isActive = false;
 }
 bool PlayerBullet::inUse() const{
 	return isActive;

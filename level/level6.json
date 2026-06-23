@@ -104,7 +104,190 @@
           }
         }
       ]
+    },
+    "midboss_remilia": {
+      "_desc": "Midboss midboss_remilia",
+      "movePattern": 3,
+      "hp": 1000,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": 0,
+      "speedY": 90,
+      "halfLife": 0,
+      "midboss": true,
+      "score": 100000,
+      "itemDrop": "full_power"
     }
   },
-  "stage_6": []
+  "stage_6": [
+    {
+      "id": "e6_0002",
+      "spawn_time": 20.0,
+      "start_pos": [
+        -32.0,
+        128.0
+      ],
+      "movePattern": 0,
+      "hp": 2000,
+      "speedX": 0,
+      "speedY": 120,
+      "halfLife": 0,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24
+    },
+    {
+      "id": "e6_0003",
+      "spawn_time": 28.333,
+      "start_pos": [
+        -32.0,
+        60.0
+      ],
+      "movePattern": 0,
+      "hp": 2000,
+      "speedX": 0,
+      "speedY": 120,
+      "halfLife": 0,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24
+    },
+    {
+      "id": "e6_0004",
+      "spawn_time": 35.0,
+      "start_pos": [
+        -32.0,
+        96.0
+      ],
+      "movePattern": 0,
+      "hp": 2000,
+      "speedX": 0,
+      "speedY": 120,
+      "halfLife": 0,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24
+    },
+    {
+      "id": "e6_0005",
+      "spawn_time": 40.0,
+      "start_pos": [
+        -32.0,
+        160.0
+      ],
+      "movePattern": 0,
+      "hp": 2000,
+      "speedX": 0,
+      "speedY": 120,
+      "halfLife": 0,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24
+    },
+    {
+      "id": "e6_0006",
+      "spawn_time": 45.0,
+      "start_pos": [
+        -32.0,
+        128.0
+      ],
+      "movePattern": 0,
+      "hp": 2000,
+      "speedX": 0,
+      "speedY": 120,
+      "halfLife": 0,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24
+    },
+    {
+      "id": "e6_0007",
+      "spawn_time": 50.0,
+      "start_pos": [
+        -32.0,
+        32.0
+      ],
+      "movePattern": 0,
+      "hp": 2000,
+      "speedX": 0,
+      "speedY": 120,
+      "halfLife": 0,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24
+    },
+    {
+      "id": "e6_0009",
+      "spawn_time": 67.033,
+      "start_pos": [
+        192.0,
+        -16.0
+      ],
+      "movePattern": 0,
+      "hp": 10,
+      "speedX": 0,
+      "speedY": 120,
+      "halfLife": 0,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24
+    },
+    {
+      "id": "e6_0010",
+      "spawn_time": 68.05,
+      "start_pos": [
+        192.0,
+        -16.0
+      ],
+      "movePattern": 0,
+      "hp": 10,
+      "speedX": 0,
+      "speedY": 120,
+      "halfLife": 0,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24
+    },
+    {
+      "id": "e6_0011",
+      "spawn_time": 71.067,
+      "start_pos": [
+        192.0,
+        192.0
+      ],
+      "movePattern": 0,
+      "hp": 10,
+      "speedX": 0,
+      "speedY": 120,
+      "halfLife": 0,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24
+    }
+  ],
+  "randomItemTable": [
+    "power_small",
+    "power_small",
+    "point",
+    "power_small",
+    "point",
+    "power_small",
+    "power_small",
+    "point",
+    "point",
+    "point",
+    "power_small",
+    "power_small",
+    "power_small",
+    "point",
+    "point",
+    "power_small",
+    "point",
+    "power_small",
+    "point",
+    "power_small",
+    "point",
+    "power_small",
+    "point",
+    "power_small",
+    "point",
+    "power_small",
+    "power_small",
+    "point",
+    "point",
+    "point",
+    "power_small",
+    "power_big"
+  ]
 }

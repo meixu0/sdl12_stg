@@ -1,7 +1,7 @@
 {
   "enemy_types": {
     "zako_small": {
-      "_desc": "Sub0 - 平滑转向追踪玩家，保持80px距离不重叠",
+      "_desc": "Sub0 - \u5e73\u6ed1\u8f6c\u5411\u8ffd\u8e2a\u73a9\u5bb6\uff0c\u4fdd\u630180px\u8ddd\u79bb\u4e0d\u91cd\u53e0",
       "movePattern": 4,
       "hp": 20,
       "hitboxWidth": 32,
@@ -64,7 +64,7 @@
       "itemDrop": "power_small"
     },
     "fairy_blue": {
-      "_desc": "Sub1 - moveDirTime down→ sinewave, etFanAimed + etRing",
+      "_desc": "Sub1 - moveDirTime down\u2192 sinewave, etFanAimed + etRing",
       "movePattern": 1,
       "hp": 150,
       "hitboxWidth": 24,
@@ -259,7 +259,7 @@
       ],
       "itemDrop": "power_big"
     },
-    "midboss_rumia": {
+    "boss_rumia": {
       "_desc": "Sub15 - midboss entry, spellcard trigger",
       "movePattern": 3,
       "hp": 500,
@@ -269,7 +269,9 @@
       "speedY": 90,
       "halfLife": 0,
       "score": 100000,
-      "itemDrop": "full_power"
+      "itemDrop": "full_power",
+      "isMidboss": true,
+	  "lifeTime": 99
     },
     "zako_ring": {
       "_desc": "ecldata1 Sub23",
@@ -1937,7 +1939,7 @@
     },
     {
       "id": "midboss_entry",
-      "enemyType": "midboss_rumia",
+      "enemyType": "boss_rumia",
       "spawn_time": 48.92,
       "start_pos": [
         192,
@@ -1947,7 +1949,7 @@
     {
       "id": "mid_p_green",
       "enemyType": "fairy_green",
-      "spawn_time": 48.92,
+      "spawn_time": 148.92,
       "start_pos": [
         80,
         -16
@@ -1956,7 +1958,7 @@
     {
       "id": "mid_p_red",
       "enemyType": "fairy_red",
-      "spawn_time": 50.58,
+      "spawn_time": 150.58,
       "start_pos": [
         304,
         -16
@@ -1965,7 +1967,7 @@
     {
       "id": "mid_p_red2",
       "enemyType": "fairy_red",
-      "spawn_time": 55.58,
+      "spawn_time": 155.58,
       "start_pos": [
         80,
         -16
@@ -1974,7 +1976,7 @@
     {
       "id": "mid_p_green2",
       "enemyType": "fairy_green",
-      "spawn_time": 57.25,
+      "spawn_time": 157.25,
       "start_pos": [
         304,
         -16
@@ -1983,7 +1985,7 @@
     {
       "id": "mid_p_green3",
       "enemyType": "fairy_green",
-      "spawn_time": 62.25,
+      "spawn_time": 162.25,
       "start_pos": [
         80,
         -16
@@ -1992,7 +1994,7 @@
     {
       "id": "mid_p_purple",
       "enemyType": "fairy_purple",
-      "spawn_time": 62.25,
+      "spawn_time": 162.25,
       "start_pos": [
         304,
         -16
@@ -2000,8 +2002,8 @@
     },
     {
       "id": "boss_entry",
-      "enemyType": "boss_final",
-      "spawn_time": 69.62,
+      "enemyType": "boss_entry",
+      "spawn_time": 169.62,
       "start_pos": [
         192,
         128

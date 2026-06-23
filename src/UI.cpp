@@ -3,16 +3,28 @@ SDL_Surface* screen = NULL;
 SDL_Event event;
 bool quit = false;
 int gameState = STATE_MENU;
+bool isFullscreen = false;
 const SDL_Surface* numbersImage[10] = {NULL};
 const SDL_Surface* uppercaseImage[26] = {NULL};
 const SDL_Surface* lowercaseImage[26] = {NULL};
+SDL_Surface* zakoSprites[SPRITE_ROWS][SPRITE_COLS] = {{NULL}};
+SDL_Surface* zakoRingSprites[2][2] = {{NULL}};
+SDL_Surface* bossSprites[9][12] = {{NULL}};
 bool init(){
 	if(SDL_Init(SDL_INIT_EVERYTHING) == -1)	return false;
 	if(TTF_Init() == -1)	return false;
+	if(Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 4096) == -1)	return false;
 	screen = SDL_SetVideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, SDL_SWSURFACE);
 	if(screen == NULL)	return false;
 	SDL_WM_SetCaption("test", NULL);
 	return true;
+}
+void toggle_fullscreen(){
+	isFullscreen = !isFullscreen;
+	int flags = SDL_SWSURFACE;
+	if(isFullscreen)	flags |= SDL_FULLSCREEN;
+	screen = SDL_SetVideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, flags);
+	if(screen == NULL)	isFullscreen = !isFullscreen;
 }
 void apply_surface(int x,int y, SDL_Surface *source, SDL_Surface *destination){
 	SDL_Rect offset;
@@ -120,14 +132,15 @@ SDL_Surface *load_image(std::string filename, double targetW, double targetH){
 	SDL_Surface* optimizedImage = NULL;
 	loadedImage = IMG_Load(filename.c_str());
 	if(loadedImage != NULL){
-		optimizedImage = SDL_DisplayFormat(loadedImage);
+		optimizedImage = SDL_DisplayFormatAlpha(loadedImage);
 		SDL_FreeSurface(loadedImage);
 	}
 	if(optimizedImage == NULL)	return NULL;
 	double scaleW = targetW / optimizedImage->w;
 	double scaleH = targetH / optimizedImage->h;
 	double scaleRate = (scaleW < scaleH) ? scaleW : scaleH;
-	SDL_Surface* zoomedImage = rotozoomSurface(optimizedImage, 0.0, scaleRate, 1);
+	SDL_Surface* zoomedImage = rotozoomSurface(optimizedImage, 0.0, scaleRate, 0);
+	SDL_FreeSurface(optimizedImage);
 	return zoomedImage;
 }
 SDL_Surface *load_sprite(std::string filename, int srcX, int srcY, int srcW, int srcH, double targetW, double targetH){

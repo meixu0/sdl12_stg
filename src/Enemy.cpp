@@ -5,30 +5,7 @@
 
 Enemy* Enemy::onScreenList[256] = {NULL};
 int Enemy::onScreenCount = 0;
-static const int SPRITE_COLS = 16;
-static const int SPRITE_ROWS = 16;
-static SDL_Surface* zakoSprites[SPRITE_ROWS][SPRITE_COLS] = {{NULL}};
-static SDL_Surface* zakoRingSprite[2][2] = {{NULL}};
-static bool spritesLoaded = false;
 
-static void init_zako_sprites() {
-    if (spritesLoaded) return;
-    for (int row = 0; row < SPRITE_ROWS; row++) {
-        if (row >= 4 && row <= 7) continue;
-        if (row >= 12) continue;
-        for (int col = 0; col < SPRITE_COLS; col++) {
-            zakoSprites[row][col] = load_sprite(
-                "res/stgenm/enemy.png",
-                col * 32, row * 32, 32, 32,
-                32.0, 32.0);
-        }
-    }
-    zakoRingSprite[0][0] = load_sprite("res/stgenm/enemy.png", 32, 64, 16, 16, 16.0, 16.0);//blue ring
-    zakoRingSprite[0][1] = load_sprite("res/stgenm/enemy.png", 48, 64, 16, 16, 16.0, 16.0);//red ring
-    zakoRingSprite[1][0] = load_sprite("res/stgenm/enemy.png", 32, 80, 16, 16, 16.0, 16.0);//green ring
-    zakoRingSprite[1][1] = load_sprite("res/stgenm/enemy.png", 48, 80, 16, 16, 16.0, 16.0);//yellow ring
-    spritesLoaded = true;
-}
 namespace {
     inline float easeLinear(float t) { return 1.0f - t; }
     inline float easeDecelerate(float t) { return 1.0f - t * t; }
@@ -48,11 +25,13 @@ Enemy::Enemy() : x(0.0), y(0.0), startX(0.0), startY(0.0), playerX(0.0), playerY
     moveAngle(0), angularVelocity(0), accel(0), minPlayerDist(80.0f),
     spriteRow(0), spriteAnimTimer(0.0f),
     isDead(false),
-    axisSpeedX(0), axisSpeedY(0), enemyType(0), enemyID(0), playerPtr(NULL) {
-    init_zako_sprites();
+    axisSpeedX(0), axisSpeedY(0), enemyType(0), enemyID(0), isMidboss(false), isEntering(false), entryTargetY(100.0f), playerPtr(NULL) {
 }
 SDL_Surface* Enemy::get_zako_sprite(int col) {
     return zakoSprites[enemyType][col];
+}
+SDL_Surface* Enemy::get_boss_sprite(int col) {
+    return bossSprites[enemyType][col];
 }
 void Enemy::init(EnemyConfig config, float x_, float y_){
     x = x_;
@@ -65,6 +44,8 @@ void Enemy::init(EnemyConfig config, float x_, float y_){
     durationTime = config.durationTime;
     enemyType = config.enemyType;
     enemyID = config.enemyID;
+    isMidboss = config.isMidboss;
+    if(isMidboss)   durationTime = 99.0;//将道中boss默认设为99的生存时间
     hitboxHeight = config.hitboxHeight;
     hitboxWidth = config.hitboxWidth;
     speedX = config.speedX;
@@ -271,6 +252,10 @@ void Enemy::compute_axis_speed(){
     }
 }
 
+void Enemy::force_retreat(){
+    axisSpeedY = -axisSpeedY - 50;
+}
+
 void Enemy::enemy_move(float dt){
     bool wasActive = isActive;
     timeAlive += dt;
@@ -281,9 +266,10 @@ void Enemy::enemy_move(float dt){
     } else {
         isActive = true;
     }
-    // 跟踪屏幕上的敌机列表
+
     if (!wasActive && isActive) {
         if (onScreenCount < 256) onScreenList[onScreenCount++] = this;
+        if (enemyType >= BOSS_RUMIA) boss_entry();
     } else if (wasActive && !isActive) {
         for (int i = 0; i < onScreenCount; i++) {
             if (onScreenList[i] == this) {
@@ -293,6 +279,20 @@ void Enemy::enemy_move(float dt){
         }
     }
     if(!isActive) return;
+
+    // boss entry phase: move down from above screen to target Y
+    if (isEntering) {
+        axisSpeedX = 0.0f;
+        axisSpeedY = speedY;
+        x += axisSpeedX * dt;
+        y += axisSpeedY * dt;
+        if (y >= entryTargetY) {
+            y = entryTargetY;
+            isEntering = false;
+        }
+        spriteAnimTimer += dt;
+        return;
+    }
 
     spriteAnimTimer += dt;
 
@@ -368,7 +368,9 @@ void Enemy::enemy_show(){
     int frameIndex = (tick > 3) ? (7 - tick) : tick;
 
     int col = colBase + frameIndex;
-    SDL_Surface* sprite = get_zako_sprite(col);
+    SDL_Surface* sprite = (enemyType >= BOSS_RUMIA)
+        ? get_boss_sprite(col)
+        : get_zako_sprite(col);
     if (sprite) {
         apply_surface((int)x, (int)y, sprite, screen);
     }
@@ -402,4 +404,11 @@ bool Enemy::check_bullet_hit(float bx, float by, float bhw, float bhh){
 int Enemy::take_damage(int dmg){
     hp -= dmg;
     return hp;
+}
+
+void Enemy::boss_entry() {
+    if (enemyType < BOSS_RUMIA || isMidboss) return;
+    isEntering = true;
+    entryTargetY = 100.0f;
+
 }

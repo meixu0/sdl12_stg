@@ -2,3 +2,13 @@
 #define FAIRY_RED 1
 #define FAIRY_GREEN 2
 #define FAIRY_BLUE 3
+#define BOSS_ENTRY 4
+#define BOSS_RUMIA 5
+#define BOSS_FINAL 6
+#define BOSS_DAIYOUSEI 7
+#define BOSS_CIRNO 8
+#define BOSS_PATCHOULI 9
+#define BOSS_SAKUYA 10
+#define BOSS_REMILIA 11
+#define BOSS_FLANDRE 12
+#define BOSS_EXTRA 13

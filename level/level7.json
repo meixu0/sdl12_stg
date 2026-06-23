@@ -657,7 +657,340 @@
           }
         }
       ]
+    },
+    "midboss_flandre": {
+      "_desc": "Midboss midboss_flandre",
+      "movePattern": 3,
+      "hp": 1200,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24,
+      "speedX": 0,
+      "speedY": 90,
+      "halfLife": 0,
+      "midboss": true,
+      "score": 100000,
+      "itemDrop": "full_power"
     }
   },
-  "stage_7": []
+  "stage_7": [
+    {
+      "id": "e7_0003",
+      "spawn_time": 20.0,
+      "start_pos": [
+        -32.0,
+        128.0
+      ],
+      "movePattern": 0,
+      "hp": 1300,
+      "speedX": 0,
+      "speedY": 120,
+      "halfLife": 0,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24
+    },
+    {
+      "id": "e7_0004",
+      "spawn_time": 20.5,
+      "start_pos": [
+        -32.0,
+        96.0
+      ],
+      "movePattern": 0,
+      "hp": 1300,
+      "speedX": 0,
+      "speedY": 120,
+      "halfLife": 0,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24
+    },
+    {
+      "id": "e7_0005",
+      "spawn_time": 21.0,
+      "start_pos": [
+        -32.0,
+        60.0
+      ],
+      "movePattern": 0,
+      "hp": 1300,
+      "speedX": 0,
+      "speedY": 120,
+      "halfLife": 0,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24
+    },
+    {
+      "id": "e7_0006",
+      "spawn_time": 31.0,
+      "start_pos": [
+        -32.0,
+        60.0
+      ],
+      "movePattern": 0,
+      "hp": 1300,
+      "speedX": 0,
+      "speedY": 120,
+      "halfLife": 0,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24
+    },
+    {
+      "id": "e7_0007",
+      "spawn_time": 31.5,
+      "start_pos": [
+        -32.0,
+        96.0
+      ],
+      "movePattern": 0,
+      "hp": 1300,
+      "speedX": 0,
+      "speedY": 120,
+      "halfLife": 0,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24
+    },
+    {
+      "id": "e7_0008",
+      "spawn_time": 32.0,
+      "start_pos": [
+        -32.0,
+        128.0
+      ],
+      "movePattern": 0,
+      "hp": 1300,
+      "speedX": 0,
+      "speedY": 120,
+      "halfLife": 0,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24
+    },
+    {
+      "id": "e7_0009",
+      "spawn_time": 41.167,
+      "start_pos": [
+        -32.0,
+        60.0
+      ],
+      "movePattern": 0,
+      "hp": 1300,
+      "speedX": 0,
+      "speedY": 120,
+      "halfLife": 0,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24
+    },
+    {
+      "id": "e7_0010",
+      "spawn_time": 41.667,
+      "start_pos": [
+        -32.0,
+        96.0
+      ],
+      "movePattern": 0,
+      "hp": 1300,
+      "speedX": 0,
+      "speedY": 120,
+      "halfLife": 0,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24
+    },
+    {
+      "id": "e7_0011",
+      "spawn_time": 42.167,
+      "start_pos": [
+        -32.0,
+        128.0
+      ],
+      "movePattern": 0,
+      "hp": 1300,
+      "speedX": 0,
+      "speedY": 120,
+      "halfLife": 0,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24
+    },
+    {
+      "id": "e7_0012",
+      "spawn_time": 50.5,
+      "start_pos": [
+        -32.0,
+        144.0
+      ],
+      "movePattern": 0,
+      "hp": 1300,
+      "speedX": 0,
+      "speedY": 120,
+      "halfLife": 0,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24
+    },
+    {
+      "id": "e7_0013",
+      "spawn_time": 51.0,
+      "start_pos": [
+        -32.0,
+        96.0
+      ],
+      "movePattern": 0,
+      "hp": 1300,
+      "speedX": 0,
+      "speedY": 120,
+      "halfLife": 0,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24
+    },
+    {
+      "id": "e7_0014",
+      "spawn_time": 51.5,
+      "start_pos": [
+        -32.0,
+        128.0
+      ],
+      "movePattern": 0,
+      "hp": 1300,
+      "speedX": 0,
+      "speedY": 120,
+      "halfLife": 0,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24
+    },
+    {
+      "id": "e7_0015",
+      "spawn_time": 58.167,
+      "start_pos": [
+        192.0,
+        -16.0
+      ],
+      "movePattern": 0,
+      "hp": 10,
+      "speedX": 0,
+      "speedY": 120,
+      "halfLife": 0,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24
+    },
+    {
+      "id": "e7_0016",
+      "spawn_time": 68.533,
+      "start_pos": [
+        192.0,
+        -16.0
+      ],
+      "movePattern": 0,
+      "hp": 10,
+      "speedX": 0,
+      "speedY": 120,
+      "halfLife": 0,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24
+    },
+    {
+      "id": "e7_0017",
+      "spawn_time": 70.567,
+      "start_pos": [
+        192.0,
+        192.0
+      ],
+      "movePattern": 0,
+      "hp": 10,
+      "speedX": 0,
+      "speedY": 120,
+      "halfLife": 0,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24
+    },
+    {
+      "id": "e7_0018",
+      "spawn_time": 70.583,
+      "start_pos": [
+        192.0,
+        192.0
+      ],
+      "movePattern": 0,
+      "hp": 10,
+      "speedX": 0,
+      "speedY": 120,
+      "halfLife": 0,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24
+    },
+    {
+      "id": "e7_0019",
+      "spawn_time": 70.6,
+      "start_pos": [
+        192.0,
+        192.0
+      ],
+      "movePattern": 0,
+      "hp": 10,
+      "speedX": 0,
+      "speedY": 120,
+      "halfLife": 0,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24
+    },
+    {
+      "id": "e7_0020",
+      "spawn_time": 70.617,
+      "start_pos": [
+        192.0,
+        192.0
+      ],
+      "movePattern": 0,
+      "hp": 10,
+      "speedX": 0,
+      "speedY": 120,
+      "halfLife": 0,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24
+    },
+    {
+      "id": "e7_0021",
+      "spawn_time": 70.633,
+      "start_pos": [
+        192.0,
+        192.0
+      ],
+      "movePattern": 0,
+      "hp": 10,
+      "speedX": 0,
+      "speedY": 120,
+      "halfLife": 0,
+      "hitboxWidth": 24,
+      "hitboxHeight": 24
+    }
+  ],
+  "randomItemTable": [
+    "power_small",
+    "power_small",
+    "point",
+    "power_small",
+    "point",
+    "power_small",
+    "power_small",
+    "point",
+    "point",
+    "point",
+    "power_small",
+    "power_small",
+    "power_small",
+    "point",
+    "point",
+    "power_small",
+    "point",
+    "power_small",
+    "point",
+    "power_small",
+    "point",
+    "power_small",
+    "point",
+    "power_small",
+    "point",
+    "power_small",
+    "power_small",
+    "point",
+    "point",
+    "point",
+    "power_small",
+    "power_big"
+  ]
 }

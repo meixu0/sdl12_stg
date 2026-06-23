@@ -147,20 +147,16 @@ void EnemyBulletManager::render(){
     for (int i = 0; i < POOL_SIZE; i++) {
         if (bullets[i].state != ALIVE) continue;
         Bullet& b = bullets[i];
+        SDL_Surface* bulletSpr = NULL;
         switch (b.enemyType) {
-            case 0:
-                apply_surface((int)(b.x - 2), (int)(b.y - 2), redBulletImage, screen);
-                break;
-            case 1:
-                apply_surface((int)(b.x - 2), (int)(b.y - 2), greenBulletImage, screen);
-                break;
-            case 2:
-                apply_surface((int)(b.x - 2), (int)(b.y - 2), blueBulletImage, screen);
-                break;
-            case 3:
-                apply_surface((int)(b.x - 2), (int)(b.y - 2), yellowBulletImage, screen);
-                break;
+            case 0: bulletSpr = redBulletImage;    break;
+            case 1: bulletSpr = greenBulletImage;  break;
+            case 2: bulletSpr = blueBulletImage;   break;
+            case 3: bulletSpr = yellowBulletImage; break;
+            default: bulletSpr = redBulletImage;   break;
         }
+        if (bulletSpr)
+            apply_surface((int)(b.x - 2), (int)(b.y - 2), bulletSpr, screen);
     }
 }
 

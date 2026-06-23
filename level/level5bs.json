@@ -1,18 +1,19 @@
 {
-  "boss_types": {
-    "boss_sakuya_Sub1": {
-      "_desc": "符卡预留 - ecldata5sp Sub1",
+  "enemy_types": {
+    "boss_sakuya": {
+      "_desc": "Boss sakuya entry",
       "movePattern": 3,
-      "hp": 2000,
+      "hp": 18000,
       "hitboxWidth": 48,
       "hitboxHeight": 48,
       "speedX": 0,
       "speedY": 30,
       "halfLife": 0,
-      "score": 100000
+      "score": 100000,
+      "itemDrop": "full_power"
     },
-    "boss_sakuya_Sub2": {
-      "_desc": "符卡预留 - ecldata5sp Sub2",
+    "boss_sakuya_phase1": {
+      "_desc": "Phase 1 (Sub15) - \"guÔáÃ°(}ChVFCJ[)v\"",
       "movePattern": 3,
       "hp": 2000,
       "hitboxWidth": 48,
@@ -20,10 +21,57 @@
       "speedX": 0,
       "speedY": 30,
       "halfLife": 0,
-      "score": 100000
+      "score": 100000,
+      "itemDrop": "full_power",
+      "emitters": [
+        {
+          "_desc": "etRing: 48way x1rows",
+          "startDelay": 0,
+          "emitInterval": 1,
+          "burstCount": 1,
+          "burstInterval": 0.05,
+          "patternDesc": {
+            "patternType": 3,
+            "mainCnt": 48,
+            "subCnt": 1,
+            "angleOffset": 0,
+            "angleInterval": 0.0982,
+            "speed1": 100,
+            "speed2": 100,
+            "spriteID": 0,
+            "hitboxRadius": 4,
+            "lifeTime": 6,
+            "spawnEffect": 0,
+            "soundEffect": 0,
+            "reboundEffect": 0
+          }
+        },
+        {
+          "_desc": "etRing: 24way x2rows",
+          "startDelay": 0,
+          "emitInterval": 1,
+          "burstCount": 1,
+          "burstInterval": 0.05,
+          "patternDesc": {
+            "patternType": 3,
+            "mainCnt": 24,
+            "subCnt": 2,
+            "angleOffset": 0,
+            "angleInterval": 0.0982,
+            "speed1": 140,
+            "speed2": 80,
+            "spriteID": 0,
+            "hitboxRadius": 4,
+            "lifeTime": 6,
+            "spawnEffect": 0,
+            "soundEffect": 0,
+            "reboundEffect": 0
+          }
+        }
+      ]
     },
-    "boss_sakuya_Sub4": {
-      "_desc": "符卡预留 - ecldata5sp Sub4",
+    "boss_sakuya_phase2": {
+      "_desc": "Phase 2 (Sub28) - \"Uu^ÀÌ(CrWut[)v\"",
       "movePattern": 3,
       "hp": 2000,
       "hitboxWidth": 48,
@@ -31,10 +79,57 @@
       "speedX": 0,
       "speedY": 30,
       "halfLife": 0,
-      "score": 100000
+      "score": 100000,
+      "itemDrop": "full_power",
+      "emitters": [
+        {
+          "_desc": "etRing: 80way x1rows",
+          "startDelay": 0,
+          "emitInterval": 1,
+          "burstCount": 1,
+          "burstInterval": 0.05,
+          "patternDesc": {
+            "patternType": 3,
+            "mainCnt": 80,
+            "subCnt": 1,
+            "angleOffset": 0,
+            "angleInterval": 0.0982,
+            "speed1": 100,
+            "speed2": 100,
+            "spriteID": 0,
+            "hitboxRadius": 4,
+            "lifeTime": 6,
+            "spawnEffect": 0,
+            "soundEffect": 0,
+            "reboundEffect": 0
+          }
+        },
+        {
+          "_desc": "etRing: 80way x2rows",
+          "startDelay": 0,
+          "emitInterval": 1,
+          "burstCount": 1,
+          "burstInterval": 0.05,
+          "patternDesc": {
+            "patternType": 3,
+            "mainCnt": 80,
+            "subCnt": 2,
+            "angleOffset": 0,
+            "angleInterval": 0.0982,
+            "speed1": 140,
+            "speed2": 80,
+            "spriteID": 0,
+            "hitboxRadius": 4,
+            "lifeTime": 6,
+            "spawnEffect": 0,
+            "soundEffect": 0,
+            "reboundEffect": 0
+          }
+        }
+      ]
     },
-    "boss_sakuya_Sub6": {
-      "_desc": "符卡预留 - ecldata5sp Sub6",
+    "boss_sakuya_phase3": {
+      "_desc": "Phase 3 (Sub40) - \"u¶OáÉ(ieBbNbhACY)v\"",
       "movePattern": 3,
       "hp": 2000,
       "hitboxWidth": 48,
@@ -42,73 +137,66 @@
       "speedX": 0,
       "speedY": 30,
       "halfLife": 0,
-      "score": 100000
-    },
-    "boss_sakuya_Sub9": {
-      "_desc": "符卡预留 - ecldata5sp Sub9",
-      "movePattern": 3,
-      "hp": 2000,
-      "hitboxWidth": 48,
-      "hitboxHeight": 48,
-      "speedX": 0,
-      "speedY": 30,
-      "halfLife": 0,
-      "score": 100000
-    },
-    "boss_sakuya_Sub13": {
-      "_desc": "符卡预留 - ecldata5sp Sub13",
-      "movePattern": 3,
-      "hp": 2000,
-      "hitboxWidth": 48,
-      "hitboxHeight": 48,
-      "speedX": 0,
-      "speedY": 30,
-      "halfLife": 0,
-      "score": 100000
-    },
-    "boss_sakuya_Sub15": {
-      "_desc": "符卡预留 - ecldata5sp Sub15",
-      "movePattern": 3,
-      "hp": 2000,
-      "hitboxWidth": 48,
-      "hitboxHeight": 48,
-      "speedX": 0,
-      "speedY": 30,
-      "halfLife": 0,
-      "score": 100000
-    },
-    "boss_sakuya_Sub16": {
-      "_desc": "符卡预留 - ecldata5sp Sub16",
-      "movePattern": 3,
-      "hp": 2000,
-      "hitboxWidth": 48,
-      "hitboxHeight": 48,
-      "speedX": 0,
-      "speedY": 30,
-      "halfLife": 0,
-      "score": 100000
-    },
-    "boss_sakuya_Sub19": {
-      "_desc": "符卡预留 - ecldata5sp Sub19",
-      "movePattern": 3,
-      "hp": 2000,
-      "hitboxWidth": 48,
-      "hitboxHeight": 48,
-      "speedX": 0,
-      "speedY": 30,
-      "halfLife": 0,
-      "score": 100000
-    },
-    "boss_sakuya_Sub27": {
-      "_desc": "符卡预留 - ecldata5sp Sub27",
-      "movePattern": 3,
-      "hp": 2000,
-      "hitboxWidth": 48,
-      "hitboxHeight": 48,
-      "speedX": 0,
-      "speedY": 30,
-      "halfLife": 0,
-      "score": 100000
+      "score": 100000,
+      "itemDrop": "full_power",
+      "emitters": [
+        {
+          "_desc": "etRing: 80way x1rows",
+          "startDelay": 0,
+          "emitInterval": 1,
+          "burstCount": 1,
+          "burstInterval": 0.05,
+          "patternDesc": {
+            "patternType": 3,
+            "mainCnt": 80,
+            "subCnt": 1,
+            "angleOffset": 0,
+            "angleInterval": 0.0982,
+            "speed1": 500,
+            "speed2": 100,
+            "spriteID": 0,
+            "hitboxRadius": 4,
+            "lifeTime": 6,
+            "spawnEffect": 0,
+            "soundEffect": 0,
+            "reboundEffect": 0
+          }
+        },
+        {
+          "_desc": "etRing: 80way x2rows",
+          "startDelay": 0,
+          "emitInterval": 1,
+          "burstCount": 1,
+          "burstInterval": 0.05,
+          "patternDesc": {
+            "patternType": 3,
+            "mainCnt": 80,
+            "subCnt": 2,
+            "angleOffset": 0,
+            "angleInterval": 0.0982,
+            "speed1": 540,
+            "speed2": 280,
+            "spriteID": 0,
+            "hitboxRadius": 4,
+            "lifeTime": 6,
+            "spawnEffect": 0,
+            "soundEffect": 0,
+            "reboundEffect": 0
+          }
+        }
+      ]
     }
-  }
+  },
+  "stage_5": [
+    {
+      "id": "boss_sakuya",
+      "enemyType": "boss_sakuya",
+      "spawn_time": 0,
+      "start_pos": [
+        272,
+        -32
+      ],
+      "durationTime": 99
+    }
+  ]
 }
