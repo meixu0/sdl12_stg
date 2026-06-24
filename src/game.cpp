@@ -2,10 +2,10 @@
 Uint32 Game::lastUpdate = 0;
 //TTF_Font* Game::fpsFont = NULL;
 SDL_Surface* Game::fpsSurface = NULL;
-Game::Game() : gameBackground_(nullptr) {
+Game::Game() : gameBackground_(nullptr), playerBulletPool_(NULL), player1(NULL) {
 	frameCounter = 0;
 	fpsLimited = true;
-	menuFrameCounter = 0;
+	menuFps = Timer();
 	fpsSurface = NULL;
 	startMenuFrameCounter = 0;
 	difficultyMenuFpsCounter = 0;
@@ -51,6 +51,14 @@ Game::~Game() {
 	delete levelManager;
 	delete itemManager;
 	delete gameBackground_;
+	if(player1 != NULL) {
+		delete player1;
+		player1 = NULL;
+	}
+	if(playerBulletPool_ != NULL) {
+		delete playerBulletPool_;
+		playerBulletPool_ = NULL;
+	}
 }
 
 void Game::rebuild_managers(EnemyBulletManager* bulletMgr) {
@@ -60,8 +68,8 @@ void Game::rebuild_managers(EnemyBulletManager* bulletMgr) {
 	delete itemManager;
 	levelManager = new LevelManager();
 	itemManager = new ItemManager();
-	itemManager->set_player(&player1);
-	player1.set_item_manager(itemManager);
+	itemManager->set_player(player1);
+	player1->set_item_manager(itemManager);
 	levelManager->set_bullet_manager_for_all(bulletMgr);
 }
 
@@ -83,7 +91,7 @@ void Game::init_game(SDL_Surface* dest){
 	wholeScreen.h = 600;
 	Uint32 black = SDL_MapRGB(dest->format, 0, 0, 0);
 	SDL_FillRect(dest, &wholeScreen, black);
-	player1.init_player_bullet_pool(&playerBulletPool_);
+	player1->init_player_bullet_pool(playerBulletPool_);
 }
 void Game::run(){
 	while(gameState != STATE_EXIT) {
@@ -97,7 +105,7 @@ void Game::run(){
 			else if(gameState == STATE_START_MENU)
 				startMenu.handle_events(event);
 			else if(gameState == STATE_GAME || gameState == STATE_BOSS)
-				player1.handle_input(event);
+				player1->handle_input(event);
 			if(event.type == SDL_QUIT) gameState = STATE_EXIT;
 			if(event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_F11)
 				toggle_fullscreen();
@@ -174,6 +182,15 @@ void Game::render_startmenu(){
 }
 
 void Game::start_gameplay(){
+	if(playerBulletPool_ != NULL) {
+		delete playerBulletPool_;
+	}
+	playerBulletPool_ = new PlayerBulletPool();
+	if(player1 != NULL) {
+		delete player1;
+	}
+	player1 = new Player();
+
 	init_game(screen);
 	init_info_area(screen);
 	gameBackground_ = new GameBackground();
@@ -181,14 +198,14 @@ void Game::start_gameplay(){
 	gameStartTime_ = SDL_GetTicks();
 	frameCounter = 0;
 	levelManager->set_bullet_manager_for_all(&enemyBulletManager_);
-	itemManager->set_player(&player1);
-	player1.set_item_manager(itemManager);
+	itemManager->set_player(player1);
+	player1->set_item_manager(itemManager);
 	prevStageState = STAGE_RUNNING;
 }
 
 void Game::update_game(float dt){
 	gameBackground_->background_update(dt);
-	player1.player_move();
+	player1->player_move();
 	{
 		static const float PLAY_CENTER_X = 272.0f;
 		static const float PLAY_WIDTH_F  = 544.0f;
@@ -214,13 +231,13 @@ void Game::update_game(float dt){
 			}
 		}
 		if(found)
-			player1.set_homing_target(bestEnemyX, bestEnemyY);
+			player1->set_homing_target(bestEnemyX, bestEnemyY);
 		else
-			player1.set_homing_target(272, 0);
+			player1->set_homing_target(272, 0);
 	}
-	player1.update_simple_shoot();
-	playerBulletPool_.update();
-	PlayerPosition playerPosition = player1.get_player_position();
+	player1->update_simple_shoot();
+	if(playerBulletPool_ != NULL) playerBulletPool_->update();
+	PlayerPosition playerPosition = player1->get_player_position();
 	StageState currentStageState = levelManager->get_stage_state();
 	levelManager->update_all_enemies(playerPosition.x, playerPosition.y, frameCounter, midbossEnterFrame, dt, prevStageState, currentStageState);
 	levelManager->move_all_enemies(dt);
@@ -256,8 +273,8 @@ void Game::render_game(){
 	SDL_Rect playArea = {0, 0, PLAY_AREA_WIDTH, PLAY_AREA_HEIGHT};
 	SDL_FillRect(screen, &playArea, SDL_MapRGB(screen->format, 0, 0, 0));
 	gameBackground_->background_show();
-	player1.show();
-	playerBulletPool_.render();
+	player1->show();
+	if(playerBulletPool_ != NULL) playerBulletPool_->render();
 	levelManager->show_all_enemies();
 	enemyBulletManager_.render();
 	infoArea.update_score(ItemManager::get_score());

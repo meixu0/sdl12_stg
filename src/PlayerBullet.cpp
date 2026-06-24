@@ -71,10 +71,27 @@ PlayerBullet::PlayerBullet(){
 	targetX_ = 0;
 	targetY_ = 0;
 	homingSpeed_ = 0;
-	if(reimuBulletSideRaw == NULL){
-		reimuBulletSideRaw = load_sprite("res/player00/player00.png", 0, 144, 64, 16, 64.0, 16.0);
-		reimuBulletSide = rotate_image(reimuBulletSideRaw, -90.0);
+	switch (playerType){
+		case PLAYER_REIMU:
+			if(reimuBulletSideRaw == NULL){
+			reimuBulletSideRaw = load_sprite("res/player00/player00.png", 0, 144, 64, 16, 64.0, 16.0);
+			reimuBulletSide = rotate_image(reimuBulletSideRaw, -90.0);
+			}
+			break;
+		case PLAYER_MARISA:
+			if(reimuBulletSideRaw == NULL){
+			reimuBulletSideRaw = load_sprite("res/player00/player01.png", 0, 144, 64, 16, 64.0, 16.0);
+			reimuBulletSide = rotate_image(reimuBulletSideRaw, -90.0);
+			}
+			break;
+		case PLAYER_SAKUYA:
+			if(reimuBulletSideRaw == NULL){
+			reimuBulletSideRaw = load_sprite("res/player00/player02.png", 0, 144, 64, 16, 64.0, 16.0);
+			reimuBulletSide = rotate_image(reimuBulletSideRaw, -90.0);
+			}
+			break;
 	}
+	
 	sideBulletRotateAngle_ = 0.0f;
 	rotatedSurface_ = NULL;
 	pivotX_ = 0.0f;
