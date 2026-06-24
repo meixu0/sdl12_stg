@@ -17,13 +17,37 @@ Player::Player(){
 	y = 600 - (int)PLAYER_WIDTH - 10;
 	xVel = 0;
 	yVel = 0;
-	for(int i = 0;i < 3; i++){
-		reimuImageMiddle[i] = load_sprite("res/player00/player00.png", i * 32, 0, 32, 48, PLAYER_HEIGHT, PLAYER_WIDTH);
+	SDL_Surface* raw;
+	switch (playerType){
+		case 0:
+			for(int i = 0;i < 3; i++){
+				reimuImageMiddle[i] = load_sprite("res/player00/player00.png", i * 32, 0, 32, 48, PLAYER_HEIGHT, PLAYER_WIDTH);
+			}
+			for(int i = 0;i < 7; i++){
+				reimuImageSide[i] = load_sprite("res/player00/player00.png", i * 32, 48, 32, 48, PLAYER_HEIGHT, PLAYER_WIDTH);
+			}
+			raw = load_sprite("res/player00/player00.png", 0, 144, 64, 16, 64.0, 16.0);
+			break;
+		case 1:
+			for(int i = 0;i < 3; i++){
+				reimuImageMiddle[i] = load_sprite("res/player00/player01.png", i * 32, 0, 32, 48, PLAYER_HEIGHT, PLAYER_WIDTH);
+			}
+			for(int i = 0;i < 7; i++){
+				reimuImageSide[i] = load_sprite("res/player00/player01.png", i * 32, 48, 32, 48, PLAYER_HEIGHT, PLAYER_WIDTH);
+			}
+			raw = load_sprite("res/player00/player01.png", 0, 144, 64, 16, 64.0, 16.0);
+			break;
+		case 2:
+			for(int i = 0;i < 3; i++){
+				reimuImageMiddle[i] = load_sprite("res/player00/player02.png", i * 32, 0, 32, 48, PLAYER_HEIGHT, PLAYER_WIDTH);
+			}
+			for(int i = 0;i < 7; i++){
+				reimuImageSide[i] = load_sprite("res/player00/player02.png", i * 32, 48, 32, 48, PLAYER_HEIGHT, PLAYER_WIDTH);
+			}
+			raw = load_sprite("res/player00/player02.png", 0, 144, 64, 16, 64.0, 16.0);
+			break;
 	}
-	for(int i = 0;i < 7; i++){
-		reimuImageSide[i] = load_sprite("res/player00/player00.png", i * 32, 48, 32, 48, PLAYER_HEIGHT, PLAYER_WIDTH);
-	}
-	SDL_Surface* raw = load_sprite("res/player00/player00.png", 0, 144, 64, 16, 64.0, 16.0);
+	
 	reimuBulletSide = rotate_image(raw, 90.0);
 	if (raw) SDL_FreeSurface(raw);
 	isShooting = false;

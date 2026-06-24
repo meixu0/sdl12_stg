@@ -1,4 +1,5 @@
 #include "StartMenu.h"
+#include <iostream>
 
 static SDL_Surface* load_sprite_section(const std::string& filename, int srcX, int srcY, int srcW, int srcH, int targetW, int targetH){
 	SDL_Surface* sheet = load_image(filename, srcW, srcH);
@@ -78,6 +79,8 @@ void StartMenu::switch_to_next_player(){
         break;
     }
     currentPlayerIndex++;
+    playerType = currentPlayerIndex;
+     std::cout<<"current player type is"<<playerType<<std::endl;
     Mix_PlayChannel(-1, select00, 0);
 }
 void StartMenu::switch_to_previous_player(){
@@ -91,10 +94,13 @@ void StartMenu::switch_to_previous_player(){
         break;
     }
     currentPlayerIndex--;
+    playerType = currentPlayerIndex;
+    std::cout<<"current player type is"<<playerType<<std::endl;
     Mix_PlayChannel(-1, select00, 0);
 }
 void StartMenu::jump_to_game(){
     playerType = currentPlayerIndex;
+    std::cout<<"current player type is"<<playerType<<std::endl;
     Mix_PlayChannel(-1, ok00, 0);
     Mix_HaltMusic();
     gameState = STATE_GAME;
