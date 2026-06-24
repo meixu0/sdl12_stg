@@ -4,19 +4,14 @@
 #include "SDL_ttf.h"
 #include "SDL_rotozoom.h"
 #include "SDL_mixer.h"
+#include "GameSettings.h"
 #include <string>
 #include <stdexcept>
 #include <cstdlib>
 #define UI_H
 #ifdef UI_H
 #define nullptr NULL
-#define STATE_MENU 0
-#define STATE_GAME 1
-#define STATE_EXIT 2
-#define STATE_BOSS 3
-#define STATE_START_MENU 4
-#define SPRITE_COLS 16
-#define SPRITE_ROWS 16
+
 static const int SCREEN_WIDTH = 800;
 static const int SCREEN_HEIGHT = 600;
 static const int SCREEN_BPP = 32;
@@ -28,7 +23,7 @@ extern SDL_Surface* zakoSprites[16][16];
 extern SDL_Surface* zakoRingSprites[2][2];
 extern SDL_Surface* bossSprites[9][12];
 extern SDL_Event event;
-extern int gameState;
+
 extern bool isFullscreen;
 typedef void (*ButtonActionCallback)();
 typedef void (*RenderCallback)(SDL_Rect* box, SDL_Surface* dest, int state, std::string title, TTF_Font* messageFont);

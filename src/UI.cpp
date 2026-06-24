@@ -4,6 +4,8 @@ SDL_Event event;
 bool quit = false;
 int gameState = STATE_MENU;
 bool isFullscreen = false;
+int playerType = 0;
+int gameDifficulty = 0;
 const SDL_Surface* numbersImage[10] = {NULL};
 const SDL_Surface* uppercaseImage[26] = {NULL};
 const SDL_Surface* lowercaseImage[26] = {NULL};
@@ -27,6 +29,7 @@ void toggle_fullscreen(){
 	if(screen == NULL)	isFullscreen = !isFullscreen;
 }
 void apply_surface(int x,int y, SDL_Surface *source, SDL_Surface *destination){
+	if (source == NULL || destination == NULL) return;
 	SDL_Rect offset;
 	offset.x = x;
 	offset.y = y;

@@ -2,7 +2,6 @@
 #include "UI.h"
 #define MAIN_MENU_H
 #ifdef MAIN_MENU_H
-void jump_to_game();
 class MainMenu{
 private:
 	enum MainMenuOptionID{

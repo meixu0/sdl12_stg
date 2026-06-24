@@ -54,7 +54,7 @@ void MainMenu::switch_to_next_option(){
 	Mix_PlayChannel(-1, select00, 0);
 }
 void MainMenu::jump_to_submenu(){
-	if(currentSelectedIndex == 0)	{Mix_PlayChannel(-1, ok00, 0);gameState = STATE_GAME;}
+	if(currentSelectedIndex == 0)	{Mix_PlayChannel(-1, ok00, 0);gameState = STATE_DIFFICULTY_MENU;}
 	if(currentSelectedIndex == 4)	{Mix_PlayChannel(-1, ok00, 0);gameState = STATE_EXIT;}
 }
 SDL_Rect MainMenu::get_menu_src_rect(int id, bool isSelected){
