@@ -1,274 +1,246 @@
 {
-  "enemy_types": {
+  "meta": {
+    "type": "boss",
+    "version": 2
+  },
+  "behaviors": {
     "boss_patchouli": {
       "_desc": "Boss patchouli entry",
-      "movePattern": 3,
       "hp": 2500,
-      "hitboxWidth": 48,
-      "hitboxHeight": 48,
-      "speedX": 0,
-      "speedY": 30,
-      "halfLife": 0,
+      "hitbox": [
+        48,
+        48
+      ],
       "score": 100000,
-      "itemDrop": "full_power"
+      "move": {
+        "type": "stop_and_go",
+        "speedX": 0,
+        "speedY": 30
+      },
+      "death": {
+        "itemDrop": "full_power"
+      }
+    }
+  },
+  "timeline": [
+    {
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "boss_patchouli",
+      "pos": [
+        272,
+        -32
+      ]
     },
-    "boss_patchouli_phase1": {
-      "_desc": "Phase 1 (Sub21) - \"u~L[EFCv\"",
-      "movePattern": 3,
+    {
+      "delta": 0.0,
+      "cmd": "spellcard",
+      "spellcard": "boss_patchouli_phase1",
       "hp": 2000,
-      "hitboxWidth": 48,
-      "hitboxHeight": 48,
-      "speedX": 0,
-      "speedY": 30,
-      "halfLife": 0,
-      "score": 100000,
-      "itemDrop": "full_power",
-      "emitters": [
+      "timeout": 45
+    },
+    {
+      "delta": 0.0,
+      "cmd": "spellcard",
+      "spellcard": "boss_patchouli_phase2",
+      "hp": 2000,
+      "timeout": 45
+    },
+    {
+      "delta": 0.0,
+      "cmd": "spellcard",
+      "spellcard": "boss_patchouli_phase3",
+      "hp": 2000,
+      "timeout": 45
+    },
+    {
+      "delta": 0.0,
+      "cmd": "spellcard",
+      "spellcard": "boss_patchouli_phase4",
+      "hp": 2000,
+      "timeout": 45
+    },
+    {
+      "delta": 0.0,
+      "cmd": "spellcard",
+      "spellcard": "boss_patchouli_phase5",
+      "hp": 2000,
+      "timeout": 45
+    },
+    {
+      "delta": 2.0,
+      "cmd": "defeat",
+      "behavior": "boss_final"
+    }
+  ],
+  "spellcards": {
+    "boss_patchouli_phase1": {
+      "name": "\"u~L[EFCv\"",
+      "hp": 2000,
+      "timeout": 45,
+      "behavior": "boss_patchouli_phase1",
+      "patterns": [
         {
-          "_desc": "etRing: 4way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 4,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.0491,
-            "speed1": 180,
-            "speed2": 90,
+            "spread": 0,
+            "angleStep": 0.0491,
+            "speed": 180,
+            "speedStep": 90,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "boss_patchouli_phase2": {
-      "_desc": "Phase 2 (Sub32) - \"öumfBNVi[U[v\"",
-      "movePattern": 3,
+      "name": "\"öumfBNVi[U[v\"",
       "hp": 2000,
-      "hitboxWidth": 48,
-      "hitboxHeight": 48,
-      "speedX": 0,
-      "speedY": 30,
-      "halfLife": 0,
-      "score": 100000,
-      "itemDrop": "full_power",
-      "emitters": [
+      "timeout": 45,
+      "behavior": "boss_patchouli_phase2",
+      "patterns": [
         {
-          "_desc": "etRing: 1way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 1,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.0491,
-            "speed1": 300,
-            "speed2": 90,
+            "spread": 0,
+            "angleStep": 0.0491,
+            "speed": 300,
+            "speedStep": 90,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "boss_patchouli_phase3": {
-      "_desc": "Phase 3 (Sub40) - \"öu}X^[Xp[Nv\"",
-      "movePattern": 3,
+      "name": "\"öu}X^[Xp[Nv\"",
       "hp": 2000,
-      "hitboxWidth": 48,
-      "hitboxHeight": 48,
-      "speedX": 0,
-      "speedY": 30,
-      "halfLife": 0,
-      "score": 100000,
-      "itemDrop": "full_power",
-      "emitters": [
+      "timeout": 45,
+      "behavior": "boss_patchouli_phase3",
+      "patterns": [
         {
-          "_desc": "etRing: 10way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 10,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.2094,
-            "speed1": 200,
-            "speed2": 10,
+            "spread": 0,
+            "angleStep": 0.2094,
+            "speed": 200,
+            "speedStep": 10,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "boss_patchouli_phase4": {
-      "_desc": "Phase 4 (Sub47) - \"õuA[XCgCv\"",
-      "movePattern": 3,
+      "name": "\"õuA[XCgCv\"",
       "hp": 2000,
-      "hitboxWidth": 48,
-      "hitboxHeight": 48,
-      "speedX": 0,
-      "speedY": 30,
-      "halfLife": 0,
-      "score": 100000,
-      "itemDrop": "full_power",
-      "emitters": [
+      "timeout": 45,
+      "behavior": "boss_patchouli_phase4",
+      "patterns": [
         {
-          "_desc": "etRingAimed: 1way x32rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 7,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring_aimed_variable",
             "mainCnt": 1,
             "subCnt": 32,
-            "angleOffset": -2.0944,
-            "angleInterval": 0.2244,
-            "speed1": 350,
-            "speed2": 50,
+            "spread": -2.0944,
+            "angleStep": 0.2244,
+            "speed": 350,
+            "speedStep": 50,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etRingAimed: 1way x32rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 7,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring_aimed_variable",
             "mainCnt": 1,
             "subCnt": 32,
-            "angleOffset": 2.0944,
-            "angleInterval": 0.2,
-            "speed1": 350,
-            "speed2": 50,
+            "spread": 2.0944,
+            "angleStep": 0.2,
+            "speed": 350,
+            "speedStep": 50,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etFanAimed: 13way x3rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 13,
             "subCnt": 3,
-            "angleOffset": 0.0,
-            "angleInterval": 0.0748,
-            "speed1": 220,
-            "speed2": 100,
+            "spread": 0.0,
+            "angleStep": 0.0748,
+            "speed": 220,
+            "speedStep": 100,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etFanAimed: 13way x5rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 13,
             "subCnt": 5,
-            "angleOffset": 0.0,
-            "angleInterval": 0.5236,
-            "speed1": 150,
-            "speed2": 50,
+            "spread": 0.0,
+            "angleStep": 0.5236,
+            "speed": 150,
+            "speedStep": 50,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "boss_patchouli_phase5": {
-      "_desc": "Phase 5 (Sub52) - \"Cut@CiXp[Nv\"",
-      "movePattern": 3,
+      "name": "\"Cut@CiXp[Nv\"",
       "hp": 2000,
-      "hitboxWidth": 48,
-      "hitboxHeight": 48,
-      "speedX": 0,
-      "speedY": 30,
-      "halfLife": 0,
-      "score": 100000,
-      "itemDrop": "full_power",
-      "emitters": [
+      "timeout": 45,
+      "behavior": "boss_patchouli_phase5",
+      "patterns": [
         {
-          "_desc": "etRing: 8way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 8,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.0491,
-            "speed1": 180,
-            "speed2": 90,
+            "spread": 0,
+            "angleStep": 0.0491,
+            "speed": 180,
+            "speedStep": 90,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     }
-  },
-  "stage_4": [
-    {
-      "id": "boss_patchouli",
-      "enemyType": "boss_patchouli",
-      "spawn_time": 0,
-      "start_pos": [
-        272,
-        -32
-      ],
-      "durationTime": 99
-    }
-  ]
+  }
 }

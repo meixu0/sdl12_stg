@@ -1,202 +1,184 @@
 {
-  "enemy_types": {
+  "meta": {
+    "type": "boss",
+    "version": 2
+  },
+  "behaviors": {
     "boss_sakuya": {
       "_desc": "Boss sakuya entry",
-      "movePattern": 3,
       "hp": 18000,
-      "hitboxWidth": 48,
-      "hitboxHeight": 48,
-      "speedX": 0,
-      "speedY": 30,
-      "halfLife": 0,
+      "hitbox": [
+        48,
+        48
+      ],
       "score": 100000,
-      "itemDrop": "full_power"
+      "move": {
+        "type": "stop_and_go",
+        "speedX": 0,
+        "speedY": 30
+      },
+      "death": {
+        "itemDrop": "full_power"
+      }
+    }
+  },
+  "timeline": [
+    {
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "boss_sakuya",
+      "pos": [
+        272,
+        -32
+      ]
     },
-    "boss_sakuya_phase1": {
-      "_desc": "Phase 1 (Sub15) - \"guÔáÃ°(}ChVFCJ[)v\"",
-      "movePattern": 3,
+    {
+      "delta": 0.0,
+      "cmd": "spellcard",
+      "spellcard": "boss_sakuya_phase1",
       "hp": 2000,
-      "hitboxWidth": 48,
-      "hitboxHeight": 48,
-      "speedX": 0,
-      "speedY": 30,
-      "halfLife": 0,
-      "score": 100000,
-      "itemDrop": "full_power",
-      "emitters": [
+      "timeout": 45
+    },
+    {
+      "delta": 0.0,
+      "cmd": "spellcard",
+      "spellcard": "boss_sakuya_phase2",
+      "hp": 2000,
+      "timeout": 45
+    },
+    {
+      "delta": 0.0,
+      "cmd": "spellcard",
+      "spellcard": "boss_sakuya_phase3",
+      "hp": 2000,
+      "timeout": 45
+    },
+    {
+      "delta": 2.0,
+      "cmd": "defeat",
+      "behavior": "boss_final"
+    }
+  ],
+  "spellcards": {
+    "boss_sakuya_phase1": {
+      "name": "\"guÔáÃ°(}ChVFCJ[)v\"",
+      "hp": 2000,
+      "timeout": 45,
+      "behavior": "boss_sakuya_phase1",
+      "patterns": [
         {
-          "_desc": "etRing: 48way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 48,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.0982,
-            "speed1": 100,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.0982,
+            "speed": 100,
+            "speedStep": 100,
             "spriteID": 0,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etRing: 24way x2rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 24,
             "subCnt": 2,
-            "angleOffset": 0,
-            "angleInterval": 0.0982,
-            "speed1": 140,
-            "speed2": 80,
+            "spread": 0,
+            "angleStep": 0.0982,
+            "speed": 140,
+            "speedStep": 80,
             "spriteID": 0,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "boss_sakuya_phase2": {
-      "_desc": "Phase 2 (Sub28) - \"Uu^ÀÌ(CrWut[)v\"",
-      "movePattern": 3,
+      "name": "\"Uu^ÀÌ(CrWut[)v\"",
       "hp": 2000,
-      "hitboxWidth": 48,
-      "hitboxHeight": 48,
-      "speedX": 0,
-      "speedY": 30,
-      "halfLife": 0,
-      "score": 100000,
-      "itemDrop": "full_power",
-      "emitters": [
+      "timeout": 45,
+      "behavior": "boss_sakuya_phase2",
+      "patterns": [
         {
-          "_desc": "etRing: 80way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 80,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.0982,
-            "speed1": 100,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.0982,
+            "speed": 100,
+            "speedStep": 100,
             "spriteID": 0,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etRing: 80way x2rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 80,
             "subCnt": 2,
-            "angleOffset": 0,
-            "angleInterval": 0.0982,
-            "speed1": 140,
-            "speed2": 80,
+            "spread": 0,
+            "angleStep": 0.0982,
+            "speed": 140,
+            "speedStep": 80,
             "spriteID": 0,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "boss_sakuya_phase3": {
-      "_desc": "Phase 3 (Sub40) - \"u¶OáÉ(ieBbNbhACY)v\"",
-      "movePattern": 3,
+      "name": "\"u¶OáÉ(ieBbNbhACY)v\"",
       "hp": 2000,
-      "hitboxWidth": 48,
-      "hitboxHeight": 48,
-      "speedX": 0,
-      "speedY": 30,
-      "halfLife": 0,
-      "score": 100000,
-      "itemDrop": "full_power",
-      "emitters": [
+      "timeout": 45,
+      "behavior": "boss_sakuya_phase3",
+      "patterns": [
         {
-          "_desc": "etRing: 80way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 80,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.0982,
-            "speed1": 500,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.0982,
+            "speed": 500,
+            "speedStep": 100,
             "spriteID": 0,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etRing: 80way x2rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 80,
             "subCnt": 2,
-            "angleOffset": 0,
-            "angleInterval": 0.0982,
-            "speed1": 540,
-            "speed2": 280,
+            "spread": 0,
+            "angleStep": 0.0982,
+            "speed": 540,
+            "speedStep": 280,
             "spriteID": 0,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     }
-  },
-  "stage_5": [
-    {
-      "id": "boss_sakuya",
-      "enemyType": "boss_sakuya",
-      "spawn_time": 0,
-      "start_pos": [
-        272,
-        -32
-      ],
-      "durationTime": 99
-    }
-  ]
+  }
 }

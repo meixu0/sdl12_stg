@@ -43,7 +43,6 @@ private:
 	GameBackground* gameBackground_;
 	EnemyBulletManager enemyBulletManager_;
 
-	void rebuild_managers(EnemyBulletManager* bulletMgr);
 protected:
 	static Uint32 lastUpdate;
 	static SDL_Surface* fpsSurface;

@@ -1,648 +1,518 @@
 {
-  "enemy_types": {
+  "meta": {
+    "type": "boss",
+    "version": 2
+  },
+  "behaviors": {
     "boss_remilia": {
       "_desc": "Boss remilia entry",
-      "movePattern": 3,
       "hp": 13000,
-      "hitboxWidth": 48,
-      "hitboxHeight": 48,
-      "speedX": 0,
-      "speedY": 30,
-      "halfLife": 0,
+      "hitbox": [
+        48,
+        48
+      ],
       "score": 100000,
-      "itemDrop": "full_power"
+      "move": {
+        "type": "stop_and_go",
+        "speedX": 0,
+        "speedY": 30
+      },
+      "death": {
+        "itemDrop": "full_power"
+      }
+    }
+  },
+  "timeline": [
+    {
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "boss_remilia",
+      "pos": [
+        272,
+        -32
+      ]
     },
-    "boss_remilia_phase1": {
-      "_desc": "Phase 1 (Sub40) - \"o_u_ãÌL¯v\"",
-      "movePattern": 3,
+    {
+      "delta": 0.0,
+      "cmd": "spellcard",
+      "spellcard": "boss_remilia_phase1",
       "hp": 2000,
-      "hitboxWidth": 48,
-      "hitboxHeight": 48,
-      "speedX": 0,
-      "speedY": 30,
-      "halfLife": 0,
-      "score": 100000,
-      "itemDrop": "full_power",
-      "emitters": [
+      "timeout": 45
+    },
+    {
+      "delta": 0.0,
+      "cmd": "spellcard",
+      "spellcard": "boss_remilia_phase2",
+      "hp": 2000,
+      "timeout": 45
+    },
+    {
+      "delta": 0.0,
+      "cmd": "spellcard",
+      "spellcard": "boss_remilia_phase3",
+      "hp": 2000,
+      "timeout": 45
+    },
+    {
+      "delta": 0.0,
+      "cmd": "spellcard",
+      "spellcard": "boss_remilia_phase4",
+      "hp": 13000,
+      "timeout": 45
+    },
+    {
+      "delta": 0.0,
+      "cmd": "spellcard",
+      "spellcard": "boss_remilia_phase5",
+      "hp": 2000,
+      "timeout": 45
+    },
+    {
+      "delta": 2.0,
+      "cmd": "defeat",
+      "behavior": "boss_final"
+    }
+  ],
+  "spellcards": {
+    "boss_remilia_phase1": {
+      "name": "\"o_u_ãÌL¯v\"",
+      "hp": 2000,
+      "timeout": 45,
+      "behavior": "boss_remilia_phase1",
+      "patterns": [
         {
-          "_desc": "etFanAimed: 0way x10rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 0,
             "subCnt": 10,
-            "angleOffset": 3.1416,
-            "angleInterval": 0.3927,
-            "speed1": 100,
-            "speed2": 100,
+            "spread": 3.1416,
+            "angleStep": 0.3927,
+            "speed": 100,
+            "speedStep": 100,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etFanAimed: 2way x7rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 2,
             "subCnt": 7,
-            "angleOffset": 0,
-            "angleInterval": 0.2094,
-            "speed1": 140,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.2094,
+            "speed": 140,
+            "speedStep": 100,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etFanAimed: 6way x7rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 6,
             "subCnt": 7,
-            "angleOffset": 0,
-            "angleInterval": 0.2094,
-            "speed1": 140,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.2094,
+            "speed": 140,
+            "speedStep": 100,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "boss_remilia_phase2": {
-      "_desc": "Phase 2 (Sub44) - \"hu¶½VY@-CtQ[-v\"",
-      "movePattern": 3,
+      "name": "\"hu¶½VY@-CtQ[-v\"",
       "hp": 2000,
-      "hitboxWidth": 48,
-      "hitboxHeight": 48,
-      "speedX": 0,
-      "speedY": 30,
-      "halfLife": 0,
-      "score": 100000,
-      "itemDrop": "full_power",
-      "emitters": [
+      "timeout": 45,
+      "behavior": "boss_remilia_phase2",
+      "patterns": [
         {
-          "_desc": "etRing: 1way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 1,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.0982,
-            "speed1": 120,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.0982,
+            "speed": 120,
+            "speedStep": 100,
             "spriteID": 0,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etRing: 4way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 4,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.0982,
-            "speed1": 150,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.0982,
+            "speed": 150,
+            "speedStep": 100,
             "spriteID": 0,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etRing: 6way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 6,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.0982,
-            "speed1": 200,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.0982,
+            "speed": 200,
+            "speedStep": 100,
             "spriteID": 0,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etRing: 3way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 3,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.0982,
-            "speed1": 110,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.0982,
+            "speed": 110,
+            "speedStep": 100,
             "spriteID": 0,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etRing: 5way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 5,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.0982,
-            "speed1": 110,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.0982,
+            "speed": 110,
+            "speedStep": 100,
             "spriteID": 0,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etRing: 9way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 9,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.0982,
-            "speed1": 120,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.0982,
+            "speed": 120,
+            "speedStep": 100,
             "spriteID": 0,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "boss_remilia_phase3": {
-      "_desc": "Phase 3 (Sub51) - \"_uICJlfBoCXv\"",
-      "movePattern": 3,
+      "name": "\"_uICJlfBoCXv\"",
       "hp": 2000,
-      "hitboxWidth": 48,
-      "hitboxHeight": 48,
-      "speedX": 0,
-      "speedY": 30,
-      "halfLife": 0,
-      "score": 100000,
-      "itemDrop": "full_power",
-      "emitters": [
+      "timeout": 45,
+      "behavior": "boss_remilia_phase3",
+      "patterns": [
         {
-          "_desc": "etFan: 6way x2rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 1,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "fan",
             "mainCnt": 6,
             "subCnt": 2,
-            "angleOffset": 0,
-            "angleInterval": 0.0314,
-            "speed1": 100,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.0314,
+            "speed": 100,
+            "speedStep": 50,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etFan: 6way x4rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 1,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "fan",
             "mainCnt": 6,
             "subCnt": 4,
-            "angleOffset": 0,
-            "angleInterval": 0.0314,
-            "speed1": 100,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.0314,
+            "speed": 100,
+            "speedStep": 50,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "boss_remilia_phase4": {
-      "_desc": "Phase 4 (Sub61) - \"épuV¶§@v\"",
-      "movePattern": 3,
+      "name": "\"épuV¶§@v\"",
       "hp": 13000,
-      "hitboxWidth": 48,
-      "hitboxHeight": 48,
-      "speedX": 0,
-      "speedY": 30,
-      "halfLife": 0,
-      "score": 100000,
-      "itemDrop": "full_power",
-      "emitters": [
+      "timeout": 45,
+      "behavior": "boss_remilia_phase4",
+      "patterns": [
         {
-          "_desc": "etFan: 2way x3rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 1,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "fan",
             "mainCnt": 2,
             "subCnt": 3,
-            "angleOffset": 0,
-            "angleInterval": 0.2454,
-            "speed1": 300,
-            "speed2": 80,
+            "spread": 0,
+            "angleStep": 0.2454,
+            "speed": 300,
+            "speedStep": 80,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etFan: 2way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 1,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "fan",
             "mainCnt": 2,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.0982,
-            "speed1": 150,
-            "speed2": 80,
+            "spread": 0,
+            "angleStep": 0.0982,
+            "speed": 150,
+            "speedStep": 80,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etFan: 6way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 1,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "fan",
             "mainCnt": 6,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.0982,
-            "speed1": 300,
-            "speed2": 80,
+            "spread": 0,
+            "angleStep": 0.0982,
+            "speed": 300,
+            "speedStep": 80,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etFan: 6way x2rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 1,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "fan",
             "mainCnt": 6,
             "subCnt": 2,
-            "angleOffset": 0,
-            "angleInterval": 0.1309,
-            "speed1": 300,
-            "speed2": 80,
+            "spread": 0,
+            "angleStep": 0.1309,
+            "speed": 300,
+            "speedStep": 80,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etFan: 2way x2rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 1,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "fan",
             "mainCnt": 2,
             "subCnt": 2,
-            "angleOffset": 0,
-            "angleInterval": 0.1309,
-            "speed1": 300,
-            "speed2": 80,
+            "spread": 0,
+            "angleStep": 0.1309,
+            "speed": 300,
+            "speedStep": 80,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etFan: 4way x2rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 1,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "fan",
             "mainCnt": 4,
             "subCnt": 2,
-            "angleOffset": 0,
-            "angleInterval": 0.1309,
-            "speed1": 300,
-            "speed2": 80,
+            "spread": 0,
+            "angleStep": 0.1309,
+            "speed": 300,
+            "speedStep": 80,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etFan: 5way x11rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 1,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "fan",
             "mainCnt": 5,
             "subCnt": 11,
-            "angleOffset": -1.5708,
-            "angleInterval": 0.2,
-            "speed1": 500,
-            "speed2": 60,
+            "spread": -1.5708,
+            "angleStep": 0.2,
+            "speed": 500,
+            "speedStep": 60,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etFan: 1way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 1,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "fan",
             "mainCnt": 1,
             "subCnt": 1,
-            "angleOffset": 1.5708,
-            "angleInterval": 1.0,
-            "speed1": 250,
-            "speed2": 60,
+            "spread": 1.5708,
+            "angleStep": 1.0,
+            "speed": 250,
+            "speedStep": 60,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etFanAimed: 1way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 1,
             "subCnt": 1,
-            "angleOffset": -0.7854,
-            "angleInterval": 1.0,
-            "speed1": 300,
-            "speed2": 60,
+            "spread": -0.7854,
+            "angleStep": 1.0,
+            "speed": 300,
+            "speedStep": 60,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "boss_remilia_phase5": {
-      "_desc": "Phase 5 (Sub66) - \"ÖòuHÌòv\"",
-      "movePattern": 3,
+      "name": "\"ÖòuHÌòv\"",
       "hp": 2000,
-      "hitboxWidth": 48,
-      "hitboxHeight": 48,
-      "speedX": 0,
-      "speedY": 30,
-      "halfLife": 0,
-      "score": 100000,
-      "itemDrop": "full_power",
-      "emitters": [
+      "timeout": 45,
+      "behavior": "boss_remilia_phase5",
+      "patterns": [
         {
-          "_desc": "etRing: 1way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 1,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.0982,
-            "speed1": 10,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.0982,
+            "speed": 10,
+            "speedStep": 100,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etFan: 1way x16rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 1,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "fan",
             "mainCnt": 1,
             "subCnt": 16,
-            "angleOffset": 0,
-            "angleInterval": 0.2327,
-            "speed1": 510,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.2327,
+            "speed": 510,
+            "speedStep": 100,
             "spriteID": 0,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etFan: 1way x61rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 1,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "fan",
             "mainCnt": 1,
             "subCnt": 61,
-            "angleOffset": 0,
-            "angleInterval": 0.0582,
-            "speed1": 400,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.0582,
+            "speed": 400,
+            "speedStep": 100,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etFanAimed: 6way x3rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 6,
             "subCnt": 3,
-            "angleOffset": 0.0,
-            "angleInterval": 0.7854,
-            "speed1": 200,
-            "speed2": 100,
+            "spread": 0.0,
+            "angleStep": 0.7854,
+            "speed": 200,
+            "speedStep": 100,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etRing: 24way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 24,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.0982,
-            "speed1": 100,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.0982,
+            "speed": 100,
+            "speedStep": 100,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     }
-  },
-  "stage_6": [
-    {
-      "id": "boss_remilia",
-      "enemyType": "boss_remilia",
-      "spawn_time": 0,
-      "start_pos": [
-        272,
-        -32
-      ],
-      "durationTime": 99
-    }
-  ]
+  }
 }

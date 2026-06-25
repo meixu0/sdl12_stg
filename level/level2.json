@@ -1,2887 +1,1480 @@
 {
-  "enemy_types": {
+  "meta": {
+    "stage": 2,
+    "type": "stage",
+    "version": 2
+  },
+  "behaviors": {
     "s2_Sub2": {
       "_desc": "ecldata2 Sub2",
-      "movePattern": 1,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 270,
-      "speedY": 270,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "acceleration": 3,
-      "emitters": [
+      "move": {
+        "type": "sine",
+        "speed": 270,
+        "accel": 3
+      },
+      "attack": [
         {
-          "_desc": "etFanAimed: 2way x1rows",
-          "startDelay": 0.5,
-          "emitInterval": 1.5,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "time": 0.5,
+          "interval": 1.5,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 2,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.185,
-            "speed1": 110,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.185,
+            "speed": 110,
+            "speedStep": 50,
             "spriteID": 1,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s2_Sub3": {
       "_desc": "ecldata2 Sub3",
-      "movePattern": 1,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 270,
-      "speedY": 270,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "acceleration": 3,
-      "emitters": [
+      "move": {
+        "type": "sine",
+        "speed": 270,
+        "accel": 3
+      },
+      "attack": [
         {
-          "_desc": "etFanAimed: 10way x1rows",
-          "startDelay": 0.5,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "time": 0.5,
+          "interval": 1,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 10,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.185,
-            "speed1": 140,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.185,
+            "speed": 140,
+            "speedStep": 50,
             "spriteID": 1,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s2_Sub4": {
       "_desc": "ecldata2 Sub4",
-      "movePattern": 1,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 30,
-      "speedY": 30,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "acceleration": 0,
-      "emitters": [
+      "move": {
+        "type": "sine",
+        "speed": 30
+      },
+      "attack": [
         {
-          "_desc": "etFanAimed: 6way x1rows burst=5",
-          "startDelay": 0.5,
-          "emitInterval": 1,
-          "burstCount": 5,
+          "time": 0.5,
+          "interval": 1,
+          "burst": 5,
           "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 6,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.165,
-            "speed1": 220,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.165,
+            "speed": 220,
+            "speedStep": 100,
             "spriteID": 1,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etRingAimed: 20way x1rows",
-          "startDelay": 0.5,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 4,
+          "time": 0.5,
+          "interval": 1,
+          "pattern": {
+            "type": "ring_aimed",
             "mainCnt": 20,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.185,
-            "speed1": 100,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.185,
+            "speed": 100,
+            "speedStep": 50,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s2_Sub6": {
       "_desc": "ecldata2 Sub6",
-      "movePattern": 1,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 30,
-      "speedY": 30,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "acceleration": 0,
-      "emitters": [
+      "move": {
+        "type": "sine",
+        "speed": 30
+      },
+      "attack": [
         {
-          "_desc": "etFanAimed: 2way x1rows burst=5",
-          "startDelay": 0.5,
-          "emitInterval": 1,
-          "burstCount": 5,
+          "time": 0.5,
+          "interval": 1,
+          "burst": 5,
           "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 2,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.165,
-            "speed1": 220,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.165,
+            "speed": 220,
+            "speedStep": 100,
             "spriteID": 1,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etRingAimed: 20way x1rows",
-          "startDelay": 0.5,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 4,
+          "time": 0.5,
+          "interval": 1,
+          "pattern": {
+            "type": "ring_aimed",
             "mainCnt": 20,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.185,
-            "speed1": 100,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.185,
+            "speed": 100,
+            "speedStep": 50,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s2_Sub8": {
       "_desc": "ecldata2 Sub8",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etFanAimed: 6way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 6,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.098,
-            "speed1": 180,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.098,
+            "speed": 180,
+            "speedStep": 50,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s2_Sub9": {
       "_desc": "ecldata2 Sub9",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etFanAimed: 6way x1rows burst=2",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 2,
+          "time": 0,
+          "interval": 1,
+          "burst": 2,
           "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 6,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.185,
-            "speed1": 220,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.185,
+            "speed": 220,
+            "speedStep": 50,
             "spriteID": 3,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s2_Sub11": {
       "_desc": "ecldata2 Sub11",
-      "movePattern": 1,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 102,
-      "speedY": 102,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "sine",
+        "speed": 102
+      },
+      "attack": [
         {
-          "_desc": "etFanAimed: 6way x2rows burst=3",
-          "startDelay": 0.5,
-          "emitInterval": 1,
-          "burstCount": 3,
+          "time": 0.5,
+          "interval": 1,
+          "burst": 3,
           "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 6,
             "subCnt": 2,
-            "angleOffset": 0,
-            "angleInterval": 0.098,
-            "speed1": 160,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.098,
+            "speed": 160,
+            "speedStep": 50,
             "spriteID": 6,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etFanAimed: 6way x3rows burst=5",
-          "startDelay": 0.5,
-          "emitInterval": 1,
-          "burstCount": 5,
+          "time": 0.5,
+          "interval": 1,
+          "burst": 5,
           "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 6,
             "subCnt": 3,
-            "angleOffset": 0,
-            "angleInterval": 0.131,
-            "speed1": 240,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.131,
+            "speed": 240,
+            "speedStep": 50,
             "spriteID": 1,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s2_Sub13": {
       "_desc": "ecldata2 Sub13",
-      "movePattern": 1,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 102,
-      "speedY": 102,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "sine",
+        "speed": 102
+      },
+      "attack": [
         {
-          "_desc": "etFanAimed: 2way x1rows burst=4",
-          "startDelay": 0.5,
-          "emitInterval": 3,
-          "burstCount": 4,
+          "time": 0.5,
+          "interval": 3,
+          "burst": 4,
           "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 2,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.098,
-            "speed1": 230,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.098,
+            "speed": 230,
+            "speedStep": 50,
             "spriteID": 6,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etFanAimed: 6way x5rows",
-          "startDelay": 0.5,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "time": 0.5,
+          "interval": 1,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 6,
             "subCnt": 5,
-            "angleOffset": 0,
-            "angleInterval": 0.196,
-            "speed1": 240,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.196,
+            "speed": 240,
+            "speedStep": 50,
             "spriteID": 1,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etFanAimed: 6way x2rows burst=8",
-          "startDelay": 0.5,
-          "emitInterval": 1,
-          "burstCount": 8,
+          "time": 0.5,
+          "interval": 1,
+          "burst": 8,
           "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 6,
             "subCnt": 2,
-            "angleOffset": 0,
-            "angleInterval": 0.131,
-            "speed1": 180,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.131,
+            "speed": 180,
+            "speedStep": 50,
             "spriteID": 1,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s2_Sub14": {
       "_desc": "ecldata2 Sub14",
-      "movePattern": 1,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 102,
-      "speedY": 102,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "sine",
+        "speed": 102
+      },
+      "attack": [
         {
-          "_desc": "etFanAimed: 6way x5rows",
-          "startDelay": 0.5,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "time": 0.5,
+          "interval": 1,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 6,
             "subCnt": 5,
-            "angleOffset": 0,
-            "angleInterval": 0.196,
-            "speed1": 240,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.196,
+            "speed": 240,
+            "speedStep": 50,
             "spriteID": 1,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s2_Sub30": {
       "_desc": "ecldata2 Sub30",
-      "movePattern": 1,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 30,
-      "speedY": 30,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "acceleration": 0,
-      "emitters": [
+      "move": {
+        "type": "sine",
+        "speed": 30
+      },
+      "attack": [
         {
-          "_desc": "etRing: 1way x1rows",
-          "startDelay": 0.5,
-          "emitInterval": 0.183333,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0.5,
+          "interval": 0.183333,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 1,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.262,
-            "speed1": 100,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.262,
+            "speed": 100,
+            "speedStep": 50,
             "spriteID": 7,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s2_Sub36": {
       "_desc": "ecldata2 Sub36",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRingAimed: 1way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 4,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring_aimed",
             "mainCnt": 1,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.262,
-            "speed1": 100,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.262,
+            "speed": 100,
+            "speedStep": 50,
             "spriteID": 3,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s2_Sub41": {
       "_desc": "ecldata2 Sub41",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 32way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 32,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.039,
-            "speed1": 180,
-            "speed2": 150,
+            "spread": 0,
+            "angleStep": 0.039,
+            "speed": 180,
+            "speedStep": 150,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s2_Sub42": {
       "_desc": "ecldata2 Sub42",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 1way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 1,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.262,
-            "speed1": 100,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.262,
+            "speed": 100,
+            "speedStep": 50,
             "spriteID": 3,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s2_Sub44": {
       "_desc": "ecldata2 Sub44",
-      "movePattern": 3,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "stop_and_go"
+      },
+      "attack": [
         {
-          "_desc": "etFanAimed: 2way x11rows burst=2",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 2,
+          "time": 0,
+          "interval": 1,
+          "burst": 2,
           "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 2,
             "subCnt": 11,
-            "angleOffset": 0,
-            "angleInterval": 0.196,
-            "speed1": 200,
-            "speed2": 190,
+            "spread": 0,
+            "angleStep": 0.196,
+            "speed": 200,
+            "speedStep": 190,
             "spriteID": 3,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s2_Sub45": {
       "_desc": "ecldata2 Sub45",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etFanAimed: 2way x11rows burst=2",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 2,
+          "time": 0,
+          "interval": 1,
+          "burst": 2,
           "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 2,
             "subCnt": 11,
-            "angleOffset": 0,
-            "angleInterval": 0.196,
-            "speed1": 200,
-            "speed2": 190,
+            "spread": 0,
+            "angleStep": 0.196,
+            "speed": 200,
+            "speedStep": 190,
             "spriteID": 3,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s2_Sub46": {
       "_desc": "ecldata2 Sub46",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 2way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 2,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 1.571,
-            "speed1": 100,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 1.571,
+            "speed": 100,
+            "speedStep": 50,
             "spriteID": 3,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s2_Sub52": {
       "_desc": "ecldata2 Sub52",
-      "movePattern": 3,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 150,
-      "speedY": 150,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "acceleration": 0,
-      "emitters": [
+      "move": {
+        "type": "stop_and_go",
+        "speed": 150
+      },
+      "attack": [
         {
-          "_desc": "etFanAimed: 1way x4rows burst=2",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 2,
+          "time": 0,
+          "interval": 1,
+          "burst": 2,
           "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 1,
             "subCnt": 4,
-            "angleOffset": 0,
-            "angleInterval": 0.098,
-            "speed1": 300,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.098,
+            "speed": 300,
+            "speedStep": 50,
             "spriteID": 7,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etFanAimed: 1way x5rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 1,
             "subCnt": 5,
-            "angleOffset": 0,
-            "angleInterval": 0.098,
-            "speed1": 300,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.098,
+            "speed": 300,
+            "speedStep": 50,
             "spriteID": 7,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s2_Sub59": {
       "_desc": "ecldata2 Sub59",
-      "movePattern": 1,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 30,
-      "speedY": 30,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "acceleration": 0,
-      "emitters": [
+      "move": {
+        "type": "sine",
+        "speed": 30
+      },
+      "attack": [
         {
-          "_desc": "etRing: 1way x1rows",
-          "startDelay": 0.5,
-          "emitInterval": 0.183333,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0.5,
+          "interval": 0.183333,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 1,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.262,
-            "speed1": 100,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.262,
+            "speed": 100,
+            "speedStep": 50,
             "spriteID": 7,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "midboss_daiyousei": {
       "_desc": "Midboss midboss_daiyousei",
-      "movePattern": 3,
       "hp": 600,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 90,
-      "halfLife": 0,
-      "midboss": true,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 100000,
-      "itemDrop": "full_power"
+      "move": {
+        "type": "stop_and_go",
+        "speedX": 0,
+        "speedY": 90
+      },
+      "death": {
+        "itemDrop": "full_power"
+      }
     },
     "s2_Sub1": {
       "_desc": "ecldata2 Sub1 - stream fairy, etFanAimed 2way",
-      "movePattern": 1,
       "hp": 10,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 270,
-      "speedY": 270,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "acceleration": 3,
-      "emitters": [
+      "move": {
+        "type": "sine",
+        "speed": 270,
+        "accel": 3
+      },
+      "attack": [
         {
-          "_desc": "etFanAimed: 2way x1rows",
-          "startDelay": 0.5,
-          "emitInterval": 1.5,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "time": 0.5,
+          "interval": 1.5,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 2,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.185,
-            "speed1": 110,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.185,
+            "speed": 110,
+            "speedStep": 50,
             "spriteID": 1,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ],
-      "itemDrop": "random"
+      "death": {
+        "itemDrop": "random"
+      }
+    },
+    "boss_entry": {
+      "_desc": "Stage-end sentinel — triggers boss transition",
+      "hp": 50,
+      "hitbox": [
+        40,
+        40
+      ],
+      "score": 0,
+      "move": {
+        "type": "linear",
+        "speedY": 1
+      },
+      "lifeTime": 12
     }
   },
-  "stage_2": [
+  "timeline": [
     {
-      "id": "e2_0001",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 7.667,
-      "start_pos": [
+      "delta": 7.667,
+      "cmd": "spawn",
+      "behavior": "s2_Sub1",
+      "pos": [
         400.0,
         160.0
       ]
     },
     {
-      "id": "e2_0002",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 7.833,
-      "start_pos": [
+      "delta": 0.166,
+      "cmd": "spawn",
+      "behavior": "s2_Sub1",
+      "pos": [
         400.0,
         160.0
       ]
     },
     {
-      "id": "e2_0003",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 8.0,
-      "start_pos": [
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s2_Sub1",
+      "pos": [
         400.0,
         160.0
       ]
     },
     {
-      "id": "e2_0004",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 8.167,
-      "start_pos": [
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s2_Sub1",
+      "pos": [
         400.0,
         160.0
       ]
     },
     {
-      "id": "e2_0005",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 8.333,
-      "start_pos": [
+      "delta": 0.166,
+      "cmd": "spawn",
+      "behavior": "s2_Sub1",
+      "pos": [
         400.0,
         160.0
       ]
     },
     {
-      "id": "e2_0006",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 8.5,
-      "start_pos": [
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s2_Sub1",
+      "pos": [
         400.0,
         160.0
       ]
     },
     {
-      "id": "e2_0007",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 8.667,
-      "start_pos": [
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s2_Sub1",
+      "pos": [
         400.0,
         160.0
       ]
     },
     {
-      "id": "e2_0008",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 8.833,
-      "start_pos": [
+      "delta": 0.166,
+      "cmd": "spawn",
+      "behavior": "s2_Sub1",
+      "pos": [
         400.0,
         160.0
       ]
     },
     {
-      "id": "e2_0009",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 9.0,
-      "start_pos": [
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s2_Sub1",
+      "pos": [
         400.0,
         160.0
       ]
     },
     {
-      "id": "e2_0010",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 9.167,
-      "start_pos": [
+      "delta": 0.167,
+      "cmd": "wave",
+      "behavior": "s2_Sub1",
+      "count": 9,
+      "pos": [
         480.0,
         160.0
-      ]
+      ],
+      "dx": 0.0,
+      "gap": 0.167
     },
     {
-      "id": "e2_0011",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 9.333,
-      "start_pos": [
-        480.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0012",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 9.5,
-      "start_pos": [
-        480.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0013",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 9.667,
-      "start_pos": [
-        480.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0014",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 9.833,
-      "start_pos": [
-        480.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0015",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 10.0,
-      "start_pos": [
-        480.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0016",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 10.167,
-      "start_pos": [
-        480.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0017",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 10.333,
-      "start_pos": [
-        480.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0018",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 10.5,
-      "start_pos": [
-        480.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0019",
-      "enemyType": "s2_Sub3",
-      "spawn_time": 10.667,
-      "start_pos": [
+      "delta": 1.5,
+      "cmd": "wave",
+      "behavior": "s2_Sub3",
+      "count": 9,
+      "pos": [
         288.0,
         -16.0
       ],
-      "hp": 10
+      "dx": 0.0,
+      "gap": 0.167
     },
     {
-      "id": "e2_0020",
-      "enemyType": "s2_Sub3",
-      "spawn_time": 10.833,
-      "start_pos": [
-        288.0,
-        -16.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e2_0021",
-      "enemyType": "s2_Sub3",
-      "spawn_time": 11.0,
-      "start_pos": [
-        288.0,
-        -16.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e2_0022",
-      "enemyType": "s2_Sub3",
-      "spawn_time": 11.167,
-      "start_pos": [
-        288.0,
-        -16.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e2_0023",
-      "enemyType": "s2_Sub3",
-      "spawn_time": 11.333,
-      "start_pos": [
-        288.0,
-        -16.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e2_0024",
-      "enemyType": "s2_Sub3",
-      "spawn_time": 11.5,
-      "start_pos": [
-        288.0,
-        -16.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e2_0025",
-      "enemyType": "s2_Sub3",
-      "spawn_time": 11.667,
-      "start_pos": [
-        288.0,
-        -16.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e2_0026",
-      "enemyType": "s2_Sub3",
-      "spawn_time": 11.833,
-      "start_pos": [
-        288.0,
-        -16.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e2_0027",
-      "enemyType": "s2_Sub3",
-      "spawn_time": 12.0,
-      "start_pos": [
-        288.0,
-        -16.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e2_0028",
-      "enemyType": "s2_Sub2",
-      "spawn_time": 12.167,
-      "start_pos": [
+      "delta": 1.5,
+      "cmd": "wave",
+      "behavior": "s2_Sub2",
+      "count": 9,
+      "pos": [
         480.0,
         160.0
       ],
-      "hp": 10
+      "dx": 0.0,
+      "gap": 0.167
     },
     {
-      "id": "e2_0029",
-      "enemyType": "s2_Sub2",
-      "spawn_time": 12.333,
-      "start_pos": [
-        480.0,
-        160.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e2_0030",
-      "enemyType": "s2_Sub2",
-      "spawn_time": 12.5,
-      "start_pos": [
-        480.0,
-        160.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e2_0031",
-      "enemyType": "s2_Sub2",
-      "spawn_time": 12.667,
-      "start_pos": [
-        480.0,
-        160.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e2_0032",
-      "enemyType": "s2_Sub2",
-      "spawn_time": 12.833,
-      "start_pos": [
-        480.0,
-        160.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e2_0033",
-      "enemyType": "s2_Sub2",
-      "spawn_time": 13.0,
-      "start_pos": [
-        480.0,
-        160.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e2_0034",
-      "enemyType": "s2_Sub2",
-      "spawn_time": 13.167,
-      "start_pos": [
-        480.0,
-        160.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e2_0035",
-      "enemyType": "s2_Sub2",
-      "spawn_time": 13.333,
-      "start_pos": [
-        480.0,
-        160.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e2_0036",
-      "enemyType": "s2_Sub2",
-      "spawn_time": 13.5,
-      "start_pos": [
-        480.0,
-        160.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e2_0037",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 13.667,
-      "start_pos": [
+      "delta": 1.5,
+      "cmd": "wave",
+      "behavior": "s2_Sub1",
+      "count": 9,
+      "pos": [
         400.0,
         160.0
-      ]
+      ],
+      "dx": 0.0,
+      "gap": 0.167
     },
     {
-      "id": "e2_0038",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 13.833,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0039",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 14.0,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0040",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 14.167,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0041",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 14.333,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0042",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 14.5,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0043",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 14.667,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0044",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 14.833,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0045",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 15.0,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0046",
-      "enemyType": "s2_Sub3",
-      "spawn_time": 15.167,
-      "start_pos": [
+      "delta": 1.5,
+      "cmd": "wave",
+      "behavior": "s2_Sub3",
+      "count": 9,
+      "pos": [
         288.0,
         -16.0
       ],
-      "hp": 10
+      "dx": 0.0,
+      "gap": 0.167
     },
     {
-      "id": "e2_0047",
-      "enemyType": "s2_Sub3",
-      "spawn_time": 15.333,
-      "start_pos": [
-        288.0,
-        -16.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e2_0048",
-      "enemyType": "s2_Sub3",
-      "spawn_time": 15.5,
-      "start_pos": [
-        288.0,
-        -16.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e2_0049",
-      "enemyType": "s2_Sub3",
-      "spawn_time": 15.667,
-      "start_pos": [
-        288.0,
-        -16.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e2_0050",
-      "enemyType": "s2_Sub3",
-      "spawn_time": 15.833,
-      "start_pos": [
-        288.0,
-        -16.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e2_0051",
-      "enemyType": "s2_Sub3",
-      "spawn_time": 16.0,
-      "start_pos": [
-        288.0,
-        -16.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e2_0052",
-      "enemyType": "s2_Sub3",
-      "spawn_time": 16.167,
-      "start_pos": [
-        288.0,
-        -16.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e2_0053",
-      "enemyType": "s2_Sub3",
-      "spawn_time": 16.333,
-      "start_pos": [
-        288.0,
-        -16.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e2_0054",
-      "enemyType": "s2_Sub3",
-      "spawn_time": 16.5,
-      "start_pos": [
-        288.0,
-        -16.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "midboss_daiyousei_55",
-      "enemyType": "midboss_daiyousei",
-      "spawn_time": 17.5,
-      "start_pos": [
+      "delta": 2.333,
+      "cmd": "spawn",
+      "behavior": "midboss_daiyousei",
+      "pos": [
         192.0,
         -16.0
+      ]
+    },
+    {
+      "delta": 1.667,
+      "cmd": "spawn",
+      "behavior": "s2_Sub1",
+      "pos": [
+        400.0,
+        160.0
+      ]
+    },
+    {
+      "delta": 0.166,
+      "cmd": "spawn",
+      "behavior": "s2_Sub1",
+      "pos": [
+        400.0,
+        160.0
+      ]
+    },
+    {
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s2_Sub1",
+      "pos": [
+        400.0,
+        160.0
+      ]
+    },
+    {
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s2_Sub1",
+      "pos": [
+        400.0,
+        160.0
+      ]
+    },
+    {
+      "delta": 0.166,
+      "cmd": "spawn",
+      "behavior": "s2_Sub1",
+      "pos": [
+        400.0,
+        160.0
+      ]
+    },
+    {
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s2_Sub1",
+      "pos": [
+        400.0,
+        160.0
+      ]
+    },
+    {
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s2_Sub1",
+      "pos": [
+        400.0,
+        160.0
+      ]
+    },
+    {
+      "delta": 0.166,
+      "cmd": "spawn",
+      "behavior": "s2_Sub1",
+      "pos": [
+        400.0,
+        160.0
+      ]
+    },
+    {
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s2_Sub1",
+      "pos": [
+        400.0,
+        160.0
+      ]
+    },
+    {
+      "delta": 1.0,
+      "cmd": "wave",
+      "behavior": "s2_Sub1",
+      "count": 9,
+      "pos": [
+        -16.0,
+        160.0
       ],
-      "hp": 1000
+      "dx": 0.0,
+      "gap": 0.167
     },
     {
-      "id": "e2_0056",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 19.167,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0057",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 19.333,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0058",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 19.5,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0059",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 19.667,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0060",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 19.833,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0061",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 20.0,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0062",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 20.167,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0063",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 20.333,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0064",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 20.5,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0065",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 21.5,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0066",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 21.667,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0067",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 21.833,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0068",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 22.0,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0069",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 22.167,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0070",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 22.333,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0071",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 22.5,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0072",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 22.667,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0073",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 22.833,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0074",
-      "enemyType": "s2_Sub11",
-      "spawn_time": 22.833,
-      "start_pos": [
+      "delta": 1.333,
+      "cmd": "spawn",
+      "behavior": "s2_Sub11",
+      "pos": [
         256.0,
         -16.0
+      ]
+    },
+    {
+      "delta": 1.0,
+      "cmd": "wave",
+      "behavior": "s2_Sub1",
+      "count": 9,
+      "pos": [
+        400.0,
+        160.0
       ],
-      "hp": 1000
+      "dx": 0.0,
+      "gap": 0.167
     },
     {
-      "id": "e2_0075",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 23.833,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0076",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 24.0,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0077",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 24.167,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0078",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 24.333,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0079",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 24.5,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0080",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 24.667,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0081",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 24.833,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0082",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 25.0,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0083",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 25.167,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0084",
-      "enemyType": "s2_Sub11",
-      "spawn_time": 25.167,
-      "start_pos": [
+      "delta": 1.334,
+      "cmd": "spawn",
+      "behavior": "s2_Sub11",
+      "pos": [
         320.0,
         -16.0
+      ]
+    },
+    {
+      "delta": 1.0,
+      "cmd": "wave",
+      "behavior": "s2_Sub1",
+      "count": 9,
+      "pos": [
+        -16.0,
+        160.0
       ],
-      "hp": 400
+      "dx": 0.0,
+      "gap": 0.167
     },
     {
-      "id": "e2_0085",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 26.167,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0086",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 26.333,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0087",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 26.5,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0088",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 26.667,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0089",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 26.833,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0090",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 27.0,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0091",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 27.167,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0092",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 27.333,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0093",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 27.5,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0094",
-      "enemyType": "s2_Sub11",
-      "spawn_time": 27.5,
-      "start_pos": [
+      "delta": 1.333,
+      "cmd": "spawn",
+      "behavior": "s2_Sub11",
+      "pos": [
         64.0,
         -16.0
+      ]
+    },
+    {
+      "delta": 1.0,
+      "cmd": "wave",
+      "behavior": "s2_Sub1",
+      "count": 9,
+      "pos": [
+        400.0,
+        160.0
       ],
-      "hp": 500
+      "dx": 0.0,
+      "gap": 0.167
     },
     {
-      "id": "e2_0095",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 28.5,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0096",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 28.667,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0097",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 28.833,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0098",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 29.0,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0099",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 29.167,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0100",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 29.333,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0101",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 29.5,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0102",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 29.667,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0103",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 29.833,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0104",
-      "enemyType": "s2_Sub11",
-      "spawn_time": 29.833,
-      "start_pos": [
+      "delta": 1.333,
+      "cmd": "spawn",
+      "behavior": "s2_Sub11",
+      "pos": [
         320.0,
         -16.0
+      ]
+    },
+    {
+      "delta": 1.0,
+      "cmd": "wave",
+      "behavior": "s2_Sub1",
+      "count": 9,
+      "pos": [
+        -16.0,
+        160.0
       ],
-      "hp": 400
+      "dx": 0.0,
+      "gap": 0.167
     },
     {
-      "id": "e2_0105",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 30.833,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0106",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 31.0,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0107",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 31.167,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0108",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 31.333,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0109",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 31.5,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0110",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 31.667,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0111",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 31.833,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0112",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 32.0,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0113",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 32.167,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0114",
-      "enemyType": "s2_Sub11",
-      "spawn_time": 32.167,
-      "start_pos": [
+      "delta": 1.334,
+      "cmd": "spawn",
+      "behavior": "s2_Sub11",
+      "pos": [
         64.0,
         -16.0
+      ]
+    },
+    {
+      "delta": 1.0,
+      "cmd": "wave",
+      "behavior": "s2_Sub1",
+      "count": 9,
+      "pos": [
+        400.0,
+        160.0
       ],
-      "hp": 500
+      "dx": 0.0,
+      "gap": 0.167
     },
     {
-      "id": "e2_0115",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 33.167,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0116",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 33.333,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0117",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 33.5,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0118",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 33.667,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0119",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 33.833,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0120",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 34.0,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0121",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 34.167,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0122",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 34.333,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0123",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 34.5,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0124",
-      "enemyType": "s2_Sub11",
-      "spawn_time": 34.5,
-      "start_pos": [
+      "delta": 1.333,
+      "cmd": "spawn",
+      "behavior": "s2_Sub11",
+      "pos": [
         320.0,
         -16.0
+      ]
+    },
+    {
+      "delta": 1.0,
+      "cmd": "wave",
+      "behavior": "s2_Sub1",
+      "count": 9,
+      "pos": [
+        -16.0,
+        160.0
       ],
-      "hp": 400
+      "dx": 0.0,
+      "gap": 0.167
     },
     {
-      "id": "e2_0125",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 35.5,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0126",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 35.667,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0127",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 35.833,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0128",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 36.0,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0129",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 36.167,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0130",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 36.333,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0131",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 36.5,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0132",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 36.667,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0133",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 36.833,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0134",
-      "enemyType": "s2_Sub11",
-      "spawn_time": 36.833,
-      "start_pos": [
+      "delta": 1.333,
+      "cmd": "spawn",
+      "behavior": "s2_Sub11",
+      "pos": [
         128.0,
         -16.0
-      ],
-      "hp": 400
+      ]
     },
     {
-      "id": "e2_0135",
-      "enemyType": "s2_Sub11",
-      "spawn_time": 36.833,
-      "start_pos": [
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "s2_Sub11",
+      "pos": [
         256.0,
         -16.0
+      ]
+    },
+    {
+      "delta": 1.0,
+      "cmd": "spawn",
+      "behavior": "s2_Sub1",
+      "pos": [
+        400.0,
+        160.0
+      ]
+    },
+    {
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s2_Sub1",
+      "pos": [
+        400.0,
+        160.0
+      ]
+    },
+    {
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s2_Sub1",
+      "pos": [
+        400.0,
+        160.0
+      ]
+    },
+    {
+      "delta": 0.166,
+      "cmd": "spawn",
+      "behavior": "s2_Sub1",
+      "pos": [
+        400.0,
+        160.0
+      ]
+    },
+    {
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s2_Sub1",
+      "pos": [
+        400.0,
+        160.0
+      ]
+    },
+    {
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s2_Sub1",
+      "pos": [
+        400.0,
+        160.0
+      ]
+    },
+    {
+      "delta": 0.166,
+      "cmd": "spawn",
+      "behavior": "s2_Sub1",
+      "pos": [
+        400.0,
+        160.0
+      ]
+    },
+    {
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s2_Sub1",
+      "pos": [
+        400.0,
+        160.0
+      ]
+    },
+    {
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s2_Sub1",
+      "pos": [
+        400.0,
+        160.0
+      ]
+    },
+    {
+      "delta": 1.0,
+      "cmd": "wave",
+      "behavior": "s2_Sub1",
+      "count": 9,
+      "pos": [
+        -16.0,
+        160.0
       ],
-      "hp": 400
+      "dx": 0.0,
+      "gap": 0.167
     },
     {
-      "id": "e2_0136",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 37.833,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0137",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 38.0,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0138",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 38.167,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0139",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 38.333,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0140",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 38.5,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0141",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 38.667,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0142",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 38.833,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0143",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 39.0,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0144",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 39.167,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0145",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 40.167,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0146",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 40.333,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0147",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 40.5,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0148",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 40.667,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0149",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 40.833,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0150",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 41.0,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0151",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 41.167,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0152",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 41.333,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0153",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 41.5,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0154",
-      "enemyType": "s2_Sub13",
-      "spawn_time": 41.5,
-      "start_pos": [
+      "delta": 1.333,
+      "cmd": "spawn",
+      "behavior": "s2_Sub13",
+      "pos": [
         128.0,
         -16.0
-      ],
-      "hp": 500
+      ]
     },
     {
-      "id": "e2_0155",
-      "enemyType": "s2_Sub4",
-      "spawn_time": 41.5,
-      "start_pos": [
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "s2_Sub4",
+      "pos": [
         64.0,
         -16.0
-      ],
-      "hp": 120
+      ]
     },
     {
-      "id": "e2_0156",
-      "enemyType": "s2_Sub4",
-      "spawn_time": 41.5,
-      "start_pos": [
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "s2_Sub4",
+      "pos": [
         320.0,
         -16.0
-      ],
-      "hp": 120
+      ]
     },
     {
-      "id": "e2_0157",
-      "enemyType": "s2_Sub4",
-      "spawn_time": 41.5,
-      "start_pos": [
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "s2_Sub4",
+      "pos": [
         96.0,
         -16.0
-      ],
-      "hp": 120
+      ]
     },
     {
-      "id": "e2_0158",
-      "enemyType": "s2_Sub4",
-      "spawn_time": 41.5,
-      "start_pos": [
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "s2_Sub4",
+      "pos": [
         288.0,
         -16.0
-      ],
-      "hp": 120
+      ]
     },
     {
-      "id": "e2_0159",
-      "enemyType": "s2_Sub14",
-      "spawn_time": 44.833,
-      "start_pos": [
+      "delta": 3.333,
+      "cmd": "spawn",
+      "behavior": "s2_Sub14",
+      "pos": [
         256.0,
         -16.0
-      ],
-      "hp": 500
+      ]
     },
     {
-      "id": "e2_0160",
-      "enemyType": "s2_Sub14",
-      "spawn_time": 48.167,
-      "start_pos": [
+      "delta": 3.334,
+      "cmd": "spawn",
+      "behavior": "s2_Sub14",
+      "pos": [
         192.0,
         -16.0
+      ]
+    },
+    {
+      "delta": 1.0,
+      "cmd": "wave",
+      "behavior": "s2_Sub1",
+      "count": 9,
+      "pos": [
+        400.0,
+        160.0
       ],
-      "hp": 500
+      "dx": 0.0,
+      "gap": 0.167
     },
     {
-      "id": "e2_0161",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 49.167,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0162",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 49.333,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0163",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 49.5,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0164",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 49.667,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0165",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 49.833,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0166",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 50.0,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0167",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 50.167,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0168",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 50.333,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0169",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 50.5,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0170",
-      "enemyType": "s2_Sub4",
-      "spawn_time": 50.5,
-      "start_pos": [
+      "delta": 1.333,
+      "cmd": "spawn",
+      "behavior": "s2_Sub4",
+      "pos": [
         64.0,
         -16.0
-      ],
-      "hp": 120
+      ]
     },
     {
-      "id": "e2_0171",
-      "enemyType": "s2_Sub4",
-      "spawn_time": 50.5,
-      "start_pos": [
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "s2_Sub4",
+      "pos": [
         320.0,
         -16.0
-      ],
-      "hp": 120
+      ]
     },
     {
-      "id": "e2_0172",
-      "enemyType": "s2_Sub4",
-      "spawn_time": 50.5,
-      "start_pos": [
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "s2_Sub4",
+      "pos": [
         96.0,
         -16.0
-      ],
-      "hp": 120
+      ]
     },
     {
-      "id": "e2_0173",
-      "enemyType": "s2_Sub4",
-      "spawn_time": 50.5,
-      "start_pos": [
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "s2_Sub4",
+      "pos": [
         288.0,
         -16.0
+      ]
+    },
+    {
+      "delta": 1.0,
+      "cmd": "wave",
+      "behavior": "s2_Sub1",
+      "count": 9,
+      "pos": [
+        -16.0,
+        160.0
       ],
-      "hp": 120
+      "dx": 0.0,
+      "gap": 0.167
     },
     {
-      "id": "e2_0174",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 51.5,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0175",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 51.667,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0176",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 51.833,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0177",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 52.0,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0178",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 52.167,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0179",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 52.333,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0180",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 52.5,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0181",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 52.667,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0182",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 52.833,
-      "start_pos": [
-        -16.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0183",
-      "enemyType": "s2_Sub4",
-      "spawn_time": 52.833,
-      "start_pos": [
+      "delta": 1.333,
+      "cmd": "spawn",
+      "behavior": "s2_Sub4",
+      "pos": [
         64.0,
         -16.0
-      ],
-      "hp": 120
+      ]
     },
     {
-      "id": "e2_0184",
-      "enemyType": "s2_Sub4",
-      "spawn_time": 52.833,
-      "start_pos": [
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "s2_Sub4",
+      "pos": [
         320.0,
         -16.0
-      ],
-      "hp": 120
+      ]
     },
     {
-      "id": "e2_0185",
-      "enemyType": "s2_Sub4",
-      "spawn_time": 52.833,
-      "start_pos": [
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "s2_Sub4",
+      "pos": [
         96.0,
         -16.0
-      ],
-      "hp": 120
+      ]
     },
     {
-      "id": "e2_0186",
-      "enemyType": "s2_Sub4",
-      "spawn_time": 52.833,
-      "start_pos": [
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "s2_Sub4",
+      "pos": [
         288.0,
         -16.0
+      ]
+    },
+    {
+      "delta": 1.0,
+      "cmd": "wave",
+      "behavior": "s2_Sub1",
+      "count": 9,
+      "pos": [
+        400.0,
+        160.0
       ],
-      "hp": 120
+      "dx": 0.0,
+      "gap": 0.167
     },
     {
-      "id": "e2_0187",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 53.833,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0188",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 54.0,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0189",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 54.167,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0190",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 54.333,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0191",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 54.5,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0192",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 54.667,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0193",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 54.833,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0194",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 55.0,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "e2_0195",
-      "enemyType": "s2_Sub1",
-      "spawn_time": 55.167,
-      "start_pos": [
-        400.0,
-        160.0
-      ]
-    },
-    {
-      "id": "midboss_daiyousei_196",
-      "enemyType": "midboss_daiyousei",
-      "spawn_time": 56.833,
-      "start_pos": [
+      "delta": 3.0,
+      "cmd": "spawn",
+      "behavior": "midboss_daiyousei",
+      "pos": [
         192.0,
         -16.0
-      ],
-      "hp": 1000
+      ]
     },
     {
-      "id": "e2_0197",
-      "enemyType": "s2_Sub4",
-      "spawn_time": 69.5,
-      "start_pos": [
+      "delta": 12.667,
+      "cmd": "wave",
+      "behavior": "s2_Sub4",
+      "count": 5,
+      "pos": [
         64.0,
         -16.0
       ],
-      "hp": 100
+      "dx": 16.0,
+      "gap": 0.167
     },
     {
-      "id": "e2_0198",
-      "enemyType": "s2_Sub4",
-      "spawn_time": 69.667,
-      "start_pos": [
-        80.0,
-        -16.0
-      ],
-      "hp": 100
-    },
-    {
-      "id": "e2_0199",
-      "enemyType": "s2_Sub4",
-      "spawn_time": 69.833,
-      "start_pos": [
-        96.0,
-        -16.0
-      ],
-      "hp": 100
-    },
-    {
-      "id": "e2_0200",
-      "enemyType": "s2_Sub4",
-      "spawn_time": 70.0,
-      "start_pos": [
-        112.0,
-        -16.0
-      ],
-      "hp": 100
-    },
-    {
-      "id": "e2_0201",
-      "enemyType": "s2_Sub4",
-      "spawn_time": 70.167,
-      "start_pos": [
-        128.0,
-        -16.0
-      ],
-      "hp": 100
-    },
-    {
-      "id": "e2_0202",
-      "enemyType": "s2_Sub6",
-      "spawn_time": 72.167,
-      "start_pos": [
+      "delta": 2.667,
+      "cmd": "wave",
+      "behavior": "s2_Sub6",
+      "count": 5,
+      "pos": [
         320.0,
         -16.0
       ],
-      "hp": 100
+      "dx": -16.0,
+      "gap": 0.166
     },
     {
-      "id": "e2_0203",
-      "enemyType": "s2_Sub6",
-      "spawn_time": 72.333,
-      "start_pos": [
+      "delta": 2.333,
+      "cmd": "wave",
+      "behavior": "s2_Sub4",
+      "count": 5,
+      "pos": [
+        64.0,
+        -16.0
+      ],
+      "dx": 16.0,
+      "gap": 0.167
+    },
+    {
+      "delta": 2.0,
+      "cmd": "wave",
+      "behavior": "s2_Sub6",
+      "count": 4,
+      "pos": [
+        320.0,
+        -16.0
+      ],
+      "dx": -16.0,
+      "gap": 0.167
+    },
+    {
+      "delta": 0.667,
+      "cmd": "spawn",
+      "behavior": "s2_Sub4",
+      "pos": [
+        256.0,
+        -16.0
+      ]
+    },
+    {
+      "delta": 0.166,
+      "cmd": "wave",
+      "behavior": "s2_Sub4",
+      "count": 4,
+      "pos": [
         304.0,
         -16.0
       ],
-      "hp": 100
+      "dx": -16.0,
+      "gap": 0.167
     },
     {
-      "id": "e2_0204",
-      "enemyType": "s2_Sub6",
-      "spawn_time": 72.5,
-      "start_pos": [
-        288.0,
-        -16.0
-      ],
-      "hp": 100
-    },
-    {
-      "id": "e2_0205",
-      "enemyType": "s2_Sub6",
-      "spawn_time": 72.667,
-      "start_pos": [
-        272.0,
-        -16.0
-      ],
-      "hp": 100
-    },
-    {
-      "id": "e2_0206",
-      "enemyType": "s2_Sub6",
-      "spawn_time": 72.833,
-      "start_pos": [
-        256.0,
-        -16.0
-      ],
-      "hp": 100
-    },
-    {
-      "id": "e2_0207",
-      "enemyType": "s2_Sub4",
-      "spawn_time": 74.5,
-      "start_pos": [
-        64.0,
-        -16.0
-      ],
-      "hp": 100
-    },
-    {
-      "id": "e2_0208",
-      "enemyType": "s2_Sub4",
-      "spawn_time": 74.667,
-      "start_pos": [
-        80.0,
-        -16.0
-      ],
-      "hp": 100
-    },
-    {
-      "id": "e2_0209",
-      "enemyType": "s2_Sub4",
-      "spawn_time": 74.833,
-      "start_pos": [
-        96.0,
-        -16.0
-      ],
-      "hp": 100
-    },
-    {
-      "id": "e2_0210",
-      "enemyType": "s2_Sub4",
-      "spawn_time": 75.0,
-      "start_pos": [
-        112.0,
-        -16.0
-      ],
-      "hp": 100
-    },
-    {
-      "id": "e2_0211",
-      "enemyType": "s2_Sub4",
-      "spawn_time": 75.167,
-      "start_pos": [
-        128.0,
-        -16.0
-      ],
-      "hp": 100
-    },
-    {
-      "id": "e2_0212",
-      "enemyType": "s2_Sub6",
-      "spawn_time": 76.5,
-      "start_pos": [
-        320.0,
-        -16.0
-      ],
-      "hp": 100
-    },
-    {
-      "id": "e2_0213",
-      "enemyType": "s2_Sub6",
-      "spawn_time": 76.667,
-      "start_pos": [
-        304.0,
-        -16.0
-      ],
-      "hp": 100
-    },
-    {
-      "id": "e2_0214",
-      "enemyType": "s2_Sub6",
-      "spawn_time": 76.833,
-      "start_pos": [
-        288.0,
-        -16.0
-      ],
-      "hp": 100
-    },
-    {
-      "id": "e2_0215",
-      "enemyType": "s2_Sub6",
-      "spawn_time": 77.0,
-      "start_pos": [
-        272.0,
-        -16.0
-      ],
-      "hp": 100
-    },
-    {
-      "id": "e2_0216",
-      "enemyType": "s2_Sub4",
-      "spawn_time": 77.167,
-      "start_pos": [
-        256.0,
-        -16.0
-      ],
-      "hp": 100
-    },
-    {
-      "id": "e2_0217",
-      "enemyType": "s2_Sub4",
-      "spawn_time": 77.333,
-      "start_pos": [
-        304.0,
-        -16.0
-      ],
-      "hp": 100
-    },
-    {
-      "id": "e2_0218",
-      "enemyType": "s2_Sub4",
-      "spawn_time": 77.5,
-      "start_pos": [
-        288.0,
-        -16.0
-      ],
-      "hp": 100
-    },
-    {
-      "id": "e2_0219",
-      "enemyType": "s2_Sub4",
-      "spawn_time": 77.667,
-      "start_pos": [
-        272.0,
-        -16.0
-      ],
-      "hp": 100
-    },
-    {
-      "id": "e2_0220",
-      "enemyType": "s2_Sub4",
-      "spawn_time": 77.833,
-      "start_pos": [
-        256.0,
-        -16.0
-      ],
-      "hp": 100
-    },
-    {
-      "id": "boss_entry",
-      "enemyType": "boss_entry",
-      "spawn_time": 81.167,
-      "start_pos": [
+      "delta": 3.834,
+      "cmd": "spawn",
+      "behavior": "boss_entry",
+      "pos": [
         192.0,
         -16.0
       ]

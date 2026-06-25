@@ -1,6 +1,366 @@
 #include "LevelManager.h"
+#include <cstring>
+#include <map>
 
-LevelManager::LevelManager() : stage_enemies_data(NULL), current_stage(1), stage_state(STAGE_LOADING), isClearingForMidboss(true), midbossIndex_(1e5) {
+// ── String→enum lookup tables (for V2 format) ──────────────────────────────
+
+static int str_to_move_pattern(const char* s) {
+    if (!s) return LINER;
+    if (strcmp(s, "linear")       == 0) return LINER;
+    if (strcmp(s, "sine")         == 0) return SINWAVE;
+    if (strcmp(s, "bezier")       == 0) return BEZIER;
+    if (strcmp(s, "stop_and_go")  == 0) return STOPANDGO;
+    if (strcmp(s, "homing")       == 0) return HOMING;
+    if (strcmp(s, "interception") == 0) return INTERCEPTION;
+    return LINER;
+}
+
+static int str_to_pattern_type(const char* s) {
+    if (!s) return 0;
+    if (strcmp(s, "fan_aimed")          == 0) return 0;
+    if (strcmp(s, "fan")                == 0) return 1;
+    if (strcmp(s, "aimed")              == 0) return 2;
+    if (strcmp(s, "ring")               == 0) return 3;
+    if (strcmp(s, "ring_aimed")         == 0) return 4;
+    if (strcmp(s, "spiral")             == 0) return 5;
+    if (strcmp(s, "spread")             == 0) return 6;
+    if (strcmp(s, "ring_aimed_variable")== 0) return 7;
+    return 0;
+}
+
+// ── Behavior name → enemyType mapping ──────────────────────────────────────
+
+static int behavior_to_enemy_type(const char* name) {
+    if (!name) return ZAKO_BLUE;
+    if (strcmp(name, "boss_entry")       == 0) return BOSS_ENTRY;
+    if (strcmp(name, "boss_rumia")       == 0) return BOSS_RUMIA;
+    if (strcmp(name, "boss_final")       == 0) return BOSS_FINAL;
+    if (strcmp(name, "boss_daiyousei")   == 0) return BOSS_DAIYOUSEI;
+    if (strcmp(name, "boss_cirno")       == 0) return BOSS_CIRNO;
+    if (strcmp(name, "boss_patchouli")   == 0) return BOSS_PATCHOULI;
+    if (strcmp(name, "boss_sakuya")      == 0) return BOSS_SAKUYA;
+    if (strcmp(name, "boss_remilia")     == 0) return BOSS_REMILIA;
+    if (strcmp(name, "boss_flandre")     == 0) return BOSS_FLANDRE;
+    if (strcmp(name, "boss_extra")       == 0) return BOSS_EXTRA;
+    if (strcmp(name, "fairy_red")        == 0) return FAIRY_RED;
+    if (strcmp(name, "fairy_green")      == 0) return FAIRY_GREEN;
+    if (strcmp(name, "fairy_blue")       == 0) return FAIRY_BLUE;
+    // Boss prefix fallback
+    if (strncmp(name, "boss_", 5) == 0) return BOSS_ENTRY;
+    // Fairy prefix fallback
+    if (strncmp(name, "fairy_", 6) == 0 && name[6] != '\0') return FAIRY_RED;
+    return ZAKO_BLUE;
+}
+
+// ── Safe cJSON access helpers ──────────────────────────────────────────────
+
+static float cjson_float(cJSON* obj, const char* key, float def) {
+    cJSON* v = cJSON_GetObjectItem(obj, key);
+    return (v && cJSON_IsNumber(v)) ? (float)v->valuedouble : def;
+}
+
+static int cjson_int(cJSON* obj, const char* key, int def) {
+    cJSON* v = cJSON_GetObjectItem(obj, key);
+    return (v && cJSON_IsNumber(v)) ? (int)v->valuedouble : def;
+}
+
+static const char* cjson_str(cJSON* obj, const char* key) {
+    cJSON* v = cJSON_GetObjectItem(obj, key);
+    return (v && cJSON_IsString(v)) ? v->valuestring : NULL;
+}
+
+// ── V2 format data structures ──────────────────────────────────────────────
+
+struct BehaviorDef {
+    int hp = 50;
+    int hitboxW = 32, hitboxH = 32;
+    int score = 100;
+    float halfLife = 0.0f;
+    int movePattern = LINER;
+    float speedX = 0.0f, speedY = 120.0f;
+    float vertAmp = 0.0f, vertPeriod = 1.0f;
+    float horizAmp = 0.0f, horizPeriod = 1.0f;
+    float angularVelocity = 0.0f;
+    float minPlayerDist = 80.0f;
+    float accel = 0.0f;
+    float lifeTime = 12.0f;
+    bool isMidboss = false;
+    std::string itemDrop;
+    std::vector<EmitterConfig> emitters;
+};
+
+// ── Helper: parse a behavior JSON object → BehaviorDef ─────────────────────
+
+static BehaviorDef parse_behavior(cJSON* beh) {
+    BehaviorDef def;
+    if (!beh || !cJSON_IsObject(beh)) return def;
+
+    def.hp       = cjson_int(beh, "hp", 50);
+    def.score    = cjson_int(beh, "score", 100);
+    def.halfLife = cjson_float(beh, "halfLife", 0.0f);
+    def.lifeTime = cjson_float(beh, "lifeTime", 12.0f);
+
+    // hitbox array [w, h]
+    cJSON* hb = cJSON_GetObjectItem(beh, "hitbox");
+    if (hb && cJSON_IsArray(hb) && cJSON_GetArraySize(hb) >= 2) {
+        def.hitboxW = (int)cJSON_GetArrayItem(hb, 0)->valuedouble;
+        def.hitboxH = (int)cJSON_GetArrayItem(hb, 1)->valuedouble;
+    }
+
+    // move object
+    cJSON* move = cJSON_GetObjectItem(beh, "move");
+    if (move && cJSON_IsObject(move)) {
+        const char* mt = cjson_str(move, "type");
+        if (mt) def.movePattern = str_to_move_pattern(mt);
+
+        def.speedX = cjson_float(move, "speedX", cjson_float(move, "speed", 0.0f));
+        def.speedY = cjson_float(move, "speedY", cjson_float(move, "speed", 120.0f));
+
+        def.vertAmp         = cjson_float(move, "vertAmp", 0.0f);
+        def.vertPeriod      = cjson_float(move, "vertPeriod", 1.0f);
+        def.horizAmp        = cjson_float(move, "horizAmp", 0.0f);
+        def.horizPeriod     = cjson_float(move, "horizPeriod", 1.0f);
+        def.angularVelocity = cjson_float(move, "angularVelocity", 0.0f);
+        def.minPlayerDist   = cjson_float(move, "minDist", 80.0f);
+        def.accel           = cjson_float(move, "accel", 0.0f);
+    }
+
+    // attack array → emitter configs
+    cJSON* attack = cJSON_GetObjectItem(beh, "attack");
+    if (attack && cJSON_IsArray(attack)) {
+        int n = cJSON_GetArraySize(attack);
+        for (int i = 0; i < n; i++) {
+            cJSON* at = cJSON_GetArrayItem(attack, i);
+            if (!at || !cJSON_IsObject(at)) continue;
+
+            EmitterConfig ec;
+            memset(&ec, 0, sizeof(ec));
+            ec.startDelay    = cjson_float(at, "time", 0.0f);
+            ec.emitInterval  = cjson_float(at, "interval", 1.0f);
+            ec.burstCount    = cjson_int(at, "burst", 1);
+            ec.burstInterval = cjson_float(at, "burstInterval", 0.05f);
+
+            cJSON* pat = cJSON_GetObjectItem(at, "pattern");
+            if (pat && cJSON_IsObject(pat)) {
+                const char* ptype = cjson_str(pat, "type");
+                if (ptype) ec.patternDesc.patternType = str_to_pattern_type(ptype);
+                ec.patternDesc.mainCnt       = cjson_int(pat, "mainCnt", 6);
+                ec.patternDesc.subCnt        = cjson_int(pat, "subCnt", 1);
+                ec.patternDesc.angleOffset   = cjson_float(pat, "spread", 0.0f);
+                ec.patternDesc.angleInterval = cjson_float(pat, "angleStep", 0.15f);
+                ec.patternDesc.speed1        = cjson_float(pat, "speed", 100.0f);
+                ec.patternDesc.speed2        = cjson_float(pat, "speedStep", 50.0f);
+                ec.patternDesc.spriteID      = cjson_int(pat, "spriteID", 0);
+                ec.patternDesc.hitboxRadius  = cjson_float(pat, "hitboxRadius", 4.0f);
+                ec.patternDesc.lifeTime      = cjson_float(pat, "lifeTime", 6.0f);
+            }
+            def.emitters.push_back(ec);
+        }
+    }
+
+    // death → itemDrop
+    cJSON* death = cJSON_GetObjectItem(beh, "death");
+    if (death && cJSON_IsObject(death)) {
+        const char* drop = cjson_str(death, "itemDrop");
+        if (drop) def.itemDrop = drop;
+    }
+
+    // flags array
+    cJSON* flags = cJSON_GetObjectItem(beh, "flags");
+    if (flags && cJSON_IsArray(flags)) {
+        for (int i = 0; i < cJSON_GetArraySize(flags); i++) {
+            cJSON* f = cJSON_GetArrayItem(flags, i);
+            if (f && cJSON_IsString(f) && strcmp(f->valuestring, "midboss") == 0)
+                def.isMidboss = true;
+        }
+    }
+
+    return def;
+}
+
+// ── Helper: apply timeline overrides to an EnemyConfig ─────────────────────
+
+static void apply_overrides(EnemyConfig& config, cJSON* overrides) {
+    if (!overrides || !cJSON_IsObject(overrides)) return;
+
+    cJSON* hp_ov = cJSON_GetObjectItem(overrides, "hp");
+    if (hp_ov && cJSON_IsNumber(hp_ov)) config.hp = (int)hp_ov->valuedouble;
+
+    cJSON* half_ov = cJSON_GetObjectItem(overrides, "halfLife");
+    if (half_ov && cJSON_IsNumber(half_ov)) config.halfLife = (float)half_ov->valuedouble;
+
+    cJSON* hitbox_ov = cJSON_GetObjectItem(overrides, "hitbox");
+    if (hitbox_ov && cJSON_IsArray(hitbox_ov) && cJSON_GetArraySize(hitbox_ov) >= 2) {
+        config.hitboxWidth  = (int)cJSON_GetArrayItem(hitbox_ov, 0)->valuedouble;
+        config.hitboxHeight = (int)cJSON_GetArrayItem(hitbox_ov, 1)->valuedouble;
+    }
+
+    cJSON* move_ov = cJSON_GetObjectItem(overrides, "move");
+    if (move_ov && cJSON_IsObject(move_ov)) {
+        const char* mt = cjson_str(move_ov, "type");
+        if (mt) config.movePattern = str_to_move_pattern(mt);
+        config.speedX = cjson_float(move_ov, "speedX", config.speedX);
+        config.speedY = cjson_float(move_ov, "speedY", config.speedY);
+    }
+}
+
+// ── V2 parser: read behaviors + timeline → create enemies ──────────────────
+
+void LevelManager::init_enemy_pool_v2() {
+    clear_enemy_pool();
+
+    // 1. Parse behaviors → map
+    std::map<std::string, BehaviorDef> behaviorMap;
+    cJSON* behaviors = cJSON_GetObjectItem(stage_enemies_data, "behaviors");
+    if (behaviors && cJSON_IsObject(behaviors)) {
+        cJSON* child = NULL;
+        cJSON_ArrayForEach(child, behaviors) {
+            if (child && cJSON_IsObject(child)) {
+                const char* name = child->string ? child->string : "";
+                BehaviorDef def = parse_behavior(child);
+                behaviorMap[name] = def;
+            }
+        }
+    }
+
+    // 2. Parse timeline
+    cJSON* timeline = cJSON_GetObjectItem(stage_enemies_data, "timeline");
+    if (!timeline || !cJSON_IsArray(timeline)) {
+        std::cerr << "Error: no timeline array in V2 format" << std::endl;
+        return;
+    }
+
+    float accumTime = 0.0f;
+    int tlLen = cJSON_GetArraySize(timeline);
+    for (int i = 0; i < tlLen; i++) {
+        cJSON* cmd = cJSON_GetArrayItem(timeline, i);
+        if (!cmd || !cJSON_IsObject(cmd)) continue;
+
+        cJSON* delta_j = cJSON_GetObjectItem(cmd, "delta");
+        if (delta_j && cJSON_IsNumber(delta_j))
+            accumTime += (float)delta_j->valuedouble;
+
+        cJSON* cmdType = cJSON_GetObjectItem(cmd, "cmd");
+        if (!cmdType || !cJSON_IsString(cmdType)) continue;
+        const char* command = cmdType->valuestring;
+
+        if (strcmp(command, "spawn") == 0) {
+            cJSON* behName = cJSON_GetObjectItem(cmd, "behavior");
+            cJSON* posArr  = cJSON_GetObjectItem(cmd, "pos");
+            if (!behName || !cJSON_IsString(behName)) continue;
+            if (!posArr  || !cJSON_IsArray(posArr))   continue;
+
+            const char* bname = behName->valuestring;
+            float px = (float)cJSON_GetArrayItem(posArr, 0)->valuedouble;
+            float py = (float)cJSON_GetArrayItem(posArr, 1)->valuedouble;
+
+            // Look up behavior
+            BehaviorDef def;
+            auto it = behaviorMap.find(bname);
+            if (it != behaviorMap.end()) {
+                def = it->second;
+            } else {
+                // Unknown behavior — this shouldn't happen
+                std::cerr << "Warning: unknown behavior '" << bname << "'" << std::endl;
+            }
+
+            // Build config
+            EnemyConfig config;
+            memset(&config, 0, sizeof(config));
+            config.hp            = def.hp;
+            config.hitboxWidth   = def.hitboxW;
+            config.hitboxHeight  = def.hitboxH;
+            config.speedX        = def.speedX;
+            config.speedY        = def.speedY;
+            config.movePattern   = def.movePattern;
+            config.halfLife      = def.halfLife;
+            config.angularVelocity = def.angularVelocity;
+            config.minPlayerDist = def.minPlayerDist;
+            config.acceleration  = def.accel;
+            config.vertAmplitude  = def.vertAmp;
+            config.vertPeriod     = def.vertPeriod;
+            config.horizAmplitude = def.horizAmp;
+            config.horizPeriod    = def.horizPeriod;
+
+            // Apply overrides
+            cJSON* overrides = cJSON_GetObjectItem(cmd, "overrides");
+            apply_overrides(config, overrides);
+
+            config.emergeTime   = accumTime;
+            config.durationTime = def.lifeTime;
+            config.enemyType    = behavior_to_enemy_type(bname);
+            config.isMidboss    = def.isMidboss;
+            config.startX       = px;
+            config.startY       = py;
+
+            Enemy* enemy = new Enemy();
+            // Copy emitters from behavior def
+            enemy->emitterConfig = def.emitters;
+            enemy->init(config, px, py);
+            enemy_pool.push_back(enemy);
+        }
+        else if (strcmp(command, "wave") == 0) {
+            cJSON* behName = cJSON_GetObjectItem(cmd, "behavior");
+            cJSON* posArr  = cJSON_GetObjectItem(cmd, "pos");
+            cJSON* countJ  = cJSON_GetObjectItem(cmd, "count");
+            cJSON* dxJ     = cJSON_GetObjectItem(cmd, "dx");
+            cJSON* gapJ    = cJSON_GetObjectItem(cmd, "gap");
+            if (!behName || !cJSON_IsString(behName)) continue;
+            if (!posArr  || !cJSON_IsArray(posArr))   continue;
+
+            const char* bname = behName->valuestring;
+            float baseX = (float)cJSON_GetArrayItem(posArr, 0)->valuedouble;
+            float baseY = (float)cJSON_GetArrayItem(posArr, 1)->valuedouble;
+            int    count   = countJ && cJSON_IsNumber(countJ) ? (int)countJ->valuedouble : 1;
+            float  dx      = dxJ    && cJSON_IsNumber(dxJ)    ? (float)dxJ->valuedouble    : 0.0f;
+            float  gap     = gapJ   && cJSON_IsNumber(gapJ)   ? (float)gapJ->valuedouble   : 0.0f;
+
+            // Look up behavior
+            BehaviorDef def;
+            auto it = behaviorMap.find(bname);
+            if (it != behaviorMap.end()) {
+                def = it->second;
+            }
+
+            EnemyConfig config;
+            memset(&config, 0, sizeof(config));
+            config.hp            = def.hp;
+            config.hitboxWidth   = def.hitboxW;
+            config.hitboxHeight  = def.hitboxH;
+            config.speedX        = def.speedX;
+            config.speedY        = def.speedY;
+            config.movePattern   = def.movePattern;
+            config.halfLife      = def.halfLife;
+            config.angularVelocity = def.angularVelocity;
+            config.minPlayerDist = def.minPlayerDist;
+            config.acceleration  = def.accel;
+            config.vertAmplitude  = def.vertAmp;
+            config.vertPeriod     = def.vertPeriod;
+            config.horizAmplitude = def.horizAmp;
+            config.horizPeriod    = def.horizPeriod;
+            config.durationTime   = def.lifeTime;
+            config.isMidboss      = def.isMidboss;
+
+            for (int k = 0; k < count; k++) {
+                float ex = baseX + k * dx;
+                config.emergeTime = accumTime + k * gap;
+                config.startX = ex;
+                config.startY = baseY;
+
+                Enemy* enemy = new Enemy();
+                enemy->emitterConfig = def.emitters;
+                enemy->init(config, ex, baseY);
+                enemy_pool.push_back(enemy);
+            }
+        }
+        // "spellcard" and "defeat" commands: currently stored in timeline for
+        // reference; actual boss-phase logic will be added later
+    }
+
+    std::cout << "Enemy pool initialized (V2 format) with " << enemy_pool.size() << " enemies" << std::endl;
+}
+
+LevelManager::LevelManager() : stage_enemies_data(NULL), current_stage(1), stage_state(STAGE_LOADING), isClearingForMidboss(true), midbossIndex_(1e5), bullet_mgr_(NULL) {
 }
 
 void LevelManager::start_stage() {
@@ -15,11 +375,6 @@ void LevelManager::trigger_boss() {
 
 void LevelManager::trigger_midboss() {
     stage_state = STAGE_MIDBOSS;
-}
-
-bool LevelManager::update_stage_state() {
-    int activeCounter;
-    
 }
 
 void LevelManager::clear_stage() {
@@ -40,6 +395,61 @@ void LevelManager::next_stage() {
     init_enemy_pool();
     stage_state = STAGE_RUNNING;
     std::cout << "Stage " << current_stage << " started." << std::endl;
+}
+
+// TH06-style lifecycle transitions — clean, load, init, start/trigger in one step
+void LevelManager::enter_stage(int stage) {
+	clear_enemy_pool();
+	load_stage(stage);
+	init_enemy_pool();
+	if (bullet_mgr_) set_bullet_manager_for_all(bullet_mgr_);
+	start_stage();
+}
+
+void LevelManager::enter_boss(int stage) {
+	clear_enemy_pool();
+	load_boss_stage(stage);
+	init_enemy_pool();
+	if (bullet_mgr_) set_bullet_manager_for_all(bullet_mgr_);
+	trigger_boss();
+}
+
+bool LevelManager::auto_transition(Uint32 frameCounter) {
+	if (stage_state == STAGE_RUNNING) {
+		// 检测当前关卡的所有敌人是否已生成并全部被击破
+		for (size_t i = 0; i < enemy_pool.size(); ++i) {
+			Enemy* e = enemy_pool[i];
+			if (e == NULL) continue;
+			if (e->has_pending_spawn()) return false;
+			if (e->is_active()) return false;
+		}
+		enter_boss(current_stage);
+		return true;
+	}
+	else if (stage_state == STAGE_BOSS) {
+		// 检测Boss战是否结束
+		for (size_t i = 0; i < enemy_pool.size(); ++i) {
+			Enemy* e = enemy_pool[i];
+			if (e == NULL) continue;
+			if (e->has_pending_spawn()) return false;
+			if (e->is_active()) return false;
+		}
+		clear_stage();
+		return true;
+	}
+	else if (stage_state == STAGE_CLEAR) {
+		// 自动进入下一关
+		int next = current_stage + 1;
+		if (next > TOTAL_STAGES) {
+			stage_state = STAGE_ALL_CLEAR;
+			clear_enemy_pool();
+			std::cout << "All stages cleared!" << std::endl;
+		} else {
+			enter_stage(next);
+		}
+		return true;
+	}
+	return false;
 }
 
 LevelManager::~LevelManager() {
@@ -96,6 +506,13 @@ void LevelManager::load_stage(int stage) {
         return;
     }
 
+    // V2 format uses "meta" key instead of stage_N array
+    cJSON* meta = cJSON_GetObjectItem(stage_enemies_data, "meta");
+    if (meta && cJSON_IsObject(meta)) {
+        std::cout << "Successfully loaded: " << file_path << " (V2 format)" << std::endl;
+        return;
+    }
+
     std::string key = stage_key();
     cJSON* stage_array = cJSON_GetObjectItem(stage_enemies_data, key.c_str());
     if (!cJSON_IsArray(stage_array)) {
@@ -143,10 +560,18 @@ void LevelManager::init_enemy_pool() {
         std::cerr << "Error: stage_enemies_data is NULL. Call read_stage_data first." << std::endl;
         return;
     }
-    
+
+    // Detect format version: V2 has "meta" key, V1 has "enemy_types"
+    cJSON* meta = cJSON_GetObjectItem(stage_enemies_data, "meta");
+    if (meta && cJSON_IsObject(meta)) {
+        init_enemy_pool_v2();
+        return;
+    }
+
+    // ── V1 format (legacy) ──
     // Clear existing pool
     clear_enemy_pool();
-    
+
     // Get stage array by current stage key
     std::string key = stage_key();
     cJSON* stage_array = cJSON_GetObjectItem(stage_enemies_data, key.c_str());

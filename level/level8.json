@@ -1,6169 +1,3635 @@
 {
-  "enemy_types": {
+  "meta": {
+    "stage": 8,
+    "type": "stage",
+    "version": 2
+  },
+  "behaviors": {
     "s8_Sub1": {
       "_desc": "ecldata8 Sub1",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRingAimed: 4way x8rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 4,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring_aimed",
             "mainCnt": 4,
             "subCnt": 8,
-            "angleOffset": 0,
-            "angleInterval": -0.01,
-            "speed1": 700,
-            "speed2": 280,
+            "spread": 0,
+            "angleStep": -0.01,
+            "speed": 700,
+            "speedStep": 280,
             "spriteID": 0,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub3": {
       "_desc": "ecldata8 Sub3",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRingAimed: 1way x8rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 4,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring_aimed",
             "mainCnt": 1,
             "subCnt": 8,
-            "angleOffset": 0,
-            "angleInterval": 0.185,
-            "speed1": 700,
-            "speed2": 280,
+            "spread": 0,
+            "angleStep": 0.185,
+            "speed": 700,
+            "speedStep": 280,
             "spriteID": 0,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub5": {
       "_desc": "ecldata8 Sub5",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etFanAimed: 6way x3rows burst=8",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 8,
+          "time": 0,
+          "interval": 1,
+          "burst": 8,
           "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 6,
             "subCnt": 3,
-            "angleOffset": 0,
-            "angleInterval": 1.047,
-            "speed1": 700,
-            "speed2": 280,
+            "spread": 0,
+            "angleStep": 1.047,
+            "speed": 700,
+            "speedStep": 280,
             "spriteID": 0,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etFanAimed: 2way x3rows burst=8",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 8,
+          "time": 0,
+          "interval": 1,
+          "burst": 8,
           "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 2,
             "subCnt": 3,
-            "angleOffset": 0,
-            "angleInterval": 1.047,
-            "speed1": 700,
-            "speed2": 280,
+            "spread": 0,
+            "angleStep": 1.047,
+            "speed": 700,
+            "speedStep": 280,
             "spriteID": 0,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub7": {
       "_desc": "ecldata8 Sub7",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRingAimed: 1way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 4,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring_aimed",
             "mainCnt": 1,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": -0.01,
-            "speed1": 40,
-            "speed2": 280,
+            "spread": 0,
+            "angleStep": -0.01,
+            "speed": 40,
+            "speedStep": 280,
             "spriteID": 1,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub9": {
       "_desc": "ecldata8 Sub9",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRingAimed: 1way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 4,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring_aimed",
             "mainCnt": 1,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": -0.01,
-            "speed1": 40,
-            "speed2": 280,
+            "spread": 0,
+            "angleStep": -0.01,
+            "speed": 40,
+            "speedStep": 280,
             "spriteID": 1,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub10": {
       "_desc": "ecldata8 Sub10",
-      "movePattern": 1,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 30,
-      "speedY": 30,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "acceleration": 0,
-      "emitters": [
+      "move": {
+        "type": "sine",
+        "speed": 30
+      },
+      "attack": [
         {
-          "_desc": "etFanAimed: 4way x3rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 4,
             "subCnt": 3,
-            "angleOffset": 0,
-            "angleInterval": 0.098,
-            "speed1": 320,
-            "speed2": 40,
+            "spread": 0,
+            "angleStep": 0.098,
+            "speed": 320,
+            "speedStep": 40,
             "spriteID": 1,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub11": {
       "_desc": "ecldata8 Sub11",
-      "movePattern": 1,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 30,
-      "speedY": 30,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "acceleration": 0,
-      "emitters": [
+      "move": {
+        "type": "sine",
+        "speed": 30
+      },
+      "attack": [
         {
-          "_desc": "etFanAimed: 4way x3rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 4,
             "subCnt": 3,
-            "angleOffset": 0,
-            "angleInterval": 0.098,
-            "speed1": 320,
-            "speed2": 40,
+            "spread": 0,
+            "angleStep": 0.098,
+            "speed": 320,
+            "speedStep": 40,
             "spriteID": 1,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub14": {
       "_desc": "ecldata8 Sub14",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 1way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 1,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.098,
-            "speed1": 100,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.098,
+            "speed": 100,
+            "speedStep": 100,
             "spriteID": 3,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub17": {
       "_desc": "ecldata8 Sub17",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 1way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 1,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.098,
-            "speed1": 140,
-            "speed2": 80,
+            "spread": 0,
+            "angleStep": 0.098,
+            "speed": 140,
+            "speedStep": 80,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub21": {
       "_desc": "ecldata8 Sub21",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 2way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 2,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.196,
-            "speed1": 80,
-            "speed2": 120,
+            "spread": 0,
+            "angleStep": 0.196,
+            "speed": 80,
+            "speedStep": 120,
             "spriteID": 1,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub24": {
       "_desc": "ecldata8 Sub24",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 2way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 2,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.098,
-            "speed1": 100,
-            "speed2": 80,
+            "spread": 0,
+            "angleStep": 0.098,
+            "speed": 100,
+            "speedStep": 80,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub26": {
       "_desc": "ecldata8 Sub26",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 2way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 2,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.098,
-            "speed1": 130,
-            "speed2": 80,
+            "spread": 0,
+            "angleStep": 0.098,
+            "speed": 130,
+            "speedStep": 80,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub28": {
       "_desc": "ecldata8 Sub28",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 2way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 2,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.098,
-            "speed1": 160,
-            "speed2": 80,
+            "spread": 0,
+            "angleStep": 0.098,
+            "speed": 160,
+            "speedStep": 80,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub32": {
       "_desc": "ecldata8 Sub32",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 2way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 2,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.098,
-            "speed1": 100,
-            "speed2": 80,
+            "spread": 0,
+            "angleStep": 0.098,
+            "speed": 100,
+            "speedStep": 80,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub34": {
       "_desc": "ecldata8 Sub34",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 2way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 2,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.098,
-            "speed1": 90,
-            "speed2": 80,
+            "spread": 0,
+            "angleStep": 0.098,
+            "speed": 90,
+            "speedStep": 80,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub36": {
       "_desc": "ecldata8 Sub36",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 2way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 2,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.098,
-            "speed1": 110,
-            "speed2": 80,
+            "spread": 0,
+            "angleStep": 0.098,
+            "speed": 110,
+            "speedStep": 80,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub38": {
       "_desc": "ecldata8 Sub38",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 2way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 2,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.098,
-            "speed1": 100,
-            "speed2": 80,
+            "spread": 0,
+            "angleStep": 0.098,
+            "speed": 100,
+            "speedStep": 80,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub40": {
       "_desc": "ecldata8 Sub40",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 2way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 2,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.098,
-            "speed1": 70,
-            "speed2": 80,
+            "spread": 0,
+            "angleStep": 0.098,
+            "speed": 70,
+            "speedStep": 80,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub41": {
       "_desc": "ecldata8 Sub41",
-      "movePattern": 3,
       "hp": 150,
-      "hitboxWidth": 48,
-      "hitboxHeight": 48,
-      "speedX": 300,
-      "speedY": 300,
-      "halfLife": 0,
+      "hitbox": [
+        48,
+        48
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "stop_and_go",
+        "speed": 300
+      },
+      "attack": [
         {
-          "_desc": "etFanAimed: 4way x7rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 4,
             "subCnt": 7,
-            "angleOffset": 0,
-            "angleInterval": 0.314,
-            "speed1": 600,
-            "speed2": 40,
+            "spread": 0,
+            "angleStep": 0.314,
+            "speed": 600,
+            "speedStep": 40,
             "spriteID": 18,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub42": {
       "_desc": "ecldata8 Sub42",
-      "movePattern": 3,
       "hp": 150,
-      "hitboxWidth": 48,
-      "hitboxHeight": 48,
-      "speedX": 300,
-      "speedY": 300,
-      "halfLife": 0,
+      "hitbox": [
+        48,
+        48
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "stop_and_go",
+        "speed": 300
+      },
+      "attack": [
         {
-          "_desc": "etFanAimed: 5way x3rows burst=5",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 5,
+          "time": 0,
+          "interval": 1,
+          "burst": 5,
           "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 5,
             "subCnt": 3,
-            "angleOffset": 0,
-            "angleInterval": 1.047,
-            "speed1": 1000,
-            "speed2": 40,
+            "spread": 0,
+            "angleStep": 1.047,
+            "speed": 1000,
+            "speedStep": 40,
             "spriteID": 18,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub44": {
       "_desc": "ecldata8 Sub44",
-      "movePattern": 3,
       "hp": 150,
-      "hitboxWidth": 48,
-      "hitboxHeight": 48,
-      "speedX": 300,
-      "speedY": 300,
-      "halfLife": 0,
+      "hitbox": [
+        48,
+        48
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "stop_and_go",
+        "speed": 300
+      },
+      "attack": [
         {
-          "_desc": "etRingAimed: 20way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 4,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring_aimed",
             "mainCnt": 20,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 1.047,
-            "speed1": 100,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 1.047,
+            "speed": 100,
+            "speedStep": 100,
             "spriteID": 18,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub52": {
       "_desc": "ecldata8 Sub52",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRingAimed: 1way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 4,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring_aimed",
             "mainCnt": 1,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.393,
-            "speed1": 400,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.393,
+            "speed": 400,
+            "speedStep": 100,
             "spriteID": 6,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub53": {
       "_desc": "ecldata8 Sub53",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 4way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 4,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.262,
-            "speed1": 100,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.262,
+            "speed": 100,
+            "speedStep": 50,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub56": {
       "_desc": "ecldata8 Sub56",
-      "movePattern": 3,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "stop_and_go"
+      },
+      "attack": [
         {
-          "_desc": "etFanAimed: 1way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 1,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.131,
-            "speed1": 100,
-            "speed2": 80,
+            "spread": 0,
+            "angleStep": 0.131,
+            "speed": 100,
+            "speedStep": 80,
             "spriteID": 10,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub61": {
       "_desc": "ecldata8 Sub61",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRingAimed: 1way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 4,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring_aimed",
             "mainCnt": 1,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.393,
-            "speed1": 400,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.393,
+            "speed": 400,
+            "speedStep": 100,
             "spriteID": 18,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub62": {
       "_desc": "ecldata8 Sub62",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 4way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 4,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.262,
-            "speed1": 100,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.262,
+            "speed": 100,
+            "speedStep": 50,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub67": {
       "_desc": "ecldata8 Sub67",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 3way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 3,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.393,
-            "speed1": 200,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.393,
+            "speed": 200,
+            "speedStep": 100,
             "spriteID": 11,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub69": {
       "_desc": "ecldata8 Sub69",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 3way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 3,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.393,
-            "speed1": 300,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.393,
+            "speed": 300,
+            "speedStep": 100,
             "spriteID": 11,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etRing: 4way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 4,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.393,
-            "speed1": 250,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.393,
+            "speed": 250,
+            "speedStep": 100,
             "spriteID": 11,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etRing: 5way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 5,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.393,
-            "speed1": 200,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.393,
+            "speed": 200,
+            "speedStep": 100,
             "spriteID": 11,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etRing: 6way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 6,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.393,
-            "speed1": 150,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.393,
+            "speed": 150,
+            "speedStep": 100,
             "spriteID": 11,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etRing: 7way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 7,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.393,
-            "speed1": 100,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.393,
+            "speed": 100,
+            "speedStep": 100,
             "spriteID": 11,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub71": {
       "_desc": "ecldata8 Sub71",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 13way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 13,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.393,
-            "speed1": 300,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.393,
+            "speed": 300,
+            "speedStep": 100,
             "spriteID": 11,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etRing: 14way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 14,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.393,
-            "speed1": 250,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.393,
+            "speed": 250,
+            "speedStep": 100,
             "spriteID": 11,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etRing: 15way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 15,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.393,
-            "speed1": 200,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.393,
+            "speed": 200,
+            "speedStep": 100,
             "spriteID": 11,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etRing: 16way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 16,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.393,
-            "speed1": 150,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.393,
+            "speed": 150,
+            "speedStep": 100,
             "spriteID": 11,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etRing: 17way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 17,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.393,
-            "speed1": 100,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.393,
+            "speed": 100,
+            "speedStep": 100,
             "spriteID": 11,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub73": {
       "_desc": "ecldata8 Sub73",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 32way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 32,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.393,
-            "speed1": 100,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.393,
+            "speed": 100,
+            "speedStep": 100,
             "spriteID": 11,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etRing: 48way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 48,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.393,
-            "speed1": 150,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.393,
+            "speed": 150,
+            "speedStep": 100,
             "spriteID": 11,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub75": {
       "_desc": "ecldata8 Sub75",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 32way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 32,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.393,
-            "speed1": 100,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.393,
+            "speed": 100,
+            "speedStep": 100,
             "spriteID": 11,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etRing: 48way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 48,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.393,
-            "speed1": 250,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.393,
+            "speed": 250,
+            "speedStep": 100,
             "spriteID": 11,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub77": {
       "_desc": "ecldata8 Sub77",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 32way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 32,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.393,
-            "speed1": 100,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.393,
+            "speed": 100,
+            "speedStep": 100,
             "spriteID": 11,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etRing: 48way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 48,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.393,
-            "speed1": 250,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.393,
+            "speed": 250,
+            "speedStep": 100,
             "spriteID": 11,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub79": {
       "_desc": "ecldata8 Sub79",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 32way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 32,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.393,
-            "speed1": 100,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.393,
+            "speed": 100,
+            "speedStep": 100,
             "spriteID": 11,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etRing: 48way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 48,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.393,
-            "speed1": 250,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.393,
+            "speed": 250,
+            "speedStep": 100,
             "spriteID": 11,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub81": {
       "_desc": "ecldata8 Sub81",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 48way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 48,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.393,
-            "speed1": 150,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.393,
+            "speed": 150,
+            "speedStep": 100,
             "spriteID": 11,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub94": {
       "_desc": "ecldata8 Sub94",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 4way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 4,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.185,
-            "speed1": 340,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.185,
+            "speed": 340,
+            "speedStep": 50,
             "spriteID": 9,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub95": {
       "_desc": "ecldata8 Sub95",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 8way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 8,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.185,
-            "speed1": 200,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.185,
+            "speed": 200,
+            "speedStep": 50,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub97": {
       "_desc": "ecldata8 Sub97",
-      "movePattern": 3,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 0,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "acceleration": 7,
-      "emitters": [
+      "move": {
+        "type": "stop_and_go",
+        "speed": 0,
+        "accel": 7
+      },
+      "attack": [
         {
-          "_desc": "etRing: 42way x1rows",
-          "startDelay": 0,
-          "emitInterval": 0,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 0,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 42,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.098,
-            "speed1": 200,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.098,
+            "speed": 200,
+            "speedStep": 50,
             "spriteID": 1,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etRing: 24way x1rows",
-          "startDelay": 0,
-          "emitInterval": 0,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 0,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 24,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.098,
-            "speed1": 100,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.098,
+            "speed": 100,
+            "speedStep": 50,
             "spriteID": 1,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etFanAimed: 2way x15rows",
-          "startDelay": 0,
-          "emitInterval": 0,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "time": 0,
+          "interval": 0,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 2,
             "subCnt": 15,
-            "angleOffset": 0,
-            "angleInterval": 0.098,
-            "speed1": 250,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.098,
+            "speed": 250,
+            "speedStep": 50,
             "spriteID": 17,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etRing: 32way x1rows",
-          "startDelay": 0,
-          "emitInterval": 0,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 0,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 32,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.185,
-            "speed1": 250,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.185,
+            "speed": 250,
+            "speedStep": 50,
             "spriteID": 18,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etFanAimed: 2way x1rows",
-          "startDelay": 0,
-          "emitInterval": 0,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "time": 0,
+          "interval": 0,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 2,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.185,
-            "speed1": 80,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.185,
+            "speed": 80,
+            "speedStep": 50,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etFanAimed: 1way x1rows",
-          "startDelay": 0,
-          "emitInterval": 0,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "time": 0,
+          "interval": 0,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 1,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.185,
-            "speed1": 100,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.185,
+            "speed": 100,
+            "speedStep": 50,
             "spriteID": 7,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etRing: 2way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 2,
             "subCnt": 1,
-            "angleOffset": 1.571,
-            "angleInterval": 0.185,
-            "speed1": 350,
-            "speed2": 50,
+            "spread": 1.571,
+            "angleStep": 0.185,
+            "speed": 350,
+            "speedStep": 50,
             "spriteID": 11,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etFanAimed: 6way x8rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 6,
             "subCnt": 8,
-            "angleOffset": 0,
-            "angleInterval": 0.524,
-            "speed1": 650,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.524,
+            "speed": 650,
+            "speedStep": 50,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etFanAimed: 6way x2rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 6,
             "subCnt": 2,
-            "angleOffset": 0,
-            "angleInterval": 0.185,
-            "speed1": 5,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.185,
+            "speed": 5,
+            "speedStep": 50,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub139": {
       "_desc": "ecldata8 Sub139",
-      "movePattern": 1,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 1,
-      "speedY": 1,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "sine",
+        "speed": 1
+      },
+      "attack": [
         {
-          "_desc": "etRing: 4way x2rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 4,
             "subCnt": 2,
-            "angleOffset": 0,
-            "angleInterval": 0.785,
-            "speed1": 100,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.785,
+            "speed": 100,
+            "speedStep": 50,
             "spriteID": 1,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub140": {
       "_desc": "ecldata8 Sub140",
-      "movePattern": 1,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 1,
-      "speedY": 1,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "sine",
+        "speed": 1
+      },
+      "attack": [
         {
-          "_desc": "etRingAimed: 5way x4rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 4,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring_aimed",
             "mainCnt": 5,
             "subCnt": 4,
-            "angleOffset": 0,
-            "angleInterval": 0.185,
-            "speed1": 500,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.185,
+            "speed": 500,
+            "speedStep": 50,
             "spriteID": 6,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub141": {
       "_desc": "ecldata8 Sub141",
-      "movePattern": 1,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 0,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "sine",
+        "speed": 0
+      },
+      "attack": [
         {
-          "_desc": "etRing: 1way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 1,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.185,
-            "speed1": 100,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.185,
+            "speed": 100,
+            "speedStep": 50,
             "spriteID": 10,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub145": {
       "_desc": "ecldata8 Sub145",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etFanAimed: 6way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 6,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.185,
-            "speed1": 100,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.185,
+            "speed": 100,
+            "speedStep": 50,
             "spriteID": 1,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub146": {
       "_desc": "ecldata8 Sub146",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etFanAimed: 6way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 6,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.185,
-            "speed1": 100,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.185,
+            "speed": 100,
+            "speedStep": 50,
             "spriteID": 3,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub147": {
       "_desc": "ecldata8 Sub147",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 32way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 32,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.185,
-            "speed1": 100,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.185,
+            "speed": 100,
+            "speedStep": 50,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub152": {
       "_desc": "ecldata8 Sub152",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 6way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 6,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.185,
-            "speed1": 100,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.185,
+            "speed": 100,
+            "speedStep": 50,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub153": {
       "_desc": "ecldata8 Sub153",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 6way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 6,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.185,
-            "speed1": 100,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.185,
+            "speed": 100,
+            "speedStep": 50,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub154": {
       "_desc": "ecldata8 Sub154",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 6way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 6,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.185,
-            "speed1": 100,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.185,
+            "speed": 100,
+            "speedStep": 50,
             "spriteID": 6,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s8_Sub155": {
       "_desc": "ecldata8 Sub155",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 6way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 6,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.185,
-            "speed1": 100,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.185,
+            "speed": 100,
+            "speedStep": 50,
             "spriteID": 6,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "midboss_extra": {
       "_desc": "Midboss midboss_extra",
-      "movePattern": 3,
       "hp": 1500,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 90,
-      "halfLife": 0,
-      "midboss": true,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 100000,
-      "itemDrop": "full_power"
+      "move": {
+        "type": "stop_and_go",
+        "speedX": 0,
+        "speedY": 90
+      },
+      "death": {
+        "itemDrop": "full_power"
+      }
     }
   },
-  "stage_8": [
+  "timeline": [
     {
-      "id": "e8_0001",
-      "spawn_time": 6.667,
-      "start_pos": [
+      "delta": 6.667,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         464.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0002",
-      "spawn_time": 6.833,
-      "start_pos": [
+      "delta": 0.166,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         464.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0003",
-      "spawn_time": 7.0,
-      "start_pos": [
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         464.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0004",
-      "spawn_time": 7.167,
-      "start_pos": [
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         464.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0005",
-      "spawn_time": 7.333,
-      "start_pos": [
+      "delta": 0.166,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         464.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0006",
-      "spawn_time": 7.5,
-      "start_pos": [
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         464.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0007",
-      "spawn_time": 9.5,
-      "start_pos": [
+      "delta": 2.0,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         464.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0008",
-      "spawn_time": 9.667,
-      "start_pos": [
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         464.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0009",
-      "spawn_time": 9.833,
-      "start_pos": [
+      "delta": 0.166,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         464.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0010",
-      "spawn_time": 10.0,
-      "start_pos": [
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         464.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0011",
-      "spawn_time": 10.167,
-      "start_pos": [
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         464.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0012",
-      "spawn_time": 10.333,
-      "start_pos": [
+      "delta": 0.166,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         464.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0013",
-      "spawn_time": 12.333,
-      "start_pos": [
+      "delta": 2.0,
+      "cmd": "wave",
+      "behavior": "s8_Sub1",
+      "count": 6,
+      "pos": [
         32.0,
         464.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "dx": 0.0,
+      "gap": 0.167
     },
     {
-      "id": "e8_0014",
-      "spawn_time": 12.5,
-      "start_pos": [
-        32.0,
-        464.0
-      ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
-    },
-    {
-      "id": "e8_0015",
-      "spawn_time": 12.667,
-      "start_pos": [
-        32.0,
-        464.0
-      ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
-    },
-    {
-      "id": "e8_0016",
-      "spawn_time": 12.833,
-      "start_pos": [
-        32.0,
-        464.0
-      ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
-    },
-    {
-      "id": "e8_0017",
-      "spawn_time": 13.0,
-      "start_pos": [
-        32.0,
-        464.0
-      ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
-    },
-    {
-      "id": "e8_0018",
-      "spawn_time": 13.167,
-      "start_pos": [
-        32.0,
-        464.0
-      ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
-    },
-    {
-      "id": "e8_0019",
-      "enemyType": "s8_Sub10",
-      "spawn_time": 17.833,
-      "start_pos": [
+      "delta": 5.5,
+      "cmd": "spawn",
+      "behavior": "s8_Sub10",
+      "pos": [
         128.0,
         -16.0
-      ],
-      "hp": 500
+      ]
     },
     {
-      "id": "e8_0020",
-      "enemyType": "s8_Sub11",
-      "spawn_time": 17.833,
-      "start_pos": [
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "s8_Sub11",
+      "pos": [
         256.0,
         -16.0
-      ],
-      "hp": 500
+      ]
     },
     {
-      "id": "e8_0021",
-      "spawn_time": 21.167,
-      "start_pos": [
+      "delta": 3.334,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         -32.0,
         56.0
       ],
-      "movePattern": 0,
-      "hp": 800,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 800
+      }
     },
     {
-      "id": "e8_0022",
-      "spawn_time": 24.5,
-      "start_pos": [
+      "delta": 3.333,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         416.0,
         56.0
       ],
-      "movePattern": 0,
-      "hp": 800,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 800
+      }
     },
     {
-      "id": "e8_0023",
-      "spawn_time": 27.833,
-      "start_pos": [
+      "delta": 3.333,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         -40.0,
         40.0
       ],
-      "movePattern": 0,
-      "hp": 800,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 800
+      }
     },
     {
-      "id": "e8_0024",
-      "spawn_time": 31.167,
-      "start_pos": [
+      "delta": 3.334,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         424.0,
         40.0
       ],
-      "movePattern": 0,
-      "hp": 700,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 700
+      }
     },
     {
-      "id": "e8_0025",
-      "spawn_time": 33.167,
-      "start_pos": [
+      "delta": 2.0,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         464.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0026",
-      "spawn_time": 33.333,
-      "start_pos": [
+      "delta": 0.166,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         464.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0027",
-      "spawn_time": 33.5,
-      "start_pos": [
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         464.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0028",
-      "spawn_time": 33.667,
-      "start_pos": [
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         464.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0029",
-      "spawn_time": 33.833,
-      "start_pos": [
+      "delta": 0.166,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         464.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0030",
-      "spawn_time": 34.0,
-      "start_pos": [
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         464.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0031",
-      "spawn_time": 35.667,
-      "start_pos": [
+      "delta": 1.667,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         464.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0032",
-      "spawn_time": 35.833,
-      "start_pos": [
+      "delta": 0.166,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         464.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0033",
-      "spawn_time": 36.0,
-      "start_pos": [
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         464.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0034",
-      "spawn_time": 36.167,
-      "start_pos": [
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         464.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0035",
-      "spawn_time": 36.333,
-      "start_pos": [
+      "delta": 0.166,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         464.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0036",
-      "spawn_time": 36.5,
-      "start_pos": [
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         464.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0037",
-      "spawn_time": 38.0,
-      "start_pos": [
+      "delta": 1.5,
+      "cmd": "wave",
+      "behavior": "s8_Sub1",
+      "count": 6,
+      "pos": [
         32.0,
         464.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "dx": 0.0,
+      "gap": 0.167
     },
     {
-      "id": "e8_0038",
-      "spawn_time": 38.167,
-      "start_pos": [
-        32.0,
-        464.0
-      ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
-    },
-    {
-      "id": "e8_0039",
-      "spawn_time": 38.333,
-      "start_pos": [
-        32.0,
-        464.0
-      ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
-    },
-    {
-      "id": "e8_0040",
-      "spawn_time": 38.5,
-      "start_pos": [
-        32.0,
-        464.0
-      ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
-    },
-    {
-      "id": "e8_0041",
-      "spawn_time": 38.667,
-      "start_pos": [
-        32.0,
-        464.0
-      ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
-    },
-    {
-      "id": "e8_0042",
-      "spawn_time": 38.833,
-      "start_pos": [
-        32.0,
-        464.0
-      ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
-    },
-    {
-      "id": "e8_0043",
-      "enemyType": "s8_Sub10",
-      "spawn_time": 42.667,
-      "start_pos": [
+      "delta": 4.667,
+      "cmd": "wave",
+      "behavior": "s8_Sub10",
+      "count": 3,
+      "pos": [
         64.0,
         -16.0
       ],
-      "hp": 300
+      "dx": 128.0,
+      "gap": 0.0
     },
     {
-      "id": "e8_0044",
-      "enemyType": "s8_Sub10",
-      "spawn_time": 42.667,
-      "start_pos": [
-        192.0,
-        -16.0
-      ],
-      "hp": 300
-    },
-    {
-      "id": "e8_0045",
-      "enemyType": "s8_Sub10",
-      "spawn_time": 42.667,
-      "start_pos": [
-        320.0,
-        -16.0
-      ],
-      "hp": 300
-    },
-    {
-      "id": "e8_0046",
-      "enemyType": "s8_Sub11",
-      "spawn_time": 44.333,
-      "start_pos": [
+      "delta": 1.666,
+      "cmd": "spawn",
+      "behavior": "s8_Sub11",
+      "pos": [
         128.0,
         -16.0
-      ],
-      "hp": 300
+      ]
     },
     {
-      "id": "e8_0047",
-      "enemyType": "s8_Sub11",
-      "spawn_time": 44.333,
-      "start_pos": [
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "s8_Sub11",
+      "pos": [
         256.0,
         -16.0
-      ],
-      "hp": 300
+      ]
     },
     {
-      "id": "e8_0048",
-      "spawn_time": 49.333,
-      "start_pos": [
+      "delta": 5.0,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         464.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0049",
-      "spawn_time": 49.5,
-      "start_pos": [
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         464.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0050",
-      "spawn_time": 49.667,
-      "start_pos": [
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         464.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0051",
-      "spawn_time": 49.833,
-      "start_pos": [
+      "delta": 0.166,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         464.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0052",
-      "spawn_time": 50.0,
-      "start_pos": [
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         464.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0053",
-      "spawn_time": 50.167,
-      "start_pos": [
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         464.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0054",
-      "spawn_time": 50.333,
-      "start_pos": [
+      "delta": 0.166,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         464.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0055",
-      "spawn_time": 50.5,
-      "start_pos": [
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         464.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0056",
-      "spawn_time": 50.667,
-      "start_pos": [
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         464.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0057",
-      "spawn_time": 50.833,
-      "start_pos": [
+      "delta": 0.166,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         464.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0058",
-      "spawn_time": 51.0,
-      "start_pos": [
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         464.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0059",
-      "spawn_time": 54.333,
-      "start_pos": [
+      "delta": 3.333,
+      "cmd": "wave",
+      "behavior": "s8_Sub1",
+      "count": 11,
+      "pos": [
         32.0,
         464.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "dx": 0.0,
+      "gap": 0.167
     },
     {
-      "id": "e8_0060",
-      "spawn_time": 54.5,
-      "start_pos": [
-        32.0,
-        464.0
-      ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
-    },
-    {
-      "id": "e8_0061",
-      "spawn_time": 54.667,
-      "start_pos": [
-        32.0,
-        464.0
-      ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
-    },
-    {
-      "id": "e8_0062",
-      "spawn_time": 54.833,
-      "start_pos": [
-        32.0,
-        464.0
-      ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
-    },
-    {
-      "id": "e8_0063",
-      "spawn_time": 55.0,
-      "start_pos": [
-        32.0,
-        464.0
-      ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
-    },
-    {
-      "id": "e8_0064",
-      "spawn_time": 55.167,
-      "start_pos": [
-        32.0,
-        464.0
-      ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
-    },
-    {
-      "id": "e8_0065",
-      "spawn_time": 55.333,
-      "start_pos": [
-        32.0,
-        464.0
-      ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
-    },
-    {
-      "id": "e8_0066",
-      "spawn_time": 55.5,
-      "start_pos": [
-        32.0,
-        464.0
-      ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
-    },
-    {
-      "id": "e8_0067",
-      "spawn_time": 55.667,
-      "start_pos": [
-        32.0,
-        464.0
-      ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
-    },
-    {
-      "id": "e8_0068",
-      "spawn_time": 55.833,
-      "start_pos": [
-        32.0,
-        464.0
-      ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
-    },
-    {
-      "id": "e8_0069",
-      "spawn_time": 56.0,
-      "start_pos": [
-        32.0,
-        464.0
-      ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
-    },
-    {
-      "id": "e8_0070",
-      "enemyType": "s8_Sub10",
-      "spawn_time": 61.5,
-      "start_pos": [
+      "delta": 7.167,
+      "cmd": "spawn",
+      "behavior": "s8_Sub10",
+      "pos": [
         64.0,
         -16.0
-      ],
-      "hp": 300
+      ]
     },
     {
-      "id": "e8_0071",
-      "enemyType": "s8_Sub11",
-      "spawn_time": 61.5,
-      "start_pos": [
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "s8_Sub11",
+      "pos": [
         128.0,
         -16.0
-      ],
-      "hp": 300
+      ]
     },
     {
-      "id": "e8_0072",
-      "enemyType": "s8_Sub10",
-      "spawn_time": 61.5,
-      "start_pos": [
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "s8_Sub10",
+      "pos": [
         192.0,
         -16.0
-      ],
-      "hp": 300
+      ]
     },
     {
-      "id": "e8_0073",
-      "enemyType": "s8_Sub11",
-      "spawn_time": 61.5,
-      "start_pos": [
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "s8_Sub11",
+      "pos": [
         256.0,
         -16.0
-      ],
-      "hp": 300
+      ]
     },
     {
-      "id": "e8_0074",
-      "enemyType": "s8_Sub10",
-      "spawn_time": 61.5,
-      "start_pos": [
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "s8_Sub10",
+      "pos": [
         320.0,
         -16.0
-      ],
-      "hp": 300
+      ]
     },
     {
-      "id": "e8_0093",
-      "enemyType": "s8_Sub10",
-      "spawn_time": 77.667,
-      "start_pos": [
+      "delta": 16.167,
+      "cmd": "spawn",
+      "behavior": "s8_Sub10",
+      "pos": [
         32.0,
         -64.0
-      ],
-      "hp": 300
+      ]
     },
     {
-      "id": "e8_0094",
-      "enemyType": "s8_Sub11",
-      "spawn_time": 77.667,
-      "start_pos": [
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "s8_Sub11",
+      "pos": [
         80.0,
         -64.0
-      ],
-      "hp": 300
+      ]
     },
     {
-      "id": "e8_0095",
-      "enemyType": "s8_Sub10",
-      "spawn_time": 77.667,
-      "start_pos": [
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "s8_Sub10",
+      "pos": [
         128.0,
         -64.0
-      ],
-      "hp": 300
+      ]
     },
     {
-      "id": "e8_0096",
-      "enemyType": "s8_Sub11",
-      "spawn_time": 77.667,
-      "start_pos": [
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "s8_Sub11",
+      "pos": [
         176.0,
         -64.0
-      ],
-      "hp": 300
+      ]
     },
     {
-      "id": "e8_0097",
-      "enemyType": "s8_Sub10",
-      "spawn_time": 77.667,
-      "start_pos": [
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "s8_Sub10",
+      "pos": [
         224.0,
         -64.0
-      ],
-      "hp": 300
+      ]
     },
     {
-      "id": "e8_0098",
-      "enemyType": "s8_Sub11",
-      "spawn_time": 77.667,
-      "start_pos": [
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "s8_Sub11",
+      "pos": [
         272.0,
         -64.0
-      ],
-      "hp": 300
+      ]
     },
     {
-      "id": "e8_0099",
-      "enemyType": "s8_Sub10",
-      "spawn_time": 77.667,
-      "start_pos": [
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "s8_Sub10",
+      "pos": [
         320.0,
         -64.0
-      ],
-      "hp": 300
+      ]
     },
     {
-      "id": "e8_0100",
-      "enemyType": "s8_Sub11",
-      "spawn_time": 77.667,
-      "start_pos": [
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "s8_Sub11",
+      "pos": [
         368.0,
         -64.0
-      ],
-      "hp": 300
+      ]
     },
     {
-      "id": "e8_0101",
-      "spawn_time": 81.583,
-      "start_pos": [
+      "delta": 3.916,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         400.0,
         -64.0
       ],
-      "movePattern": 0,
-      "hp": 300,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 300
+      }
     },
     {
-      "id": "e8_0102",
-      "spawn_time": 85.917,
-      "start_pos": [
+      "delta": 4.334,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         192.0,
         -16.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0103",
-      "spawn_time": 88.283,
-      "start_pos": [
+      "delta": 2.366,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0104",
-      "spawn_time": 88.45,
-      "start_pos": [
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0105",
-      "spawn_time": 88.617,
-      "start_pos": [
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0106",
-      "spawn_time": 88.783,
-      "start_pos": [
+      "delta": 0.166,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0107",
-      "spawn_time": 88.95,
-      "start_pos": [
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0108",
-      "spawn_time": 89.117,
-      "start_pos": [
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0109",
-      "spawn_time": 89.45,
-      "start_pos": [
+      "delta": 0.333,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0110",
-      "spawn_time": 89.617,
-      "start_pos": [
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0111",
-      "spawn_time": 89.783,
-      "start_pos": [
+      "delta": 0.166,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0112",
-      "spawn_time": 89.95,
-      "start_pos": [
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0113",
-      "spawn_time": 90.117,
-      "start_pos": [
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0114",
-      "spawn_time": 90.283,
-      "start_pos": [
+      "delta": 0.166,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0115",
-      "spawn_time": 90.617,
-      "start_pos": [
+      "delta": 0.334,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         480.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0116",
-      "spawn_time": 90.783,
-      "start_pos": [
+      "delta": 0.166,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         480.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0117",
-      "spawn_time": 90.95,
-      "start_pos": [
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         480.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0118",
-      "spawn_time": 91.117,
-      "start_pos": [
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         480.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0119",
-      "spawn_time": 91.283,
-      "start_pos": [
+      "delta": 0.166,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         480.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0120",
-      "spawn_time": 91.45,
-      "start_pos": [
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         480.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0121",
-      "spawn_time": 91.783,
-      "start_pos": [
+      "delta": 0.333,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0122",
-      "spawn_time": 91.95,
-      "start_pos": [
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0123",
-      "spawn_time": 92.117,
-      "start_pos": [
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0124",
-      "spawn_time": 92.283,
-      "start_pos": [
+      "delta": 0.166,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0125",
-      "spawn_time": 92.45,
-      "start_pos": [
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0126",
-      "spawn_time": 92.617,
-      "start_pos": [
+      "delta": 0.167,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         32.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0127",
-      "spawn_time": 92.95,
-      "start_pos": [
+      "delta": 0.333,
+      "cmd": "wave",
+      "behavior": "s8_Sub1",
+      "count": 6,
+      "pos": [
         32.0,
         480.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "dx": 0.0,
+      "gap": 0.167
     },
     {
-      "id": "e8_0128",
-      "spawn_time": 93.117,
-      "start_pos": [
-        32.0,
-        480.0
-      ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
-    },
-    {
-      "id": "e8_0129",
-      "spawn_time": 93.283,
-      "start_pos": [
-        32.0,
-        480.0
-      ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
-    },
-    {
-      "id": "e8_0130",
-      "spawn_time": 93.45,
-      "start_pos": [
-        32.0,
-        480.0
-      ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
-    },
-    {
-      "id": "e8_0131",
-      "spawn_time": 93.617,
-      "start_pos": [
-        32.0,
-        480.0
-      ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
-    },
-    {
-      "id": "e8_0132",
-      "spawn_time": 93.783,
-      "start_pos": [
-        32.0,
-        480.0
-      ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
-    },
-    {
-      "id": "e8_0133",
-      "enemyType": "s8_Sub10",
-      "spawn_time": 100.117,
-      "start_pos": [
+      "delta": 7.167,
+      "cmd": "spawn",
+      "behavior": "s8_Sub10",
+      "pos": [
         128.0,
         -16.0
-      ],
-      "hp": 500
+      ]
     },
     {
-      "id": "e8_0134",
-      "enemyType": "s8_Sub11",
-      "spawn_time": 100.117,
-      "start_pos": [
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "s8_Sub11",
+      "pos": [
         256.0,
         -16.0
-      ],
-      "hp": 500
+      ]
     },
     {
-      "id": "e8_0135",
-      "spawn_time": 103.45,
-      "start_pos": [
+      "delta": 3.333,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         -32.0,
         56.0
       ],
-      "movePattern": 0,
-      "hp": 500,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 500
+      }
     },
     {
-      "id": "e8_0136",
-      "spawn_time": 105.617,
-      "start_pos": [
+      "delta": 2.167,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         416.0,
         56.0
       ],
-      "movePattern": 0,
-      "hp": 500,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 500
+      }
     },
     {
-      "id": "e8_0137",
-      "spawn_time": 107.783,
-      "start_pos": [
+      "delta": 2.166,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         -32.0,
         40.0
       ],
-      "movePattern": 0,
-      "hp": 500,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 500
+      }
     },
     {
-      "id": "e8_0138",
-      "spawn_time": 109.95,
-      "start_pos": [
+      "delta": 2.167,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         416.0,
         40.0
       ],
-      "movePattern": 0,
-      "hp": 500,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 500
+      }
     },
     {
-      "id": "e8_0139",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 114.117,
-      "start_pos": [
+      "delta": 4.167,
+      "cmd": "wave",
+      "behavior": "s8_Sub41",
+      "count": 37,
+      "pos": [
         32.0,
         -32.0
       ],
-      "hp": 10
+      "dx": 8.0,
+      "gap": 0.083
     },
     {
-      "id": "e8_0140",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 114.2,
-      "start_pos": [
-        40.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0141",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 114.283,
-      "start_pos": [
-        48.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0142",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 114.367,
-      "start_pos": [
-        56.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0143",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 114.45,
-      "start_pos": [
-        64.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0144",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 114.533,
-      "start_pos": [
-        72.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0145",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 114.617,
-      "start_pos": [
-        80.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0146",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 114.7,
-      "start_pos": [
-        88.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0147",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 114.783,
-      "start_pos": [
-        96.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0148",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 114.867,
-      "start_pos": [
-        104.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0149",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 114.95,
-      "start_pos": [
-        112.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0150",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 115.033,
-      "start_pos": [
-        120.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0151",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 115.117,
-      "start_pos": [
-        128.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0152",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 115.2,
-      "start_pos": [
-        136.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0153",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 115.283,
-      "start_pos": [
-        144.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0154",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 115.367,
-      "start_pos": [
-        152.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0155",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 115.45,
-      "start_pos": [
-        160.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0156",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 115.533,
-      "start_pos": [
-        168.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0157",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 115.617,
-      "start_pos": [
-        176.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0158",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 115.7,
-      "start_pos": [
-        184.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0159",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 115.783,
-      "start_pos": [
-        192.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0160",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 115.867,
-      "start_pos": [
-        200.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0161",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 115.95,
-      "start_pos": [
-        208.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0162",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 116.033,
-      "start_pos": [
-        216.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0163",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 116.117,
-      "start_pos": [
-        224.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0164",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 116.2,
-      "start_pos": [
-        232.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0165",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 116.283,
-      "start_pos": [
-        240.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0166",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 116.367,
-      "start_pos": [
-        248.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0167",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 116.45,
-      "start_pos": [
-        256.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0168",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 116.533,
-      "start_pos": [
-        264.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0169",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 116.617,
-      "start_pos": [
-        272.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0170",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 116.7,
-      "start_pos": [
-        280.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0171",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 116.783,
-      "start_pos": [
-        288.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0172",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 116.867,
-      "start_pos": [
-        296.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0173",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 116.95,
-      "start_pos": [
-        304.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0174",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 117.033,
-      "start_pos": [
-        312.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0175",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 117.117,
-      "start_pos": [
-        320.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0176",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 118.117,
-      "start_pos": [
+      "delta": 4.0,
+      "cmd": "wave",
+      "behavior": "s8_Sub42",
+      "count": 37,
+      "pos": [
         352.0,
         -32.0
       ],
-      "hp": 10
+      "dx": -8.0,
+      "gap": 0.083
     },
     {
-      "id": "e8_0177",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 118.2,
-      "start_pos": [
-        344.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0178",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 118.283,
-      "start_pos": [
-        336.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0179",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 118.367,
-      "start_pos": [
-        328.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0180",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 118.45,
-      "start_pos": [
-        320.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0181",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 118.533,
-      "start_pos": [
-        312.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0182",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 118.617,
-      "start_pos": [
-        304.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0183",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 118.7,
-      "start_pos": [
-        296.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0184",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 118.783,
-      "start_pos": [
-        288.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0185",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 118.867,
-      "start_pos": [
-        280.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0186",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 118.95,
-      "start_pos": [
-        272.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0187",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 119.033,
-      "start_pos": [
-        264.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0188",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 119.117,
-      "start_pos": [
-        256.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0189",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 119.2,
-      "start_pos": [
-        248.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0190",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 119.283,
-      "start_pos": [
-        240.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0191",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 119.367,
-      "start_pos": [
-        232.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0192",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 119.45,
-      "start_pos": [
-        224.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0193",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 119.533,
-      "start_pos": [
-        216.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0194",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 119.617,
-      "start_pos": [
-        208.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0195",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 119.7,
-      "start_pos": [
-        200.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0196",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 119.783,
-      "start_pos": [
-        192.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0197",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 119.867,
-      "start_pos": [
-        184.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0198",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 119.95,
-      "start_pos": [
-        176.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0199",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 120.033,
-      "start_pos": [
-        168.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0200",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 120.117,
-      "start_pos": [
-        160.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0201",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 120.2,
-      "start_pos": [
-        152.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0202",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 120.283,
-      "start_pos": [
-        144.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0203",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 120.367,
-      "start_pos": [
-        136.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0204",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 120.45,
-      "start_pos": [
-        128.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0205",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 120.533,
-      "start_pos": [
-        120.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0206",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 120.617,
-      "start_pos": [
-        112.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0207",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 120.7,
-      "start_pos": [
-        104.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0208",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 120.783,
-      "start_pos": [
-        96.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0209",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 120.867,
-      "start_pos": [
-        88.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0210",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 120.95,
-      "start_pos": [
-        80.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0211",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 121.033,
-      "start_pos": [
-        72.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0212",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 121.117,
-      "start_pos": [
-        64.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0213",
-      "spawn_time": 122.117,
-      "start_pos": [
+      "delta": 4.0,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         8.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0214",
-      "spawn_time": 122.2,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         360.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0215",
-      "spawn_time": 122.283,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         40.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0216",
-      "spawn_time": 122.367,
-      "start_pos": [
+      "delta": 0.084,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         328.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0217",
-      "spawn_time": 122.45,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         72.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0218",
-      "spawn_time": 122.533,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         296.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0219",
-      "spawn_time": 122.617,
-      "start_pos": [
+      "delta": 0.084,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         104.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0220",
-      "spawn_time": 122.7,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         264.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0221",
-      "spawn_time": 122.783,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         136.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0222",
-      "spawn_time": 122.867,
-      "start_pos": [
+      "delta": 0.084,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         232.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0223",
-      "spawn_time": 122.95,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         168.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0224",
-      "spawn_time": 123.033,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         200.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0225",
-      "spawn_time": 123.117,
-      "start_pos": [
+      "delta": 0.084,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         200.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0226",
-      "spawn_time": 123.2,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         168.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0227",
-      "spawn_time": 123.283,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         232.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0228",
-      "spawn_time": 123.367,
-      "start_pos": [
+      "delta": 0.084,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         136.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0229",
-      "spawn_time": 123.45,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         264.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0230",
-      "spawn_time": 123.533,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         104.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0231",
-      "spawn_time": 123.617,
-      "start_pos": [
+      "delta": 0.084,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         296.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0232",
-      "spawn_time": 123.7,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         72.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0233",
-      "spawn_time": 123.783,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         328.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0234",
-      "spawn_time": 123.867,
-      "start_pos": [
+      "delta": 0.084,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         40.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0235",
-      "spawn_time": 123.95,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         360.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0236",
-      "spawn_time": 124.033,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         8.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0237",
-      "spawn_time": 124.117,
-      "start_pos": [
+      "delta": 0.084,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         392.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0238",
-      "spawn_time": 124.2,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         -24.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0239",
-      "spawn_time": 124.283,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         424.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0240",
-      "enemyType": "s8_Sub44",
-      "spawn_time": 125.283,
-      "start_pos": [
+      "delta": 1.0,
+      "cmd": "spawn",
+      "behavior": "s8_Sub44",
+      "pos": [
         352.0,
         -32.0
-      ],
-      "hp": 10
+      ]
     },
     {
-      "id": "e8_0241",
-      "enemyType": "s8_Sub44",
-      "spawn_time": 125.367,
-      "start_pos": [
+      "delta": 0.084,
+      "cmd": "spawn",
+      "behavior": "s8_Sub44",
+      "pos": [
         40.0,
         -32.0
-      ],
-      "hp": 10
+      ]
     },
     {
-      "id": "e8_0242",
-      "enemyType": "s8_Sub44",
-      "spawn_time": 125.45,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub44",
+      "pos": [
         336.0,
         -32.0
-      ],
-      "hp": 10
+      ]
     },
     {
-      "id": "e8_0243",
-      "enemyType": "s8_Sub44",
-      "spawn_time": 125.533,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub44",
+      "pos": [
         56.0,
         -32.0
-      ],
-      "hp": 10
+      ]
     },
     {
-      "id": "e8_0244",
-      "enemyType": "s8_Sub44",
-      "spawn_time": 125.617,
-      "start_pos": [
+      "delta": 0.084,
+      "cmd": "spawn",
+      "behavior": "s8_Sub44",
+      "pos": [
         320.0,
         -32.0
-      ],
-      "hp": 10
+      ]
     },
     {
-      "id": "e8_0245",
-      "enemyType": "s8_Sub44",
-      "spawn_time": 125.7,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub44",
+      "pos": [
         72.0,
         -32.0
-      ],
-      "hp": 10
+      ]
     },
     {
-      "id": "e8_0246",
-      "enemyType": "s8_Sub44",
-      "spawn_time": 125.783,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub44",
+      "pos": [
         304.0,
         -32.0
-      ],
-      "hp": 10
+      ]
     },
     {
-      "id": "e8_0247",
-      "enemyType": "s8_Sub44",
-      "spawn_time": 125.867,
-      "start_pos": [
+      "delta": 0.084,
+      "cmd": "spawn",
+      "behavior": "s8_Sub44",
+      "pos": [
         88.0,
         -32.0
-      ],
-      "hp": 10
+      ]
     },
     {
-      "id": "e8_0248",
-      "enemyType": "s8_Sub44",
-      "spawn_time": 125.95,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub44",
+      "pos": [
         288.0,
         -32.0
-      ],
-      "hp": 10
+      ]
     },
     {
-      "id": "e8_0249",
-      "enemyType": "s8_Sub44",
-      "spawn_time": 126.033,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub44",
+      "pos": [
         104.0,
         -32.0
-      ],
-      "hp": 10
+      ]
     },
     {
-      "id": "e8_0250",
-      "enemyType": "s8_Sub44",
-      "spawn_time": 126.117,
-      "start_pos": [
+      "delta": 0.084,
+      "cmd": "spawn",
+      "behavior": "s8_Sub44",
+      "pos": [
         272.0,
         -32.0
-      ],
-      "hp": 10
+      ]
     },
     {
-      "id": "e8_0251",
-      "enemyType": "s8_Sub44",
-      "spawn_time": 126.2,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub44",
+      "pos": [
         120.0,
         -32.0
-      ],
-      "hp": 10
+      ]
     },
     {
-      "id": "e8_0252",
-      "enemyType": "s8_Sub44",
-      "spawn_time": 126.283,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub44",
+      "pos": [
         256.0,
         -32.0
-      ],
-      "hp": 10
+      ]
     },
     {
-      "id": "e8_0253",
-      "enemyType": "s8_Sub44",
-      "spawn_time": 126.367,
-      "start_pos": [
+      "delta": 0.084,
+      "cmd": "spawn",
+      "behavior": "s8_Sub44",
+      "pos": [
         136.0,
         -32.0
-      ],
-      "hp": 10
+      ]
     },
     {
-      "id": "e8_0254",
-      "enemyType": "s8_Sub44",
-      "spawn_time": 126.45,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub44",
+      "pos": [
         240.0,
         -32.0
-      ],
-      "hp": 10
+      ]
     },
     {
-      "id": "e8_0255",
-      "enemyType": "s8_Sub44",
-      "spawn_time": 126.533,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub44",
+      "pos": [
         152.0,
         -32.0
-      ],
-      "hp": 10
+      ]
     },
     {
-      "id": "e8_0256",
-      "enemyType": "s8_Sub44",
-      "spawn_time": 126.617,
-      "start_pos": [
+      "delta": 0.084,
+      "cmd": "spawn",
+      "behavior": "s8_Sub44",
+      "pos": [
         224.0,
         -32.0
-      ],
-      "hp": 10
+      ]
     },
     {
-      "id": "e8_0257",
-      "enemyType": "s8_Sub44",
-      "spawn_time": 126.7,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub44",
+      "pos": [
         168.0,
         -32.0
-      ],
-      "hp": 10
+      ]
     },
     {
-      "id": "e8_0258",
-      "enemyType": "s8_Sub44",
-      "spawn_time": 126.783,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub44",
+      "pos": [
         208.0,
         -32.0
-      ],
-      "hp": 10
+      ]
     },
     {
-      "id": "e8_0259",
-      "enemyType": "s8_Sub44",
-      "spawn_time": 126.867,
-      "start_pos": [
+      "delta": 0.084,
+      "cmd": "spawn",
+      "behavior": "s8_Sub44",
+      "pos": [
         184.0,
         -32.0
-      ],
-      "hp": 10
+      ]
     },
     {
-      "id": "e8_0260",
-      "enemyType": "s8_Sub44",
-      "spawn_time": 126.95,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub44",
+      "pos": [
         192.0,
         -32.0
-      ],
-      "hp": 10
+      ]
     },
     {
-      "id": "e8_0261",
-      "enemyType": "s8_Sub44",
-      "spawn_time": 127.033,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub44",
+      "pos": [
         200.0,
         -32.0
-      ],
-      "hp": 10
+      ]
     },
     {
-      "id": "e8_0262",
-      "enemyType": "s8_Sub44",
-      "spawn_time": 127.117,
-      "start_pos": [
+      "delta": 0.084,
+      "cmd": "spawn",
+      "behavior": "s8_Sub44",
+      "pos": [
         176.0,
         -32.0
-      ],
-      "hp": 10
+      ]
     },
     {
-      "id": "e8_0263",
-      "enemyType": "s8_Sub44",
-      "spawn_time": 127.2,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub44",
+      "pos": [
         216.0,
         -32.0
-      ],
-      "hp": 10
+      ]
     },
     {
-      "id": "e8_0264",
-      "enemyType": "s8_Sub44",
-      "spawn_time": 127.283,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub44",
+      "pos": [
         160.0,
         -32.0
-      ],
-      "hp": 10
+      ]
     },
     {
-      "id": "e8_0265",
-      "enemyType": "s8_Sub44",
-      "spawn_time": 127.367,
-      "start_pos": [
+      "delta": 0.084,
+      "cmd": "spawn",
+      "behavior": "s8_Sub44",
+      "pos": [
         232.0,
         -32.0
-      ],
-      "hp": 10
+      ]
     },
     {
-      "id": "e8_0266",
-      "enemyType": "s8_Sub44",
-      "spawn_time": 127.45,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub44",
+      "pos": [
         144.0,
         -32.0
-      ],
-      "hp": 10
+      ]
     },
     {
-      "id": "e8_0267",
-      "enemyType": "s8_Sub44",
-      "spawn_time": 127.533,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub44",
+      "pos": [
         248.0,
         -32.0
-      ],
-      "hp": 10
+      ]
     },
     {
-      "id": "e8_0268",
-      "enemyType": "s8_Sub44",
-      "spawn_time": 127.617,
-      "start_pos": [
+      "delta": 0.084,
+      "cmd": "spawn",
+      "behavior": "s8_Sub44",
+      "pos": [
         128.0,
         -32.0
-      ],
-      "hp": 10
+      ]
     },
     {
-      "id": "e8_0269",
-      "enemyType": "s8_Sub44",
-      "spawn_time": 127.7,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub44",
+      "pos": [
         264.0,
         -32.0
-      ],
-      "hp": 10
+      ]
     },
     {
-      "id": "e8_0270",
-      "enemyType": "s8_Sub44",
-      "spawn_time": 127.783,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub44",
+      "pos": [
         112.0,
         -32.0
-      ],
-      "hp": 10
+      ]
     },
     {
-      "id": "e8_0271",
-      "enemyType": "s8_Sub44",
-      "spawn_time": 127.867,
-      "start_pos": [
+      "delta": 0.084,
+      "cmd": "spawn",
+      "behavior": "s8_Sub44",
+      "pos": [
         280.0,
         -32.0
-      ],
-      "hp": 10
+      ]
     },
     {
-      "id": "e8_0272",
-      "enemyType": "s8_Sub44",
-      "spawn_time": 127.95,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub44",
+      "pos": [
         96.0,
         -32.0
-      ],
-      "hp": 10
+      ]
     },
     {
-      "id": "e8_0273",
-      "enemyType": "s8_Sub44",
-      "spawn_time": 128.033,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub44",
+      "pos": [
         296.0,
         -32.0
-      ],
-      "hp": 10
+      ]
     },
     {
-      "id": "e8_0274",
-      "enemyType": "s8_Sub44",
-      "spawn_time": 128.117,
-      "start_pos": [
+      "delta": 0.084,
+      "cmd": "spawn",
+      "behavior": "s8_Sub44",
+      "pos": [
         80.0,
         -32.0
-      ],
-      "hp": 10
+      ]
     },
     {
-      "id": "e8_0275",
-      "enemyType": "s8_Sub44",
-      "spawn_time": 128.2,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub44",
+      "pos": [
         312.0,
         -32.0
-      ],
-      "hp": 10
+      ]
     },
     {
-      "id": "e8_0276",
-      "enemyType": "s8_Sub44",
-      "spawn_time": 128.283,
-      "start_pos": [
+      "delta": 0.083,
+      "cmd": "spawn",
+      "behavior": "s8_Sub44",
+      "pos": [
         64.0,
         -32.0
-      ],
-      "hp": 10
+      ]
     },
     {
-      "id": "e8_0277",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 129.95,
-      "start_pos": [
+      "delta": 1.667,
+      "cmd": "wave",
+      "behavior": "s8_Sub41",
+      "count": 37,
+      "pos": [
         32.0,
         -32.0
       ],
-      "hp": 10
+      "dx": 8.0,
+      "gap": 0.083
     },
     {
-      "id": "e8_0278",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 130.033,
-      "start_pos": [
-        40.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0279",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 130.117,
-      "start_pos": [
-        48.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0280",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 130.2,
-      "start_pos": [
-        56.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0281",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 130.283,
-      "start_pos": [
-        64.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0282",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 130.367,
-      "start_pos": [
-        72.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0283",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 130.45,
-      "start_pos": [
-        80.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0284",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 130.533,
-      "start_pos": [
-        88.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0285",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 130.617,
-      "start_pos": [
-        96.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0286",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 130.7,
-      "start_pos": [
-        104.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0287",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 130.783,
-      "start_pos": [
-        112.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0288",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 130.867,
-      "start_pos": [
-        120.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0289",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 130.95,
-      "start_pos": [
-        128.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0290",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 131.033,
-      "start_pos": [
-        136.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0291",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 131.117,
-      "start_pos": [
-        144.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0292",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 131.2,
-      "start_pos": [
-        152.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0293",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 131.283,
-      "start_pos": [
-        160.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0294",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 131.367,
-      "start_pos": [
-        168.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0295",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 131.45,
-      "start_pos": [
-        176.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0296",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 131.533,
-      "start_pos": [
-        184.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0297",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 131.617,
-      "start_pos": [
-        192.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0298",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 131.7,
-      "start_pos": [
-        200.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0299",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 131.783,
-      "start_pos": [
-        208.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0300",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 131.867,
-      "start_pos": [
-        216.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0301",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 131.95,
-      "start_pos": [
-        224.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0302",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 132.033,
-      "start_pos": [
-        232.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0303",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 132.117,
-      "start_pos": [
-        240.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0304",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 132.2,
-      "start_pos": [
-        248.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0305",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 132.283,
-      "start_pos": [
-        256.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0306",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 132.367,
-      "start_pos": [
-        264.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0307",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 132.45,
-      "start_pos": [
-        272.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0308",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 132.533,
-      "start_pos": [
-        280.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0309",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 132.617,
-      "start_pos": [
-        288.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0310",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 132.7,
-      "start_pos": [
-        296.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0311",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 132.783,
-      "start_pos": [
-        304.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0312",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 132.867,
-      "start_pos": [
-        312.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0313",
-      "enemyType": "s8_Sub41",
-      "spawn_time": 132.95,
-      "start_pos": [
-        320.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0314",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 133.95,
-      "start_pos": [
+      "delta": 4.0,
+      "cmd": "wave",
+      "behavior": "s8_Sub42",
+      "count": 37,
+      "pos": [
         352.0,
         -32.0
       ],
-      "hp": 10
+      "dx": -8.0,
+      "gap": 0.083
     },
     {
-      "id": "e8_0315",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 134.033,
-      "start_pos": [
-        344.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0316",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 134.117,
-      "start_pos": [
-        336.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0317",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 134.2,
-      "start_pos": [
-        328.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0318",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 134.283,
-      "start_pos": [
-        320.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0319",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 134.367,
-      "start_pos": [
-        312.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0320",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 134.45,
-      "start_pos": [
-        304.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0321",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 134.533,
-      "start_pos": [
-        296.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0322",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 134.617,
-      "start_pos": [
-        288.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0323",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 134.7,
-      "start_pos": [
-        280.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0324",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 134.783,
-      "start_pos": [
-        272.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0325",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 134.867,
-      "start_pos": [
-        264.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0326",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 134.95,
-      "start_pos": [
-        256.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0327",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 135.033,
-      "start_pos": [
-        248.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0328",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 135.117,
-      "start_pos": [
-        240.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0329",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 135.2,
-      "start_pos": [
-        232.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0330",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 135.283,
-      "start_pos": [
-        224.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0331",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 135.367,
-      "start_pos": [
-        216.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0332",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 135.45,
-      "start_pos": [
-        208.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0333",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 135.533,
-      "start_pos": [
-        200.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0334",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 135.617,
-      "start_pos": [
-        192.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0335",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 135.7,
-      "start_pos": [
-        184.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0336",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 135.783,
-      "start_pos": [
-        176.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0337",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 135.867,
-      "start_pos": [
-        168.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0338",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 135.95,
-      "start_pos": [
-        160.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0339",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 136.033,
-      "start_pos": [
-        152.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0340",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 136.117,
-      "start_pos": [
-        144.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0341",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 136.2,
-      "start_pos": [
-        136.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0342",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 136.283,
-      "start_pos": [
-        128.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0343",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 136.367,
-      "start_pos": [
-        120.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0344",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 136.45,
-      "start_pos": [
-        112.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0345",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 136.533,
-      "start_pos": [
-        104.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0346",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 136.617,
-      "start_pos": [
-        96.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0347",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 136.7,
-      "start_pos": [
-        88.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0348",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 136.783,
-      "start_pos": [
-        80.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0349",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 136.867,
-      "start_pos": [
-        72.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0350",
-      "enemyType": "s8_Sub42",
-      "spawn_time": 136.95,
-      "start_pos": [
-        64.0,
-        -32.0
-      ],
-      "hp": 10
-    },
-    {
-      "id": "e8_0351",
-      "enemyType": "s8_Sub10",
-      "spawn_time": 139.95,
-      "start_pos": [
+      "delta": 6.0,
+      "cmd": "spawn",
+      "behavior": "s8_Sub10",
+      "pos": [
         64.0,
         -16.0
-      ],
-      "hp": 300
+      ]
     },
     {
-      "id": "e8_0352",
-      "enemyType": "s8_Sub11",
-      "spawn_time": 139.95,
-      "start_pos": [
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "s8_Sub11",
+      "pos": [
         128.0,
         -16.0
-      ],
-      "hp": 300
+      ]
     },
     {
-      "id": "e8_0353",
-      "enemyType": "s8_Sub10",
-      "spawn_time": 139.95,
-      "start_pos": [
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "s8_Sub10",
+      "pos": [
         192.0,
         -16.0
-      ],
-      "hp": 300
+      ]
     },
     {
-      "id": "e8_0354",
-      "enemyType": "s8_Sub11",
-      "spawn_time": 139.95,
-      "start_pos": [
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "s8_Sub11",
+      "pos": [
         256.0,
         -16.0
-      ],
-      "hp": 300
+      ]
     },
     {
-      "id": "e8_0355",
-      "enemyType": "s8_Sub10",
-      "spawn_time": 139.95,
-      "start_pos": [
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "s8_Sub10",
+      "pos": [
         320.0,
         -16.0
-      ],
-      "hp": 300
+      ]
     },
     {
-      "id": "e8_0356",
-      "spawn_time": 141.617,
-      "start_pos": [
+      "delta": 1.667,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         192.0,
         -32.0
       ],
-      "movePattern": 0,
-      "hp": 4000,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 4000
+      }
     },
     {
-      "id": "e8_0357",
-      "spawn_time": 158.283,
-      "start_pos": [
+      "delta": 16.666,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         192.0,
         -16.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e8_0358",
-      "spawn_time": 161.3,
-      "start_pos": [
+      "delta": 3.017,
+      "cmd": "spawn",
+      "behavior": "s8_Sub1",
+      "pos": [
         192.0,
         192.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     }
   ],
   "randomItemTable": [

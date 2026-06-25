@@ -1,259 +1,190 @@
 {
-  "enemy_types": {
+  "meta": {
+    "stage": 6,
+    "type": "stage",
+    "version": 2
+  },
+  "behaviors": {
     "s6_Sub2": {
       "_desc": "ecldata6 Sub2",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 6way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 6,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.185,
-            "speed1": 100,
-            "speed2": 80,
+            "spread": 0,
+            "angleStep": 0.185,
+            "speed": 100,
+            "speedStep": 80,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s6_Sub6": {
       "_desc": "ecldata6 Sub6",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 3way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 3,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.185,
-            "speed1": 80,
-            "speed2": 120,
+            "spread": 0,
+            "angleStep": 0.185,
+            "speed": 80,
+            "speedStep": 120,
             "spriteID": 1,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s6_Sub10": {
       "_desc": "ecldata6 Sub10",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 6way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 6,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.185,
-            "speed1": 320,
-            "speed2": 80,
+            "spread": 0,
+            "angleStep": 0.185,
+            "speed": 320,
+            "speedStep": 80,
             "spriteID": 5,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "midboss_remilia": {
       "_desc": "Midboss midboss_remilia",
-      "movePattern": 3,
       "hp": 1000,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 90,
-      "halfLife": 0,
-      "midboss": true,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 100000,
-      "itemDrop": "full_power"
+      "move": {
+        "type": "stop_and_go",
+        "speedX": 0,
+        "speedY": 90
+      },
+      "death": {
+        "itemDrop": "full_power"
+      }
     }
   },
-  "stage_6": [
+  "timeline": [
     {
-      "id": "e6_0002",
-      "spawn_time": 20.0,
-      "start_pos": [
+      "delta": 20.0,
+      "cmd": "spawn",
+      "behavior": "s6_Sub2",
+      "pos": [
         -32.0,
         128.0
       ],
-      "movePattern": 0,
-      "hp": 2000,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 2000
+      }
     },
     {
-      "id": "e6_0003",
-      "spawn_time": 28.333,
-      "start_pos": [
+      "delta": 8.333,
+      "cmd": "spawn",
+      "behavior": "s6_Sub2",
+      "pos": [
         -32.0,
         60.0
       ],
-      "movePattern": 0,
-      "hp": 2000,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 2000
+      }
     },
     {
-      "id": "e6_0004",
-      "spawn_time": 35.0,
-      "start_pos": [
+      "delta": 6.667,
+      "cmd": "wave",
+      "behavior": "s6_Sub2",
+      "count": 4,
+      "pos": [
         -32.0,
         96.0
       ],
-      "movePattern": 0,
-      "hp": 2000,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "dx": 0.0,
+      "gap": 5.0
     },
     {
-      "id": "e6_0005",
-      "spawn_time": 40.0,
-      "start_pos": [
-        -32.0,
-        160.0
-      ],
-      "movePattern": 0,
-      "hp": 2000,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
-    },
-    {
-      "id": "e6_0006",
-      "spawn_time": 45.0,
-      "start_pos": [
-        -32.0,
-        128.0
-      ],
-      "movePattern": 0,
-      "hp": 2000,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
-    },
-    {
-      "id": "e6_0007",
-      "spawn_time": 50.0,
-      "start_pos": [
-        -32.0,
-        32.0
-      ],
-      "movePattern": 0,
-      "hp": 2000,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
-    },
-    {
-      "id": "e6_0009",
-      "spawn_time": 67.033,
-      "start_pos": [
+      "delta": 32.033,
+      "cmd": "spawn",
+      "behavior": "s6_Sub2",
+      "pos": [
         192.0,
         -16.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e6_0010",
-      "spawn_time": 68.05,
-      "start_pos": [
+      "delta": 1.017,
+      "cmd": "spawn",
+      "behavior": "s6_Sub2",
+      "pos": [
         192.0,
         -16.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e6_0011",
-      "spawn_time": 71.067,
-      "start_pos": [
+      "delta": 3.017,
+      "cmd": "spawn",
+      "behavior": "s6_Sub2",
+      "pos": [
         192.0,
         192.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     }
   ],
   "randomItemTable": [

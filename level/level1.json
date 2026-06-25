@@ -1,2010 +1,1557 @@
 {
-  "enemy_types": {
+  "meta": {
+    "stage": 1,
+    "type": "stage",
+    "version": 2
+  },
+  "behaviors": {
     "zako_small": {
-      "_desc": "Sub0 - \u5e73\u6ed1\u8f6c\u5411\u8ffd\u8e2a\u73a9\u5bb6\uff0c\u4fdd\u630180px\u8ddd\u79bb\u4e0d\u91cd\u53e0",
-      "movePattern": 4,
+      "_desc": "Sub0 - 平滑转向追踪玩家，保持80px距离不重叠",
       "hp": 20,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
+      "hitbox": [
+        32,
+        32
+      ],
       "score": 1000,
-      "angularVelocity": 3,
-      "minPlayerDist": 80,
-      "emitters": [
+      "halfLife": 0.8,
+      "move": {
+        "type": "homing",
+        "speed": 120,
+        "angularVelocity": 3,
+        "minDist": 80
+      },
+      "attack": [
         {
-          "startDelay": 1.5,
-          "emitInterval": 0.3,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "time": 1.5,
+          "interval": 0.3,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 6,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.185,
-            "speed1": 100,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.185,
+            "speed": 100,
+            "speedStep": 50,
             "spriteID": 0,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ],
-      "itemDrop": "random"
+      "death": {
+        "itemDrop": "random"
+      }
     },
     "zako_stream": {
       "_desc": "Sub13 - fast random dash, no shooting",
-      "movePattern": 0,
       "hp": 20,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32,
-      "speedX": 0,
-      "speedY": 222,
-      "halfLife": 0,
+      "hitbox": [
+        32,
+        32
+      ],
       "score": 500,
-      "itemDrop": "random"
+      "move": {
+        "type": "linear",
+        "speedX": 0,
+        "speedY": 222
+      },
+      "death": {
+        "itemDrop": "random"
+      }
     },
     "zako_initial": {
       "_desc": "Sub14 - first zako, no shooting",
-      "movePattern": 4,
       "hp": 20,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32,
-      "speedX": 100,
-      "speedY": 100,
-      "halfLife": 0.6,
+      "hitbox": [
+        32,
+        32
+      ],
       "score": 1000,
-      "angularVelocity": 2.5,
-      "minPlayerDist": 100,
-      "itemDrop": "power_small"
+      "halfLife": 0.6,
+      "move": {
+        "type": "homing",
+        "speed": 100,
+        "angularVelocity": 2.5,
+        "minDist": 100
+      },
+      "death": {
+        "itemDrop": "power_small"
+      }
     },
     "fairy_blue": {
-      "_desc": "Sub1 - moveDirTime down\u2192 sinewave, etFanAimed + etRing",
-      "movePattern": 1,
+      "_desc": "Sub1 - moveDirTime down→ sinewave, etFanAimed + etRing",
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 30,
-      "speedY": 60,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1500,
-      "vertAmplitude": 30,
-      "vertPeriod": 2,
-      "horizAmplitude": 60,
-      "horizPeriod": 3.5,
-      "emitters": [
+      "move": {
+        "type": "sine",
+        "speedX": 30,
+        "speedY": 60,
+        "vertAmp": 30,
+        "vertPeriod": 2,
+        "horizAmp": 60,
+        "horizPeriod": 3.5
+      },
+      "attack": [
         {
-          "_desc": "etFanAimed burst: 2way x3rows",
-          "startDelay": 0.5,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "time": 0.5,
+          "interval": 1,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 2,
             "subCnt": 3,
-            "angleOffset": 0,
-            "angleInterval": 0.09,
-            "speed1": 108,
-            "speed2": 30,
+            "spread": 0,
+            "angleStep": 0.09,
+            "speed": 108,
+            "speedStep": 30,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etRing: 32 bullets per circle, auto-fire",
-          "startDelay": 1,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 1,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 32,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0,
-            "speed1": 66,
-            "speed2": 30,
+            "spread": 0,
+            "angleStep": 0,
+            "speed": 66,
+            "speedStep": 30,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ],
-      "itemDrop": "power_big"
+      "death": {
+        "itemDrop": "power_big"
+      }
     },
     "fairy_red": {
       "_desc": "Sub3 - same as Sub1, different bullet counts per difficulty",
-      "movePattern": 1,
       "hp": 200,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 50,
-      "speedY": 132,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1500,
-      "vertAmplitude": 30,
-      "vertPeriod": 2,
-      "horizAmplitude": 50,
-      "horizPeriod": 3,
-      "emitters": [
+      "move": {
+        "type": "sine",
+        "speedX": 50,
+        "speedY": 132,
+        "vertAmp": 30,
+        "vertPeriod": 2,
+        "horizAmp": 50,
+        "horizPeriod": 3
+      },
+      "attack": [
         {
-          "_desc": "etFanAimed burst: 3way x2rows (N), 5way x3rows (L)",
-          "startDelay": 0.5,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "time": 0.5,
+          "interval": 1,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 3,
             "subCnt": 2,
-            "angleOffset": 0,
-            "angleInterval": 0.09,
-            "speed1": 120,
-            "speed2": 60,
+            "spread": 0,
+            "angleStep": 0.09,
+            "speed": 120,
+            "speedStep": 60,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etRing: 32 bullets per circle, auto-fire",
-          "startDelay": 1,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 1,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 32,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0,
-            "speed1": 80,
-            "speed2": 30,
+            "spread": 0,
+            "angleStep": 0,
+            "speed": 80,
+            "speedStep": 30,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ],
-      "itemDrop": "power_big"
+      "death": {
+        "itemDrop": "power_big"
+      }
     },
     "fairy_green": {
       "_desc": "Sub5 - etRing burst + 4 familiars",
-      "movePattern": 0,
       "hp": 300,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 500,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing burst: 32 bullets x2layers, self-angle offset",
-          "startDelay": 0.5,
-          "emitInterval": 2,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0.5,
+          "interval": 2,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 32,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0,
-            "speed1": 80,
-            "speed2": 40,
+            "spread": 0,
+            "angleStep": 0,
+            "speed": 80,
+            "speedStep": 40,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ],
-      "itemDrop": "power_big"
+      "death": {
+        "itemDrop": "power_big"
+      }
     },
     "fairy_purple": {
       "_desc": "Sub11 - etRing + 4 familiars",
-      "movePattern": 0,
       "hp": 400,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 500,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing burst with familiars",
-          "startDelay": 0.5,
-          "emitInterval": 2,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0.5,
+          "interval": 2,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 32,
             "subCnt": 2,
-            "angleOffset": 0,
-            "angleInterval": 0.185,
-            "speed1": 100,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.185,
+            "speed": 100,
+            "speedStep": 50,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ],
-      "itemDrop": "power_big"
+      "death": {
+        "itemDrop": "power_big"
+      }
     },
     "boss_rumia": {
       "_desc": "Sub15 - midboss entry, spellcard trigger",
-      "movePattern": 3,
       "hp": 500,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 90,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 100000,
-      "itemDrop": "full_power",
-      "isMidboss": true,
-	  "lifeTime": 99
+      "move": {
+        "type": "stop_and_go",
+        "speedX": 0,
+        "speedY": 90
+      },
+      "death": {
+        "itemDrop": "full_power"
+      },
+      "flags": [
+        "midboss"
+      ],
+      "lifeTime": 99
     },
     "zako_ring": {
       "_desc": "ecldata1 Sub23",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 1way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 1,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.185,
-            "speed1": 100,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.185,
+            "speed": 100,
+            "speedStep": 50,
             "spriteID": 3,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ],
-      "itemDrop": "random"
+      "death": {
+        "itemDrop": "random"
+      }
     },
     "fairy_yellow": {
       "_desc": "ecldata1 Sub29",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etFanAimed: 13way x3rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 13,
             "subCnt": 3,
-            "angleOffset": 0,
-            "angleInterval": 0.785,
-            "speed1": 100,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.785,
+            "speed": 100,
+            "speedStep": 50,
             "spriteID": 3,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ],
-      "itemDrop": "power_small"
+      "death": {
+        "itemDrop": "power_small"
+      }
     },
     "fairy_ring": {
       "_desc": "ecldata1 Sub30",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 3way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 3,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.262,
-            "speed1": 100,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.262,
+            "speed": 100,
+            "speedStep": 50,
             "spriteID": 0,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ],
-      "itemDrop": "random"
+      "death": {
+        "itemDrop": "random"
+      }
     },
     "zako_ring_slow": {
       "_desc": "ecldata1 Sub31",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 5way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 5,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.196,
-            "speed1": 150,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.196,
+            "speed": 150,
+            "speedStep": 50,
             "spriteID": 0,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ],
-      "itemDrop": "random"
+      "death": {
+        "itemDrop": "random"
+      }
     },
     "fairy_ringaimed": {
       "_desc": "ecldata1 Sub34",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRingAimed: 32way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 4,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring_aimed",
             "mainCnt": 32,
             "subCnt": 1,
-            "angleOffset": -3.142,
-            "angleInterval": 3.142,
-            "speed1": 200,
-            "speed2": 50,
+            "spread": -3.142,
+            "angleStep": 3.142,
+            "speed": 200,
+            "speedStep": 50,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ],
-      "itemDrop": "power_small"
+      "death": {
+        "itemDrop": "power_small"
+      }
     },
     "zako_ring_fast": {
       "_desc": "ecldata1 Sub40",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 2way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 2,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.262,
-            "speed1": 340,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.262,
+            "speed": 340,
+            "speedStep": 50,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ],
-      "itemDrop": "random"
+      "death": {
+        "itemDrop": "random"
+      }
     },
     "zako_ring_wide": {
       "_desc": "ecldata1 Sub41",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 2way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 2,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.262,
-            "speed1": 340,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.262,
+            "speed": 340,
+            "speedStep": 50,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ],
-      "itemDrop": "random"
+      "death": {
+        "itemDrop": "random"
+      }
     },
     "zako_fan": {
       "_desc": "ecldata1 Sub42",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etFanAimed: 6way x1rows burst=5",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 5,
+          "time": 0,
+          "interval": 1,
+          "burst": 5,
           "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 6,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.185,
-            "speed1": 250,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.185,
+            "speed": 250,
+            "speedStep": 100,
             "spriteID": 3,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ],
-      "itemDrop": "random"
+      "death": {
+        "itemDrop": "random"
+      }
     },
     "zako_ring_dense": {
       "_desc": "ecldata1 Sub47",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 6way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 6,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.262,
-            "speed1": 100,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.262,
+            "speed": 100,
+            "speedStep": 50,
             "spriteID": 0,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ],
-      "itemDrop": "random"
+      "death": {
+        "itemDrop": "random"
+      }
     },
     "zako_ring_sparse": {
       "_desc": "ecldata1 Sub49",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 6way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 6,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.262,
-            "speed1": 100,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.262,
+            "speed": 100,
+            "speedStep": 50,
             "spriteID": 0,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ],
-      "itemDrop": "random"
+      "death": {
+        "itemDrop": "random"
+      }
+    },
+    "boss_entry": {
+      "_desc": "Stage-end sentinel — triggers boss transition",
+      "hp": 50,
+      "hitbox": [
+        40,
+        40
+      ],
+      "score": 0,
+      "move": {
+        "type": "linear",
+        "speedY": 1
+      },
+      "lifeTime": 12
     }
   },
-  "stage_1": [
+  "timeline": [
     {
-      "id": "zako_initial_01",
-      "spawn_time": 0.02,
-      "start_pos": [
+      "delta": 0.02,
+      "cmd": "spawn",
+      "behavior": "zako_initial",
+      "pos": [
         30,
         -16
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 100,
-      "speedY": 100,
-      "halfLife": 0.6,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "w1_01",
-      "spawn_time": 6.67,
-      "start_pos": [
+      "delta": 6.65,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         30,
         -16
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "w1_02",
-      "spawn_time": 7.0,
-      "start_pos": [
+      "delta": 0.33,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         60,
         -16
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "w1_03",
-      "spawn_time": 7.33,
-      "start_pos": [
+      "delta": 0.33,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         90,
         -16
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "w1_04",
-      "spawn_time": 7.67,
-      "start_pos": [
+      "delta": 0.34,
+      "cmd": "wave",
+      "behavior": "zako_small",
+      "count": 3,
+      "pos": [
         40,
         -16
       ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      "dx": 30,
+      "gap": 0.33
     },
     {
-      "id": "w1_05",
-      "spawn_time": 8.0,
-      "start_pos": [
-        70,
-        -16
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
-    },
-    {
-      "id": "w1_06",
-      "spawn_time": 8.33,
-      "start_pos": [
-        100,
-        -16
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
-    },
-    {
-      "id": "blue_01",
-      "enemyType": "fairy_red",
-      "spawn_time": 8.5,
-      "start_pos": [
+      "delta": 0.83,
+      "cmd": "spawn",
+      "behavior": "fairy_red",
+      "pos": [
         320,
         -32
       ]
     },
     {
-      "id": "w2_01",
-      "spawn_time": 10.0,
-      "start_pos": [
+      "delta": 1.5,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         30,
         -16
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "w2_02",
-      "spawn_time": 10.33,
-      "start_pos": [
+      "delta": 0.33,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         60,
         -16
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "w2_03",
-      "spawn_time": 10.67,
-      "start_pos": [
+      "delta": 0.34,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         90,
         -16
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "w2_04",
-      "spawn_time": 11.0,
-      "start_pos": [
+      "delta": 0.33,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         40,
         -16
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "w2_05",
-      "spawn_time": 11.33,
-      "start_pos": [
+      "delta": 0.33,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         70,
         -16
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "w2_06",
-      "spawn_time": 11.67,
-      "start_pos": [
+      "delta": 0.34,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         100,
         -16
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "rwave_01",
-      "spawn_time": 13.33,
-      "start_pos": [
+      "delta": 1.66,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         354,
         -16
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "rwave_02",
-      "spawn_time": 13.5,
-      "start_pos": [
+      "delta": 0.17,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         324,
         -16
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "rwave_03",
-      "spawn_time": 13.67,
-      "start_pos": [
+      "delta": 0.17,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         294,
         -16
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "rwave_04",
-      "spawn_time": 13.83,
-      "start_pos": [
+      "delta": 0.16,
+      "cmd": "wave",
+      "behavior": "zako_small",
+      "count": 3,
+      "pos": [
         344,
         -16
       ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      "dx": -30,
+      "gap": 0.17
     },
     {
-      "id": "rwave_05",
-      "spawn_time": 14.0,
-      "start_pos": [
-        314,
-        -16
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
-    },
-    {
-      "id": "rwave_06",
-      "spawn_time": 14.17,
-      "start_pos": [
-        284,
-        -16
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
-    },
-    {
-      "id": "red_01",
-      "enemyType": "fairy_red",
-      "spawn_time": 14.17,
-      "start_pos": [
+      "delta": 0.34,
+      "cmd": "spawn",
+      "behavior": "fairy_red",
+      "pos": [
         192,
         -32
       ]
     },
     {
-      "id": "rwave2_01",
-      "spawn_time": 14.33,
-      "start_pos": [
+      "delta": 0.16,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         354,
         -16
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "rwave2_02",
-      "spawn_time": 14.5,
-      "start_pos": [
+      "delta": 0.17,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         324,
         -16
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "rwave2_03",
-      "spawn_time": 14.67,
-      "start_pos": [
+      "delta": 0.17,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         294,
         -16
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "rwave2_04",
-      "spawn_time": 14.83,
-      "start_pos": [
+      "delta": 0.16,
+      "cmd": "wave",
+      "behavior": "zako_small",
+      "count": 3,
+      "pos": [
         344,
         -16
       ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      "dx": -30,
+      "gap": 0.17
     },
     {
-      "id": "rwave2_05",
-      "spawn_time": 15.0,
-      "start_pos": [
-        314,
-        -16
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
-    },
-    {
-      "id": "rwave2_06",
-      "spawn_time": 15.17,
-      "start_pos": [
-        284,
-        -16
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
-    },
-    {
-      "id": "blue_02",
-      "enemyType": "fairy_red",
-      "spawn_time": 16.83,
-      "start_pos": [
+      "delta": 2.0,
+      "cmd": "spawn",
+      "behavior": "fairy_red",
+      "pos": [
         120,
         -32
       ]
     },
     {
-      "id": "red_02",
-      "enemyType": "fairy_red",
-      "spawn_time": 19.5,
-      "start_pos": [
+      "delta": 2.67,
+      "cmd": "spawn",
+      "behavior": "fairy_red",
+      "pos": [
         264,
         -32
       ]
     },
     {
-      "id": "w6_01",
-      "spawn_time": 22.83,
-      "start_pos": [
+      "delta": 3.33,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         100,
         -32
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "w6_02",
-      "spawn_time": 23.0,
-      "start_pos": [
+      "delta": 0.17,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         110,
         -32
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "w6_03",
-      "spawn_time": 23.17,
-      "start_pos": [
+      "delta": 0.17,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         120,
         -32
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "w6_04",
-      "spawn_time": 23.33,
-      "start_pos": [
+      "delta": 0.16,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         30,
         -32
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "w6_05",
-      "spawn_time": 23.5,
-      "start_pos": [
+      "delta": 0.17,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         40,
         -32
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "w6_06",
-      "spawn_time": 23.67,
-      "start_pos": [
+      "delta": 0.17,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         50,
         -32
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "rw6_01",
-      "spawn_time": 23.83,
-      "start_pos": [
+      "delta": 0.16,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         284,
         -32
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "rw6_02",
-      "spawn_time": 24.0,
-      "start_pos": [
+      "delta": 0.17,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         274,
         -32
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "rw6_03",
-      "spawn_time": 24.17,
-      "start_pos": [
+      "delta": 0.17,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         264,
         -32
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "rw6_04",
-      "spawn_time": 24.33,
-      "start_pos": [
+      "delta": 0.16,
+      "cmd": "wave",
+      "behavior": "zako_small",
+      "count": 3,
+      "pos": [
         354,
         -32
       ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      "dx": -10,
+      "gap": 0.17
     },
     {
-      "id": "rw6_05",
-      "spawn_time": 24.5,
-      "start_pos": [
-        344,
-        -32
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
-    },
-    {
-      "id": "rw6_06",
-      "spawn_time": 24.67,
-      "start_pos": [
-        334,
-        -32
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
-    },
-    {
-      "id": "green_01",
-      "enemyType": "fairy_green",
-      "spawn_time": 25.67,
-      "start_pos": [
+      "delta": 1.34,
+      "cmd": "spawn",
+      "behavior": "fairy_green",
+      "pos": [
         80,
         -16
       ]
     },
     {
-      "id": "purple_01",
-      "enemyType": "fairy_purple",
-      "spawn_time": 25.67,
-      "start_pos": [
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "fairy_purple",
+      "pos": [
         304,
         -16
       ]
     },
     {
-      "id": "green_02",
-      "enemyType": "fairy_green",
-      "spawn_time": 32.33,
-      "start_pos": [
+      "delta": 6.66,
+      "cmd": "spawn",
+      "behavior": "fairy_green",
+      "pos": [
         80,
         -16
       ]
     },
     {
-      "id": "red_03",
-      "enemyType": "fairy_red",
-      "spawn_time": 32.33,
-      "start_pos": [
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "fairy_red",
+      "pos": [
         304,
         -16
       ]
     },
     {
-      "id": "w9_01",
-      "spawn_time": 35.67,
-      "start_pos": [
+      "delta": 3.34,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         100,
         -32
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "w9_02",
-      "spawn_time": 35.83,
-      "start_pos": [
+      "delta": 0.16,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         110,
         -32
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "w9_03",
-      "spawn_time": 36.0,
-      "start_pos": [
+      "delta": 0.17,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         120,
         -32
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "w9_04",
-      "spawn_time": 36.17,
-      "start_pos": [
+      "delta": 0.17,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         30,
         -32
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "w9_05",
-      "spawn_time": 36.33,
-      "start_pos": [
+      "delta": 0.16,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         40,
         -32
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "w9_06",
-      "spawn_time": 36.5,
-      "start_pos": [
+      "delta": 0.17,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         50,
         -32
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "w10_01",
-      "spawn_time": 36.67,
-      "start_pos": [
+      "delta": 0.17,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         100,
         -32
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "w10_02",
-      "spawn_time": 36.83,
-      "start_pos": [
+      "delta": 0.16,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         110,
         -32
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "w10_03",
-      "spawn_time": 37.0,
-      "start_pos": [
+      "delta": 0.17,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         120,
         -32
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "w10_04",
-      "spawn_time": 37.17,
-      "start_pos": [
+      "delta": 0.17,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         30,
         -32
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "w10_05",
-      "spawn_time": 37.33,
-      "start_pos": [
+      "delta": 0.16,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         40,
         -32
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "w10_06",
-      "spawn_time": 37.5,
-      "start_pos": [
+      "delta": 0.17,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         50,
         -32
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "wr11_01",
-      "spawn_time": 39.5,
-      "start_pos": [
+      "delta": 2.0,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         284,
         -32
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "wr11_02",
-      "spawn_time": 39.67,
-      "start_pos": [
+      "delta": 0.17,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         274,
         -32
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "wr11_03",
-      "spawn_time": 39.83,
-      "start_pos": [
+      "delta": 0.16,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         264,
         -32
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "wr11_04",
-      "spawn_time": 40.0,
-      "start_pos": [
+      "delta": 0.17,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         354,
         -32
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "wr11_05",
-      "spawn_time": 40.17,
-      "start_pos": [
+      "delta": 0.17,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         344,
         -32
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "wr11_06",
-      "spawn_time": 40.33,
-      "start_pos": [
+      "delta": 0.16,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         334,
         -32
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "w12_01",
-      "spawn_time": 40.67,
-      "start_pos": [
+      "delta": 0.34,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         100,
         -32
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "w12_02",
-      "spawn_time": 41.0,
-      "start_pos": [
+      "delta": 0.33,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         110,
         -32
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "w12_03",
-      "spawn_time": 41.33,
-      "start_pos": [
+      "delta": 0.33,
+      "cmd": "spawn",
+      "behavior": "zako_small",
+      "pos": [
         120,
         -32
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      ]
     },
     {
-      "id": "w12_04",
-      "spawn_time": 41.67,
-      "start_pos": [
+      "delta": 0.34,
+      "cmd": "wave",
+      "behavior": "zako_small",
+      "count": 3,
+      "pos": [
         30,
         -32
       ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
+      "dx": 10,
+      "gap": 0.33
     },
     {
-      "id": "w12_05",
-      "spawn_time": 42.0,
-      "start_pos": [
-        40,
-        -32
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
-    },
-    {
-      "id": "w12_06",
-      "spawn_time": 42.33,
-      "start_pos": [
-        50,
-        -32
-      ],
-      "movePattern": 4,
-      "hp": 20,
-      "speedX": 120,
-      "speedY": 120,
-      "halfLife": 0.8,
-      "hitboxWidth": 32,
-      "hitboxHeight": 32
-    },
-    {
-      "id": "stream_01",
-      "enemyType": "zako_stream",
-      "spawn_time": 42.5,
-      "start_pos": [
+      "delta": 0.83,
+      "cmd": "spawn",
+      "behavior": "zako_stream",
+      "pos": [
         -16,
         96
       ]
     },
     {
-      "id": "stream_02",
-      "enemyType": "zako_stream",
-      "spawn_time": 42.58,
-      "start_pos": [
+      "delta": 0.08,
+      "cmd": "spawn",
+      "behavior": "zako_stream",
+      "pos": [
         -16,
         32
       ]
     },
     {
-      "id": "stream_03",
-      "enemyType": "zako_stream",
-      "spawn_time": 42.67,
-      "start_pos": [
+      "delta": 0.09,
+      "cmd": "spawn",
+      "behavior": "zako_stream",
+      "pos": [
         -16,
         64
       ]
     },
     {
-      "id": "stream_04",
-      "enemyType": "zako_stream",
-      "spawn_time": 42.75,
-      "start_pos": [
+      "delta": 0.08,
+      "cmd": "spawn",
+      "behavior": "zako_stream",
+      "pos": [
         -16,
         128
       ]
     },
     {
-      "id": "stream_05",
-      "enemyType": "zako_stream",
-      "spawn_time": 42.83,
-      "start_pos": [
+      "delta": 0.08,
+      "cmd": "spawn",
+      "behavior": "zako_stream",
+      "pos": [
         400,
         64
       ]
     },
     {
-      "id": "stream_06",
-      "enemyType": "zako_stream",
-      "spawn_time": 42.92,
-      "start_pos": [
+      "delta": 0.09,
+      "cmd": "spawn",
+      "behavior": "zako_stream",
+      "pos": [
         -16,
         80
       ]
     },
     {
-      "id": "stream_07",
-      "enemyType": "zako_stream",
-      "spawn_time": 43.0,
-      "start_pos": [
+      "delta": 0.08,
+      "cmd": "spawn",
+      "behavior": "zako_stream",
+      "pos": [
         400,
         32
       ]
     },
     {
-      "id": "stream_08",
-      "enemyType": "zako_stream",
-      "spawn_time": 43.08,
-      "start_pos": [
+      "delta": 0.08,
+      "cmd": "spawn",
+      "behavior": "zako_stream",
+      "pos": [
         -16,
         128
       ]
     },
     {
-      "id": "stream_09",
-      "enemyType": "zako_stream",
-      "spawn_time": 43.17,
-      "start_pos": [
+      "delta": 0.09,
+      "cmd": "spawn",
+      "behavior": "zako_stream",
+      "pos": [
         400,
         64
       ]
     },
     {
-      "id": "stream_10",
-      "enemyType": "zako_stream",
-      "spawn_time": 43.25,
-      "start_pos": [
+      "delta": 0.08,
+      "cmd": "spawn",
+      "behavior": "zako_stream",
+      "pos": [
         400,
         80
       ]
     },
     {
-      "id": "stream_11",
-      "enemyType": "zako_stream",
-      "spawn_time": 43.33,
-      "start_pos": [
+      "delta": 0.08,
+      "cmd": "spawn",
+      "behavior": "zako_stream",
+      "pos": [
         400,
         32
       ]
     },
     {
-      "id": "stream_12",
-      "enemyType": "zako_stream",
-      "spawn_time": 43.42,
-      "start_pos": [
+      "delta": 0.09,
+      "cmd": "spawn",
+      "behavior": "zako_stream",
+      "pos": [
         400,
         128
       ]
     },
     {
-      "id": "stream_13",
-      "enemyType": "zako_stream",
-      "spawn_time": 43.5,
-      "start_pos": [
+      "delta": 0.08,
+      "cmd": "spawn",
+      "behavior": "zako_stream",
+      "pos": [
         -16,
         64
       ]
     },
     {
-      "id": "stream_14",
-      "enemyType": "zako_stream",
-      "spawn_time": 43.58,
-      "start_pos": [
+      "delta": 0.08,
+      "cmd": "spawn",
+      "behavior": "zako_stream",
+      "pos": [
         400,
         80
       ]
     },
     {
-      "id": "stream_15",
-      "enemyType": "zako_stream",
-      "spawn_time": 43.67,
-      "start_pos": [
+      "delta": 0.09,
+      "cmd": "spawn",
+      "behavior": "zako_stream",
+      "pos": [
         -16,
         32
       ]
     },
     {
-      "id": "stream_16",
-      "enemyType": "zako_stream",
-      "spawn_time": 43.75,
-      "start_pos": [
+      "delta": 0.08,
+      "cmd": "spawn",
+      "behavior": "zako_stream",
+      "pos": [
         400,
         80
       ]
     },
     {
-      "id": "stream_17",
-      "enemyType": "zako_stream",
-      "spawn_time": 43.83,
-      "start_pos": [
+      "delta": 0.08,
+      "cmd": "spawn",
+      "behavior": "zako_stream",
+      "pos": [
         -16,
         32
       ]
     },
     {
-      "id": "phase2_blue",
-      "enemyType": "fairy_red",
-      "spawn_time": 43.83,
-      "start_pos": [
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "fairy_red",
+      "pos": [
         80,
         -16
       ]
     },
     {
-      "id": "phase2_red",
-      "enemyType": "fairy_red",
-      "spawn_time": 43.83,
-      "start_pos": [
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "fairy_red",
+      "pos": [
         304,
         -16
       ]
     },
     {
-      "id": "stream2_01",
-      "enemyType": "zako_stream",
-      "spawn_time": 43.92,
-      "start_pos": [
+      "delta": 0.09,
+      "cmd": "spawn",
+      "behavior": "zako_stream",
+      "pos": [
         -16,
         128
       ]
     },
     {
-      "id": "stream2_02",
-      "enemyType": "zako_stream",
-      "spawn_time": 44.0,
-      "start_pos": [
+      "delta": 0.08,
+      "cmd": "spawn",
+      "behavior": "zako_stream",
+      "pos": [
         -16,
         64
       ]
     },
     {
-      "id": "stream2_03",
-      "enemyType": "zako_stream",
-      "spawn_time": 44.08,
-      "start_pos": [
+      "delta": 0.08,
+      "cmd": "spawn",
+      "behavior": "zako_stream",
+      "pos": [
         400,
         32
       ]
     },
     {
-      "id": "stream2_04",
-      "enemyType": "zako_stream",
-      "spawn_time": 44.17,
-      "start_pos": [
+      "delta": 0.09,
+      "cmd": "spawn",
+      "behavior": "zako_stream",
+      "pos": [
         -16,
         128
       ]
     },
     {
-      "id": "stream2_05",
-      "enemyType": "zako_stream",
-      "spawn_time": 44.25,
-      "start_pos": [
+      "delta": 0.08,
+      "cmd": "spawn",
+      "behavior": "zako_stream",
+      "pos": [
         400,
         64
       ]
     },
     {
-      "id": "stream2_06",
-      "enemyType": "zako_stream",
-      "spawn_time": 44.33,
-      "start_pos": [
+      "delta": 0.08,
+      "cmd": "spawn",
+      "behavior": "zako_stream",
+      "pos": [
         -16,
         80
       ]
     },
     {
-      "id": "stream2_07",
-      "enemyType": "zako_stream",
-      "spawn_time": 44.42,
-      "start_pos": [
+      "delta": 0.09,
+      "cmd": "spawn",
+      "behavior": "zako_stream",
+      "pos": [
         400,
         32
       ]
     },
     {
-      "id": "stream2_08",
-      "enemyType": "zako_stream",
-      "spawn_time": 44.5,
-      "start_pos": [
+      "delta": 0.08,
+      "cmd": "spawn",
+      "behavior": "zako_stream",
+      "pos": [
         -16,
         64
       ]
     },
     {
-      "id": "stream2_09",
-      "enemyType": "zako_stream",
-      "spawn_time": 44.58,
-      "start_pos": [
+      "delta": 0.08,
+      "cmd": "spawn",
+      "behavior": "zako_stream",
+      "pos": [
         -16,
         80
       ]
     },
     {
-      "id": "stream2_10",
-      "enemyType": "zako_stream",
-      "spawn_time": 44.67,
-      "start_pos": [
+      "delta": 0.09,
+      "cmd": "spawn",
+      "behavior": "zako_stream",
+      "pos": [
         400,
         32
       ]
     },
     {
-      "id": "stream2_11",
-      "enemyType": "zako_stream",
-      "spawn_time": 44.75,
-      "start_pos": [
+      "delta": 0.08,
+      "cmd": "spawn",
+      "behavior": "zako_stream",
+      "pos": [
         -16,
         64
       ]
     },
     {
-      "id": "stream2_12",
-      "enemyType": "zako_stream",
-      "spawn_time": 44.83,
-      "start_pos": [
+      "delta": 0.08,
+      "cmd": "spawn",
+      "behavior": "zako_stream",
+      "pos": [
         -16,
         80
       ]
     },
     {
-      "id": "stream2_13",
-      "enemyType": "zako_stream",
-      "spawn_time": 44.92,
-      "start_pos": [
+      "delta": 0.09,
+      "cmd": "spawn",
+      "behavior": "zako_stream",
+      "pos": [
         400,
         32
       ]
     },
     {
-      "id": "stream2_14",
-      "enemyType": "zako_stream",
-      "spawn_time": 45.0,
-      "start_pos": [
+      "delta": 0.08,
+      "cmd": "spawn",
+      "behavior": "zako_stream",
+      "pos": [
         -16,
         64
       ]
     },
     {
-      "id": "stream2_15",
-      "enemyType": "zako_stream",
-      "spawn_time": 45.08,
-      "start_pos": [
+      "delta": 0.08,
+      "cmd": "spawn",
+      "behavior": "zako_stream",
+      "pos": [
         -16,
         80
       ]
     },
     {
-      "id": "stream2_16",
-      "enemyType": "zako_stream",
-      "spawn_time": 45.17,
-      "start_pos": [
+      "delta": 0.09,
+      "cmd": "spawn",
+      "behavior": "zako_stream",
+      "pos": [
         400,
         32
       ]
     },
     {
-      "id": "midboss_entry",
-      "enemyType": "boss_rumia",
-      "spawn_time": 48.92,
-      "start_pos": [
+      "delta": 3.75,
+      "cmd": "spawn",
+      "behavior": "boss_rumia",
+      "pos": [
         192,
         -16
       ]
     },
     {
-      "id": "mid_p_green",
-      "enemyType": "fairy_green",
-      "spawn_time": 148.92,
-      "start_pos": [
+      "delta": 100.0,
+      "cmd": "spawn",
+      "behavior": "fairy_green",
+      "pos": [
         80,
         -16
       ]
     },
     {
-      "id": "mid_p_red",
-      "enemyType": "fairy_red",
-      "spawn_time": 150.58,
-      "start_pos": [
+      "delta": 1.66,
+      "cmd": "spawn",
+      "behavior": "fairy_red",
+      "pos": [
         304,
         -16
       ]
     },
     {
-      "id": "mid_p_red2",
-      "enemyType": "fairy_red",
-      "spawn_time": 155.58,
-      "start_pos": [
+      "delta": 5.0,
+      "cmd": "spawn",
+      "behavior": "fairy_red",
+      "pos": [
         80,
         -16
       ]
     },
     {
-      "id": "mid_p_green2",
-      "enemyType": "fairy_green",
-      "spawn_time": 157.25,
-      "start_pos": [
+      "delta": 1.67,
+      "cmd": "spawn",
+      "behavior": "fairy_green",
+      "pos": [
         304,
         -16
       ]
     },
     {
-      "id": "mid_p_green3",
-      "enemyType": "fairy_green",
-      "spawn_time": 162.25,
-      "start_pos": [
+      "delta": 5.0,
+      "cmd": "spawn",
+      "behavior": "fairy_green",
+      "pos": [
         80,
         -16
       ]
     },
     {
-      "id": "mid_p_purple",
-      "enemyType": "fairy_purple",
-      "spawn_time": 162.25,
-      "start_pos": [
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "fairy_purple",
+      "pos": [
         304,
         -16
       ]
     },
     {
-      "id": "boss_entry",
-      "enemyType": "boss_entry",
-      "spawn_time": 169.62,
-      "start_pos": [
+      "delta": 7.37,
+      "cmd": "spawn",
+      "behavior": "boss_entry",
+      "pos": [
         192,
         128
       ]

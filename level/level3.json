@@ -1,993 +1,880 @@
 {
-  "enemy_types": {
+  "meta": {
+    "stage": 3,
+    "type": "stage",
+    "version": 2
+  },
+  "behaviors": {
     "s3_Sub1": {
       "_desc": "ecldata3 Sub1",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etFanAimed: 6way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 6,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.286,
-            "speed1": 200,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.286,
+            "speed": 200,
+            "speedStep": 50,
             "spriteID": 1,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s3_Sub2": {
       "_desc": "ecldata3 Sub2",
-      "movePattern": 1,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 60,
-      "speedY": 60,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "sine",
+        "speed": 60
+      },
+      "attack": [
         {
-          "_desc": "etRingAimed: 32way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 4,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring_aimed",
             "mainCnt": 32,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.185,
-            "speed1": 150,
-            "speed2": 80,
+            "spread": 0,
+            "angleStep": 0.185,
+            "speed": 150,
+            "speedStep": 80,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s3_Sub4": {
       "_desc": "ecldata3 Sub4",
-      "movePattern": 1,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 60,
-      "speedY": 60,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "sine",
+        "speed": 60
+      },
+      "attack": [
         {
-          "_desc": "etRingAimed: 32way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 4,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring_aimed",
             "mainCnt": 32,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.185,
-            "speed1": 150,
-            "speed2": 80,
+            "spread": 0,
+            "angleStep": 0.185,
+            "speed": 150,
+            "speedStep": 80,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s3_Sub5": {
       "_desc": "ecldata3 Sub5",
-      "movePattern": 1,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 24,
-      "speedY": 24,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "sine",
+        "speed": 24
+      },
+      "attack": [
         {
-          "_desc": "etRingAimed: 32way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 4,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring_aimed",
             "mainCnt": 32,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.185,
-            "speed1": 150,
-            "speed2": 80,
+            "spread": 0,
+            "angleStep": 0.185,
+            "speed": 150,
+            "speedStep": 80,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s3_Sub6": {
       "_desc": "ecldata3 Sub6",
-      "movePattern": 1,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 24,
-      "speedY": 24,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "sine",
+        "speed": 24
+      },
+      "attack": [
         {
-          "_desc": "etRingAimed: 32way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 4,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring_aimed",
             "mainCnt": 32,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.185,
-            "speed1": 150,
-            "speed2": 80,
+            "spread": 0,
+            "angleStep": 0.185,
+            "speed": 150,
+            "speedStep": 80,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s3_Sub7": {
       "_desc": "ecldata3 Sub7",
-      "movePattern": 1,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 0,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "acceleration": 0,
-      "emitters": [
+      "move": {
+        "type": "sine",
+        "speed": 0
+      },
+      "attack": [
         {
-          "_desc": "etRingAimed: 32way x2rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 4,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring_aimed",
             "mainCnt": 32,
             "subCnt": 2,
-            "angleOffset": 0,
-            "angleInterval": 0.185,
-            "speed1": 200,
-            "speed2": 80,
+            "spread": 0,
+            "angleStep": 0.185,
+            "speed": 200,
+            "speedStep": 80,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s3_Sub8": {
       "_desc": "ecldata3 Sub8",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etFanAimed: 2way x5rows burst=2",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 2,
+          "time": 0,
+          "interval": 1,
+          "burst": 2,
           "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 2,
             "subCnt": 5,
-            "angleOffset": 0,
-            "angleInterval": 0.393,
-            "speed1": 160,
-            "speed2": 80,
+            "spread": 0,
+            "angleStep": 0.393,
+            "speed": 160,
+            "speedStep": 80,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s3_Sub11": {
       "_desc": "ecldata3 Sub11",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRingAimed: 8way x2rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 4,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring_aimed",
             "mainCnt": 8,
             "subCnt": 2,
-            "angleOffset": 0,
-            "angleInterval": 0.393,
-            "speed1": 200,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.393,
+            "speed": 200,
+            "speedStep": 50,
             "spriteID": 1,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s3_Sub13": {
       "_desc": "ecldata3 Sub13",
-      "movePattern": 1,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 0,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "acceleration": 2.4,
-      "emitters": [
+      "move": {
+        "type": "sine",
+        "speed": 0,
+        "accel": 2.4
+      },
+      "attack": [
         {
-          "_desc": "etRingAimed: 32way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 4,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring_aimed",
             "mainCnt": 32,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.185,
-            "speed1": 100,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.185,
+            "speed": 100,
+            "speedStep": 50,
             "spriteID": 1,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s3_Sub14": {
       "_desc": "ecldata3 Sub14",
-      "movePattern": 1,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 0,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "acceleration": 2.4,
-      "emitters": [
+      "move": {
+        "type": "sine",
+        "speed": 0,
+        "accel": 2.4
+      },
+      "attack": [
         {
-          "_desc": "etRingAimed: 32way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 4,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring_aimed",
             "mainCnt": 32,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.185,
-            "speed1": 100,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.185,
+            "speed": 100,
+            "speedStep": 50,
             "spriteID": 1,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s3_Sub15": {
       "_desc": "ecldata3 Sub15",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etFanAimed: 6way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 6,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.035,
-            "speed1": 180,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.035,
+            "speed": 180,
+            "speedStep": 50,
             "spriteID": 0,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s3_Sub17": {
       "_desc": "ecldata3 Sub17",
-      "movePattern": 1,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 6,
-      "speedY": 6,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "acceleration": 0.6,
-      "emitters": [
+      "move": {
+        "type": "sine",
+        "speed": 6,
+        "accel": 0.6
+      },
+      "attack": [
         {
-          "_desc": "etFanAimed: 6way x1rows",
-          "startDelay": 0.5,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "time": 0.5,
+          "interval": 1,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 6,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.098,
-            "speed1": 160,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.098,
+            "speed": 160,
+            "speedStep": 50,
             "spriteID": 3,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s3_Sub21": {
       "_desc": "ecldata3 Sub21",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etFanAimed: 2way x5rows burst=5",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 5,
+          "time": 0,
+          "interval": 1,
+          "burst": 5,
           "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 2,
             "subCnt": 5,
-            "angleOffset": 0,
-            "angleInterval": 0.393,
-            "speed1": 220,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.393,
+            "speed": 220,
+            "speedStep": 100,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s3_Sub22": {
       "_desc": "ecldata3 Sub22",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRingAimed: 6way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 4,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring_aimed",
             "mainCnt": 6,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.393,
-            "speed1": 200,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.393,
+            "speed": 200,
+            "speedStep": 100,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s3_Sub23": {
       "_desc": "ecldata3 Sub23",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 4way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 4,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.262,
-            "speed1": 100,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.262,
+            "speed": 100,
+            "speedStep": 50,
             "spriteID": 3,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s3_Sub31": {
       "_desc": "ecldata3 Sub31",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRingAimed: 3way x3rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 4,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring_aimed",
             "mainCnt": 3,
             "subCnt": 3,
-            "angleOffset": 0,
-            "angleInterval": 0.185,
-            "speed1": 300,
-            "speed2": 150,
+            "spread": 0,
+            "angleStep": 0.185,
+            "speed": 300,
+            "speedStep": 150,
             "spriteID": 10,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s3_Sub36": {
       "_desc": "ecldata3 Sub36",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 8way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 8,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.262,
-            "speed1": 100,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.262,
+            "speed": 100,
+            "speedStep": 50,
             "spriteID": 3,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s3_Sub39": {
       "_desc": "ecldata3 Sub39",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 4way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 4,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.262,
-            "speed1": 100,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.262,
+            "speed": 100,
+            "speedStep": 50,
             "spriteID": 3,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s3_Sub41": {
       "_desc": "ecldata3 Sub41",
-      "movePattern": 0,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "linear"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 8way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 8,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.262,
-            "speed1": 100,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.262,
+            "speed": 100,
+            "speedStep": 50,
             "spriteID": 3,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "s3_Sub45": {
       "_desc": "ecldata3 Sub45",
-      "movePattern": 1,
       "hp": 150,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 1000,
-      "emitters": [
+      "move": {
+        "type": "sine"
+      },
+      "attack": [
         {
-          "_desc": "etRing: 6way x2rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 6,
             "subCnt": 2,
-            "angleOffset": 0,
-            "angleInterval": 0.098,
-            "speed1": 100,
-            "speed2": 250,
+            "spread": 0,
+            "angleStep": 0.098,
+            "speed": 100,
+            "speedStep": 250,
             "spriteID": 7,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "midboss_cirno": {
       "_desc": "Midboss midboss_cirno",
-      "movePattern": 3,
       "hp": 700,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24,
-      "speedX": 0,
-      "speedY": 90,
-      "halfLife": 0,
-      "midboss": true,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 100000,
-      "itemDrop": "full_power"
+      "move": {
+        "type": "stop_and_go",
+        "speedX": 0,
+        "speedY": 90
+      },
+      "death": {
+        "itemDrop": "full_power"
+      }
     }
   },
-  "stage_3": [
+  "timeline": [
     {
-      "id": "e3_0001",
-      "spawn_time": 0.017,
-      "start_pos": [
+      "delta": 0.017,
+      "cmd": "spawn",
+      "behavior": "s3_Sub1",
+      "pos": [
         30.0,
         -16.0
       ],
-      "movePattern": 0,
-      "hp": 20,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 20
+      }
     },
     {
-      "id": "e3_0009",
-      "enemyType": "s3_Sub7",
-      "spawn_time": 21.333,
-      "start_pos": [
+      "delta": 21.316,
+      "cmd": "spawn",
+      "behavior": "s3_Sub7",
+      "pos": [
         64.0,
         -16.0
-      ],
-      "hp": 300
+      ]
     },
     {
-      "id": "e3_0010",
-      "enemyType": "s3_Sub7",
-      "spawn_time": 22.833,
-      "start_pos": [
+      "delta": 1.5,
+      "cmd": "spawn",
+      "behavior": "s3_Sub7",
+      "pos": [
         64.0,
         -16.0
-      ],
-      "hp": 300
+      ]
     },
     {
-      "id": "e3_0011",
-      "enemyType": "s3_Sub7",
-      "spawn_time": 22.833,
-      "start_pos": [
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "s3_Sub7",
+      "pos": [
         320.0,
         -16.0
-      ],
-      "hp": 300
+      ]
     },
     {
-      "id": "e3_0012",
-      "enemyType": "s3_Sub7",
-      "spawn_time": 24.333,
-      "start_pos": [
+      "delta": 1.5,
+      "cmd": "spawn",
+      "behavior": "s3_Sub7",
+      "pos": [
         64.0,
         -16.0
-      ],
-      "hp": 300
+      ]
     },
     {
-      "id": "e3_0013",
-      "enemyType": "s3_Sub7",
-      "spawn_time": 26.833,
-      "start_pos": [
+      "delta": 2.5,
+      "cmd": "spawn",
+      "behavior": "s3_Sub7",
+      "pos": [
         320.0,
         -16.0
-      ],
-      "hp": 300
+      ]
     },
     {
-      "id": "e3_0014",
-      "enemyType": "s3_Sub7",
-      "spawn_time": 27.833,
-      "start_pos": [
+      "delta": 1.0,
+      "cmd": "spawn",
+      "behavior": "s3_Sub7",
+      "pos": [
         320.0,
         -16.0
-      ],
-      "hp": 300
+      ]
     },
     {
-      "id": "e3_0015",
-      "enemyType": "s3_Sub7",
-      "spawn_time": 27.833,
-      "start_pos": [
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "s3_Sub7",
+      "pos": [
         64.0,
         -16.0
-      ],
-      "hp": 300
+      ]
     },
     {
-      "id": "e3_0016",
-      "enemyType": "s3_Sub7",
-      "spawn_time": 28.833,
-      "start_pos": [
+      "delta": 1.0,
+      "cmd": "spawn",
+      "behavior": "s3_Sub7",
+      "pos": [
         320.0,
         -16.0
-      ],
-      "hp": 300
+      ]
     },
     {
-      "id": "e3_0018",
-      "enemyType": "s3_Sub7",
-      "spawn_time": 32.5,
-      "start_pos": [
+      "delta": 3.667,
+      "cmd": "spawn",
+      "behavior": "s3_Sub7",
+      "pos": [
         64.0,
         -16.0
-      ],
-      "hp": 350
+      ]
     },
     {
-      "id": "e3_0019",
-      "enemyType": "s3_Sub7",
-      "spawn_time": 32.833,
-      "start_pos": [
+      "delta": 0.333,
+      "cmd": "spawn",
+      "behavior": "s3_Sub7",
+      "pos": [
         320.0,
         -16.0
-      ],
-      "hp": 350
+      ]
     },
     {
-      "id": "e3_0020",
-      "enemyType": "s3_Sub7",
-      "spawn_time": 33.167,
-      "start_pos": [
+      "delta": 0.334,
+      "cmd": "spawn",
+      "behavior": "s3_Sub7",
+      "pos": [
         64.0,
         -16.0
-      ],
-      "hp": 350
+      ]
     },
     {
-      "id": "e3_0021",
-      "enemyType": "s3_Sub7",
-      "spawn_time": 33.5,
-      "start_pos": [
+      "delta": 0.333,
+      "cmd": "spawn",
+      "behavior": "s3_Sub7",
+      "pos": [
         320.0,
         -16.0
-      ],
-      "hp": 350
+      ]
     },
     {
-      "id": "e3_0024",
-      "enemyType": "s3_Sub14",
-      "spawn_time": 36.5,
-      "start_pos": [
+      "delta": 3.0,
+      "cmd": "spawn",
+      "behavior": "s3_Sub14",
+      "pos": [
         320.0,
         -16.0
-      ],
-      "hp": 600
+      ]
     },
     {
-      "id": "e3_0025",
-      "enemyType": "s3_Sub13",
-      "spawn_time": 40.5,
-      "start_pos": [
+      "delta": 4.0,
+      "cmd": "spawn",
+      "behavior": "s3_Sub13",
+      "pos": [
         64.0,
         -16.0
-      ],
-      "hp": 600
+      ]
     },
     {
-      "id": "e3_0026",
-      "enemyType": "s3_Sub14",
-      "spawn_time": 44.667,
-      "start_pos": [
+      "delta": 4.167,
+      "cmd": "spawn",
+      "behavior": "s3_Sub14",
+      "pos": [
         320.0,
         -16.0
-      ],
-      "hp": 600
+      ]
     },
     {
-      "id": "e3_0027",
-      "spawn_time": 51.333,
-      "start_pos": [
+      "delta": 6.666,
+      "cmd": "spawn",
+      "behavior": "s3_Sub1",
+      "pos": [
         192.0,
         -16.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e3_0031",
-      "enemyType": "s3_Sub7",
-      "spawn_time": 53.383,
-      "start_pos": [
+      "delta": 2.05,
+      "cmd": "spawn",
+      "behavior": "s3_Sub7",
+      "pos": [
         320.0,
         -16.0
-      ],
-      "hp": 300
+      ]
     },
     {
-      "id": "e3_0037",
-      "enemyType": "s3_Sub7",
-      "spawn_time": 57.717,
-      "start_pos": [
+      "delta": 4.334,
+      "cmd": "spawn",
+      "behavior": "s3_Sub7",
+      "pos": [
         64.0,
         -16.0
-      ],
-      "hp": 300
+      ]
     },
     {
-      "id": "e3_0040",
-      "enemyType": "s3_Sub13",
-      "spawn_time": 62.05,
-      "start_pos": [
+      "delta": 4.333,
+      "cmd": "spawn",
+      "behavior": "s3_Sub13",
+      "pos": [
         64.0,
         -16.0
-      ],
-      "hp": 600
+      ]
     },
     {
-      "id": "e3_0041",
-      "enemyType": "s3_Sub14",
-      "spawn_time": 64.05,
-      "start_pos": [
+      "delta": 2.0,
+      "cmd": "spawn",
+      "behavior": "s3_Sub14",
+      "pos": [
         320.0,
         -16.0
-      ],
-      "hp": 600
+      ]
     },
     {
-      "id": "e3_0042",
-      "enemyType": "s3_Sub13",
-      "spawn_time": 69.383,
-      "start_pos": [
+      "delta": 5.333,
+      "cmd": "spawn",
+      "behavior": "s3_Sub13",
+      "pos": [
         128.0,
         -16.0
-      ],
-      "hp": 500
+      ]
     },
     {
-      "id": "e3_0043",
-      "enemyType": "s3_Sub14",
-      "spawn_time": 69.383,
-      "start_pos": [
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "s3_Sub14",
+      "pos": [
         256.0,
         -16.0
-      ],
-      "hp": 500
+      ]
     },
     {
-      "id": "e3_0044",
-      "spawn_time": 77.717,
-      "start_pos": [
+      "delta": 8.334,
+      "cmd": "spawn",
+      "behavior": "s3_Sub1",
+      "pos": [
         192.0,
         -16.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     },
     {
-      "id": "e3_0045",
-      "spawn_time": 77.717,
-      "start_pos": [
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "s3_Sub1",
+      "pos": [
         192.0,
         128.0
       ],
-      "movePattern": 0,
-      "hp": 10,
-      "speedX": 0,
-      "speedY": 120,
-      "halfLife": 0,
-      "hitboxWidth": 24,
-      "hitboxHeight": 24
+      "overrides": {
+        "hp": 10
+      }
     }
   ],
   "randomItemTable": [

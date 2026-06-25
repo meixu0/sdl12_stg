@@ -1,368 +1,324 @@
 {
-  "enemy_types": {
+  "meta": {
+    "type": "boss",
+    "version": 2
+  },
+  "behaviors": {
     "boss_cirno": {
       "_desc": "Boss cirno entry",
-      "movePattern": 3,
       "hp": 16000,
-      "hitboxWidth": 48,
-      "hitboxHeight": 48,
-      "speedX": 0,
-      "speedY": 30,
-      "halfLife": 0,
+      "hitbox": [
+        48,
+        48
+      ],
       "score": 100000,
-      "itemDrop": "full_power"
+      "move": {
+        "type": "stop_and_go",
+        "speedX": 0,
+        "speedY": 30
+      },
+      "death": {
+        "itemDrop": "full_power"
+      }
+    }
+  },
+  "timeline": [
+    {
+      "delta": 0.0,
+      "cmd": "spawn",
+      "behavior": "boss_cirno",
+      "pos": [
+        272,
+        -32
+      ]
     },
-    "boss_cirno_phase1": {
-      "_desc": "Phase 1 (Sub11) - \"Yìut@[Xgs~bhv\"",
-      "movePattern": 3,
+    {
+      "delta": 0.0,
+      "cmd": "spellcard",
+      "spellcard": "boss_cirno_phase1",
       "hp": 2000,
-      "hitboxWidth": 48,
-      "hitboxHeight": 48,
-      "speedX": 0,
-      "speedY": 30,
-      "halfLife": 0,
-      "score": 100000,
-      "itemDrop": "full_power",
-      "emitters": [
+      "timeout": 45
+    },
+    {
+      "delta": 0.0,
+      "cmd": "spellcard",
+      "spellcard": "boss_cirno_phase2",
+      "hp": 2000,
+      "timeout": 45
+    },
+    {
+      "delta": 0.0,
+      "cmd": "spellcard",
+      "spellcard": "boss_cirno_phase3",
+      "hp": 2000,
+      "timeout": 45
+    },
+    {
+      "delta": 0.0,
+      "cmd": "spellcard",
+      "spellcard": "boss_cirno_phase4",
+      "hp": 2000,
+      "timeout": 45
+    },
+    {
+      "delta": 0.0,
+      "cmd": "spellcard",
+      "spellcard": "boss_cirno_phase5",
+      "hp": 2000,
+      "timeout": 45
+    },
+    {
+      "delta": 0.0,
+      "cmd": "spellcard",
+      "spellcard": "boss_cirno_phase6",
+      "hp": 2000,
+      "timeout": 45
+    },
+    {
+      "delta": 0.0,
+      "cmd": "spellcard",
+      "spellcard": "boss_cirno_phase7",
+      "hp": 2000,
+      "timeout": 45
+    },
+    {
+      "delta": 2.0,
+      "cmd": "defeat",
+      "behavior": "boss_final"
+    }
+  ],
+  "spellcards": {
+    "boss_cirno_phase1": {
+      "name": "\"Yìut@[Xgs~bhv\"",
+      "hp": 2000,
+      "timeout": 45,
+      "behavior": "boss_cirno_phase1",
+      "patterns": [
         {
-          "_desc": "etRingAimed: 3way x3rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 7,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring_aimed_variable",
             "mainCnt": 3,
             "subCnt": 3,
-            "angleOffset": 0.0,
-            "angleInterval": 0.0,
-            "speed1": 300,
-            "speed2": 150,
+            "spread": 0.0,
+            "angleStep": 0.0,
+            "speed": 300,
+            "speedStep": 150,
             "spriteID": 0,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "boss_cirno_phase2": {
-      "_desc": "Phase 2 (Sub28) - \"ìuóNCVXv\"",
-      "movePattern": 3,
+      "name": "\"ìuóNCVXv\"",
       "hp": 2000,
-      "hitboxWidth": 48,
-      "hitboxHeight": 48,
-      "speedX": 0,
-      "speedY": 30,
-      "halfLife": 0,
-      "score": 100000,
-      "itemDrop": "full_power",
-      "emitters": [
+      "timeout": 45,
+      "behavior": "boss_cirno_phase2",
+      "patterns": [
         {
-          "_desc": "etFanAimed: 4way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 4,
             "subCnt": 1,
-            "angleOffset": 0.0,
-            "angleInterval": 0.2618,
-            "speed1": 80,
-            "speed2": 50,
+            "spread": 0.0,
+            "angleStep": 0.2618,
+            "speed": 80,
+            "speedStep": 50,
             "spriteID": 2,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "boss_cirno_phase3": {
-      "_desc": "Phase 3 (Sub31) - \"uOíÌ_í@v\"",
-      "movePattern": 3,
+      "name": "\"uOíÌ_í@v\"",
       "hp": 2000,
-      "hitboxWidth": 48,
-      "hitboxHeight": 48,
-      "speedX": 0,
-      "speedY": 30,
-      "halfLife": 0,
-      "score": 100000,
-      "itemDrop": "full_power",
-      "emitters": [
+      "timeout": 45,
+      "behavior": "boss_cirno_phase3",
+      "patterns": [
         {
-          "_desc": "etRing: 32way x1rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 32,
             "subCnt": 1,
-            "angleOffset": 0,
-            "angleInterval": 0.3927,
-            "speed1": 100,
-            "speed2": 50,
+            "spread": 0,
+            "angleStep": 0.3927,
+            "speed": 100,
+            "speedStep": 50,
             "spriteID": 1,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etRingAimed: 32way x2rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 7,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring_aimed_variable",
             "mainCnt": 32,
             "subCnt": 2,
-            "angleOffset": 0.0,
-            "angleInterval": 0.1963,
-            "speed1": 220,
-            "speed2": 80,
+            "spread": 0.0,
+            "angleStep": 0.1963,
+            "speed": 220,
+            "speedStep": 80,
             "spriteID": 1,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "boss_cirno_phase4": {
-      "_desc": "Phase 4 (Sub35) - \"uOíÌ_í@Êv\"",
-      "movePattern": 3,
+      "name": "\"uOíÌ_í@Êv\"",
       "hp": 2000,
-      "hitboxWidth": 48,
-      "hitboxHeight": 48,
-      "speedX": 0,
-      "speedY": 30,
-      "halfLife": 0,
-      "score": 100000,
-      "itemDrop": "full_power",
-      "emitters": [
+      "timeout": 45,
+      "behavior": "boss_cirno_phase4",
+      "patterns": [
         {
-          "_desc": "etFanAimed: 0way x3rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 0,
             "subCnt": 3,
-            "angleOffset": 0.0,
-            "angleInterval": 0.3927,
-            "speed1": 120,
-            "speed2": 50,
+            "spread": 0.0,
+            "angleStep": 0.3927,
+            "speed": 120,
+            "speedStep": 50,
             "spriteID": 1,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etRingAimed: 32way x2rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 7,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring_aimed_variable",
             "mainCnt": 32,
             "subCnt": 2,
-            "angleOffset": 0.0,
-            "angleInterval": 0.1963,
-            "speed1": 220,
-            "speed2": 80,
+            "spread": 0.0,
+            "angleStep": 0.1963,
+            "speed": 220,
+            "speedStep": 80,
             "spriteID": 1,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "boss_cirno_phase5": {
-      "_desc": "Phase 5 (Sub39) - \"uOíÌ_í@¾v\"",
-      "movePattern": 3,
+      "name": "\"uOíÌ_í@¾v\"",
       "hp": 2000,
-      "hitboxWidth": 48,
-      "hitboxHeight": 48,
-      "speedX": 0,
-      "speedY": 30,
-      "halfLife": 0,
-      "score": 100000,
-      "itemDrop": "full_power",
-      "emitters": [
+      "timeout": 45,
+      "behavior": "boss_cirno_phase5",
+      "patterns": [
         {
-          "_desc": "etFanAimed: 2way x7rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 0,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "fan_aimed",
             "mainCnt": 2,
             "subCnt": 7,
-            "angleOffset": 0.0,
-            "angleInterval": 0.2618,
-            "speed1": 120,
-            "speed2": 50,
+            "spread": 0.0,
+            "angleStep": 0.2618,
+            "speed": 120,
+            "speedStep": 50,
             "spriteID": 1,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etRingAimed: 32way x2rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 7,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring_aimed_variable",
             "mainCnt": 32,
             "subCnt": 2,
-            "angleOffset": 0.0,
-            "angleInterval": 0.1963,
-            "speed1": 220,
-            "speed2": 80,
+            "spread": 0.0,
+            "angleStep": 0.1963,
+            "speed": 220,
+            "speedStep": 80,
             "spriteID": 1,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "boss_cirno_phase6": {
-      "_desc": "Phase 6 (Sub43) - \"ÌuOíÌ_í@½v\"",
-      "movePattern": 3,
+      "name": "\"ÌuOíÌ_í@½v\"",
       "hp": 2000,
-      "hitboxWidth": 48,
-      "hitboxHeight": 48,
-      "speedX": 0,
-      "speedY": 30,
-      "halfLife": 0,
-      "score": 100000,
-      "itemDrop": "full_power",
-      "emitters": [
+      "timeout": 45,
+      "behavior": "boss_cirno_phase6",
+      "patterns": [
         {
-          "_desc": "etRing: 32way x2rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 3,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
             "mainCnt": 32,
             "subCnt": 2,
-            "angleOffset": 0,
-            "angleInterval": 0.3927,
-            "speed1": 200,
-            "speed2": 100,
+            "spread": 0,
+            "angleStep": 0.3927,
+            "speed": 200,
+            "speedStep": 100,
             "spriteID": 1,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         },
         {
-          "_desc": "etRingAimed: 32way x2rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 7,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring_aimed_variable",
             "mainCnt": 32,
             "subCnt": 2,
-            "angleOffset": 0.0,
-            "angleInterval": 0.1963,
-            "speed1": 220,
-            "speed2": 80,
+            "spread": 0.0,
+            "angleStep": 0.1963,
+            "speed": 220,
+            "speedStep": 80,
             "spriteID": 1,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     },
     "boss_cirno_phase7": {
-      "_desc": "Phase 7 (Sub52) - \"¢uV´v\"",
-      "movePattern": 3,
+      "name": "\"¢uV´v\"",
       "hp": 2000,
-      "hitboxWidth": 48,
-      "hitboxHeight": 48,
-      "speedX": 0,
-      "speedY": 30,
-      "halfLife": 0,
-      "score": 100000,
-      "itemDrop": "full_power",
-      "emitters": [
+      "timeout": 45,
+      "behavior": "boss_cirno_phase7",
+      "patterns": [
         {
-          "_desc": "etRingAimed: 32way x2rows",
-          "startDelay": 0,
-          "emitInterval": 1,
-          "burstCount": 1,
-          "burstInterval": 0.05,
-          "patternDesc": {
-            "patternType": 7,
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring_aimed_variable",
             "mainCnt": 32,
             "subCnt": 2,
-            "angleOffset": 0.0,
-            "angleInterval": 0.1963,
-            "speed1": 230,
-            "speed2": 120,
+            "spread": 0.0,
+            "angleStep": 0.1963,
+            "speed": 230,
+            "speedStep": 120,
             "spriteID": 1,
             "hitboxRadius": 4,
-            "lifeTime": 6,
-            "spawnEffect": 0,
-            "soundEffect": 0,
-            "reboundEffect": 0
+            "lifeTime": 6
           }
         }
       ]
     }
-  },
-  "stage_3": [
-    {
-      "id": "boss_cirno",
-      "enemyType": "boss_cirno",
-      "spawn_time": 0,
-      "start_pos": [
-        272,
-        -32
-      ],
-      "durationTime": 99
-    }
-  ]
+  }
 }

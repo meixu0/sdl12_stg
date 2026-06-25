@@ -61,18 +61,6 @@ Game::~Game() {
 	}
 }
 
-void Game::rebuild_managers(EnemyBulletManager* bulletMgr) {
-	itemManager->clear_all();
-	itemManager->update(1.0f / 30.0f);
-	delete levelManager;
-	delete itemManager;
-	levelManager = new LevelManager();
-	itemManager = new ItemManager();
-	itemManager->set_player(player1);
-	player1->set_item_manager(itemManager);
-	levelManager->set_bullet_manager_for_all(bulletMgr);
-}
-
 void Game::init_info_area(SDL_Surface* dest){
 	SDL_Rect infoArea_;
 	infoArea_.x = 544;
@@ -197,6 +185,7 @@ void Game::start_gameplay(){
 	lastFrameTime_ = SDL_GetTicks();
 	gameStartTime_ = SDL_GetTicks();
 	frameCounter = 0;
+	levelManager->set_bullet_manager(&enemyBulletManager_);
 	levelManager->set_bullet_manager_for_all(&enemyBulletManager_);
 	itemManager->set_player(player1);
 	player1->set_item_manager(itemManager);
@@ -244,26 +233,20 @@ void Game::update_game(float dt){
 	levelManager->attack_all_enemies(dt);
 	enemyBulletManager_.update(dt);
 	itemManager->update(dt);
-	// stage state transition detection
-	{
-		StageState cur = levelManager->get_stage_state();
-		if(prevStageState == STAGE_RUNNING && cur == STAGE_BOSS) {
+	// TH06-style: LevelManager 自动检测并处理关卡过渡
+	if (levelManager->auto_transition(frameCounter)) {
+		itemManager->clear_all();
+		itemManager->update(1.0f / 30.0f);
+		StageState st = levelManager->get_stage_state();
+		if (st == STAGE_BOSS) {
 			gameState = STATE_BOSS;
-			rebuild_managers(&enemyBulletManager_);
-			levelManager->load_boss_stage(currentStage);
-			levelManager->init_enemy_pool();
-			levelManager->trigger_boss();
-		}
-		else if(cur == STAGE_CLEAR) {
-			rebuild_managers(&enemyBulletManager_);
-			currentStage++;
-			levelManager->load_stage(currentStage);
-			levelManager->init_enemy_pool();
-			levelManager->start_stage();
+		} else if (st == STAGE_RUNNING) {
+			gameState = STATE_GAME;
+		} else if (st == STAGE_ALL_CLEAR) {
 			gameState = STATE_GAME;
 		}
-		prevStageState = cur;
 	}
+	prevStageState = levelManager->get_stage_state();
 	frameCounter++;
 }
 

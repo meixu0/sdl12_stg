@@ -21,12 +21,13 @@ private:
     std::vector<Enemy*> enemy_pool;
     int current_stage;
     StageState stage_state;
-    static const int TOTAL_STAGES = 2;
+    static const int TOTAL_STAGES = 8;
 
     void clear_enemy_pool();
     std::string stage_key() const;
-    bool isClearingForMidboss;//整个关卡中只需要执行一次为midboss清理，因此初始设为true，执行清理后改为false即可避免死循环
+    bool isClearingForMidboss;
     int midbossIndex_;
+    EnemyBulletManager* bullet_mgr_;
 
 public:
     LevelManager();
@@ -34,6 +35,7 @@ public:
     void load_stage(int stage);
     void load_boss_stage(int stage);
     void init_enemy_pool();
+    void init_enemy_pool_v2();
 
     // 关卡状态机
     void start_stage();            // 开始当前关卡 (LOADING → RUNNING)
@@ -41,7 +43,13 @@ public:
     void trigger_midboss();        // 进入道中Boss (RUNNING → MIDBOSS)
     void clear_stage();            // 关卡通关 (BOSS → CLEAR)
     void next_stage();             // 加载下一关 (CLEAR → LOADING → RUNNING)
-    bool update_stage_state();     // 每帧更新: 检测midboss出现/击破
+
+    // TH06-style lifecycle transitions — replaces rebuild_managers pattern
+    void set_bullet_manager(EnemyBulletManager* mgr) { bullet_mgr_ = mgr; }
+    void enter_stage(int stage);   // clean → load → init → RUNNING
+    void enter_boss(int stage);    // clean → load boss → init → BOSS
+    bool auto_transition(Uint32 frameCounter);  // 检测并自动处理所有关卡过渡
+
     StageState get_stage_state() const { return stage_state; }
     int  get_current_stage() const { return current_stage; }
     bool is_stage_cleared() const { return stage_state == STAGE_CLEAR || stage_state == STAGE_ALL_CLEAR; }
