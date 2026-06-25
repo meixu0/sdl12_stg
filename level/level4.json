@@ -1240,8 +1240,8 @@
       }
     },
     "midboss_patchouli": {
-      "_desc": "Midboss (ECL patterns)",
-      "hp": 19000,
+      "_desc": "Midboss (ECL patterns) HPx10",
+      "hp": 190000,
       "hitbox": [
         24,
         24
@@ -1473,16 +1473,16 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 11400
+          "hp": 114000
         },
         "normal": {
-          "hp": 19000
+          "hp": 190000
         },
         "hard": {
-          "hp": 25600
+          "hp": 256000
         },
         "lunatic": {
-          "hp": 32300
+          "hp": 323000
         }
       },
       "flags": [

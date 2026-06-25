@@ -37,6 +37,7 @@ jobs:
           mingw-w64-x86_64-SDL_mixer
           mingw-w64-x86_64-SDL_gfx
           mingw-w64-x86_64-physfs
+          zip
 
     - name: Install Dependencies (Linux)
       if: runner.os == 'Linux'
@@ -63,16 +64,55 @@ jobs:
         mingw32-make clean
         mingw32-make -j$(nproc)
 
-        echo "Bundling DLLs for Windows..."
-        ldd stg.exe | grep -i "mingw64" | awk '{print $3}' | xargs -I '{}' cp '{}' .
+        echo "Creating release directory..."
+        mkdir -p release
 
-    - name: Upload Artifact
+        echo "Copying executable..."
+        cp stg.exe release/
+
+        echo "Bundling DLLs..."
+        dll_list=$(ldd stg.exe | grep -i "mingw64" | awk '{print $3}' | sort -u)
+        for dll in $dll_list; do
+          if [ -f "$dll" ]; then
+            cp "$dll" release/
+            echo "  Copied: $(basename $dll)"
+          fi
+        done
+
+        # Also copy SDL_image format handler DLLs (loaded at runtime)
+        for pattern in libpng*.dll libjpeg*.dll libtiff*.dll libwebp*.dll libfreetype*.dll libogg*.dll libvorbis*.dll libFLAC*.dll; do
+          found=$(find /mingw64/bin -name "$pattern" 2>/dev/null | head -1)
+          if [ -n "$found" ] && [ ! -f "release/$(basename $found)" ]; then
+            cp "$found" release/
+            echo "  Also copied: $(basename $found)"
+          fi
+        done
+
+        echo "Copying level/ and res/ directories..."
+        cp -r level release/
+        cp -r res release/
+
+        echo "Creating zip archive..."
+        cd release
+        zip -r ../stg-windows.zip .
+        cd ..
+
+        echo "Release zip size:"
+        ls -lh stg-windows.zip
+
+    - name: Upload Artifact (Linux)
+      if: runner.os == 'Linux'
       uses: actions/upload-artifact@v4
       with:
-        name: game-executable-${{ matrix.os }}
+        name: game-executable-linux
         path: |
           stg
-          stg.exe
-          *.dll
           res/**
           level/**
+
+    - name: Upload Artifact (Windows)
+      if: runner.os == 'Windows'
+      uses: actions/upload-artifact@v4
+      with:
+        name: game-executable-windows
+        path: stg-windows.zip

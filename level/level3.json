@@ -901,8 +901,8 @@
       }
     },
     "midboss_cirno": {
-      "_desc": "Midboss (ECL patterns)",
-      "hp": 17000,
+      "_desc": "Midboss (ECL patterns) HPx10",
+      "hp": 170000,
       "hitbox": [
         24,
         24
@@ -1134,16 +1134,16 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 10200
+          "hp": 102000
         },
         "normal": {
-          "hp": 17000
+          "hp": 170000
         },
         "hard": {
-          "hp": 22900
+          "hp": 229000
         },
         "lunatic": {
-          "hp": 28900
+          "hp": 289000
         }
       },
       "flags": [

@@ -712,7 +712,8 @@ void LevelManager::start_spellcard_phase(int phaseIndex) {
     // its own HP pool instead of sharing the boss's remaining HP
     boss->set_spellcard_hp(sc->hp);
 
-    // ECL Sub29: clear all bullets, then enter
+    // ECL Sub29: convert bullets to P-items, then clear for clean spellcard start
+    convert_boss_bullets_to_p_items();
     EnemyScManager::clear_bullets(bullet_mgr_);
 
     // ECL Sub29: move boss to spellcard position (192, 140) over 120 frames with deceleration
@@ -1332,9 +1333,10 @@ void LevelManager::update_all_enemies(float px, float py, Uint32 &frameCounter_,
                 std::cout << "Main enemy defeated! Converting bullets to P items." << std::endl;
                 convert_boss_bullets_to_p_items();
                 if (isMid) {
-                    float remaining = e->get_duration_time() - e->get_time_alive();
-                    std::cout << "[DEFEAT] midboss time_jump: remaining=" << remaining << " timeAlive=" << e->get_time_alive() << std::endl;
-                    if (remaining > 0) skip_stage_time(remaining);
+                    float skip_amount = (e->get_emerge_time() + e->get_duration_time()) - e->get_time_alive();
+                    if (skip_amount < 0) skip_amount = 0;
+                    std::cout << "[DEFEAT] midboss time_jump: skip=" << skip_amount << " emerge=" << e->get_emerge_time() << " dur=" << e->get_duration_time() << " alive=" << e->get_time_alive() << std::endl;
+                    if (skip_amount > 0) skip_stage_time(skip_amount);
                 }
                 break;
             }

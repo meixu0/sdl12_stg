@@ -772,8 +772,8 @@
       }
     },
     "midboss_sakuya": {
-      "_desc": "Midboss (ECL patterns)",
-      "hp": 21000,
+      "_desc": "Midboss (ECL patterns) HPx10",
+      "hp": 210000,
       "hitbox": [
         24,
         24
@@ -865,16 +865,16 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 12600
+          "hp": 126000
         },
         "normal": {
-          "hp": 21000
+          "hp": 210000
         },
         "hard": {
-          "hp": 28300
+          "hp": 283000
         },
         "lunatic": {
-          "hp": 35700
+          "hp": 357000
         }
       },
       "flags": [

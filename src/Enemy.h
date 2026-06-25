@@ -139,6 +139,7 @@ public:
     static int onScreenCount;
     int  get_hp() const { return hp; }
     float get_time_alive() const { return timeAlive; }
+    float get_emerge_time() const { return emergeTime; }
     float get_duration_time() const { return durationTime; }
     bool get_is_midboss() const { return isMidboss; }
     int  get_enemy_type() const { return enemyType; }

@@ -6,231 +6,517 @@
   },
   "behaviors": {
     "boss_sakuya": {
-      "_desc": "Stage 5 Boss (Youmu) with full phase sequence",
-      "hp": 15000,
-      "hitbox": [48, 48],
+      "_desc": "Stage 5 boss — Youmu (ECL non-spellcard phases)",
+      "hp": 150000,
+      "hitbox": [
+        48,
+        48
+      ],
       "score": 100000,
       "move": {
         "type": "position_interp",
         "duration": 60,
         "easing": 4,
-        "target": [192, 128]
+        "target": [
+          192,
+          128
+        ]
       },
-      "move_bounds": [32, 48, 352, 128],
+      "move_bounds": [
+        32,
+        48,
+        352,
+        128
+      ],
       "death": {
         "itemDrop": "full_power"
       },
       "phases": [
         {
-          "_desc": "Phase 1 - Ring aimed spread",
-          "duration": 2.0,
+          "_desc": "ECL Sub11 — 1 patterns",
+          "duration": 6.0,
           "patterns": [
             {
               "time": 0,
-              "interval": 0.2,
-              "burst": 1,
-              "pattern": {
-                "type": "ring_aimed",
-                "mainCnt": 8,
-                "subCnt": 1,
-                "speed": 120,
-                "spriteID": 0,
-                "hitboxRadius": 4,
-                "lifeTime": 5
-              }
-            },
-            {
-              "time": 0,
-              "interval": 0.2,
-              "burst": 1,
-              "pattern": {
-                "type": "ring",
-                "mainCnt": 12,
-                "subCnt": 1,
-                "speed": 90,
-                "angleStep": 0.0982,
-                "spriteID": 0,
-                "hitboxRadius": 4,
-                "lifeTime": 5
-              }
-            }
-          ]
-        },
-        {
-          "_desc": "Phase 2 - Fan aimed barrage",
-          "duration": 2.0,
-          "patterns": [
-            {
-              "time": 0,
-              "interval": 0.25,
-              "burst": 1,
-              "pattern": {
-                "type": "fan_aimed",
-                "mainCnt": 5,
-                "subCnt": 1,
-                "speed": 130,
-                "spread": 0.35,
-                "spriteID": 0,
-                "hitboxRadius": 4,
-                "lifeTime": 4
-              }
-            }
-          ]
-        },
-        {
-          "_desc": "Phase 3 - Alternating rings",
-          "duration": 3.0,
-          "patterns": [
-            {
-              "time": 0,
-              "interval": 0.15,
-              "burst": 1,
-              "pattern": {
-                "type": "ring",
-                "mainCnt": 8,
-                "subCnt": 2,
-                "speed": 150,
-                "speedStep": 80,
-                "angleStep": 0.196,
-                "spriteID": 0,
-                "hitboxRadius": 4,
-                "lifeTime": 6
-              }
-            },
-            {
-              "time": 0.075,
-              "interval": 0.15,
+              "interval": 0.017,
               "burst": 1,
               "pattern": {
                 "type": "ring",
                 "mainCnt": 6,
                 "subCnt": 2,
-                "speed": 100,
-                "speedStep": 60,
-                "angleStep": -0.196,
-                "spriteID": 0,
-                "hitboxRadius": 4,
-                "lifeTime": 6
+                "spriteID": 5,
+                "hitboxRadius": 1,
+                "speed": 102.0,
+                "speedStep": 60.0,
+                "spread": 3.0925053129999998,
+                "angleStep": 1.5707964,
+                "lifeTime": 5.0
               }
             }
-          ]
-        },
-        {
-          "_desc": "Move to left side",
-          "duration": 1.0,
-          "patterns": [],
-          "move_after": [96, 128],
-          "move_duration": 60,
+          ],
+          "move_after": [
+            192,
+            64
+          ],
+          "move_duration": 30,
           "move_easing": 4
         },
         {
-          "_desc": "Phase 4 - Aimed ring + ring combo",
-          "duration": 2.5,
+          "_desc": "Move to position",
+          "duration": 1.0,
+          "patterns": []
+        },
+        {
+          "_desc": "ECL Sub13 — 1 patterns",
+          "duration": 6.0,
           "patterns": [
             {
               "time": 0,
-              "interval": 0.3,
+              "interval": 0.017,
               "burst": 1,
               "pattern": {
-                "type": "ring_aimed",
-                "mainCnt": 10,
-                "subCnt": 1,
-                "speed": 140,
-                "spriteID": 0,
-                "hitboxRadius": 4,
-                "lifeTime": 5
+                "type": "ring",
+                "mainCnt": 6,
+                "subCnt": 2,
+                "spriteID": 5,
+                "hitboxRadius": 1,
+                "speed": 102.0,
+                "speedStep": 60.0,
+                "spread": 0.049087387,
+                "angleStep": 1.5707964,
+                "lifeTime": 5.0
+              }
+            }
+          ],
+          "move_after": [
+            192,
+            144
+          ],
+          "move_duration": 30,
+          "move_easing": 4
+        },
+        {
+          "_desc": "Move to position",
+          "duration": 1.0,
+          "patterns": []
+        },
+        {
+          "_desc": "ECL Sub22 — 1 patterns",
+          "duration": 6.0,
+          "patterns": [
+            {
+              "time": 0,
+              "interval": 1.0,
+              "burst": 1,
+              "pattern": {
+                "type": "fan",
+                "mainCnt": 3,
+                "subCnt": 2,
+                "spriteID": 3,
+                "hitboxRadius": 3,
+                "speed": 144.0,
+                "speedStep": 60.0,
+                "spread": 0.0,
+                "angleStep": 0.0,
+                "lifeTime": 5.0
+              }
+            }
+          ],
+          "move_after": [
+            96,
+            128
+          ],
+          "move_duration": 30,
+          "move_easing": 4
+        },
+        {
+          "_desc": "Move to position",
+          "duration": 1.0,
+          "patterns": []
+        },
+        {
+          "_desc": "ECL Sub23 — 3 patterns",
+          "duration": 6.0,
+          "patterns": [
+            {
+              "time": 0,
+              "interval": 1.0,
+              "burst": 1,
+              "pattern": {
+                "type": "fan",
+                "mainCnt": 6,
+                "subCnt": 2,
+                "spriteID": 3,
+                "hitboxRadius": 5,
+                "speed": 144.0,
+                "speedStep": 60.0,
+                "spread": 1.5707964,
+                "angleStep": 0.3926991,
+                "lifeTime": 5.0
               }
             },
             {
-              "time": 0.1,
-              "interval": 0.3,
-              "burst": 1,
+              "time": 0,
+              "interval": 0.533,
+              "burst": 60,
               "pattern": {
-                "type": "ring",
-                "mainCnt": 14,
-                "subCnt": 1,
-                "speed": 80,
-                "angleStep": 0.0491,
-                "spriteID": 0,
-                "hitboxRadius": 4,
-                "lifeTime": 5
+                "type": "fan",
+                "mainCnt": 6,
+                "subCnt": 2,
+                "spriteID": 3,
+                "hitboxRadius": 5,
+                "speed": 168.0,
+                "speedStep": 60.0,
+                "spread": 0.7853982,
+                "angleStep": 0.3926991,
+                "lifeTime": 5.0
               }
-            }
-          ]
-        },
-        {
-          "_desc": "Phase 5 - Fan aimed sweep",
-          "duration": 2.0,
-          "patterns": [
+            },
             {
               "time": 0,
-              "interval": 0.2,
-              "burst": 1,
+              "interval": 0.533,
+              "burst": 60,
               "pattern": {
-                "type": "fan_aimed",
-                "mainCnt": 7,
-                "subCnt": 2,
-                "speed": 160,
-                "spread": 0.4,
-                "spriteID": 0,
+                "type": "fan",
+                "mainCnt": 6,
+                "subCnt": 14,
+                "spriteID": 3,
                 "hitboxRadius": 4,
-                "lifeTime": 4
+                "speed": 144.0,
+                "speedStep": 60.0,
+                "spread": 1.5707964,
+                "angleStep": 0.7853982,
+                "lifeTime": 5.0
               }
             }
-          ]
-        },
-        {
-          "_desc": "Move back to center",
-          "duration": 1.0,
-          "patterns": [],
-          "move_after": [192, 128],
-          "move_duration": 90,
+          ],
+          "move_after": [
+            288,
+            128
+          ],
+          "move_duration": 30,
           "move_easing": 4
         },
         {
-          "_desc": "Phase 6 - Dense ring barrage",
-          "duration": 3.0,
+          "_desc": "Move to position",
+          "duration": 1.0,
+          "patterns": []
+        },
+        {
+          "_desc": "ECL Sub24 — 3 patterns",
+          "duration": 6.0,
           "patterns": [
             {
               "time": 0,
-              "interval": 0.1,
+              "interval": 1.0,
               "burst": 1,
               "pattern": {
-                "type": "ring",
-                "mainCnt": 16,
-                "subCnt": 1,
-                "speed": 110,
-                "angleStep": 0.0491,
-                "spriteID": 0,
+                "type": "fan",
+                "mainCnt": 6,
+                "subCnt": 2,
+                "spriteID": 3,
+                "hitboxRadius": 5,
+                "speed": 144.0,
+                "speedStep": 60.0,
+                "spread": 1.5707964,
+                "angleStep": 0.3926991,
+                "lifeTime": 5.0
+              }
+            },
+            {
+              "time": 0,
+              "interval": 0.533,
+              "burst": 60,
+              "pattern": {
+                "type": "fan",
+                "mainCnt": 6,
+                "subCnt": 2,
+                "spriteID": 3,
+                "hitboxRadius": 5,
+                "speed": 168.0,
+                "speedStep": 60.0,
+                "spread": 0.7853982,
+                "angleStep": 0.3926991,
+                "lifeTime": 5.0
+              }
+            },
+            {
+              "time": 0,
+              "interval": 0.533,
+              "burst": 60,
+              "pattern": {
+                "type": "fan",
+                "mainCnt": 6,
+                "subCnt": 14,
+                "spriteID": 3,
                 "hitboxRadius": 4,
-                "lifeTime": 6
+                "speed": 144.0,
+                "speedStep": 60.0,
+                "spread": 1.5707964,
+                "angleStep": 0.7853982,
+                "lifeTime": 5.0
+              }
+            }
+          ],
+          "move_after": [
+            192,
+            100
+          ],
+          "move_duration": 30,
+          "move_easing": 4
+        },
+        {
+          "_desc": "Move to position",
+          "duration": 1.0,
+          "patterns": []
+        },
+        {
+          "_desc": "ECL Sub26 — 1 patterns",
+          "duration": 6.0,
+          "patterns": [
+            {
+              "time": 0,
+              "interval": 0.017,
+              "burst": 1,
+              "pattern": {
+                "type": "fan_aimed",
+                "mainCnt": 1,
+                "subCnt": 2,
+                "spriteID": 1,
+                "hitboxRadius": 3,
+                "speed": 192.0,
+                "speedStep": 60.0,
+                "spread": 0.0,
+                "angleStep": 0.07853982,
+                "lifeTime": 5.0
+              }
+            }
+          ],
+          "move_after": [
+            192,
+            64
+          ],
+          "move_duration": 30,
+          "move_easing": 4
+        },
+        {
+          "_desc": "Move to position",
+          "duration": 1.0,
+          "patterns": []
+        },
+        {
+          "_desc": "ECL Sub28 — 1 patterns",
+          "duration": 6.0,
+          "patterns": [
+            {
+              "time": 0,
+              "interval": 0.017,
+              "burst": 1,
+              "pattern": {
+                "type": "fan_aimed",
+                "mainCnt": 1,
+                "subCnt": 6,
+                "spriteID": 1,
+                "hitboxRadius": 3,
+                "speed": 192.0,
+                "speedStep": 60.0,
+                "spread": 0.0,
+                "angleStep": 0.07853982,
+                "lifeTime": 5.0
+              }
+            }
+          ],
+          "move_after": [
+            192,
+            144
+          ],
+          "move_duration": 30,
+          "move_easing": 4
+        },
+        {
+          "_desc": "Move to position",
+          "duration": 1.0,
+          "patterns": []
+        },
+        {
+          "_desc": "ECL Sub30 — 1 patterns",
+          "duration": 6.0,
+          "patterns": [
+            {
+              "time": 0,
+              "interval": 0.017,
+              "burst": 1,
+              "pattern": {
+                "type": "fan_aimed",
+                "mainCnt": 1,
+                "subCnt": 8,
+                "spriteID": 1,
+                "hitboxRadius": 3,
+                "speed": 96.0,
+                "speedStep": 60.0,
+                "spread": 0.0,
+                "angleStep": 0.07853982,
+                "lifeTime": 5.0
+              }
+            }
+          ],
+          "move_after": [
+            96,
+            128
+          ],
+          "move_duration": 30,
+          "move_easing": 4
+        },
+        {
+          "_desc": "Move to position",
+          "duration": 1.0,
+          "patterns": []
+        },
+        {
+          "_desc": "ECL Sub32 — 1 patterns",
+          "duration": 6.0,
+          "patterns": [
+            {
+              "time": 0,
+              "interval": 0.017,
+              "burst": 1,
+              "pattern": {
+                "type": "fan",
+                "mainCnt": 6,
+                "subCnt": 2,
+                "spriteID": 2,
+                "hitboxRadius": 1,
+                "speed": 72.0,
+                "speedStep": 60.0,
+                "spread": 1.37444685,
+                "angleStep": 0.7853982,
+                "lifeTime": 5.0
+              }
+            }
+          ],
+          "move_after": [
+            288,
+            128
+          ],
+          "move_duration": 30,
+          "move_easing": 4
+        },
+        {
+          "_desc": "Move to position",
+          "duration": 1.0,
+          "patterns": []
+        },
+        {
+          "_desc": "ECL Sub34 — 1 patterns",
+          "duration": 6.0,
+          "patterns": [
+            {
+              "time": 0,
+              "interval": 0.017,
+              "burst": 1,
+              "pattern": {
+                "type": "fan",
+                "mainCnt": 6,
+                "subCnt": 6,
+                "spriteID": 2,
+                "hitboxRadius": 1,
+                "speed": 72.0,
+                "speedStep": 60.0,
+                "spread": 1.7671459500000002,
+                "angleStep": 0.7853982,
+                "lifeTime": 5.0
+              }
+            }
+          ],
+          "move_after": [
+            192,
+            100
+          ],
+          "move_duration": 30,
+          "move_easing": 4
+        },
+        {
+          "_desc": "Move to position",
+          "duration": 1.0,
+          "patterns": []
+        },
+        {
+          "_desc": "ECL Sub36 — 2 patterns",
+          "duration": 6.0,
+          "patterns": [
+            {
+              "time": 0,
+              "interval": 0.017,
+              "burst": 1,
+              "pattern": {
+                "type": "fan",
+                "mainCnt": 3,
+                "subCnt": 2,
+                "spriteID": 4,
+                "hitboxRadius": 1,
+                "speed": 60.0,
+                "speedStep": 60.0,
+                "spread": 4.5160393571795865,
+                "angleStep": 0.7853982,
+                "lifeTime": 5.0
+              }
+            },
+            {
+              "time": 0,
+              "interval": 0.017,
+              "burst": 1,
+              "pattern": {
+                "type": "fan",
+                "mainCnt": 3,
+                "subCnt": 6,
+                "spriteID": 4,
+                "hitboxRadius": 1,
+                "speed": 60.0,
+                "speedStep": 60.0,
+                "spread": 4.5160393571795865,
+                "angleStep": 0.7853982,
+                "lifeTime": 5.0
               }
             }
           ]
         },
         {
-          "_desc": "Pause 90 frames before looping",
-          "duration": 1.5,
+          "_desc": "Pause before phase cycle restart",
+          "duration": 2.0,
           "patterns": []
         }
       ],
       "difficulty": {
-        "easy": { "hp": 8000 },
-        "normal": { "hp": 15000 },
-        "hard": { "hp": 20000 },
-        "lunatic": { "hp": 25000 }
+        "easy": {
+          "hp": 80000
+        },
+        "normal": {
+          "hp": 150000
+        },
+        "hard": {
+          "hp": 200000
+        },
+        "lunatic": {
+          "hp": 250000
+        }
       }
     },
     "boss_final": {
-      "_desc": "Final death phase after boss defeated",
-      "hp": 3000,
-      "hitbox": [24, 24],
+      "_desc": "Final death phase after boss defeated HPx10",
+      "hp": 30000,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 100000,
       "move": {
         "type": "position_interp",
         "duration": 60,
         "easing": 4,
-        "target": [192, 128]
+        "target": [
+          192,
+          128
+        ]
       },
       "death": {
         "itemDrop": "full_power"
@@ -242,7 +528,10 @@
       "delta": 0.0,
       "cmd": "spawn",
       "behavior": "boss_sakuya",
-      "pos": [272, -32]
+      "pos": [
+        272,
+        -32
+      ]
     },
     {
       "delta": 2.0,

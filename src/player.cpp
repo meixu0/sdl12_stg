@@ -174,6 +174,11 @@ void Player::update_player_bullet_collision_detection(){
 						float ex = e->get_x() + e->get_hitbox_w() * 0.5f;
 						float ey = e->get_y() + e->get_hitbox_h() * 0.5f;
 						itemMgr->spawn_item(ex, ey, ITEM_POWER_SMALL, 2);
+						// Convert all enemy bullets on screen to P-items
+						// (catches midboss & non-spellcard boss deaths)
+						if (e->bulletManager != NULL) {
+							e->bulletManager->convert_all_to_p_items(itemMgr);
+						}
 					}
 					e->deactivate();
 				}

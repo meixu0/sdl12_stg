@@ -9,7 +9,7 @@
     {
       "id": 0,
       "name": "月符「ムーンライトレイ」",
-      "hp": 1200,
+      "hp": 12000,
       "timeout": 38,
       "patterns": [
         {
@@ -62,10 +62,18 @@
         }
       ],
       "difficulty": {
-        "easy": { "hp": 800 },
-        "normal": { "hp": 1200 },
-        "hard": { "hp": 1600 },
-        "lunatic": { "hp": 2000 }
+        "easy": {
+          "hp": 8000
+        },
+        "normal": {
+          "hp": 12000
+        },
+        "hard": {
+          "hp": 16000
+        },
+        "lunatic": {
+          "hp": 20000
+        }
       }
     }
   ]

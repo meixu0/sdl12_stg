@@ -926,8 +926,8 @@
       }
     },
     "midboss_daiyousei": {
-      "_desc": "Midboss (ECL patterns)",
-      "hp": 15000,
+      "_desc": "Midboss (ECL patterns) HPx10",
+      "hp": 150000,
       "hitbox": [
         24,
         24
@@ -1167,16 +1167,16 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 9000
+          "hp": 90000
         },
         "normal": {
-          "hp": 15000
+          "hp": 150000
         },
         "hard": {
-          "hp": 20200
+          "hp": 202000
         },
         "lunatic": {
-          "hp": 25500
+          "hp": 255000
         }
       },
       "flags": [

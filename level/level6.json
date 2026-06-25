@@ -138,8 +138,8 @@
       }
     },
     "midboss_remilia": {
-      "_desc": "Midboss (ECL patterns)",
-      "hp": 23000,
+      "_desc": "Midboss (ECL patterns) HPx10",
+      "hp": 230000,
       "hitbox": [
         24,
         24
@@ -231,16 +231,16 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 13800
+          "hp": 138000
         },
         "normal": {
-          "hp": 23000
+          "hp": 230000
         },
         "hard": {
-          "hp": 31000
+          "hp": 310000
         },
         "lunatic": {
-          "hp": 39100
+          "hp": 391000
         }
       },
       "flags": [

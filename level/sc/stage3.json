@@ -9,7 +9,7 @@
       "id": 0,
       "name": "操符「乙女文楽」",
       "scName": "操符「乙女文楽」",
-      "hp": 5000,
+      "hp": 50000,
       "timeout": 50,
       "patterns": [
         {
@@ -486,19 +486,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 3000,
+          "hp": 30000,
           "timeout": 50
         },
         "normal": {
-          "hp": 5000,
+          "hp": 50000,
           "timeout": 50
         },
         "hard": {
-          "hp": 6700,
+          "hp": 67000,
           "timeout": 50
         },
         "lunatic": {
-          "hp": 8500,
+          "hp": 85000,
           "timeout": 50
         }
       }
@@ -507,7 +507,7 @@
       "id": 1,
       "name": "蒼符「博愛の仏蘭西人形」",
       "scName": "蒼符「博愛の仏蘭西人形」",
-      "hp": 5000,
+      "hp": 50000,
       "timeout": 50,
       "patterns": [
         {
@@ -802,19 +802,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 3000,
+          "hp": 30000,
           "timeout": 50
         },
         "normal": {
-          "hp": 5000,
+          "hp": 50000,
           "timeout": 50
         },
         "hard": {
-          "hp": 6700,
+          "hp": 67000,
           "timeout": 50
         },
         "lunatic": {
-          "hp": 8500,
+          "hp": 85000,
           "timeout": 50
         }
       }
@@ -823,7 +823,7 @@
       "id": 2,
       "name": "蒼符「博愛のオルレアン人形」",
       "scName": "蒼符「博愛のオルレアン人形」",
-      "hp": 5000,
+      "hp": 50000,
       "timeout": 50,
       "patterns": [
         {
@@ -1118,19 +1118,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 3000,
+          "hp": 30000,
           "timeout": 50
         },
         "normal": {
-          "hp": 5000,
+          "hp": 50000,
           "timeout": 50
         },
         "hard": {
-          "hp": 6700,
+          "hp": 67000,
           "timeout": 50
         },
         "lunatic": {
-          "hp": 8500,
+          "hp": 85000,
           "timeout": 50
         }
       }
@@ -1139,7 +1139,7 @@
       "id": 3,
       "name": "紅符「紅毛の和蘭人形」",
       "scName": "紅符「紅毛の和蘭人形」",
-      "hp": 4400,
+      "hp": 44000,
       "timeout": 60,
       "patterns": [
         {
@@ -1349,19 +1349,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 2600,
+          "hp": 26000,
           "timeout": 60
         },
         "normal": {
-          "hp": 4400,
+          "hp": 44000,
           "timeout": 60
         },
         "hard": {
-          "hp": 5900,
+          "hp": 59000,
           "timeout": 60
         },
         "lunatic": {
-          "hp": 7400,
+          "hp": 74000,
           "timeout": 60
         }
       }
@@ -1370,7 +1370,7 @@
       "id": 4,
       "name": "白符「白亜の露西亜人形」",
       "scName": "白符「白亜の露西亜人形」",
-      "hp": 5000,
+      "hp": 50000,
       "timeout": 60,
       "patterns": [
         {
@@ -1580,19 +1580,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 3000,
+          "hp": 30000,
           "timeout": 60
         },
         "normal": {
-          "hp": 5000,
+          "hp": 50000,
           "timeout": 60
         },
         "hard": {
-          "hp": 6700,
+          "hp": 67000,
           "timeout": 60
         },
         "lunatic": {
-          "hp": 8500,
+          "hp": 85000,
           "timeout": 60
         }
       }
@@ -1601,7 +1601,7 @@
       "id": 5,
       "name": "闇符「霧の倫敦人形」",
       "scName": "闇符「霧の倫敦人形」",
-      "hp": 5000,
+      "hp": 50000,
       "timeout": 45,
       "patterns": [
         {
@@ -1811,19 +1811,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 3000,
+          "hp": 30000,
           "timeout": 45
         },
         "normal": {
-          "hp": 5000,
+          "hp": 50000,
           "timeout": 45
         },
         "hard": {
-          "hp": 6700,
+          "hp": 67000,
           "timeout": 45
         },
         "lunatic": {
-          "hp": 8500,
+          "hp": 85000,
           "timeout": 45
         }
       }
@@ -1832,7 +1832,7 @@
       "id": 6,
       "name": "廻符「輪廻の西蔵人形」",
       "scName": "廻符「輪廻の西蔵人形」",
-      "hp": 5000,
+      "hp": 50000,
       "timeout": 45,
       "patterns": [
         {
@@ -1974,19 +1974,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 3000,
+          "hp": 30000,
           "timeout": 45
         },
         "normal": {
-          "hp": 5000,
+          "hp": 50000,
           "timeout": 45
         },
         "hard": {
-          "hp": 6700,
+          "hp": 67000,
           "timeout": 45
         },
         "lunatic": {
-          "hp": 8500,
+          "hp": 85000,
           "timeout": 45
         }
       }
@@ -1995,7 +1995,7 @@
       "id": 7,
       "name": "雅符「春の京人形」",
       "scName": "雅符「春の京人形」",
-      "hp": 5000,
+      "hp": 50000,
       "timeout": 45,
       "patterns": [
         {
@@ -2069,19 +2069,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 3000,
+          "hp": 30000,
           "timeout": 45
         },
         "normal": {
-          "hp": 5000,
+          "hp": 50000,
           "timeout": 45
         },
         "hard": {
-          "hp": 6700,
+          "hp": 67000,
           "timeout": 45
         },
         "lunatic": {
-          "hp": 8500,
+          "hp": 85000,
           "timeout": 45
         }
       }

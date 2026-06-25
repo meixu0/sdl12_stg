@@ -9,7 +9,7 @@
       "id": 0,
       "name": "騒符「ファントムディニング」",
       "scName": "騒符「ファントムディニング」",
-      "hp": 6000,
+      "hp": 60000,
       "timeout": 60,
       "patterns": [
         {
@@ -338,19 +338,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 3600,
+          "hp": 36000,
           "timeout": 60
         },
         "normal": {
-          "hp": 6000,
+          "hp": 60000,
           "timeout": 60
         },
         "hard": {
-          "hp": 8100,
+          "hp": 81000,
           "timeout": 60
         },
         "lunatic": {
-          "hp": 10200,
+          "hp": 102000,
           "timeout": 60
         }
       }
@@ -359,7 +359,7 @@
       "id": 1,
       "name": "騒符「ライブポルターガイスト」",
       "scName": "騒符「ライブポルターガイスト」",
-      "hp": 6000,
+      "hp": 60000,
       "timeout": 60,
       "patterns": [
         {
@@ -688,19 +688,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 3600,
+          "hp": 36000,
           "timeout": 60
         },
         "normal": {
-          "hp": 6000,
+          "hp": 60000,
           "timeout": 60
         },
         "hard": {
-          "hp": 8100,
+          "hp": 81000,
           "timeout": 60
         },
         "lunatic": {
-          "hp": 10200,
+          "hp": 102000,
           "timeout": 60
         }
       }
@@ -709,7 +709,7 @@
       "id": 2,
       "name": "弦奏「グァルネリ・デル・ジェス」",
       "scName": "弦奏「グァルネリ・デル・ジェス」",
-      "hp": 6000,
+      "hp": 60000,
       "timeout": 60,
       "patterns": [
         {
@@ -953,19 +953,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 3600,
+          "hp": 36000,
           "timeout": 60
         },
         "normal": {
-          "hp": 6000,
+          "hp": 60000,
           "timeout": 60
         },
         "hard": {
-          "hp": 8100,
+          "hp": 81000,
           "timeout": 60
         },
         "lunatic": {
-          "hp": 10200,
+          "hp": 102000,
           "timeout": 60
         }
       }
@@ -974,7 +974,7 @@
       "id": 3,
       "name": "神弦「ストラディヴァリウス」",
       "scName": "神弦「ストラディヴァリウス」",
-      "hp": 6000,
+      "hp": 60000,
       "timeout": 66,
       "patterns": [
         {
@@ -1150,19 +1150,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 3600,
+          "hp": 36000,
           "timeout": 66
         },
         "normal": {
-          "hp": 6000,
+          "hp": 60000,
           "timeout": 66
         },
         "hard": {
-          "hp": 8100,
+          "hp": 81000,
           "timeout": 66
         },
         "lunatic": {
-          "hp": 10200,
+          "hp": 102000,
           "timeout": 66
         }
       }
@@ -1171,7 +1171,7 @@
       "id": 4,
       "name": "偽弦「スードストラディヴァリウス」",
       "scName": "偽弦「スードストラディヴァリウス」",
-      "hp": 6000,
+      "hp": 60000,
       "timeout": 66,
       "patterns": [
         {
@@ -1347,19 +1347,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 3600,
+          "hp": 36000,
           "timeout": 66
         },
         "normal": {
-          "hp": 6000,
+          "hp": 60000,
           "timeout": 66
         },
         "hard": {
-          "hp": 8100,
+          "hp": 81000,
           "timeout": 66
         },
         "lunatic": {
-          "hp": 10200,
+          "hp": 102000,
           "timeout": 66
         }
       }
@@ -1368,7 +1368,7 @@
       "id": 5,
       "name": "騒葬「スティジャンリバーサイド」",
       "scName": "騒葬「スティジャンリバーサイド」",
-      "hp": 6000,
+      "hp": 60000,
       "timeout": 60,
       "patterns": [
         {
@@ -1408,19 +1408,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 3600,
+          "hp": 36000,
           "timeout": 60
         },
         "normal": {
-          "hp": 6000,
+          "hp": 60000,
           "timeout": 60
         },
         "hard": {
-          "hp": 8100,
+          "hp": 81000,
           "timeout": 60
         },
         "lunatic": {
-          "hp": 10200,
+          "hp": 102000,
           "timeout": 60
         }
       }
@@ -1429,7 +1429,7 @@
       "id": 6,
       "name": "大合葬「霊車コンチェルトグロッソ\\」",
       "scName": "大合葬「霊車コンチェルトグロッソ\\」",
-      "hp": 6000,
+      "hp": 60000,
       "timeout": 60,
       "patterns": [
         {
@@ -1758,19 +1758,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 3600,
+          "hp": 36000,
           "timeout": 60
         },
         "normal": {
-          "hp": 6000,
+          "hp": 60000,
           "timeout": 60
         },
         "hard": {
-          "hp": 8100,
+          "hp": 81000,
           "timeout": 60
         },
         "lunatic": {
-          "hp": 10200,
+          "hp": 102000,
           "timeout": 60
         }
       }
@@ -1779,7 +1779,7 @@
       "id": 7,
       "name": "大合葬「霊車コンチェルトグロッソ\\改」",
       "scName": "大合葬「霊車コンチェルトグロッソ\\改」",
-      "hp": 6000,
+      "hp": 60000,
       "timeout": 60,
       "patterns": [
         {
@@ -2108,19 +2108,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 3600,
+          "hp": 36000,
           "timeout": 60
         },
         "normal": {
-          "hp": 6000,
+          "hp": 60000,
           "timeout": 60
         },
         "hard": {
-          "hp": 8100,
+          "hp": 81000,
           "timeout": 60
         },
         "lunatic": {
-          "hp": 10200,
+          "hp": 102000,
           "timeout": 60
         }
       }
@@ -2129,7 +2129,7 @@
       "id": 8,
       "name": "大合葬「霊車コンチェルトグロッソ\\怪」",
       "scName": "大合葬「霊車コンチェルトグロッソ\\怪」",
-      "hp": 6000,
+      "hp": 60000,
       "timeout": 60,
       "patterns": [
         {
@@ -2458,19 +2458,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 3600,
+          "hp": 36000,
           "timeout": 60
         },
         "normal": {
-          "hp": 6000,
+          "hp": 60000,
           "timeout": 60
         },
         "hard": {
-          "hp": 8100,
+          "hp": 81000,
           "timeout": 60
         },
         "lunatic": {
-          "hp": 10200,
+          "hp": 102000,
           "timeout": 60
         }
       }
@@ -2479,7 +2479,7 @@
       "id": 9,
       "name": "管霊「ヒノファンタズム」",
       "scName": "管霊「ヒノファンタズム」",
-      "hp": 6000,
+      "hp": 60000,
       "timeout": 60,
       "patterns": [
         {
@@ -2570,19 +2570,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 3600,
+          "hp": 36000,
           "timeout": 60
         },
         "normal": {
-          "hp": 6000,
+          "hp": 60000,
           "timeout": 60
         },
         "hard": {
-          "hp": 8100,
+          "hp": 81000,
           "timeout": 60
         },
         "lunatic": {
-          "hp": 10200,
+          "hp": 102000,
           "timeout": 60
         }
       }
@@ -2591,7 +2591,7 @@
       "id": 10,
       "name": "冥管「ゴーストクリフォード」",
       "scName": "冥管「ゴーストクリフォード」",
-      "hp": 6000,
+      "hp": 60000,
       "timeout": 60,
       "patterns": [
         {
@@ -2682,19 +2682,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 3600,
+          "hp": 36000,
           "timeout": 60
         },
         "normal": {
-          "hp": 6000,
+          "hp": 60000,
           "timeout": 60
         },
         "hard": {
-          "hp": 8100,
+          "hp": 81000,
           "timeout": 60
         },
         "lunatic": {
-          "hp": 10200,
+          "hp": 102000,
           "timeout": 60
         }
       }
@@ -2703,7 +2703,7 @@
       "id": 11,
       "name": "管霊「ゴーストクリフォード」",
       "scName": "管霊「ゴーストクリフォード -Lunatic-」",
-      "hp": 6000,
+      "hp": 60000,
       "timeout": 60,
       "patterns": [
         {
@@ -2794,19 +2794,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 3600,
+          "hp": 36000,
           "timeout": 60
         },
         "normal": {
-          "hp": 6000,
+          "hp": 60000,
           "timeout": 60
         },
         "hard": {
-          "hp": 8100,
+          "hp": 81000,
           "timeout": 60
         },
         "lunatic": {
-          "hp": 10200,
+          "hp": 102000,
           "timeout": 60
         }
       }

@@ -9,7 +9,7 @@
       "id": 0,
       "name": "獄界剣「二百由旬の一閃」",
       "scName": "獄界剣「二百由旬の一閃」",
-      "hp": 8000,
+      "hp": 80000,
       "timeout": 55,
       "patterns": [
         {
@@ -202,19 +202,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 4800,
+          "hp": 48000,
           "timeout": 55
         },
         "normal": {
-          "hp": 8000,
+          "hp": 80000,
           "timeout": 55
         },
         "hard": {
-          "hp": 10800,
+          "hp": 108000,
           "timeout": 55
         },
         "lunatic": {
-          "hp": 13600,
+          "hp": 136000,
           "timeout": 55
         }
       }
@@ -223,7 +223,7 @@
       "id": 1,
       "name": "獄炎剣「業風閃影陣」",
       "scName": "獄炎剣「業風閃影陣」",
-      "hp": 8000,
+      "hp": 80000,
       "timeout": 55,
       "patterns": [
         {
@@ -416,19 +416,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 4800,
+          "hp": 48000,
           "timeout": 55
         },
         "normal": {
-          "hp": 8000,
+          "hp": 80000,
           "timeout": 55
         },
         "hard": {
-          "hp": 10800,
+          "hp": 108000,
           "timeout": 55
         },
         "lunatic": {
-          "hp": 13600,
+          "hp": 136000,
           "timeout": 55
         }
       }
@@ -437,7 +437,7 @@
       "id": 2,
       "name": "獄神剣「業風神閃斬」",
       "scName": "獄神剣「業風神閃斬」",
-      "hp": 8000,
+      "hp": 80000,
       "timeout": 55,
       "patterns": [
         {
@@ -630,19 +630,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 4800,
+          "hp": 48000,
           "timeout": 55
         },
         "normal": {
-          "hp": 8000,
+          "hp": 80000,
           "timeout": 55
         },
         "hard": {
-          "hp": 10800,
+          "hp": 108000,
           "timeout": 55
         },
         "lunatic": {
-          "hp": 13600,
+          "hp": 136000,
           "timeout": 55
         }
       }
@@ -651,7 +651,7 @@
       "id": 3,
       "name": "修羅剣「現世妄執」",
       "scName": "修羅剣「現世妄執」",
-      "hp": 8000,
+      "hp": 80000,
       "timeout": 60,
       "patterns": [
         {
@@ -810,19 +810,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 4800,
+          "hp": 48000,
           "timeout": 60
         },
         "normal": {
-          "hp": 8000,
+          "hp": 80000,
           "timeout": 60
         },
         "hard": {
-          "hp": 10800,
+          "hp": 108000,
           "timeout": 60
         },
         "lunatic": {
-          "hp": 13600,
+          "hp": 136000,
           "timeout": 60
         }
       }
@@ -831,7 +831,7 @@
       "id": 4,
       "name": "畜趣剣「無為無策の冥罰」",
       "scName": "畜趣剣「無為無策の冥罰」",
-      "hp": 8000,
+      "hp": 80000,
       "timeout": 60,
       "patterns": [
         {
@@ -956,19 +956,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 4800,
+          "hp": 48000,
           "timeout": 60
         },
         "normal": {
-          "hp": 8000,
+          "hp": 80000,
           "timeout": 60
         },
         "hard": {
-          "hp": 10800,
+          "hp": 108000,
           "timeout": 60
         },
         "lunatic": {
-          "hp": 13600,
+          "hp": 136000,
           "timeout": 60
         }
       }
@@ -977,7 +977,7 @@
       "id": 5,
       "name": "人界剣「悟入幻想」",
       "scName": "人界剣「悟入幻想」",
-      "hp": 8000,
+      "hp": 80000,
       "timeout": 66,
       "patterns": [
         {
@@ -1034,19 +1034,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 4800,
+          "hp": 48000,
           "timeout": 66
         },
         "normal": {
-          "hp": 8000,
+          "hp": 80000,
           "timeout": 66
         },
         "hard": {
-          "hp": 10800,
+          "hp": 108000,
           "timeout": 66
         },
         "lunatic": {
-          "hp": 13600,
+          "hp": 136000,
           "timeout": 66
         }
       }
@@ -1055,7 +1055,7 @@
       "id": 6,
       "name": "人世剣「大悟顕晦」",
       "scName": "人世剣「大悟顕晦」",
-      "hp": 8000,
+      "hp": 80000,
       "timeout": 66,
       "patterns": [
         {
@@ -1112,19 +1112,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 4800,
+          "hp": 48000,
           "timeout": 66
         },
         "normal": {
-          "hp": 8000,
+          "hp": 80000,
           "timeout": 66
         },
         "hard": {
-          "hp": 10800,
+          "hp": 108000,
           "timeout": 66
         },
         "lunatic": {
-          "hp": 13600,
+          "hp": 136000,
           "timeout": 66
         }
       }
@@ -1133,7 +1133,7 @@
       "id": 7,
       "name": "人神剣「俗諦常住」",
       "scName": "人神剣「俗諦常住」",
-      "hp": 8000,
+      "hp": 80000,
       "timeout": 66,
       "patterns": [
         {
@@ -1190,19 +1190,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 4800,
+          "hp": 48000,
           "timeout": 66
         },
         "normal": {
-          "hp": 8000,
+          "hp": 80000,
           "timeout": 66
         },
         "hard": {
-          "hp": 10800,
+          "hp": 108000,
           "timeout": 66
         },
         "lunatic": {
-          "hp": 13600,
+          "hp": 136000,
           "timeout": 66
         }
       }

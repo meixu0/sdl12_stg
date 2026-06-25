@@ -9,7 +9,7 @@
       "id": 0,
       "name": "六道剣「一念無量劫」",
       "scName": "六道剣「一念無量劫」",
-      "hp": 12000,
+      "hp": 120000,
       "timeout": 40,
       "patterns": [
         {
@@ -83,19 +83,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 7200,
+          "hp": 72000,
           "timeout": 40
         },
         "normal": {
-          "hp": 12000,
+          "hp": 120000,
           "timeout": 40
         },
         "hard": {
-          "hp": 16200,
+          "hp": 162000,
           "timeout": 40
         },
         "lunatic": {
-          "hp": 20400,
+          "hp": 204000,
           "timeout": 40
         }
       }
@@ -104,7 +104,7 @@
       "id": 1,
       "name": "亡郷「亡我郷 -さまよえる魂-」",
       "scName": "亡郷「亡我郷 -さまよえる魂-」",
-      "hp": 12000,
+      "hp": 120000,
       "timeout": 65,
       "patterns": [
         {
@@ -751,19 +751,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 7200,
+          "hp": 72000,
           "timeout": 65
         },
         "normal": {
-          "hp": 12000,
+          "hp": 120000,
           "timeout": 65
         },
         "hard": {
-          "hp": 16200,
+          "hp": 162000,
           "timeout": 65
         },
         "lunatic": {
-          "hp": 20400,
+          "hp": 204000,
           "timeout": 65
         }
       }
@@ -772,7 +772,7 @@
       "id": 2,
       "name": "亡郷「亡我郷 -宿罪-」",
       "scName": "亡郷「亡我郷 -宿罪-」",
-      "hp": 12000,
+      "hp": 120000,
       "timeout": 65,
       "patterns": [
         {
@@ -1419,19 +1419,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 7200,
+          "hp": 72000,
           "timeout": 65
         },
         "normal": {
-          "hp": 12000,
+          "hp": 120000,
           "timeout": 65
         },
         "hard": {
-          "hp": 16200,
+          "hp": 162000,
           "timeout": 65
         },
         "lunatic": {
-          "hp": 20400,
+          "hp": 204000,
           "timeout": 65
         }
       }
@@ -1440,7 +1440,7 @@
       "id": 3,
       "name": "亡郷「亡我郷 -道無き道-」",
       "scName": "亡郷「亡我郷 -道無き道-」",
-      "hp": 12000,
+      "hp": 120000,
       "timeout": 65,
       "patterns": [
         {
@@ -2087,19 +2087,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 7200,
+          "hp": 72000,
           "timeout": 65
         },
         "normal": {
-          "hp": 12000,
+          "hp": 120000,
           "timeout": 65
         },
         "hard": {
-          "hp": 16200,
+          "hp": 162000,
           "timeout": 65
         },
         "lunatic": {
-          "hp": 20400,
+          "hp": 204000,
           "timeout": 65
         }
       }
@@ -2108,7 +2108,7 @@
       "id": 4,
       "name": "亡郷「亡我郷 -自尽-」",
       "scName": "亡郷「亡我郷 -自尽-」",
-      "hp": 12000,
+      "hp": 120000,
       "timeout": 65,
       "patterns": [
         {
@@ -2755,19 +2755,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 7200,
+          "hp": 72000,
           "timeout": 65
         },
         "normal": {
-          "hp": 12000,
+          "hp": 120000,
           "timeout": 65
         },
         "hard": {
-          "hp": 16200,
+          "hp": 162000,
           "timeout": 65
         },
         "lunatic": {
-          "hp": 20400,
+          "hp": 204000,
           "timeout": 65
         }
       }
@@ -2776,7 +2776,7 @@
       "id": 5,
       "name": "亡舞「生者必滅の理 -眩惑-」",
       "scName": "亡舞「生者必滅の理 -眩惑-」",
-      "hp": 12000,
+      "hp": 120000,
       "timeout": 65,
       "patterns": [
         {
@@ -2990,19 +2990,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 7200,
+          "hp": 72000,
           "timeout": 65
         },
         "normal": {
-          "hp": 12000,
+          "hp": 120000,
           "timeout": 65
         },
         "hard": {
-          "hp": 16200,
+          "hp": 162000,
           "timeout": 65
         },
         "lunatic": {
-          "hp": 20400,
+          "hp": 204000,
           "timeout": 65
         }
       }
@@ -3011,7 +3011,7 @@
       "id": 6,
       "name": "亡舞「生者必滅の理 -死蝶-」",
       "scName": "亡舞「生者必滅の理 -死蝶-」",
-      "hp": 12000,
+      "hp": 120000,
       "timeout": 65,
       "patterns": [
         {
@@ -3225,19 +3225,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 7200,
+          "hp": 72000,
           "timeout": 65
         },
         "normal": {
-          "hp": 12000,
+          "hp": 120000,
           "timeout": 65
         },
         "hard": {
-          "hp": 16200,
+          "hp": 162000,
           "timeout": 65
         },
         "lunatic": {
-          "hp": 20400,
+          "hp": 204000,
           "timeout": 65
         }
       }
@@ -3246,7 +3246,7 @@
       "id": 7,
       "name": "亡舞「生者必滅の理 -毒蛾-」",
       "scName": "亡舞「生者必滅の理 -毒蛾-」",
-      "hp": 12000,
+      "hp": 120000,
       "timeout": 65,
       "patterns": [
         {
@@ -3460,19 +3460,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 7200,
+          "hp": 72000,
           "timeout": 65
         },
         "normal": {
-          "hp": 12000,
+          "hp": 120000,
           "timeout": 65
         },
         "hard": {
-          "hp": 16200,
+          "hp": 162000,
           "timeout": 65
         },
         "lunatic": {
-          "hp": 20400,
+          "hp": 204000,
           "timeout": 65
         }
       }
@@ -3481,7 +3481,7 @@
       "id": 8,
       "name": "亡舞「生者必滅の理 -魔境-」",
       "scName": "亡舞「生者必滅の理 -魔境-」",
-      "hp": 12000,
+      "hp": 120000,
       "timeout": 65,
       "patterns": [
         {
@@ -3695,19 +3695,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 7200,
+          "hp": 72000,
           "timeout": 65
         },
         "normal": {
-          "hp": 12000,
+          "hp": 120000,
           "timeout": 65
         },
         "hard": {
-          "hp": 16200,
+          "hp": 162000,
           "timeout": 65
         },
         "lunatic": {
-          "hp": 20400,
+          "hp": 204000,
           "timeout": 65
         }
       }
@@ -3716,7 +3716,7 @@
       "id": 9,
       "name": "華霊「ゴーストバタフライ」",
       "scName": "華霊「ゴーストバタフライ」",
-      "hp": 12000,
+      "hp": 120000,
       "timeout": 65,
       "patterns": [
         {
@@ -3811,19 +3811,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 7200,
+          "hp": 72000,
           "timeout": 65
         },
         "normal": {
-          "hp": 12000,
+          "hp": 120000,
           "timeout": 65
         },
         "hard": {
-          "hp": 16200,
+          "hp": 162000,
           "timeout": 65
         },
         "lunatic": {
-          "hp": 20400,
+          "hp": 204000,
           "timeout": 65
         }
       }
@@ -3832,7 +3832,7 @@
       "id": 10,
       "name": "華霊「スワローテイルバタフライ」",
       "scName": "華霊「スワローテイルバタフライ」",
-      "hp": 12000,
+      "hp": 120000,
       "timeout": 65,
       "patterns": [
         {
@@ -3927,19 +3927,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 7200,
+          "hp": 72000,
           "timeout": 65
         },
         "normal": {
-          "hp": 12000,
+          "hp": 120000,
           "timeout": 65
         },
         "hard": {
-          "hp": 16200,
+          "hp": 162000,
           "timeout": 65
         },
         "lunatic": {
-          "hp": 20400,
+          "hp": 204000,
           "timeout": 65
         }
       }
@@ -3948,7 +3948,7 @@
       "id": 11,
       "name": "華霊「ディープルーティドバタフライ」",
       "scName": "華霊「ディープルーティドバタフライ」",
-      "hp": 12000,
+      "hp": 120000,
       "timeout": 65,
       "patterns": [
         {
@@ -4043,19 +4043,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 7200,
+          "hp": 72000,
           "timeout": 65
         },
         "normal": {
-          "hp": 12000,
+          "hp": 120000,
           "timeout": 65
         },
         "hard": {
-          "hp": 16200,
+          "hp": 162000,
           "timeout": 65
         },
         "lunatic": {
-          "hp": 20400,
+          "hp": 204000,
           "timeout": 65
         }
       }
@@ -4064,7 +4064,7 @@
       "id": 12,
       "name": "華霊「バタフライディルージョン」",
       "scName": "華霊「バタフライディルージョン」",
-      "hp": 12000,
+      "hp": 120000,
       "timeout": 65,
       "patterns": [
         {
@@ -4159,19 +4159,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 7200,
+          "hp": 72000,
           "timeout": 65
         },
         "normal": {
-          "hp": 12000,
+          "hp": 120000,
           "timeout": 65
         },
         "hard": {
-          "hp": 16200,
+          "hp": 162000,
           "timeout": 65
         },
         "lunatic": {
-          "hp": 20400,
+          "hp": 204000,
           "timeout": 65
         }
       }
@@ -4180,7 +4180,7 @@
       "id": 13,
       "name": "桜符「完全なる墨染の桜 -封印-」",
       "scName": "桜符「完全なる墨染の桜 -封印-」",
-      "hp": 12000,
+      "hp": 120000,
       "timeout": 99,
       "patterns": [
         {
@@ -4203,19 +4203,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 7200,
+          "hp": 72000,
           "timeout": 99
         },
         "normal": {
-          "hp": 12000,
+          "hp": 120000,
           "timeout": 99
         },
         "hard": {
-          "hp": 16200,
+          "hp": 162000,
           "timeout": 99
         },
         "lunatic": {
-          "hp": 20400,
+          "hp": 204000,
           "timeout": 99
         }
       }
@@ -4224,7 +4224,7 @@
       "id": 14,
       "name": "桜符「完全なる墨染の桜 -亡我-」",
       "scName": "桜符「完全なる墨染の桜 -亡我-」",
-      "hp": 12000,
+      "hp": 120000,
       "timeout": 99,
       "patterns": [
         {
@@ -4247,19 +4247,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 7200,
+          "hp": 72000,
           "timeout": 99
         },
         "normal": {
-          "hp": 12000,
+          "hp": 120000,
           "timeout": 99
         },
         "hard": {
-          "hp": 16200,
+          "hp": 162000,
           "timeout": 99
         },
         "lunatic": {
-          "hp": 20400,
+          "hp": 204000,
           "timeout": 99
         }
       }
@@ -4268,7 +4268,7 @@
       "id": 15,
       "name": "桜符「完全なる墨染の桜 -春眠-」",
       "scName": "桜符「完全なる墨染の桜 -春眠-」",
-      "hp": 12000,
+      "hp": 120000,
       "timeout": 99,
       "patterns": [
         {
@@ -4291,19 +4291,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 7200,
+          "hp": 72000,
           "timeout": 99
         },
         "normal": {
-          "hp": 12000,
+          "hp": 120000,
           "timeout": 99
         },
         "hard": {
-          "hp": 16200,
+          "hp": 162000,
           "timeout": 99
         },
         "lunatic": {
-          "hp": 20400,
+          "hp": 204000,
           "timeout": 99
         }
       }
@@ -4312,7 +4312,7 @@
       "id": 16,
       "name": "桜符「完全なる墨染の桜 -開花-」",
       "scName": "桜符「完全なる墨染の桜 -開花-」",
-      "hp": 12000,
+      "hp": 120000,
       "timeout": 99,
       "patterns": [
         {
@@ -4335,19 +4335,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 7200,
+          "hp": 72000,
           "timeout": 99
         },
         "normal": {
-          "hp": 12000,
+          "hp": 120000,
           "timeout": 99
         },
         "hard": {
-          "hp": 16200,
+          "hp": 162000,
           "timeout": 99
         },
         "lunatic": {
-          "hp": 20400,
+          "hp": 204000,
           "timeout": 99
         }
       }

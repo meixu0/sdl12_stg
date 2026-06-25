@@ -9,7 +9,7 @@
       "id": 0,
       "name": "鬼符「青鬼赤鬼」",
       "scName": "鬼符「青鬼赤鬼」",
-      "hp": 15000,
+      "hp": 150000,
       "timeout": 55,
       "patterns": [
         {
@@ -49,19 +49,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 9000,
+          "hp": 90000,
           "timeout": 55
         },
         "normal": {
-          "hp": 15000,
+          "hp": 150000,
           "timeout": 55
         },
         "hard": {
-          "hp": 20200,
+          "hp": 202000,
           "timeout": 55
         },
         "lunatic": {
-          "hp": 25500,
+          "hp": 255000,
           "timeout": 55
         }
       }
@@ -70,7 +70,7 @@
       "id": 1,
       "name": "鬼神「飛翔毘沙門天」",
       "scName": "鬼神「飛翔毘沙門天」",
-      "hp": 15000,
+      "hp": 150000,
       "timeout": 55,
       "patterns": [
         {
@@ -93,19 +93,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 9000,
+          "hp": 90000,
           "timeout": 55
         },
         "normal": {
-          "hp": 15000,
+          "hp": 150000,
           "timeout": 55
         },
         "hard": {
-          "hp": 20200,
+          "hp": 202000,
           "timeout": 55
         },
         "lunatic": {
-          "hp": 25500,
+          "hp": 255000,
           "timeout": 55
         }
       }
@@ -114,7 +114,7 @@
       "id": 2,
       "name": "式神「仙狐思念」",
       "scName": "式神「仙狐思念」",
-      "hp": 15000,
+      "hp": 150000,
       "timeout": 60,
       "patterns": [
         {
@@ -1244,19 +1244,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 9000,
+          "hp": 90000,
           "timeout": 60
         },
         "normal": {
-          "hp": 15000,
+          "hp": 150000,
           "timeout": 60
         },
         "hard": {
-          "hp": 20200,
+          "hp": 202000,
           "timeout": 60
         },
         "lunatic": {
-          "hp": 25500,
+          "hp": 255000,
           "timeout": 60
         }
       }
@@ -1265,7 +1265,7 @@
       "id": 3,
       "name": "式神「十\\二神将の宴」",
       "scName": "式神「十\\二神将の宴」",
-      "hp": 15000,
+      "hp": 150000,
       "timeout": 65,
       "patterns": [
         {
@@ -1970,19 +1970,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 9000,
+          "hp": 90000,
           "timeout": 65
         },
         "normal": {
-          "hp": 15000,
+          "hp": 150000,
           "timeout": 65
         },
         "hard": {
-          "hp": 20200,
+          "hp": 202000,
           "timeout": 65
         },
         "lunatic": {
-          "hp": 25500,
+          "hp": 255000,
           "timeout": 65
         }
       }
@@ -1991,7 +1991,7 @@
       "id": 4,
       "name": "式輝「狐狸妖怪レーザー」",
       "scName": "式輝「狐狸妖怪レーザー」",
-      "hp": 15000,
+      "hp": 150000,
       "timeout": 75,
       "patterns": [
         {
@@ -2543,19 +2543,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 9000,
+          "hp": 90000,
           "timeout": 75
         },
         "normal": {
-          "hp": 15000,
+          "hp": 150000,
           "timeout": 75
         },
         "hard": {
-          "hp": 20200,
+          "hp": 202000,
           "timeout": 75
         },
         "lunatic": {
-          "hp": 25500,
+          "hp": 255000,
           "timeout": 75
         }
       }
@@ -2564,7 +2564,7 @@
       "id": 5,
       "name": "式輝「四面楚歌チャーミング」",
       "scName": "式輝「四面楚歌チャーミング」",
-      "hp": 15000,
+      "hp": 150000,
       "timeout": 65,
       "patterns": [
         {
@@ -3014,19 +3014,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 9000,
+          "hp": 90000,
           "timeout": 65
         },
         "normal": {
-          "hp": 15000,
+          "hp": 150000,
           "timeout": 65
         },
         "hard": {
-          "hp": 20200,
+          "hp": 202000,
           "timeout": 65
         },
         "lunatic": {
-          "hp": 25500,
+          "hp": 255000,
           "timeout": 65
         }
       }
@@ -3035,7 +3035,7 @@
       "id": 6,
       "name": "式輝「プリンセス天狐　-Illusion-」",
       "scName": "式輝「プリンセス天狐　-Illusion-」",
-      "hp": 15000,
+      "hp": 150000,
       "timeout": 75,
       "patterns": [
         {
@@ -3417,19 +3417,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 9000,
+          "hp": 90000,
           "timeout": 75
         },
         "normal": {
-          "hp": 15000,
+          "hp": 150000,
           "timeout": 75
         },
         "hard": {
-          "hp": 20200,
+          "hp": 202000,
           "timeout": 75
         },
         "lunatic": {
-          "hp": 25500,
+          "hp": 255000,
           "timeout": 75
         }
       }
@@ -3438,7 +3438,7 @@
       "id": 7,
       "name": "式弾「アルティメットブディスト」",
       "scName": "式弾「アルティメットブディスト」",
-      "hp": 15000,
+      "hp": 150000,
       "timeout": 80,
       "patterns": [
         {
@@ -3718,19 +3718,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 9000,
+          "hp": 90000,
           "timeout": 80
         },
         "normal": {
-          "hp": 15000,
+          "hp": 150000,
           "timeout": 80
         },
         "hard": {
-          "hp": 20200,
+          "hp": 202000,
           "timeout": 80
         },
         "lunatic": {
-          "hp": 25500,
+          "hp": 255000,
           "timeout": 80
         }
       }
@@ -3739,7 +3739,7 @@
       "id": 8,
       "name": "式弾「ユーニラタルコンタクト」",
       "scName": "式弾「ユーニラタルコンタクト」",
-      "hp": 15000,
+      "hp": 150000,
       "timeout": 80,
       "patterns": [
         {
@@ -4002,19 +4002,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 9000,
+          "hp": 90000,
           "timeout": 80
         },
         "normal": {
-          "hp": 15000,
+          "hp": 150000,
           "timeout": 80
         },
         "hard": {
-          "hp": 20200,
+          "hp": 202000,
           "timeout": 80
         },
         "lunatic": {
-          "hp": 25500,
+          "hp": 255000,
           "timeout": 80
         }
       }
@@ -4023,7 +4023,7 @@
       "id": 9,
       "name": "式神「橙」",
       "scName": "式神「橙」",
-      "hp": 15000,
+      "hp": 150000,
       "timeout": 80,
       "patterns": [
         {
@@ -4267,19 +4267,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 9000,
+          "hp": 90000,
           "timeout": 80
         },
         "normal": {
-          "hp": 15000,
+          "hp": 150000,
           "timeout": 80
         },
         "hard": {
-          "hp": 20200,
+          "hp": 202000,
           "timeout": 80
         },
         "lunatic": {
-          "hp": 25500,
+          "hp": 255000,
           "timeout": 80
         }
       }
@@ -4288,7 +4288,7 @@
       "id": 10,
       "name": "「狐狗狸さんの契約」",
       "scName": "「狐狗狸さんの契約」",
-      "hp": 15000,
+      "hp": 150000,
       "timeout": 76,
       "patterns": [
         {
@@ -4464,19 +4464,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 9000,
+          "hp": 90000,
           "timeout": 76
         },
         "normal": {
-          "hp": 15000,
+          "hp": 150000,
           "timeout": 76
         },
         "hard": {
-          "hp": 20200,
+          "hp": 202000,
           "timeout": 76
         },
         "lunatic": {
-          "hp": 25500,
+          "hp": 255000,
           "timeout": 76
         }
       }
@@ -4485,7 +4485,7 @@
       "id": 11,
       "name": "幻神「飯綱権現降臨」",
       "scName": "幻神「飯綱権現降臨」",
-      "hp": 15000,
+      "hp": 150000,
       "timeout": 120,
       "patterns": [
         {
@@ -4542,19 +4542,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 9000,
+          "hp": 90000,
           "timeout": 120
         },
         "normal": {
-          "hp": 15000,
+          "hp": 150000,
           "timeout": 120
         },
         "hard": {
-          "hp": 20200,
+          "hp": 202000,
           "timeout": 120
         },
         "lunatic": {
-          "hp": 25500,
+          "hp": 255000,
           "timeout": 120
         }
       }

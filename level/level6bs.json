@@ -6,245 +6,194 @@
   },
   "behaviors": {
     "boss_remilia": {
-      "_desc": "Stage 6 Boss — Remilia Scarlet with 5 TH07 spellcards",
-      "hp": 18000,
-      "hitbox": [48, 48],
+      "_desc": "Stage 6 boss — Remilia (ECL non-spellcard phases)",
+      "hp": 180000,
+      "hitbox": [
+        48,
+        48
+      ],
       "score": 100000,
       "move": {
         "type": "position_interp",
         "duration": 60,
         "easing": 4,
-        "target": [192, 128]
+        "target": [
+          192,
+          128
+        ]
       },
-      "move_bounds": [32, 48, 352, 128],
+      "move_bounds": [
+        32,
+        48,
+        352,
+        128
+      ],
       "death": {
         "itemDrop": "full_power"
       },
       "phases": [
         {
-          "_desc": "Phase 1 — Ring aimed opening salvo",
-          "duration": 2.0,
+          "_desc": "ECL Sub10 — 1 patterns",
+          "duration": 6.0,
           "patterns": [
             {
               "time": 0,
-              "interval": 0.15,
-              "burst": 1,
-              "pattern": {
-                "type": "ring_aimed",
-                "mainCnt": 1,
-                "subCnt": 12,
-                "speed": 140,
-                "speedStep": 60,
-                "spread": 0,
-                "angleStep": 0.5236,
-                "spriteID": 2,
-                "hitboxRadius": 4,
-                "lifeTime": 5
-              }
-            }
-          ]
-        },
-        {
-          "_desc": "Phase 2 — Fan aimed barrage",
-          "duration": 2.0,
-          "patterns": [
-            {
-              "time": 0,
-              "interval": 0.2,
-              "burst": 1,
-              "pattern": {
-                "type": "fan_aimed",
-                "mainCnt": 1,
-                "subCnt": 5,
-                "speed": 160,
-                "speedStep": 50,
-                "spread": 0.6981,
-                "angleStep": 0.1745,
-                "spriteID": 0,
-                "hitboxRadius": 4,
-                "lifeTime": 6
-              }
-            },
-            {
-              "time": 0.1,
-              "interval": 0.2,
-              "burst": 1,
-              "pattern": {
-                "type": "fan_aimed",
-                "mainCnt": 1,
-                "subCnt": 5,
-                "speed": 120,
-                "speedStep": 50,
-                "spread": 0.6981,
-                "angleStep": 0.1745,
-                "spriteID": 2,
-                "hitboxRadius": 4,
-                "lifeTime": 6
-              }
-            }
-          ]
-        },
-        {
-          "_desc": "Phase 3 — Expanding ring pairs",
-          "duration": 2.0,
-          "patterns": [
-            {
-              "time": 0,
-              "interval": 0.2,
-              "burst": 1,
-              "pattern": {
-                "type": "ring",
-                "mainCnt": 8,
-                "subCnt": 1,
-                "speed": 120,
-                "speedStep": 50,
-                "spread": 0,
-                "angleStep": 0.1963,
-                "spriteID": 2,
-                "hitboxRadius": 4,
-                "lifeTime": 6
-              }
-            },
-            {
-              "time": 0,
-              "interval": 0.2,
+              "interval": 0.017,
               "burst": 1,
               "pattern": {
                 "type": "ring",
                 "mainCnt": 6,
-                "subCnt": 1,
-                "speed": 200,
-                "speedStep": 60,
-                "spread": 0.1309,
-                "angleStep": 0.1963,
-                "spriteID": 0,
-                "hitboxRadius": 4,
-                "lifeTime": 6
+                "subCnt": 6,
+                "spriteID": 3,
+                "hitboxRadius": 1,
+                "speed": 105.0,
+                "speedStep": 30.0,
+                "spread": 0.0,
+                "angleStep": 1.5707964,
+                "lifeTime": 5.0
               }
             }
-          ]
+          ],
+          "move_after": [
+            192,
+            64
+          ],
+          "move_duration": 30,
+          "move_easing": 4
         },
         {
-          "_desc": "Phase 4 — Ring aimed plus fan aimed combo",
-          "duration": 2.0,
+          "_desc": "Move to position",
+          "duration": 1.0,
+          "patterns": []
+        },
+        {
+          "_desc": "ECL Sub12 — 1 patterns",
+          "duration": 6.0,
           "patterns": [
             {
               "time": 0,
-              "interval": 0.25,
-              "burst": 1,
-              "pattern": {
-                "type": "ring_aimed",
-                "mainCnt": 1,
-                "subCnt": 8,
-                "speed": 180,
-                "speedStep": 70,
-                "spread": 0,
-                "angleStep": 0.3927,
-                "spriteID": 2,
-                "hitboxRadius": 4,
-                "lifeTime": 5
-              }
-            },
-            {
-              "time": 0.125,
-              "interval": 0.25,
-              "burst": 1,
-              "pattern": {
-                "type": "fan_aimed",
-                "mainCnt": 1,
-                "subCnt": 3,
-                "speed": 250,
-                "speedStep": 80,
-                "spread": 0.5236,
-                "angleStep": 0.2618,
-                "spriteID": 0,
-                "hitboxRadius": 4,
-                "lifeTime": 6
-              }
-            }
-          ]
-        },
-        {
-          "_desc": "Phase 5 — Dense ring and aimed fan barrage",
-          "duration": 2.5,
-          "patterns": [
-            {
-              "time": 0,
-              "interval": 0.2,
-              "burst": 1,
-              "pattern": {
-                "type": "ring",
-                "mainCnt": 10,
-                "subCnt": 1,
-                "speed": 150,
-                "speedStep": 60,
-                "spread": 0,
-                "angleStep": 0.1571,
-                "spriteID": 2,
-                "hitboxRadius": 4,
-                "lifeTime": 6
-              }
-            },
-            {
-              "time": 0.1,
-              "interval": 0.4,
-              "burst": 1,
-              "pattern": {
-                "type": "fan_aimed",
-                "mainCnt": 1,
-                "subCnt": 7,
-                "speed": 200,
-                "speedStep": 70,
-                "spread": 0.8727,
-                "angleStep": 0.2182,
-                "spriteID": 0,
-                "hitboxRadius": 4,
-                "lifeTime": 5
-              }
-            }
-          ]
-        },
-        {
-          "_desc": "Phase 6 — Recovery pattern before loop",
-          "duration": 1.5,
-          "patterns": [
-            {
-              "time": 0,
-              "interval": 0.3,
+              "interval": 0.017,
               "burst": 1,
               "pattern": {
                 "type": "ring",
                 "mainCnt": 6,
-                "subCnt": 1,
-                "speed": 100,
-                "speedStep": 40,
-                "spread": 0,
-                "angleStep": 0.2618,
-                "spriteID": 2,
-                "hitboxRadius": 4,
-                "lifeTime": 6
+                "subCnt": 2,
+                "spriteID": 3,
+                "hitboxRadius": 1,
+                "speed": 105.0,
+                "speedStep": 30.0,
+                "spread": 0.0,
+                "angleStep": 1.5707964,
+                "lifeTime": 5.0
+              }
+            }
+          ],
+          "move_after": [
+            192,
+            144
+          ],
+          "move_duration": 30,
+          "move_easing": 4
+        },
+        {
+          "_desc": "Move to position",
+          "duration": 1.0,
+          "patterns": []
+        },
+        {
+          "_desc": "ECL Sub14 — 1 patterns",
+          "duration": 6.0,
+          "patterns": [
+            {
+              "time": 0,
+              "interval": 0.017,
+              "burst": 1,
+              "pattern": {
+                "type": "ring",
+                "mainCnt": 6,
+                "subCnt": 6,
+                "spriteID": 3,
+                "hitboxRadius": 1,
+                "speed": 105.0,
+                "speedStep": 30.0,
+                "spread": 0.0,
+                "angleStep": 1.5707964,
+                "lifeTime": 5.0
+              }
+            }
+          ],
+          "move_after": [
+            96,
+            128
+          ],
+          "move_duration": 30,
+          "move_easing": 4
+        },
+        {
+          "_desc": "Move to position",
+          "duration": 1.0,
+          "patterns": []
+        },
+        {
+          "_desc": "ECL Sub16 — 1 patterns",
+          "duration": 6.0,
+          "patterns": [
+            {
+              "time": 0,
+              "interval": 0.017,
+              "burst": 1,
+              "pattern": {
+                "type": "ring",
+                "mainCnt": 6,
+                "subCnt": 2,
+                "spriteID": 3,
+                "hitboxRadius": 1,
+                "speed": 105.0,
+                "speedStep": 30.0,
+                "spread": 0.0,
+                "angleStep": 1.5707964,
+                "lifeTime": 5.0
               }
             }
           ]
+        },
+        {
+          "_desc": "Pause before phase cycle restart",
+          "duration": 2.0,
+          "patterns": []
         }
       ],
       "difficulty": {
-        "easy": { "hp": 10800 },
-        "normal": { "hp": 18000 },
-        "hard": { "hp": 22000 },
-        "lunatic": { "hp": 27000 }
+        "easy": {
+          "hp": 108000
+        },
+        "normal": {
+          "hp": 180000
+        },
+        "hard": {
+          "hp": 220000
+        },
+        "lunatic": {
+          "hp": 270000
+        }
       }
     },
     "boss_final": {
-      "_desc": "Stage 6 Boss — Final death phase",
-      "hp": 4000,
-      "hitbox": [24, 24],
+      "_desc": "Stage 6 Boss — Final death phase HPx10",
+      "hp": 40000,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 100000,
       "move": {
         "type": "position_interp",
         "duration": 60,
         "easing": 4,
-        "target": [192, 160]
+        "target": [
+          192,
+          160
+        ]
       },
       "death": {
         "itemDrop": "full_power"
@@ -256,7 +205,10 @@
       "delta": 0.0,
       "cmd": "spawn",
       "behavior": "boss_remilia",
-      "pos": [192, -32]
+      "pos": [
+        192,
+        -32
+      ]
     },
     {
       "delta": 2.0,

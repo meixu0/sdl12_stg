@@ -9,7 +9,7 @@
       "id": 0,
       "name": "霜符「フロストコラムス」",
       "scName": "霜符「フロストコラムス」",
-      "hp": 2100,
+      "hp": 21000,
       "timeout": 38,
       "patterns": [
         {
@@ -270,19 +270,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 1200,
+          "hp": 12000,
           "timeout": 38
         },
         "normal": {
-          "hp": 2100,
+          "hp": 21000,
           "timeout": 38
         },
         "hard": {
-          "hp": 2800,
+          "hp": 28000,
           "timeout": 38
         },
         "lunatic": {
-          "hp": 3500,
+          "hp": 35000,
           "timeout": 38
         }
       }
@@ -291,7 +291,7 @@
       "id": 1,
       "name": "寒符「リンガリングコールド」",
       "scName": "寒符「リンガリングコールド」",
-      "hp": 2000,
+      "hp": 20000,
       "timeout": 50,
       "patterns": [
         {
@@ -688,19 +688,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 1200,
+          "hp": 12000,
           "timeout": 50
         },
         "normal": {
-          "hp": 2000,
+          "hp": 20000,
           "timeout": 50
         },
         "hard": {
-          "hp": 2700,
+          "hp": 27000,
           "timeout": 50
         },
         "lunatic": {
-          "hp": 3400,
+          "hp": 34000,
           "timeout": 50
         }
       }
@@ -709,7 +709,7 @@
       "id": 2,
       "name": "冬符「フラワーウィザラウェイ」",
       "scName": "冬符「フラワーウィザラウェイ」",
-      "hp": 2000,
+      "hp": 20000,
       "timeout": 50,
       "patterns": [
         {
@@ -800,19 +800,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 1200,
+          "hp": 12000,
           "timeout": 50
         },
         "normal": {
-          "hp": 2000,
+          "hp": 20000,
           "timeout": 50
         },
         "hard": {
-          "hp": 2700,
+          "hp": 27000,
           "timeout": 50
         },
         "lunatic": {
-          "hp": 3400,
+          "hp": 34000,
           "timeout": 50
         }
       }

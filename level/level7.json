@@ -675,8 +675,8 @@
       }
     },
     "midboss_flandre": {
-      "_desc": "Midboss (ECL patterns)",
-      "hp": 25000,
+      "_desc": "Midboss (ECL patterns) HPx10",
+      "hp": 250000,
       "hitbox": [
         24,
         24
@@ -755,16 +755,16 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 15000
+          "hp": 150000
         },
         "normal": {
-          "hp": 25000
+          "hp": 250000
         },
         "hard": {
-          "hp": 33700
+          "hp": 337000
         },
         "lunatic": {
-          "hp": 42500
+          "hp": 425000
         }
       },
       "flags": [

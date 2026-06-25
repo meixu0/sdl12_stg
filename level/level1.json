@@ -353,8 +353,8 @@
       }
     },
     "boss_rumia": {
-      "_desc": "Midboss (ECL patterns)",
-      "hp": 13000,
+      "_desc": "Midboss (ECL patterns) HPx10",
+      "hp": 130000,
       "hitbox": [
         24,
         24
@@ -450,16 +450,16 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 7800
+          "hp": 78000
         },
         "normal": {
-          "hp": 13000
+          "hp": 130000
         },
         "hard": {
-          "hp": 17500
+          "hp": 175000
         },
         "lunatic": {
-          "hp": 22100
+          "hp": 221000
         }
       }
     },

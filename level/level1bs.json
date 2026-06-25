@@ -6,17 +6,28 @@
   },
   "behaviors": {
     "boss_rumia": {
-      "_desc": "ECL Sub20 — Rumia boss with full phase sequence (Sub21-Sub26)",
-      "hp": 10000,
-      "hitbox": [48, 48],
+      "_desc": "ECL Sub20 — Rumia boss with full phase sequence (Sub21-Sub26) HPx10",
+      "hp": 100000,
+      "hitbox": [
+        48,
+        48
+      ],
       "score": 100000,
       "move": {
         "type": "position_interp",
         "duration": 60,
         "easing": 4,
-        "target": [192, 128]
+        "target": [
+          192,
+          128
+        ]
       },
-      "move_bounds": [32, 48, 352, 128],
+      "move_bounds": [
+        32,
+        48,
+        352,
+        128
+      ],
       "death": {
         "itemDrop": "full_power"
       },
@@ -25,19 +36,111 @@
           "_desc": "Sub25 — Complex alternating rings (60 frames)",
           "duration": 1.0,
           "patterns": [
-            {"time": 0, "interval": 0.067, "burst": 1, "pattern": {"type": "ring", "mainCnt": 6, "subCnt": 3, "speed": 150, "speedStep": 60, "angleStep": -0.196, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}},
-            {"time": 0, "interval": 0.067, "burst": 1, "pattern": {"type": "ring", "mainCnt": 6, "subCnt": 3, "speed": 150, "speedStep": 60, "spread": 0.196, "angleStep": -0.196, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}},
-            {"time": 0, "interval": 0.067, "burst": 1, "pattern": {"type": "ring", "mainCnt": 6, "subCnt": 3, "speed": 120, "speedStep": 60, "angleStep": 0.196, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}},
-            {"time": 0, "interval": 0.067, "burst": 1, "pattern": {"type": "ring", "mainCnt": 6, "subCnt": 3, "speed": 120, "speedStep": 60, "spread": 0.196, "angleStep": 0.196, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}},
-            {"time": 0, "interval": 0.067, "burst": 1, "pattern": {"type": "ring", "mainCnt": 4, "subCnt": 3, "speed": 210, "spriteID": 5, "hitboxRadius": 4, "lifeTime": 5}},
-            {"time": 0, "interval": 0.067, "burst": 1, "pattern": {"type": "ring", "mainCnt": 4, "subCnt": 3, "speed": 210, "spread": 0.393, "spriteID": 5, "hitboxRadius": 4, "lifeTime": 5}}
+            {
+              "time": 0,
+              "interval": 0.067,
+              "burst": 1,
+              "pattern": {
+                "type": "ring",
+                "mainCnt": 6,
+                "subCnt": 3,
+                "speed": 150,
+                "speedStep": 60,
+                "angleStep": -0.196,
+                "spriteID": 6,
+                "hitboxRadius": 4,
+                "lifeTime": 5
+              }
+            },
+            {
+              "time": 0,
+              "interval": 0.067,
+              "burst": 1,
+              "pattern": {
+                "type": "ring",
+                "mainCnt": 6,
+                "subCnt": 3,
+                "speed": 150,
+                "speedStep": 60,
+                "spread": 0.196,
+                "angleStep": -0.196,
+                "spriteID": 6,
+                "hitboxRadius": 4,
+                "lifeTime": 5
+              }
+            },
+            {
+              "time": 0,
+              "interval": 0.067,
+              "burst": 1,
+              "pattern": {
+                "type": "ring",
+                "mainCnt": 6,
+                "subCnt": 3,
+                "speed": 120,
+                "speedStep": 60,
+                "angleStep": 0.196,
+                "spriteID": 6,
+                "hitboxRadius": 4,
+                "lifeTime": 5
+              }
+            },
+            {
+              "time": 0,
+              "interval": 0.067,
+              "burst": 1,
+              "pattern": {
+                "type": "ring",
+                "mainCnt": 6,
+                "subCnt": 3,
+                "speed": 120,
+                "speedStep": 60,
+                "spread": 0.196,
+                "angleStep": 0.196,
+                "spriteID": 6,
+                "hitboxRadius": 4,
+                "lifeTime": 5
+              }
+            },
+            {
+              "time": 0,
+              "interval": 0.067,
+              "burst": 1,
+              "pattern": {
+                "type": "ring",
+                "mainCnt": 4,
+                "subCnt": 3,
+                "speed": 210,
+                "spriteID": 5,
+                "hitboxRadius": 4,
+                "lifeTime": 5
+              }
+            },
+            {
+              "time": 0,
+              "interval": 0.067,
+              "burst": 1,
+              "pattern": {
+                "type": "ring",
+                "mainCnt": 4,
+                "subCnt": 3,
+                "speed": 210,
+                "spread": 0.393,
+                "spriteID": 5,
+                "hitboxRadius": 4,
+                "lifeTime": 5
+              }
+            }
           ]
         },
         {
           "_desc": "Move to (256, 160) over 60 frames, decelerate",
           "duration": 1.0,
           "patterns": [],
-          "move_after": [256, 160],
+          "move_after": [
+            256,
+            160
+          ],
           "move_duration": 60,
           "move_easing": 4
         },
@@ -45,25 +148,112 @@
           "_desc": "Sub22 — Random spread (110 frames)",
           "duration": 1.83,
           "patterns": [
-            {"time": 0, "interval": 0.1, "burst": 1, "pattern": {"type": "spread", "mainCnt": 8, "subCnt": 1, "speed": 90, "spread": 3.14159, "angleStep": -3.14159, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 4}},
-            {"time": 0.02, "interval": 0.1, "burst": 1, "pattern": {"type": "spread", "mainCnt": 8, "subCnt": 1, "speed": 90, "spread": 3.14159, "angleStep": -3.14159, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 4}}
+            {
+              "time": 0,
+              "interval": 0.1,
+              "burst": 1,
+              "pattern": {
+                "type": "spread",
+                "mainCnt": 8,
+                "subCnt": 1,
+                "speed": 90,
+                "spread": 3.14159,
+                "angleStep": -3.14159,
+                "spriteID": 6,
+                "hitboxRadius": 4,
+                "lifeTime": 4
+              }
+            },
+            {
+              "time": 0.02,
+              "interval": 0.1,
+              "burst": 1,
+              "pattern": {
+                "type": "spread",
+                "mainCnt": 8,
+                "subCnt": 1,
+                "speed": 90,
+                "spread": 3.14159,
+                "angleStep": -3.14159,
+                "spriteID": 6,
+                "hitboxRadius": 4,
+                "lifeTime": 4
+              }
+            }
           ]
         },
         {
           "_desc": "Sub21 — Double ring barrage (60 frames)",
           "duration": 1.0,
           "patterns": [
-            {"time": 0, "interval": 0.1, "burst": 1, "pattern": {"type": "ring", "mainCnt": 12, "subCnt": 1, "speed": 90, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}},
-            {"time": 0, "interval": 0.1, "burst": 1, "pattern": {"type": "ring", "mainCnt": 12, "subCnt": 1, "speed": 60, "spread": 0.112, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}},
-            {"time": 0.017, "interval": 0.1, "burst": 1, "pattern": {"type": "ring", "mainCnt": 8, "subCnt": 1, "speed": 150, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}},
-            {"time": 0.017, "interval": 0.1, "burst": 1, "pattern": {"type": "ring", "mainCnt": 8, "subCnt": 1, "speed": 120, "spread": 0.112, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}}
+            {
+              "time": 0,
+              "interval": 0.1,
+              "burst": 1,
+              "pattern": {
+                "type": "ring",
+                "mainCnt": 12,
+                "subCnt": 1,
+                "speed": 90,
+                "spriteID": 6,
+                "hitboxRadius": 4,
+                "lifeTime": 5
+              }
+            },
+            {
+              "time": 0,
+              "interval": 0.1,
+              "burst": 1,
+              "pattern": {
+                "type": "ring",
+                "mainCnt": 12,
+                "subCnt": 1,
+                "speed": 60,
+                "spread": 0.112,
+                "spriteID": 6,
+                "hitboxRadius": 4,
+                "lifeTime": 5
+              }
+            },
+            {
+              "time": 0.017,
+              "interval": 0.1,
+              "burst": 1,
+              "pattern": {
+                "type": "ring",
+                "mainCnt": 8,
+                "subCnt": 1,
+                "speed": 150,
+                "spriteID": 6,
+                "hitboxRadius": 4,
+                "lifeTime": 5
+              }
+            },
+            {
+              "time": 0.017,
+              "interval": 0.1,
+              "burst": 1,
+              "pattern": {
+                "type": "ring",
+                "mainCnt": 8,
+                "subCnt": 1,
+                "speed": 120,
+                "spread": 0.112,
+                "spriteID": 6,
+                "hitboxRadius": 4,
+                "lifeTime": 5
+              }
+            }
           ]
         },
         {
           "_desc": "Move to (128, 160) over 90 frames, linear",
           "duration": 1.5,
           "patterns": [],
-          "move_after": [128, 160],
+          "move_after": [
+            128,
+            160
+          ],
           "move_duration": 90,
           "move_easing": 0
         },
@@ -71,26 +261,124 @@
           "_desc": "Sub23 — Player-aimed circle (90 frames, interval 40f)",
           "duration": 1.5,
           "patterns": [
-            {"time": 0, "interval": 0.667, "burst": 1, "pattern": {"type": "aimed", "mainCnt": 10, "subCnt": 1, "speed": 90, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 4}}
+            {
+              "time": 0,
+              "interval": 0.667,
+              "burst": 1,
+              "pattern": {
+                "type": "aimed",
+                "mainCnt": 10,
+                "subCnt": 1,
+                "speed": 90,
+                "spriteID": 6,
+                "hitboxRadius": 4,
+                "lifeTime": 4
+              }
+            }
           ]
         },
         {
           "_desc": "Sub24 — Ring barrage (60 frames)",
           "duration": 1.0,
           "patterns": [
-            {"time": 0, "interval": 0.1, "burst": 1, "pattern": {"type": "ring", "mainCnt": 8, "subCnt": 3, "speed": 150, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}},
-            {"time": 0, "interval": 0.1, "burst": 1, "pattern": {"type": "ring", "mainCnt": 10, "subCnt": 3, "speed": 120, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}},
-            {"time": 0, "interval": 0.1, "burst": 1, "pattern": {"type": "ring", "mainCnt": 4, "subCnt": 3, "speed": 150, "spread": 0.196, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}},
-            {"time": 0, "interval": 0.1, "burst": 1, "pattern": {"type": "ring", "mainCnt": 8, "subCnt": 3, "speed": 120, "spread": 0.196, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}},
-            {"time": 0, "interval": 0.1, "burst": 1, "pattern": {"type": "ring", "mainCnt": 4, "subCnt": 3, "speed": 210, "spread": 0.589, "spriteID": 5, "hitboxRadius": 4, "lifeTime": 5}},
-            {"time": 0, "interval": 0.1, "burst": 1, "pattern": {"type": "ring", "mainCnt": 4, "subCnt": 3, "speed": 210, "spread": 0.982, "spriteID": 5, "hitboxRadius": 4, "lifeTime": 5}}
+            {
+              "time": 0,
+              "interval": 0.1,
+              "burst": 1,
+              "pattern": {
+                "type": "ring",
+                "mainCnt": 8,
+                "subCnt": 3,
+                "speed": 150,
+                "spriteID": 6,
+                "hitboxRadius": 4,
+                "lifeTime": 5
+              }
+            },
+            {
+              "time": 0,
+              "interval": 0.1,
+              "burst": 1,
+              "pattern": {
+                "type": "ring",
+                "mainCnt": 10,
+                "subCnt": 3,
+                "speed": 120,
+                "spriteID": 6,
+                "hitboxRadius": 4,
+                "lifeTime": 5
+              }
+            },
+            {
+              "time": 0,
+              "interval": 0.1,
+              "burst": 1,
+              "pattern": {
+                "type": "ring",
+                "mainCnt": 4,
+                "subCnt": 3,
+                "speed": 150,
+                "spread": 0.196,
+                "spriteID": 6,
+                "hitboxRadius": 4,
+                "lifeTime": 5
+              }
+            },
+            {
+              "time": 0,
+              "interval": 0.1,
+              "burst": 1,
+              "pattern": {
+                "type": "ring",
+                "mainCnt": 8,
+                "subCnt": 3,
+                "speed": 120,
+                "spread": 0.196,
+                "spriteID": 6,
+                "hitboxRadius": 4,
+                "lifeTime": 5
+              }
+            },
+            {
+              "time": 0,
+              "interval": 0.1,
+              "burst": 1,
+              "pattern": {
+                "type": "ring",
+                "mainCnt": 4,
+                "subCnt": 3,
+                "speed": 210,
+                "spread": 0.589,
+                "spriteID": 5,
+                "hitboxRadius": 4,
+                "lifeTime": 5
+              }
+            },
+            {
+              "time": 0,
+              "interval": 0.1,
+              "burst": 1,
+              "pattern": {
+                "type": "ring",
+                "mainCnt": 4,
+                "subCnt": 3,
+                "speed": 210,
+                "spread": 0.982,
+                "spriteID": 5,
+                "hitboxRadius": 4,
+                "lifeTime": 5
+              }
+            }
           ]
         },
         {
           "_desc": "Move back to center (192, 128) over 60 frames, decelerate",
           "duration": 1.0,
           "patterns": [],
-          "move_after": [192, 128],
+          "move_after": [
+            192,
+            128
+          ],
           "move_duration": 60,
           "move_easing": 4
         },
@@ -101,16 +389,27 @@
         }
       ],
       "difficulty": {
-        "easy": { "hp": 6000 },
-        "normal": { "hp": 10000 },
-        "hard": { "hp": 12000 },
-        "lunatic": { "hp": 15000 }
+        "easy": {
+          "hp": 60000
+        },
+        "normal": {
+          "hp": 100000
+        },
+        "hard": {
+          "hp": 120000
+        },
+        "lunatic": {
+          "hp": 150000
+        }
       }
     },
     "boss_final": {
-      "_desc": "ECL Sub27 — Boss death drop",
-      "hp": 2400,
-      "hitbox": [24, 24],
+      "_desc": "ECL Sub27 — Boss death drop HPx10",
+      "hp": 24000,
+      "hitbox": [
+        24,
+        24
+      ],
       "score": 100000,
       "move": {
         "type": "linear",
@@ -127,7 +426,10 @@
       "delta": 0.0,
       "cmd": "spawn",
       "behavior": "boss_rumia",
-      "pos": [-32, 32]
+      "pos": [
+        -32,
+        32
+      ]
     },
     {
       "delta": 2.0,

@@ -9,7 +9,7 @@
       "id": 0,
       "name": "式神「前鬼後鬼の守護」",
       "scName": "式神「前鬼後鬼の守護」",
-      "hp": 18000,
+      "hp": 180000,
       "timeout": 60,
       "patterns": [
         {
@@ -49,19 +49,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 10800,
+          "hp": 108000,
           "timeout": 60
         },
         "normal": {
-          "hp": 18000,
+          "hp": 180000,
           "timeout": 60
         },
         "hard": {
-          "hp": 24300,
+          "hp": 243000,
           "timeout": 60
         },
         "lunatic": {
-          "hp": 30600,
+          "hp": 306000,
           "timeout": 60
         }
       }
@@ -70,7 +70,7 @@
       "id": 1,
       "name": "式神「憑依荼吉尼天」",
       "scName": "式神「憑依荼吉尼天」",
-      "hp": 18000,
+      "hp": 180000,
       "timeout": 55,
       "patterns": [
         {
@@ -93,19 +93,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 10800,
+          "hp": 108000,
           "timeout": 55
         },
         "normal": {
-          "hp": 18000,
+          "hp": 180000,
           "timeout": 55
         },
         "hard": {
-          "hp": 24300,
+          "hp": 243000,
           "timeout": 55
         },
         "lunatic": {
-          "hp": 30600,
+          "hp": 306000,
           "timeout": 55
         }
       }
@@ -114,7 +114,7 @@
       "id": 2,
       "name": "結界「夢と現の呪」",
       "scName": "結界「夢と現の呪」",
-      "hp": 18000,
+      "hp": 180000,
       "timeout": 60,
       "patterns": [
         {
@@ -1178,19 +1178,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 10800,
+          "hp": 108000,
           "timeout": 60
         },
         "normal": {
-          "hp": 18000,
+          "hp": 180000,
           "timeout": 60
         },
         "hard": {
-          "hp": 24300,
+          "hp": 243000,
           "timeout": 60
         },
         "lunatic": {
-          "hp": 30600,
+          "hp": 306000,
           "timeout": 60
         }
       }
@@ -1199,7 +1199,7 @@
       "id": 3,
       "name": "結界「動と静の均衡」",
       "scName": "結界「動と静の均衡」",
-      "hp": 18000,
+      "hp": 180000,
       "timeout": 65,
       "patterns": [
         {
@@ -2025,19 +2025,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 10800,
+          "hp": 108000,
           "timeout": 65
         },
         "normal": {
-          "hp": 18000,
+          "hp": 180000,
           "timeout": 65
         },
         "hard": {
-          "hp": 24300,
+          "hp": 243000,
           "timeout": 65
         },
         "lunatic": {
-          "hp": 30600,
+          "hp": 306000,
           "timeout": 65
         }
       }
@@ -2046,7 +2046,7 @@
       "id": 4,
       "name": "結界「光と闇の網目」",
       "scName": "結界「光と闇の網目」",
-      "hp": 18000,
+      "hp": 180000,
       "timeout": 75,
       "patterns": [
         {
@@ -2804,19 +2804,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 10800,
+          "hp": 108000,
           "timeout": 75
         },
         "normal": {
-          "hp": 18000,
+          "hp": 180000,
           "timeout": 75
         },
         "hard": {
-          "hp": 24300,
+          "hp": 243000,
           "timeout": 75
         },
         "lunatic": {
-          "hp": 30600,
+          "hp": 306000,
           "timeout": 75
         }
       }
@@ -2825,7 +2825,7 @@
       "id": 5,
       "name": "罔両「ストレートとカーブの夢郷」",
       "scName": "罔両「ストレートとカーブの夢郷」",
-      "hp": 18000,
+      "hp": 180000,
       "timeout": 65,
       "patterns": [
         {
@@ -3447,19 +3447,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 10800,
+          "hp": 108000,
           "timeout": 65
         },
         "normal": {
-          "hp": 18000,
+          "hp": 180000,
           "timeout": 65
         },
         "hard": {
-          "hp": 24300,
+          "hp": 243000,
           "timeout": 65
         },
         "lunatic": {
-          "hp": 30600,
+          "hp": 306000,
           "timeout": 65
         }
       }
@@ -3468,7 +3468,7 @@
       "id": 6,
       "name": "罔両「八雲紫の神隠し」",
       "scName": "罔両「八雲紫の神隠し」",
-      "hp": 18000,
+      "hp": 180000,
       "timeout": 75,
       "patterns": [
         {
@@ -3988,19 +3988,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 10800,
+          "hp": 108000,
           "timeout": 75
         },
         "normal": {
-          "hp": 18000,
+          "hp": 180000,
           "timeout": 75
         },
         "hard": {
-          "hp": 24300,
+          "hp": 243000,
           "timeout": 75
         },
         "lunatic": {
-          "hp": 30600,
+          "hp": 306000,
           "timeout": 75
         }
       }
@@ -4009,7 +4009,7 @@
       "id": 7,
       "name": "罔両「禅寺に棲む妖蝶」",
       "scName": "罔両「禅寺に棲む妖蝶」",
-      "hp": 18000,
+      "hp": 180000,
       "timeout": 80,
       "patterns": [
         {
@@ -4427,19 +4427,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 10800,
+          "hp": 108000,
           "timeout": 80
         },
         "normal": {
-          "hp": 18000,
+          "hp": 180000,
           "timeout": 80
         },
         "hard": {
-          "hp": 24300,
+          "hp": 243000,
           "timeout": 80
         },
         "lunatic": {
-          "hp": 30600,
+          "hp": 306000,
           "timeout": 80
         }
       }
@@ -4448,7 +4448,7 @@
       "id": 8,
       "name": "魍魎「二重黒死蝶」",
       "scName": "魍魎「二重黒死蝶」",
-      "hp": 18000,
+      "hp": 180000,
       "timeout": 80,
       "patterns": [
         {
@@ -4812,19 +4812,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 10800,
+          "hp": 108000,
           "timeout": 80
         },
         "normal": {
-          "hp": 18000,
+          "hp": 180000,
           "timeout": 80
         },
         "hard": {
-          "hp": 24300,
+          "hp": 243000,
           "timeout": 80
         },
         "lunatic": {
-          "hp": 30600,
+          "hp": 306000,
           "timeout": 80
         }
       }
@@ -4833,7 +4833,7 @@
       "id": 9,
       "name": "式神「八雲藍」",
       "scName": "式神「八雲藍」",
-      "hp": 18000,
+      "hp": 180000,
       "timeout": 80,
       "patterns": [
         {
@@ -5196,19 +5196,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 10800,
+          "hp": 108000,
           "timeout": 80
         },
         "normal": {
-          "hp": 18000,
+          "hp": 180000,
           "timeout": 80
         },
         "hard": {
-          "hp": 24300,
+          "hp": 243000,
           "timeout": 80
         },
         "lunatic": {
-          "hp": 30600,
+          "hp": 306000,
           "timeout": 80
         }
       }
@@ -5217,7 +5217,7 @@
       "id": 10,
       "name": "「人間と妖怪の境界」",
       "scName": "「人間と妖怪の境界」",
-      "hp": 18000,
+      "hp": 180000,
       "timeout": 76,
       "patterns": [
         {
@@ -5512,19 +5512,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 10800,
+          "hp": 108000,
           "timeout": 76
         },
         "normal": {
-          "hp": 18000,
+          "hp": 180000,
           "timeout": 76
         },
         "hard": {
-          "hp": 24300,
+          "hp": 243000,
           "timeout": 76
         },
         "lunatic": {
-          "hp": 30600,
+          "hp": 306000,
           "timeout": 76
         }
       }
@@ -5533,7 +5533,7 @@
       "id": 11,
       "name": "結界「生と死の境界」",
       "scName": "結界「生と死の境界」",
-      "hp": 18000,
+      "hp": 180000,
       "timeout": 120,
       "patterns": [
         {
@@ -5709,19 +5709,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 10800,
+          "hp": 108000,
           "timeout": 120
         },
         "normal": {
-          "hp": 18000,
+          "hp": 180000,
           "timeout": 120
         },
         "hard": {
-          "hp": 24300,
+          "hp": 243000,
           "timeout": 120
         },
         "lunatic": {
-          "hp": 30600,
+          "hp": 306000,
           "timeout": 120
         }
       }
@@ -5730,7 +5730,7 @@
       "id": 12,
       "name": "紫奥義「弾幕結界」",
       "scName": "紫奥義「弾幕結界」",
-      "hp": 18000,
+      "hp": 180000,
       "timeout": 74,
       "patterns": [
         {
@@ -5821,19 +5821,19 @@
       ],
       "difficulty": {
         "easy": {
-          "hp": 10800,
+          "hp": 108000,
           "timeout": 74
         },
         "normal": {
-          "hp": 18000,
+          "hp": 180000,
           "timeout": 74
         },
         "hard": {
-          "hp": 24300,
+          "hp": 243000,
           "timeout": 74
         },
         "lunatic": {
-          "hp": 30600,
+          "hp": 306000,
           "timeout": 74
         }
       }
