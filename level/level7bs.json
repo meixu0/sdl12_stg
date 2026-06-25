@@ -5,20 +5,228 @@
   },
   "behaviors": {
     "boss_flandre": {
-      "_desc": "Boss flandre entry",
-      "hp": 16000,
+      "_desc": "Flandre Scarlet - Stage 7 Boss",
+      "hp": 22000,
       "hitbox": [
         48,
         48
       ],
       "score": 100000,
       "move": {
-        "type": "stop_and_go",
-        "speedX": 0,
-        "speedY": 30
+        "type": "position_interp",
+        "duration": 60,
+        "easing": 4,
+        "target": [
+          192,
+          128
+        ]
       },
+      "move_bounds": [
+        32,
+        48,
+        352,
+        128
+      ],
+      "phases": [
+        {
+          "duration": 5.0,
+          "move_duration": 30,
+          "move_easing": 4,
+          "move_after": [
+            192,
+            80
+          ],
+          "patterns": [
+            {
+              "time": 0,
+              "interval": 0.8,
+              "pattern": {
+                "type": "fan_aimed",
+                "mainCnt": 1,
+                "subCnt": 5,
+                "spread": 0.0,
+                "angleStep": 0.1745,
+                "speed": 120,
+                "speedStep": 60,
+                "spriteID": 2,
+                "hitboxRadius": 4,
+                "lifeTime": 6
+              }
+            },
+            {
+              "time": 0.4,
+              "interval": 0.8,
+              "pattern": {
+                "type": "ring_aimed",
+                "mainCnt": 1,
+                "subCnt": 1,
+                "spread": 0.0,
+                "angleStep": 0.0,
+                "speed": 200,
+                "speedStep": 80,
+                "spriteID": 1,
+                "hitboxRadius": 4,
+                "lifeTime": 6
+              }
+            }
+          ]
+        },
+        {
+          "duration": 5.0,
+          "move_duration": 30,
+          "move_easing": 4,
+          "move_after": [
+            288,
+            140
+          ],
+          "patterns": [
+            {
+              "time": 0,
+              "interval": 0.6,
+              "pattern": {
+                "type": "ring",
+                "mainCnt": 24,
+                "subCnt": 1,
+                "spread": 0,
+                "angleStep": 0.1309,
+                "speed": 140,
+                "speedStep": 50,
+                "spriteID": 2,
+                "hitboxRadius": 4,
+                "lifeTime": 6
+              }
+            },
+            {
+              "time": 0,
+              "interval": 1.2,
+              "pattern": {
+                "type": "fan_aimed",
+                "mainCnt": 1,
+                "subCnt": 3,
+                "spread": 0.0,
+                "angleStep": 0.2618,
+                "speed": 160,
+                "speedStep": 80,
+                "spriteID": 0,
+                "hitboxRadius": 4,
+                "lifeTime": 6
+              }
+            }
+          ]
+        },
+        {
+          "duration": 5.0,
+          "move_duration": 30,
+          "move_easing": 4,
+          "move_after": [
+            96,
+            140
+          ],
+          "patterns": [
+            {
+              "time": 0,
+              "interval": 0.5,
+              "pattern": {
+                "type": "ring_aimed",
+                "mainCnt": 2,
+                "subCnt": 1,
+                "spread": 0.0,
+                "angleStep": 0.1309,
+                "speed": 160,
+                "speedStep": 80,
+                "spriteID": 2,
+                "hitboxRadius": 4,
+                "lifeTime": 6
+              }
+            },
+            {
+              "time": 0,
+              "interval": 1.0,
+              "pattern": {
+                "type": "fan_aimed",
+                "mainCnt": 1,
+                "subCnt": 3,
+                "spread": 0.0,
+                "angleStep": 0.2618,
+                "speed": 100,
+                "speedStep": 60,
+                "spriteID": 1,
+                "hitboxRadius": 4,
+                "lifeTime": 6
+              }
+            }
+          ]
+        }
+      ],
       "death": {
         "itemDrop": "full_power"
+      },
+      "difficulty": {
+        "easy": {
+          "hp": 16000,
+          "move": {
+            "speed": 20
+          }
+        },
+        "normal": {
+          "hp": 22000,
+          "move": {
+            "speed": 30
+          }
+        },
+        "hard": {
+          "hp": 28000,
+          "move": {
+            "speed": 35
+          }
+        },
+        "lunatic": {
+          "hp": 36000,
+          "move": {
+            "speed": 40
+          }
+        }
+      }
+    },
+    "boss_final": {
+      "_desc": "Flandre final form",
+      "hp": 5000,
+      "hitbox": [
+        48,
+        48
+      ],
+      "score": 200000,
+      "move": {
+        "type": "position_interp",
+        "duration": 60,
+        "easing": 4,
+        "target": [
+          192,
+          140
+        ]
+      },
+      "move_bounds": [
+        32,
+        48,
+        352,
+        128
+      ],
+      "death": {
+        "itemDrop": "full_power"
+      },
+      "difficulty": {
+        "easy": {
+          "hp": 3000
+        },
+        "normal": {
+          "hp": 5000
+        },
+        "hard": {
+          "hp": 7000
+        },
+        "lunatic": {
+          "hp": 10000
+        }
       }
     }
   },
@@ -36,63 +244,42 @@
       "delta": 0.0,
       "cmd": "spellcard",
       "spellcard": "boss_flandre_phase1",
-      "hp": 2000,
+      "hp": 22000,
       "timeout": 45
     },
     {
       "delta": 0.0,
       "cmd": "spellcard",
       "spellcard": "boss_flandre_phase2",
-      "hp": 2000,
+      "hp": 5000,
       "timeout": 45
     },
     {
       "delta": 0.0,
       "cmd": "spellcard",
       "spellcard": "boss_flandre_phase3",
-      "hp": 2000,
+      "hp": 5000,
       "timeout": 45
     },
     {
       "delta": 0.0,
       "cmd": "spellcard",
       "spellcard": "boss_flandre_phase4",
-      "hp": 2000,
+      "hp": 5000,
       "timeout": 45
     },
     {
       "delta": 0.0,
       "cmd": "spellcard",
       "spellcard": "boss_flandre_phase5",
-      "hp": 2000,
+      "hp": 5000,
       "timeout": 45
     },
     {
       "delta": 0.0,
       "cmd": "spellcard",
       "spellcard": "boss_flandre_phase6",
-      "hp": 2000,
-      "timeout": 45
-    },
-    {
-      "delta": 0.0,
-      "cmd": "spellcard",
-      "spellcard": "boss_flandre_phase7",
-      "hp": 2000,
-      "timeout": 45
-    },
-    {
-      "delta": 0.0,
-      "cmd": "spellcard",
-      "spellcard": "boss_flandre_phase8",
-      "hp": 2000,
-      "timeout": 45
-    },
-    {
-      "delta": 0.0,
-      "cmd": "spellcard",
-      "spellcard": "boss_flandre_phase9",
-      "hp": 2000,
+      "hp": 5000,
       "timeout": 45
     },
     {
@@ -103,21 +290,153 @@
   ],
   "spellcards": {
     "boss_flandre_phase1": {
-      "name": "\"ïèu§ÌäÎÌ«  -Ó¯ÊÓv-v\"",
-      "hp": 2000,
+      "name": "禁弾「カタディオプトリック」",
+      "hp": 22000,
       "timeout": 45,
       "behavior": "boss_flandre_phase1",
       "patterns": [
         {
           "time": 0,
-          "interval": 1,
+          "interval": 0.6,
           "pattern": {
             "type": "ring",
-            "mainCnt": 64,
+            "mainCnt": 32,
             "subCnt": 1,
             "spread": 0,
+            "angleStep": 0.0491,
+            "speed": 180,
+            "speedStep": 60,
+            "spriteID": 2,
+            "hitboxRadius": 4,
+            "lifeTime": 6
+          }
+        },
+        {
+          "time": 0.3,
+          "interval": 0.6,
+          "pattern": {
+            "type": "ring_aimed",
+            "mainCnt": 1,
+            "subCnt": 1,
+            "spread": 0.0,
             "angleStep": 0.0,
-            "speed": 400,
+            "speed": 250,
+            "speedStep": 80,
+            "spriteID": 1,
+            "hitboxRadius": 4,
+            "lifeTime": 6
+          }
+        }
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 16000,
+          "patterns": {
+            "0": {
+              "interval": 0.8,
+              "pattern": {
+                "speed": 140
+              }
+            }
+          }
+        },
+        "normal": {
+          "hp": 22000
+        },
+        "hard": {
+          "hp": 28000,
+          "patterns": {
+            "0": {
+              "interval": 0.5,
+              "pattern": {
+                "speed": 220
+              }
+            }
+          }
+        },
+        "lunatic": {
+          "hp": 36000,
+          "patterns": {
+            "0": {
+              "interval": 0.4,
+              "pattern": {
+                "speed": 260
+              }
+            }
+          }
+        }
+      }
+    },
+    "boss_flandre_phase2": {
+      "name": "秘弾「そして誰もいなくなるか？」",
+      "hp": 5000,
+      "timeout": 45,
+      "behavior": "boss_flandre_phase2",
+      "patterns": [
+        {
+          "time": 0,
+          "interval": 0.7,
+          "pattern": {
+            "type": "fan_aimed",
+            "mainCnt": 1,
+            "subCnt": 7,
+            "spread": 0.0,
+            "angleStep": 0.1745,
+            "speed": 130,
+            "speedStep": 60,
+            "spriteID": 2,
+            "hitboxRadius": 4,
+            "lifeTime": 6
+          }
+        },
+        {
+          "time": 0.35,
+          "interval": 0.7,
+          "pattern": {
+            "type": "ring_aimed",
+            "mainCnt": 3,
+            "subCnt": 1,
+            "spread": 0.0,
+            "angleStep": 0.0873,
+            "speed": 200,
+            "speedStep": 80,
+            "spriteID": 1,
+            "hitboxRadius": 4,
+            "lifeTime": 6
+          }
+        }
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 3000
+        },
+        "normal": {
+          "hp": 5000
+        },
+        "hard": {
+          "hp": 7000
+        },
+        "lunatic": {
+          "hp": 9000
+        }
+      }
+    },
+    "boss_flandre_phase3": {
+      "name": "禁忌「フォーオブアカインド」",
+      "hp": 5000,
+      "timeout": 45,
+      "behavior": "boss_flandre_phase3",
+      "patterns": [
+        {
+          "time": 0,
+          "interval": 0.5,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 28,
+            "subCnt": 1,
+            "spread": 0,
+            "angleStep": 0.0749,
+            "speed": 160,
             "speedStep": 80,
             "spriteID": 2,
             "hitboxRadius": 4,
@@ -126,39 +445,177 @@
         },
         {
           "time": 0,
-          "interval": 1,
+          "interval": 1.0,
+          "pattern": {
+            "type": "fan_aimed",
+            "mainCnt": 4,
+            "subCnt": 1,
+            "spread": 0.0,
+            "angleStep": 0.1309,
+            "speed": 180,
+            "speedStep": 60,
+            "spriteID": 0,
+            "hitboxRadius": 4,
+            "lifeTime": 6
+          }
+        }
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 3000
+        },
+        "normal": {
+          "hp": 5000
+        },
+        "hard": {
+          "hp": 7000
+        },
+        "lunatic": {
+          "hp": 9000
+        }
+      }
+    },
+    "boss_flandre_phase4": {
+      "name": "禁弾「スターボウブレイク」",
+      "hp": 5000,
+      "timeout": 45,
+      "behavior": "boss_flandre_phase4",
+      "patterns": [
+        {
+          "time": 0,
+          "interval": 0.6,
+          "pattern": {
+            "type": "ring_aimed",
+            "mainCnt": 2,
+            "subCnt": 1,
+            "spread": 0.0,
+            "angleStep": 0.1047,
+            "speed": 190,
+            "speedStep": 80,
+            "spriteID": 2,
+            "hitboxRadius": 4,
+            "lifeTime": 6
+          }
+        },
+        {
+          "time": 0.3,
+          "interval": 1.2,
+          "pattern": {
+            "type": "fan_aimed",
+            "mainCnt": 1,
+            "subCnt": 12,
+            "spread": 0.0,
+            "angleStep": 0.1309,
+            "speed": 100,
+            "speedStep": 50,
+            "spriteID": 0,
+            "hitboxRadius": 4,
+            "lifeTime": 6
+          }
+        }
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 3000
+        },
+        "normal": {
+          "hp": 5000
+        },
+        "hard": {
+          "hp": 7000
+        },
+        "lunatic": {
+          "hp": 9000
+        }
+      }
+    },
+    "boss_flandre_phase5": {
+      "name": "禁弾「過去を刻む時計」",
+      "hp": 5000,
+      "timeout": 48,
+      "behavior": "boss_flandre_phase5",
+      "patterns": [
+        {
+          "time": 0,
+          "interval": 0.8,
           "pattern": {
             "type": "ring",
-            "mainCnt": 1,
+            "mainCnt": 40,
             "subCnt": 1,
             "spread": 0,
+            "angleStep": 0.0698,
+            "speed": 120,
+            "speedStep": 60,
+            "spriteID": 2,
+            "hitboxRadius": 4,
+            "lifeTime": 8
+          }
+        },
+        {
+          "time": 0.4,
+          "interval": 0.8,
+          "pattern": {
+            "type": "ring_aimed",
+            "mainCnt": 1,
+            "subCnt": 1,
+            "spread": 0.0,
             "angleStep": 0.0,
+            "speed": 280,
+            "speedStep": 100,
+            "spriteID": 1,
+            "hitboxRadius": 4,
+            "lifeTime": 6
+          }
+        }
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 3000
+        },
+        "normal": {
+          "hp": 5000
+        },
+        "hard": {
+          "hp": 7000
+        },
+        "lunatic": {
+          "hp": 9000
+        }
+      }
+    },
+    "boss_flandre_phase6": {
+      "name": "禁弾「ラストスタンド」",
+      "hp": 5000,
+      "timeout": 50,
+      "behavior": "boss_flandre_phase6",
+      "patterns": [
+        {
+          "time": 0,
+          "interval": 0.5,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 20,
+            "subCnt": 1,
+            "spread": 0,
+            "angleStep": 0.1571,
             "speed": 200,
             "speedStep": 80,
             "spriteID": 2,
             "hitboxRadius": 4,
             "lifeTime": 6
           }
-        }
-      ]
-    },
-    "boss_flandre_phase2": {
-      "name": "\"ïèuÎlÌçß  -ÅêÊS-v\"",
-      "hp": 2000,
-      "timeout": 45,
-      "behavior": "boss_flandre_phase2",
-      "patterns": [
+        },
         {
-          "time": 0,
-          "interval": 1,
+          "time": 0.25,
+          "interval": 0.5,
           "pattern": {
-            "type": "fan",
+            "type": "fan_aimed",
             "mainCnt": 1,
-            "subCnt": 3,
-            "spread": 0,
-            "angleStep": 0.3142,
-            "speed": 50,
-            "speedStep": 50,
+            "subCnt": 5,
+            "spread": 0.0,
+            "angleStep": 0.2094,
+            "speed": 150,
+            "speedStep": 70,
             "spriteID": 1,
             "hitboxRadius": 4,
             "lifeTime": 6
@@ -166,237 +623,35 @@
         },
         {
           "time": 0,
-          "interval": 1,
+          "interval": 1.0,
           "pattern": {
-            "type": "fan",
-            "mainCnt": 1,
-            "subCnt": 2,
-            "spread": 0,
-            "angleStep": 0.3142,
-            "speed": 50,
-            "speedStep": 50,
-            "spriteID": 1,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        }
-      ]
-    },
-    "boss_flandre_phase3": {
-      "name": "\"ïèuÌqÀL  -i½ü-v\"",
-      "hp": 2000,
-      "timeout": 45,
-      "behavior": "boss_flandre_phase3",
-      "patterns": [
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan",
-            "mainCnt": 2,
-            "subCnt": 80,
-            "spread": -1.5708,
-            "angleStep": 0.0561,
-            "speed": 300,
-            "speedStep": 150,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        }
-      ]
-    },
-    "boss_flandre_phase4": {
-      "name": "\"ïèuHÌeÌ}  -øFÌe-v\"",
-      "hp": 2000,
-      "timeout": 45,
-      "behavior": "boss_flandre_phase4",
-      "patterns": [
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "ring",
-            "mainCnt": 16,
-            "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.0491,
-            "speed": 100,
-            "speedStep": 50,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        }
-      ]
-    },
-    "boss_flandre_phase5": {
-      "name": "\"uiéÔµ  --v\"",
-      "hp": 2000,
-      "timeout": 45,
-      "behavior": "boss_flandre_phase5",
-      "patterns": [
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "ring",
-            "mainCnt": 56,
-            "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.0491,
-            "speed": 100,
-            "speedStep": 50,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        },
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan",
-            "mainCnt": 1,
-            "subCnt": 1,
-            "spread": 3.1416,
-            "angleStep": 0.0491,
-            "speed": 300,
-            "speedStep": 50,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        }
-      ]
-    },
-    "boss_flandre_phase6": {
-      "name": "\"uiéÔµ  -qÌ-v\"",
-      "hp": 2000,
-      "timeout": 45,
-      "behavior": "boss_flandre_phase6",
-      "patterns": [
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "ring",
-            "mainCnt": 48,
-            "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.0491,
-            "speed": 100,
-            "speedStep": 50,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        },
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "ring_aimed_variable",
-            "mainCnt": 1,
+            "type": "ring_aimed",
+            "mainCnt": 6,
             "subCnt": 1,
             "spread": 0.0,
-            "angleStep": 0.0491,
-            "speed": 100,
-            "speedStep": 50,
-            "spriteID": 2,
+            "angleStep": 0.0524,
+            "speed": 240,
+            "speedStep": 100,
+            "spriteID": 0,
             "hitboxRadius": 4,
             "lifeTime": 6
           }
         }
-      ]
-    },
-    "boss_flandre_phase7": {
-      "name": "\"uiéÔµ  -NÌ-v\"",
-      "hp": 2000,
-      "timeout": 45,
-      "behavior": "boss_flandre_phase7",
-      "patterns": [
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "ring",
-            "mainCnt": 8,
-            "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.0491,
-            "speed": 100,
-            "speedStep": 50,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        }
-      ]
-    },
-    "boss_flandre_phase8": {
-      "name": "\"uiéÔµ  -ÐÌ-v\"",
-      "hp": 2000,
-      "timeout": 45,
-      "behavior": "boss_flandre_phase8",
-      "patterns": [
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "ring",
-            "mainCnt": 48,
-            "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.0,
-            "speed": 500,
-            "speedStep": 50,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 3000
         },
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan",
-            "mainCnt": 0,
-            "subCnt": 1,
-            "spread": 3.1416,
-            "angleStep": 0.0491,
-            "speed": 300,
-            "speedStep": 50,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
+        "normal": {
+          "hp": 5000
+        },
+        "hard": {
+          "hp": 7000
+        },
+        "lunatic": {
+          "hp": 9000
         }
-      ]
-    },
-    "boss_flandre_phase9": {
-      "name": "\"uHÌ÷Cv\"",
-      "hp": 2000,
-      "timeout": 45,
-      "behavior": "boss_flandre_phase9",
-      "patterns": [
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "ring",
-            "mainCnt": 16,
-            "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.0491,
-            "speed": 250,
-            "speedStep": 50,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        }
-      ]
+      }
     }
   }
 }

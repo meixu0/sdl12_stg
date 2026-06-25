@@ -33,7 +33,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s7_Sub6": {
       "_desc": "ecldata7 Sub6",
@@ -63,7 +77,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s7_Sub10": {
       "_desc": "ecldata7 Sub10",
@@ -93,7 +121,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s7_Sub19": {
       "_desc": "ecldata7 Sub19",
@@ -318,7 +360,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s7_Sub68": {
       "_desc": "ecldata7 Sub68",
@@ -365,7 +421,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s7_Sub72": {
       "_desc": "ecldata7 Sub72",
@@ -396,7 +466,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s7_Sub73": {
       "_desc": "ecldata7 Sub73",
@@ -426,7 +510,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s7_Sub74": {
       "_desc": "ecldata7 Sub74",
@@ -456,7 +554,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s7_Sub78": {
       "_desc": "ecldata7 Sub78",
@@ -486,7 +598,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s7_Sub81": {
       "_desc": "ecldata7 Sub81",
@@ -532,7 +658,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "midboss_flandre": {
       "_desc": "Midboss midboss_flandre",
@@ -543,13 +683,40 @@
       ],
       "score": 100000,
       "move": {
-        "type": "stop_and_go",
-        "speedX": 0,
-        "speedY": 90
+        "type": "position_interp",
+        "duration": 60,
+        "easing": 4,
+        "target": [
+          192,
+          128
+        ]
       },
       "death": {
         "itemDrop": "full_power"
-      }
+      },
+      "move_bounds": [
+        32,
+        48,
+        352,
+        128
+      ],
+      "attack": [
+        {
+          "time": 0.5,
+          "interval": 1.5,
+          "pattern": {
+            "type": "fan_aimed",
+            "mainCnt": 3,
+            "subCnt": 1,
+            "spread": 0,
+            "angleStep": 0.2,
+            "speed": 120,
+            "spriteID": 6,
+            "hitboxRadius": 4,
+            "lifeTime": 5
+          }
+        }
+      ]
     }
   },
   "timeline": [

@@ -1,102 +1,121 @@
 {
   "meta": {
     "type": "boss",
+    "stage": 1,
     "version": 2
   },
   "behaviors": {
     "boss_rumia": {
-      "_desc": "ecldata1sp Sub1 - Boss Rumia entry",
-      "hp": 6000,
-      "hitbox": [
-        48,
-        48
-      ],
+      "_desc": "ECL Sub20 — Rumia boss with full phase sequence (Sub21-Sub26)",
+      "hp": 10000,
+      "hitbox": [48, 48],
       "score": 100000,
       "move": {
-        "type": "stop_and_go",
-        "speedX": 0,
-        "speedY": 30
+        "type": "position_interp",
+        "duration": 60,
+        "easing": 4,
+        "target": [192, 128]
       },
-      "attack": [
-        {
-          "time": 2.0,
-          "interval": 1.5,
-          "pattern": {
-            "type": "fan_aimed",
-            "mainCnt": 5,
-            "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.196,
-            "speed": 100,
-            "speedStep": 50,
-            "spriteID": 0,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        }
-      ],
+      "move_bounds": [32, 48, 352, 128],
       "death": {
         "itemDrop": "full_power"
-      }
-    },
-    "boss_rumia_ring_familiar": {
-      "_desc": "ecldata1sp Sub3 - Familiar etRing",
-      "hp": 150,
-      "hitbox": [
-        24,
-        24
-      ],
-      "score": 1000,
-      "move": {
-        "type": "linear"
       },
-      "attack": [
+      "phases": [
         {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "ring",
-            "mainCnt": 16,
-            "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.0349,
-            "speed": 200,
-            "speedStep": 90,
-            "spriteID": 0,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
+          "_desc": "Sub25 — Complex alternating rings (60 frames)",
+          "duration": 1.0,
+          "patterns": [
+            {"time": 0, "interval": 0.067, "burst": 1, "pattern": {"type": "ring", "mainCnt": 6, "subCnt": 3, "speed": 150, "speedStep": 60, "angleStep": -0.196, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}},
+            {"time": 0, "interval": 0.067, "burst": 1, "pattern": {"type": "ring", "mainCnt": 6, "subCnt": 3, "speed": 150, "speedStep": 60, "spread": 0.196, "angleStep": -0.196, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}},
+            {"time": 0, "interval": 0.067, "burst": 1, "pattern": {"type": "ring", "mainCnt": 6, "subCnt": 3, "speed": 120, "speedStep": 60, "angleStep": 0.196, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}},
+            {"time": 0, "interval": 0.067, "burst": 1, "pattern": {"type": "ring", "mainCnt": 6, "subCnt": 3, "speed": 120, "speedStep": 60, "spread": 0.196, "angleStep": 0.196, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}},
+            {"time": 0, "interval": 0.067, "burst": 1, "pattern": {"type": "ring", "mainCnt": 4, "subCnt": 3, "speed": 210, "spriteID": 5, "hitboxRadius": 4, "lifeTime": 5}},
+            {"time": 0, "interval": 0.067, "burst": 1, "pattern": {"type": "ring", "mainCnt": 4, "subCnt": 3, "speed": 210, "spread": 0.393, "spriteID": 5, "hitboxRadius": 4, "lifeTime": 5}}
+          ]
         },
         {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "ring",
-            "mainCnt": 32,
-            "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.0349,
-            "speed": 200,
-            "speedStep": 90,
-            "spriteID": 0,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
+          "_desc": "Move to (256, 160) over 60 frames, decelerate",
+          "duration": 1.0,
+          "patterns": [],
+          "move_after": [256, 160],
+          "move_duration": 60,
+          "move_easing": 4
+        },
+        {
+          "_desc": "Sub22 — Random spread (110 frames)",
+          "duration": 1.83,
+          "patterns": [
+            {"time": 0, "interval": 0.1, "burst": 1, "pattern": {"type": "spread", "mainCnt": 8, "subCnt": 1, "speed": 90, "spread": 3.14159, "angleStep": -3.14159, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 4}},
+            {"time": 0.02, "interval": 0.1, "burst": 1, "pattern": {"type": "spread", "mainCnt": 8, "subCnt": 1, "speed": 90, "spread": 3.14159, "angleStep": -3.14159, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 4}}
+          ]
+        },
+        {
+          "_desc": "Sub21 — Double ring barrage (60 frames)",
+          "duration": 1.0,
+          "patterns": [
+            {"time": 0, "interval": 0.1, "burst": 1, "pattern": {"type": "ring", "mainCnt": 12, "subCnt": 1, "speed": 90, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}},
+            {"time": 0, "interval": 0.1, "burst": 1, "pattern": {"type": "ring", "mainCnt": 12, "subCnt": 1, "speed": 60, "spread": 0.112, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}},
+            {"time": 0.017, "interval": 0.1, "burst": 1, "pattern": {"type": "ring", "mainCnt": 8, "subCnt": 1, "speed": 150, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}},
+            {"time": 0.017, "interval": 0.1, "burst": 1, "pattern": {"type": "ring", "mainCnt": 8, "subCnt": 1, "speed": 120, "spread": 0.112, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}}
+          ]
+        },
+        {
+          "_desc": "Move to (128, 160) over 90 frames, linear",
+          "duration": 1.5,
+          "patterns": [],
+          "move_after": [128, 160],
+          "move_duration": 90,
+          "move_easing": 0
+        },
+        {
+          "_desc": "Sub23 — Player-aimed circle (90 frames, interval 40f)",
+          "duration": 1.5,
+          "patterns": [
+            {"time": 0, "interval": 0.667, "burst": 1, "pattern": {"type": "aimed", "mainCnt": 10, "subCnt": 1, "speed": 90, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 4}}
+          ]
+        },
+        {
+          "_desc": "Sub24 — Ring barrage (60 frames)",
+          "duration": 1.0,
+          "patterns": [
+            {"time": 0, "interval": 0.1, "burst": 1, "pattern": {"type": "ring", "mainCnt": 8, "subCnt": 3, "speed": 150, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}},
+            {"time": 0, "interval": 0.1, "burst": 1, "pattern": {"type": "ring", "mainCnt": 10, "subCnt": 3, "speed": 120, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}},
+            {"time": 0, "interval": 0.1, "burst": 1, "pattern": {"type": "ring", "mainCnt": 4, "subCnt": 3, "speed": 150, "spread": 0.196, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}},
+            {"time": 0, "interval": 0.1, "burst": 1, "pattern": {"type": "ring", "mainCnt": 8, "subCnt": 3, "speed": 120, "spread": 0.196, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}},
+            {"time": 0, "interval": 0.1, "burst": 1, "pattern": {"type": "ring", "mainCnt": 4, "subCnt": 3, "speed": 210, "spread": 0.589, "spriteID": 5, "hitboxRadius": 4, "lifeTime": 5}},
+            {"time": 0, "interval": 0.1, "burst": 1, "pattern": {"type": "ring", "mainCnt": 4, "subCnt": 3, "speed": 210, "spread": 0.982, "spriteID": 5, "hitboxRadius": 4, "lifeTime": 5}}
+          ]
+        },
+        {
+          "_desc": "Move back to center (192, 128) over 60 frames, decelerate",
+          "duration": 1.0,
+          "patterns": [],
+          "move_after": [192, 128],
+          "move_duration": 60,
+          "move_easing": 4
+        },
+        {
+          "_desc": "Pause 120 frames before looping",
+          "duration": 2.0,
+          "patterns": []
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": { "hp": 6000 },
+        "normal": { "hp": 10000 },
+        "hard": { "hp": 12000 },
+        "lunatic": { "hp": 15000 }
+      }
     },
     "boss_final": {
-      "_desc": "ecldata1sp Final - Boss Final",
+      "_desc": "ECL Sub27 — Boss death drop",
       "hp": 2400,
-      "hitbox": [
-        24,
-        24
-      ],
+      "hitbox": [24, 24],
       "score": 100000,
       "move": {
-        "type": "stop_and_go",
+        "type": "linear",
         "speedX": 0,
-        "speedY": 30
+        "speedY": 0
       },
       "death": {
         "itemDrop": "full_power"
@@ -108,38 +127,7 @@
       "delta": 0.0,
       "cmd": "spawn",
       "behavior": "boss_rumia",
-      "pos": [
-        272,
-        -32
-      ]
-    },
-    {
-      "delta": 0.0,
-      "cmd": "spellcard",
-      "spellcard": "boss_rumia_phase1",
-      "hp": 2000,
-      "timeout": 45
-    },
-    {
-      "delta": 0.0,
-      "cmd": "spellcard",
-      "spellcard": "boss_rumia_phase2",
-      "hp": 2000,
-      "timeout": 45
-    },
-    {
-      "delta": 0.0,
-      "cmd": "spellcard",
-      "spellcard": "boss_rumia_phase3",
-      "hp": 2000,
-      "timeout": 45
-    },
-    {
-      "delta": 0.0,
-      "cmd": "spellcard",
-      "spellcard": "boss_rumia_phase4",
-      "hp": 2000,
-      "timeout": 45
+      "pos": [-32, 32]
     },
     {
       "delta": 2.0,
@@ -149,463 +137,53 @@
   ],
   "spellcards": {
     "boss_rumia_phase1": {
-      "name": "Phase 1: etFanAimed + etFan",
-      "hp": 2000,
-      "timeout": 45,
+      "name": "月符「ムーンライトレイ」",
+      "hp": 1200,
+      "timeout": 38,
       "behavior": "boss_rumia_phase1",
       "patterns": [
         {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan_aimed",
-            "mainCnt": 13,
-            "subCnt": 10,
-            "spread": 0,
-            "angleStep": 0.3142,
-            "speed": 80,
-            "speedStep": 50,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        },
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan_aimed",
-            "mainCnt": 13,
-            "subCnt": 12,
-            "spread": 0,
-            "angleStep": 0.2244,
-            "speed": 80,
-            "speedStep": 50,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        },
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan_aimed",
-            "mainCnt": 13,
-            "subCnt": 20,
-            "spread": 0,
-            "angleStep": 0.1963,
-            "speed": 80,
-            "speedStep": 50,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        },
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan_aimed",
-            "mainCnt": 8,
-            "subCnt": 10,
-            "spread": 0,
-            "angleStep": 0.3142,
-            "speed": 80,
-            "speedStep": 50,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        },
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan_aimed",
-            "mainCnt": 8,
-            "subCnt": 12,
-            "spread": 0,
-            "angleStep": 0.2244,
-            "speed": 80,
-            "speedStep": 50,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        },
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan_aimed",
-            "mainCnt": 8,
-            "subCnt": 20,
-            "spread": 0,
-            "angleStep": 0.1963,
-            "speed": 80,
-            "speedStep": 50,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        },
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan",
-            "mainCnt": 8,
-            "subCnt": 1,
-            "spread": 1.9635,
-            "angleStep": 0.0349,
-            "speed": 200,
-            "speedStep": 90,
-            "spriteID": 1,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        },
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan",
-            "mainCnt": 8,
-            "subCnt": 3,
-            "spread": 1.9635,
-            "angleStep": 0.0349,
-            "speed": 200,
-            "speedStep": 90,
-            "spriteID": 1,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        },
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan",
-            "mainCnt": 7,
-            "subCnt": 2,
-            "spread": 1.9635,
-            "angleStep": 1.0472,
-            "speed": 200,
-            "speedStep": 90,
-            "spriteID": 1,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        },
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan",
-            "mainCnt": 6,
-            "subCnt": 1,
-            "spread": 1.1781,
-            "angleStep": 0.0349,
-            "speed": 200,
-            "speedStep": 90,
-            "spriteID": 1,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        },
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan",
-            "mainCnt": 6,
-            "subCnt": 3,
-            "spread": 1.1781,
-            "angleStep": 0.0349,
-            "speed": 200,
-            "speedStep": 90,
-            "spriteID": 1,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        },
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan",
-            "mainCnt": 5,
-            "subCnt": 2,
-            "spread": 1.1781,
-            "angleStep": 1.0472,
-            "speed": 200,
-            "speedStep": 90,
-            "spriteID": 1,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        }
-      ]
-    },
-    "boss_rumia_phase2": {
-      "name": "Phase 2: etFanAimed + etRingAimed",
-      "hp": 2000,
-      "timeout": 45,
-      "behavior": "boss_rumia_phase2",
-      "patterns": [
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan_aimed",
-            "mainCnt": 3,
-            "subCnt": 7,
-            "spread": 0.0,
-            "angleStep": 0.1963,
-            "speed": 200,
-            "speedStep": 50,
-            "spriteID": 0,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        },
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan_aimed",
-            "mainCnt": 3,
-            "subCnt": 9,
-            "spread": 0.0,
-            "angleStep": 0.1963,
-            "speed": 300,
-            "speedStep": 50,
-            "spriteID": 0,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        },
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "ring_aimed_variable",
-            "mainCnt": 32,
-            "subCnt": 1,
-            "spread": 3.1416,
-            "angleStep": 0.1428,
-            "speed": 250,
-            "speedStep": 150,
-            "spriteID": 0,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        },
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "ring_aimed_variable",
-            "mainCnt": 32,
-            "subCnt": 3,
-            "spread": 3.1416,
-            "angleStep": 0.1428,
-            "speed": 300,
-            "speedStep": 150,
-            "spriteID": 0,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        },
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "ring",
-            "mainCnt": 1,
-            "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.0,
-            "speed": 0,
-            "speedStep": 50,
-            "spriteID": 0,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        }
-      ]
-    },
-    "boss_rumia_phase3": {
-      "name": "Phase 3: etFan + etRing + etFanAimed",
-      "hp": 2000,
-      "timeout": 45,
-      "behavior": "boss_rumia_phase3",
-      "patterns": [
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "ring",
-            "mainCnt": 2,
-            "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.2618,
-            "speed": 340,
-            "speedStep": 50,
-            "spriteID": 3,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        },
-        {
-          "time": 0,
-          "interval": 1,
+          "_desc": "Familiar-style ring — 4 bullets repeating like Sub30",
+          "time": 2.0,
+          "interval": 0.5,
           "pattern": {
             "type": "ring",
             "mainCnt": 4,
             "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.2618,
-            "speed": 340,
-            "speedStep": 50,
-            "spriteID": 3,
+            "speed": 120,
+            "speedStep": 0,
+            "spriteID": 6,
             "hitboxRadius": 4,
             "lifeTime": 6
           }
         },
         {
-          "time": 0,
-          "interval": 1,
+          "_desc": "Familiar-style ring with offset",
+          "time": 2.0,
+          "interval": 0.5,
           "pattern": {
             "type": "ring",
-            "mainCnt": 4,
-            "subCnt": 2,
-            "spread": 0,
-            "angleStep": 0.2618,
-            "speed": 340,
-            "speedStep": 50,
-            "spriteID": 3,
+            "mainCnt": 3,
+            "subCnt": 1,
+            "speed": 100,
+            "spread": 0.262,
+            "angleStep": 0,
+            "spriteID": 6,
             "hitboxRadius": 4,
             "lifeTime": 6
           }
         },
         {
-          "time": 0,
-          "interval": 1,
+          "_desc": "Player-aimed ring",
+          "time": 2.5,
+          "interval": 1.0,
           "pattern": {
-            "type": "fan",
-            "mainCnt": 10,
-            "subCnt": 2,
-            "spread": 0,
-            "angleStep": 0.7854,
-            "speed": 120,
-            "speedStep": 50,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        },
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan",
-            "mainCnt": 10,
-            "subCnt": 3,
-            "spread": 0,
-            "angleStep": 0.7854,
-            "speed": 220,
-            "speedStep": 50,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        },
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan",
+            "type": "ring_aimed_variable",
             "mainCnt": 8,
             "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.2618,
-            "speed": 140,
-            "speedStep": 50,
-            "spriteID": 3,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        },
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan",
-            "mainCnt": 8,
-            "subCnt": 2,
-            "spread": 0,
-            "angleStep": 0.2618,
-            "speed": 140,
-            "speedStep": 50,
-            "spriteID": 3,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        },
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan",
-            "mainCnt": 10,
-            "subCnt": 4,
-            "spread": 0,
-            "angleStep": 0.7854,
-            "speed": 120,
-            "speedStep": 50,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        },
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan_aimed",
-            "mainCnt": 6,
-            "subCnt": 1,
-            "spread": 0.0,
-            "angleStep": 0.1848,
-            "speed": 250,
-            "speedStep": 100,
-            "spriteID": 0,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        }
-      ]
-    },
-    "boss_rumia_phase4": {
-      "name": "Phase 4: etRing finale",
-      "hp": 2000,
-      "timeout": 45,
-      "behavior": "boss_rumia_phase4",
-      "patterns": [
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "ring",
-            "mainCnt": 24,
-            "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.2618,
-            "speed": 450,
-            "speedStep": 50,
-            "spriteID": 0,
+            "speed": 150,
+            "speedStep": 0,
+            "spriteID": 6,
             "hitboxRadius": 4,
             "lifeTime": 6
           }

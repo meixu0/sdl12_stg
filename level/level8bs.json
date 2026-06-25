@@ -5,17 +5,127 @@
   },
   "behaviors": {
     "boss_extra": {
-      "_desc": "Boss extra entry",
-      "hp": 1900,
+      "_desc": "Boss extra (Ran Yakumo) entry",
+      "hp": 25000,
       "hitbox": [
         48,
         48
       ],
       "score": 100000,
       "move": {
-        "type": "stop_and_go",
-        "speedX": 0,
-        "speedY": 30
+        "type": "position_interp",
+        "duration": 60,
+        "easing": 4,
+        "target": [
+          192,
+          128
+        ]
+      },
+      "move_bounds": [
+        32,
+        48,
+        352,
+        128
+      ],
+      "death": {
+        "itemDrop": "full_power"
+      },
+      "phases": [
+        {
+          "duration": 8.0,
+          "patterns": [
+            {
+              "time": 0,
+              "interval": 1,
+              "pattern": {
+                "type": "ring_aimed",
+                "mainCnt": 1,
+                "subCnt": 1,
+                "spread": 0,
+                "angleStep": 0.3927,
+                "speed": 400,
+                "speedStep": 100,
+                "spriteID": 2,
+                "hitboxRadius": 4,
+                "lifeTime": 6
+              }
+            }
+          ]
+        },
+        {
+          "duration": 10.0,
+          "patterns": [
+            {
+              "time": 0,
+              "interval": 1,
+              "pattern": {
+                "type": "fan_aimed",
+                "mainCnt": 2,
+                "subCnt": 7,
+                "spread": 0,
+                "angleStep": 0.1309,
+                "speed": 120,
+                "speedStep": 80,
+                "spriteID": 2,
+                "hitboxRadius": 4,
+                "lifeTime": 6
+              }
+            }
+          ]
+        },
+        {
+          "duration": 10.0,
+          "patterns": [
+            {
+              "time": 0,
+              "interval": 1,
+              "pattern": {
+                "type": "ring",
+                "mainCnt": 16,
+                "subCnt": 1,
+                "spread": 0,
+                "angleStep": 0.0982,
+                "speed": 180,
+                "speedStep": 50,
+                "spriteID": 2,
+                "hitboxRadius": 4,
+                "lifeTime": 6
+              }
+            }
+          ]
+        }
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 15000
+        },
+        "normal": {
+          "hp": 20000
+        },
+        "hard": {
+          "hp": 25000
+        },
+        "lunatic": {
+          "hp": 30000
+        }
+      }
+    },
+    "boss_final": {
+      "_desc": "Boss final (extra clear) entry",
+      "hp": 6000,
+      "hitbox": [
+        48,
+        48
+      ],
+      "score": 100000,
+      "move": {
+        "type": "position_interp",
+        "duration": 60,
+        "easing": 4,
+        "target": [
+          192,
+          128
+        ]
       },
       "death": {
         "itemDrop": "full_power"
@@ -33,83 +143,6 @@
       ]
     },
     {
-      "delta": 0.0,
-      "cmd": "spellcard",
-      "spellcard": "boss_extra_phase1",
-      "hp": 1900,
-      "timeout": 45
-    },
-    {
-      "delta": 0.0,
-      "cmd": "spellcard",
-      "spellcard": "boss_extra_phase2",
-      "hp": 2000,
-      "timeout": 45
-    },
-    {
-      "delta": 0.0,
-      "cmd": "spellcard",
-      "spellcard": "boss_extra_phase3",
-      "hp": 2000,
-      "timeout": 45
-    },
-    {
-      "delta": 0.0,
-      "cmd": "spellcard",
-      "spellcard": "boss_extra_phase4",
-      "hp": 2000,
-      "timeout": 45
-    },
-    {
-      "delta": 0.0,
-      "cmd": "spellcard",
-      "spellcard": "boss_extra_phase5",
-      "hp": 2000,
-      "timeout": 45
-    },
-    {
-      "delta": 0.0,
-      "cmd": "spellcard",
-      "spellcard": "boss_extra_phase6",
-      "hp": 2000,
-      "timeout": 45
-    },
-    {
-      "delta": 0.0,
-      "cmd": "spellcard",
-      "spellcard": "boss_extra_phase7",
-      "hp": 2000,
-      "timeout": 45
-    },
-    {
-      "delta": 0.0,
-      "cmd": "spellcard",
-      "spellcard": "boss_extra_phase8",
-      "hp": 2000,
-      "timeout": 45
-    },
-    {
-      "delta": 0.0,
-      "cmd": "spellcard",
-      "spellcard": "boss_extra_phase9",
-      "hp": 2000,
-      "timeout": 45
-    },
-    {
-      "delta": 0.0,
-      "cmd": "spellcard",
-      "spellcard": "boss_extra_phase10",
-      "hp": 1900,
-      "timeout": 45
-    },
-    {
-      "delta": 0.0,
-      "cmd": "spellcard",
-      "spellcard": "boss_extra_phase11",
-      "hp": 2000,
-      "timeout": 45
-    },
-    {
       "delta": 2.0,
       "cmd": "defeat",
       "behavior": "boss_final"
@@ -117,8 +150,8 @@
   ],
   "spellcards": {
     "boss_extra_phase1": {
-      "name": "\"jué«j@-I[hqXg[-v\"",
-      "hp": 1900,
+      "name": "式神「十二神将の宴」",
+      "hp": 4000,
       "timeout": 45,
       "behavior": "boss_extra_phase1",
       "patterns": [
@@ -126,36 +159,12 @@
           "time": 0,
           "interval": 1,
           "pattern": {
-            "type": "ring_aimed_variable",
-            "mainCnt": 1,
+            "type": "ring",
+            "mainCnt": 12,
             "subCnt": 1,
             "spread": 0,
-            "angleStep": 0.3927,
-            "speed": 400,
-            "speedStep": 100,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        }
-      ]
-    },
-    "boss_extra_phase2": {
-      "name": "\"]¢uêðßè´v\"",
-      "hp": 2000,
-      "timeout": 45,
-      "behavior": "boss_extra_phase2",
-      "patterns": [
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan_aimed",
-            "mainCnt": 1,
-            "subCnt": 1,
-            "spread": 0.0,
-            "angleStep": 0.1309,
-            "speed": 100,
+            "angleStep": 0.0,
+            "speed": 320,
             "speedStep": 80,
             "spriteID": 2,
             "hitboxRadius": 4,
@@ -164,9 +173,33 @@
         }
       ]
     },
+    "boss_extra_phase2": {
+      "name": "式符「飛翔役小角」",
+      "hp": 4200,
+      "timeout": 45,
+      "behavior": "boss_extra_phase2",
+      "patterns": [
+        {
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "fan_aimed",
+            "mainCnt": 2,
+            "subCnt": 15,
+            "spread": 0.0,
+            "angleStep": 0.0982,
+            "speed": 250,
+            "speedStep": 50,
+            "spriteID": 2,
+            "hitboxRadius": 4,
+            "lifeTime": 6
+          }
+        }
+      ]
+    },
     "boss_extra_phase3": {
-      "name": "\"VjuV¶zj@-lNXgqXg[-v\"",
-      "hp": 2000,
+      "name": "鬼符「鬼門金神」",
+      "hp": 4200,
       "timeout": 45,
       "behavior": "boss_extra_phase3",
       "patterns": [
@@ -174,12 +207,28 @@
           "time": 0,
           "interval": 1,
           "pattern": {
-            "type": "ring_aimed_variable",
-            "mainCnt": 1,
-            "subCnt": 1,
+            "type": "ring_aimed",
+            "mainCnt": 4,
+            "subCnt": 8,
             "spread": 0,
-            "angleStep": 0.3927,
+            "angleStep": -0.01,
             "speed": 400,
+            "speedStep": 100,
+            "spriteID": 2,
+            "hitboxRadius": 4,
+            "lifeTime": 6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "fan_aimed",
+            "mainCnt": 2,
+            "subCnt": 3,
+            "spread": 0,
+            "angleStep": 0.7854,
+            "speed": 200,
             "speedStep": 100,
             "spriteID": 2,
             "hitboxRadius": 4,
@@ -189,21 +238,21 @@
       ]
     },
     "boss_extra_phase4": {
-      "name": "\"øuÌ¢Í©³Ìô¢v\"",
-      "hp": 2000,
-      "timeout": 45,
+      "name": "鬼神「飛翔毘沙門天」",
+      "hp": 4400,
+      "timeout": 40,
       "behavior": "boss_extra_phase4",
       "patterns": [
         {
           "time": 0,
           "interval": 1,
           "pattern": {
-            "type": "ring",
-            "mainCnt": 4,
-            "subCnt": 1,
+            "type": "fan",
+            "mainCnt": 2,
+            "subCnt": 7,
             "spread": 0,
-            "angleStep": 0.0,
-            "speed": 340,
+            "angleStep": 0.0314,
+            "speed": 150,
             "speedStep": 50,
             "spriteID": 2,
             "hitboxRadius": 4,
@@ -229,8 +278,8 @@
       ]
     },
     "boss_extra_phase5": {
-      "name": "\"suóv\"",
-      "hp": 2000,
+      "name": "秘術「天文密葬法」",
+      "hp": 4400,
       "timeout": 45,
       "behavior": "boss_extra_phase5",
       "patterns": [
@@ -238,14 +287,14 @@
           "time": 0,
           "interval": 1,
           "pattern": {
-            "type": "fan",
-            "mainCnt": 2,
-            "subCnt": 85,
+            "type": "ring_aimed",
+            "mainCnt": 1,
+            "subCnt": 1,
             "spread": 0,
-            "angleStep": 0.0654,
-            "speed": 160,
-            "speedStep": 50,
-            "spriteID": 0,
+            "angleStep": 0.3927,
+            "speed": 500,
+            "speedStep": 100,
+            "spriteID": 2,
             "hitboxRadius": 4,
             "lifeTime": 6
           }
@@ -254,12 +303,12 @@
           "time": 0,
           "interval": 1,
           "pattern": {
-            "type": "fan_aimed",
-            "mainCnt": 2,
+            "type": "ring",
+            "mainCnt": 32,
             "subCnt": 1,
             "spread": 0,
-            "angleStep": 0.0,
-            "speed": 80,
+            "angleStep": 0.185,
+            "speed": 250,
             "speedStep": 50,
             "spriteID": 2,
             "hitboxRadius": 4,
@@ -269,69 +318,21 @@
       ]
     },
     "boss_extra_phase6": {
-      "name": "\"Åßu³¼ÒÌv\"",
-      "hp": 2000,
-      "timeout": 45,
+      "name": "天狐「ロード・エレメンタル」",
+      "hp": 4800,
+      "timeout": 50,
       "behavior": "boss_extra_phase6",
       "patterns": [
         {
           "time": 0,
           "interval": 1,
           "pattern": {
-            "type": "fan_aimed",
-            "mainCnt": 2,
-            "subCnt": 15,
-            "spread": 0.0,
-            "angleStep": 0.0982,
-            "speed": 250,
-            "speedStep": 50,
-            "spriteID": 0,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        }
-      ]
-    },
-    "boss_extra_phase7": {
-      "name": "\"sÅutFjbNXÌöv\"",
-      "hp": 2000,
-      "timeout": 45,
-      "behavior": "boss_extra_phase7",
-      "patterns": [
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan_aimed",
-            "mainCnt": 1,
-            "subCnt": 1,
-            "spread": 0.0,
-            "angleStep": 0.0,
-            "speed": 100,
-            "speedStep": 50,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        }
-      ]
-    },
-    "boss_extra_phase8": {
-      "name": "\"HuMõ°@-tW}HPCm-v\"",
-      "hp": 2000,
-      "timeout": 45,
-      "behavior": "boss_extra_phase8",
-      "patterns": [
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
             "type": "fan",
-            "mainCnt": 2,
+            "mainCnt": 1,
             "subCnt": 3,
             "spread": 0,
-            "angleStep": 0.0982,
-            "speed": 600,
+            "angleStep": 0.3142,
+            "speed": 80,
             "speedStep": 50,
             "spriteID": 2,
             "hitboxRadius": 4,
@@ -343,98 +344,10 @@
           "interval": 1,
           "pattern": {
             "type": "ring",
-            "mainCnt": 42,
-            "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.0982,
-            "speed": 200,
-            "speedStep": 50,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        }
-      ]
-    },
-    "boss_extra_phase9": {
-      "name": "\"uHl`v\"",
-      "hp": 2000,
-      "timeout": 45,
-      "behavior": "boss_extra_phase9",
-      "patterns": [
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan",
-            "mainCnt": 2,
+            "mainCnt": 32,
             "subCnt": 1,
             "spread": 0,
             "angleStep": 0.0,
-            "speed": 200,
-            "speedStep": 50,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        },
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "ring_aimed_variable",
-            "mainCnt": 1,
-            "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.3927,
-            "speed": 400,
-            "speedStep": 100,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        }
-      ]
-    },
-    "boss_extra_phase10": {
-      "name": "\"utFjbNXÄav\"",
-      "hp": 1900,
-      "timeout": 45,
-      "behavior": "boss_extra_phase10",
-      "patterns": [
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "ring_aimed_variable",
-            "mainCnt": 1,
-            "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.3927,
-            "speed": 400,
-            "speedStep": 100,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        }
-      ]
-    },
-    "boss_extra_phase11": {
-      "name": "\"u³½Lò»v\"",
-      "hp": 2000,
-      "timeout": 45,
-      "behavior": "boss_extra_phase11",
-      "patterns": [
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan",
-            "mainCnt": 1,
-            "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.1309,
             "speed": 400,
             "speedStep": 80,
             "spriteID": 2,
@@ -446,44 +359,12 @@
           "time": 0,
           "interval": 1,
           "pattern": {
-            "type": "fan",
-            "mainCnt": 1,
-            "subCnt": 2,
+            "type": "ring_aimed",
+            "mainCnt": 2,
+            "subCnt": 6,
             "spread": 0,
-            "angleStep": 0.1309,
-            "speed": 400,
-            "speedStep": 80,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        },
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan",
-            "mainCnt": 1,
-            "subCnt": 3,
-            "spread": 0,
-            "angleStep": 0.1309,
-            "speed": 400,
-            "speedStep": 80,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        },
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan",
-            "mainCnt": 1,
-            "subCnt": 4,
-            "spread": 0,
-            "angleStep": 0.1309,
-            "speed": 400,
+            "angleStep": 0.0,
+            "speed": 300,
             "speedStep": 80,
             "spriteID": 2,
             "hitboxRadius": 4,

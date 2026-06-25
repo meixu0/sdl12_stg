@@ -65,7 +65,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s4a_Sub2": {
       "_desc": "ecldata4a Sub2",
@@ -111,7 +125,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s4a_Sub4": {
       "_desc": "ecldata4a Sub4",
@@ -141,7 +169,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s4a_Sub5": {
       "_desc": "ecldata4a Sub5",
@@ -173,7 +215,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s4a_Sub13": {
       "_desc": "ecldata4a Sub13",
@@ -203,7 +259,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s4a_Sub17": {
       "_desc": "ecldata4a Sub17",
@@ -249,7 +319,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s4a_Sub19": {
       "_desc": "ecldata4a Sub19",
@@ -279,7 +363,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s4a_Sub25": {
       "_desc": "ecldata4a Sub25",
@@ -342,7 +440,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s4a_Sub26": {
       "_desc": "ecldata4a Sub26",
@@ -409,7 +521,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s4a_Sub28": {
       "_desc": "ecldata4a Sub28",
@@ -439,7 +565,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s4a_Sub29": {
       "_desc": "ecldata4a Sub29",
@@ -469,7 +609,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s4a_Sub30": {
       "_desc": "ecldata4a Sub30",
@@ -499,7 +653,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s4b_Sub1": {
       "_desc": "ecldata4b Sub1",
@@ -561,7 +729,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s4b_Sub2": {
       "_desc": "ecldata4b Sub2",
@@ -607,7 +789,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s4b_Sub4": {
       "_desc": "ecldata4b Sub4",
@@ -637,7 +833,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s4b_Sub5": {
       "_desc": "ecldata4b Sub5",
@@ -669,7 +879,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s4b_Sub13": {
       "_desc": "ecldata4b Sub13",
@@ -699,7 +923,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s4b_Sub18": {
       "_desc": "ecldata4b Sub18",
@@ -745,7 +983,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s4b_Sub20": {
       "_desc": "ecldata4b Sub20",
@@ -791,7 +1043,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s4b_Sub23": {
       "_desc": "ecldata4b Sub23",
@@ -837,7 +1103,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s4b_Sub29": {
       "_desc": "ecldata4b Sub29",
@@ -883,7 +1163,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s4b_Sub32": {
       "_desc": "ecldata4b Sub32",
@@ -929,7 +1223,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "midboss_patchouli": {
       "_desc": "Midboss midboss_patchouli",
@@ -940,13 +1248,40 @@
       ],
       "score": 100000,
       "move": {
-        "type": "stop_and_go",
-        "speedX": 0,
-        "speedY": 90
+        "type": "position_interp",
+        "duration": 60,
+        "easing": 4,
+        "target": [
+          192,
+          128
+        ]
       },
       "death": {
         "itemDrop": "full_power"
-      }
+      },
+      "move_bounds": [
+        32,
+        48,
+        352,
+        128
+      ],
+      "attack": [
+        {
+          "time": 0.5,
+          "interval": 1.5,
+          "pattern": {
+            "type": "fan_aimed",
+            "mainCnt": 3,
+            "subCnt": 1,
+            "spread": 0,
+            "angleStep": 0.2,
+            "speed": 120,
+            "spriteID": 6,
+            "hitboxRadius": 4,
+            "lifeTime": 5
+          }
+        }
+      ]
     }
   },
   "timeline": [

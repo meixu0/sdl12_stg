@@ -35,7 +35,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s2_Sub3": {
       "_desc": "ecldata2 Sub3",
@@ -67,7 +81,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s2_Sub4": {
       "_desc": "ecldata2 Sub4",
@@ -116,7 +144,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s2_Sub6": {
       "_desc": "ecldata2 Sub6",
@@ -165,7 +207,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s2_Sub8": {
       "_desc": "ecldata2 Sub8",
@@ -195,7 +251,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s2_Sub9": {
       "_desc": "ecldata2 Sub9",
@@ -227,7 +297,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s2_Sub11": {
       "_desc": "ecldata2 Sub11",
@@ -278,7 +362,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s2_Sub13": {
       "_desc": "ecldata2 Sub13",
@@ -345,7 +443,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s2_Sub14": {
       "_desc": "ecldata2 Sub14",
@@ -376,7 +488,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s2_Sub30": {
       "_desc": "ecldata2 Sub30",
@@ -407,7 +533,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s2_Sub36": {
       "_desc": "ecldata2 Sub36",
@@ -437,7 +577,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s2_Sub41": {
       "_desc": "ecldata2 Sub41",
@@ -467,7 +621,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s2_Sub42": {
       "_desc": "ecldata2 Sub42",
@@ -497,7 +665,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s2_Sub44": {
       "_desc": "ecldata2 Sub44",
@@ -529,7 +711,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s2_Sub45": {
       "_desc": "ecldata2 Sub45",
@@ -561,7 +757,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s2_Sub46": {
       "_desc": "ecldata2 Sub46",
@@ -591,7 +801,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s2_Sub52": {
       "_desc": "ecldata2 Sub52",
@@ -640,7 +864,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s2_Sub59": {
       "_desc": "ecldata2 Sub59",
@@ -671,7 +909,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "midboss_daiyousei": {
       "_desc": "Midboss midboss_daiyousei",
@@ -682,13 +934,40 @@
       ],
       "score": 100000,
       "move": {
-        "type": "stop_and_go",
-        "speedX": 0,
-        "speedY": 90
+        "type": "position_interp",
+        "duration": 60,
+        "easing": 4,
+        "target": [
+          192,
+          128
+        ]
       },
       "death": {
         "itemDrop": "full_power"
-      }
+      },
+      "move_bounds": [
+        32,
+        48,
+        352,
+        128
+      ],
+      "attack": [
+        {
+          "time": 0.5,
+          "interval": 1.5,
+          "pattern": {
+            "type": "fan_aimed",
+            "mainCnt": 3,
+            "subCnt": 1,
+            "spread": 0,
+            "angleStep": 0.2,
+            "speed": 120,
+            "spriteID": 6,
+            "hitboxRadius": 4,
+            "lifeTime": 5
+          }
+        }
+      ]
     },
     "s2_Sub1": {
       "_desc": "ecldata2 Sub1 - stream fairy, etFanAimed 2way",
@@ -723,6 +1002,20 @@
       ],
       "death": {
         "itemDrop": "random"
+      },
+      "difficulty": {
+        "easy": {
+          "hp": 7
+        },
+        "hard": {
+          "hp": 15
+        },
+        "lunatic": {
+          "hp": 20
+        },
+        "extra": {
+          "hp": 25
+        }
       }
     },
     "boss_entry": {

@@ -5,6 +5,7 @@
 #include <cmath>
 #define PI 3.14159265
 class Player;
+class EnemyScManager;
 struct EnemyConfig{
     int hp;
     int movePattern;
@@ -35,6 +36,15 @@ struct EnemyConfig{
     int enemyID;
     bool isMidboss;
 };
+// ── Phase sequencer struct (ECL Sub26 attack cycle) ─────────────────────
+struct BossPhaseDef {
+    float duration;                                   // seconds this phase runs
+    std::vector<EmitterConfig> patterns;              // emitters active during this phase
+    float moveToX = 0, moveToY = 0;                   // optional move target when this phase starts
+    float moveDuration = 0;                            // position_interp duration (0 = no move)
+    int   moveEasing = 4;                              // easing: 0=linear, 4=decelerate
+};
+
 class Enemy{
 private:
     float x;
@@ -76,10 +86,16 @@ private:
     float bezierDuration;
     float bezierTime;
     float stateStartX, stateStartY;
+    float moveDuration;       // ECL position_interp duration (seconds)
+    float moveElapsed;        // ECL position_interp elapsed time
+    int   moveEasing;         // ECL easing: 0=linear, 4=decelerate
     float moveAngle;          // 当前运动角度 (弧度)
     float angularVelocity;    // 角速度 (rad/s)
     float accel;              // 标量加速度 (px/s²)
     float minPlayerDist;      // 与玩家保持的最小距离
+    // ECL move_bounds_set support — constrains boss movement area
+    float moveMinX, moveMaxX, moveMinY, moveMaxY;
+    bool  hasMoveBounds;
     int spriteRow;            // 精灵图行索引 (0-15)
     float spriteAnimTimer;    // 动画计时器
     float clamp(float value, float min_, float max_);
@@ -89,6 +105,12 @@ private:
     float axisSpeedY;         // 本帧速度 y 分量
     SDL_Surface* get_zako_sprite(int row);
     SDL_Surface* get_boss_sprite(int col);
+    // ── Phase sequencer ──
+    std::vector<BossPhaseDef> bossPhases_;
+    int currentPhase_ = -1;
+    float phaseTimer_ = 0.0f;
+    bool isPhasedBoss_ = false;
+    void advance_phase();
 public:
     struct EmitterRuntime {
         float timer;
@@ -116,8 +138,29 @@ public:
     static Enemy* onScreenList[256];
     static int onScreenCount;
     int  get_hp() const { return hp; }
+    float get_time_alive() const { return timeAlive; }
+    float get_duration_time() const { return durationTime; }
     bool get_is_midboss() const { return isMidboss; }
+    int  get_enemy_type() const { return enemyType; }
     void adjust_time_alive(float offset) { timeAlive += offset; }
+    void set_duration_time(float t) { durationTime = t; }
+    void set_speedY(float sy) { speedY = sy; }
+    void set_move_pattern(int mp) { movePattern = mp; }
+    void start_position_interp(float dur, int easing, float tx, float ty);  // ECL move_position_interp
+    void set_move_bounds(float minX, float minY, float maxX, float maxY);   // ECL move_bounds_set
+
+    // ── ECL phase sequencer (attack cycle) ──────────────────────────────────
+    void set_phases(const std::vector<BossPhaseDef>& phases);
+    void start_phases();
+    void stop_phases() { isPhasedBoss_ = false; currentPhase_ = -1; }
+
+    // ── Spellcard boss support ───────────────────────────────────────────────
+    bool isSpellcardBoss;
+    EnemyScManager* scManager;
+
+    bool is_spellcard_boss() const { return isSpellcardBoss; }
+    void link_spellcard_manager(EnemyScManager* mgr);
+    void set_spellcard_hp(int newHp);
     bool has_pending_spawn() const { return !isDead && timeAlive < emergeTime; }
     bool check_bullet_hit(float bx, float by, float bhw, float bhh);
     int take_damage(int dmg);

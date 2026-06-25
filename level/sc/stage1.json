@@ -1,0 +1,72 @@
+{
+  "meta": {
+    "boss": "boss_rumia",
+    "stage": 1,
+    "version": 2,
+    "spellcardCount": 1
+  },
+  "spellcards": [
+    {
+      "id": 0,
+      "name": "月符「ムーンライトレイ」",
+      "hp": 1200,
+      "timeout": 38,
+      "patterns": [
+        {
+          "time": 2.0,
+          "interval": 0.5,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 4,
+            "subCnt": 1,
+            "spread": 0,
+            "angleStep": 0,
+            "speed": 120,
+            "speedStep": 0,
+            "spriteID": 6,
+            "hitboxRadius": 4,
+            "lifeTime": 6
+          }
+        },
+        {
+          "time": 2.0,
+          "interval": 0.5,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 3,
+            "subCnt": 1,
+            "spread": 0.262,
+            "angleStep": 0,
+            "speed": 100,
+            "speedStep": 0,
+            "spriteID": 15,
+            "hitboxRadius": 4,
+            "lifeTime": 6
+          }
+        },
+        {
+          "time": 2.5,
+          "interval": 1.0,
+          "pattern": {
+            "type": "ring_aimed_variable",
+            "mainCnt": 8,
+            "subCnt": 1,
+            "spread": 0,
+            "angleStep": 0,
+            "speed": 150,
+            "speedStep": 0,
+            "spriteID": 6,
+            "hitboxRadius": 4,
+            "lifeTime": 6
+          }
+        }
+      ],
+      "difficulty": {
+        "easy": { "hp": 800 },
+        "normal": { "hp": 1200 },
+        "hard": { "hp": 1600 },
+        "lunatic": { "hp": 2000 }
+      }
+    }
+  ]
+}

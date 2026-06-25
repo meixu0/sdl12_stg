@@ -187,6 +187,7 @@ void Game::start_gameplay(){
 	frameCounter = 0;
 	levelManager->set_bullet_manager(&enemyBulletManager_);
 	levelManager->set_bullet_manager_for_all(&enemyBulletManager_);
+	levelManager->set_item_manager(itemManager);
 	itemManager->set_player(player1);
 	player1->set_item_manager(itemManager);
 	prevStageState = STAGE_RUNNING;
@@ -226,6 +227,7 @@ void Game::update_game(float dt){
 	}
 	player1->update_simple_shoot();
 	if(playerBulletPool_ != NULL) playerBulletPool_->update();
+	levelManager->update_spellcards(dt);
 	PlayerPosition playerPosition = player1->get_player_position();
 	StageState currentStageState = levelManager->get_stage_state();
 	levelManager->update_all_enemies(playerPosition.x, playerPosition.y, frameCounter, midbossEnterFrame, dt, prevStageState, currentStageState);

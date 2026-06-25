@@ -1,0 +1,172 @@
+{
+  "meta": {
+    "boss": "boss_sakuya",
+    "stage": 5,
+    "version": 2,
+    "spellcardCount": 3
+  },
+  "spellcards": [
+    {
+      "id": 0,
+      "name": "\"guÔáÃ°(}ChVFCJ[)v\"",
+      "hp": 2000,
+      "timeout": 45,
+      "patterns": [
+        {
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 48,
+            "subCnt": 1,
+            "spread": 0,
+            "angleStep": 0.0982,
+            "speed": 100,
+            "speedStep": 100,
+            "spriteID": 0,
+            "hitboxRadius": 4,
+            "lifeTime": 6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 24,
+            "subCnt": 2,
+            "spread": 0,
+            "angleStep": 0.0982,
+            "speed": 140,
+            "speedStep": 80,
+            "spriteID": 0,
+            "hitboxRadius": 4,
+            "lifeTime": 6
+          }
+        }
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 1400
+        },
+        "extra": {
+          "hp": 5000
+        },
+        "hard": {
+          "hp": 3000
+        },
+        "lunatic": {
+          "hp": 4000
+        }
+      }
+    },
+    {
+      "id": 1,
+      "name": "\"Uu^ÀÌ(CrWut[)v\"",
+      "hp": 2000,
+      "timeout": 45,
+      "patterns": [
+        {
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 80,
+            "subCnt": 1,
+            "spread": 0,
+            "angleStep": 0.0982,
+            "speed": 100,
+            "speedStep": 100,
+            "spriteID": 0,
+            "hitboxRadius": 4,
+            "lifeTime": 6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 80,
+            "subCnt": 2,
+            "spread": 0,
+            "angleStep": 0.0982,
+            "speed": 140,
+            "speedStep": 80,
+            "spriteID": 0,
+            "hitboxRadius": 4,
+            "lifeTime": 6
+          }
+        }
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 1400
+        },
+        "extra": {
+          "hp": 5000
+        },
+        "hard": {
+          "hp": 3000
+        },
+        "lunatic": {
+          "hp": 4000
+        }
+      }
+    },
+    {
+      "id": 2,
+      "name": "\"u¶OáÉ(ieBbNbhACY)v\"",
+      "hp": 2000,
+      "timeout": 45,
+      "patterns": [
+        {
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 80,
+            "subCnt": 1,
+            "spread": 0,
+            "angleStep": 0.0982,
+            "speed": 500,
+            "speedStep": 100,
+            "spriteID": 0,
+            "hitboxRadius": 4,
+            "lifeTime": 6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 80,
+            "subCnt": 2,
+            "spread": 0,
+            "angleStep": 0.0982,
+            "speed": 540,
+            "speedStep": 280,
+            "spriteID": 0,
+            "hitboxRadius": 4,
+            "lifeTime": 6
+          }
+        }
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 1400
+        },
+        "extra": {
+          "hp": 5000
+        },
+        "hard": {
+          "hp": 3000
+        },
+        "lunatic": {
+          "hp": 4000
+        }
+      }
+    }
+  ]
+}

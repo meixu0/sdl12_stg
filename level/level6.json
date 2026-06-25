@@ -33,7 +33,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s6_Sub6": {
       "_desc": "ecldata6 Sub6",
@@ -63,7 +77,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "s6_Sub10": {
       "_desc": "ecldata6 Sub10",
@@ -93,7 +121,21 @@
             "lifeTime": 6
           }
         }
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
+      }
     },
     "midboss_remilia": {
       "_desc": "Midboss midboss_remilia",
@@ -104,13 +146,40 @@
       ],
       "score": 100000,
       "move": {
-        "type": "stop_and_go",
-        "speedX": 0,
-        "speedY": 90
+        "type": "position_interp",
+        "duration": 60,
+        "easing": 4,
+        "target": [
+          192,
+          128
+        ]
       },
       "death": {
         "itemDrop": "full_power"
-      }
+      },
+      "move_bounds": [
+        32,
+        48,
+        352,
+        128
+      ],
+      "attack": [
+        {
+          "time": 0.5,
+          "interval": 1.5,
+          "pattern": {
+            "type": "fan_aimed",
+            "mainCnt": 3,
+            "subCnt": 1,
+            "spread": 0,
+            "angleStep": 0.2,
+            "speed": 120,
+            "spriteID": 6,
+            "hitboxRadius": 4,
+            "lifeTime": 5
+          }
+        }
+      ]
     }
   },
   "timeline": [

@@ -7,6 +7,7 @@
 #include <cmath>
 #include <cstdlib>
 #define PI 3.14159265
+class ItemManager;
 struct Bullet{
     float x;
     float y;
@@ -57,4 +58,5 @@ public:
     void render();
     void clear_all();
     void despawn_all_for_spellcard();
+    void convert_all_to_p_items(ItemManager* itemMgr);
 };

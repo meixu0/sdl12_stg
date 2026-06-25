@@ -1,21 +1,73 @@
 {
   "meta": {
     "type": "boss",
+    "stage": 3,
     "version": 2
   },
   "behaviors": {
     "boss_cirno": {
-      "_desc": "Boss cirno entry",
-      "hp": 16000,
-      "hitbox": [
-        48,
-        48
-      ],
+      "_desc": "Stage 3 boss — Alice (ECL data). Non-spellcard + doll parade spellcards",
+      "hp": 15000,
+      "hitbox": [32, 48],
       "score": 100000,
       "move": {
-        "type": "stop_and_go",
-        "speedX": 0,
-        "speedY": 30
+        "type": "position_interp",
+        "duration": 60,
+        "easing": 4,
+        "target": [192, 128]
+      },
+      "move_bounds": [32, 48, 352, 128],
+      "death": {
+        "itemDrop": "full_power"
+      },
+      "phases": [
+        {
+          "_desc": "ECL Sub14 — Non-spellcard: aimed fan barrage + doll creation",
+          "duration": 1.5,
+          "patterns": [
+            {"time": 0, "interval": 0.05, "burst": 1, "pattern": {"type": "fan_aimed", "mainCnt": 3, "subCnt": 2, "spread": 0, "angleStep": 0.098, "speed": 120, "speedStep": 60, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}},
+            {"time": 0, "interval": 0.05, "burst": 1, "pattern": {"type": "fan_aimed", "mainCnt": 1, "subCnt": 2, "spread": 0, "angleStep": 0.065, "speed": 150, "speedStep": 60, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}}
+          ]
+        },
+        {
+          "_desc": "Move to center",
+          "duration": 1.0,
+          "patterns": [],
+          "move_after": [192, 128],
+          "move_duration": 60,
+          "move_easing": 4
+        },
+        {
+          "_desc": "ECL Sub25-26 — Dense ring barrage",
+          "duration": 1.5,
+          "patterns": [
+            {"time": 0, "interval": 0.1, "burst": 1, "pattern": {"type": "ring", "mainCnt": 32, "subCnt": 2, "speed": 100, "speedStep": 50, "spriteID": 5, "hitboxRadius": 4, "lifeTime": 5}},
+            {"time": 0, "interval": 0.1, "burst": 1, "pattern": {"type": "ring", "mainCnt": 16, "subCnt": 1, "speed": 150, "spread": 0.075, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}}
+          ]
+        },
+        {
+          "_desc": "Pause before looping",
+          "duration": 1.0,
+          "patterns": []
+        }
+      ],
+      "difficulty": {
+        "easy": { "hp": 10000 },
+        "normal": { "hp": 15000 },
+        "hard": { "hp": 20000 },
+        "lunatic": { "hp": 25000 }
+      }
+    },
+    "boss_final": {
+      "_desc": "ECL Sub19/21 — Boss timeout retreat",
+      "hp": 3000,
+      "hitbox": [24, 24],
+      "score": 100000,
+      "move": {
+        "type": "position_interp",
+        "duration": 60,
+        "easing": 4,
+        "target": [128, -64]
       },
       "death": {
         "itemDrop": "full_power"
@@ -27,59 +79,7 @@
       "delta": 0.0,
       "cmd": "spawn",
       "behavior": "boss_cirno",
-      "pos": [
-        272,
-        -32
-      ]
-    },
-    {
-      "delta": 0.0,
-      "cmd": "spellcard",
-      "spellcard": "boss_cirno_phase1",
-      "hp": 2000,
-      "timeout": 45
-    },
-    {
-      "delta": 0.0,
-      "cmd": "spellcard",
-      "spellcard": "boss_cirno_phase2",
-      "hp": 2000,
-      "timeout": 45
-    },
-    {
-      "delta": 0.0,
-      "cmd": "spellcard",
-      "spellcard": "boss_cirno_phase3",
-      "hp": 2000,
-      "timeout": 45
-    },
-    {
-      "delta": 0.0,
-      "cmd": "spellcard",
-      "spellcard": "boss_cirno_phase4",
-      "hp": 2000,
-      "timeout": 45
-    },
-    {
-      "delta": 0.0,
-      "cmd": "spellcard",
-      "spellcard": "boss_cirno_phase5",
-      "hp": 2000,
-      "timeout": 45
-    },
-    {
-      "delta": 0.0,
-      "cmd": "spellcard",
-      "spellcard": "boss_cirno_phase6",
-      "hp": 2000,
-      "timeout": 45
-    },
-    {
-      "delta": 0.0,
-      "cmd": "spellcard",
-      "spellcard": "boss_cirno_phase7",
-      "hp": 2000,
-      "timeout": 45
+      "pos": [192, -32]
     },
     {
       "delta": 2.0,
@@ -88,237 +88,37 @@
     }
   ],
   "spellcards": {
-    "boss_cirno_phase1": {
-      "name": "\"Yìut@[Xgs~bhv\"",
-      "hp": 2000,
+    "boss_cirno_sc1": {
+      "name": "操符「乙女文楽」",
+      "hp": 3000,
       "timeout": 45,
-      "behavior": "boss_cirno_phase1",
+      "behavior": "boss_cirno",
       "patterns": [
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "ring_aimed_variable",
-            "mainCnt": 3,
-            "subCnt": 3,
-            "spread": 0.0,
-            "angleStep": 0.0,
-            "speed": 300,
-            "speedStep": 150,
-            "spriteID": 0,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        }
-      ]
+        {"time": 0, "interval": 0.1, "burst": 1, "pattern": {"type": "fan_aimed", "mainCnt": 5, "subCnt": 2, "spread": 0, "angleStep": 0.098, "speed": 120, "speedStep": 60, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}},
+        {"time": 0, "interval": 0.1, "burst": 1, "pattern": {"type": "fan_aimed", "mainCnt": 2, "subCnt": 2, "spread": 0, "angleStep": 0.065, "speed": 180, "speedStep": 60, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}}
+      ],
+      "difficulty": {
+        "easy": { "hp": 2000 },
+        "normal": { "hp": 3000 },
+        "hard": { "hp": 4000 },
+        "lunatic": { "hp": 5000 }
+      }
     },
-    "boss_cirno_phase2": {
-      "name": "\"ìuóNCVXv\"",
-      "hp": 2000,
-      "timeout": 45,
-      "behavior": "boss_cirno_phase2",
+    "boss_cirno_sc2": {
+      "name": "紅符「紅毛の和蘭人形」",
+      "hp": 3000,
+      "timeout": 50,
+      "behavior": "boss_cirno",
       "patterns": [
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan_aimed",
-            "mainCnt": 4,
-            "subCnt": 1,
-            "spread": 0.0,
-            "angleStep": 0.2618,
-            "speed": 80,
-            "speedStep": 50,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        }
-      ]
-    },
-    "boss_cirno_phase3": {
-      "name": "\"uOíÌ_í@v\"",
-      "hp": 2000,
-      "timeout": 45,
-      "behavior": "boss_cirno_phase3",
-      "patterns": [
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "ring",
-            "mainCnt": 32,
-            "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.3927,
-            "speed": 100,
-            "speedStep": 50,
-            "spriteID": 1,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        },
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "ring_aimed_variable",
-            "mainCnt": 32,
-            "subCnt": 2,
-            "spread": 0.0,
-            "angleStep": 0.1963,
-            "speed": 220,
-            "speedStep": 80,
-            "spriteID": 1,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        }
-      ]
-    },
-    "boss_cirno_phase4": {
-      "name": "\"uOíÌ_í@Êv\"",
-      "hp": 2000,
-      "timeout": 45,
-      "behavior": "boss_cirno_phase4",
-      "patterns": [
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan_aimed",
-            "mainCnt": 0,
-            "subCnt": 3,
-            "spread": 0.0,
-            "angleStep": 0.3927,
-            "speed": 120,
-            "speedStep": 50,
-            "spriteID": 1,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        },
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "ring_aimed_variable",
-            "mainCnt": 32,
-            "subCnt": 2,
-            "spread": 0.0,
-            "angleStep": 0.1963,
-            "speed": 220,
-            "speedStep": 80,
-            "spriteID": 1,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        }
-      ]
-    },
-    "boss_cirno_phase5": {
-      "name": "\"uOíÌ_í@¾v\"",
-      "hp": 2000,
-      "timeout": 45,
-      "behavior": "boss_cirno_phase5",
-      "patterns": [
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan_aimed",
-            "mainCnt": 2,
-            "subCnt": 7,
-            "spread": 0.0,
-            "angleStep": 0.2618,
-            "speed": 120,
-            "speedStep": 50,
-            "spriteID": 1,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        },
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "ring_aimed_variable",
-            "mainCnt": 32,
-            "subCnt": 2,
-            "spread": 0.0,
-            "angleStep": 0.1963,
-            "speed": 220,
-            "speedStep": 80,
-            "spriteID": 1,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        }
-      ]
-    },
-    "boss_cirno_phase6": {
-      "name": "\"ÌuOíÌ_í@½v\"",
-      "hp": 2000,
-      "timeout": 45,
-      "behavior": "boss_cirno_phase6",
-      "patterns": [
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "ring",
-            "mainCnt": 32,
-            "subCnt": 2,
-            "spread": 0,
-            "angleStep": 0.3927,
-            "speed": 200,
-            "speedStep": 100,
-            "spriteID": 1,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        },
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "ring_aimed_variable",
-            "mainCnt": 32,
-            "subCnt": 2,
-            "spread": 0.0,
-            "angleStep": 0.1963,
-            "speed": 220,
-            "speedStep": 80,
-            "spriteID": 1,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        }
-      ]
-    },
-    "boss_cirno_phase7": {
-      "name": "\"¢uV´v\"",
-      "hp": 2000,
-      "timeout": 45,
-      "behavior": "boss_cirno_phase7",
-      "patterns": [
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "ring_aimed_variable",
-            "mainCnt": 32,
-            "subCnt": 2,
-            "spread": 0.0,
-            "angleStep": 0.1963,
-            "speed": 230,
-            "speedStep": 120,
-            "spriteID": 1,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        }
-      ]
+        {"time": 0, "interval": 0.1, "burst": 1, "pattern": {"type": "ring_aimed", "mainCnt": 24, "subCnt": 2, "spread": 0, "angleStep": 0.15, "speed": 90, "speedStep": 30, "spriteID": 1, "hitboxRadius": 4, "lifeTime": 6}},
+        {"time": 0, "interval": 0.2, "burst": 1, "pattern": {"type": "ring_aimed", "mainCnt": 16, "subCnt": 1, "spread": 0.15, "angleStep": 0.15, "speed": 130, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}}
+      ],
+      "difficulty": {
+        "easy": { "hp": 2000 },
+        "normal": { "hp": 3000 },
+        "hard": { "hp": 4000 },
+        "lunatic": { "hp": 5000 }
+      }
     }
   }
 }

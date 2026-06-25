@@ -1,0 +1,340 @@
+{
+  "meta": {
+    "boss": "boss_cirno",
+    "stage": 3,
+    "version": 2,
+    "spellcardCount": 7
+  },
+  "spellcards": [
+    {
+      "id": 0,
+      "name": "\"Yìut@[Xgs~bhv\"",
+      "hp": 2000,
+      "timeout": 45,
+      "patterns": [
+        {
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring_aimed_variable",
+            "mainCnt": 3,
+            "subCnt": 3,
+            "spread": 0.0,
+            "angleStep": 0.0,
+            "speed": 300,
+            "speedStep": 150,
+            "spriteID": 0,
+            "hitboxRadius": 4,
+            "lifeTime": 6
+          }
+        }
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 1400
+        },
+        "extra": {
+          "hp": 5000
+        },
+        "hard": {
+          "hp": 3000
+        },
+        "lunatic": {
+          "hp": 4000
+        }
+      }
+    },
+    {
+      "id": 1,
+      "name": "\"ìuóNCVXv\"",
+      "hp": 2000,
+      "timeout": 45,
+      "patterns": [
+        {
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "fan_aimed",
+            "mainCnt": 4,
+            "subCnt": 1,
+            "spread": 0.0,
+            "angleStep": 0.2618,
+            "speed": 80,
+            "speedStep": 50,
+            "spriteID": 2,
+            "hitboxRadius": 4,
+            "lifeTime": 6
+          }
+        }
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 1400
+        },
+        "extra": {
+          "hp": 5000
+        },
+        "hard": {
+          "hp": 3000
+        },
+        "lunatic": {
+          "hp": 4000
+        }
+      }
+    },
+    {
+      "id": 2,
+      "name": "\"uOíÌ_í@v\"",
+      "hp": 2000,
+      "timeout": 45,
+      "patterns": [
+        {
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 32,
+            "subCnt": 1,
+            "spread": 0,
+            "angleStep": 0.3927,
+            "speed": 100,
+            "speedStep": 50,
+            "spriteID": 1,
+            "hitboxRadius": 4,
+            "lifeTime": 6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring_aimed_variable",
+            "mainCnt": 32,
+            "subCnt": 2,
+            "spread": 0.0,
+            "angleStep": 0.1963,
+            "speed": 220,
+            "speedStep": 80,
+            "spriteID": 1,
+            "hitboxRadius": 4,
+            "lifeTime": 6
+          }
+        }
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 1400
+        },
+        "extra": {
+          "hp": 5000
+        },
+        "hard": {
+          "hp": 3000
+        },
+        "lunatic": {
+          "hp": 4000
+        }
+      }
+    },
+    {
+      "id": 3,
+      "name": "\"uOíÌ_í@Êv\"",
+      "hp": 2000,
+      "timeout": 45,
+      "patterns": [
+        {
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "fan_aimed",
+            "mainCnt": 0,
+            "subCnt": 3,
+            "spread": 0.0,
+            "angleStep": 0.3927,
+            "speed": 120,
+            "speedStep": 50,
+            "spriteID": 1,
+            "hitboxRadius": 4,
+            "lifeTime": 6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring_aimed_variable",
+            "mainCnt": 32,
+            "subCnt": 2,
+            "spread": 0.0,
+            "angleStep": 0.1963,
+            "speed": 220,
+            "speedStep": 80,
+            "spriteID": 1,
+            "hitboxRadius": 4,
+            "lifeTime": 6
+          }
+        }
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 1400
+        },
+        "extra": {
+          "hp": 5000
+        },
+        "hard": {
+          "hp": 3000
+        },
+        "lunatic": {
+          "hp": 4000
+        }
+      }
+    },
+    {
+      "id": 4,
+      "name": "\"uOíÌ_í@¾v\"",
+      "hp": 2000,
+      "timeout": 45,
+      "patterns": [
+        {
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "fan_aimed",
+            "mainCnt": 2,
+            "subCnt": 7,
+            "spread": 0.0,
+            "angleStep": 0.2618,
+            "speed": 120,
+            "speedStep": 50,
+            "spriteID": 1,
+            "hitboxRadius": 4,
+            "lifeTime": 6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring_aimed_variable",
+            "mainCnt": 32,
+            "subCnt": 2,
+            "spread": 0.0,
+            "angleStep": 0.1963,
+            "speed": 220,
+            "speedStep": 80,
+            "spriteID": 1,
+            "hitboxRadius": 4,
+            "lifeTime": 6
+          }
+        }
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 1400
+        },
+        "extra": {
+          "hp": 5000
+        },
+        "hard": {
+          "hp": 3000
+        },
+        "lunatic": {
+          "hp": 4000
+        }
+      }
+    },
+    {
+      "id": 5,
+      "name": "\"ÌuOíÌ_í@½v\"",
+      "hp": 2000,
+      "timeout": 45,
+      "patterns": [
+        {
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 32,
+            "subCnt": 2,
+            "spread": 0,
+            "angleStep": 0.3927,
+            "speed": 200,
+            "speedStep": 100,
+            "spriteID": 1,
+            "hitboxRadius": 4,
+            "lifeTime": 6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring_aimed_variable",
+            "mainCnt": 32,
+            "subCnt": 2,
+            "spread": 0.0,
+            "angleStep": 0.1963,
+            "speed": 220,
+            "speedStep": 80,
+            "spriteID": 1,
+            "hitboxRadius": 4,
+            "lifeTime": 6
+          }
+        }
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 1400
+        },
+        "extra": {
+          "hp": 5000
+        },
+        "hard": {
+          "hp": 3000
+        },
+        "lunatic": {
+          "hp": 4000
+        }
+      }
+    },
+    {
+      "id": 6,
+      "name": "\"¢uV´v\"",
+      "hp": 2000,
+      "timeout": 45,
+      "patterns": [
+        {
+          "time": 0,
+          "interval": 1,
+          "pattern": {
+            "type": "ring_aimed_variable",
+            "mainCnt": 32,
+            "subCnt": 2,
+            "spread": 0.0,
+            "angleStep": 0.1963,
+            "speed": 230,
+            "speedStep": 120,
+            "spriteID": 1,
+            "hitboxRadius": 4,
+            "lifeTime": 6
+          }
+        }
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 1400
+        },
+        "extra": {
+          "hp": 5000
+        },
+        "hard": {
+          "hp": 3000
+        },
+        "lunatic": {
+          "hp": 4000
+        }
+      }
+    }
+  ]
+}

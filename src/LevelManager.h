@@ -5,6 +5,8 @@
 #include "cJSON.h"
 #include "Enemy.h"
 #include "EnemyType.h"
+#include "EnemyScManager.h"
+class ItemManager;
 
 enum StageState {
     STAGE_LOADING,   // 关卡加载中
@@ -28,6 +30,17 @@ private:
     bool isClearingForMidboss;
     int midbossIndex_;
     EnemyBulletManager* bullet_mgr_;
+    ItemManager* item_mgr_;
+
+    // ── Spellcard boss management ──────────────────────────────────────────
+    EnemyScManager scManager_;
+    int bossEnemyIndex_;
+    int spellcardTriggerHp_;       // Boss HP threshold to trigger spellcard
+    float spellcardEntryTimer_;    // Timer for spellcard entry animation (2s)
+    float nonSpellcardTimer_;      // ECL 1680-frame (28s) timer for non-spellcard timeout
+    bool midbossDefeatedProcessed_ = false;
+
+    void start_spellcard_phase(int phaseIndex);
 
 public:
     LevelManager();
@@ -46,9 +59,14 @@ public:
 
     // TH06-style lifecycle transitions — replaces rebuild_managers pattern
     void set_bullet_manager(EnemyBulletManager* mgr) { bullet_mgr_ = mgr; }
+    void set_item_manager(ItemManager* mgr) { item_mgr_ = mgr; }
     void enter_stage(int stage);   // clean → load → init → RUNNING
     void enter_boss(int stage);    // clean → load boss → init → BOSS
     bool auto_transition(Uint32 frameCounter);  // 检测并自动处理所有关卡过渡
+
+    // ── Spellcard lifecycle ────────────────────────────────────────────────
+    void update_spellcards(float dt);  // advance timer, check capture/timeout, transition phases
+    const EnemyScManager* get_sc_manager() const { return &scManager_; }
 
     StageState get_stage_state() const { return stage_state; }
     int  get_current_stage() const { return current_stage; }
@@ -63,4 +81,8 @@ public:
     void attack_all_enemies(float dt_);
     void set_bullet_manager_for_all(EnemyBulletManager* mgr);
     void show_all_enemies();
+
+    // ── Boss/midboss defeat handling ──────────────────────────────────────
+    void convert_boss_bullets_to_p_items();
+    void skip_stage_time(float seconds);
 };

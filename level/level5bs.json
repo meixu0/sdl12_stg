@@ -1,21 +1,236 @@
 {
   "meta": {
     "type": "boss",
+    "stage": 5,
     "version": 2
   },
   "behaviors": {
     "boss_sakuya": {
-      "_desc": "Boss sakuya entry",
-      "hp": 18000,
-      "hitbox": [
-        48,
-        48
-      ],
+      "_desc": "Stage 5 Boss (Youmu) with full phase sequence",
+      "hp": 15000,
+      "hitbox": [48, 48],
       "score": 100000,
       "move": {
-        "type": "stop_and_go",
-        "speedX": 0,
-        "speedY": 30
+        "type": "position_interp",
+        "duration": 60,
+        "easing": 4,
+        "target": [192, 128]
+      },
+      "move_bounds": [32, 48, 352, 128],
+      "death": {
+        "itemDrop": "full_power"
+      },
+      "phases": [
+        {
+          "_desc": "Phase 1 - Ring aimed spread",
+          "duration": 2.0,
+          "patterns": [
+            {
+              "time": 0,
+              "interval": 0.2,
+              "burst": 1,
+              "pattern": {
+                "type": "ring_aimed",
+                "mainCnt": 8,
+                "subCnt": 1,
+                "speed": 120,
+                "spriteID": 0,
+                "hitboxRadius": 4,
+                "lifeTime": 5
+              }
+            },
+            {
+              "time": 0,
+              "interval": 0.2,
+              "burst": 1,
+              "pattern": {
+                "type": "ring",
+                "mainCnt": 12,
+                "subCnt": 1,
+                "speed": 90,
+                "angleStep": 0.0982,
+                "spriteID": 0,
+                "hitboxRadius": 4,
+                "lifeTime": 5
+              }
+            }
+          ]
+        },
+        {
+          "_desc": "Phase 2 - Fan aimed barrage",
+          "duration": 2.0,
+          "patterns": [
+            {
+              "time": 0,
+              "interval": 0.25,
+              "burst": 1,
+              "pattern": {
+                "type": "fan_aimed",
+                "mainCnt": 5,
+                "subCnt": 1,
+                "speed": 130,
+                "spread": 0.35,
+                "spriteID": 0,
+                "hitboxRadius": 4,
+                "lifeTime": 4
+              }
+            }
+          ]
+        },
+        {
+          "_desc": "Phase 3 - Alternating rings",
+          "duration": 3.0,
+          "patterns": [
+            {
+              "time": 0,
+              "interval": 0.15,
+              "burst": 1,
+              "pattern": {
+                "type": "ring",
+                "mainCnt": 8,
+                "subCnt": 2,
+                "speed": 150,
+                "speedStep": 80,
+                "angleStep": 0.196,
+                "spriteID": 0,
+                "hitboxRadius": 4,
+                "lifeTime": 6
+              }
+            },
+            {
+              "time": 0.075,
+              "interval": 0.15,
+              "burst": 1,
+              "pattern": {
+                "type": "ring",
+                "mainCnt": 6,
+                "subCnt": 2,
+                "speed": 100,
+                "speedStep": 60,
+                "angleStep": -0.196,
+                "spriteID": 0,
+                "hitboxRadius": 4,
+                "lifeTime": 6
+              }
+            }
+          ]
+        },
+        {
+          "_desc": "Move to left side",
+          "duration": 1.0,
+          "patterns": [],
+          "move_after": [96, 128],
+          "move_duration": 60,
+          "move_easing": 4
+        },
+        {
+          "_desc": "Phase 4 - Aimed ring + ring combo",
+          "duration": 2.5,
+          "patterns": [
+            {
+              "time": 0,
+              "interval": 0.3,
+              "burst": 1,
+              "pattern": {
+                "type": "ring_aimed",
+                "mainCnt": 10,
+                "subCnt": 1,
+                "speed": 140,
+                "spriteID": 0,
+                "hitboxRadius": 4,
+                "lifeTime": 5
+              }
+            },
+            {
+              "time": 0.1,
+              "interval": 0.3,
+              "burst": 1,
+              "pattern": {
+                "type": "ring",
+                "mainCnt": 14,
+                "subCnt": 1,
+                "speed": 80,
+                "angleStep": 0.0491,
+                "spriteID": 0,
+                "hitboxRadius": 4,
+                "lifeTime": 5
+              }
+            }
+          ]
+        },
+        {
+          "_desc": "Phase 5 - Fan aimed sweep",
+          "duration": 2.0,
+          "patterns": [
+            {
+              "time": 0,
+              "interval": 0.2,
+              "burst": 1,
+              "pattern": {
+                "type": "fan_aimed",
+                "mainCnt": 7,
+                "subCnt": 2,
+                "speed": 160,
+                "spread": 0.4,
+                "spriteID": 0,
+                "hitboxRadius": 4,
+                "lifeTime": 4
+              }
+            }
+          ]
+        },
+        {
+          "_desc": "Move back to center",
+          "duration": 1.0,
+          "patterns": [],
+          "move_after": [192, 128],
+          "move_duration": 90,
+          "move_easing": 4
+        },
+        {
+          "_desc": "Phase 6 - Dense ring barrage",
+          "duration": 3.0,
+          "patterns": [
+            {
+              "time": 0,
+              "interval": 0.1,
+              "burst": 1,
+              "pattern": {
+                "type": "ring",
+                "mainCnt": 16,
+                "subCnt": 1,
+                "speed": 110,
+                "angleStep": 0.0491,
+                "spriteID": 0,
+                "hitboxRadius": 4,
+                "lifeTime": 6
+              }
+            }
+          ]
+        },
+        {
+          "_desc": "Pause 90 frames before looping",
+          "duration": 1.5,
+          "patterns": []
+        }
+      ],
+      "difficulty": {
+        "easy": { "hp": 8000 },
+        "normal": { "hp": 15000 },
+        "hard": { "hp": 20000 },
+        "lunatic": { "hp": 25000 }
+      }
+    },
+    "boss_final": {
+      "_desc": "Final death phase after boss defeated",
+      "hp": 3000,
+      "hitbox": [24, 24],
+      "score": 100000,
+      "move": {
+        "type": "position_interp",
+        "duration": 60,
+        "easing": 4,
+        "target": [192, 128]
       },
       "death": {
         "itemDrop": "full_power"
@@ -27,31 +242,7 @@
       "delta": 0.0,
       "cmd": "spawn",
       "behavior": "boss_sakuya",
-      "pos": [
-        272,
-        -32
-      ]
-    },
-    {
-      "delta": 0.0,
-      "cmd": "spellcard",
-      "spellcard": "boss_sakuya_phase1",
-      "hp": 2000,
-      "timeout": 45
-    },
-    {
-      "delta": 0.0,
-      "cmd": "spellcard",
-      "spellcard": "boss_sakuya_phase2",
-      "hp": 2000,
-      "timeout": 45
-    },
-    {
-      "delta": 0.0,
-      "cmd": "spellcard",
-      "spellcard": "boss_sakuya_phase3",
-      "hp": 2000,
-      "timeout": 45
+      "pos": [272, -32]
     },
     {
       "delta": 2.0,
@@ -60,39 +251,94 @@
     }
   ],
   "spellcards": {
-    "boss_sakuya_phase1": {
-      "name": "\"guÔáÃ°(}ChVFCJ[)v\"",
+    "boss_sakuya_spell1": {
+      "name": "幽鬼剣「妖童餓鬼の断食」",
       "hp": 2000,
       "timeout": 45,
-      "behavior": "boss_sakuya_phase1",
+      "behavior": "boss_sakuya_spell1",
       "patterns": [
         {
           "time": 0,
-          "interval": 1,
+          "interval": 0.5,
+          "pattern": {
+            "type": "ring_aimed",
+            "mainCnt": 8,
+            "subCnt": 1,
+            "speed": 130,
+            "spriteID": 0,
+            "hitboxRadius": 4,
+            "lifeTime": 5
+          }
+        },
+        {
+          "time": 0.25,
+          "interval": 0.5,
           "pattern": {
             "type": "ring",
-            "mainCnt": 48,
+            "mainCnt": 16,
             "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.0982,
             "speed": 100,
-            "speedStep": 100,
+            "angleStep": 0.0491,
+            "spriteID": 0,
+            "hitboxRadius": 4,
+            "lifeTime": 5
+          }
+        }
+      ]
+    },
+    "boss_sakuya_spell2": {
+      "name": "餓鬼剣「餓鬼道草紙」",
+      "hp": 2000,
+      "timeout": 45,
+      "behavior": "boss_sakuya_spell2",
+      "patterns": [
+        {
+          "time": 0,
+          "interval": 0.6,
+          "pattern": {
+            "type": "fan_aimed",
+            "mainCnt": 6,
+            "subCnt": 1,
+            "speed": 140,
+            "spread": 0.35,
+            "spriteID": 0,
+            "hitboxRadius": 4,
+            "lifeTime": 4
+          }
+        }
+      ]
+    },
+    "boss_sakuya_spell3": {
+      "name": "獄界剣「二百由旬の一閃」",
+      "hp": 2500,
+      "timeout": 48,
+      "behavior": "boss_sakuya_spell3",
+      "patterns": [
+        {
+          "time": 0,
+          "interval": 0.4,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 12,
+            "subCnt": 2,
+            "speed": 160,
+            "speedStep": 80,
+            "angleStep": 0.196,
             "spriteID": 0,
             "hitboxRadius": 4,
             "lifeTime": 6
           }
         },
         {
-          "time": 0,
-          "interval": 1,
+          "time": 0.2,
+          "interval": 0.4,
           "pattern": {
             "type": "ring",
-            "mainCnt": 24,
+            "mainCnt": 8,
             "subCnt": 2,
-            "spread": 0,
-            "angleStep": 0.0982,
-            "speed": 140,
-            "speedStep": 80,
+            "speed": 120,
+            "speedStep": 60,
+            "angleStep": -0.196,
             "spriteID": 0,
             "hitboxRadius": 4,
             "lifeTime": 6
@@ -100,82 +346,108 @@
         }
       ]
     },
-    "boss_sakuya_phase2": {
-      "name": "\"Uu^ÀÌ(CrWut[)v\"",
-      "hp": 2000,
-      "timeout": 45,
-      "behavior": "boss_sakuya_phase2",
+    "boss_sakuya_spell4": {
+      "name": "獄炎剣「業風閃影陣」",
+      "hp": 2500,
+      "timeout": 48,
+      "behavior": "boss_sakuya_spell4",
       "patterns": [
         {
           "time": 0,
-          "interval": 1,
+          "interval": 0.35,
           "pattern": {
-            "type": "ring",
-            "mainCnt": 80,
+            "type": "ring_aimed",
+            "mainCnt": 10,
             "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.0982,
-            "speed": 100,
-            "speedStep": 100,
+            "speed": 150,
             "spriteID": 0,
             "hitboxRadius": 4,
-            "lifeTime": 6
+            "lifeTime": 5
           }
         },
         {
-          "time": 0,
-          "interval": 1,
+          "time": 0.175,
+          "interval": 0.35,
           "pattern": {
-            "type": "ring",
-            "mainCnt": 80,
-            "subCnt": 2,
-            "spread": 0,
-            "angleStep": 0.0982,
-            "speed": 140,
-            "speedStep": 80,
+            "type": "fan_aimed",
+            "mainCnt": 5,
+            "subCnt": 1,
+            "speed": 180,
+            "spread": 0.5,
             "spriteID": 0,
             "hitboxRadius": 4,
-            "lifeTime": 6
+            "lifeTime": 4
           }
         }
       ]
     },
-    "boss_sakuya_phase3": {
-      "name": "\"u¶OáÉ(ieBbNbhACY)v\"",
-      "hp": 2000,
-      "timeout": 45,
-      "behavior": "boss_sakuya_phase3",
+    "boss_sakuya_spell5": {
+      "name": "修羅剣「現世妄執」",
+      "hp": 3000,
+      "timeout": 50,
+      "behavior": "boss_sakuya_spell5",
       "patterns": [
         {
           "time": 0,
-          "interval": 1,
+          "interval": 0.3,
           "pattern": {
             "type": "ring",
-            "mainCnt": 80,
+            "mainCnt": 20,
             "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.0982,
-            "speed": 500,
-            "speedStep": 100,
+            "speed": 130,
+            "angleStep": 0.0491,
             "spriteID": 0,
             "hitboxRadius": 4,
             "lifeTime": 6
           }
         },
         {
-          "time": 0,
-          "interval": 1,
+          "time": 0.15,
+          "interval": 0.3,
           "pattern": {
-            "type": "ring",
-            "mainCnt": 80,
-            "subCnt": 2,
-            "spread": 0,
-            "angleStep": 0.0982,
-            "speed": 540,
-            "speedStep": 280,
+            "type": "ring_aimed",
+            "mainCnt": 8,
+            "subCnt": 1,
+            "speed": 170,
             "spriteID": 0,
             "hitboxRadius": 4,
-            "lifeTime": 6
+            "lifeTime": 4
+          }
+        }
+      ]
+    },
+    "boss_sakuya_spell6": {
+      "name": "畜趣剣「無為無策の冥罰」",
+      "hp": 3000,
+      "timeout": 50,
+      "behavior": "boss_sakuya_spell6",
+      "patterns": [
+        {
+          "time": 0,
+          "interval": 0.25,
+          "pattern": {
+            "type": "fan_aimed",
+            "mainCnt": 7,
+            "subCnt": 2,
+            "speed": 160,
+            "spread": 0.4,
+            "spriteID": 0,
+            "hitboxRadius": 4,
+            "lifeTime": 4
+          }
+        },
+        {
+          "time": 0.125,
+          "interval": 0.25,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 14,
+            "subCnt": 1,
+            "speed": 110,
+            "angleStep": 0.0491,
+            "spriteID": 0,
+            "hitboxRadius": 4,
+            "lifeTime": 5
           }
         }
       ]

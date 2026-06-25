@@ -1,4 +1,5 @@
 #include "Enemy.h"
+#include "EnemyScManager.h"
 #include "player.h"
 #include <iostream>
 #include <algorithm>
@@ -23,9 +24,12 @@ Enemy::Enemy() : x(0.0), y(0.0), startX(0.0), startY(0.0), playerX(0.0), playerY
     bezierP1x(0), bezierP1y(0), bezierP2x(0), bezierP2y(0), bezierEndX(0), bezierEndY(0),
     bezierDuration(0), bezierTime(0), stateStartX(0), stateStartY(0),
     moveAngle(0), angularVelocity(0), accel(0), minPlayerDist(80.0f),
+    moveDuration(0), moveElapsed(0), moveEasing(0),
     spriteRow(0), spriteAnimTimer(0.0f),
     isDead(false),
-    axisSpeedX(0), axisSpeedY(0), enemyType(0), enemyID(0), isMidboss(false), isEntering(false), entryTargetY(100.0f), playerPtr(NULL) {
+    axisSpeedX(0), axisSpeedY(0), enemyType(0), enemyID(0), isMidboss(false), isEntering(false), entryTargetY(100.0f), playerPtr(NULL),
+    isSpellcardBoss(false), scManager(nullptr), hasMoveBounds(false), moveMinX(8), moveMaxX(536), moveMinY(0), moveMaxY(592),
+    currentPhase_(-1), phaseTimer_(0.0f), isPhasedBoss_(false) {
 }
 SDL_Surface* Enemy::get_zako_sprite(int col) {
     return zakoSprites[enemyType][col];
@@ -182,11 +186,16 @@ void Enemy::compute_axis_speed(){
 
         case STOPANDGO:
             {
-                float cycle = fmodf(timeAlive, 2.0f);
-                if (cycle < 1.0f) {
-                    axisSpeedX = 0.0f;
-                    axisSpeedY = speedY;
+                float dx = targetX - x;
+                float dy = targetY - y;
+                float dist = sqrtf(dx*dx + dy*dy);
+                float speed = speedY > 0.0f ? speedY : 120.0f;
+                if (dist > 1.5f) {
+                    axisSpeedX = (dx / dist) * speed;
+                    axisSpeedY = (dy / dist) * speed;
                 } else {
+                    x = targetX;
+                    y = targetY;
                     axisSpeedX = 0.0f;
                     axisSpeedY = 0.0f;
                 }
@@ -245,6 +254,27 @@ void Enemy::compute_axis_speed(){
             break;
         }
 
+        case POSITION_INTERP:
+            {
+                if (moveDuration <= 0.0f) { axisSpeedX = 0; axisSpeedY = 0; break; }
+                moveElapsed += 1.0f / 60.0f;
+                float t = std::min(moveElapsed / moveDuration, 1.0f);
+                float ease_t;
+                if (moveEasing == 4) {
+                    float u = 1.0f - t;
+                    ease_t = 1.0f - u * u;
+                } else {
+                    ease_t = t;
+                }
+                float curX = stateStartX + (targetX - stateStartX) * ease_t;
+                float curY = stateStartY + (targetY - stateStartY) * ease_t;
+                x = curX;
+                y = curY;
+                axisSpeedX = 0.0f;
+                axisSpeedY = 0.0f;
+            }
+            break;
+
         default:
             axisSpeedX = 0.0f;
             axisSpeedY = 0.0f;
@@ -289,6 +319,9 @@ void Enemy::enemy_move(float dt){
         if (y >= entryTargetY) {
             y = entryTargetY;
             isEntering = false;
+            // Reset stop_and_go target to current position so enemy stays put after entry
+            targetX = x;
+            targetY = y;
         }
         spriteAnimTimer += dt;
         return;
@@ -306,14 +339,36 @@ void Enemy::enemy_move(float dt){
     x += axisSpeedX * dt;
     y += axisSpeedY * dt;
 
-    if (x < 8.0f)        x = 8.0f;
-    if (x > 536.0f)      x = 536.0f;
-    if (y < 0.0f)        { /* 允许从上方出场 */ }
-    if (y > 592.0f)      y = 592.0f;
+    // Skip all boundary clipping during active position_interp (ECL entry phase)
+    if (movePattern == POSITION_INTERP && moveElapsed < moveDuration) {
+        // allow offscreen entry — no clipping
+    } else {
+        // Apply moveBounds (ECL move_bounds_set) if set; otherwise default screen bounds
+        if (hasMoveBounds) {
+            if (x < moveMinX) x = moveMinX;
+            if (x > moveMaxX) x = moveMaxX;
+            if (y < moveMinY) y = moveMinY;
+            if (y > moveMaxY) y = moveMaxY;
+        } else {
+            if (x < 8.0f)        x = 8.0f;
+            if (x > 536.0f)      x = 536.0f;
+            if (y < 0.0f)        { /* 允许从上方出场 */ }
+            if (y > 592.0f)      y = 592.0f;
+        }
+    }
 }
 
 void Enemy::enemy_attack(float dt){
     if (!isActive || bulletManager == NULL) return;
+
+    // ── Phase sequencer: advance timer, transition phases ──
+    if (isPhasedBoss_ && bossPhases_.size() > 0 && currentPhase_ >= 0) {
+        phaseTimer_ += dt;
+        if (phaseTimer_ >= bossPhases_[currentPhase_].duration) {
+            advance_phase();
+        }
+    }
+
     if (emitterConfig.size() != emitterRuntime.size()) return;
 
     for (size_t i = 0; i < emitterConfig.size(); i++) {
@@ -406,8 +461,74 @@ int Enemy::take_damage(int dmg){
     return hp;
 }
 
+void Enemy::link_spellcard_manager(EnemyScManager* mgr) {
+    scManager = mgr;
+    isSpellcardBoss = true;
+}
+
+void Enemy::set_spellcard_hp(int newHp) {
+    hp = newHp;
+    if (hp < 0) hp = 0;
+}
+
+void Enemy::start_position_interp(float dur, int easing, float tx, float ty) {
+    stateStartX = x;
+    stateStartY = y;
+    targetX = tx;
+    targetY = ty;
+    movePattern = POSITION_INTERP;
+    moveDuration = dur;
+    moveElapsed = 0.0f;
+    moveEasing = easing;
+}
+
+void Enemy::set_move_bounds(float minX, float minY, float maxX, float maxY) {
+    moveMinX = minX;
+    moveMaxX = maxX;
+    moveMinY = minY;
+    moveMaxY = maxY;
+    hasMoveBounds = true;
+}
+
+void Enemy::set_phases(const std::vector<BossPhaseDef>& phases) {
+    bossPhases_ = phases;
+}
+
+void Enemy::start_phases() {
+    if (bossPhases_.empty()) return;
+    currentPhase_ = 0;
+    phaseTimer_ = 0.0f;
+    isPhasedBoss_ = true;
+    const auto& phase = bossPhases_[0];
+    emitterConfig = phase.patterns;
+    emitterRuntime.resize(emitterConfig.size());
+    for (auto& rt : emitterRuntime) {
+        rt.timer = 0.0f; rt.burstRemaining = 0; rt.cycleCount = 0;
+    }
+}
+
+void Enemy::advance_phase() {
+    if (!isPhasedBoss_ || bossPhases_.empty()) return;
+    currentPhase_ = (currentPhase_ + 1) % bossPhases_.size();
+    phaseTimer_ = 0.0f;
+
+    const auto& phase = bossPhases_[currentPhase_];
+
+    if (phase.moveDuration > 0.0f) {
+        start_position_interp(phase.moveDuration, phase.moveEasing, phase.moveToX, phase.moveToY);
+    }
+
+    emitterConfig = phase.patterns;
+    emitterRuntime.resize(emitterConfig.size());
+    for (auto& rt : emitterRuntime) {
+        rt.timer = 0.0f; rt.burstRemaining = 0; rt.cycleCount = 0;
+    }
+}
+
 void Enemy::boss_entry() {
     if (enemyType < BOSS_RUMIA || isMidboss) return;
+    // position_interp handles its own entry movement — skip boss_entry
+    if (movePattern == POSITION_INTERP) return;
     isEntering = true;
     entryTargetY = 100.0f;
 

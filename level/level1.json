@@ -40,6 +40,20 @@
       ],
       "death": {
         "itemDrop": "random"
+      },
+      "difficulty": {
+        "easy": {
+          "hp": 14
+        },
+        "hard": {
+          "hp": 30
+        },
+        "lunatic": {
+          "hp": 40
+        },
+        "extra": {
+          "hp": 50
+        }
       }
     },
     "zako_stream": {
@@ -57,6 +71,20 @@
       },
       "death": {
         "itemDrop": "random"
+      },
+      "difficulty": {
+        "easy": {
+          "hp": 14
+        },
+        "hard": {
+          "hp": 30
+        },
+        "lunatic": {
+          "hp": 40
+        },
+        "extra": {
+          "hp": 50
+        }
       }
     },
     "zako_initial": {
@@ -76,6 +104,20 @@
       },
       "death": {
         "itemDrop": "power_small"
+      },
+      "difficulty": {
+        "easy": {
+          "hp": 14
+        },
+        "hard": {
+          "hp": 30
+        },
+        "lunatic": {
+          "hp": 40
+        },
+        "extra": {
+          "hp": 50
+        }
       }
     },
     "fairy_blue": {
@@ -131,6 +173,20 @@
       ],
       "death": {
         "itemDrop": "power_big"
+      },
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
       }
     },
     "fairy_red": {
@@ -186,6 +242,20 @@
       ],
       "death": {
         "itemDrop": "power_big"
+      },
+      "difficulty": {
+        "easy": {
+          "hp": 140
+        },
+        "hard": {
+          "hp": 300
+        },
+        "lunatic": {
+          "hp": 400
+        },
+        "extra": {
+          "hp": 500
+        }
       }
     },
     "fairy_green": {
@@ -219,6 +289,20 @@
       ],
       "death": {
         "itemDrop": "power_big"
+      },
+      "difficulty": {
+        "easy": {
+          "hp": 210
+        },
+        "hard": {
+          "hp": 450
+        },
+        "lunatic": {
+          "hp": 600
+        },
+        "extra": {
+          "hp": 750
+        }
       }
     },
     "fairy_purple": {
@@ -252,6 +336,20 @@
       ],
       "death": {
         "itemDrop": "power_big"
+      },
+      "difficulty": {
+        "easy": {
+          "hp": 280
+        },
+        "hard": {
+          "hp": 600
+        },
+        "lunatic": {
+          "hp": 800
+        },
+        "extra": {
+          "hp": 1000
+        }
       }
     },
     "boss_rumia": {
@@ -263,17 +361,45 @@
       ],
       "score": 100000,
       "move": {
-        "type": "stop_and_go",
-        "speedX": 0,
-        "speedY": 90
+        "type": "position_interp",
+        "duration": 60,
+        "easing": 4,
+        "target": [
+          192,
+          128
+        ]
       },
+      "attack": [
+        {
+          "time": 0.5,
+          "interval": 0.6,
+          "pattern": {
+            "type": "fan_aimed",
+            "mainCnt": 3,
+            "subCnt": 1,
+            "spread": 0,
+            "angleStep": 0.15,
+            "speed": 110,
+            "speedStep": 40,
+            "spriteID": 0,
+            "hitboxRadius": 4,
+            "lifeTime": 6
+          }
+        }
+      ],
       "death": {
         "itemDrop": "full_power"
       },
       "flags": [
         "midboss"
       ],
-      "lifeTime": 99
+      "lifeTime": 99,
+      "move_bounds": [
+        32,
+        48,
+        352,
+        128
+      ]
     },
     "zako_ring": {
       "_desc": "ecldata1 Sub23",
@@ -306,6 +432,20 @@
       ],
       "death": {
         "itemDrop": "random"
+      },
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
       }
     },
     "fairy_yellow": {
@@ -339,6 +479,20 @@
       ],
       "death": {
         "itemDrop": "power_small"
+      },
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
       }
     },
     "fairy_ring": {
@@ -372,6 +526,20 @@
       ],
       "death": {
         "itemDrop": "random"
+      },
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
       }
     },
     "zako_ring_slow": {
@@ -405,6 +573,20 @@
       ],
       "death": {
         "itemDrop": "random"
+      },
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
       }
     },
     "fairy_ringaimed": {
@@ -438,6 +620,20 @@
       ],
       "death": {
         "itemDrop": "power_small"
+      },
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
       }
     },
     "zako_ring_fast": {
@@ -471,6 +667,20 @@
       ],
       "death": {
         "itemDrop": "random"
+      },
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
       }
     },
     "zako_ring_wide": {
@@ -504,6 +714,20 @@
       ],
       "death": {
         "itemDrop": "random"
+      },
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
       }
     },
     "zako_fan": {
@@ -539,6 +763,20 @@
       ],
       "death": {
         "itemDrop": "random"
+      },
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
       }
     },
     "zako_ring_dense": {
@@ -572,6 +810,20 @@
       ],
       "death": {
         "itemDrop": "random"
+      },
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
       }
     },
     "zako_ring_sparse": {
@@ -605,6 +857,20 @@
       ],
       "death": {
         "itemDrop": "random"
+      },
+      "difficulty": {
+        "easy": {
+          "hp": 105
+        },
+        "hard": {
+          "hp": 225
+        },
+        "lunatic": {
+          "hp": 300
+        },
+        "extra": {
+          "hp": 375
+        }
       }
     },
     "boss_entry": {

@@ -1,21 +1,97 @@
 {
   "meta": {
     "type": "boss",
+    "stage": 4,
     "version": 2
   },
   "behaviors": {
     "boss_patchouli": {
-      "_desc": "Boss patchouli entry",
-      "hp": 2500,
-      "hitbox": [
-        48,
-        48
-      ],
+      "_desc": "Stage 4 boss — Prismriver sisters (TH07 ECL data). Non-spellcard merged patterns + 6 spellcards",
+      "hp": 13000,
+      "hitbox": [48, 48],
       "score": 100000,
       "move": {
-        "type": "stop_and_go",
-        "speedX": 0,
-        "speedY": 30
+        "type": "position_interp",
+        "duration": 60,
+        "easing": 4,
+        "target": [192, 128]
+      },
+      "move_bounds": [32, 48, 352, 128],
+      "death": {
+        "itemDrop": "full_power"
+      },
+      "phases": [
+        {
+          "_desc": "Lunasa-style — Fan aimed string volley",
+          "duration": 1.5,
+          "patterns": [
+            {"time": 0, "interval": 0.067, "burst": 1, "pattern": {"type": "fan_aimed", "mainCnt": 5, "subCnt": 1, "spread": 0, "angleStep": 0.15, "speed": 130, "speedStep": 50, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}},
+            {"time": 0, "interval": 0.067, "burst": 1, "pattern": {"type": "fan_aimed", "mainCnt": 3, "subCnt": 2, "spread": 0.1, "angleStep": 0.15, "speed": 100, "speedStep": 40, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}}
+          ]
+        },
+        {
+          "_desc": "Move to center-left",
+          "duration": 0.67,
+          "patterns": [],
+          "move_after": [128, 128],
+          "move_duration": 40,
+          "move_easing": 4
+        },
+        {
+          "_desc": "Merlin-style — Ring trumpet blast",
+          "duration": 1.5,
+          "patterns": [
+            {"time": 0, "interval": 0.1, "burst": 1, "pattern": {"type": "ring", "mainCnt": 16, "subCnt": 2, "speed": 100, "speedStep": 50, "spriteID": 5, "hitboxRadius": 4, "lifeTime": 5}},
+            {"time": 0, "interval": 0.1, "burst": 1, "pattern": {"type": "ring", "mainCnt": 8, "subCnt": 1, "speed": 150, "spread": 0.075, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}}
+          ]
+        },
+        {
+          "_desc": "Move to center-right",
+          "duration": 0.67,
+          "patterns": [],
+          "move_after": [256, 128],
+          "move_duration": 40,
+          "move_easing": 4
+        },
+        {
+          "_desc": "Lyrica-style — Ring aimed keyboard arpeggio",
+          "duration": 1.5,
+          "patterns": [
+            {"time": 0, "interval": 0.1, "burst": 1, "pattern": {"type": "ring_aimed", "mainCnt": 24, "subCnt": 1, "spread": 0, "angleStep": 0.15, "speed": 90, "speedStep": 30, "spriteID": 1, "hitboxRadius": 4, "lifeTime": 6}},
+            {"time": 0, "interval": 0.1, "burst": 1, "pattern": {"type": "ring_aimed", "mainCnt": 12, "subCnt": 2, "spread": 0.1, "angleStep": 0.15, "speed": 130, "speedStep": 40, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}}
+          ]
+        },
+        {
+          "_desc": "Move back to center",
+          "duration": 0.67,
+          "patterns": [],
+          "move_after": [192, 128],
+          "move_duration": 40,
+          "move_easing": 4
+        },
+        {
+          "_desc": "Pause before looping",
+          "duration": 1.0,
+          "patterns": []
+        }
+      ],
+      "difficulty": {
+        "easy": { "hp": 8000 },
+        "normal": { "hp": 13000 },
+        "hard": { "hp": 18000 },
+        "lunatic": { "hp": 25000 }
+      }
+    },
+    "boss_final": {
+      "_desc": "Boss death / timeout retreat",
+      "hp": 3000,
+      "hitbox": [24, 24],
+      "score": 100000,
+      "move": {
+        "type": "position_interp",
+        "duration": 60,
+        "easing": 4,
+        "target": [128, -64]
       },
       "death": {
         "itemDrop": "full_power"
@@ -27,45 +103,7 @@
       "delta": 0.0,
       "cmd": "spawn",
       "behavior": "boss_patchouli",
-      "pos": [
-        272,
-        -32
-      ]
-    },
-    {
-      "delta": 0.0,
-      "cmd": "spellcard",
-      "spellcard": "boss_patchouli_phase1",
-      "hp": 2000,
-      "timeout": 45
-    },
-    {
-      "delta": 0.0,
-      "cmd": "spellcard",
-      "spellcard": "boss_patchouli_phase2",
-      "hp": 2000,
-      "timeout": 45
-    },
-    {
-      "delta": 0.0,
-      "cmd": "spellcard",
-      "spellcard": "boss_patchouli_phase3",
-      "hp": 2000,
-      "timeout": 45
-    },
-    {
-      "delta": 0.0,
-      "cmd": "spellcard",
-      "spellcard": "boss_patchouli_phase4",
-      "hp": 2000,
-      "timeout": 45
-    },
-    {
-      "delta": 0.0,
-      "cmd": "spellcard",
-      "spellcard": "boss_patchouli_phase5",
-      "hp": 2000,
-      "timeout": 45
+      "pos": [192, -32]
     },
     {
       "delta": 2.0,
@@ -74,173 +112,104 @@
     }
   ],
   "spellcards": {
-    "boss_patchouli_phase1": {
-      "name": "\"u~L[EFCv\"",
+    "boss_patchouli_sc1": {
+      "name": "騒符「ファントムディニング」",
       "hp": 2000,
       "timeout": 45,
-      "behavior": "boss_patchouli_phase1",
+      "behavior": "boss_patchouli",
       "patterns": [
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "ring",
-            "mainCnt": 4,
-            "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.0491,
-            "speed": 180,
-            "speedStep": 90,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        }
-      ]
+        {"time": 0, "interval": 0.1, "burst": 1, "pattern": {"type": "ring_aimed", "mainCnt": 20, "subCnt": 2, "spread": 0, "angleStep": 0.196, "speed": 100, "speedStep": 30, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}},
+        {"time": 0, "interval": 0.1, "burst": 1, "pattern": {"type": "ring_aimed", "mainCnt": 12, "subCnt": 1, "spread": 0.15, "angleStep": 0.196, "speed": 140, "speedStep": 40, "spriteID": 1, "hitboxRadius": 4, "lifeTime": 5}}
+      ],
+      "difficulty": {
+        "easy": { "hp": 1400 },
+        "normal": { "hp": 2000 },
+        "hard": { "hp": 2800 },
+        "lunatic": { "hp": 3600 }
+      }
     },
-    "boss_patchouli_phase2": {
-      "name": "\"öumfBNVi[U[v\"",
-      "hp": 2000,
+    "boss_patchouli_sc2": {
+      "name": "弦奏「グァルネリ・デル・ジェス」",
+      "hp": 2200,
       "timeout": 45,
-      "behavior": "boss_patchouli_phase2",
+      "behavior": "boss_patchouli",
       "patterns": [
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "ring",
-            "mainCnt": 1,
-            "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.0491,
-            "speed": 300,
-            "speedStep": 90,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        }
-      ]
+        {"time": 0, "interval": 0.067, "burst": 1, "pattern": {"type": "fan_aimed", "mainCnt": 5, "subCnt": 1, "spread": 0, "angleStep": 0.12, "speed": 120, "speedStep": 50, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}},
+        {"time": 0, "interval": 0.067, "burst": 1, "pattern": {"type": "fan_aimed", "mainCnt": 3, "subCnt": 2, "spread": 0.08, "angleStep": 0.12, "speed": 160, "speedStep": 60, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}}
+      ],
+      "difficulty": {
+        "easy": { "hp": 1500 },
+        "normal": { "hp": 2200 },
+        "hard": { "hp": 3000 },
+        "lunatic": { "hp": 3800 }
+      }
     },
-    "boss_patchouli_phase3": {
-      "name": "\"öu}X^[Xp[Nv\"",
-      "hp": 2000,
-      "timeout": 45,
-      "behavior": "boss_patchouli_phase3",
+    "boss_patchouli_sc3": {
+      "name": "合葬「プリズムコンチェルト」",
+      "hp": 2500,
+      "timeout": 48,
+      "behavior": "boss_patchouli",
       "patterns": [
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "ring",
-            "mainCnt": 10,
-            "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.2094,
-            "speed": 200,
-            "speedStep": 10,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        }
-      ]
+        {"time": 0, "interval": 0.1, "burst": 1, "pattern": {"type": "ring", "mainCnt": 24, "subCnt": 2, "speed": 90, "speedStep": 40, "spriteID": 5, "hitboxRadius": 4, "lifeTime": 5}},
+        {"time": 0, "interval": 0.1, "burst": 1, "pattern": {"type": "ring", "mainCnt": 12, "subCnt": 1, "speed": 140, "spread": 0.1, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}},
+        {"time": 0, "interval": 0.2, "burst": 1, "pattern": {"type": "ring_aimed", "mainCnt": 16, "subCnt": 1, "spread": 0, "angleStep": 0.2, "speed": 110, "spriteID": 1, "hitboxRadius": 4, "lifeTime": 5}}
+      ],
+      "difficulty": {
+        "easy": { "hp": 1700 },
+        "normal": { "hp": 2500 },
+        "hard": { "hp": 3400 },
+        "lunatic": { "hp": 4200 }
+      }
     },
-    "boss_patchouli_phase4": {
-      "name": "\"õuA[XCgCv\"",
-      "hp": 2000,
-      "timeout": 45,
-      "behavior": "boss_patchouli_phase4",
+    "boss_patchouli_sc4": {
+      "name": "大合葬「霊車コンチェルトグロッソ」",
+      "hp": 2800,
+      "timeout": 50,
+      "behavior": "boss_patchouli",
       "patterns": [
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "ring_aimed_variable",
-            "mainCnt": 1,
-            "subCnt": 32,
-            "spread": -2.0944,
-            "angleStep": 0.2244,
-            "speed": 350,
-            "speedStep": 50,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        },
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "ring_aimed_variable",
-            "mainCnt": 1,
-            "subCnt": 32,
-            "spread": 2.0944,
-            "angleStep": 0.2,
-            "speed": 350,
-            "speedStep": 50,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        },
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan_aimed",
-            "mainCnt": 13,
-            "subCnt": 3,
-            "spread": 0.0,
-            "angleStep": 0.0748,
-            "speed": 220,
-            "speedStep": 100,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        },
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan_aimed",
-            "mainCnt": 13,
-            "subCnt": 5,
-            "spread": 0.0,
-            "angleStep": 0.5236,
-            "speed": 150,
-            "speedStep": 50,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        }
-      ]
+        {"time": 0, "interval": 0.067, "burst": 1, "pattern": {"type": "ring_aimed", "mainCnt": 32, "subCnt": 2, "spread": 0, "angleStep": 0.15, "speed": 80, "speedStep": 30, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}},
+        {"time": 0, "interval": 0.067, "burst": 1, "pattern": {"type": "fan_aimed", "mainCnt": 7, "subCnt": 2, "spread": 0, "angleStep": 0.1, "speed": 110, "speedStep": 40, "spriteID": 1, "hitboxRadius": 4, "lifeTime": 5}},
+        {"time": 0, "interval": 0.1, "burst": 1, "pattern": {"type": "ring", "mainCnt": 16, "subCnt": 1, "speed": 150, "spread": 0.05, "spriteID": 5, "hitboxRadius": 4, "lifeTime": 5}}
+      ],
+      "difficulty": {
+        "easy": { "hp": 1900 },
+        "normal": { "hp": 2800 },
+        "hard": { "hp": 3800 },
+        "lunatic": { "hp": 4800 }
+      }
     },
-    "boss_patchouli_phase5": {
-      "name": "\"Cut@CiXp[Nv\"",
-      "hp": 2000,
-      "timeout": 45,
-      "behavior": "boss_patchouli_phase5",
+    "boss_patchouli_sc5": {
+      "name": "管霊「ヒノファンタズム」",
+      "hp": 1800,
+      "timeout": 42,
+      "behavior": "boss_patchouli",
       "patterns": [
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "ring",
-            "mainCnt": 8,
-            "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.0491,
-            "speed": 180,
-            "speedStep": 90,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        }
-      ]
+        {"time": 0, "interval": 0.083, "burst": 1, "pattern": {"type": "ring_aimed", "mainCnt": 16, "subCnt": 1, "spread": 0, "angleStep": 0.25, "speed": 120, "speedStep": 40, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}},
+        {"time": 0, "interval": 0.083, "burst": 1, "pattern": {"type": "fan_aimed", "mainCnt": 3, "subCnt": 3, "spread": 0, "angleStep": 0.18, "speed": 150, "speedStep": 50, "spriteID": 1, "hitboxRadius": 4, "lifeTime": 5}}
+      ],
+      "difficulty": {
+        "easy": { "hp": 1200 },
+        "normal": { "hp": 1800 },
+        "hard": { "hp": 2500 },
+        "lunatic": { "hp": 3200 }
+      }
+    },
+    "boss_patchouli_sc6": {
+      "name": "冥鍵「ファツィオーリ冥奏」",
+      "hp": 3000,
+      "timeout": 50,
+      "behavior": "boss_patchouli",
+      "patterns": [
+        {"time": 0, "interval": 0.05, "burst": 1, "pattern": {"type": "ring_aimed", "mainCnt": 28, "subCnt": 1, "spread": 0, "angleStep": 0.18, "speed": 90, "speedStep": 25, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}},
+        {"time": 0, "interval": 0.05, "burst": 1, "pattern": {"type": "ring_aimed", "mainCnt": 14, "subCnt": 2, "spread": 0.12, "angleStep": 0.18, "speed": 130, "speedStep": 35, "spriteID": 1, "hitboxRadius": 4, "lifeTime": 5}},
+        {"time": 0, "interval": 0.1, "burst": 1, "pattern": {"type": "ring", "mainCnt": 10, "subCnt": 1, "speed": 170, "spriteID": 5, "hitboxRadius": 4, "lifeTime": 5}}
+      ],
+      "difficulty": {
+        "easy": { "hp": 2000 },
+        "normal": { "hp": 3000 },
+        "hard": { "hp": 4000 },
+        "lunatic": { "hp": 5000 }
+      }
     }
   }
 }

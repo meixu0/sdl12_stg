@@ -1,21 +1,79 @@
 {
   "meta": {
     "type": "boss",
+    "stage": 2,
     "version": 2
   },
   "behaviors": {
     "boss_daiyousei": {
-      "_desc": "Boss daiyousei entry",
-      "hp": 12000,
-      "hitbox": [
-        48,
-        48
-      ],
+      "_desc": "ECL Sub40-52 — Non-spellcard + Frost Cold spellcard",
+      "hp": 14500,
+      "hitbox": [32, 48],
       "score": 100000,
       "move": {
-        "type": "stop_and_go",
-        "speedX": 0,
-        "speedY": 30
+        "type": "position_interp",
+        "duration": 60,
+        "easing": 4,
+        "target": [192, 128]
+      },
+      "move_bounds": [32, 48, 352, 128],
+      "death": {
+        "itemDrop": "full_power"
+      },
+      "phases": [
+        {
+          "_desc": "Sub41/43 — Random dash + fan aimed volley",
+          "duration": 1.0,
+          "patterns": [
+            {"time": 0, "interval": 0.067, "burst": 1, "pattern": {"type": "fan_aimed", "mainCnt": 3, "subCnt": 1, "spread": 0, "angleStep": 0.2, "speed": 150, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}},
+            {"time": 0, "interval": 0.067, "burst": 1, "pattern": {"type": "fan_aimed", "mainCnt": 3, "subCnt": 1, "spread": 0.15, "angleStep": 0.2, "speed": 120, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}},
+            {"time": 0, "interval": 0.067, "burst": 1, "pattern": {"type": "fan_aimed", "mainCnt": 3, "subCnt": 1, "spread": 0.25, "angleStep": 0.2, "speed": 90, "spriteID": 6, "hitboxRadius": 4, "lifeTime": 5}}
+          ]
+        },
+        {
+          "duration": 0.67,
+          "patterns": [],
+          "move_after": [192, 96],
+          "move_duration": 40,
+          "move_easing": 4
+        },
+        {
+          "_desc": "Sub42 — Familiar spawns",
+          "duration": 1.0,
+          "patterns": [
+            {"time": 0, "interval": 0.1, "burst": 8, "pattern": {"type": "ring", "mainCnt": 2, "subCnt": 1, "speed": 0, "spriteID": 0, "hitboxRadius": 4, "lifeTime": 1}}
+          ]
+        },
+        {
+          "duration": 0.67,
+          "patterns": [],
+          "move_after": [192, 128],
+          "move_duration": 40,
+          "move_easing": 4
+        },
+        {
+          "_desc": "Pause before looping",
+          "duration": 2.0,
+          "patterns": []
+        }
+      ],
+      "difficulty": {
+        "easy": { "hp": 8000 },
+        "normal": { "hp": 14500 },
+        "hard": { "hp": 18000 },
+        "lunatic": { "hp": 22000 }
+      }
+    },
+    "boss_final": {
+      "_desc": "ECL Sub46-47 — Boss death / timeout retreat",
+      "hp": 2400,
+      "hitbox": [24, 24],
+      "score": 100000,
+      "move": {
+        "type": "position_interp",
+        "duration": 60,
+        "easing": 4,
+        "target": [128, -64]
       },
       "death": {
         "itemDrop": "full_power"
@@ -27,59 +85,7 @@
       "delta": 0.0,
       "cmd": "spawn",
       "behavior": "boss_daiyousei",
-      "pos": [
-        272,
-        -32
-      ]
-    },
-    {
-      "delta": 0.0,
-      "cmd": "spellcard",
-      "spellcard": "boss_daiyousei_phase1",
-      "hp": 2000,
-      "timeout": 45
-    },
-    {
-      "delta": 0.0,
-      "cmd": "spellcard",
-      "spellcard": "boss_daiyousei_phase2",
-      "hp": 2000,
-      "timeout": 45
-    },
-    {
-      "delta": 0.0,
-      "cmd": "spellcard",
-      "spellcard": "boss_daiyousei_phase3",
-      "hp": 2000,
-      "timeout": 45
-    },
-    {
-      "delta": 0.0,
-      "cmd": "spellcard",
-      "spellcard": "boss_daiyousei_phase4",
-      "hp": 2000,
-      "timeout": 45
-    },
-    {
-      "delta": 0.0,
-      "cmd": "spellcard",
-      "spellcard": "boss_daiyousei_phase5",
-      "hp": 2000,
-      "timeout": 45
-    },
-    {
-      "delta": 0.0,
-      "cmd": "spellcard",
-      "spellcard": "boss_daiyousei_phase6",
-      "hp": 2000,
-      "timeout": 45
-    },
-    {
-      "delta": 0.0,
-      "cmd": "spellcard",
-      "spellcard": "boss_daiyousei_phase7",
-      "hp": 2000,
-      "timeout": 45
+      "pos": [192, -32]
     },
     {
       "delta": 2.0,
@@ -88,253 +94,88 @@
     }
   ],
   "spellcards": {
-    "boss_daiyousei_phase1": {
-      "name": "\"ºuÌéÂºv\"",
-      "hp": 2000,
-      "timeout": 45,
-      "behavior": "boss_daiyousei_phase1",
+    "boss_daiyousei_sc": {
+      "name": "霜符「フロストコールド」",
+      "hp": 2100,
+      "timeout": 40,
+      "behavior": "boss_daiyousei",
       "patterns": [
         {
+          "_desc": "Sub52 — Circle aimed + 3-way fan aimed at ±60°",
           "time": 0,
-          "interval": 1,
+          "interval": 0.033,
+          "burst": 1,
           "pattern": {
-            "type": "fan",
-            "mainCnt": 8,
-            "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.2618,
-            "speed": 300,
-            "speedStep": 50,
-            "spriteID": 1,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        },
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan",
-            "mainCnt": 4,
-            "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.2618,
-            "speed": 300,
-            "speedStep": 50,
-            "spriteID": 1,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        }
-      ]
-    },
-    "boss_daiyousei_phase2": {
-      "name": "\"éuVéÌåÁ¹v\"",
-      "hp": 2000,
-      "timeout": 45,
-      "behavior": "boss_daiyousei_phase2",
-      "patterns": [
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan",
-            "mainCnt": 1,
-            "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.2618,
-            "speed": 100,
-            "speedStep": 50,
-            "spriteID": 0,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        }
-      ]
-    },
-    "boss_daiyousei_phase3": {
-      "name": "\"ÅuÅéÌØ²v\"",
-      "hp": 2000,
-      "timeout": 45,
-      "behavior": "boss_daiyousei_phase3",
-      "patterns": [
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "ring",
+            "type": "ring_aimed",
             "mainCnt": 32,
             "subCnt": 1,
             "spread": 0,
-            "angleStep": 0.0393,
-            "speed": 180,
-            "speedStep": 150,
-            "spriteID": 2,
+            "angleStep": 0.196,
+            "speed": 72,
+            "speedStep": 30,
+            "spriteID": 6,
             "hitboxRadius": 4,
-            "lifeTime": 6
+            "lifeTime": 5
           }
         },
         {
           "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan",
-            "mainCnt": 2,
-            "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.2618,
-            "speed": 100,
-            "speedStep": 50,
-            "spriteID": 0,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        }
-      ]
-    },
-    "boss_daiyousei_phase4": {
-      "name": "\"éuCX^[h_Cuv\"",
-      "hp": 2000,
-      "timeout": 45,
-      "behavior": "boss_daiyousei_phase4",
-      "patterns": [
-        {
-          "time": 0,
-          "interval": 1,
+          "interval": 0.033,
+          "burst": 1,
           "pattern": {
             "type": "fan_aimed",
-            "mainCnt": 2,
-            "subCnt": 11,
-            "spread": 0.0,
-            "angleStep": 0.1963,
-            "speed": 200,
-            "speedStep": 190,
-            "spriteID": 3,
+            "mainCnt": 3,
+            "subCnt": 1,
+            "spread": 0,
+            "angleStep": 0.196,
+            "speed": 114,
+            "speedStep": 30,
+            "spriteID": 15,
             "hitboxRadius": 4,
-            "lifeTime": 6
+            "lifeTime": 5
           }
-        }
-      ]
-    },
-    "boss_daiyousei_phase5": {
-      "name": "\"éÓuéÌÌv\"",
-      "hp": 2000,
-      "timeout": 45,
-      "behavior": "boss_daiyousei_phase5",
-      "patterns": [
+        },
         {
           "time": 0,
-          "interval": 1,
+          "interval": 0.033,
+          "burst": 1,
           "pattern": {
             "type": "fan_aimed",
-            "mainCnt": 1,
-            "subCnt": 5,
+            "mainCnt": 3,
+            "subCnt": 1,
             "spread": 0,
-            "angleStep": 0.0982,
-            "speed": 300,
-            "speedStep": 50,
-            "spriteID": 2,
+            "angleStep": 0.196,
+            "speed": 96,
+            "speedStep": 30,
+            "spriteID": 15,
             "hitboxRadius": 4,
-            "lifeTime": 6
+            "lifeTime": 5
           }
         },
         {
           "time": 0,
-          "interval": 1,
+          "interval": 0.033,
+          "burst": 1,
           "pattern": {
             "type": "fan_aimed",
-            "mainCnt": 1,
-            "subCnt": 4,
-            "spread": 0,
-            "angleStep": 0.0982,
-            "speed": 300,
-            "speedStep": 50,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        }
-      ]
-    },
-    "boss_daiyousei_phase6": {
-      "name": "\"éu^éÌR[X}X^[v\"",
-      "hp": 2000,
-      "timeout": 45,
-      "behavior": "boss_daiyousei_phase6",
-      "patterns": [
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan",
-            "mainCnt": 10,
+            "mainCnt": 3,
             "subCnt": 1,
             "spread": 0,
-            "angleStep": 0.2618,
-            "speed": 300,
-            "speedStep": 50,
-            "spriteID": 0,
+            "angleStep": 0.196,
+            "speed": 78,
+            "speedStep": 30,
+            "spriteID": 15,
             "hitboxRadius": 4,
-            "lifeTime": 6
+            "lifeTime": 5
           }
         }
-      ]
-    },
-    "boss_daiyousei_phase7": {
-      "name": "\"uuChiCgo[hv\"",
-      "hp": 2000,
-      "timeout": 45,
-      "behavior": "boss_daiyousei_phase7",
-      "patterns": [
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan",
-            "mainCnt": 6,
-            "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.0,
-            "speed": 800,
-            "speedStep": 50,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        },
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan",
-            "mainCnt": 8,
-            "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.0,
-            "speed": 800,
-            "speedStep": 50,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        },
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "ring",
-            "mainCnt": 32,
-            "subCnt": 2,
-            "spread": 0,
-            "angleStep": 0.0,
-            "speed": 130,
-            "speedStep": 50,
-            "spriteID": 0,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        }
-      ]
+      ],
+      "difficulty": {
+        "easy": { "hp": 1400 },
+        "normal": { "hp": 2100 },
+        "hard": { "hp": 2800 },
+        "lunatic": { "hp": 3600 }
+      }
     }
   }
 }

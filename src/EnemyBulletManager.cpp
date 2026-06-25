@@ -1,4 +1,7 @@
 #include "EnemyBulletManager.h"
+#include "ItemManager.h"
+#include "ItemType.h"
+#include <iostream>
 static SDL_Surface* redBulletImage = NULL;
 static SDL_Surface* greenBulletImage = NULL;
 static SDL_Surface* blueBulletImage = NULL;
@@ -129,6 +132,20 @@ void EnemyBulletManager::despawn_all_for_spellcard(){
             bullets[i].state = SLEEPING;
         }
     }
+}
+
+void EnemyBulletManager::convert_all_to_p_items(ItemManager* itemMgr){
+    if (!itemMgr) return;
+    int converted = 0;
+    for (int i = 0; i < POOL_SIZE; i++) {
+        if (bullets[i].state == ALIVE) {
+            itemMgr->spawn_item(bullets[i].x, bullets[i].y, ITEM_POWER_SMALL);
+            bullets[i].state = SLEEPING;
+            converted++;
+        }
+    }
+    if (converted > 0)
+        std::cout << "Converted " << converted << " bullets to P items" << std::endl;
 }
 
 void EnemyBulletManager::render(){

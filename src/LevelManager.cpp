@@ -1,4 +1,7 @@
 #include "LevelManager.h"
+#include "GameSettings.h"
+#include "ItemManager.h"
+#include "ItemType.h"
 #include <cstring>
 #include <map>
 
@@ -6,12 +9,13 @@
 
 static int str_to_move_pattern(const char* s) {
     if (!s) return LINER;
-    if (strcmp(s, "linear")       == 0) return LINER;
-    if (strcmp(s, "sine")         == 0) return SINWAVE;
-    if (strcmp(s, "bezier")       == 0) return BEZIER;
-    if (strcmp(s, "stop_and_go")  == 0) return STOPANDGO;
-    if (strcmp(s, "homing")       == 0) return HOMING;
-    if (strcmp(s, "interception") == 0) return INTERCEPTION;
+    if (strcmp(s, "linear")            == 0) return LINER;
+    if (strcmp(s, "sine")              == 0) return SINWAVE;
+    if (strcmp(s, "bezier")            == 0) return BEZIER;
+    if (strcmp(s, "stop_and_go")       == 0) return STOPANDGO;
+    if (strcmp(s, "homing")            == 0) return HOMING;
+    if (strcmp(s, "interception")      == 0) return INTERCEPTION;
+    if (strcmp(s, "position_interp")   == 0) return POSITION_INTERP;
     return LINER;
 }
 
@@ -78,6 +82,9 @@ struct BehaviorDef {
     float halfLife = 0.0f;
     int movePattern = LINER;
     float speedX = 0.0f, speedY = 120.0f;
+    float targetX = -1.0f, targetY = -1.0f;  // stop_and_go target; <0 means "use spawn pos"
+    float moveDuration = 0.0f;   // position_interp duration (seconds)
+    int   moveEasing = 0;        // position_interp easing: 0=linear, 4=decelerate
     float vertAmp = 0.0f, vertPeriod = 1.0f;
     float horizAmp = 0.0f, horizPeriod = 1.0f;
     float angularVelocity = 0.0f;
@@ -88,6 +95,90 @@ struct BehaviorDef {
     std::string itemDrop;
     std::vector<EmitterConfig> emitters;
 };
+
+// ── Difficulty name table (indexed by gameDifficulty 0-4) ───────────────────
+static const char* DIFFICULTY_KEYS[] = {
+    "easy", "normal", "hard", "lunatic", "extra"
+};
+
+// ── Apply difficulty overrides from a JSON "difficulty" object ────────────
+// Mutates `def` in place by overlaying the current difficulty's overrides.
+
+static void apply_behavior_difficulty(BehaviorDef& def, cJSON* diff_obj) {
+    if (!diff_obj || !cJSON_IsObject(diff_obj)) return;
+
+    int diff_level = gameDifficulty;
+    if (diff_level < 0 || diff_level > 4) diff_level = DIFFICULTY_NORM;
+
+    const char* key = DIFFICULTY_KEYS[diff_level];
+    cJSON* over = cJSON_GetObjectItem(diff_obj, key);
+    if (!over || !cJSON_IsObject(over)) return;
+
+    // Scalar overrides
+    cJSON* v;
+    if ((v = cJSON_GetObjectItem(over, "hp"))       && cJSON_IsNumber(v)) def.hp       = (int)v->valuedouble;
+    if ((v = cJSON_GetObjectItem(over, "score"))     && cJSON_IsNumber(v)) def.score    = (int)v->valuedouble;
+    if ((v = cJSON_GetObjectItem(over, "halfLife"))  && cJSON_IsNumber(v)) def.halfLife = (float)v->valuedouble;
+    if ((v = cJSON_GetObjectItem(over, "lifeTime"))  && cJSON_IsNumber(v)) def.lifeTime = (float)v->valuedouble;
+
+    // Hitbox override
+    cJSON* hb = cJSON_GetObjectItem(over, "hitbox");
+    if (hb && cJSON_IsArray(hb) && cJSON_GetArraySize(hb) >= 2) {
+        def.hitboxW = (int)cJSON_GetArrayItem(hb, 0)->valuedouble;
+        def.hitboxH = (int)cJSON_GetArrayItem(hb, 1)->valuedouble;
+    }
+
+    // Movement overrides (merge into current move)
+    cJSON* move = cJSON_GetObjectItem(over, "move");
+    if (move && cJSON_IsObject(move)) {
+        const char* mt = cjson_str(move, "type");
+        if (mt) def.movePattern = str_to_move_pattern(mt);
+
+        float s = cjson_float(move, "speed", -1.0f);
+        if (s >= 0) { def.speedX = s; def.speedY = s; }
+        def.speedX = cjson_float(move, "speedX", def.speedX);
+        def.speedY = cjson_float(move, "speedY", def.speedY);
+        def.vertAmp         = cjson_float(move, "vertAmp", def.vertAmp);
+        def.vertPeriod      = cjson_float(move, "vertPeriod", def.vertPeriod);
+        def.horizAmp        = cjson_float(move, "horizAmp", def.horizAmp);
+        def.horizPeriod     = cjson_float(move, "horizPeriod", def.horizPeriod);
+        def.angularVelocity = cjson_float(move, "angularVelocity", def.angularVelocity);
+        def.minPlayerDist   = cjson_float(move, "minDist", def.minPlayerDist);
+        def.accel           = cjson_float(move, "accel", def.accel);
+    }
+
+    // Attack-pattern overrides — keyed by index string "0", "1", etc.
+    cJSON* atk = cJSON_GetObjectItem(over, "attack");
+    if (atk && cJSON_IsObject(atk)) {
+        cJSON* child = NULL;
+        cJSON_ArrayForEach(child, atk) {
+            if (!child || !cJSON_IsObject(child)) continue;
+            int idx = atoi(child->string);
+            if (idx < 0 || idx >= (int)def.emitters.size()) continue;
+
+            EmitterConfig& ec = def.emitters[idx];
+            ec.emitInterval  = cjson_float(child, "interval", ec.emitInterval);
+            ec.startDelay    = cjson_float(child, "time", ec.startDelay);
+            ec.burstCount    = cjson_int(child, "burst", ec.burstCount);
+            ec.burstInterval = cjson_float(child, "burstInterval", ec.burstInterval);
+
+            cJSON* pat = cJSON_GetObjectItem(child, "pattern");
+            if (pat && cJSON_IsObject(pat)) {
+                const char* ptype = cjson_str(pat, "type");
+                if (ptype) ec.patternDesc.patternType = str_to_pattern_type(ptype);
+                ec.patternDesc.mainCnt       = cjson_int(pat, "mainCnt", ec.patternDesc.mainCnt);
+                ec.patternDesc.subCnt        = cjson_int(pat, "subCnt", ec.patternDesc.subCnt);
+                ec.patternDesc.angleOffset   = cjson_float(pat, "spread", ec.patternDesc.angleOffset);
+                ec.patternDesc.angleInterval = cjson_float(pat, "angleStep", ec.patternDesc.angleInterval);
+                ec.patternDesc.speed1        = cjson_float(pat, "speed", ec.patternDesc.speed1);
+                ec.patternDesc.speed2        = cjson_float(pat, "speedStep", ec.patternDesc.speed2);
+                ec.patternDesc.spriteID      = cjson_int(pat, "spriteID", ec.patternDesc.spriteID);
+                ec.patternDesc.hitboxRadius  = cjson_float(pat, "hitboxRadius", ec.patternDesc.hitboxRadius);
+                ec.patternDesc.lifeTime      = cjson_float(pat, "lifeTime", ec.patternDesc.lifeTime);
+            }
+        }
+    }
+}
 
 // ── Helper: parse a behavior JSON object → BehaviorDef ─────────────────────
 
@@ -123,6 +214,17 @@ static BehaviorDef parse_behavior(cJSON* beh) {
         def.angularVelocity = cjson_float(move, "angularVelocity", 0.0f);
         def.minPlayerDist   = cjson_float(move, "minDist", 80.0f);
         def.accel           = cjson_float(move, "accel", 0.0f);
+
+        // target for stop_and_go / position_interp
+        cJSON* tgt = cJSON_GetObjectItem(move, "target");
+        if (tgt && cJSON_IsArray(tgt) && cJSON_GetArraySize(tgt) >= 2) {
+            def.targetX = (float)cJSON_GetArrayItem(tgt, 0)->valuedouble;
+            def.targetY = (float)cJSON_GetArrayItem(tgt, 1)->valuedouble;
+        }
+
+        // position_interp specific: duration (frames) and easing
+        def.moveDuration = cjson_float(move, "duration", 0.0f) / 60.0f;  // frames → seconds
+        def.moveEasing   = cjson_int(move, "easing", 0);
     }
 
     // attack array → emitter configs
@@ -174,6 +276,11 @@ static BehaviorDef parse_behavior(cJSON* beh) {
                 def.isMidboss = true;
         }
     }
+
+    // Apply difficulty overrides (uses global gameDifficulty)
+    cJSON* diff_obj = cJSON_GetObjectItem(beh, "difficulty");
+    if (diff_obj && cJSON_IsObject(diff_obj))
+        apply_behavior_difficulty(def, diff_obj);
 
     return def;
 }
@@ -290,6 +397,8 @@ void LevelManager::init_enemy_pool_v2() {
             config.durationTime = def.lifeTime;
             config.enemyType    = behavior_to_enemy_type(bname);
             config.isMidboss    = def.isMidboss;
+            config.targetX      = (def.targetX >= 0) ? def.targetX : px;
+            config.targetY      = (def.targetY >= 0) ? def.targetY : py;
             config.startX       = px;
             config.startY       = py;
 
@@ -297,6 +406,9 @@ void LevelManager::init_enemy_pool_v2() {
             // Copy emitters from behavior def
             enemy->emitterConfig = def.emitters;
             enemy->init(config, px, py);
+            if (def.movePattern == POSITION_INTERP && def.moveDuration > 0) {
+                enemy->start_position_interp(def.moveDuration, def.moveEasing, config.targetX, config.targetY);
+            }
             enemy_pool.push_back(enemy);
         }
         else if (strcmp(command, "wave") == 0) {
@@ -346,21 +458,135 @@ void LevelManager::init_enemy_pool_v2() {
                 config.emergeTime = accumTime + k * gap;
                 config.startX = ex;
                 config.startY = baseY;
+                // stop_and_go target: use behavior target + dx offset, or spawn pos (stay put)
+                config.targetX = (def.targetX >= 0) ? (def.targetX + k * dx) : ex;
+                config.targetY = (def.targetY >= 0) ? def.targetY : baseY;
 
                 Enemy* enemy = new Enemy();
                 enemy->emitterConfig = def.emitters;
                 enemy->init(config, ex, baseY);
+                if (def.movePattern == POSITION_INTERP && def.moveDuration > 0) {
+                    enemy->start_position_interp(def.moveDuration, def.moveEasing, config.targetX, config.targetY);
+                }
                 enemy_pool.push_back(enemy);
             }
         }
-        // "spellcard" and "defeat" commands: currently stored in timeline for
-        // reference; actual boss-phase logic will be added later
+        // "spellcard" and "defeat" commands: ignored at pool-creation time;
+        // spellcard phases are driven by EnemyScManager at runtime.
+    }
+
+    // ── Link spellcards to boss enemy ─────────────────────────────────────
+    bossEnemyIndex_ = -1;
+    spellcardTriggerHp_ = 0;
+    for (size_t i = 0; i < enemy_pool.size(); i++) {
+        Enemy* e = enemy_pool[i];
+        if (!e) continue;
+        if (e->get_enemy_type() >= BOSS_RUMIA && !e->get_is_midboss()) {
+            bossEnemyIndex_ = (int)i;
+            e->set_duration_time(999999.0f);
+
+            // Parse move_bounds from behavior if present
+            cJSON* behaviors = cJSON_GetObjectItem(stage_enemies_data, "behaviors");
+            if (behaviors && cJSON_IsObject(behaviors)) {
+                cJSON* child = NULL;
+                cJSON_ArrayForEach(child, behaviors) {
+                    if (!child || !cJSON_IsObject(child)) continue;
+                    int etype = behavior_to_enemy_type(child->string ? child->string : "");
+                    if (etype == e->get_enemy_type()) {
+                        cJSON* mb = cJSON_GetObjectItem(child, "move_bounds");
+                        if (mb && cJSON_IsArray(mb) && cJSON_GetArraySize(mb) >= 4) {
+                            float mminX = (float)cJSON_GetArrayItem(mb, 0)->valuedouble;
+                            float mminY = (float)cJSON_GetArrayItem(mb, 1)->valuedouble;
+                            float mmaxX = (float)cJSON_GetArrayItem(mb, 2)->valuedouble;
+                            float mmaxY = (float)cJSON_GetArrayItem(mb, 3)->valuedouble;
+                            e->set_move_bounds(mminX, mminY, mmaxX, mmaxY);
+                        }
+
+                        // ── Parse ECL phase sequence from behavior ──
+                        cJSON* phases_j = cJSON_GetObjectItem(child, "phases");
+                        if (phases_j && cJSON_IsArray(phases_j)) {
+                            std::vector<BossPhaseDef> phases;
+                            int np = cJSON_GetArraySize(phases_j);
+                            for (int pi = 0; pi < np; pi++) {
+                                cJSON* ph = cJSON_GetArrayItem(phases_j, pi);
+                                if (!ph || !cJSON_IsObject(ph)) continue;
+
+                                BossPhaseDef phase;
+                                phase.duration  = cjson_float(ph, "duration", 1.0f);
+                                phase.moveDuration = cjson_float(ph, "move_duration", 0.0f) / 60.0f;
+                                phase.moveEasing   = cjson_int(ph, "move_easing", 4);
+
+                                cJSON* mv = cJSON_GetObjectItem(ph, "move_after");
+                                if (mv && cJSON_IsArray(mv) && cJSON_GetArraySize(mv) >= 2) {
+                                    phase.moveToX = (float)cJSON_GetArrayItem(mv, 0)->valuedouble;
+                                    phase.moveToY = (float)cJSON_GetArrayItem(mv, 1)->valuedouble;
+                                }
+
+                                cJSON* pats = cJSON_GetObjectItem(ph, "patterns");
+                                if (pats && cJSON_IsArray(pats)) {
+                                    int npat = cJSON_GetArraySize(pats);
+                                    for (int pj = 0; pj < npat; pj++) {
+                                        cJSON* at = cJSON_GetArrayItem(pats, pj);
+                                        if (!at || !cJSON_IsObject(at)) continue;
+                                        EmitterConfig ec;
+                                        memset(&ec, 0, sizeof(ec));
+                                        ec.startDelay    = cjson_float(at, "time", 0.0f);
+                                        ec.emitInterval  = cjson_float(at, "interval", 1.0f);
+                                        ec.burstCount    = cjson_int(at, "burst", 1);
+                                        ec.burstInterval = cjson_float(at, "burstInterval", 0.05f);
+                                        cJSON* ptn = cJSON_GetObjectItem(at, "pattern");
+                                        if (ptn && cJSON_IsObject(ptn)) {
+                                            const char* ptype = cjson_str(ptn, "type");
+                                            if (ptype) ec.patternDesc.patternType = str_to_pattern_type(ptype);
+                                            ec.patternDesc.mainCnt       = cjson_int(ptn, "mainCnt", 6);
+                                            ec.patternDesc.subCnt        = cjson_int(ptn, "subCnt", 1);
+                                            ec.patternDesc.angleOffset   = cjson_float(ptn, "spread", 0.0f);
+                                            ec.patternDesc.angleInterval = cjson_float(ptn, "angleStep", 0.15f);
+                                            ec.patternDesc.speed1        = cjson_float(ptn, "speed", 100.0f);
+                                            ec.patternDesc.speed2        = cjson_float(ptn, "speedStep", 50.0f);
+                                            ec.patternDesc.spriteID      = cjson_int(ptn, "spriteID", 0);
+                                            ec.patternDesc.hitboxRadius  = cjson_float(ptn, "hitboxRadius", 4.0f);
+                                            ec.patternDesc.lifeTime      = cjson_float(ptn, "lifeTime", 6.0f);
+                                        }
+                                        phase.patterns.push_back(ec);
+                                    }
+                                }
+                                phases.push_back(phase);
+                            }
+                            if (!phases.empty()) {
+                                e->set_phases(phases);
+                                e->start_phases();
+                                std::cout << "Boss loaded with " << phases.size() << " ECL attack phases" << std::endl;
+                            }
+                        }
+                        break;
+                    }
+                }
+            }
+
+            // Load spellcard data but DON'T start phase 0 immediately
+            // Boss uses its own attack patterns from the behavior initially.
+            // Spellcard phase starts when boss HP drops below the threshold.
+            if (scManager_.load(current_stage)) {
+                e->link_spellcard_manager(&scManager_);
+                if (scManager_.count() > 0) {
+                    const SpellcardDef* firstSc = scManager_.get(0);
+                    spellcardTriggerHp_ = (firstSc) ? firstSc->hp : 0;
+                }
+                std::cout << "Boss loaded with " << scManager_.count()
+                          << " spellcard(s), trigger at HP ≤ " << spellcardTriggerHp_
+                          << std::endl;
+            } else {
+                std::cout << "No spellcard data found for stage " << current_stage << std::endl;
+            }
+            break;
+        }
     }
 
     std::cout << "Enemy pool initialized (V2 format) with " << enemy_pool.size() << " enemies" << std::endl;
 }
 
-LevelManager::LevelManager() : stage_enemies_data(NULL), current_stage(1), stage_state(STAGE_LOADING), isClearingForMidboss(true), midbossIndex_(1e5), bullet_mgr_(NULL) {
+LevelManager::LevelManager() : stage_enemies_data(NULL), current_stage(1), stage_state(STAGE_LOADING), isClearingForMidboss(true), midbossIndex_(1e5), bullet_mgr_(NULL), item_mgr_(NULL), bossEnemyIndex_(-1), spellcardTriggerHp_(0), spellcardEntryTimer_(0.0f), nonSpellcardTimer_(0.0f), midbossDefeatedProcessed_(false) {
 }
 
 void LevelManager::start_stage() {
@@ -427,12 +653,25 @@ bool LevelManager::auto_transition(Uint32 frameCounter) {
 		return true;
 	}
 	else if (stage_state == STAGE_BOSS) {
-		// 检测Boss战是否结束
-		for (size_t i = 0; i < enemy_pool.size(); ++i) {
-			Enemy* e = enemy_pool[i];
-			if (e == NULL) continue;
-			if (e->has_pending_spawn()) return false;
-			if (e->is_active()) return false;
+		// Spellcard boss: check if all phases done and boss is dead
+		if (bossEnemyIndex_ >= 0) {
+			Enemy* boss = enemy_pool[bossEnemyIndex_];
+			if (boss && (boss->has_pending_spawn() || boss->is_active())) return false;
+			if (scManager_.is_active()) return false;
+			// Also check non-boss enemies (familiars etc.)
+			for (size_t i = 0; i < enemy_pool.size(); ++i) {
+				if ((int)i == bossEnemyIndex_) continue;
+				Enemy* e = enemy_pool[i];
+				if (e && (e->has_pending_spawn() || e->is_active())) return false;
+			}
+		} else {
+			// Check all enemies for non-spellcard boss
+			for (size_t i = 0; i < enemy_pool.size(); ++i) {
+				Enemy* e = enemy_pool[i];
+				if (e == NULL) continue;
+				if (e->has_pending_spawn()) return false;
+				if (e->is_active()) return false;
+			}
 		}
 		clear_stage();
 		return true;
@@ -450,6 +689,143 @@ bool LevelManager::auto_transition(Uint32 frameCounter) {
 		return true;
 	}
 	return false;
+}
+
+
+
+// ── Spellcard phase management ────────────────────────────────────────────
+
+void LevelManager::start_spellcard_phase(int phaseIndex) {
+    if (bossEnemyIndex_ < 0 || bossEnemyIndex_ >= (int)enemy_pool.size()) return;
+    Enemy* boss = enemy_pool[bossEnemyIndex_];
+    if (!boss) return;
+
+    const SpellcardDef* sc = scManager_.get(phaseIndex);
+    if (!sc) {
+        std::cerr << "Spellcard phase " << phaseIndex << " not found!" << std::endl;
+        return;
+    }
+
+    scManager_.start(phaseIndex);
+
+    // ECL Sub29: clear all bullets, then enter
+    EnemyScManager::clear_bullets(bullet_mgr_);
+
+    // ECL Sub29: move boss to spellcard position (192, 140) over 120 frames with deceleration
+    boss->start_position_interp(120.0f / 60.0f, 4, 192.0f, 140.0f);
+
+    // Keep boss in place during spellcard (position_interp handles this)
+    boss->set_speedY(0.0f);
+
+    // Stop phase sequencer — spellcard takes over
+    boss->stop_phases();
+
+    // Swap boss emitters to spellcard patterns
+    boss->emitterConfig = sc->patterns;
+    boss->emitterRuntime.resize(boss->emitterConfig.size());
+    for (size_t i = 0; i < boss->emitterRuntime.size(); i++) {
+        boss->emitterRuntime[i].timer = 0.0f;
+        boss->emitterRuntime[i].burstRemaining = 0;
+        boss->emitterRuntime[i].cycleCount = 0;
+    }
+
+    spellcardEntryTimer_ = 0.0f;
+
+    std::cout << ">> Spellcard " << phaseIndex << " started: \""
+              << sc->name << "\" (timeout="
+              << sc->timeout << "s), patterns=" << (int)sc->patterns.size() << std::endl;
+}
+
+void LevelManager::update_spellcards(float dt) {
+    if (bossEnemyIndex_ < 0 || bossEnemyIndex_ >= (int)enemy_pool.size()) return;
+    Enemy* boss = enemy_pool[bossEnemyIndex_];
+    if (!boss || !boss->is_active()) return;
+
+    // ── Check if spellcard should trigger ─────────────────────────────────────
+    if (!scManager_.is_active() && scManager_.count() > 0 && spellcardTriggerHp_ > 0) {
+        // ECL Sub20: non-spellcard timer (1680 frames = 28s)
+        nonSpellcardTimer_ += dt;
+
+        bool hpTrigger = (boss->get_hp() <= spellcardTriggerHp_);
+        bool timerTrigger = (nonSpellcardTimer_ >= 28.0f);
+
+        if (hpTrigger) {
+            std::cout << "Boss HP (" << boss->get_hp() << ") ≤ threshold ("
+                      << spellcardTriggerHp_ << ") — starting spellcard!" << std::endl;
+            start_spellcard_phase(0);
+            return;
+        }
+        if (timerTrigger) {
+            std::cout << "Non-spellcard timer expired (" << nonSpellcardTimer_
+                      << "s) — starting spellcard!" << std::endl;
+            start_spellcard_phase(0);
+            return;
+        }
+        return;
+    }
+
+    if (!scManager_.is_active()) return;
+
+    // Advance spellcard timer (2-second entry grace period before timeout starts)
+    spellcardEntryTimer_ += dt;
+    if (spellcardEntryTimer_ >= 2.0f) {
+        scManager_.update(dt);
+    }
+
+    // ── Check timeout ─────────────────────────────────────────────────────────
+    if (scManager_.is_timeout()) {
+        scManager_.end(false);  // not captured
+        std::cout << "Spellcard timeout! Converting bullets to P items." << std::endl;
+        convert_boss_bullets_to_p_items();
+        EnemyScManager::clear_bullets(bullet_mgr_);
+
+        // ECL Sub28: spellcard_end, move offscreen, delete
+        std::cout << "Spellcard timeout!" << std::endl;
+        boss->start_position_interp(60.0f / 60.0f, 4, -128.0f, 32.0f);
+        boss->deactivate();
+        if (item_mgr_) {
+            float ex = boss->get_x();
+            float ey = boss->get_y();
+            item_mgr_->spawn_item(ex, ey, ITEM_POWER_SMALL, 8);
+        }
+        return;
+    }
+
+    // ── Check capture (HP depleted) ───────────────────────────────────────────
+    std::cout << "[SPELLCARD] bossHP=" << boss->get_hp() << " active=" << boss->is_active()
+              << " entryTimer=" << spellcardEntryTimer_ << std::endl;
+    if (boss->get_hp() <= 0) {
+        scManager_.end(true);  // captured
+        std::cout << "Spellcard captured! Converting bullets to P items." << std::endl;
+        convert_boss_bullets_to_p_items();
+        EnemyScManager::clear_bullets(bullet_mgr_);
+
+        // ECL Sub27: spellcard_end, drop items, boss_set(-1), delete
+        std::cout << "Spellcard captured! Boss defeated." << std::endl;
+        if (item_mgr_) {
+            float ex = boss->get_x() + boss->get_hitbox_w() * 0.5f;
+            float ey = boss->get_y() + boss->get_hitbox_h() * 0.5f;
+            item_mgr_->spawn_item(ex, ey, ITEM_POWER_SMALL, 8);
+        }
+        boss->deactivate();
+    }
+}
+
+void LevelManager::convert_boss_bullets_to_p_items() {
+    if (bullet_mgr_ && item_mgr_) {
+        std::cout << "Converting all enemy bullets to P items..." << std::endl;
+        bullet_mgr_->convert_all_to_p_items(item_mgr_);
+    }
+}
+
+void LevelManager::skip_stage_time(float seconds) {
+    if (seconds <= 0) return;
+    std::cout << "Skipping stage time by " << seconds << "s..." << std::endl;
+    for (size_t i = 0; i < enemy_pool.size(); i++) {
+        if (enemy_pool[i] && enemy_pool[i]->has_pending_spawn())
+            enemy_pool[i]->adjust_time_alive(seconds);
+    }
+    nonSpellcardTimer_ = std::max(0.0f, nonSpellcardTimer_ - seconds);
 }
 
 LevelManager::~LevelManager() {
@@ -472,6 +848,11 @@ void LevelManager::clear_enemy_pool() {
         }
     }
     enemy_pool.clear();
+    bossEnemyIndex_ = -1;
+    spellcardTriggerHp_ = 0;
+    nonSpellcardTimer_ = 0.0f;
+    midbossDefeatedProcessed_ = false;
+    scManager_.reset();
 }
 
 void LevelManager::load_stage(int stage) {
@@ -926,6 +1307,33 @@ void LevelManager::update_all_enemies(float px, float py, Uint32 &frameCounter_,
             midbossIndex_ = i;
             std::cout<<"it's time to trigger clear";
             trigger_midboss_clear(frameCounter_, midbossEnterFrame_, prevStageState, currentStageState);
+        }
+    }
+
+    // ── Midboss/boss defeat detection → bullet conversion + time jump ──
+    if (!midbossDefeatedProcessed_) {
+        for (size_t i = 0; i < enemy_pool.size(); ++i) {
+            Enemy* e = enemy_pool[i];
+            if (!e) continue;
+            bool isMid = e->get_is_midboss();
+            bool isBoss = (!isMid && e->get_enemy_type() >= BOSS_RUMIA && !e->has_pending_spawn());
+            if (!isMid && !isBoss) continue;
+            bool dead = !e->is_active();
+            bool hpZero = e->get_hp() <= 0;
+            std::cout << "[DEFEAT] i=" << i << " isMid=" << isMid << " isBoss=" << isBoss
+                      << " dead=" << dead << " hpZero=" << hpZero << " hp=" << e->get_hp()
+                      << " type=" << e->get_enemy_type() << std::endl;
+            if (dead && hpZero) {
+                midbossDefeatedProcessed_ = true;
+                std::cout << "Main enemy defeated! Converting bullets to P items." << std::endl;
+                convert_boss_bullets_to_p_items();
+                if (isMid) {
+                    float remaining = e->get_duration_time() - e->get_time_alive();
+                    std::cout << "[DEFEAT] midboss time_jump: remaining=" << remaining << " timeAlive=" << e->get_time_alive() << std::endl;
+                    if (remaining > 0) skip_stage_time(remaining);
+                }
+                break;
+            }
         }
     }
 }

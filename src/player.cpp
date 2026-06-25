@@ -169,7 +169,7 @@ void Player::update_player_bullet_collision_detection(){
 				int dmg = b.get_damage();
 				b.on_hit();
 				int remainHp = e->take_damage(dmg);
-				if (remainHp <= 0) {
+				if (remainHp <= 0 && !e->is_spellcard_boss()) {
 					if (itemMgr != NULL) {
 						float ex = e->get_x() + e->get_hitbox_w() * 0.5f;
 						float ey = e->get_y() + e->get_hitbox_h() * 0.5f;
