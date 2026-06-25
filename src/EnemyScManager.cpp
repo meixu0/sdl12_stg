@@ -168,6 +168,8 @@ bool EnemyScManager::load(int stage) {
 
         const char* name = cj_str(entry, "name");
         sc.name = name ? name : "Spellcard";
+        const char* scName = cj_str(entry, "scName");
+        sc.scName = scName ? scName : sc.name;
 
         // Parse patterns array
         cJSON* pats = cJSON_GetObjectItem(entry, "patterns");

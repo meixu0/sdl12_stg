@@ -2426,8 +2426,8 @@
       }
     },
     "midboss_extra": {
-      "_desc": "Midboss midboss_extra",
-      "hp": 1500,
+      "_desc": "Midboss (ECL patterns)",
+      "hp": 27000,
       "hitbox": [
         24,
         24
@@ -2453,20 +2453,107 @@
       ],
       "attack": [
         {
-          "time": 0.5,
-          "interval": 1.5,
+          "time": 0.0,
+          "interval": 1.0,
+          "burst": 1,
           "pattern": {
             "type": "fan_aimed",
-            "mainCnt": 3,
-            "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.2,
-            "speed": 120,
-            "spriteID": 6,
-            "hitboxRadius": 4,
-            "lifeTime": 5
+            "mainCnt": 8,
+            "subCnt": 4,
+            "spriteID": 0,
+            "hitboxRadius": 1,
+            "speed": 240.0,
+            "speedStep": 120.0,
+            "spread": 0.0,
+            "angleStep": 0.29452432500000003,
+            "lifeTime": 8.5
+          }
+        },
+        {
+          "time": 1.5,
+          "interval": 1.0,
+          "burst": 1,
+          "pattern": {
+            "type": "fan_aimed",
+            "mainCnt": 8,
+            "subCnt": 4,
+            "spriteID": 1,
+            "hitboxRadius": 1,
+            "speed": 300.0,
+            "speedStep": 120.0,
+            "spread": 0.0,
+            "angleStep": 0.29452432500000003,
+            "lifeTime": 8.5
+          }
+        },
+        {
+          "time": 3.0,
+          "interval": 0.5,
+          "burst": 120,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 8,
+            "subCnt": 3,
+            "spriteID": 4,
+            "hitboxRadius": 2,
+            "speed": 120.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": 0.0,
+            "lifeTime": 8.6
+          }
+        },
+        {
+          "time": 4.5,
+          "interval": 0.5,
+          "burst": 120,
+          "pattern": {
+            "type": "fan_aimed",
+            "mainCnt": 8,
+            "subCnt": 3,
+            "spriteID": 0,
+            "hitboxRadius": 2,
+            "speed": 480.0,
+            "speedStep": 60.0,
+            "spread": 1.5707964,
+            "angleStep": 0.19634955,
+            "lifeTime": 0.1
+          }
+        },
+        {
+          "time": 6.0,
+          "interval": 0.5,
+          "burst": 120,
+          "pattern": {
+            "type": "fan_aimed",
+            "mainCnt": 8,
+            "subCnt": 3,
+            "spriteID": 0,
+            "hitboxRadius": 2,
+            "speed": 480.0,
+            "speedStep": 60.0,
+            "spread": -1.5707964,
+            "angleStep": 0.19634955,
+            "lifeTime": 0.1
           }
         }
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 16200
+        },
+        "normal": {
+          "hp": 27000
+        },
+        "hard": {
+          "hp": 36400
+        },
+        "lunatic": {
+          "hp": 45900
+        }
+      },
+      "flags": [
+        "midboss"
       ]
     }
   },

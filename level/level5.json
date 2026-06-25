@@ -772,8 +772,8 @@
       }
     },
     "midboss_sakuya": {
-      "_desc": "Midboss midboss_sakuya",
-      "hp": 900,
+      "_desc": "Midboss (ECL patterns)",
+      "hp": 21000,
       "hitbox": [
         24,
         24
@@ -799,20 +799,86 @@
       ],
       "attack": [
         {
-          "time": 0.5,
-          "interval": 1.5,
+          "time": 0.0,
+          "interval": 1.2,
+          "burst": 1,
           "pattern": {
             "type": "fan_aimed",
             "mainCnt": 3,
             "subCnt": 1,
-            "spread": 0,
+            "spread": 0.1,
+            "angleStep": 0.15,
+            "speed": 120,
+            "spriteID": 6,
+            "hitboxRadius": 4,
+            "lifeTime": 5
+          }
+        },
+        {
+          "time": 1.5,
+          "interval": 1.5,
+          "burst": 1,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 8,
+            "subCnt": 1,
+            "spread": 0.0,
+            "angleStep": 0.1,
+            "speed": 100,
+            "spriteID": 6,
+            "hitboxRadius": 4,
+            "lifeTime": 5
+          }
+        },
+        {
+          "time": 3.0,
+          "interval": 1.0,
+          "burst": 1,
+          "pattern": {
+            "type": "ring_aimed",
+            "mainCnt": 5,
+            "subCnt": 1,
+            "spread": 0.0,
             "angleStep": 0.2,
             "speed": 120,
             "spriteID": 6,
             "hitboxRadius": 4,
             "lifeTime": 5
           }
+        },
+        {
+          "time": 4.0,
+          "interval": 0.8,
+          "burst": 1,
+          "pattern": {
+            "type": "spread",
+            "mainCnt": 6,
+            "subCnt": 1,
+            "spread": 3.14159,
+            "angleStep": 0.3,
+            "speed": 90,
+            "spriteID": 6,
+            "hitboxRadius": 4,
+            "lifeTime": 4
+          }
         }
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 12600
+        },
+        "normal": {
+          "hp": 21000
+        },
+        "hard": {
+          "hp": 28300
+        },
+        "lunatic": {
+          "hp": 35700
+        }
+      },
+      "flags": [
+        "midboss"
       ]
     }
   },

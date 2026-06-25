@@ -708,6 +708,10 @@ void LevelManager::start_spellcard_phase(int phaseIndex) {
 
     scManager_.start(phaseIndex);
 
+    // TH06: reset boss HP to spellcard threshold — gives the spellcard
+    // its own HP pool instead of sharing the boss's remaining HP
+    boss->set_spellcard_hp(sc->hp);
+
     // ECL Sub29: clear all bullets, then enter
     EnemyScManager::clear_bullets(bullet_mgr_);
 

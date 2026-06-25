@@ -7,7 +7,8 @@
 /// Per-spellcard definition parsed from JSON
 struct SpellcardDef {
     int id = 0;                      ///< Sequential index within this boss
-    std::string name;                ///< Display name
+    std::string name;                ///< Display name (base name, no diff suffix)
+    std::string scName;              ///< Full original spellcard name (with diff suffix)
     int hp = 2000;                   ///< HP required to clear this spellcard
     int timeout = 45;                ///< Timeout in seconds
     std::vector<EmitterConfig> patterns;  ///< Bullet patterns for this phase

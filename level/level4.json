@@ -1240,8 +1240,8 @@
       }
     },
     "midboss_patchouli": {
-      "_desc": "Midboss midboss_patchouli",
-      "hp": 800,
+      "_desc": "Midboss (ECL patterns)",
+      "hp": 19000,
       "hitbox": [
         24,
         24
@@ -1267,20 +1267,226 @@
       ],
       "attack": [
         {
-          "time": 0.5,
-          "interval": 1.5,
+          "time": 0.0,
+          "interval": 2.133,
+          "burst": 60,
           "pattern": {
-            "type": "fan_aimed",
-            "mainCnt": 3,
-            "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.2,
-            "speed": 120,
-            "spriteID": 6,
+            "type": "ring",
+            "mainCnt": 6,
+            "subCnt": 2,
+            "spriteID": 4,
+            "hitboxRadius": 1,
+            "speed": 210.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": 0.1308997,
+            "lifeTime": 10.7
+          }
+        },
+        {
+          "time": 1.5,
+          "interval": 2.133,
+          "burst": 60,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 6,
+            "subCnt": 2,
+            "spriteID": 4,
+            "hitboxRadius": 3,
+            "speed": 210.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": 0.1308997,
+            "lifeTime": 10.7
+          }
+        },
+        {
+          "time": 3.0,
+          "interval": 2.133,
+          "burst": 60,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 6,
+            "subCnt": 2,
+            "spriteID": 4,
             "hitboxRadius": 4,
-            "lifeTime": 5
+            "speed": 240.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": 0.1308997,
+            "lifeTime": 10.7
+          }
+        },
+        {
+          "time": 4.5,
+          "interval": 2.133,
+          "burst": 60,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 6,
+            "subCnt": 2,
+            "spriteID": 4,
+            "hitboxRadius": 5,
+            "speed": 270.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": 0.1308997,
+            "lifeTime": 10.7
+          }
+        },
+        {
+          "time": 6.0,
+          "interval": 2.133,
+          "burst": 60,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 6,
+            "subCnt": 2,
+            "spriteID": 4,
+            "hitboxRadius": 1,
+            "speed": 210.0,
+            "speedStep": 60.0,
+            "spread": 0.08726646,
+            "angleStep": 0.1308997,
+            "lifeTime": 10.7
+          }
+        },
+        {
+          "time": 7.5,
+          "interval": 2.133,
+          "burst": 60,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 6,
+            "subCnt": 2,
+            "spriteID": 4,
+            "hitboxRadius": 3,
+            "speed": 210.0,
+            "speedStep": 60.0,
+            "spread": 0.08726646,
+            "angleStep": 0.1308997,
+            "lifeTime": 10.7
+          }
+        },
+        {
+          "time": 9.0,
+          "interval": 2.133,
+          "burst": 60,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 6,
+            "subCnt": 2,
+            "spriteID": 4,
+            "hitboxRadius": 4,
+            "speed": 240.0,
+            "speedStep": 60.0,
+            "spread": 0.08726646,
+            "angleStep": 0.1308997,
+            "lifeTime": 10.7
+          }
+        },
+        {
+          "time": 10.5,
+          "interval": 2.133,
+          "burst": 60,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 6,
+            "subCnt": 2,
+            "spriteID": 4,
+            "hitboxRadius": 5,
+            "speed": 270.0,
+            "speedStep": 60.0,
+            "spread": 0.08726646,
+            "angleStep": 0.1308997,
+            "lifeTime": 10.7
+          }
+        },
+        {
+          "time": 12.0,
+          "interval": 2.133,
+          "burst": 60,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 6,
+            "subCnt": 2,
+            "spriteID": 4,
+            "hitboxRadius": 1,
+            "speed": 210.0,
+            "speedStep": 60.0,
+            "spread": 0.17453292,
+            "angleStep": 0.1308997,
+            "lifeTime": 10.7
+          }
+        },
+        {
+          "time": 13.5,
+          "interval": 2.133,
+          "burst": 60,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 6,
+            "subCnt": 2,
+            "spriteID": 4,
+            "hitboxRadius": 3,
+            "speed": 210.0,
+            "speedStep": 60.0,
+            "spread": 0.17453292,
+            "angleStep": 0.1308997,
+            "lifeTime": 10.7
+          }
+        },
+        {
+          "time": 15.0,
+          "interval": 2.133,
+          "burst": 60,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 6,
+            "subCnt": 2,
+            "spriteID": 4,
+            "hitboxRadius": 4,
+            "speed": 240.0,
+            "speedStep": 60.0,
+            "spread": 0.17453292,
+            "angleStep": 0.1308997,
+            "lifeTime": 10.7
+          }
+        },
+        {
+          "time": 16.5,
+          "interval": 2.133,
+          "burst": 60,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 6,
+            "subCnt": 2,
+            "spriteID": 4,
+            "hitboxRadius": 5,
+            "speed": 270.0,
+            "speedStep": 60.0,
+            "spread": 0.17453292,
+            "angleStep": 0.1308997,
+            "lifeTime": 10.7
           }
         }
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 11400
+        },
+        "normal": {
+          "hp": 19000
+        },
+        "hard": {
+          "hp": 25600
+        },
+        "lunatic": {
+          "hp": 32300
+        }
+      },
+      "flags": [
+        "midboss"
       ]
     }
   },

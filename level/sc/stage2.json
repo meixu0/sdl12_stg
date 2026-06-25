@@ -1,354 +1,819 @@
 {
   "meta": {
-    "boss": "boss_daiyousei",
     "stage": 2,
     "version": 2,
-    "spellcardCount": 7
+    "spellcardCount": 3
   },
   "spellcards": [
     {
       "id": 0,
-      "name": "\"ºuÌéÂºv\"",
-      "hp": 2000,
-      "timeout": 45,
+      "name": "霜符「フロストコラムス」",
+      "scName": "霜符「フロストコラムス」",
+      "hp": 2100,
+      "timeout": 38,
       "patterns": [
         {
           "time": 0,
-          "interval": 1,
+          "interval": 1.0,
+          "burst": 1,
           "pattern": {
-            "type": "fan",
-            "mainCnt": 8,
-            "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.2618,
-            "speed": 300,
-            "speedStep": 50,
-            "spriteID": 1,
-            "hitboxRadius": 4,
-            "lifeTime": 6
+            "type": "ring",
+            "mainCnt": 5,
+            "subCnt": 6,
+            "spriteID": 4,
+            "hitboxRadius": 1,
+            "speed": 48.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": 0.0,
+            "lifeTime": 8.5
           }
         },
         {
           "time": 0,
-          "interval": 1,
+          "interval": 1.0,
+          "burst": 1,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 5,
+            "subCnt": 15,
+            "spriteID": 3,
+            "hitboxRadius": 1,
+            "speed": 48.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": 0.0,
+            "lifeTime": 8.6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 1.0,
+          "burst": 1,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 5,
+            "subCnt": 6,
+            "spriteID": 0,
+            "hitboxRadius": 1,
+            "speed": 48.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": 0.0,
+            "lifeTime": 8.5
+          }
+        },
+        {
+          "time": 0,
+          "interval": 1.0,
+          "burst": 1,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 5,
+            "subCnt": 15,
+            "spriteID": 4,
+            "hitboxRadius": 1,
+            "speed": 48.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": 0.0,
+            "lifeTime": 8.6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 0.017,
+          "burst": 1,
           "pattern": {
             "type": "fan",
-            "mainCnt": 4,
-            "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.2618,
-            "speed": 300,
-            "speedStep": 50,
+            "mainCnt": 2,
+            "subCnt": 10,
+            "spriteID": 3,
+            "hitboxRadius": 1,
+            "speed": 90.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": 0.5235988,
+            "lifeTime": 8.6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 0.017,
+          "burst": 1,
+          "pattern": {
+            "type": "fan",
+            "mainCnt": 2,
+            "subCnt": 10,
+            "spriteID": 5,
+            "hitboxRadius": 1,
+            "speed": 90.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": 0.31415927,
+            "lifeTime": 8.6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 0.017,
+          "burst": 1,
+          "pattern": {
+            "type": "fan",
+            "mainCnt": 2,
+            "subCnt": 10,
+            "spriteID": 5,
+            "hitboxRadius": 1,
+            "speed": 120.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": 0.19634955,
+            "lifeTime": 8.6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 0.017,
+          "burst": 1,
+          "pattern": {
+            "type": "fan",
+            "mainCnt": 2,
+            "subCnt": 10,
+            "spriteID": 7,
+            "hitboxRadius": 2,
+            "speed": 150.0,
+            "speedStep": 90.0,
+            "spread": 0.0,
+            "angleStep": 0.19634955,
+            "lifeTime": 8.6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 0.017,
+          "burst": 1,
+          "pattern": {
+            "type": "fan",
+            "mainCnt": 3,
+            "subCnt": 6,
             "spriteID": 1,
-            "hitboxRadius": 4,
-            "lifeTime": 6
+            "hitboxRadius": 5,
+            "speed": 240.0,
+            "speedStep": 60.0,
+            "spread": -1.5707964,
+            "angleStep": 0.0,
+            "lifeTime": 0.1
+          }
+        },
+        {
+          "time": 0,
+          "interval": 0.017,
+          "burst": 1,
+          "pattern": {
+            "type": "fan",
+            "mainCnt": 2,
+            "subCnt": 10,
+            "spriteID": 3,
+            "hitboxRadius": 1,
+            "speed": 90.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": 0.3926991,
+            "lifeTime": 8.6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 0.017,
+          "burst": 1,
+          "pattern": {
+            "type": "fan",
+            "mainCnt": 2,
+            "subCnt": 10,
+            "spriteID": 5,
+            "hitboxRadius": 1,
+            "speed": 90.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": 0.19634955,
+            "lifeTime": 8.6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 0.017,
+          "burst": 1,
+          "pattern": {
+            "type": "fan",
+            "mainCnt": 2,
+            "subCnt": 10,
+            "spriteID": 7,
+            "hitboxRadius": 1,
+            "speed": 120.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": 0.19634955,
+            "lifeTime": 8.6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 0.017,
+          "burst": 1,
+          "pattern": {
+            "type": "fan",
+            "mainCnt": 2,
+            "subCnt": 10,
+            "spriteID": 7,
+            "hitboxRadius": 2,
+            "speed": 150.0,
+            "speedStep": 90.0,
+            "spread": 0.0,
+            "angleStep": 0.19634955,
+            "lifeTime": 8.6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 0.017,
+          "burst": 1,
+          "pattern": {
+            "type": "fan",
+            "mainCnt": 3,
+            "subCnt": 6,
+            "spriteID": 1,
+            "hitboxRadius": 5,
+            "speed": 132.0,
+            "speedStep": 60.0,
+            "spread": -1.5707964,
+            "angleStep": 0.0,
+            "lifeTime": 0.1
+          }
+        },
+        {
+          "time": 0,
+          "interval": 0.017,
+          "burst": 1,
+          "pattern": {
+            "type": "ring_aimed",
+            "mainCnt": 1,
+            "subCnt": 6,
+            "spriteID": 0,
+            "hitboxRadius": 1,
+            "speed": 60.0,
+            "speedStep": 60.0,
+            "spread": -1.5707964,
+            "angleStep": 0.0,
+            "lifeTime": 0.1
           }
         }
       ],
       "difficulty": {
         "easy": {
-          "hp": 1400
+          "hp": 1200,
+          "timeout": 38
         },
-        "extra": {
-          "hp": 5000
+        "normal": {
+          "hp": 2100,
+          "timeout": 38
         },
         "hard": {
-          "hp": 3000
+          "hp": 2800,
+          "timeout": 38
         },
         "lunatic": {
-          "hp": 4000
+          "hp": 3500,
+          "timeout": 38
         }
       }
     },
     {
       "id": 1,
-      "name": "\"éuVéÌåÁ¹v\"",
+      "name": "寒符「リンガリングコールド」",
+      "scName": "寒符「リンガリングコールド」",
       "hp": 2000,
-      "timeout": 45,
+      "timeout": 50,
       "patterns": [
         {
           "time": 0,
-          "interval": 1,
+          "interval": 1.067,
+          "burst": 50,
+          "pattern": {
+            "type": "fan_aimed",
+            "mainCnt": 7,
+            "subCnt": 4,
+            "spriteID": 1,
+            "hitboxRadius": 1,
+            "speed": 210.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": 0.2617994,
+            "lifeTime": 9.6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 1.067,
+          "burst": 50,
+          "pattern": {
+            "type": "fan_aimed",
+            "mainCnt": 1,
+            "subCnt": 8,
+            "spriteID": 1,
+            "hitboxRadius": 1,
+            "speed": 180.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": 0.0,
+            "lifeTime": 9.6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 1.067,
+          "burst": 50,
+          "pattern": {
+            "type": "fan_aimed",
+            "mainCnt": 1,
+            "subCnt": 8,
+            "spriteID": 1,
+            "hitboxRadius": 1,
+            "speed": 180.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": 0.0,
+            "lifeTime": 9.6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 1.067,
+          "burst": 50,
+          "pattern": {
+            "type": "fan_aimed",
+            "mainCnt": 7,
+            "subCnt": 4,
+            "spriteID": 1,
+            "hitboxRadius": 1,
+            "speed": 210.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": 0.2617994,
+            "lifeTime": 9.6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 1.067,
+          "burst": 50,
+          "pattern": {
+            "type": "fan_aimed",
+            "mainCnt": 1,
+            "subCnt": 8,
+            "spriteID": 1,
+            "hitboxRadius": 1,
+            "speed": 180.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": 0.0,
+            "lifeTime": 9.6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 1.067,
+          "burst": 50,
+          "pattern": {
+            "type": "fan_aimed",
+            "mainCnt": 1,
+            "subCnt": 8,
+            "spriteID": 1,
+            "hitboxRadius": 1,
+            "speed": 180.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": 0.0,
+            "lifeTime": 9.6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 1.067,
+          "burst": 50,
+          "pattern": {
+            "type": "fan_aimed",
+            "mainCnt": 7,
+            "subCnt": 4,
+            "spriteID": 1,
+            "hitboxRadius": 1,
+            "speed": 210.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": 0.2617994,
+            "lifeTime": 9.6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 1.067,
+          "burst": 50,
+          "pattern": {
+            "type": "fan_aimed",
+            "mainCnt": 1,
+            "subCnt": 8,
+            "spriteID": 1,
+            "hitboxRadius": 1,
+            "speed": 180.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": 0.0,
+            "lifeTime": 9.6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 1.067,
+          "burst": 50,
+          "pattern": {
+            "type": "fan_aimed",
+            "mainCnt": 1,
+            "subCnt": 8,
+            "spriteID": 1,
+            "hitboxRadius": 1,
+            "speed": 180.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": 0.0,
+            "lifeTime": 9.6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 1.067,
+          "burst": 50,
+          "pattern": {
+            "type": "fan_aimed",
+            "mainCnt": 1,
+            "subCnt": 8,
+            "spriteID": 1,
+            "hitboxRadius": 1,
+            "speed": 180.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": 0.0,
+            "lifeTime": 9.6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 1.067,
+          "burst": 50,
+          "pattern": {
+            "type": "fan_aimed",
+            "mainCnt": 1,
+            "subCnt": 8,
+            "spriteID": 1,
+            "hitboxRadius": 1,
+            "speed": 180.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": 0.0,
+            "lifeTime": 9.6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 1.067,
+          "burst": 50,
+          "pattern": {
+            "type": "fan_aimed",
+            "mainCnt": 7,
+            "subCnt": 4,
+            "spriteID": 1,
+            "hitboxRadius": 1,
+            "speed": 210.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": 0.2617994,
+            "lifeTime": 9.6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 1.067,
+          "burst": 50,
+          "pattern": {
+            "type": "fan_aimed",
+            "mainCnt": 1,
+            "subCnt": 8,
+            "spriteID": 1,
+            "hitboxRadius": 1,
+            "speed": 180.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": 0.0,
+            "lifeTime": 9.6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 1.067,
+          "burst": 50,
+          "pattern": {
+            "type": "fan_aimed",
+            "mainCnt": 1,
+            "subCnt": 8,
+            "spriteID": 1,
+            "hitboxRadius": 1,
+            "speed": 180.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": 0.0,
+            "lifeTime": 9.6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 1.067,
+          "burst": 50,
+          "pattern": {
+            "type": "fan_aimed",
+            "mainCnt": 1,
+            "subCnt": 8,
+            "spriteID": 1,
+            "hitboxRadius": 1,
+            "speed": 180.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": 0.0,
+            "lifeTime": 9.6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 1.067,
+          "burst": 50,
+          "pattern": {
+            "type": "fan_aimed",
+            "mainCnt": 1,
+            "subCnt": 8,
+            "spriteID": 1,
+            "hitboxRadius": 1,
+            "speed": 180.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": 0.0,
+            "lifeTime": 9.6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 1.067,
+          "burst": 50,
+          "pattern": {
+            "type": "fan_aimed",
+            "mainCnt": 1,
+            "subCnt": 8,
+            "spriteID": 1,
+            "hitboxRadius": 1,
+            "speed": 180.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": 0.0,
+            "lifeTime": 9.6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 1.067,
+          "burst": 50,
+          "pattern": {
+            "type": "fan_aimed",
+            "mainCnt": 1,
+            "subCnt": 8,
+            "spriteID": 1,
+            "hitboxRadius": 1,
+            "speed": 180.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": 0.0,
+            "lifeTime": 9.6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 1.067,
+          "burst": 50,
+          "pattern": {
+            "type": "ring_aimed",
+            "mainCnt": 3,
+            "subCnt": 6,
+            "spriteID": 0,
+            "hitboxRadius": 2,
+            "speed": 90.0,
+            "speedStep": 48.0,
+            "spread": 0.0,
+            "angleStep": 0.19634955,
+            "lifeTime": 8.6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 1.067,
+          "burst": 50,
           "pattern": {
             "type": "fan",
-            "mainCnt": 1,
-            "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.2618,
-            "speed": 100,
-            "speedStep": 50,
-            "spriteID": 0,
-            "hitboxRadius": 4,
-            "lifeTime": 6
+            "mainCnt": 2,
+            "subCnt": 6,
+            "spriteID": 3,
+            "hitboxRadius": 1,
+            "speed": 60.0,
+            "speedStep": 30.0,
+            "spread": 0.041666666666666664,
+            "angleStep": 0.7853982,
+            "lifeTime": 8.6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 1.067,
+          "burst": 50,
+          "pattern": {
+            "type": "fan",
+            "mainCnt": 2,
+            "subCnt": 6,
+            "spriteID": 3,
+            "hitboxRadius": 1,
+            "speed": 72.0,
+            "speedStep": 30.0,
+            "spread": 0.041666666666666664,
+            "angleStep": 0.7853982,
+            "lifeTime": 8.6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 1.067,
+          "burst": 60,
+          "pattern": {
+            "type": "fan",
+            "mainCnt": 2,
+            "subCnt": 6,
+            "spriteID": 1,
+            "hitboxRadius": 1,
+            "speed": 48.0,
+            "speedStep": 48.0,
+            "spread": 0.8270648666666667,
+            "angleStep": 0.7853982,
+            "lifeTime": 9.6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 1.067,
+          "burst": 60,
+          "pattern": {
+            "type": "fan",
+            "mainCnt": 2,
+            "subCnt": 6,
+            "spriteID": 1,
+            "hitboxRadius": 1,
+            "speed": 48.0,
+            "speedStep": 48.0,
+            "spread": -0.7437315333333334,
+            "angleStep": 1.5707964,
+            "lifeTime": 9.6
           }
         }
       ],
       "difficulty": {
         "easy": {
-          "hp": 1400
+          "hp": 1200,
+          "timeout": 50
         },
-        "extra": {
-          "hp": 5000
+        "normal": {
+          "hp": 2000,
+          "timeout": 50
         },
         "hard": {
-          "hp": 3000
+          "hp": 2700,
+          "timeout": 50
         },
         "lunatic": {
-          "hp": 4000
+          "hp": 3400,
+          "timeout": 50
         }
       }
     },
     {
       "id": 2,
-      "name": "\"ÅuÅéÌØ²v\"",
+      "name": "冬符「フラワーウィザラウェイ」",
+      "scName": "冬符「フラワーウィザラウェイ」",
       "hp": 2000,
-      "timeout": 45,
+      "timeout": 50,
       "patterns": [
         {
           "time": 0,
-          "interval": 1,
+          "interval": 1.0,
+          "burst": 1,
           "pattern": {
-            "type": "ring",
-            "mainCnt": 32,
-            "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.0393,
-            "speed": 180,
-            "speedStep": 150,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        },
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan",
-            "mainCnt": 2,
-            "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.2618,
-            "speed": 100,
-            "speedStep": 50,
+            "type": "ring_aimed",
+            "mainCnt": 3,
+            "subCnt": 6,
             "spriteID": 0,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        }
-      ],
-      "difficulty": {
-        "easy": {
-          "hp": 1400
-        },
-        "extra": {
-          "hp": 5000
-        },
-        "hard": {
-          "hp": 3000
-        },
-        "lunatic": {
-          "hp": 4000
-        }
-      }
-    },
-    {
-      "id": 3,
-      "name": "\"éuCX^[h_Cuv\"",
-      "hp": 2000,
-      "timeout": 45,
-      "patterns": [
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan_aimed",
-            "mainCnt": 2,
-            "subCnt": 11,
+            "hitboxRadius": 2,
+            "speed": 90.0,
+            "speedStep": 48.0,
             "spread": 0.0,
-            "angleStep": 0.1963,
-            "speed": 200,
-            "speedStep": 190,
+            "angleStep": 0.19634955,
+            "lifeTime": 8.6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 1.0,
+          "burst": 1,
+          "pattern": {
+            "type": "fan",
+            "mainCnt": 2,
+            "subCnt": 6,
             "spriteID": 3,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        }
-      ],
-      "difficulty": {
-        "easy": {
-          "hp": 1400
-        },
-        "extra": {
-          "hp": 5000
-        },
-        "hard": {
-          "hp": 3000
-        },
-        "lunatic": {
-          "hp": 4000
-        }
-      }
-    },
-    {
-      "id": 4,
-      "name": "\"éÓuéÌÌv\"",
-      "hp": 2000,
-      "timeout": 45,
-      "patterns": [
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan_aimed",
-            "mainCnt": 1,
-            "subCnt": 5,
-            "spread": 0,
-            "angleStep": 0.0982,
-            "speed": 300,
-            "speedStep": 50,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
+            "hitboxRadius": 1,
+            "speed": 60.0,
+            "speedStep": 30.0,
+            "spread": 0.041666666666666664,
+            "angleStep": 0.7853982,
+            "lifeTime": 8.6
           }
         },
         {
           "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan_aimed",
-            "mainCnt": 1,
-            "subCnt": 4,
-            "spread": 0,
-            "angleStep": 0.0982,
-            "speed": 300,
-            "speedStep": 50,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        }
-      ],
-      "difficulty": {
-        "easy": {
-          "hp": 1400
-        },
-        "extra": {
-          "hp": 5000
-        },
-        "hard": {
-          "hp": 3000
-        },
-        "lunatic": {
-          "hp": 4000
-        }
-      }
-    },
-    {
-      "id": 5,
-      "name": "\"éu^éÌR[X}X^[v\"",
-      "hp": 2000,
-      "timeout": 45,
-      "patterns": [
-        {
-          "time": 0,
-          "interval": 1,
+          "interval": 1.0,
+          "burst": 1,
           "pattern": {
             "type": "fan",
-            "mainCnt": 10,
-            "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.2618,
-            "speed": 300,
-            "speedStep": 50,
-            "spriteID": 0,
-            "hitboxRadius": 4,
-            "lifeTime": 6
+            "mainCnt": 2,
+            "subCnt": 6,
+            "spriteID": 3,
+            "hitboxRadius": 1,
+            "speed": 72.0,
+            "speedStep": 30.0,
+            "spread": 0.041666666666666664,
+            "angleStep": 0.7853982,
+            "lifeTime": 8.6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 1.067,
+          "burst": 60,
+          "pattern": {
+            "type": "fan",
+            "mainCnt": 2,
+            "subCnt": 6,
+            "spriteID": 1,
+            "hitboxRadius": 1,
+            "speed": 48.0,
+            "speedStep": 48.0,
+            "spread": 0.8270648666666667,
+            "angleStep": 0.7853982,
+            "lifeTime": 9.6
+          }
+        },
+        {
+          "time": 0,
+          "interval": 1.067,
+          "burst": 60,
+          "pattern": {
+            "type": "fan",
+            "mainCnt": 2,
+            "subCnt": 6,
+            "spriteID": 1,
+            "hitboxRadius": 1,
+            "speed": 48.0,
+            "speedStep": 48.0,
+            "spread": -0.7437315333333334,
+            "angleStep": 1.5707964,
+            "lifeTime": 9.6
           }
         }
       ],
       "difficulty": {
         "easy": {
-          "hp": 1400
+          "hp": 1200,
+          "timeout": 50
         },
-        "extra": {
-          "hp": 5000
-        },
-        "hard": {
-          "hp": 3000
-        },
-        "lunatic": {
-          "hp": 4000
-        }
-      }
-    },
-    {
-      "id": 6,
-      "name": "\"uuChiCgo[hv\"",
-      "hp": 2000,
-      "timeout": 45,
-      "patterns": [
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan",
-            "mainCnt": 6,
-            "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.0,
-            "speed": 800,
-            "speedStep": 50,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        },
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "fan",
-            "mainCnt": 8,
-            "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.0,
-            "speed": 800,
-            "speedStep": 50,
-            "spriteID": 2,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        },
-        {
-          "time": 0,
-          "interval": 1,
-          "pattern": {
-            "type": "ring",
-            "mainCnt": 32,
-            "subCnt": 2,
-            "spread": 0,
-            "angleStep": 0.0,
-            "speed": 130,
-            "speedStep": 50,
-            "spriteID": 0,
-            "hitboxRadius": 4,
-            "lifeTime": 6
-          }
-        }
-      ],
-      "difficulty": {
-        "easy": {
-          "hp": 1400
-        },
-        "extra": {
-          "hp": 5000
+        "normal": {
+          "hp": 2000,
+          "timeout": 50
         },
         "hard": {
-          "hp": 3000
+          "hp": 2700,
+          "timeout": 50
         },
         "lunatic": {
-          "hp": 4000
+          "hp": 3400,
+          "timeout": 50
         }
       }
     }

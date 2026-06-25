@@ -353,8 +353,8 @@
       }
     },
     "boss_rumia": {
-      "_desc": "Sub15 - midboss entry, spellcard trigger",
-      "hp": 500,
+      "_desc": "Midboss (ECL patterns)",
+      "hp": 13000,
       "hitbox": [
         24,
         24
@@ -371,19 +371,67 @@
       },
       "attack": [
         {
-          "time": 0.5,
-          "interval": 0.6,
+          "time": 0.0,
+          "interval": 1.2,
+          "burst": 1,
           "pattern": {
             "type": "fan_aimed",
             "mainCnt": 3,
             "subCnt": 1,
-            "spread": 0,
+            "spread": 0.1,
             "angleStep": 0.15,
-            "speed": 110,
-            "speedStep": 40,
-            "spriteID": 0,
+            "speed": 120,
+            "spriteID": 6,
             "hitboxRadius": 4,
-            "lifeTime": 6
+            "lifeTime": 5
+          }
+        },
+        {
+          "time": 1.5,
+          "interval": 1.5,
+          "burst": 1,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 8,
+            "subCnt": 1,
+            "spread": 0,
+            "angleStep": 0.1,
+            "speed": 100,
+            "spriteID": 6,
+            "hitboxRadius": 4,
+            "lifeTime": 5
+          }
+        },
+        {
+          "time": 3.0,
+          "interval": 1.0,
+          "burst": 1,
+          "pattern": {
+            "type": "ring_aimed",
+            "mainCnt": 5,
+            "subCnt": 1,
+            "spread": 0,
+            "angleStep": 0.2,
+            "speed": 120,
+            "spriteID": 6,
+            "hitboxRadius": 4,
+            "lifeTime": 5
+          }
+        },
+        {
+          "time": 4.0,
+          "interval": 0.8,
+          "burst": 1,
+          "pattern": {
+            "type": "spread",
+            "mainCnt": 6,
+            "subCnt": 1,
+            "spread": 3.14159,
+            "angleStep": 0.3,
+            "speed": 90,
+            "spriteID": 6,
+            "hitboxRadius": 4,
+            "lifeTime": 4
           }
         }
       ],
@@ -399,7 +447,21 @@
         48,
         352,
         128
-      ]
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 7800
+        },
+        "normal": {
+          "hp": 13000
+        },
+        "hard": {
+          "hp": 17500
+        },
+        "lunatic": {
+          "hp": 22100
+        }
+      }
     },
     "zako_ring": {
       "_desc": "ecldata1 Sub23",

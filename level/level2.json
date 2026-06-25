@@ -926,8 +926,8 @@
       }
     },
     "midboss_daiyousei": {
-      "_desc": "Midboss midboss_daiyousei",
-      "hp": 600,
+      "_desc": "Midboss (ECL patterns)",
+      "hp": 15000,
       "hitbox": [
         24,
         24
@@ -953,20 +953,234 @@
       ],
       "attack": [
         {
-          "time": 0.5,
-          "interval": 1.5,
+          "time": 0.0,
+          "interval": 1.0,
+          "burst": 1,
           "pattern": {
-            "type": "fan_aimed",
-            "mainCnt": 3,
-            "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.2,
-            "speed": 120,
-            "spriteID": 6,
+            "type": "ring",
+            "mainCnt": 6,
+            "subCnt": 6,
+            "spriteID": 4,
             "hitboxRadius": 4,
-            "lifeTime": 5
+            "speed": 150.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": -0.19634955,
+            "lifeTime": 1.7,
+            "angularVelocity": 3.1415927999999997
+          }
+        },
+        {
+          "time": 1.5,
+          "interval": 1.0,
+          "burst": 1,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 6,
+            "subCnt": 6,
+            "spriteID": 6,
+            "hitboxRadius": 5,
+            "speed": 150.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": -0.19634955,
+            "lifeTime": 1.7,
+            "angularVelocity": 3.1415927999999997
+          }
+        },
+        {
+          "time": 3.0,
+          "interval": 1.0,
+          "burst": 1,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 6,
+            "subCnt": 6,
+            "spriteID": 0,
+            "hitboxRadius": 6,
+            "speed": 180.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": -0.19634955,
+            "lifeTime": 1.7,
+            "angularVelocity": 3.1415927999999997
+          }
+        },
+        {
+          "time": 4.5,
+          "interval": 1.0,
+          "burst": 1,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 6,
+            "subCnt": 6,
+            "spriteID": 4,
+            "hitboxRadius": 6,
+            "speed": 192.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": -0.19634955,
+            "lifeTime": 1.7,
+            "angularVelocity": 3.1415927999999997
+          }
+        },
+        {
+          "time": 6.0,
+          "interval": 0.533,
+          "burst": 60,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 6,
+            "subCnt": 6,
+            "spriteID": 4,
+            "hitboxRadius": 4,
+            "speed": 150.0,
+            "speedStep": 60.0,
+            "spread": 0.19634955,
+            "angleStep": -0.19634955,
+            "lifeTime": 1.7
+          }
+        },
+        {
+          "time": 7.5,
+          "interval": 0.533,
+          "burst": 60,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 6,
+            "subCnt": 6,
+            "spriteID": 6,
+            "hitboxRadius": 5,
+            "speed": 150.0,
+            "speedStep": 60.0,
+            "spread": 0.19634955,
+            "angleStep": -0.19634955,
+            "lifeTime": 1.7
+          }
+        },
+        {
+          "time": 9.0,
+          "interval": 0.533,
+          "burst": 60,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 6,
+            "subCnt": 6,
+            "spriteID": 0,
+            "hitboxRadius": 6,
+            "speed": 180.0,
+            "speedStep": 60.0,
+            "spread": 0.19634955,
+            "angleStep": -0.19634955,
+            "lifeTime": 1.7
+          }
+        },
+        {
+          "time": 10.5,
+          "interval": 0.533,
+          "burst": 60,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 6,
+            "subCnt": 6,
+            "spriteID": 4,
+            "hitboxRadius": 6,
+            "speed": 192.0,
+            "speedStep": 60.0,
+            "spread": 0.19634955,
+            "angleStep": -0.19634955,
+            "lifeTime": 1.7
+          }
+        },
+        {
+          "time": 12.0,
+          "interval": 1.0,
+          "burst": 1,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 6,
+            "subCnt": 6,
+            "spriteID": 4,
+            "hitboxRadius": 4,
+            "speed": 120.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": 0.19634955,
+            "lifeTime": 1.7,
+            "angularVelocity": 1.5707963999999999
+          }
+        },
+        {
+          "time": 13.5,
+          "interval": 1.0,
+          "burst": 1,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 6,
+            "subCnt": 6,
+            "spriteID": 6,
+            "hitboxRadius": 5,
+            "speed": 120.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": 0.19634955,
+            "lifeTime": 1.7,
+            "angularVelocity": 1.5707963999999999
+          }
+        },
+        {
+          "time": 15.0,
+          "interval": 1.0,
+          "burst": 1,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 6,
+            "subCnt": 6,
+            "spriteID": 0,
+            "hitboxRadius": 6,
+            "speed": 120.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": 0.19634955,
+            "lifeTime": 1.7,
+            "angularVelocity": 1.5707963999999999
+          }
+        },
+        {
+          "time": 16.5,
+          "interval": 1.0,
+          "burst": 1,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 6,
+            "subCnt": 6,
+            "spriteID": 4,
+            "hitboxRadius": 6,
+            "speed": 120.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": 0.19634955,
+            "lifeTime": 1.7,
+            "angularVelocity": 1.5707963999999999
           }
         }
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 9000
+        },
+        "normal": {
+          "hp": 15000
+        },
+        "hard": {
+          "hp": 20200
+        },
+        "lunatic": {
+          "hp": 25500
+        }
+      },
+      "flags": [
+        "midboss"
       ]
     },
     "s2_Sub1": {

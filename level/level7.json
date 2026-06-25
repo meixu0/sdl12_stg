@@ -675,8 +675,8 @@
       }
     },
     "midboss_flandre": {
-      "_desc": "Midboss midboss_flandre",
-      "hp": 1200,
+      "_desc": "Midboss (ECL patterns)",
+      "hp": 25000,
       "hitbox": [
         24,
         24
@@ -702,20 +702,73 @@
       ],
       "attack": [
         {
-          "time": 0.5,
-          "interval": 1.5,
+          "time": 0.0,
+          "interval": 0.5,
+          "burst": 120,
+          "pattern": {
+            "type": "ring",
+            "mainCnt": 8,
+            "subCnt": 3,
+            "spriteID": 4,
+            "hitboxRadius": 2,
+            "speed": 120.0,
+            "speedStep": 60.0,
+            "spread": 0.0,
+            "angleStep": 0.0,
+            "lifeTime": 8.6
+          }
+        },
+        {
+          "time": 1.5,
+          "interval": 0.5,
+          "burst": 120,
           "pattern": {
             "type": "fan_aimed",
-            "mainCnt": 3,
-            "subCnt": 1,
-            "spread": 0,
-            "angleStep": 0.2,
-            "speed": 120,
-            "spriteID": 6,
-            "hitboxRadius": 4,
-            "lifeTime": 5
+            "mainCnt": 8,
+            "subCnt": 3,
+            "spriteID": 0,
+            "hitboxRadius": 2,
+            "speed": 480.0,
+            "speedStep": 60.0,
+            "spread": 1.5707964,
+            "angleStep": 0.19634955,
+            "lifeTime": 0.1
+          }
+        },
+        {
+          "time": 3.0,
+          "interval": 0.5,
+          "burst": 120,
+          "pattern": {
+            "type": "fan_aimed",
+            "mainCnt": 8,
+            "subCnt": 3,
+            "spriteID": 0,
+            "hitboxRadius": 2,
+            "speed": 480.0,
+            "speedStep": 60.0,
+            "spread": -1.5707964,
+            "angleStep": 0.19634955,
+            "lifeTime": 0.1
           }
         }
+      ],
+      "difficulty": {
+        "easy": {
+          "hp": 15000
+        },
+        "normal": {
+          "hp": 25000
+        },
+        "hard": {
+          "hp": 33700
+        },
+        "lunatic": {
+          "hp": 42500
+        }
+      },
+      "flags": [
+        "midboss"
       ]
     }
   },

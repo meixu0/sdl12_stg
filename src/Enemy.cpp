@@ -457,6 +457,12 @@ bool Enemy::check_bullet_hit(float bx, float by, float bhw, float bhh){
 }
 
 int Enemy::take_damage(int dmg){
+    // TH06: during spellcard, player damage is divided by 7
+    // so the spellcard phase has meaningful duration
+    if (scManager && scManager->is_active()) {
+        if (dmg > 7) dmg = dmg / 7;
+        else dmg = 1;
+    }
     hp -= dmg;
     return hp;
 }
