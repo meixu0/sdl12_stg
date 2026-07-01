@@ -15,6 +15,10 @@ SDL_Surface* bossSprites[9][12] = {{NULL}};
 bool init(){
 	if(SDL_Init(SDL_INIT_EVERYTHING) == -1)	return false;
 	if(TTF_Init() == -1)	return false;
+	// Configure FluidSynth SoundFont for MIDI playback (Linux).
+	// Must be called before Mix_OpenAudio so FluidSynth initialises
+	// with the correct soundfont. Harmless on macOS/Windows.
+	Mix_SetSoundFonts("/usr/share/soundfonts/FluidR3_GM.sf2");
 	if(Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 4096) == -1)	return false;
 	screen = SDL_SetVideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, SDL_SWSURFACE);
 	if(screen == NULL)	return false;
@@ -163,44 +167,87 @@ SDL_Surface *load_sprite(std::string filename, int srcX, int srcY, int srcW, int
 	SDL_FillRect(clippedImage, NULL, SDL_MapRGB(clippedImage->format, 0, 0, 0));
 	SDL_Rect clip = {(Sint16)srcX, (Sint16)srcY, (Uint16)srcW, (Uint16)srcH};
 	SDL_BlitSurface(loadedImage, &clip, clippedImage, NULL);
-
-	// Scan outermost ring for first non-transparent pixel to use as color key
-	Uint8 keyR = 0, keyG = 0, keyB = 0;
-	if (SDL_MUSTLOCK(clippedImage)) SDL_LockSurface(clippedImage);
-	SDL_PixelFormat *keyFmt = clippedImage->format;
-	bool hasAlpha = (keyFmt->Amask != 0);
-	#define KEY_ALPHA(p) (hasAlpha ? (Uint8)(((p) & keyFmt->Amask) >> keyFmt->Ashift) : 255)
-	#define KEY_PIXEL(surf, x, y) ((Uint32 *)((Uint8 *)(surf)->pixels + (y) * (surf)->pitch))[x]
-
-	for (int sx = 0; sx < srcW; sx++) {
-		Uint32 p = KEY_PIXEL(clippedImage, sx, 0);
-		if (KEY_ALPHA(p) != 0) { SDL_GetRGB(p, keyFmt, &keyR, &keyG, &keyB); goto keyfound; }
-		p = KEY_PIXEL(clippedImage, sx, srcH - 1);
-		if (KEY_ALPHA(p) != 0) { SDL_GetRGB(p, keyFmt, &keyR, &keyG, &keyB); goto keyfound; }
-	}
-	for (int sy = 1; sy < srcH - 1; sy++) {
-		Uint32 p = KEY_PIXEL(clippedImage, 0, sy);
-		if (KEY_ALPHA(p) != 0) { SDL_GetRGB(p, keyFmt, &keyR, &keyG, &keyB); goto keyfound; }
-		p = KEY_PIXEL(clippedImage, srcW - 1, sy);
-		if (KEY_ALPHA(p) != 0) { SDL_GetRGB(p, keyFmt, &keyR, &keyG, &keyB); goto keyfound; }
-	}
-	keyfound:
-	if (SDL_MUSTLOCK(clippedImage)) SDL_UnlockSurface(clippedImage);
-	#undef KEY_ALPHA
-	#undef KEY_PIXEL
-
 	SDL_FreeSurface(loadedImage);
+
+	// Save the per-pixel alpha from clippedImage *before* SDL_DisplayFormat
+	// strips it.  This is the original transparency from the PNG – it tells
+	// us exactly which pixels are background vs. sprite, regardless of RGB.
+	int clipW = clippedImage->w, clipH = clippedImage->h;
+	Uint8 *alpha = new Uint8[clipW * clipH];
+	{
+		Uint8  ashift = clippedImage->format->Ashift;
+		Uint32 amask  = clippedImage->format->Amask;
+		if (SDL_MUSTLOCK(clippedImage)) SDL_LockSurface(clippedImage);
+		const Uint32 *cp = (const Uint32 *)clippedImage->pixels;
+		for (int i = 0; i < clipW * clipH; i++)
+			alpha[i] = (Uint8)((cp[i] & amask) >> ashift);
+		if (SDL_MUSTLOCK(clippedImage)) SDL_UnlockSurface(clippedImage);
+	}
+
 	SDL_Surface* formattedImage = SDL_DisplayFormat(clippedImage);
 	SDL_FreeSurface(clippedImage);
-	if(formattedImage == NULL)	return NULL;
+	if(formattedImage == NULL)	{ delete[] alpha; return NULL; }
+
 	double scaleW = targetW / formattedImage->w;
 	double scaleH = targetH / formattedImage->h;
 	double scaleRate = (scaleW < scaleH) ? scaleW : scaleH;
-	SDL_Surface* zoomedImage = rotozoomSurface(formattedImage, 0.0, scaleRate, 1);
+	SDL_Surface* zoomedImage = rotozoomSurface(formattedImage, 0.0, scaleRate, 0);
 	SDL_FreeSurface(formattedImage);
-	if(zoomedImage == NULL)	return NULL;
-	SDL_SetColorKey(zoomedImage, SDL_SRCCOLORKEY,
-		SDL_MapRGB(zoomedImage->format, keyR, keyG, keyB));
+	if(zoomedImage == NULL)	{ delete[] alpha; return NULL; }
+
+	// Use the saved alpha mask to set genuinely-transparent pixels to the
+	// colour key, then erode one pixel at the sprite boundary to remove
+	// the dark-outline halo that binary colour-keying cannot smooth.
+	{
+		Uint32 used = zoomedImage->format->Rmask
+		            | zoomedImage->format->Gmask
+		            | zoomedImage->format->Bmask;
+		Uint32 ck = SDL_MapRGB(zoomedImage->format, 0, 0, 0) | ~used;
+
+		if (SDL_MUSTLOCK(zoomedImage)) SDL_LockSurface(zoomedImage);
+		Uint32 *zp = (Uint32 *)zoomedImage->pixels;
+		int zw = zoomedImage->w, zh = zoomedImage->h;
+
+		// Pass 1: apply PNG alpha mask (alpha < 128 → background).
+		for (int zy = 0; zy < zh; zy++) {
+			int cy = (int)(zy / scaleRate);
+			if (cy >= clipH) cy = clipH - 1;
+			for (int zx = 0; zx < zw; zx++) {
+				int cx = (int)(zx / scaleRate);
+				if (cx >= clipW) cx = clipW - 1;
+				if (alpha[cy * clipW + cx] < 128)
+					zp[zy * zw + zx] = ck;
+			}
+		}
+
+		// Pass 2: erode dark pixels at sprite boundaries.
+		// Run twice with a generous threshold (RGB < 80) to eat
+		// through the dark outlines that Touhou-style sprites
+		// typically have.  Only pixels bordering a transparent
+		// neighbour are affected, so interior details stay intact.
+		for (int pass = 0; pass < 2; pass++) {
+			for (int zy = 0; zy < zh; zy++) {
+				for (int zx = 0; zx < zw; zx++) {
+					Uint32 p = zp[zy * zw + zx];
+					if (p == ck) continue;
+					Uint8 r, g, b;
+					SDL_GetRGB(p, zoomedImage->format, &r, &g, &b);
+					if (r >= 80 || g >= 80 || b >= 80) continue;
+					if ((zx > 0      && zp[zy * zw + (zx-1)] == ck) ||
+					    (zx < zw - 1 && zp[zy * zw + (zx+1)] == ck) ||
+					    (zy > 0      && zp[(zy-1) * zw + zx] == ck) ||
+					    (zy < zh - 1 && zp[(zy+1) * zw + zx] == ck))
+						zp[zy * zw + zx] = ck;
+				}
+			}
+		}
+
+		if (SDL_MUSTLOCK(zoomedImage)) SDL_UnlockSurface(zoomedImage);
+
+		zoomedImage->flags &= ~SDL_SRCALPHA;
+		SDL_SetColorKey(zoomedImage, SDL_SRCCOLORKEY, ck);
+	}
+	delete[] alpha;
 	return zoomedImage;
 }
 SDL_Surface* rotate_image(SDL_Surface* src, double degrees){
