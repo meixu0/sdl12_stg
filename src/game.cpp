@@ -16,7 +16,9 @@ Game::Game() : gameBackground_(nullptr), playerBulletPool_(NULL), player1(NULL) 
 
 	// load boss sprites: 9 types × 12 frames, 3×4 grid, 48×64 per cell
 	for(int i = 5;i < 13;i++){
-		std::string filename = "res/stgenm/stgenm" + std::to_string(i) + ".png";
+		std::ostringstream ss;
+		ss << i;
+		std::string filename = "res/stgenm/stgenm" + ss.str() + ".png";
 		for(int j = 0;j < 12;j++){
 			bossSprites[i][j] = load_sprite(filename, (j % 4) * 48, (j / 4) * 64, 48, 64, 48.0f, 64.0f);
 		}

@@ -361,9 +361,8 @@ void LevelManager::init_enemy_pool_v2() {
             float px = (float)cJSON_GetArrayItem(posArr, 0)->valuedouble;
             float py = (float)cJSON_GetArrayItem(posArr, 1)->valuedouble;
 
-            // Look up behavior
             BehaviorDef def;
-            auto it = behaviorMap.find(bname);
+            std::map<std::string, BehaviorDef>::iterator it = behaviorMap.find(bname);
             if (it != behaviorMap.end()) {
                 def = it->second;
             } else {
@@ -429,7 +428,7 @@ void LevelManager::init_enemy_pool_v2() {
 
             // Look up behavior
             BehaviorDef def;
-            auto it = behaviorMap.find(bname);
+            std::map<std::string, BehaviorDef>::iterator it = behaviorMap.find(bname);
             if (it != behaviorMap.end()) {
                 def = it->second;
             }
@@ -842,7 +841,9 @@ LevelManager::~LevelManager() {
 }
 
 std::string LevelManager::stage_key() const {
-    return "stage_" + std::to_string(current_stage);
+    std::ostringstream ss;
+    ss << current_stage;
+    return "stage_" + ss.str();
 }
 
 void LevelManager::clear_enemy_pool() {
@@ -863,9 +864,11 @@ void LevelManager::clear_enemy_pool() {
 void LevelManager::load_stage(int stage) {
     current_stage = stage;
     stage_state = STAGE_LOADING;
-    std::string file_path = "level/level" + std::to_string(stage) + ".json";
+    std::ostringstream ss;
+    ss << stage;
+    std::string file_path = "level/level" + ss.str() + ".json";
 
-    std::ifstream file(file_path);
+    std::ifstream file(file_path.c_str());
     if (!file.is_open()) {
         std::cerr << "Failed to open file: " << file_path << std::endl;
         return;
@@ -913,9 +916,11 @@ void LevelManager::load_stage(int stage) {
 void LevelManager::load_boss_stage(int stage) {
     current_stage = stage;
     stage_state = STAGE_LOADING;
-    std::string file_path = "level/level" + std::to_string(stage) + "bs.json";
+    std::ostringstream ss;
+    ss << stage;
+    std::string file_path = "level/level" + ss.str() + "bs.json";
 
-    std::ifstream file(file_path);
+    std::ifstream file(file_path.c_str());
     if (!file.is_open()) {
         std::cerr << "Failed to open file: " << file_path << std::endl;
         return;

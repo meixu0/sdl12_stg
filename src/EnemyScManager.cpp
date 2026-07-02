@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <cstring>
+#include <sstream>
 
 // Difficulty key names matching GameSettings.h defines
 static const char* SC_DIFF_KEYS[] = {
@@ -128,9 +129,10 @@ EmitterConfig EnemyScManager::parse_pattern(cJSON* pat_json) {
 
 bool EnemyScManager::load(int stage) {
     reset();
-
-    std::string path = "level/sc/stage" + std::to_string(stage) + ".json";
-    std::ifstream file(path);
+    std::ostringstream ss;
+    ss << stage;
+    std::string path = "level/sc/stage" + ss.str() + ".json";
+    std::ifstream file(path.c_str());
     if (!file.is_open()) {
         std::cerr << "EnemyScManager: cannot open " << path << std::endl;
         return false;

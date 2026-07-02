@@ -457,8 +457,6 @@ bool Enemy::check_bullet_hit(float bx, float by, float bhw, float bhh){
 }
 
 int Enemy::take_damage(int dmg){
-    // TH06: during spellcard, player damage is divided by 7
-    // so the spellcard phase has meaningful duration
     if (scManager && scManager->is_active()) {
         if (dmg > 7) dmg = dmg / 7;
         else dmg = 1;
@@ -505,11 +503,12 @@ void Enemy::start_phases() {
     currentPhase_ = 0;
     phaseTimer_ = 0.0f;
     isPhasedBoss_ = true;
-    const auto& phase = bossPhases_[0];
+    BossPhaseDef phase = bossPhases_[0];
     emitterConfig = phase.patterns;
     emitterRuntime.resize(emitterConfig.size());
-    for (auto& rt : emitterRuntime) {
-        rt.timer = 0.0f; rt.burstRemaining = 0; rt.cycleCount = 0;
+    std::vector<EmitterRuntime>::iterator it = emitterRuntime.begin();
+    for (it = emitterRuntime.begin(); it != emitterRuntime.end(); ++it) {
+        it->timer = 0.0f; it->burstRemaining = 0; it->cycleCount = 0;
     }
 }
 
@@ -518,7 +517,7 @@ void Enemy::advance_phase() {
     currentPhase_ = (currentPhase_ + 1) % bossPhases_.size();
     phaseTimer_ = 0.0f;
 
-    const auto& phase = bossPhases_[currentPhase_];
+    BossPhaseDef phase = bossPhases_[currentPhase_];
 
     if (phase.moveDuration > 0.0f) {
         start_position_interp(phase.moveDuration, phase.moveEasing, phase.moveToX, phase.moveToY);
@@ -526,8 +525,9 @@ void Enemy::advance_phase() {
 
     emitterConfig = phase.patterns;
     emitterRuntime.resize(emitterConfig.size());
-    for (auto& rt : emitterRuntime) {
-        rt.timer = 0.0f; rt.burstRemaining = 0; rt.cycleCount = 0;
+    std::vector<EmitterRuntime>::iterator it = emitterRuntime.begin();
+    for (it = emitterRuntime.begin(); it != emitterRuntime.end(); ++it) {
+        it->timer = 0.0f; it->burstRemaining = 0; it->cycleCount = 0;
     }
 }
 

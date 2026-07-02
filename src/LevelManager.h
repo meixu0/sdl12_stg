@@ -2,6 +2,7 @@
 #include <vector>
 #include <fstream>
 #include <string>
+#include <sstream>
 #include "cJSON.h"
 #include "Enemy.h"
 #include "EnemyType.h"
