@@ -50,15 +50,14 @@ public:
     void load_boss_stage(int stage);
     void init_enemy_pool();
     void init_enemy_pool_v2();
+    void bgm_play(int stage);
 
-    // 关卡状态机
     void start_stage();            // 开始当前关卡 (LOADING → RUNNING)
     void trigger_boss();           // 进入 Boss 战 (RUNNING → BOSS)
     void trigger_midboss();        // 进入道中Boss (RUNNING → MIDBOSS)
     void clear_stage();            // 关卡通关 (BOSS → CLEAR)
     void next_stage();             // 加载下一关 (CLEAR → LOADING → RUNNING)
 
-    // TH06-style lifecycle transitions — replaces rebuild_managers pattern
     void set_bullet_manager(EnemyBulletManager* mgr) { bullet_mgr_ = mgr; }
     void set_item_manager(ItemManager* mgr) { item_mgr_ = mgr; }
     void enter_stage(int stage);   // clean → load → init → RUNNING

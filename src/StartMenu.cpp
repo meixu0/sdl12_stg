@@ -103,6 +103,8 @@ void StartMenu::jump_to_game(){
     std::cout<<"current player type is"<<playerType<<std::endl;
     Mix_PlayChannel(-1, ok00, 0);
     Mix_HaltMusic();
+    static Mix_Music* stage1BGM = Mix_LoadMUS("res/music/th07_02.mid");
+    if(stage1BGM != NULL) Mix_PlayMusic(stage1BGM, -1);
     gameState = STATE_GAME;
 }
 void StartMenu::switch_to_next_sc(){
