@@ -121,6 +121,7 @@ public:
     std::vector<EmitterRuntime> emitterRuntime;
     EnemyBulletManager* bulletManager;
     Enemy();
+    ~Enemy();
     void init(EnemyConfig config_, float x_, float y_);
     void update_player_info(float px, float py, size_t frameCounter__);
     void apply_movement(float dt);

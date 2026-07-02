@@ -7,6 +7,7 @@
 #include "Enemy.h"
 #include "EnemyType.h"
 #include "EnemyScManager.h"
+#include <SDL_mixer.h>
 class ItemManager;
 
 enum StageState {
@@ -32,6 +33,7 @@ private:
     int midbossIndex_;
     EnemyBulletManager* bullet_mgr_;
     ItemManager* item_mgr_;
+    Mix_Music* bgm_music_;            // current BGM track (owned, freed on stop/switch)
 
     // ── Spellcard boss management ──────────────────────────────────────────
     EnemyScManager scManager_;
@@ -50,7 +52,7 @@ public:
     void load_boss_stage(int stage);
     void init_enemy_pool();
     void init_enemy_pool_v2();
-    void bgm_play(int stage);
+    void bgm_play(int stage, bool is_boss = false);
 
     void start_stage();            // 开始当前关卡 (LOADING → RUNNING)
     void trigger_boss();           // 进入 Boss 战 (RUNNING → BOSS)

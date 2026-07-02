@@ -29,7 +29,10 @@ Enemy::Enemy() : x(0.0), y(0.0), startX(0.0), startY(0.0), playerX(0.0), playerY
     isDead(false),
     axisSpeedX(0), axisSpeedY(0), enemyType(0), enemyID(0), isMidboss(false), isEntering(false), entryTargetY(100.0f), playerPtr(NULL),
     isSpellcardBoss(false), scManager(nullptr), hasMoveBounds(false), moveMinX(8), moveMaxX(536), moveMinY(0), moveMaxY(592),
-    currentPhase_(-1), phaseTimer_(0.0f), isPhasedBoss_(false) {
+    currentPhase_(-1), phaseTimer_(0.0f), isPhasedBoss_(false), bulletManager(NULL){
+}
+Enemy::~Enemy(){
+    deactivate();
 }
 SDL_Surface* Enemy::get_zako_sprite(int col) {
     return zakoSprites[enemyType][col];
