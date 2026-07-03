@@ -13,6 +13,7 @@ static float randf() {
 EnemyBulletManager::EnemyBulletManager(){
     nextBulletIndex = 0;
     for(int i=0; i<POOL_SIZE; i++){
+        bullets[i].fromBoss = false;
         bullets[i].state = SLEEPING;
     }
 }
@@ -21,7 +22,7 @@ EnemyBulletManager::~EnemyBulletManager(){
 }
 
 void EnemyBulletManager::spawn_bullet(float originX, float originY, float angle, float speed,
-    int spriteID, float hitboxRadius, float lifeTime, int spawnEffect, int soundEffect, int reboundEffect, int enemyType, int enemyID) {
+    int spriteID, float hitboxRadius, float lifeTime, int spawnEffect, int soundEffect, int reboundEffect, int enemyType, int enemyID, bool fromBoss) {
     // 从 nextBulletIndex 开始找空闲槽位
     for (int i = 0; i < POOL_SIZE; i++) {
         int idx = (nextBulletIndex + i) % POOL_SIZE;
@@ -39,13 +40,14 @@ void EnemyBulletManager::spawn_bullet(float originX, float originY, float angle,
             b.angularVelocity = 0.0f;
             b.enemyType = enemyType;
             b.enemyID = enemyID;
+            b.fromBoss = fromBoss;
             nextBulletIndex = (idx + 1) % POOL_SIZE;
             return;
         }
     }
 }
 
-void EnemyBulletManager::spawn_pattern(const EnemyBulletPatternDesc& desc, float originX, float originY, float playerX, float playerY, int enemyType, int enemyID) {
+void EnemyBulletManager::spawn_pattern(const EnemyBulletPatternDesc& desc, float originX, float originY, float playerX, float playerY, int enemyType, int enemyID, bool fromBoss) {
     float aimAngle = atan2f(playerY - originY, playerX - originX);
     for(int layer=0; layer < desc.subCnt; layer++){
         float layerSpeed = desc.speed1;
@@ -89,7 +91,7 @@ void EnemyBulletManager::spawn_pattern(const EnemyBulletPatternDesc& desc, float
                     speed = layerSpeed;
                     break;
             }
-            spawn_bullet(originX, originY, angle, speed, desc.spriteID, desc.hitboxRadius, desc.lifeTime, desc.spawnEffect, desc.soundEffect, desc.reboundEffect, enemyType, enemyID);
+            spawn_bullet(originX, originY, angle, speed, desc.spriteID, desc.hitboxRadius, desc.lifeTime, desc.spawnEffect, desc.soundEffect, desc.reboundEffect, enemyType, enemyID, fromBoss);
         }
     }
 }
@@ -138,6 +140,7 @@ void EnemyBulletManager::convert_all_to_p_items(ItemManager* itemMgr){
     if (!itemMgr) return;
     int converted = 0;
     for (int i = 0; i < POOL_SIZE; i++) {
+        if (bullets[i].state != ALIVE || (!bullets[i].fromBoss)) continue;
         if (bullets[i].state == ALIVE) {
             itemMgr->spawn_item(bullets[i].x, bullets[i].y, ITEM_POWER_SMALL);
             bullets[i].state = SLEEPING;

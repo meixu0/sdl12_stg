@@ -105,6 +105,7 @@ private:
     float axisSpeedY;         // 本帧速度 y 分量
     SDL_Surface* get_zako_sprite(int row);
     SDL_Surface* get_boss_sprite(int col);
+    static Mix_Chunk* tan00;
     // ── Phase sequencer ──
     std::vector<BossPhaseDef> bossPhases_;
     int currentPhase_ = -1;

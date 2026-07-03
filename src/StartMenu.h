@@ -15,6 +15,7 @@ private:
     int currentScIndex;
 	static Mix_Chunk* select00;
 	static Mix_Chunk* ok00;
+    static Mix_Chunk* cancel00;
     void switch_to_next_player();
     void switch_to_previous_player();
     void switch_to_previous_sc();

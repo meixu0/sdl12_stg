@@ -21,6 +21,7 @@ struct Bullet{
     float angularVelocity;
     int enemyType;
     int enemyID;
+    bool fromBoss;
 };
 struct EnemyBulletPatternDesc{
     int patternType;
@@ -36,6 +37,7 @@ struct EnemyBulletPatternDesc{
     int spawnEffect;// todo:生成特效ID
     int soundEffect;// todo:生成音效ID
     int reboundEffect; // todo:反弹特效ID
+    bool fromBoss;
 };
 struct EmitterConfig{
     float emitInterval; // 发射间隔
@@ -52,8 +54,8 @@ private:
 public:
     EnemyBulletManager();
     ~EnemyBulletManager();
-    void spawn_bullet(float x, float y, float angle, float speed, int spriteID, float hitboxRadius, float lifeTime, int spawnEffect, int soundEffect, int reboundEffect, int enemyType, int enemyID);
-    void spawn_pattern(const EnemyBulletPatternDesc& desc, float originX, float originY, float playerX, float playerY, int enemyType, int enemyID);
+    void spawn_bullet(float x, float y, float angle, float speed, int spriteID, float hitboxRadius, float lifeTime, int spawnEffect, int soundEffect, int reboundEffect, int enemyType, int enemyID, bool fromBoss);
+    void spawn_pattern(const EnemyBulletPatternDesc& desc, float originX, float originY, float playerX, float playerY, int enemyType, int enemyID, bool fromBoss);
     void update(float dt);
     void render();
     void clear_all();

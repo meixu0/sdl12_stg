@@ -9,6 +9,7 @@ SDL_Surface* ItemManager::itemBombImage = NULL;
 SDL_Surface* ItemManager::itemFullPowerImage = NULL;
 SDL_Surface* ItemManager::itemLifeImage = NULL;
 SDL_Surface* ItemManager::itemPointBulletImage = NULL;
+Mix_Chunk* ItemManager::powerup00 = NULL;
 
 int ItemManager::score = 0;
 int ItemManager::lives = 2;
@@ -48,6 +49,8 @@ ItemManager::ItemManager() : nextItemIndex(0), playerPtr(NULL) {
         itemLifeImage = load_sprite("res/etama/etama2.png", 80, 64, 16, 16, 16.0, 16.0);
     if (itemPointBulletImage == NULL)
         itemPointBulletImage = load_sprite("res/etama/etama2.png", 96, 64, 16, 16, 16.0, 16.0);
+    if (powerup00 == NULL)
+        powerup00 = Mix_LoadWAV("res/sound/se_powerup00.wav");
 
     for (int i = 0; i < MAX_ITEMS; i++)
         items[i].isActive = false;
@@ -172,6 +175,7 @@ void ItemManager::update(float dt) {
                             powerItemCountForScore = 30;
                     } else {
                         Player::set_power(Player::get_power() + 1);
+                        Mix_PlayChannel(-1, powerup00, 0);
                         score += 10;
                         for (int t = 0; t < 11; t++) {
                             if (Player::get_power() == POWER_UP_THRESHOLDS[t]) {

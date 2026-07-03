@@ -25,7 +25,7 @@ private:
     std::vector<Enemy*> enemy_pool;
     int current_stage;
     StageState stage_state;
-    static const int TOTAL_STAGES = 8;
+    static const int TOTAL_STAGES = 2;
 
     void clear_enemy_pool();
     std::string stage_key() const;

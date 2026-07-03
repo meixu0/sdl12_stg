@@ -1026,6 +1026,29 @@ void LevelManager::trigger_midboss_clear(Uint32 &frameCounter, Uint32 &midbossEn
 }
 
 void LevelManager::update_all_enemies(float px, float py, Uint32 &frameCounter_, Uint32 &midbossEnterFrame_, float dt_, StageState &prevStageState, StageState &currentStageState) {
+	    static int debug_dumped = 0;
+	    if (!debug_dumped && stage_state == STAGE_RUNNING) {
+	        // Check if any enemy is active (game has started)
+	        bool any_active = false;
+	        for (size_t k = 0; k < enemy_pool.size(); ++k) {
+	            if (enemy_pool[k] && enemy_pool[k]->is_active()) { any_active = true; break; }
+	        }
+	        if (any_active) {
+	            std::cout << "=== [DEBUG] first active frame, pool size=" << enemy_pool.size() << " ===" << std::endl;
+	            for (size_t k = 0; k < enemy_pool.size(); ++k) {
+	                Enemy* e = enemy_pool[k];
+	                if (e) {
+	                    std::cout << "  [" << k << "] ptr=" << e
+	                              << " type=" << e->get_enemy_type()
+	                              << " isMid=" << e->get_is_midboss()
+	                              << " active=" << e->is_active()
+	                              << " hp=" << e->get_hp() << std::endl;
+	                }
+	            }
+	            std::cout << "=== end dump ===" << std::endl;
+	            debug_dumped = 1;
+	        }
+	    }
     for (size_t i = 0; i < enemy_pool.size(); ++i) {
         if(enemy_pool[i] == NULL)   continue;
 
