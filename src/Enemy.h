@@ -105,6 +105,7 @@ private:
     float axisSpeedY;         // 本帧速度 y 分量
     SDL_Surface* get_zako_sprite(int row);
     SDL_Surface* get_boss_sprite(int col);
+    static Mix_Chunk* tan00;
     // ── Phase sequencer ──
     std::vector<BossPhaseDef> bossPhases_;
     int currentPhase_ = -1;
@@ -121,6 +122,7 @@ public:
     std::vector<EmitterRuntime> emitterRuntime;
     EnemyBulletManager* bulletManager;
     Enemy();
+    ~Enemy();
     void init(EnemyConfig config_, float x_, float y_);
     void update_player_info(float px, float py, size_t frameCounter__);
     void apply_movement(float dt);

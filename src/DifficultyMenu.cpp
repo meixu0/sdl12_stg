@@ -5,6 +5,7 @@ SDL_Rect DifficultyMenu::select01Rect[5] = {NULL};
 SDL_Surface* DifficultyMenu::selectLevelImage = NULL;
 Mix_Chunk* DifficultyMenu::select00 = NULL;
 Mix_Chunk* DifficultyMenu::ok00 = NULL;
+Mix_Chunk* DifficultyMenu::cancel00 = NULL;
 
 DifficultyMenu::DifficultyMenu(): currentSelectedDifficulty(0){
     if(select00_ == NULL)    select00_ = load_image("res/title/select00.jpg", 800.0, 600.0);
@@ -49,7 +50,7 @@ void DifficultyMenu::handle_events(SDL_Event &e){
 
 void DifficultyMenu::back_to_mainmenu(){
     //Mix_HaltMusic();
-    Mix_PlayChannel(-1, ok00, 0);
+    Mix_PlayChannel(-1, cancel00, 0);
     gameState = STATE_MENU;
 }
 

@@ -28,6 +28,7 @@ SDL_Surface* StartMenu::pl02 = NULL;
 SDL_Surface* StartMenu::select00img = NULL;
 Mix_Chunk* StartMenu::select00 = NULL;
 Mix_Chunk* StartMenu::ok00 = NULL;
+Mix_Chunk* StartMenu::cancel00 = NULL;
 SDL_Surface* StartMenu::reimuTsuiti[2] = {NULL, NULL};
 SDL_Surface* StartMenu::reimuSokusha[2] = {NULL, NULL};
 SDL_Surface* StartMenu::marisaIryokujuushi[2] = {NULL, NULL};
@@ -41,6 +42,7 @@ StartMenu::StartMenu(): currentPlayerIndex(0), currentScIndex(0){
     if(pl02 == NULL)    pl02 = load_sprite("res/title/sl_pl02.png", 0, 0, 256, 512, 400, 600);
     if(select00img == NULL) select00img = load_image("res/title/select00.jpg", 800, 600);
     if(select00 == NULL)	select00 = Mix_LoadWAV("res/sound/se_select00.wav");
+    if(cancel00 == NULL)	cancel00 = Mix_LoadWAV("res/sound/se_cancel00.wav");
 	if(ok00 == NULL)	ok00 = Mix_LoadWAV("res/sound/se_ok00.wav");
     if(reimuTsuiti[0] == NULL){
         reimuTsuiti[0] = load_sprite("res/title/sl_pl00.png", 256, 128, 256, 128, 320, 160);
@@ -133,7 +135,7 @@ void StartMenu::handle_events(SDL_Event &e){
 
 void StartMenu::back_to_difficulty_menu(){
     //Mix_HaltMusic();
-    Mix_PlayChannel(-1, ok00, 0);
+    Mix_PlayChannel(-1, cancel00, 0);
     gameState = STATE_DIFFICULTY_MENU;
 }
 

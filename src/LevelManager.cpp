@@ -585,40 +585,54 @@ void LevelManager::init_enemy_pool_v2() {
     std::cout << "Enemy pool initialized (V2 format) with " << enemy_pool.size() << " enemies" << std::endl;
 }
 
-LevelManager::LevelManager() : stage_enemies_data(NULL), current_stage(1), stage_state(STAGE_LOADING), isClearingForMidboss(true), midbossIndex_(1e5), bullet_mgr_(NULL), item_mgr_(NULL), bossEnemyIndex_(-1), spellcardTriggerHp_(0), spellcardEntryTimer_(0.0f), nonSpellcardTimer_(0.0f), midbossDefeatedProcessed_(false) {
+LevelManager::LevelManager() : stage_enemies_data(NULL), current_stage(1), stage_state(STAGE_LOADING), isClearingForMidboss(true), midbossIndex_(1e5), bullet_mgr_(NULL), item_mgr_(NULL), bgm_music_(NULL), bossEnemyIndex_(-1), spellcardTriggerHp_(0), spellcardEntryTimer_(0.0f), nonSpellcardTimer_(0.0f), midbossDefeatedProcessed_(false) {
 }
 
-void LevelManager::bgm_play(int stage) {
-    static Mix_Music* bgm = NULL;
-    if (bgm && Mix_PlayingMusic() == 1) {
+void LevelManager::bgm_play(int stage, bool is_boss) {
+    // Stop previous BGM
+    if (bgm_music_ != NULL) {
         Mix_HaltMusic();
-        Mix_FreeMusic(bgm);
-        bgm = NULL;
+        // SDL_mixer 1.2 + FluidSynth on Linux has a known bug where
+        // Mix_FreeMusic on MIDI files crashes inside delete_fluid_synth().
+        // Only free non-MIDI music; MIDI tracks are leaked (a few KB each).
+        if (Mix_GetMusicType(bgm_music_) != MUS_MID) {
+            Mix_FreeMusic(bgm_music_);
+        }
+        bgm_music_ = NULL;
     }
-    switch (stage){
-        case 1: if(gameState == STATE_GAME) bgm = Mix_LoadMUS("res/music/th07_02.mid"); else bgm = Mix_LoadMUS("res/music/th07_03.mid"); break;
-        case 2: if(gameState == STATE_GAME) bgm = Mix_LoadMUS("res/music/th07_04.mid"); else bgm = Mix_LoadMUS("res/music/th07_05.mid"); break;
-        case 3: if(gameState == STATE_GAME) bgm = Mix_LoadMUS("res/music/th07_06.mid"); else bgm = Mix_LoadMUS("res/music/th07_07.mid"); break;
-        case 4: if(gameState == STATE_GAME) bgm = Mix_LoadMUS("res/music/th07_08.mid"); else bgm = Mix_LoadMUS("res/music/th07_09.mid"); break;
-        case 5: if(gameState == STATE_GAME) bgm = Mix_LoadMUS("res/music/th07_10.mid"); else bgm = Mix_LoadMUS("res/music/th07_11.mid"); break;
-        case 6: if(gameState == STATE_GAME) bgm = Mix_LoadMUS("res/music/th07_12.mid"); else bgm = Mix_LoadMUS("res/music/th07_13.mid"); break;
-        case 7: if(gameState == STATE_GAME) bgm = Mix_LoadMUS("res/music/th07_14.mid"); else bgm = Mix_LoadMUS("res/music/th07_15.mid"); break;
-        case 8: if(gameState == STATE_GAME) bgm = Mix_LoadMUS("res/music/th07_16.mid"); else bgm = Mix_LoadMUS("res/music/th07_17.mid"); break;
+
+    // th07_02, th07_04, ... = stage themes (道中)
+    // th07_03, th07_05, ... = boss themes
+    // Map: stage N → stage theme = th07_(N*2), boss theme = th07_(N*2+1)
+    const char* music_file = NULL;
+    switch (stage) {
+        case 1: music_file = is_boss ? "res/music/th07_03.mid" : "res/music/th07_02.mid"; break;
+        case 2: music_file = is_boss ? "res/music/th07_05.mid" : "res/music/th07_04.mid"; break;
+        case 3: music_file = is_boss ? "res/music/th07_07.mid" : "res/music/th07_06.mid"; break;
+        case 4: music_file = is_boss ? "res/music/th07_09.mid" : "res/music/th07_08.mid"; break;
+        case 5: music_file = is_boss ? "res/music/th07_11.mid" : "res/music/th07_10.mid"; break;
+        case 6: music_file = is_boss ? "res/music/th07_13.mid" : "res/music/th07_12.mid"; break;
+        case 7: music_file = is_boss ? "res/music/th07_15.mid" : "res/music/th07_14.mid"; break;
+        case 8: music_file = is_boss ? "res/music/th07_17.mid" : "res/music/th07_16.mid"; break;
     }
-    if (bgm) {
-        Mix_PlayMusic(bgm, -1);
+
+    if (music_file != NULL) {
+        bgm_music_ = Mix_LoadMUS(music_file);
+        if (bgm_music_ != NULL) {
+            Mix_PlayMusic(bgm_music_, -1);
+        }
     }
 }
 
 void LevelManager::start_stage() {
     stage_state = STAGE_RUNNING;
-    if(current_stage != 1) bgm_play(current_stage);
+    if(current_stage != 1) bgm_play(current_stage, false);
     std::cout << "Stage " << current_stage << " started." << std::endl;
 }
 
 void LevelManager::trigger_boss() {
     stage_state = STAGE_BOSS;
-    bgm_play(current_stage);
+    bgm_play(current_stage, true);
     std::cout << "Stage " << current_stage << " boss triggered." << std::endl;
 }
 
@@ -858,6 +872,13 @@ void LevelManager::skip_stage_time(float seconds) {
 
 LevelManager::~LevelManager() {
     clear_enemy_pool();
+    if (bgm_music_ != NULL) {
+        Mix_HaltMusic();
+        if (Mix_GetMusicType(bgm_music_) != MUS_MID) {
+            Mix_FreeMusic(bgm_music_);
+        }
+        bgm_music_ = NULL;
+    }
     if (stage_enemies_data != NULL) {
         cJSON_Delete(stage_enemies_data);
         stage_enemies_data = NULL;
@@ -1005,6 +1026,29 @@ void LevelManager::trigger_midboss_clear(Uint32 &frameCounter, Uint32 &midbossEn
 }
 
 void LevelManager::update_all_enemies(float px, float py, Uint32 &frameCounter_, Uint32 &midbossEnterFrame_, float dt_, StageState &prevStageState, StageState &currentStageState) {
+	    static int debug_dumped = 0;
+	    if (!debug_dumped && stage_state == STAGE_RUNNING) {
+	        // Check if any enemy is active (game has started)
+	        bool any_active = false;
+	        for (size_t k = 0; k < enemy_pool.size(); ++k) {
+	            if (enemy_pool[k] && enemy_pool[k]->is_active()) { any_active = true; break; }
+	        }
+	        if (any_active) {
+	            std::cout << "=== [DEBUG] first active frame, pool size=" << enemy_pool.size() << " ===" << std::endl;
+	            for (size_t k = 0; k < enemy_pool.size(); ++k) {
+	                Enemy* e = enemy_pool[k];
+	                if (e) {
+	                    std::cout << "  [" << k << "] ptr=" << e
+	                              << " type=" << e->get_enemy_type()
+	                              << " isMid=" << e->get_is_midboss()
+	                              << " active=" << e->is_active()
+	                              << " hp=" << e->get_hp() << std::endl;
+	                }
+	            }
+	            std::cout << "=== end dump ===" << std::endl;
+	            debug_dumped = 1;
+	        }
+	    }
     for (size_t i = 0; i < enemy_pool.size(); ++i) {
         if(enemy_pool[i] == NULL)   continue;
 

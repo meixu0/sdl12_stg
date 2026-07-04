@@ -12,6 +12,7 @@ private:
     static SDL_Surface* itemFullPowerImage;
     static SDL_Surface* itemLifeImage;
     static SDL_Surface* itemPointBulletImage;
+    static Mix_Chunk* powerup00;
 
     struct Item{
         float x;

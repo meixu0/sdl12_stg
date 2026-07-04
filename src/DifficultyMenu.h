@@ -8,6 +8,7 @@ private:
     int currentSelectedDifficulty;
     static Mix_Chunk* select00;
 	static Mix_Chunk* ok00;
+    static Mix_Chunk* cancel00;
     void switch_to_previous_difficulty();
 	void switch_to_next_difficulty();
 	void jump_to_submenu();
