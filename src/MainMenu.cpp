@@ -19,17 +19,17 @@ MainMenu::MainMenu(): currentSelectedIndex(0){
 	if(title00 == NULL)	title00 = load_image("res/title/title00.png", 800.0, 600.0);
 	if(title01 == NULL)	title01 = load_image("res/title/title01.png", 512, 512);
 	if(title02 == NULL)	title02 = load_image("res/title/title02.png", 512, 256);
-	screenRect = {0, 0, 800, 600};
-	menuSrcRects[0] = {8, 0, 64, 32};
-	menuSrcRects[1] = {100, 32, 80, 32};
-	menuSrcRects[2] = {196, 32, 148, 32};
-	menuSrcRects[3] = {360, 32, 84, 32};
-	menuSrcRects[4] = {435, 0, 56, 32};
-	menuSrcRects[5] = {8, 64, 64, 32};
-	menuSrcRects[6] = {100, 96, 80, 32};
-	menuSrcRects[7] = {196, 96, 148, 32};
-	menuSrcRects[8] = {360, 96, 84, 32};
-	menuSrcRects[9] = {435, 64, 56, 32};
+	screenRect.x = 0; screenRect.y = 0; screenRect.w = 800; screenRect.h = 600;
+	menuSrcRects[0].x = 8; menuSrcRects[0].y = 0; menuSrcRects[0].w = 64; menuSrcRects[0].h = 32;
+	menuSrcRects[1].x = 100; menuSrcRects[1].y = 32; menuSrcRects[1].w = 80; menuSrcRects[1].h = 32;
+	menuSrcRects[2].x = 196; menuSrcRects[2].y = 32; menuSrcRects[2].w = 148; menuSrcRects[2].h = 32;
+	menuSrcRects[3].x = 360; menuSrcRects[3].y = 32; menuSrcRects[3].w = 84; menuSrcRects[3].h = 32;
+	menuSrcRects[4].x = 435; menuSrcRects[4].y = 0; menuSrcRects[4].w = 56; menuSrcRects[4].h = 32;
+	menuSrcRects[5].x = 8; menuSrcRects[5].y = 64; menuSrcRects[5].w = 64; menuSrcRects[5].h = 32;
+	menuSrcRects[6].x = 100; menuSrcRects[6].y = 96; menuSrcRects[6].w = 80; menuSrcRects[6].h = 32;
+	menuSrcRects[7].x = 196; menuSrcRects[7].y = 96; menuSrcRects[7].w = 148; menuSrcRects[7].h = 32;
+	menuSrcRects[8].x = 360; menuSrcRects[8].y = 96; menuSrcRects[8].w = 84; menuSrcRects[8].h = 32;
+	menuSrcRects[9].x = 435; menuSrcRects[9].y = 64; menuSrcRects[9].w = 56; menuSrcRects[9].h = 32;
 
 	if(select00 == NULL)	select00 = Mix_LoadWAV("res/sound/se_select00.wav");
 	if(ok00 == NULL)	ok00 = Mix_LoadWAV("res/sound/se_ok00.wav");

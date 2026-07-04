@@ -12,7 +12,12 @@ DifficultyMenu::DifficultyMenu(): currentSelectedDifficulty(0){
     if(selectLevelImage == NULL)    selectLevelImage = load_sprite("res/title/select01.png", 0, 480, 256, 32, 256, 32);
     if(select00 == NULL)    select00 = Mix_LoadWAV("res/sound/se_select00.wav");
     if(ok00 == NULL)    ok00 = Mix_LoadWAV("res/sound/se_ok00.wav");
-    for(short i = 0;i < 5; i++)   select01Rect[i] = {256, (Sint16)(i * 96), 256, 96};
+    for(short i = 0;i < 5; i++){
+        select01Rect[i].x = 256;
+        select01Rect[i].y = (Sint16)(i * 96);
+        select01Rect[i].w = 256;
+        select01Rect[i].h = 96;
+    }
 }
 void DifficultyMenu::switch_to_next_difficulty(){
     if(currentSelectedDifficulty >= 4) return;
