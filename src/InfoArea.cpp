@@ -1,8 +1,8 @@
 #include "InfoArea.h"
 #include <cstdio>
 
-// ── Static member definitions ──
-SDL_Surface* InfoArea::infoAreaTH08Logo = NULL;
+SDL_Surface* InfoArea::infoAreaTH07Logo = NULL;
+SDL_Surface* InfoArea::perfectCherryBlossomImage = NULL;
 SDL_Surface* InfoArea::highScoreImage = NULL;
 SDL_Surface* InfoArea::scoreImage = NULL;
 SDL_Surface* InfoArea::livesImage = NULL;
@@ -16,7 +16,6 @@ SDL_Surface* InfoArea::blueStarImage = NULL;
 
 static bool assetsLoaded = false;
 
-// ── Sidebar geometry ──
 static const int BAR_X  = 544;
 static const int BAR_W  = 256;
 static const int BAR_H  = 600;
@@ -46,9 +45,29 @@ static void draw_stars(int x, int y, int n, SDL_Surface* spr, int wrap) {
     }
 }
 
+static void draw_powers(int x, int y, int pwr){
+    int pwr100 = 0;
+    int pwr10 = 0;
+    int pwr1 = 0;
+    if(pwr > 100) {
+        pwr100 = pwr / 100;
+        pwr10 = (pwr / 10) % 10;
+        pwr1 = pwr % 10;
+    }else if(pwr > 10) {
+        pwr10 = pwr / 10;
+        pwr1 = pwr % 10;
+    }else{
+        pwr1 = pwr;
+    }
+    draw_digit(x, y, pwr100);
+    draw_digit(x + 16, y, pwr10);
+    draw_digit(x + 32, y, pwr1);
+}
+
 InfoArea::InfoArea() : currentScore(0), lives(0), spell(0), graze(0), point(0), time_(0) {
     if (!assetsLoaded) {
-        infoAreaTH08Logo = load_sprite("res/title/title02.png", 0, 0, 256, 512, 256.0, 512.0);
+        infoAreaTH07Logo = load_sprite("res/front/front.png", 128, 0, 128, 256, 192.0, 384.0);
+        perfectCherryBlossomImage = load_sprite("res/front/front.png", 0, 0, 128, 64, 192.0, 96.0);
         highScoreImage   = load_sprite("res/front/front.png", 0,  80, 48, 16, 48.0, 16.0);
         scoreImage       = load_sprite("res/front/front.png", 0,  96, 48, 16, 48.0, 16.0);
         livesImage       = load_sprite("res/front/front.png", 0, 112, 48, 16, 48.0, 16.0);
@@ -77,8 +96,10 @@ void InfoArea::render() {
     SDL_Rect bar = {BAR_X, 0, BAR_W, BAR_H};
     SDL_FillRect(screen, &bar, SDL_MapRGB(screen->format, 0, 0, 64));
 
-    if (infoAreaTH08Logo)
-        apply_surface(544, 168, infoAreaTH08Logo, screen);
+    if (infoAreaTH07Logo)
+        apply_surface(608, 216, infoAreaTH07Logo, screen);
+    if(perfectCherryBlossomImage)
+        apply_surface(544, 400, perfectCherryBlossomImage, screen);
 
     const int ry[8] = {16, 36, 56, 76, 96, 116, 136, 156};
 
@@ -95,7 +116,7 @@ void InfoArea::render() {
     draw_stars(STAR_X, ry[3], spell, blueStarImage, 10);
 
     if (powerImage) apply_surface(LBL_X, ry[4], powerImage, screen);
-    draw_num(VAL_X, ry[4], Player::get_power(), 8);
+    draw_powers(VAL_X, ry[4], Player::get_power());
 
     if (grazeImage) apply_surface(LBL_X, ry[5], grazeImage, screen);
     draw_num(VAL_X, ry[5], graze, 5);
