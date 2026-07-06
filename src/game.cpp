@@ -237,7 +237,7 @@ void Game::update_game(float dt){
 	levelManager->attack_all_enemies(dt);
 	enemyBulletManager_.update(dt);
 	itemManager->update(dt);
-	// TH06-style: LevelManager 自动检测并处理关卡过渡
+	// 自动检测并处理关卡过渡
 	if (levelManager->auto_transition(frameCounter)) {
 		itemManager->clear_all();
 		itemManager->update(1.0f / 30.0f);

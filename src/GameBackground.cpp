@@ -1,16 +1,20 @@
 #include "GameBackground.h"
 const int GameBackground::BG_WIDTH = 544;
 const int GameBackground::BG_HEIGHT = 600;
-SDL_Surface* GameBackground::backgroundImage = NULL;
+SDL_Surface* GameBackground::stgbg[2] = {NULL, NULL};
 GameBackground::GameBackground(){
-    backgroundImage = NULL;
     //backgroundImage = load_image("level/game_background.jpeg", 544,600);
     bgX = 0.0;
     bgY = 0.0;
     scrollSpeed = 300.0;
 }
 void GameBackground::background_update(float dt){
-    if(backgroundImage == NULL) return;
+    if(stgbg[0] == NULL) {
+        stgbg[0] = load_image("res/stg1bg/stg1bg.png", 512, 512);
+    }
+    if(stgbg[1] == NULL) {
+        stgbg[1] = load_image("res/stg1bg/stg5bg.png", 512, 512);
+    }
     bgY += scrollSpeed * dt;
     if(bgY >= BG_HEIGHT){
         bgY -= BG_HEIGHT;
