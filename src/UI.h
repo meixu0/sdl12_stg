@@ -21,7 +21,7 @@ extern const SDL_Surface* uppercaseImage[26];
 extern const SDL_Surface* lowercaseImage[26];
 extern SDL_Surface* zakoSprites[16][16];
 extern SDL_Surface* zakoRingSprites[2][2];
-extern SDL_Surface* bossSprites[9][12];
+extern SDL_Surface* bossSprites[14][12];
 extern SDL_Event event;
 
 extern bool isFullscreen;

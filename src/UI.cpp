@@ -11,7 +11,7 @@ const SDL_Surface* uppercaseImage[26] = {NULL};
 const SDL_Surface* lowercaseImage[26] = {NULL};
 SDL_Surface* zakoSprites[SPRITE_ROWS][SPRITE_COLS] = {{NULL}};
 SDL_Surface* zakoRingSprites[2][2] = {{NULL}};
-SDL_Surface* bossSprites[9][12] = {{NULL}};
+SDL_Surface* bossSprites[14][12] = {{NULL}};
 bool init(){
 	if(SDL_Init(SDL_INIT_EVERYTHING) == -1)	return false;
 	if(TTF_Init() == -1)	return false;
@@ -240,6 +240,28 @@ SDL_Surface *load_sprite(std::string filename, int srcX, int srcY, int srcW, int
 						zp[zy * zw + zx] = ck;
 				}
 			}
+		}
+
+		// Pass 3: boundary erosion – bottom row and right column have
+		// no neighbour below/right to trigger normal erosion, so dark
+		// pixels on those edges would survive as visible lines.
+		// Sprites don't typically extend to the exact edge, so treat
+		// dark edge pixels as background.
+		for (int zx = 0; zx < zw; zx++) {
+			Uint32 p = zp[(zh-1) * zw + zx];       // bottom row
+			if (p == ck) continue;
+			Uint8 r, g, b;
+			SDL_GetRGB(p, zoomedImage->format, &r, &g, &b);
+			if (r < 80 && g < 80 && b < 80)
+				zp[(zh-1) * zw + zx] = ck;
+		}
+		for (int zy = 0; zy < zh; zy++) {
+			Uint32 p = zp[zy * zw + (zw-1)];       // right column
+			if (p == ck) continue;
+			Uint8 r, g, b;
+			SDL_GetRGB(p, zoomedImage->format, &r, &g, &b);
+			if (r < 80 && g < 80 && b < 80)
+				zp[zy * zw + (zw-1)] = ck;
 		}
 
 		if (SDL_MUSTLOCK(zoomedImage)) SDL_UnlockSurface(zoomedImage);

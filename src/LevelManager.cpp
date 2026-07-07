@@ -5,8 +5,6 @@
 #include <cstring>
 #include <map>
 
-// ── String→enum lookup tables (for V2 format) ──────────────────────────────
-
 static int str_to_move_pattern(const char* s) {
     if (!s) return LINER;
     if (strcmp(s, "linear")            == 0) return LINER;
@@ -73,7 +71,6 @@ static const char* cjson_str(cJSON* obj, const char* key) {
     return (v && cJSON_IsString(v)) ? v->valuestring : NULL;
 }
 
-// ── V2 format data structures ──────────────────────────────────────────────
 
 struct BehaviorDef {
     int hp = 50;
@@ -180,7 +177,6 @@ static void apply_behavior_difficulty(BehaviorDef& def, cJSON* diff_obj) {
     }
 }
 
-// ── Helper: parse a behavior JSON object → BehaviorDef ─────────────────────
 
 static BehaviorDef parse_behavior(cJSON* beh) {
     BehaviorDef def;
@@ -311,7 +307,6 @@ static void apply_overrides(EnemyConfig& config, cJSON* overrides) {
     }
 }
 
-// ── V2 parser: read behaviors + timeline → create enemies ──────────────────
 
 void LevelManager::init_enemy_pool_v2() {
     clear_enemy_pool();
@@ -660,7 +655,6 @@ void LevelManager::next_stage() {
     std::cout << "Stage " << current_stage << " started." << std::endl;
 }
 
-// TH06-style lifecycle transitions — clean, load, init, start/trigger in one step
 void LevelManager::enter_stage(int stage) {
 	clear_enemy_pool();
 	load_stage(stage);
@@ -834,8 +828,7 @@ void LevelManager::update_spellcards(float dt) {
     }
 
     // ── Check capture (HP depleted) ───────────────────────────────────────────
-    std::cout << "[SPELLCARD] bossHP=" << boss->get_hp() << " active=" << boss->is_active()
-              << " entryTimer=" << spellcardEntryTimer_ << std::endl;
+    //std::cout << "[SPELLCARD] bossHP=" << boss->get_hp() << " active=" << boss->is_active()<< " entryTimer=" << spellcardEntryTimer_ << std::endl;
     if (boss->get_hp() <= 0) {
         scManager_.end(true);  // captured
         std::cout << "Spellcard captured! Converting bullets to P items." << std::endl;
@@ -1026,7 +1019,7 @@ void LevelManager::trigger_midboss_clear(Uint32 &frameCounter, Uint32 &midbossEn
 }
 
 void LevelManager::update_all_enemies(float px, float py, Uint32 &frameCounter_, Uint32 &midbossEnterFrame_, float dt_, StageState &prevStageState, StageState &currentStageState) {
-	    static int debug_dumped = 0;
+	    /*static int debug_dumped = 0;
 	    if (!debug_dumped && stage_state == STAGE_RUNNING) {
 	        // Check if any enemy is active (game has started)
 	        bool any_active = false;
@@ -1045,10 +1038,9 @@ void LevelManager::update_all_enemies(float px, float py, Uint32 &frameCounter_,
 	                              << " hp=" << e->get_hp() << std::endl;
 	                }
 	            }
-	            std::cout << "=== end dump ===" << std::endl;
 	            debug_dumped = 1;
 	        }
-	    }
+	    }*/
     for (size_t i = 0; i < enemy_pool.size(); ++i) {
         if(enemy_pool[i] == NULL)   continue;
 
@@ -1072,9 +1064,7 @@ void LevelManager::update_all_enemies(float px, float py, Uint32 &frameCounter_,
             if (!isMid && !isBoss) continue;
             bool dead = !e->is_active();
             bool hpZero = e->get_hp() <= 0;
-            std::cout << "[DEFEAT] i=" << i << " isMid=" << isMid << " isBoss=" << isBoss
-                      << " dead=" << dead << " hpZero=" << hpZero << " hp=" << e->get_hp()
-                      << " type=" << e->get_enemy_type() << std::endl;
+            //std::cout << "[DEFEAT] i=" << i << " isMid=" << isMid << " isBoss=" << isBoss<< " dead=" << dead << " hpZero=" << hpZero << " hp=" << e->get_hp()<< " type=" << e->get_enemy_type() << std::endl;
             if (dead && hpZero) {
                 midbossDefeatedProcessed_ = true;
                 std::cout << "Main enemy defeated! Converting bullets to P items." << std::endl;

@@ -13,6 +13,7 @@ DifficultyMenu::DifficultyMenu(): currentSelectedDifficulty(0){
     if(selectLevelImage == NULL)    selectLevelImage = load_sprite("res/title/select01.png", 0, 480, 256, 32, 256, 32);
     if(select00 == NULL)    select00 = Mix_LoadWAV("res/sound/se_select00.wav");
     if(ok00 == NULL)    ok00 = Mix_LoadWAV("res/sound/se_ok00.wav");
+    if(cancel00 == NULL)    cancel00 = Mix_LoadWAV("res/sound/se_cancel00.wav");
     for(short i = 0;i < 5; i++){
         select01Rect[i].x = 256;
         select01Rect[i].y = (Sint16)(i * 96);
@@ -76,8 +77,11 @@ SDL_Rect DifficultyMenu::get_menu_src_rect(int id, bool isSelected){
 }
 
 void DifficultyMenu::render(){
-    apply_surface(0, 0, select00_, screen);
-    apply_surface(272, 0, selectLevelImage, screen);
+    SDL_BlitSurface(select00_, NULL, screen, NULL);
+    SDL_Rect levelDest = {272, 0, 256, 32};
+    SDL_BlitSurface(selectLevelImage, NULL, screen, &levelDest);
+    /*apply_surface(0, 0, select00_, screen);
+    apply_surface(272, 0, selectLevelImage, screen);*/
     int startY = 128;
     int spacingY = 96;
     for(int i = 0;i < 5;i++){

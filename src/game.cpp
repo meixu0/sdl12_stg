@@ -15,7 +15,7 @@ Game::Game() : gameBackground_(nullptr), playerBulletPool_(NULL), player1(NULL) 
 	midbossEnterFrame = 0;
 
 	// load boss sprites: 9 types × 12 frames, 3×4 grid, 48×64 per cell
-	for(int i = 5;i < 13;i++){
+	for(int i = 5;i < 14;i++){
 		std::ostringstream ss;
 		ss << i;
 		std::string filename = "res/stgenm/stgenm" + ss.str() + ".png";
@@ -26,6 +26,7 @@ Game::Game() : gameBackground_(nullptr), playerBulletPool_(NULL), player1(NULL) 
 
 	levelManager = new LevelManager();
 	itemManager = new ItemManager();
+	
 	for(int i = 0; i < 10; i++)	numbersImage[i] = load_sprite("res/ascii/ascii.png", i * 16, 48, 16, 16, 16.0f, 16.0f);
 	for(int i = 0; i < 15; i++)	uppercaseImage[i] = load_sprite("res/ascii/ascii.png", (i+1) * 16, 64, 16, 16, 16.0f, 16.0f);
 	for(int i = 0; i < 11; i++)	uppercaseImage[i+15] = load_sprite("res/ascii/ascii.png", i*16, 80, 16, 16, 16.0f, 16.0f);
@@ -86,7 +87,6 @@ void Game::init_game(SDL_Surface* dest){
 void Game::run(){
 	while(gameState != STATE_EXIT) {
 		Uint32 frameStart = SDL_GetTicks();
-
 		while(SDL_PollEvent(&event)) {
 			if(gameState == STATE_MENU)
 				mainMenu.handle_events(event);
@@ -196,7 +196,7 @@ void Game::start_gameplay(){
 }
 
 void Game::update_game(float dt){
-	gameBackground_->background_update(dt);
+	gameBackground_->background_update(dt, levelManager->get_current_stage());
 	player1->player_move();
 	{
 		static const float PLAY_CENTER_X = 272.0f;
@@ -259,7 +259,7 @@ void Game::render_game(){
 	static const int PLAY_AREA_HEIGHT = 600;
 	SDL_Rect playArea = {0, 0, PLAY_AREA_WIDTH, PLAY_AREA_HEIGHT};
 	SDL_FillRect(screen, &playArea, SDL_MapRGB(screen->format, 0, 0, 0));
-	gameBackground_->background_show();
+	gameBackground_->background_show(levelManager->get_current_stage());
 	player1->show();
 	if(playerBulletPool_ != NULL) playerBulletPool_->render();
 	levelManager->show_all_enemies();

@@ -1,7 +1,7 @@
 CXX ?= clang++
 CC ?= clang
-CXXFLAGS = -Wall -std=c++98 -Isrc
-CFLAGS = -Wall -Isrc
+CXXFLAGS = -Wall -std=c++98 -Isrc -g
+CFLAGS = -Wall -Isrc -g
 
 EXT =
 
