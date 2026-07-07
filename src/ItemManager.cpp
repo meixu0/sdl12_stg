@@ -2,13 +2,17 @@
 #include "player.h"
 #include <cmath>
 
-SDL_Surface* ItemManager::itemPowerSmallImage = NULL;
-SDL_Surface* ItemManager::itemPointImage = NULL;
-SDL_Surface* ItemManager::itemPowerBigImage = NULL;
-SDL_Surface* ItemManager::itemBombImage = NULL;
-SDL_Surface* ItemManager::itemFullPowerImage = NULL;
-SDL_Surface* ItemManager::itemLifeImage = NULL;
-SDL_Surface* ItemManager::itemPointBulletImage = NULL;
+// 道具精灵表 + 源坐标（同 PlayerBullet 方式）
+static SDL_Surface* itemSheet = NULL;
+static SDL_Rect itemSrc[7] = {
+	{ 0,  64, 16, 16},  // Power Small
+	{16,  64, 16, 16},  // Point
+	{32,  64, 16, 16},  // Power Big
+	{48,  64, 16, 16},  // Bomb
+	{64,  64, 16, 16},  // Full Power
+	{80,  64, 16, 16},  // Life
+	{96,  64, 16, 16},  // Point Bullet
+};
 Mix_Chunk* ItemManager::powerup00 = NULL;
 
 int ItemManager::score = 0;
@@ -35,20 +39,8 @@ const int ItemManager::POWER_ITEM_SCORE[31] = {
 };
 
 ItemManager::ItemManager() : nextItemIndex(0), playerPtr(NULL) {
-    if (itemPowerSmallImage == NULL)
-        itemPowerSmallImage = load_sprite("res/etama/etama2.png", 0, 64, 16, 16, 16.0, 16.0);
-    if (itemPointImage == NULL)
-        itemPointImage = load_sprite("res/etama/etama2.png", 16, 64, 16, 16, 16.0, 16.0);
-    if (itemPowerBigImage == NULL)
-        itemPowerBigImage = load_sprite("res/etama/etama2.png", 32, 64, 16, 16, 16.0, 16.0);
-    if (itemBombImage == NULL)
-        itemBombImage = load_sprite("res/etama/etama2.png", 48, 64, 16, 16, 16.0, 16.0);
-    if (itemFullPowerImage == NULL)
-        itemFullPowerImage = load_sprite("res/etama/etama2.png", 64, 64, 16, 16, 16.0, 16.0);
-    if (itemLifeImage == NULL)
-        itemLifeImage = load_sprite("res/etama/etama2.png", 80, 64, 16, 16, 16.0, 16.0);
-    if (itemPointBulletImage == NULL)
-        itemPointBulletImage = load_sprite("res/etama/etama2.png", 96, 64, 16, 16, 16.0, 16.0);
+    if (itemSheet == NULL)
+        itemSheet = IMG_Load("res/etama/etama2.png");
     if (powerup00 == NULL)
         powerup00 = Mix_LoadWAV("res/sound/se_powerup00.wav");
 
@@ -62,16 +54,16 @@ void ItemManager::set_player(Player* p) {
     playerPtr = p;
 }
 
-SDL_Surface* ItemManager::get_item_surface(int itemType) {
+static int item_src_index(int itemType) {
     switch (itemType) {
-        case ITEM_POWER_SMALL:  return itemPowerSmallImage;
-        case ITEM_POINT:        return itemPointImage;
-        case ITEM_POWER_BIG:    return itemPowerBigImage;
-        case ITEM_BOMB:         return itemBombImage;
-        case ITEM_FULL_POWER:   return itemFullPowerImage;
-        case ITEM_LIFE:         return itemLifeImage;
-        case ITEM_POINT_BULLET: return itemPointBulletImage;
-        default:                return itemPointImage;
+        case ITEM_POWER_SMALL:  return 0;
+        case ITEM_POINT:        return 1;
+        case ITEM_POWER_BIG:    return 2;
+        case ITEM_BOMB:         return 3;
+        case ITEM_FULL_POWER:   return 4;
+        case ITEM_LIFE:         return 5;
+        case ITEM_POINT_BULLET: return 6;
+        default:                return 1;
     }
 }
 
@@ -266,23 +258,21 @@ void ItemManager::update(float dt) {
 }
 
 void ItemManager::render() {
+    if(itemSheet == NULL) return;
+
     for (int i = 0; i < MAX_ITEMS; i++) {
         Item* it = &items[i];
         if (!it->isActive) continue;
 
-        SDL_Surface* sprite = get_item_surface(it->type);
-        if (sprite == NULL) continue;
+        int idx = item_src_index(it->type);
+        SDL_Rect* src = &itemSrc[idx];
+        int drawX = (int)(it->x - src->w / 2);
+        int drawY = (int)(it->y - src->h / 2);
 
-        int drawX = (int)(it->x - sprite->w / 2);
-        int drawY = (int)(it->y - sprite->h / 2);
+        if (drawY < -8) drawY = 8;
 
-        // Clamp indicator at top of screen when item is above visible area
-        if (drawY < -8) {
-            drawY = 8;
-            // TODO: use alternate sprite for off-screen indicator
-        }
-
-        apply_surface(drawX, drawY, sprite, screen);
+        SDL_Rect dst = {(Sint16)drawX, (Sint16)drawY, 0, 0};
+        SDL_BlitSurface(itemSheet, src, screen, &dst);
     }
 }
 

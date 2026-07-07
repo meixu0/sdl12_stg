@@ -17,6 +17,8 @@ static const int SCREEN_HEIGHT = 600;
 static const int SCREEN_BPP = 32;
 extern SDL_Surface *screen;
 extern const SDL_Surface* numbersImage[10];
+extern SDL_Surface* asciiSheet;
+extern SDL_Rect digitRects[10];
 extern const SDL_Surface* uppercaseImage[26];
 extern const SDL_Surface* lowercaseImage[26];
 extern SDL_Surface* zakoSprites[16][16];
@@ -51,6 +53,9 @@ void render_win98(SDL_Rect* box, SDL_Surface* dest, int state, std::string butto
 SDL_Surface *load_image(std::string filename, double targetW, double targetH);
 SDL_Surface *load_sprite(std::string filename, int srcX, int srcY, int srcW, int srcH, double targetW, double targetH);
 SDL_Surface *rotate_image(SDL_Surface* src, double degrees);
+SDL_Surface *rotate_90(SDL_Surface* src, int turns);
+SDL_Surface *rotate_nearest(SDL_Surface* src, double degrees);
+SDL_Surface *mirror_surface(SDL_Surface* src);
 bool load_font(std::string fontfile);
 TTF_Font* load_font(std::string filename, int fontsize);
 #endif

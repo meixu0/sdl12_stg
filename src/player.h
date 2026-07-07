@@ -25,14 +25,14 @@ private:
 	static int currentPowerLevel;
 	static bool bombInUse;
 	static int playerPowerData;
-	static SDL_Surface* player;
-	static SDL_Surface* reimuImageMiddle[4];
-	static SDL_Surface* reimuImageSide[7];
-	static SDL_Surface* reimuBulletSide;  // 子机子弹贴图 (64×16 → 旋转90° → 16×64)
+	static SDL_Surface* playerSheet;
+	static SDL_Surface* playerSheetMirror;
+	static SDL_Rect middleSrcRects[3];
+	static SDL_Rect sideSrcRects[7];
 	bool isShooting;
 	int simpleShootCoolDown;
 	int bulletFireTimers[MAX_BULLETS_PER_RANK];
-	float animTimer;  // 自机动画计时器
+	float animTimer;
 	float targetEnemyX, targetEnemyY;
 	bool hasTarget;
 	float optionStreamAngle_;

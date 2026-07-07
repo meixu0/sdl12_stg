@@ -1,16 +1,17 @@
 #include "UI.h"
+struct ShotRects{
+    SDL_Rect portrait;
+    SDL_Rect shotA_sel;
+    SDL_Rect shotA_norm;
+    SDL_Rect shotB_sel;
+    SDL_Rect shotB_norm;
+};
 class StartMenu{
 private:
-    static SDL_Surface* pl00;
-    static SDL_Surface* pl01;
-    static SDL_Surface* pl02;
+    static ShotRects shotRects[4];
     static SDL_Surface* select00img;
-    static SDL_Surface* reimuTsuiti[2];
-    static SDL_Surface* reimuSokusha[2];
-    static SDL_Surface* marisaIryokujuushi[2];
-    static SDL_Surface* marisaKantsuu[2];
-    static SDL_Surface* sakuyaKouhanni[2];
-    static SDL_Surface* sakuyaTokushu[2];
+    static SDL_Surface* playerSelectImage;
+    static SDL_Surface* plSheet[4];
     int currentPlayerIndex;
     int currentScIndex;
 	static Mix_Chunk* select00;

@@ -5,13 +5,6 @@ class Player;
 
 class ItemManager{
 private:
-    static SDL_Surface* itemPowerSmallImage;
-    static SDL_Surface* itemPointImage;
-    static SDL_Surface* itemPowerBigImage;
-    static SDL_Surface* itemBombImage;
-    static SDL_Surface* itemFullPowerImage;
-    static SDL_Surface* itemLifeImage;
-    static SDL_Surface* itemPointBulletImage;
     static Mix_Chunk* powerup00;
 
     struct Item{
@@ -49,8 +42,6 @@ private:
     static const int MAX_POWER = 128;
     static const int POWER_UP_THRESHOLDS[11];
     static const int POWER_ITEM_SCORE[31];
-
-    SDL_Surface* get_item_surface(int itemType);
 
 public:
     ItemManager();

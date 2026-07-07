@@ -59,37 +59,61 @@ SDL_Surface* PlayerBullet::bulletSprites[16] = {NULL};
 static SDL_Surface* etamaSheet = NULL;
 SDL_Surface* PlayerBullet::reimuBulletSideRaw = NULL;
 SDL_Surface* PlayerBullet::reimuBulletSide = NULL;
+static SDL_Surface* clip_rect(SDL_Surface* sheet, int x, int y, int w, int h){
+	SDL_Surface* dst = SDL_CreateRGBSurface(SDL_SWSURFACE, w, h, 32,
+		0x00ff0000, 0x0000ff00, 0x000000ff, 0xff000000);
+	if(dst == NULL) return NULL;
+	SDL_Rect src = {(Sint16)x, (Sint16)y, (Uint16)w, (Uint16)h};
+	SDL_BlitSurface(sheet, &src, dst, NULL);
+	{
+		Uint32* p = (Uint32*)dst->pixels;
+		for(int i = 0; i < w * h; i++){
+			Uint8 r = (p[i] >> 16) & 0xFF;
+			Uint8 g = (p[i] >> 8) & 0xFF;
+			Uint8 b = p[i] & 0xFF;
+			Uint8 a = r > g ? (r > b ? r : b) : (g > b ? g : b);
+			p[i] = (p[i] & 0x00FFFFFF) | ((Uint32)a << 24);
+		}
+	}
+	return dst;
+}
+
+
+
+
 
 PlayerBullet::PlayerBullet(){
 	isHit = false;
 	isActive = false;
 	framesLeft = 0;
-	x_ = 0;
-	y_ = 0;
-	velX_ = 0;
-	velY_ = 0;
-	targetX_ = 0;
-	targetY_ = 0;
+	x_ = 0; y_ = 0;
+	velX_ = 0; velY_ = 0;
+	targetX_ = 0; targetY_ = 0;
 	homingSpeed_ = 0;
-	switch (playerType){
-		case PLAYER_REIMU:
-			if(reimuBulletSideRaw == NULL){
-			reimuBulletSideRaw = load_sprite("res/player00/player00.png", 0, 144, 64, 16, 64.0, 16.0);
-			reimuBulletSide = rotate_image(reimuBulletSideRaw, -90.0);
+
+	if(reimuBulletSideRaw == NULL){
+		const char* f;
+		switch(playerType){
+			case 0: f = "res/player00/player00.png"; break;
+			case 1: f = "res/player00/player01.png"; break;
+			case 2: f = "res/player00/player02.png"; break;
+			case 3: f = "res/player00/player03.png"; break;
+			default: f = "res/player00/player00.png"; break;
+		}
+		SDL_Surface* sheet = IMG_Load(f);
+		if(sheet != NULL){
+			reimuBulletSideRaw = clip_rect(sheet, 0, 169, 75, 19);
+			if(reimuBulletSideRaw != NULL){
+				SDL_Surface* t1 = rotate_90(reimuBulletSideRaw, 3);
+				SDL_FreeSurface(reimuBulletSideRaw); reimuBulletSideRaw = NULL;
+				SDL_Surface* t2 = rotate_90(t1, 3);
+				SDL_FreeSurface(t1);
+				reimuBulletSide = rotate_90(t2, 3);
+				SDL_FreeSurface(t2);
+				if(reimuBulletSide) SDL_SetAlpha(reimuBulletSide, SDL_SRCALPHA, 255);
 			}
-			break;
-		case PLAYER_MARISA:
-			if(reimuBulletSideRaw == NULL){
-			reimuBulletSideRaw = load_sprite("res/player00/player01.png", 0, 144, 64, 16, 64.0, 16.0);
-			reimuBulletSide = rotate_image(reimuBulletSideRaw, -90.0);
-			}
-			break;
-		case PLAYER_SAKUYA:
-			if(reimuBulletSideRaw == NULL){
-			reimuBulletSideRaw = load_sprite("res/player00/player02.png", 0, 144, 64, 16, 64.0, 16.0);
-			reimuBulletSide = rotate_image(reimuBulletSideRaw, -90.0);
-			}
-			break;
+			SDL_FreeSurface(sheet);
+		}
 	}
 
 	sideBulletRotateAngle_ = 0.0f;
@@ -97,6 +121,7 @@ PlayerBullet::PlayerBullet(){
 	pivotX_ = 0.0f;
 	pivotY_ = 0.0f;
 }
+
 void PlayerBullet::init(PlayerBulletConfig& config){
 	isActive = true;
 	fireInterval_ = config.fireInterval;
@@ -121,12 +146,12 @@ void PlayerBullet::init(PlayerBulletConfig& config){
 	homingSpeed_ = speed_;
 	framesLeft = (int)(600.0f / speed_);
 }
+
 bool PlayerBullet::bullet_move(){
 	if(!isActive)	return false;
 	if(isHit)      { isActive = false; return true; }
 	framesLeft--;
 	if (bulletType_ == 1 && targetY_ > 0) {
-		// check if tracked enemy is still alive
 		bool targetAlive = false;
 		for (int ei = 0; ei < Enemy::onScreenCount; ei++) {
 			Enemy* e = Enemy::onScreenList[ei];
@@ -170,24 +195,15 @@ bool PlayerBullet::bullet_move(){
 
 	if (bulletType_ == 1 && reimuBulletSide != NULL) {
 		if (rotatedSurface_ != NULL) SDL_FreeSurface(rotatedSurface_);
-		float bw = (float)reimuBulletSide->w;
-		float bh = (float)reimuBulletSide->h;
 		float rotRad = atan2f(velY_, velX_) + 1.5707963f;
 		double rotDeg = rotRad * 180.0 / 3.14159265;
-		SDL_Surface* rotated = rotozoomSurface(reimuBulletSide, -rotDeg, 1.0, 0);
-		if (rotated != NULL) {
-			if (reimuBulletSide->flags & SDL_SRCCOLORKEY)
-				SDL_SetColorKey(rotated, SDL_SRCCOLORKEY, reimuBulletSide->format->colorkey);
-			rotatedSurface_ = rotate_image(rotated, 180.0);
-			SDL_FreeSurface(rotated);
-			if (rotatedSurface_ != NULL) {
-				float c = cosf(rotRad);
-				float s = sinf(rotRad);
-				float dx = -bw * 0.5f * c - bh * 0.5f * s;
-				float dy = -bw * 0.5f * s + bh * 0.5f * c;
-				pivotX_ = (float)rotatedSurface_->w * 0.5f + dx;
-				pivotY_ = (float)rotatedSurface_->h * 0.5f + dy;
-			}
+		rotatedSurface_ = rotate_nearest(reimuBulletSide, rotDeg);
+		rotatedSurface_ = rotate_90(rotatedSurface_, 2);
+		//rotatedSurface_ = rotate_90(rotatedSurface_, 2);
+		if (rotatedSurface_ != NULL) {
+			SDL_SetAlpha(rotatedSurface_, SDL_SRCALPHA, 255);
+			pivotX_ = (float)rotatedSurface_->w * 0.5f;
+			pivotY_ = (float)rotatedSurface_->h * 0.5f;
 		}
 	}
 	int sprLeft = (int)x_ - (int)pivotX_;
@@ -203,36 +219,50 @@ bool PlayerBullet::bullet_move(){
 
 	return false;
 }
+
 void PlayerBullet::on_hit(){
 	velX_ /= 8.0f;
 	velY_ /= 8.0f;
 	isHit = true;
 	if (rotatedSurface_ != NULL) { SDL_FreeSurface(rotatedSurface_); rotatedSurface_ = NULL; }
 }
+
 bool PlayerBullet::inUse() const{
 	return isActive;
 }
+
 PlayerBullet* PlayerBullet::gen_next() const{
 	return next_;
 }
+
 void PlayerBullet::set_next(PlayerBullet* next){
 	next_ = next;
 }
+
 void PlayerBullet::render(){
 	if(!inUse())	return;
 
 	if (bulletType_ == 0) {
-		static SDL_Surface* mainBulletBase = NULL;
-		if (mainBulletBase == NULL) {
-			SDL_Surface* raw = load_sprite("res/player00/player00.png", 0, 160, 64, 16, 64.0, 16.0);
-			mainBulletBase = rotate_image(raw, -90.0);
-			if (raw) SDL_FreeSurface(raw);
+		// 主子弹：load_image + clip_rect + SDL_DisplayFormat + rotozoomSurface
+		static SDL_Surface* mainBullet = NULL;
+		if (mainBullet == NULL) {
+			SDL_Surface* sheet = IMG_Load("res/player00/player00.png");
+			if(sheet != NULL){
+				SDL_Surface* raw = clip_rect(sheet, 0, 188, 75, 19);
+				if(raw != NULL){
+					mainBullet = rotate_90(raw, 3);
+					SDL_FreeSurface(raw);
+					if(mainBullet) SDL_SetAlpha(mainBullet, SDL_SRCALPHA, 255);
+				}
+				SDL_FreeSurface(sheet);
+			}
 		}
-		if (mainBulletBase == NULL) return;
-		SDL_Rect dstRect = {(Sint16)((int)x_ - mainBulletBase->w / 2 - 6),
-		                    (Sint16)((int)y_ - mainBulletBase->h / 2 - 6),
-		                    (Uint16)mainBulletBase->w, (Uint16)mainBulletBase->h};
-		SDL_BlitSurface(mainBulletBase, NULL, screen, &dstRect);
+			
+			if (mainBullet == NULL) return;
+			SDL_Rect dstRect = {(Sint16)((int)x_ - mainBullet->w / 2 - 6),
+			                    (Sint16)((int)y_ - mainBullet->h / 2 - 6),
+			                    (Uint16)mainBullet->w, (Uint16)mainBullet->h};
+			SDL_BlitSurface(mainBullet, NULL, screen, &dstRect);
 	} else {
 		if (rotatedSurface_ == NULL) return;
 		SDL_Rect dstRect = {(Sint16)((int)x_ - pivotX_),
@@ -249,6 +279,7 @@ PlayerBulletPool::PlayerBulletPool(){
 	}
 	bullet[POOL_SIZE - 1].set_next(nullptr);
 }
+
 PlayerBullet *PlayerBulletPool::create(PlayerBulletConfig& config_){
 	assert(firstAvailable != nullptr);
 	PlayerBullet* newBullet = firstAvailable;
@@ -256,6 +287,7 @@ PlayerBullet *PlayerBulletPool::create(PlayerBulletConfig& config_){
 	newBullet->init(config_);
 	return newBullet;
 }
+
 void PlayerBulletPool::update(){
 	for(int i = 0; i < POOL_SIZE; i++){
 		if(bullet[i].bullet_move()){
@@ -264,6 +296,7 @@ void PlayerBulletPool::update(){
 		}
 	}
 }
+
 void PlayerBulletPool::render(){
 	for(int i = 0; i < POOL_SIZE; i++){
 		bullet[i].render();

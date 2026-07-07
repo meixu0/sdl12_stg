@@ -27,7 +27,7 @@ Game::Game() : gameBackground_(nullptr), playerBulletPool_(NULL), player1(NULL) 
 	levelManager = new LevelManager();
 	itemManager = new ItemManager();
 	
-	for(int i = 0; i < 10; i++)	numbersImage[i] = load_sprite("res/ascii/ascii.png", i * 16, 48, 16, 16, 16.0f, 16.0f);
+	asciiSheet = IMG_Load("res/ascii/ascii.png");
 	for(int i = 0; i < 15; i++)	uppercaseImage[i] = load_sprite("res/ascii/ascii.png", (i+1) * 16, 64, 16, 16, 16.0f, 16.0f);
 	for(int i = 0; i < 11; i++)	uppercaseImage[i+15] = load_sprite("res/ascii/ascii.png", i*16, 80, 16, 16, 16.0f, 16.0f);
 	for(int i = 0; i < 15; i++)	lowercaseImage[i] = load_sprite("res/ascii/ascii.png", (i+1) * 16, 96, 16, 16, 16.0f, 16.0f);

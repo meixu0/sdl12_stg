@@ -2,18 +2,6 @@
 #include "player.h"
 class InfoArea{
 private:
-    static SDL_Surface* infoAreaTH07Logo;
-    static SDL_Surface* perfectCherryBlossomImage;
-    static SDL_Surface* highScoreImage;
-    static SDL_Surface* scoreImage;
-    static SDL_Surface* livesImage;
-    static SDL_Surface* spellImage;
-    static SDL_Surface* powerImage;
-    static SDL_Surface* grazeImage;
-    static SDL_Surface* pointImage;
-    static SDL_Surface* timeImage;
-    static SDL_Surface* redStarImage;
-    static SDL_Surface* blueStarImage;
     Uint32 currentScore, lives, spell, graze, point, time_;
 public:
     InfoArea();

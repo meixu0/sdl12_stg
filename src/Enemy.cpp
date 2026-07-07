@@ -2,6 +2,7 @@
 #include "EnemyScManager.h"
 #include "player.h"
 #include <iostream>
+#include <sstream>
 #include <algorithm>
 
 Enemy* Enemy::onScreenList[256] = {NULL};
@@ -422,6 +423,8 @@ void Enemy::enemy_attack(float dt){
 
 void Enemy::enemy_show(){
     if(!isActive) return;
+
+    // 动画帧计算
     int colBase;
     float threshold = 5.0f;
     if (axisSpeedX < -threshold)          colBase = 12;
@@ -431,13 +434,28 @@ void Enemy::enemy_show(){
 
     int tick = ((int)(spriteAnimTimer * 4.0f)) % 8;
     int frameIndex = (tick > 3) ? (7 - tick) : tick;
-
     int col = colBase + frameIndex;
-    SDL_Surface* sprite = (enemyType >= BOSS_RUMIA)
-        ? get_boss_sprite(col)
-        : get_zako_sprite(col);
-    if (sprite) {
-        apply_surface((int)x, (int)y, sprite, screen);
+    if (enemyType >= BOSS_RUMIA) {
+        static SDL_Surface* bossSheets[14] = {NULL};
+        if(bossSheets[enemyType] == NULL){
+            std::ostringstream ss;
+            ss << "res/stgenm/stgenm" << enemyType << ".png";
+            bossSheets[enemyType] = IMG_Load(ss.str().c_str());
+        }
+        SDL_Surface* sheet = bossSheets[enemyType];
+        if(sheet == NULL) return;
+        SDL_Rect src = {(col % 4) * 48, (col / 4) * 64, 48, 64};
+        SDL_Rect dst = {(Sint16)x, (Sint16)y, 0, 0};
+        SDL_BlitSurface(sheet, &src, screen, &dst);
+    } else {
+        // Zako 精灵：enemy.png, 16×16 格 32×32
+        static SDL_Surface* zakoSheet = NULL;
+        if(zakoSheet == NULL)
+            zakoSheet = IMG_Load("res/stgenm/enemy.png");
+        if(zakoSheet == NULL) return;
+        SDL_Rect src = {(Sint16)(col * 32), (Sint16)(enemyType * 32), 32, 32};
+        SDL_Rect dst = {(Sint16)x, (Sint16)y, 0, 0};
+        SDL_BlitSurface(zakoSheet, &src, screen, &dst);
     }
 }
 

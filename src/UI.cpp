@@ -1,4 +1,5 @@
 #include "UI.h"
+#include <cmath>
 SDL_Surface* screen = NULL;
 SDL_Event event;
 bool quit = false;
@@ -7,6 +8,19 @@ bool isFullscreen = false;
 int playerType = 0;
 int gameDifficulty = 0;
 const SDL_Surface* numbersImage[10] = {NULL};
+SDL_Surface* asciiSheet = NULL;
+SDL_Rect digitRects[10] = {
+    {  0, 48, 16, 16},
+    { 16, 48, 16, 16},
+    { 32, 48, 16, 16},
+    { 48, 48, 16, 16},
+    { 64, 48, 16, 16},
+    { 80, 48, 16, 16},
+    { 96, 48, 16, 16},
+    {112, 48, 16, 16},
+    {128, 48, 16, 16},
+    {144, 48, 16, 16},
+};
 const SDL_Surface* uppercaseImage[26] = {NULL};
 const SDL_Surface* lowercaseImage[26] = {NULL};
 SDL_Surface* zakoSprites[SPRITE_ROWS][SPRITE_COLS] = {{NULL}};
@@ -278,6 +292,99 @@ SDL_Surface* rotate_image(SDL_Surface* src, double degrees){
 	if (rotated != NULL && (src->flags & SDL_SRCCOLORKEY))
 		SDL_SetColorKey(rotated, SDL_SRCCOLORKEY, src->format->colorkey);
 	return rotated;
+}
+
+// 逐像素旋转 90° 整数倍。turns: 1=90°CW, 2=180°, 3=270°CW(-90°)
+SDL_Surface* rotate_90(SDL_Surface* src, int turns){
+	turns = turns % 4;
+	if(turns == 0) return src;
+	int dstW = (turns % 2) ? src->h : src->w;
+	int dstH = (turns % 2) ? src->w : src->h;
+	SDL_Surface* dst = SDL_CreateRGBSurface(SDL_SWSURFACE, dstW, dstH, 32,
+		0x00ff0000, 0x0000ff00, 0x000000ff, 0xff000000);
+	if(dst == NULL) return NULL;
+	int bpp = src->format->BytesPerPixel;
+	if(SDL_MUSTLOCK(src)) SDL_LockSurface(src);
+	if(SDL_MUSTLOCK(dst)) SDL_LockSurface(dst);
+	for(int sy = 0; sy < src->h; sy++){
+		Uint8* sr = (Uint8*)src->pixels + sy * src->pitch;
+		for(int sx = 0; sx < src->w; sx++){
+			int dx, dy;
+			switch(turns){
+				case 1: dx = src->h - 1 - sy; dy = sx; break;
+				case 2: dx = src->w - 1 - sx; dy = src->h - 1 - sy; break;
+				default: dx = sy; dy = src->w - 1 - sx; break;
+			}
+			Uint8* dr = (Uint8*)dst->pixels + dy * dst->pitch;
+			for(int b = 0; b < bpp; b++)
+				dr[dx * bpp + b] = sr[sx * bpp + b];
+		}
+	}
+	if(SDL_MUSTLOCK(dst)) SDL_UnlockSurface(dst);
+	if(SDL_MUSTLOCK(src)) SDL_UnlockSurface(src);
+	return dst;
+}
+
+// 逐像素旋转任意角度（nearest-neighbor），无插值无黑边
+SDL_Surface* rotate_nearest(SDL_Surface* src, double degrees){
+	double rad = degrees * 3.14159265 / 180.0;
+	double ca = cos(rad), sa = sin(rad);
+	double aca = fabs(ca), asa = fabs(sa);
+	int dstW = (int)(src->w * aca + src->h * asa + 1);
+	int dstH = (int)(src->w * asa + src->h * aca + 1);
+	SDL_Surface* dst = SDL_CreateRGBSurface(SDL_SWSURFACE, dstW, dstH, 32,
+		0x00ff0000, 0x0000ff00, 0x000000ff, 0xff000000);
+	if(dst == NULL) return NULL;
+	if(SDL_MUSTLOCK(dst)) SDL_LockSurface(dst);
+	Uint32* dp = (Uint32*)dst->pixels;
+	for(int i = 0; i < dstW * dstH; i++) dp[i] = 0;
+	if(SDL_MUSTLOCK(dst)) SDL_UnlockSurface(dst);
+
+	int bpp = src->format->BytesPerPixel;
+	double scx = src->w * 0.5, scy = src->h * 0.5;
+	double dcx = dstW * 0.5, dcy = dstH * 0.5;
+	if(SDL_MUSTLOCK(src)) SDL_LockSurface(src);
+	if(SDL_MUSTLOCK(dst)) SDL_LockSurface(dst);
+	for(int dy = 0; dy < dstH; dy++){
+		Uint8* dr = (Uint8*)dst->pixels + dy * dst->pitch;
+		for(int dx = 0; dx < dstW; dx++){
+			double fx = (dx - dcx) * ca + (dy - dcy) * sa + scx;
+			double fy = -(dx - dcx) * sa + (dy - dcy) * ca + scy;
+			int sx = (int)(fx + 0.5);
+			int sy = (int)(fy + 0.5);
+			if(sx >= 0 && sx < src->w && sy >= 0 && sy < src->h){
+				Uint8* sr = (Uint8*)src->pixels + sy * src->pitch;
+				for(int b = 0; b < bpp; b++)
+					dr[dx * bpp + b] = sr[sx * bpp + b];
+			}
+		}
+	}
+	if(SDL_MUSTLOCK(dst)) SDL_UnlockSurface(dst);
+	if(SDL_MUSTLOCK(src)) SDL_UnlockSurface(src);
+	return dst;
+}
+
+// 逐行反向拷贝像素，创建水平镜像
+SDL_Surface* mirror_surface(SDL_Surface* src){
+	SDL_Surface* dst = SDL_CreateRGBSurface(SDL_SWSURFACE,
+		src->w, src->h,
+		src->format->BitsPerPixel,
+		src->format->Rmask, src->format->Gmask,
+		src->format->Bmask, src->format->Amask);
+	if(dst == NULL) return NULL;
+	int bpp = src->format->BytesPerPixel;
+	if(SDL_MUSTLOCK(src)) SDL_LockSurface(src);
+	if(SDL_MUSTLOCK(dst)) SDL_LockSurface(dst);
+	for(int y = 0; y < src->h; y++){
+		Uint8* sr = (Uint8*)src->pixels + y * src->pitch;
+		Uint8* dr = (Uint8*)dst->pixels + y * dst->pitch;
+		for(int x = 0; x < src->w; x++)
+			for(int b = 0; b < bpp; b++)
+				dr[(src->w - 1 - x) * bpp + b] = sr[x * bpp + b];
+	}
+	if(SDL_MUSTLOCK(dst)) SDL_UnlockSurface(dst);
+	if(SDL_MUSTLOCK(src)) SDL_UnlockSurface(src);
+	return dst;
 }
 
 TTF_Font* load_font(std::string filename, int fontsize){

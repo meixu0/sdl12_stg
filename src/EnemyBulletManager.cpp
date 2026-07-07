@@ -2,10 +2,14 @@
 #include "ItemManager.h"
 #include "ItemType.h"
 #include <iostream>
-static SDL_Surface* redBulletImage = NULL;
-static SDL_Surface* greenBulletImage = NULL;
-static SDL_Surface* blueBulletImage = NULL;
-static SDL_Surface* yellowBulletImage = NULL;
+// 敌弹精灵表 + 源坐标（同 PlayerBullet 方式）
+static SDL_Surface* bulletSheet = NULL;
+static SDL_Rect bulletSrc[4] = {
+	{128, 64,  16, 16},  // 红
+	{128, 80,  16, 16},  // 绿
+	{128, 96,  16, 16},  // 蓝
+	{128, 112, 16, 16},  // 黄
+};
 static float randf() {
     return (float)rand() / (float)RAND_MAX;
 }
@@ -117,7 +121,7 @@ void EnemyBulletManager::update(float dt){
 
         bool outOfBounds = (b.x + 16.0f > 544.0f)
                         || (b.y + 16.0f > 600.0f)
-                        || (b.x - 16.0f < 0.0f);
+                        || (b.x - 8.0f < 0.0f);
 
         if (b.y + 16.0f < -64.0f) outOfBounds = true;
 
@@ -152,31 +156,16 @@ void EnemyBulletManager::convert_all_to_p_items(ItemManager* itemMgr){
 }
 
 void EnemyBulletManager::render(){
-    if(redBulletImage == NULL){
-        redBulletImage = load_sprite("res/stgenm/enemy.png", 256, 128, 32, 32, 16, 16);
-    }
-    if(greenBulletImage == NULL){
-        greenBulletImage = load_sprite("res/stgenm/enemy.png", 256, 160, 32, 32, 16, 16);
-    }
-    if(blueBulletImage == NULL){
-        blueBulletImage = load_sprite("res/stgenm/enemy.png", 256, 192, 32, 32, 16, 16);
-    }
-    if(yellowBulletImage == NULL){
-        yellowBulletImage = load_sprite("res/stgenm/enemy.png", 256, 224, 32, 32, 16, 16);
-    }
+    if(bulletSheet == NULL)
+        bulletSheet = IMG_Load("res/stgenm/enemyhalf.png");
+    if(bulletSheet == NULL) return;
+
     for (int i = 0; i < POOL_SIZE; i++) {
         if (bullets[i].state != ALIVE) continue;
         Bullet& b = bullets[i];
-        SDL_Surface* bulletSpr = NULL;
-        switch (b.enemyType) {
-            case 0: bulletSpr = redBulletImage;    break;
-            case 1: bulletSpr = greenBulletImage;  break;
-            case 2: bulletSpr = blueBulletImage;   break;
-            case 3: bulletSpr = yellowBulletImage; break;
-            default: bulletSpr = redBulletImage;   break;
-        }
-        if (bulletSpr)
-            apply_surface((int)(b.x - 2), (int)(b.y - 2), bulletSpr, screen);
+        int idx = (b.enemyType >= 0 && b.enemyType < 4) ? b.enemyType : 0;
+        SDL_Rect dst = {(Sint16)(b.x - 8), (Sint16)(b.y - 8), 0, 0};
+        SDL_BlitSurface(bulletSheet, &bulletSrc[idx], screen, &dst);
     }
 }
 

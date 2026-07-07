@@ -11,6 +11,7 @@
 #define PLAYER_REIMU 0
 #define PLAYER_MARISA 1
 #define PLAYER_SAKUYA 2
+#define PLAYER_YOUMU 3
 
 #define SC_REIMU_TSUITI 0
 #define SC_REIMU_SOKUSHA 1
@@ -18,6 +19,8 @@
 #define SC_MARISA_KANTSUU 3
 #define SC_SAKUYA_KOUHANNI 4
 #define SC_SAKUYA_TOKUSHU 5
+#define SC_YOUMU_A 6
+#define SC_YOUMU_B 7
 
 #define DIFFICULTY_EASY 0
 #define DIFFICULTY_NORM 1
