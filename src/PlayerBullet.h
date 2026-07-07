@@ -54,6 +54,7 @@ private:
 	float pivotX_, pivotY_;  // 左下角旋转中心在贴图中的偏移
 public:
 	PlayerBullet();
+	~PlayerBullet();
 	static SDL_Surface* bulletSprites[16];
 	static SDL_Surface* reimuBulletSideRaw;
 	static SDL_Surface* reimuBulletSide;

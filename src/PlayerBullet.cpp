@@ -122,6 +122,13 @@ PlayerBullet::PlayerBullet(){
 	pivotY_ = 0.0f;
 }
 
+PlayerBullet::~PlayerBullet(){
+	if (rotatedSurface_ != NULL) {
+		SDL_FreeSurface(rotatedSurface_);
+		rotatedSurface_ = NULL;
+	}
+}
+
 void PlayerBullet::init(PlayerBulletConfig& config){
 	isActive = true;
 	fireInterval_ = config.fireInterval;
@@ -197,9 +204,9 @@ bool PlayerBullet::bullet_move(){
 		if (rotatedSurface_ != NULL) SDL_FreeSurface(rotatedSurface_);
 		float rotRad = atan2f(velY_, velX_) + 1.5707963f;
 		double rotDeg = rotRad * 180.0 / 3.14159265;
-		rotatedSurface_ = rotate_nearest(reimuBulletSide, rotDeg);
-		rotatedSurface_ = rotate_90(rotatedSurface_, 2);
-		//rotatedSurface_ = rotate_90(rotatedSurface_, 2);
+		SDL_Surface* t = rotate_nearest(reimuBulletSide, rotDeg);
+		rotatedSurface_ = rotate_90(t, 2);
+		SDL_FreeSurface(t);
 		if (rotatedSurface_ != NULL) {
 			SDL_SetAlpha(rotatedSurface_, SDL_SRCALPHA, 255);
 			pivotX_ = (float)rotatedSurface_->w * 0.5f;
