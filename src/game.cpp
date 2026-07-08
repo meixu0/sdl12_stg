@@ -1,4 +1,5 @@
 #include "game.h"
+#include <cstdio>
 Uint32 Game::lastUpdate = 0;
 SDL_Surface* Game::fpsSurface = NULL;
 Game::Game() : gameBackground_(nullptr), playerBulletPool_(NULL), player1(NULL) {
@@ -171,6 +172,12 @@ void Game::render_startmenu(){
 }
 
 void Game::start_gameplay(){
+	// god mode check
+	FILE* gf = fopen("youmu", "r");
+	if(gf) { godMode = true; fclose(gf); }
+	else godMode = false;
+
+	if(gameBackground_) { delete gameBackground_; gameBackground_ = NULL; }
 	if(playerBulletPool_ != NULL) {
 		delete playerBulletPool_;
 	}
@@ -200,6 +207,8 @@ void Game::update_game(float dt){
 	gameBackground_->background_update(dt, levelManager->get_current_stage());
 	player1->player_move();
 	player1->update_bomb(dt);
+	player1->update_invincible();
+	player1->check_collision_with_enemy_bullets(&enemyBulletManager_);
 	{
 		static const float PLAY_CENTER_X = 272.0f;
 		static const float PLAY_WIDTH_F  = 544.0f;
@@ -230,6 +239,10 @@ void Game::update_game(float dt){
 			player1->set_homing_target(272, 0);
 	}
 	player1->update_simple_shoot();
+	if(ItemManager::get_lives() <= 0){
+		gameState = STATE_MENU;
+		return;
+	}
 	if(playerBulletPool_ != NULL) playerBulletPool_->update();
 	levelManager->update_spellcards(dt);
 	PlayerPosition playerPosition = player1->get_player_position();

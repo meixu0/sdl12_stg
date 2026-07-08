@@ -68,4 +68,5 @@ public:
     void freeze_all_for_bomb(ItemManager* im);
     void convert_frozen_to_player();
     void set_player_pos(float px, float py) { playerX_ = px; playerY_ = py; }
+    Bullet* get_bullet(int i) { return (i >= 0 && i < POOL_SIZE) ? &bullets[i] : NULL; }
 };

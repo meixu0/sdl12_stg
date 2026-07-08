@@ -7,6 +7,7 @@ int gameState = STATE_MENU;
 bool isFullscreen = false;
 int playerType = 0;
 int gameDifficulty = 0;
+bool godMode = false;
 const SDL_Surface* numbersImage[10] = {NULL};
 SDL_Surface* asciiSheet = NULL;
 SDL_Rect digitRects[10] = {

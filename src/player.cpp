@@ -2,6 +2,7 @@
 #include "LevelManager.h"
 #include "ItemManager.h"
 #include "PlayerBomb.h"
+#include "EnemyBulletManager.h"
 const float Player::PLAYER_HEIGHT = 48*1.5625f;
 const float Player::PLAYER_WIDTH  = 32*1.5625f;
 const int Player::PLAY_HEIGHT = 600;
@@ -99,6 +100,38 @@ void Player::player_move(){
     y += yVel;
     if((y < 0) || (y + PLAYER_WIDTH > PLAY_HEIGHT)) y -= yVel;
     animTimer += 1.0f / 60.0f;
+}
+
+void Player::check_collision_with_enemy_bullets(EnemyBulletManager* ebm){
+    if(isInvincible_ || godMode) return;
+    float px = (float)(x + PLAYER_WIDTH / 2);
+    float py = (float)(y + PLAYER_HEIGHT / 2);
+    if(ebm){
+        for(int i = 0; i < 640; i++){
+            Bullet* b = ebm->get_bullet(i);
+            if(!b || b->state != ALIVE) continue;
+            float dx = b->x - px;
+            float dy = b->y - py;
+            float r = b->hitboxRadius > 0 ? b->hitboxRadius : 8.0f;
+            if((dx*dx + dy*dy) < (r + 5.0f) * (r + 5.0f)){
+                hit();
+                return;
+            }
+        }
+    }
+    for(int ei = 0; ei < Enemy::onScreenCount; ei++){
+        Enemy* e = Enemy::onScreenList[ei];
+        if(!e || !e->is_active()) continue;
+        float ex = e->get_x() + e->get_hitbox_w() * 0.5f;
+        float ey = e->get_y() + e->get_hitbox_h() * 0.5f;
+        float er = (e->get_hitbox_w() + e->get_hitbox_h()) * 0.25f;
+        float dx = ex - px;
+        float dy = ey - py;
+        if((dx*dx + dy*dy) < (er + 5.0f) * (er + 5.0f)){
+            hit();
+            return;
+        }
+    }
 }
 
 void Player::update_bomb(float dt){
@@ -202,8 +235,38 @@ void Player::update_player_bullet_collision_detection(){
     }
 }
 
+bool Player::check_hit(float bx, float by, float br){
+    float px = (float)(x + PLAYER_WIDTH / 2);
+    float py = (float)(y + PLAYER_HEIGHT / 2);
+    float dx = bx - px;
+    float dy = by - py;
+    return (dx*dx + dy*dy) < (br + 5.0f) * (br + 5.0f);
+}
+
+void Player::hit(){
+    if(isInvincible_ || godMode) return;
+    ItemManager::use_life();
+    Player::set_power(0);
+    isInvincible_ = true;
+    invTimer_ = 180;
+    EnemyBulletManager* ebm = levelMgr_ ? levelMgr_->get_bullet_manager() : NULL;
+    if(ebm){
+        ebm->freeze_all_for_bomb(itemMgr);
+        ebm->convert_frozen_to_player();
+    }
+}
+
+void Player::update_invincible(){
+    if(invTimer_ > 0){
+        invTimer_--;
+        if(invTimer_ <= 0) isInvincible_ = false;
+    }
+}
+
 void Player::show(){
     if(playerSheet == NULL) return;
+    if(isInvincible_ && (invTimer_ / 4) % 2) return;  // 闪烁
+
     int   frameCount;
     SDL_Rect* srcRects;
     SDL_Surface* sheet;

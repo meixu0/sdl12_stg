@@ -31,3 +31,4 @@
 extern int gameState;
 extern int playerType;
 extern int gameDifficulty;
+extern bool godMode;

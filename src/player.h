@@ -11,6 +11,7 @@ class LevelManager;
 class ItemManager;
 class PlayerBomb;
 class GameBackground;
+class EnemyBulletManager;
 
 struct PlayerPosition {
     float x;
@@ -42,6 +43,8 @@ private:
 	PlayerBomb* playerBomb_;
 	LevelManager* levelMgr_;
 	GameBackground* gameBg_;
+	bool isInvincible_;
+	int invTimer_;
 public:
 	Player();
 	PlayerBulletPool* playerBulletPool_;
@@ -60,6 +63,10 @@ public:
 	void update_bomb(float dt);
 	void render_bomb_shake();
 	void render_bomb_portrait();
+	bool check_hit(float bx, float by, float br);
+	void hit();
+	void update_invincible();
+	void check_collision_with_enemy_bullets(EnemyBulletManager* ebm);
 	static int get_power() { return playerPowerData; }
 	static void set_power(int p) { playerPowerData = p; }
 };

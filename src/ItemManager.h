@@ -58,4 +58,5 @@ public:
     static int get_lives() { return lives; }
     static int get_bombs() { return bombs; }
     static void use_bomb() { if (bombs > 0) bombs--; }
+    static void use_life() { if (lives > 0) lives--; }
 };
