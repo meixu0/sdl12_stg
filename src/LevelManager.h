@@ -77,6 +77,7 @@ public:
     // Enemy pool management interfaces
     int get_enemy_count() const;
     Enemy* get_enemy(int index);
+    EnemyBulletManager* get_bullet_manager() const { return bullet_mgr_; }
     void trigger_midboss_clear(Uint32 &frameCounter, Uint32 &midbossEnterFrame_, StageState &prevStageState, StageState &currentStageState);
     void update_all_enemies(float px, float py, Uint32 &frameCounter_, Uint32 &midbossEnterFrame_, float dt_, StageState &prevStageState, StageState &currentStageState);
     void move_all_enemies(float dt_);

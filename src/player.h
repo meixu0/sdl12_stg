@@ -9,6 +9,8 @@
 
 class LevelManager;
 class ItemManager;
+class PlayerBomb;
+class GameBackground;
 
 struct PlayerPosition {
     float x;
@@ -37,6 +39,9 @@ private:
 	bool hasTarget;
 	float optionStreamAngle_;
 	ItemManager* itemMgr;
+	PlayerBomb* playerBomb_;
+	LevelManager* levelMgr_;
+	GameBackground* gameBg_;
 public:
 	Player();
 	PlayerBulletPool* playerBulletPool_;
@@ -50,6 +55,11 @@ public:
 	int get_player_x_vel() const { return xVel; }
 	PlayerPosition get_player_position();
 	void set_item_manager(ItemManager* mgr) { itemMgr = mgr; }
+	void set_level_manager(LevelManager* lm)  { levelMgr_ = lm; }
+	void set_game_bg(GameBackground* bg)  { gameBg_ = bg; }
+	void update_bomb(float dt);
+	void render_bomb_shake();
+	void render_bomb_portrait();
 	static int get_power() { return playerPowerData; }
 	static void set_power(int p) { playerPowerData = p; }
 };

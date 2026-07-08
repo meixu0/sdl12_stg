@@ -390,6 +390,9 @@ void LevelManager::init_enemy_pool_v2() {
             config.emergeTime   = accumTime;
             config.durationTime = def.lifeTime;
             config.enemyType    = behavior_to_enemy_type(bname);
+            if (config.enemyType >= BOSS_RUMIA && config.hitboxWidth == 32 && config.hitboxHeight == 32) {
+                config.hitboxWidth = 48; config.hitboxHeight = 64;
+            }
             config.isMidboss    = def.isMidboss;
             config.targetX      = (def.targetX >= 0) ? def.targetX : px;
             config.targetY      = (def.targetY >= 0) ? def.targetY : py;
@@ -587,18 +590,11 @@ void LevelManager::bgm_play(int stage, bool is_boss) {
     // Stop previous BGM
     if (bgm_music_ != NULL) {
         Mix_HaltMusic();
-        // SDL_mixer 1.2 + FluidSynth on Linux has a known bug where
-        // Mix_FreeMusic on MIDI files crashes inside delete_fluid_synth().
-        // Only free non-MIDI music; MIDI tracks are leaked (a few KB each).
         if (Mix_GetMusicType(bgm_music_) != MUS_MID) {
             Mix_FreeMusic(bgm_music_);
         }
         bgm_music_ = NULL;
     }
-
-    // th07_02, th07_04, ... = stage themes (道中)
-    // th07_03, th07_05, ... = boss themes
-    // Map: stage N → stage theme = th07_(N*2), boss theme = th07_(N*2+1)
     const char* music_file = NULL;
     switch (stage) {
         case 1: music_file = is_boss ? "res/music/th07_03.mid" : "res/music/th07_02.mid"; break;
@@ -721,11 +717,6 @@ bool LevelManager::auto_transition(Uint32 frameCounter) {
 	}
 	return false;
 }
-
-
-
-// ── Spellcard phase management ────────────────────────────────────────────
-
 void LevelManager::start_spellcard_phase(int phaseIndex) {
     if (bossEnemyIndex_ < 0 || bossEnemyIndex_ >= (int)enemy_pool.size()) return;
     Enemy* boss = enemy_pool[bossEnemyIndex_];

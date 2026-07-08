@@ -1,6 +1,7 @@
 #include "player.h"
 #include "LevelManager.h"
 #include "ItemManager.h"
+#include "PlayerBomb.h"
 const float Player::PLAYER_HEIGHT = 48*1.5625f;
 const float Player::PLAYER_WIDTH  = 32*1.5625f;
 const int Player::PLAY_HEIGHT = 600;
@@ -9,8 +10,8 @@ int Player::playerPowerData = 0;
 int Player::currentPowerLevel = 0;
 bool Player::bombInUse = false;
 
-static const int FRAME_W   = 38;   // 50 * 300/400
-static const int FRAME_H   = 56;   // 75 * 300/400
+static const int FRAME_W   = 38;
+static const int FRAME_H   = 56;
 static const int SHEET_SZ  = 300;
 
 SDL_Surface* Player::playerSheet       = NULL;
@@ -73,6 +74,13 @@ void Player::handle_input(SDL_Event &e){
             case SDLK_LEFT:  xVel -= PLAYER_WIDTH / 4;  break;
             case SDLK_RIGHT: xVel += PLAYER_WIDTH / 4;  break;
             case SDLK_z:     isShooting = true;          break;
+            case SDLK_x:
+                if(!playerBomb_ && ItemManager::get_bombs() > 0){
+                    ItemManager::use_bomb();
+                    playerBomb_ = new PlayerBomb();
+                    playerBomb_->trigger(playerType, playerType, (float)x, (float)y, levelMgr_, itemMgr);
+                }
+                break;
         }
     }else if(e.type == SDL_KEYUP){
         switch(e.key.keysym.sym){
@@ -91,6 +99,25 @@ void Player::player_move(){
     y += yVel;
     if((y < 0) || (y + PLAYER_WIDTH > PLAY_HEIGHT)) y -= yVel;
     animTimer += 1.0f / 60.0f;
+}
+
+void Player::update_bomb(float dt){
+	if(playerBomb_){
+		playerBomb_->update(dt);
+		if(playerBomb_->isExpired()){
+			playerBomb_->on_expire();
+			delete playerBomb_;
+			playerBomb_ = NULL;
+		}
+	}
+}
+
+void Player::render_bomb_shake(){
+	if(playerBomb_) playerBomb_->render_shake();
+}
+
+void Player::render_bomb_portrait(){
+	if(playerBomb_) playerBomb_->render_portrait();
 }
 
 void Player::update_simple_shoot(){

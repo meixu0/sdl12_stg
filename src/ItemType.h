@@ -5,3 +5,4 @@
 #define ITEM_FULL_POWER 4
 #define ITEM_LIFE 5
 #define ITEM_POINT_BULLET 6
+#define ITEM_SCORE_SMALL 7

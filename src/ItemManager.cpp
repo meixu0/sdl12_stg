@@ -1,10 +1,8 @@
 #include "ItemManager.h"
 #include "player.h"
 #include <cmath>
-
-// 道具精灵表 + 源坐标（同 PlayerBullet 方式）
 static SDL_Surface* itemSheet = NULL;
-static SDL_Rect itemSrc[7] = {
+static SDL_Rect itemSrc[8] = {
 	{ 0,  64, 16, 16},  // Power Small
 	{16,  64, 16, 16},  // Point
 	{32,  64, 16, 16},  // Power Big
@@ -12,6 +10,7 @@ static SDL_Rect itemSrc[7] = {
 	{64,  64, 16, 16},  // Full Power
 	{80,  64, 16, 16},  // Life
 	{96,  64, 16, 16},  // Point Bullet
+	{96,  64, 16, 16},  // Score Small（符卡回收弹点）
 };
 Mix_Chunk* ItemManager::powerup00 = NULL;
 
@@ -37,13 +36,16 @@ const int ItemManager::POWER_ITEM_SCORE[31] = {
     2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000,
     10000, 11000, 12000, 51200
 };
-
+Mix_Chunk* ItemManager::item00 = NULL;
 ItemManager::ItemManager() : nextItemIndex(0), playerPtr(NULL) {
     if (itemSheet == NULL)
         itemSheet = IMG_Load("res/etama/etama2.png");
     if (powerup00 == NULL)
         powerup00 = Mix_LoadWAV("res/sound/se_powerup00.wav");
-
+    if(item00 == NULL){
+        item00 = Mix_LoadWAV("res/sound/se_item00.wav");
+        Mix_VolumeChunk(item00, 10);
+    }
     for (int i = 0; i < MAX_ITEMS; i++)
         items[i].isActive = false;
 }
@@ -63,6 +65,7 @@ static int item_src_index(int itemType) {
         case ITEM_FULL_POWER:   return 4;
         case ITEM_LIFE:         return 5;
         case ITEM_POINT_BULLET: return 6;
+        case ITEM_SCORE_SMALL:  return 7;
         default:                return 1;
     }
 }
@@ -156,6 +159,7 @@ void ItemManager::update(float dt) {
         float dy = py - it->y;
         if (fabsf(dx) < COLLECT_RADIUS && fabsf(dy) < COLLECT_RADIUS) {
             it->isActive = false;
+            if(item00) Mix_PlayChannel(-1, item00, 0);
 
             switch (it->type) {
                 case ITEM_POWER_SMALL: {
@@ -248,8 +252,18 @@ void ItemManager::update(float dt) {
                 }
 
                 case ITEM_POINT_BULLET: {
-                    // Simplified: flat 500 score (th06 adds graze bonus)
                     score += 500;
+                    break;
+                }
+                case ITEM_SCORE_SMALL: {
+                    if (currentPower >= MAX_POWER) {
+                        int idx = powerItemCountForScore;
+                        if (idx < 31) score += POWER_ITEM_SCORE[idx];
+                        powerItemCountForScore++;
+                        if (powerItemCountForScore > 30) powerItemCountForScore = 30;
+                    } else {
+                        score += 10;
+                    }
                     break;
                 }
             }

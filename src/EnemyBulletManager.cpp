@@ -2,8 +2,9 @@
 #include "ItemManager.h"
 #include "ItemType.h"
 #include <iostream>
-// 敌弹精灵表 + 源坐标（同 PlayerBullet 方式）
 static SDL_Surface* bulletSheet = NULL;
+static SDL_Rect whiteEnemyBullet = {0, 57, 16, 16};
+static SDL_Surface* etamaHalfSheet = NULL;
 static SDL_Rect bulletSrc[4] = {
 	{128, 64,  16, 16},  // 红
 	{128, 80,  16, 16},  // 绿
@@ -13,13 +14,17 @@ static SDL_Rect bulletSrc[4] = {
 static float randf() {
     return (float)rand() / (float)RAND_MAX;
 }
-
 EnemyBulletManager::EnemyBulletManager(){
     nextBulletIndex = 0;
+    bombActive_ = false;
+    playerX_ = 272.0f; playerY_ = 0.0f;
+    itemMgr_ = NULL;
     for(int i=0; i<POOL_SIZE; i++){
         bullets[i].fromBoss = false;
         bullets[i].state = SLEEPING;
     }
+    if(etamaHalfSheet == NULL)
+        etamaHalfSheet = IMG_Load("res/etama/etamahalf.png");
 }
 
 EnemyBulletManager::~EnemyBulletManager(){
@@ -27,7 +32,6 @@ EnemyBulletManager::~EnemyBulletManager(){
 
 void EnemyBulletManager::spawn_bullet(float originX, float originY, float angle, float speed,
     int spriteID, float hitboxRadius, float lifeTime, int spawnEffect, int soundEffect, int reboundEffect, int enemyType, int enemyID, bool fromBoss) {
-    // 从 nextBulletIndex 开始找空闲槽位
     for (int i = 0; i < POOL_SIZE; i++) {
         int idx = (nextBulletIndex + i) % POOL_SIZE;
         if (bullets[idx].state == SLEEPING) {
@@ -36,7 +40,8 @@ void EnemyBulletManager::spawn_bullet(float originX, float originY, float angle,
             b.y = originY;
             b.speedX = cosf(angle) * speed;
             b.speedY = sinf(angle) * speed;
-            b.state = ALIVE;
+            b.state = bombActive_ ? FROZEN : ALIVE;
+            if (bombActive_) { b.speedX = 0.0f; b.speedY = 0.0f; }
             b.lifeTime = lifeTime;
             b.hitboxRadius = hitboxRadius;
             b.color = spriteID;
@@ -99,12 +104,25 @@ void EnemyBulletManager::spawn_pattern(const EnemyBulletPatternDesc& desc, float
         }
     }
 }
-
 void EnemyBulletManager::update(float dt){
     for (int i = 0; i < POOL_SIZE; i++) {
-        if (bullets[i].state != ALIVE) continue;
+        if (bullets[i].state == SLEEPING) continue;
         Bullet& b = bullets[i];
-
+        if (b.state == FROZEN) continue;
+        if (b.state == TO_PLAYER) {
+            float dx = playerX_ - b.x;
+            float dy = playerY_ - b.y;
+            float dist = sqrtf(dx*dx + dy*dy);
+            if (dist < 16.0f) {
+                if(itemMgr_) itemMgr_->spawn_item(b.x, b.y, ITEM_SCORE_SMALL);
+                b.state = SLEEPING;
+                continue;
+            }
+            float speed = 480.0f;
+            b.x += (dx/dist) * speed * dt;
+            b.y += (dy/dist) * speed * dt;
+            continue;
+        }
         if (b.acceleration != 0.0f || b.angularVelocity != 0.0f) {
             float curSpeed = sqrtf(b.speedX * b.speedX + b.speedY * b.speedY);
             float curAngle = atan2f(b.speedY, b.speedX);
@@ -118,20 +136,14 @@ void EnemyBulletManager::update(float dt){
         b.x += b.speedX * dt;
         b.y += b.speedY * dt;
         b.lifeTime -= dt;
-
-        bool outOfBounds = (b.x + 16.0f > 544.0f)
-                        || (b.y + 16.0f > 600.0f)
-                        || (b.x - 8.0f < 0.0f);
-
+        bool outOfBounds = (b.x > 544.0f + 16.0f) || (b.y > 600.0f + 16.0f) || (b.x < -16.0f);
         if (b.y + 16.0f < -64.0f) outOfBounds = true;
-
         // lifeTime 留给符卡回收 (despawn_all_for_spellcard)
         if (outOfBounds) {
             b.state = SLEEPING;
         }
     }
 }
-
 void EnemyBulletManager::despawn_all_for_spellcard(){
     for (int i = 0; i < POOL_SIZE; i++) {
         if (bullets[i].state == ALIVE) {
@@ -139,12 +151,11 @@ void EnemyBulletManager::despawn_all_for_spellcard(){
         }
     }
 }
-
-void EnemyBulletManager::convert_all_to_p_items(ItemManager* itemMgr){
+void EnemyBulletManager::convert_all_to_p_items(ItemManager* itemMgr, bool isUsingBomb){
     if (!itemMgr) return;
     int converted = 0;
     for (int i = 0; i < POOL_SIZE; i++) {
-        if (bullets[i].state != ALIVE || (!bullets[i].fromBoss)) continue;
+        if (bullets[i].state != ALIVE || (!bullets[i].fromBoss && !isUsingBomb)) continue;
         if (bullets[i].state == ALIVE) {
             itemMgr->spawn_item(bullets[i].x, bullets[i].y, ITEM_POWER_SMALL);
             bullets[i].state = SLEEPING;
@@ -154,18 +165,67 @@ void EnemyBulletManager::convert_all_to_p_items(ItemManager* itemMgr){
     if (converted > 0)
         std::cout << "Converted " << converted << " bullets to P items" << std::endl;
 }
-
+void EnemyBulletManager::convert_all_to_score_items(ItemManager* itemMgr, bool isUsingBomb){
+    if (!itemMgr) return;
+    int converted = 0;
+    for (int i = 0; i < POOL_SIZE; i++) {
+        if (bullets[i].state != ALIVE || (!bullets[i].fromBoss && !isUsingBomb)) continue;
+        if (bullets[i].state == ALIVE) {
+            itemMgr->spawn_item(bullets[i].x, bullets[i].y, ITEM_SCORE_SMALL);
+            bullets[i].state = SLEEPING;
+            converted++;
+        }
+    }
+    if (converted > 0)
+        std::cout << "Converted " << converted << " bullets to score items" << std::endl;
+}
 void EnemyBulletManager::render(){
     if(bulletSheet == NULL)
         bulletSheet = IMG_Load("res/stgenm/enemyhalf.png");
     if(bulletSheet == NULL) return;
+    static SDL_Surface* etama2Sheet = NULL;
+    static SDL_Rect whiteRect  = {0,  57, 16, 16};
+    static SDL_Rect pointRect  = {96, 64, 16, 16};
+    if(etama2Sheet == NULL)
+        etama2Sheet = IMG_Load("res/etama/etama2.png");
 
     for (int i = 0; i < POOL_SIZE; i++) {
-        if (bullets[i].state != ALIVE) continue;
+        int st = bullets[i].state;
+        if (st != ALIVE && st != FROZEN && st != TO_PLAYER) continue;
         Bullet& b = bullets[i];
-        int idx = (b.enemyType >= 0 && b.enemyType < 4) ? b.enemyType : 0;
-        SDL_Rect dst = {(Sint16)(b.x - 8), (Sint16)(b.y - 8), 0, 0};
-        SDL_BlitSurface(bulletSheet, &bulletSrc[idx], screen, &dst);
+
+        if (st == FROZEN && etamaHalfSheet) {
+            SDL_Rect dst = {(Sint16)(b.x - 8), (Sint16)(b.y - 8), 0, 0};
+            SDL_BlitSurface(etamaHalfSheet, &whiteRect, screen, &dst);
+        } else if (st == TO_PLAYER && etama2Sheet) {
+            SDL_Rect dst = {(Sint16)(b.x - 8), (Sint16)(b.y - 8), 0, 0};
+            SDL_BlitSurface(etama2Sheet, &pointRect, screen, &dst);
+        } else {
+            int idx = (b.enemyType >= 0 && b.enemyType < 4) ? b.enemyType : 0;
+            SDL_Rect dst = {(Sint16)(b.x - 8), (Sint16)(b.y - 8), 0, 0};
+            SDL_BlitSurface(bulletSheet, &bulletSrc[idx], screen, &dst);
+        }
+    }
+}
+
+void EnemyBulletManager::freeze_all_for_bomb(ItemManager* im){
+    itemMgr_ = im;
+    bombActive_ = true;
+    for (int i = 0; i < POOL_SIZE; i++) {
+        if (bullets[i].state == ALIVE) {
+            bullets[i].state = FROZEN;
+            bullets[i].speedX = 0.0f;
+            bullets[i].speedY = 0.0f;
+        }
+    }
+}
+
+void EnemyBulletManager::convert_frozen_to_player(){
+    bombActive_ = false;
+    for (int i = 0; i < POOL_SIZE; i++) {
+        if (bullets[i].state == FROZEN) {
+            bullets[i].state = TO_PLAYER;
+        }
     }
 }
 

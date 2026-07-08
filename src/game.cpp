@@ -1,6 +1,5 @@
 #include "game.h"
 Uint32 Game::lastUpdate = 0;
-//TTF_Font* Game::fpsFont = NULL;
 SDL_Surface* Game::fpsSurface = NULL;
 Game::Game() : gameBackground_(nullptr), playerBulletPool_(NULL), player1(NULL) {
 	frameCounter = 0;
@@ -192,12 +191,15 @@ void Game::start_gameplay(){
 	levelManager->set_item_manager(itemManager);
 	itemManager->set_player(player1);
 	player1->set_item_manager(itemManager);
+	player1->set_level_manager(levelManager);
+	player1->set_game_bg(gameBackground_);
 	prevStageState = STAGE_RUNNING;
 }
 
 void Game::update_game(float dt){
 	gameBackground_->background_update(dt, levelManager->get_current_stage());
 	player1->player_move();
+	player1->update_bomb(dt);
 	{
 		static const float PLAY_CENTER_X = 272.0f;
 		static const float PLAY_WIDTH_F  = 544.0f;
@@ -235,6 +237,7 @@ void Game::update_game(float dt){
 	levelManager->update_all_enemies(playerPosition.x, playerPosition.y, frameCounter, midbossEnterFrame, dt, prevStageState, currentStageState);
 	levelManager->move_all_enemies(dt);
 	levelManager->attack_all_enemies(dt);
+	{ PlayerPosition pp = player1->get_player_position(); enemyBulletManager_.set_player_pos(pp.x, pp.y); }
 	enemyBulletManager_.update(dt);
 	itemManager->update(dt);
 	// 自动检测并处理关卡过渡
@@ -269,5 +272,7 @@ void Game::render_game(){
 	infoArea.update_spell(ItemManager::get_bombs());
 	infoArea.render();
 	itemManager->render();
+	player1->render_bomb_portrait();
+	player1->render_bomb_shake();
 	if(SDL_Flip(screen) == -1)	throw std::runtime_error("flip error in game loop");
 }

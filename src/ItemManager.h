@@ -6,6 +6,7 @@ class Player;
 class ItemManager{
 private:
     static Mix_Chunk* powerup00;
+    static Mix_Chunk* item00;
 
     struct Item{
         float x;
@@ -56,4 +57,5 @@ public:
     static void add_score(int val) { score += val; }
     static int get_lives() { return lives; }
     static int get_bombs() { return bombs; }
+    static void use_bomb() { if (bombs > 0) bombs--; }
 };

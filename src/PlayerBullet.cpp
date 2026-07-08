@@ -77,11 +77,6 @@ static SDL_Surface* clip_rect(SDL_Surface* sheet, int x, int y, int w, int h){
 	}
 	return dst;
 }
-
-
-
-
-
 PlayerBullet::PlayerBullet(){
 	isHit = false;
 	isActive = false;
@@ -231,6 +226,7 @@ void PlayerBullet::on_hit(){
 	velX_ /= 8.0f;
 	velY_ /= 8.0f;
 	isHit = true;
+	isActive = false;
 	if (rotatedSurface_ != NULL) { SDL_FreeSurface(rotatedSurface_); rotatedSurface_ = NULL; }
 }
 
