@@ -80,6 +80,8 @@ void Player::handle_input(SDL_Event &e){
                     ItemManager::use_bomb();
                     playerBomb_ = new PlayerBomb();
                     playerBomb_->trigger(playerType, playerType, (float)x, (float)y, levelMgr_, itemMgr);
+                    isInvincible_ = true;
+                    invTimer_ = playerBomb_->invincibility();
                 }
                 break;
         }
@@ -194,7 +196,7 @@ void Player::update_simple_shoot(){
             }
             cfg.angle = optionStreamAngle_;
         }
-        playerBulletPool_->create(cfg);
+        playerBulletPool_->create_bullet(cfg);
         bulletFireTimers[i] = cfg.fireInterval;
     }
 }

@@ -34,7 +34,7 @@ endif
 SRC_DIR = src
 TARGET = stg$(EXT)
 
-SOURCES = main.cpp game.cpp MainMenu.cpp PlayerBullet.cpp player.cpp timer.cpp UI.cpp GameBackground.cpp cJSON.cpp cJSON_Utils.cpp LevelManager.cpp Enemy.cpp EnemyBulletManager.cpp ItemManager.cpp InfoArea.cpp StartMenu.cpp DifficultyMenu.cpp EnemyScManager.cpp PlayerBomb.cpp
+SOURCES = main.cpp game.cpp MainMenu.cpp PlayerBullet.cpp player.cpp timer.cpp UI.cpp GameBackground.cpp cJSON.cpp cJSON_Utils.cpp LevelManager.cpp Enemy.cpp EnemyBulletManager.cpp ItemManager.cpp InfoArea.cpp StartMenu.cpp OptionMenu.cpp Settlement.cpp ResultDisplay.cpp MusicRoom.cpp DifficultyMenu.cpp EnemyScManager.cpp PlayerBomb.cpp MusicRoom.cpp
 SOURCES := $(addprefix $(SRC_DIR)/, $(SOURCES))
 
 OBJECTS = $(SOURCES:.cpp=.o)

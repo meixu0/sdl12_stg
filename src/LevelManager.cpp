@@ -729,25 +729,12 @@ void LevelManager::start_spellcard_phase(int phaseIndex) {
     }
 
     scManager_.start(phaseIndex);
-
-    // TH06: reset boss HP to spellcard threshold — gives the spellcard
-    // its own HP pool instead of sharing the boss's remaining HP
     boss->set_spellcard_hp(sc->hp);
-
-    // ECL Sub29: convert bullets to P-items, then clear for clean spellcard start
     convert_boss_bullets_to_p_items();
     EnemyScManager::clear_bullets(bullet_mgr_);
-
-    // ECL Sub29: move boss to spellcard position (192, 140) over 120 frames with deceleration
     boss->start_position_interp(120.0f / 60.0f, 4, 192.0f, 140.0f);
-
-    // Keep boss in place during spellcard (position_interp handles this)
     boss->set_speedY(0.0f);
-
-    // Stop phase sequencer — spellcard takes over
     boss->stop_phases();
-
-    // Swap boss emitters to spellcard patterns
     boss->emitterConfig = sc->patterns;
     boss->emitterRuntime.resize(boss->emitterConfig.size());
     for (size_t i = 0; i < boss->emitterRuntime.size(); i++) {
@@ -980,7 +967,6 @@ void LevelManager::init_enemy_pool() {
         std::cerr << "Error: stage_enemies_data is NULL. Call read_stage_data first." << std::endl;
         return;
     }
-
     // 事实上只有v2的json，已经把v1的解析去了，所以这里只调用v2的解析函数
     cJSON* meta = cJSON_GetObjectItem(stage_enemies_data, "meta");
     if (meta && cJSON_IsObject(meta)) {
@@ -1010,28 +996,6 @@ void LevelManager::trigger_midboss_clear(Uint32 &frameCounter, Uint32 &midbossEn
 }
 
 void LevelManager::update_all_enemies(float px, float py, Uint32 &frameCounter_, Uint32 &midbossEnterFrame_, float dt_, StageState &prevStageState, StageState &currentStageState) {
-	    /*static int debug_dumped = 0;
-	    if (!debug_dumped && stage_state == STAGE_RUNNING) {
-	        // Check if any enemy is active (game has started)
-	        bool any_active = false;
-	        for (size_t k = 0; k < enemy_pool.size(); ++k) {
-	            if (enemy_pool[k] && enemy_pool[k]->is_active()) { any_active = true; break; }
-	        }
-	        if (any_active) {
-	            std::cout << "=== [DEBUG] first active frame, pool size=" << enemy_pool.size() << " ===" << std::endl;
-	            for (size_t k = 0; k < enemy_pool.size(); ++k) {
-	                Enemy* e = enemy_pool[k];
-	                if (e) {
-	                    std::cout << "  [" << k << "] ptr=" << e
-	                              << " type=" << e->get_enemy_type()
-	                              << " isMid=" << e->get_is_midboss()
-	                              << " active=" << e->is_active()
-	                              << " hp=" << e->get_hp() << std::endl;
-	                }
-	            }
-	            debug_dumped = 1;
-	        }
-	    }*/
     for (size_t i = 0; i < enemy_pool.size(); ++i) {
         if(enemy_pool[i] == NULL)   continue;
 

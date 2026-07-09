@@ -4,6 +4,11 @@
 #define STATE_BOSS 3
 #define STATE_START_MENU 4
 #define STATE_DIFFICULTY_MENU 5
+#define STATE_OPTION_MENU 6
+#define STATE_RESULT 7
+#define STATE_SETTLEMENT 8
+#define STATE_RESULT 9
+#define STATE_MUSICROOM 10
 
 #define SPRITE_COLS 16
 #define SPRITE_ROWS 16
@@ -32,3 +37,6 @@ extern int gameState;
 extern int playerType;
 extern int gameDifficulty;
 extern bool godMode;
+extern int playerLives;
+extern int playerBombs;
+extern Uint32 highScore;

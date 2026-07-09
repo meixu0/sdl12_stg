@@ -61,6 +61,7 @@ public:
 	void init(PlayerBulletConfig& config);
 	bool bullet_move();
 	bool inUse() const;
+	bool is_hit() {return isHit;}
 	float get_x() const { return x_; }
 	float get_y() const { return y_; }
 	float get_hw() const { return wHitbox_ / 2.0f; }
@@ -70,15 +71,16 @@ public:
 	PlayerBullet* gen_next() const;
 	void set_next(PlayerBullet* next);
 	void render();
+	int  get_frames_left() const { return framesLeft; }
 };
 class PlayerBulletPool{
 private:
 	PlayerBullet* firstAvailable;
-	static const int POOL_SIZE = 1000;
+	static const int POOL_SIZE = 512;
 	PlayerBullet bullet[POOL_SIZE];
 public:
 	PlayerBulletPool();
-	PlayerBullet* create(PlayerBulletConfig& config_);
+	void create_bullet(PlayerBulletConfig& config);
 	void update();
 	void render();
 	PlayerBullet* bullets() { return bullet; }

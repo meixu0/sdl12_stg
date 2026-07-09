@@ -59,4 +59,7 @@ public:
     static int get_bombs() { return bombs; }
     static void use_bomb() { if (bombs > 0) bombs--; }
     static void use_life() { if (lives > 0) lives--; }
+    static void set_lives(int l) { lives = l; }
+    static void set_bombs(int b) { bombs = b; }
+    static void reset_score() { score = 0; }
 };

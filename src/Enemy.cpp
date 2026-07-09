@@ -61,6 +61,7 @@ void Enemy::init(EnemyConfig config, float x_, float y_){
     if(isMidboss)   durationTime = 99.0;//将道中boss默认设为99的生存时间
     hitboxHeight = config.hitboxHeight;
     hitboxWidth = config.hitboxWidth;
+    if(config.enemyType >= BOSS_RUMIA){hitboxHeight = 64; hitboxWidth = 48;}
     speedX = config.speedX;
     speedY = config.speedY;
     emergeSpeedY = 5.0;

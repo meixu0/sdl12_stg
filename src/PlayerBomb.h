@@ -56,6 +56,7 @@ public:
     void on_expire();
     bool isActive()  const { return active_; }
     bool isInvincible() const { return invTimer_ > 0; }
+    int  invincibility() const { return invincibility_; }
     int  shakeX()    const { return shakeX_; }
     int  shakeY()    const { return shakeY_; }
 };

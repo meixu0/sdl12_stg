@@ -55,7 +55,15 @@ void MainMenu::switch_to_next_option(){
 }
 void MainMenu::jump_to_submenu(){
 	if(currentSelectedIndex == 0)	{Mix_PlayChannel(-1, ok00, 0);gameState = STATE_DIFFICULTY_MENU;}
+	if(currentSelectedIndex == 1)	{Mix_PlayChannel(-1, ok00, 0);gameState = STATE_RESULT;}
+	if(currentSelectedIndex == 2)	{Mix_PlayChannel(-1, ok00, 0);gameState = STATE_MUSICROOM;}
+	if(currentSelectedIndex == 3)	{Mix_PlayChannel(-1, ok00, 0);gameState = STATE_OPTION_MENU;}
 	if(currentSelectedIndex == 4)	{Mix_PlayChannel(-1, ok00, 0);gameState = STATE_EXIT;}
+}
+
+void MainMenu::jump_to_option_menu(){
+	Mix_PlayChannel(-1, ok00, 0);
+	gameState = STATE_OPTION_MENU;
 }
 SDL_Rect MainMenu::get_menu_src_rect(int id, bool isSelected){
 	if(isSelected)	id -= MENU_START_;

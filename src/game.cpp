@@ -94,6 +94,14 @@ void Game::run(){
 				difficultyMenu.handle_events(event);
 			else if(gameState == STATE_START_MENU)
 				startMenu.handle_events(event);
+			else if(gameState == STATE_OPTION_MENU)
+				optionMenu.handle_events(event);
+			else if(gameState == STATE_SETTLEMENT)
+				settlement.handle_events(event);
+			else if(gameState == STATE_RESULT)
+				resultDisplay.handle_events(event);
+			else if(gameState == STATE_MUSICROOM)
+				musicRoom.handle_events(event);
 			else if(gameState == STATE_GAME || gameState == STATE_BOSS)
 				player1->handle_input(event);
 			if(event.type == SDL_QUIT) gameState = STATE_EXIT;
@@ -113,6 +121,25 @@ void Game::run(){
 			case STATE_START_MENU:
 				update_startmenu();
 				render_startmenu();
+				break;
+			case STATE_OPTION_MENU:
+				update_optionmenu();
+				render_optionmenu();
+				break;
+			case STATE_SETTLEMENT:
+				settlement.render();
+				if(SDL_Flip(screen) == -1) throw std::runtime_error("flip error in settlement");
+				if(settlement.is_confirmed()){
+					gameState = STATE_MENU;
+				}
+				break;
+			case STATE_RESULT:
+				update_result();
+				render_result();
+				break;
+			case STATE_MUSICROOM:
+				update_musicroom();
+				render_musicroom();
 				break;
 			case STATE_GAME:
 			case STATE_BOSS:
@@ -171,7 +198,32 @@ void Game::render_startmenu(){
 	if(SDL_Flip(screen) == -1)	throw std::runtime_error("flip error in main loop");
 }
 
+void Game::update_optionmenu(){
+}
+void Game::render_optionmenu(){
+	SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0, 0, 0));
+	optionMenu.render();
+	if(SDL_Flip(screen) == -1)	throw std::runtime_error("flip error in main loop");
+}
+
+void Game::update_result(){
+}
+void Game::render_result(){
+	resultDisplay.render();
+	if(SDL_Flip(screen) == -1)	throw std::runtime_error("flip error in result");
+}
+
+void Game::update_musicroom(){
+}
+void Game::render_musicroom(){
+	musicRoom.render();
+	if(SDL_Flip(screen) == -1)	throw std::runtime_error("flip error in music");
+}
+
 void Game::start_gameplay(){
+	ItemManager::set_lives(playerLives < 1 ? 3 : playerLives);
+	ItemManager::set_bombs(playerBombs < 1 ? 3 : playerBombs);
+	ItemManager::reset_score();
 	// god mode check
 	FILE* gf = fopen("youmu", "r");
 	if(gf) { godMode = true; fclose(gf); }
@@ -240,7 +292,8 @@ void Game::update_game(float dt){
 	}
 	player1->update_simple_shoot();
 	if(ItemManager::get_lives() <= 0){
-		gameState = STATE_MENU;
+		gameState = STATE_SETTLEMENT;
+		settlement.reset();
 		return;
 	}
 	if(playerBulletPool_ != NULL) playerBulletPool_->update();
@@ -263,7 +316,8 @@ void Game::update_game(float dt){
 		} else if (st == STAGE_RUNNING) {
 			gameState = STATE_GAME;
 		} else if (st == STAGE_ALL_CLEAR) {
-			gameState = STATE_GAME;
+			gameState = STATE_SETTLEMENT;
+			settlement.reset();
 		}
 	}
 	prevStageState = levelManager->get_stage_state();

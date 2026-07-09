@@ -104,7 +104,7 @@ void InfoArea::render() {
     const int ry[8] = {16, 36, 56, 76, 96, 116, 136, 156};
 
     draw_blit(2, LBL_X, ry[0]);  // High Score
-    draw_num(VAL_X, ry[0], currentScore, 10);
+    draw_num(VAL_X, ry[0], highScore, 10);
 
     draw_blit(3, LBL_X, ry[1]);  // Score
     draw_num(VAL_X, ry[1], currentScore, 10);

@@ -15,7 +15,7 @@ static SDL_Rect itemSrc[8] = {
 Mix_Chunk* ItemManager::powerup00 = NULL;
 
 int ItemManager::score = 0;
-int ItemManager::lives = 2;
+int ItemManager::lives = 3;
 int ItemManager::bombs = 3;
 int ItemManager::powerItemCountForScore = 0;
 
@@ -87,7 +87,7 @@ void ItemManager::spawn_item(float x, float y, int itemType, int state) {
             it->startY = y;
 
             if (state == 2) {
-                // Random target position (th06: x:[48,336], y:[-64,128])
+                // Random target position
                 it->targetX = x + (rand() % 289) - 144;  // x ±144
                 it->targetY = y + (rand() % 193) - 128;  // y -128..+64
                 if (it->targetX < 48)  it->targetX = 48;
@@ -215,7 +215,6 @@ void ItemManager::update(float dt) {
                         }
                         if (Player::get_power() >= MAX_POWER) {
                             Player::set_power(MAX_POWER);
-                            // TODO: TurnAllBulletsIntoPoints()
                         }
                     }
                     break;

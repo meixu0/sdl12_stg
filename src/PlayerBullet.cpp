@@ -191,10 +191,8 @@ bool PlayerBullet::bullet_move(){
 			}
 		}
 	}
-
 	x_ += velX_;
 	y_ += velY_;
-
 	if (bulletType_ == 1 && reimuBulletSide != NULL) {
 		if (rotatedSurface_ != NULL) SDL_FreeSurface(rotatedSurface_);
 		float rotRad = atan2f(velY_, velX_) + 1.5707963f;
@@ -212,8 +210,7 @@ bool PlayerBullet::bullet_move(){
 	int sprTop  = (int)y_ - (int)pivotY_;
 	int sprRight = sprLeft + (rotatedSurface_ ? rotatedSurface_->w : 16);
 	int sprBottom = sprTop  + (rotatedSurface_ ? rotatedSurface_->h : 64);
-	if(x_ < -16 || x_ > 528 || y_ < -16 || y_ > 616 || framesLeft <= 0 || isHit ||
-	   sprRight < -32 || sprRight > 576 || sprBottom < -32 || sprBottom > 632){
+	if(x_ < -16 || x_ > 528 || y_ < -16 || y_ > 616 || framesLeft <= 0 || isHit || sprRight < -32 || sprRight > 576 || sprBottom < -32 || sprBottom > 632){
 		if (rotatedSurface_ != NULL)	SDL_FreeSurface(rotatedSurface_); rotatedSurface_ = NULL;
 		isActive = false;
 		return true;
@@ -246,7 +243,6 @@ void PlayerBullet::render(){
 	if(!inUse())	return;
 
 	if (bulletType_ == 0) {
-		// 主子弹：load_image + clip_rect + SDL_DisplayFormat + rotozoomSurface
 		static SDL_Surface* mainBullet = NULL;
 		if (mainBullet == NULL) {
 			SDL_Surface* sheet = IMG_Load("res/player00/player00.png");
@@ -282,13 +278,14 @@ PlayerBulletPool::PlayerBulletPool(){
 	}
 	bullet[POOL_SIZE - 1].set_next(nullptr);
 }
-
-PlayerBullet *PlayerBulletPool::create(PlayerBulletConfig& config_){
-	assert(firstAvailable != nullptr);
-	PlayerBullet* newBullet = firstAvailable;
-	firstAvailable = newBullet->gen_next();
-	newBullet->init(config_);
-	return newBullet;
+void PlayerBulletPool::create_bullet(PlayerBulletConfig& config){
+	for(int i = 0; i < POOL_SIZE; i++){
+		PlayerBullet* b = &bullet[i];
+		if(!b->inUse() || b->is_hit()){
+			b->init(config);
+			return;
+		}
+	}
 }
 
 void PlayerBulletPool::update(){

@@ -6,6 +6,10 @@
 #include "main_menu.h"
 #include "StartMenu.h"
 #include "DifficultyMenu.h"
+#include "OptionMenu.h"
+#include "Settlement.h"
+#include "ResultDisplay.h"
+#include "MusicRoom.h"
 #include "player.h"
 #include "GameBackground.h"
 #include "EnemyBulletManager.h"
@@ -33,6 +37,10 @@ private:
 	MainMenu mainMenu;
 	DifficultyMenu difficultyMenu;
 	StartMenu startMenu;
+	OptionMenu optionMenu;
+	Settlement settlement;
+	ResultDisplay resultDisplay;
+	MusicRoom musicRoom;
 	LevelManager* levelManager;
 	ItemManager* itemManager;
 	InfoArea infoArea;
@@ -64,6 +72,12 @@ public:
 	void render_difficulty_menu();
 	void update_startmenu();
 	void render_startmenu();
+	void update_optionmenu();
+	void render_optionmenu();
+	void update_result();
+	void render_result();
+	void update_musicroom();
+	void render_musicroom();
 	void start_gameplay();
 	void update_game(float dt);
 	void render_game();

@@ -31,6 +31,7 @@ private:
 	void switch_to_previous_option();
 	void switch_to_next_option();
 	void jump_to_submenu();
+		void jump_to_option_menu();
 	SDL_Rect get_menu_src_rect(int id, bool isSelected);
 public:
 	MainMenu();
