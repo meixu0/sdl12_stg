@@ -52,6 +52,7 @@ void Enemy::init(EnemyConfig config, float x_, float y_){
     startX = x_;
     startY = y_;
     hp = config.hp;
+    totalHp = config.hp;
     movePattern = config.movePattern;
     emergeTime = config.emergeTime;
     durationTime = config.durationTime;

@@ -2,6 +2,7 @@
 #include "GameSettings.h"
 #include "ItemManager.h"
 #include "ItemType.h"
+#include "UI.h"
 #include <cstring>
 #include <map>
 
@@ -472,7 +473,7 @@ void LevelManager::init_enemy_pool_v2() {
         // spellcard phases are driven by EnemyScManager at runtime.
     }
 
-    // ── Link spellcards to boss enemy ─────────────────────────────────────
+    //Link spellcards to boss enemy
     bossEnemyIndex_ = -1;
     spellcardTriggerHp_ = 0;
     for (size_t i = 0; i < enemy_pool.size(); i++) {
@@ -499,7 +500,7 @@ void LevelManager::init_enemy_pool_v2() {
                             e->set_move_bounds(mminX, mminY, mmaxX, mmaxY);
                         }
 
-                        // ── Parse ECL phase sequence from behavior ──
+                        //Parse ECL phase sequence from behavior
                         cJSON* phases_j = cJSON_GetObjectItem(child, "phases");
                         if (phases_j && cJSON_IsArray(phases_j)) {
                             std::vector<BossPhaseDef> phases;
@@ -840,6 +841,33 @@ void LevelManager::skip_stage_time(float seconds) {
     }
     nonSpellcardTimer_ = std::max(0.0f, nonSpellcardTimer_ - seconds);
 }
+static Uint32 lineRed   = 0;
+static Uint32 lineGray  = 0;
+void LevelManager::display_boss_hp_line_and_remaining_time(Enemy* currentBoss){
+    if(!lineRed)  lineRed  = SDL_MapRGBA(screen->format, 230, 124, 111, 128);
+    if(!lineGray) lineGray = SDL_MapRGBA(screen->format, 177, 173, 178, 128);
+    if(!currentBoss->is_using_spellcard()){
+        //全长400
+        float hpRatio = (float)currentBoss->get_hp() / (float)currentBoss->get_total_hp();
+        SDL_Rect src = {72, 15, (Sint16)(400.0f * hpRatio), 10};
+        if(hpRatio >= 0.2f){
+            SDL_FillRect(screen, &src, lineGray);
+        }else{
+            SDL_FillRect(screen, &src, lineRed);
+        }
+    }else{
+        SDL_Rect srcLeft = {5, 15, 62, 10};
+        SDL_FillRect(screen, &srcLeft, lineRed);
+        float scHpRatio = (float)currentBoss->get_sc_current_hp() / (float)currentBoss->get_sc_total_hp();
+        SDL_Rect srcRight = {72, 15, (Sint16)(400.0f * scHpRatio), 10};
+        if(scHpRatio >= 0.2f){
+            SDL_FillRect(screen, &srcRight, lineGray);
+        }else{
+            SDL_FillRect(screen, &srcRight, lineRed);
+        }
+        draw_ascii_number((int)currentBoss->get_sc_time_remaining(), 512, 9, 2);
+    }
+}
 
 LevelManager::~LevelManager() {
     clear_enemy_pool();
@@ -1065,6 +1093,9 @@ void LevelManager::show_all_enemies() {
         if (enemy_pool[i] != NULL && enemy_pool[i]->is_active()) {
             enemy_pool[i]->enemy_show();
             //std::cout << i << " " << "is rendered" << std::endl;
+            if(enemy_pool[i]->get_enemy_type() >= BOSS_RUMIA){
+                display_boss_hp_line_and_remaining_time(enemy_pool[i]);
+            }
         }
     }
 }

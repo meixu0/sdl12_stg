@@ -56,6 +56,7 @@ SDL_Surface *rotate_image(SDL_Surface* src, double degrees);
 SDL_Surface *rotate_90(SDL_Surface* src, int turns);
 SDL_Surface *rotate_nearest(SDL_Surface* src, double degrees);
 SDL_Surface *mirror_surface(SDL_Surface* src);
+void draw_ascii_number(int n, int x, int y, int minW);
 bool load_font(std::string fontfile);
 TTF_Font* load_font(std::string filename, int fontsize);
 #endif

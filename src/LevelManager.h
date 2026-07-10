@@ -9,7 +9,7 @@
 #include "EnemyScManager.h"
 #include <SDL_mixer.h>
 class ItemManager;
-
+//todo:boss扣血后的符卡倒计时和符卡血量显示
 enum StageState {
     STAGE_LOADING,   // 关卡加载中
     STAGE_RUNNING,   // 道中/关卡进行中
@@ -35,7 +35,7 @@ private:
     ItemManager* item_mgr_;
     Mix_Music* bgm_music_;            // current BGM track (owned, freed on stop/switch)
 
-    // ── Spellcard boss management ──────────────────────────────────────────
+    //Spellcard boss management
     EnemyScManager scManager_;
     int bossEnemyIndex_;
     int spellcardTriggerHp_;       // Boss HP threshold to trigger spellcard
@@ -66,7 +66,7 @@ public:
     void enter_boss(int stage);    // clean → load boss → init → BOSS
     bool auto_transition(Uint32 frameCounter);  // 检测并自动处理所有关卡过渡
 
-    // ── Spellcard lifecycle ────────────────────────────────────────────────
+    //Spellcard lifecycle
     void update_spellcards(float dt);  // advance timer, check capture/timeout, transition phases
     const EnemyScManager* get_sc_manager() const { return &scManager_; }
 
@@ -85,7 +85,8 @@ public:
     void set_bullet_manager_for_all(EnemyBulletManager* mgr);
     void show_all_enemies();
 
-    // ── Boss/midboss defeat handling ──────────────────────────────────────
+    //Boss/midboss defeat handling
     void convert_boss_bullets_to_p_items();
     void skip_stage_time(float seconds);
+    void display_boss_hp_line_and_remaining_time(Enemy* currentBoss);
 };

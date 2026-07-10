@@ -28,12 +28,12 @@ public:
     EnemyScManager();
     ~EnemyScManager();
 
-    // ── Loading ──────────────────────────────────────────────────────────
+    //Loading
     /// Load spellcards for the given stage (reads level/sc/stage{N}.json).
     /// Returns false if the file cannot be loaded.
     bool load(int stage);
 
-    // ── State queries ────────────────────────────────────────────────────
+    //State queries
     int  count() const { return int(spellcards_.size()); }
     bool is_active() const { return active_; }
     bool is_timeout() const;
@@ -44,7 +44,7 @@ public:
     const SpellcardDef* get(int index) const;
     const std::string&  current_name() const;
 
-    // ── Lifecycle ────────────────────────────────────────────────────────
+    //Lifecycle
     /// Begin spellcard at `index`. Returns false if index out of range.
     bool start(int index);
 
@@ -62,12 +62,14 @@ public:
     /// Reset all state (cancels active spellcard, clears loaded data).
     void reset();
 
-    // ── Timer ────────────────────────────────────────────────────────────
+    //Timer
     float time_remaining() const;
     float time_elapsed() const { return timer_; }
 
     /// Despawn all enemy bullets — call when a spellcard starts or ends.
     static void clear_bullets(EnemyBulletManager* mgr);
+    int get_current_hp(){return current_hp_;}
+    int get_total_hp() const { return current() ? current()->hp : 0; }
 
 private:
     std::vector<SpellcardDef> spellcards_;

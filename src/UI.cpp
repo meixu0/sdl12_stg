@@ -33,10 +33,7 @@ SDL_Surface* bossSprites[14][12] = {{NULL}};
 bool init(){
 	if(SDL_Init(SDL_INIT_EVERYTHING) == -1)	return false;
 	if(TTF_Init() == -1)	return false;
-	// Configure FluidSynth SoundFont for MIDI playback (Linux).
-	// Must be called before Mix_OpenAudio so FluidSynth initialises
-	// with the correct soundfont. Harmless on macOS/Windows.
-	Mix_SetSoundFonts("/usr/share/soundfonts/FluidR3_GM.sf2");
+	Mix_SetSoundFonts("/usr/share/soundfonts/FluidR3_GM.sf2");//only on linux
 	if(Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 4096) == -1)	return false;
 	screen = SDL_SetVideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, SDL_SWSURFACE);
 	if(screen == NULL)	return false;
@@ -168,6 +165,13 @@ SDL_Surface *load_image(std::string filename, double targetW, double targetH){
 	SDL_FreeSurface(optimizedImage);
 	return zoomedImage;
 }
+SDL_Surface* rotate_image(SDL_Surface* src, double degrees){
+	if (src == NULL) return NULL;
+	SDL_Surface* rotated = rotozoomSurface(src, degrees, 1.0, 0);
+	if (rotated != NULL && (src->flags & SDL_SRCCOLORKEY))
+		SDL_SetColorKey(rotated, SDL_SRCCOLORKEY, src->format->colorkey);
+	return rotated;
+}
 SDL_Surface *load_sprite(std::string filename, int srcX, int srcY, int srcW, int srcH, double targetW, double targetH){
 	SDL_Surface* loadedImage = IMG_Load(filename.c_str());
 	if(loadedImage == NULL)	return NULL;
@@ -290,13 +294,6 @@ SDL_Surface *load_sprite(std::string filename, int srcX, int srcY, int srcW, int
 	delete[] alpha;
 	return zoomedImage;
 }
-SDL_Surface* rotate_image(SDL_Surface* src, double degrees){
-	if (src == NULL) return NULL;
-	SDL_Surface* rotated = rotozoomSurface(src, degrees, 1.0, 0);
-	if (rotated != NULL && (src->flags & SDL_SRCCOLORKEY))
-		SDL_SetColorKey(rotated, SDL_SRCCOLORKEY, src->format->colorkey);
-	return rotated;
-}
 
 // 逐像素旋转 90° 整数倍。turns: 1=90°CW, 2=180°, 3=270°CW(-90°)
 SDL_Surface* rotate_90(SDL_Surface* src, int turns){
@@ -389,6 +386,19 @@ SDL_Surface* mirror_surface(SDL_Surface* src){
 	if(SDL_MUSTLOCK(dst)) SDL_UnlockSurface(dst);
 	if(SDL_MUSTLOCK(src)) SDL_UnlockSurface(src);
 	return dst;
+}
+
+// 用未选中 ASCII 样式绘制数字
+void draw_ascii_number(int n, int x, int y, int minW){
+	if(!asciiSheet) return;
+	char buf[16];
+	snprintf(buf, sizeof(buf), "%0*d", minW, n);
+	for(int i = 0; buf[i]; i++){
+		int d = buf[i] - '0';
+		if(d < 0 || d > 9) continue;
+		SDL_Rect dst = {(Sint16)(x + i * 16), (Sint16)y, 0, 0};
+		SDL_BlitSurface(asciiSheet, &digitRects[d], screen, &dst);
+	}
 }
 
 TTF_Font* load_font(std::string filename, int fontsize){

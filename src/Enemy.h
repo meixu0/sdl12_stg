@@ -2,6 +2,7 @@
 #include "EnemyType.h"
 #include "MovePattern.h"
 #include "EnemyBulletManager.h"
+#include "EnemyScManager.h"
 #include <cmath>
 #define PI 3.14159265
 class Player;
@@ -54,6 +55,7 @@ private:
     float playerX;
     float playerY;
     int hp;
+    int totalHp;       // 初始总 HP
     int enemyType;
     int enemyID;
     bool isActive;
@@ -106,7 +108,7 @@ private:
     SDL_Surface* get_zako_sprite(int row);
     SDL_Surface* get_boss_sprite(int col);
     static Mix_Chunk* tan00;
-    // ── Phase sequencer ──
+    //Phase sequencer
     std::vector<BossPhaseDef> bossPhases_;
     int currentPhase_ = -1;
     float phaseTimer_ = 0.0f;
@@ -140,6 +142,11 @@ public:
     static Enemy* onScreenList[256];
     static int onScreenCount;
     int  get_hp() const { return hp; }
+    int  get_total_hp() const { return totalHp; }
+    bool is_using_spellcard() const { return scManager && scManager->is_active(); }
+    int  get_sc_total_hp() const { return scManager ? scManager->get_total_hp() : 0; }
+    int  get_sc_current_hp() const { return scManager ? scManager->get_current_hp() : 0; }
+    float get_sc_time_remaining() const { return scManager ? scManager->time_remaining() : 0.0f; }
     float get_time_alive() const { return timeAlive; }
     float get_emerge_time() const { return emergeTime; }
     float get_duration_time() const { return durationTime; }
@@ -152,12 +159,12 @@ public:
     void start_position_interp(float dur, int easing, float tx, float ty);  // ECL move_position_interp
     void set_move_bounds(float minX, float minY, float maxX, float maxY);   // ECL move_bounds_set
 
-    // ── ECL phase sequencer (attack cycle) ──────────────────────────────────
+    //ECL phase sequencer (attack cycle)
     void set_phases(const std::vector<BossPhaseDef>& phases);
     void start_phases();
     void stop_phases() { isPhasedBoss_ = false; currentPhase_ = -1; }
 
-    // ── Spellcard boss support ───────────────────────────────────────────────
+    //Spellcard boss support
     bool isSpellcardBoss;
     EnemyScManager* scManager;
 

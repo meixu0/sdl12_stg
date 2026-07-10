@@ -10,8 +10,7 @@ static const char* SC_DIFF_KEYS[] = {
     "easy", "normal", "hard", "lunatic", "extra"
 };
 
-// ── Helpers ────────────────────────────────────────────────────────────────
-
+//Helpers
 static float cj_float(cJSON* obj, const char* key, float def) {
     cJSON* v = cJSON_GetObjectItem(obj, key);
     return (v && cJSON_IsNumber(v)) ? float(v->valuedouble) : def;
@@ -89,7 +88,7 @@ static void apply_spellcard_difficulty(SpellcardDef& sc, cJSON* entry) {
 EnemyScManager::EnemyScManager() = default;
 EnemyScManager::~EnemyScManager() = default;
 
-// ── Pattern parser (mirrors LevelManager::parse_behavior attack parsing) ──
+//Pattern parser (mirrors LevelManager::parse_behavior attack parsing)
 
 EmitterConfig EnemyScManager::parse_pattern(cJSON* pat_json) {
     EmitterConfig ec;
@@ -125,7 +124,7 @@ EmitterConfig EnemyScManager::parse_pattern(cJSON* pat_json) {
     return ec;
 }
 
-// ── Loading ────────────────────────────────────────────────────────────────
+//Loading
 
 bool EnemyScManager::load(int stage) {
     reset();
@@ -197,7 +196,7 @@ bool EnemyScManager::load(int stage) {
     return true;
 }
 
-// ── Queries ────────────────────────────────────────────────────────────────
+//Queries
 
 const SpellcardDef* EnemyScManager::current() const {
     if (!active_ || current_index_ < 0 || current_index_ >= int(spellcards_.size()))
@@ -223,7 +222,7 @@ bool EnemyScManager::is_timeout() const {
     return sc && timer_ >= float(sc->timeout);
 }
 
-// ── Lifecycle ──────────────────────────────────────────────────────────────
+//Lifecycle
 
 bool EnemyScManager::start(int index) {
     if (index < 0 || index >= int(spellcards_.size()))
@@ -274,7 +273,7 @@ void EnemyScManager::reset() {
     active_ = false;
 }
 
-// ── Timer queries ──────────────────────────────────────────────────────────
+//Timer queries
 
 float EnemyScManager::time_remaining() const {
     if (!active_) return 0.0f;
@@ -284,7 +283,7 @@ float EnemyScManager::time_remaining() const {
     return rem > 0.0f ? rem : 0.0f;
 }
 
-// ── Static bullet clearing ─────────────────────────────────────────────────
+//Static bullet clearing
 
 void EnemyScManager::clear_bullets(EnemyBulletManager* mgr) {
     if (mgr) mgr->despawn_all_for_spellcard();
