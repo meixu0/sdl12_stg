@@ -62,4 +62,8 @@
 		"player":	"01234567",
 		"difficulty":	"HARD",
 		"score":	0
+	}, {
+		"player":	"HIJKLN65",
+		"difficulty":	"EASY",
+		"score":	35116970
 	}]

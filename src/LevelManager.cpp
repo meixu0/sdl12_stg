@@ -31,7 +31,7 @@ static int str_to_pattern_type(const char* s) {
     return 0;
 }
 
-// ── Behavior name → enemyType mapping ──────────────────────────────────────
+//Behavior name → enemyType mapping
 
 static int behavior_to_enemy_type(const char* name) {
     if (!name) return ZAKO_BLUE;
@@ -55,7 +55,7 @@ static int behavior_to_enemy_type(const char* name) {
     return ZAKO_BLUE;
 }
 
-// ── Safe cJSON access helpers ──────────────────────────────────────────────
+//cJSON access helpers
 
 static float cjson_float(cJSON* obj, const char* key, float def) {
     cJSON* v = cJSON_GetObjectItem(obj, key);
@@ -94,12 +94,12 @@ struct BehaviorDef {
     std::vector<EmitterConfig> emitters;
 };
 
-// ── Difficulty name table (indexed by gameDifficulty 0-4) ───────────────────
+//Difficulty name table (indexed by gameDifficulty 0-4)
 static const char* DIFFICULTY_KEYS[] = {
     "easy", "normal", "hard", "lunatic", "extra"
 };
 
-// ── Apply difficulty overrides from a JSON "difficulty" object ────────────
+//Apply difficulty overrides from a JSON "difficulty" object
 // Mutates `def` in place by overlaying the current difficulty's overrides.
 
 static void apply_behavior_difficulty(BehaviorDef& def, cJSON* diff_obj) {
@@ -282,7 +282,7 @@ static BehaviorDef parse_behavior(cJSON* beh) {
     return def;
 }
 
-// ── Helper: apply timeline overrides to an EnemyConfig ─────────────────────
+//Helper: apply timeline overrides to an EnemyConfig
 
 static void apply_overrides(EnemyConfig& config, cJSON* overrides) {
     if (!overrides || !cJSON_IsObject(overrides)) return;
@@ -635,7 +635,6 @@ void LevelManager::trigger_midboss() {
 void LevelManager::clear_stage() {
     stage_state = STAGE_CLEAR;
     std::cout << "Stage " << current_stage << " cleared!" << std::endl;
-    // TODO: 掉落结算、分数统计
 }
 
 void LevelManager::next_stage() {
@@ -756,7 +755,7 @@ void LevelManager::update_spellcards(float dt) {
     Enemy* boss = enemy_pool[bossEnemyIndex_];
     if (!boss || !boss->is_active()) return;
 
-    // ── Check if spellcard should trigger ─────────────────────────────────────
+    //Check if spellcard should trigger
     if (!scManager_.is_active() && scManager_.count() > 0 && spellcardTriggerHp_ > 0) {
         // ECL Sub20: non-spellcard timer (1680 frames = 28s)
         nonSpellcardTimer_ += dt;
@@ -787,7 +786,7 @@ void LevelManager::update_spellcards(float dt) {
         scManager_.update(dt);
     }
 
-    // ── Check timeout ─────────────────────────────────────────────────────────
+    //Check timeout
     if (scManager_.is_timeout()) {
         scManager_.end(false);  // not captured
         std::cout << "Spellcard timeout! Converting bullets to P items." << std::endl;
@@ -806,7 +805,7 @@ void LevelManager::update_spellcards(float dt) {
         return;
     }
 
-    // ── Check capture (HP depleted) ───────────────────────────────────────────
+    //Check capture (HP depleted)
     //std::cout << "[SPELLCARD] bossHP=" << boss->get_hp() << " active=" << boss->is_active()<< " entryTimer=" << spellcardEntryTimer_ << std::endl;
     if (boss->get_hp() <= 0) {
         scManager_.end(true);  // captured
@@ -1037,7 +1036,7 @@ void LevelManager::update_all_enemies(float px, float py, Uint32 &frameCounter_,
         }
     }
 
-    // ── Midboss/boss defeat detection → bullet conversion + time jump ──
+    //Midboss/boss defeat detection → bullet conversion + time jump
     if (!midbossDefeatedProcessed_) {
         for (size_t i = 0; i < enemy_pool.size(); ++i) {
             Enemy* e = enemy_pool[i];
