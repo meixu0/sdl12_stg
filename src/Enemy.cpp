@@ -59,7 +59,6 @@ void Enemy::init(EnemyConfig config, float x_, float y_){
     enemyType = config.enemyType;
     enemyID = config.enemyID;
     isMidboss = config.isMidboss;
-    if(isMidboss)   durationTime = 99.0;//将道中boss默认设为99的生存时间
     hitboxHeight = config.hitboxHeight;
     hitboxWidth = config.hitboxWidth;
     if(config.enemyType >= BOSS_RUMIA){hitboxHeight = 64; hitboxWidth = 48;}
@@ -352,7 +351,6 @@ void Enemy::enemy_move(float dt){
 
     // Skip all boundary clipping during active position_interp (ECL entry phase)
     if (movePattern == POSITION_INTERP && moveElapsed < moveDuration) {
-        // allow offscreen entry — no clipping
     } else {
         // Apply moveBounds (ECL move_bounds_set) if set; otherwise default screen bounds
         if (hasMoveBounds) {
@@ -371,8 +369,6 @@ void Enemy::enemy_move(float dt){
 
 void Enemy::enemy_attack(float dt){
     if (!isActive || bulletManager == NULL) return;
-
-    // ── Phase sequencer: advance timer, transition phases ──
     if (isPhasedBoss_ && bossPhases_.size() > 0 && currentPhase_ >= 0) {
         phaseTimer_ += dt;
         if (phaseTimer_ >= bossPhases_[currentPhase_].duration) {
@@ -394,7 +390,7 @@ void Enemy::enemy_attack(float dt){
 
         if (burstMax == 1) {
             if (activeTime >= ec.emitInterval) {
-                bulletManager->spawn_pattern(ec.patternDesc, x, y, playerX, playerY, enemyType, enemyID, enemyType >= BOSS_RUMIA);
+                bulletManager->spawn_pattern(ec.patternDesc, x + hitboxWidth / 2, y + hitboxHeight, playerX, playerY, enemyType, enemyID, enemyType >= BOSS_RUMIA);
                 Mix_PlayChannel(0, tan00, 0);
                 rt.timer = ec.startDelay;
             }

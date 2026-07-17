@@ -383,7 +383,8 @@
             "speed": 120,
             "spriteID": 6,
             "hitboxRadius": 4,
-            "lifeTime": 5
+            "lifeTime": 5,
+			"isSplit": true
           }
         },
         {

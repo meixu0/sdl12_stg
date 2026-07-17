@@ -26,6 +26,11 @@ static const char* cj_str(cJSON* obj, const char* key) {
     return (v && cJSON_IsString(v)) ? v->valuestring : nullptr;
 }
 
+static bool cj_bool(cJSON* obj, const char* key, bool def) {
+    cJSON* v = cJSON_GetObjectItem(obj, key);
+    return (v && cJSON_IsBool(v)) ? cJSON_IsTrue(v) : def;
+}
+
 // Apply difficulty overrides to a partially-parsed SpellcardDef
 static void apply_spellcard_difficulty(SpellcardDef& sc, cJSON* entry) {
     cJSON* diff_obj = cJSON_GetObjectItem(entry, "difficulty");
@@ -80,6 +85,7 @@ static void apply_spellcard_difficulty(SpellcardDef& sc, cJSON* entry) {
                 ec.patternDesc.spriteID      = cj_int(pat, "spriteID", ec.patternDesc.spriteID);
                 ec.patternDesc.hitboxRadius  = cj_float(pat, "hitboxRadius", ec.patternDesc.hitboxRadius);
                 ec.patternDesc.lifeTime      = cj_float(pat, "lifeTime", ec.patternDesc.lifeTime);
+                ec.patternDesc.isSplit      = cj_bool(pat, "isSplit", ec.patternDesc.isSplit);
             }
         }
     }
@@ -120,6 +126,7 @@ EmitterConfig EnemyScManager::parse_pattern(cJSON* pat_json) {
         ec.patternDesc.spriteID      = cj_int(pd, "spriteID", 0);
         ec.patternDesc.hitboxRadius  = cj_float(pd, "hitboxRadius", 4.0f);
         ec.patternDesc.lifeTime      = cj_float(pd, "lifeTime", 6.0f);
+        ec.patternDesc.isSplit      = cj_bool(pd, "isSplit", false);
     }
     return ec;
 }

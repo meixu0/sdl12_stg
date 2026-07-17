@@ -72,6 +72,11 @@ static const char* cjson_str(cJSON* obj, const char* key) {
     return (v && cJSON_IsString(v)) ? v->valuestring : NULL;
 }
 
+static bool cjson_bool(cJSON* obj, const char* key, bool def) {
+    cJSON* v = cJSON_GetObjectItem(obj, key);
+    return (v && cJSON_IsBool(v)) ? cJSON_IsTrue(v) : def;
+}
+
 
 struct BehaviorDef {
     int hp = 50;
@@ -173,6 +178,7 @@ static void apply_behavior_difficulty(BehaviorDef& def, cJSON* diff_obj) {
                 ec.patternDesc.spriteID      = cjson_int(pat, "spriteID", ec.patternDesc.spriteID);
                 ec.patternDesc.hitboxRadius  = cjson_float(pat, "hitboxRadius", ec.patternDesc.hitboxRadius);
                 ec.patternDesc.lifeTime      = cjson_float(pat, "lifeTime", ec.patternDesc.lifeTime);
+                ec.patternDesc.isSplit      = cjson_bool(pat, "isSplit", ec.patternDesc.isSplit);
             }
         }
     }
@@ -252,6 +258,7 @@ static BehaviorDef parse_behavior(cJSON* beh) {
                 ec.patternDesc.spriteID      = cjson_int(pat, "spriteID", 0);
                 ec.patternDesc.hitboxRadius  = cjson_float(pat, "hitboxRadius", 4.0f);
                 ec.patternDesc.lifeTime      = cjson_float(pat, "lifeTime", 6.0f);
+                ec.patternDesc.isSplit      = cjson_bool(pat, "isSplit", false);
             }
             def.emitters.push_back(ec);
         }
@@ -545,6 +552,7 @@ void LevelManager::init_enemy_pool_v2() {
                                             ec.patternDesc.spriteID      = cjson_int(ptn, "spriteID", 0);
                                             ec.patternDesc.hitboxRadius  = cjson_float(ptn, "hitboxRadius", 4.0f);
                                             ec.patternDesc.lifeTime      = cjson_float(ptn, "lifeTime", 6.0f);
+                                            ec.patternDesc.isSplit      = cjson_bool(ptn, "isSplit", false);
                                         }
                                         phase.patterns.push_back(ec);
                                     }
@@ -744,10 +752,7 @@ void LevelManager::start_spellcard_phase(int phaseIndex) {
     }
 
     spellcardEntryTimer_ = 0.0f;
-
-    std::cout << ">> Spellcard " << phaseIndex << " started: \""
-              << sc->name << "\" (timeout="
-              << sc->timeout << "s), patterns=" << (int)sc->patterns.size() << std::endl;
+    //std::cout << ">> Spellcard " << phaseIndex << " started: "" << sc->name << " (timeout=" << sc->timeout << "s), patterns=" << (int)sc->patterns.size() << std::endl;
 }
 
 void LevelManager::update_spellcards(float dt) {
@@ -755,9 +760,8 @@ void LevelManager::update_spellcards(float dt) {
     Enemy* boss = enemy_pool[bossEnemyIndex_];
     if (!boss || !boss->is_active()) return;
 
-    //Check if spellcard should trigger
+    //是否触发符卡
     if (!scManager_.is_active() && scManager_.count() > 0 && spellcardTriggerHp_ > 0) {
-        // ECL Sub20: non-spellcard timer (1680 frames = 28s)
         nonSpellcardTimer_ += dt;
 
         bool hpTrigger = (boss->get_hp() <= spellcardTriggerHp_);
@@ -780,7 +784,7 @@ void LevelManager::update_spellcards(float dt) {
 
     if (!scManager_.is_active()) return;
 
-    // Advance spellcard timer (2-second entry grace period before timeout starts)
+    // 符卡计时器
     spellcardEntryTimer_ += dt;
     if (spellcardEntryTimer_ >= 2.0f) {
         scManager_.update(dt);
@@ -792,8 +796,6 @@ void LevelManager::update_spellcards(float dt) {
         std::cout << "Spellcard timeout! Converting bullets to P items." << std::endl;
         convert_boss_bullets_to_p_items();
         EnemyScManager::clear_bullets(bullet_mgr_);
-
-        // ECL Sub28: spellcard_end, move offscreen, delete
         std::cout << "Spellcard timeout!" << std::endl;
         boss->start_position_interp(60.0f / 60.0f, 4, -128.0f, 32.0f);
         boss->deactivate();
@@ -804,16 +806,11 @@ void LevelManager::update_spellcards(float dt) {
         }
         return;
     }
-
-    //Check capture (HP depleted)
-    //std::cout << "[SPELLCARD] bossHP=" << boss->get_hp() << " active=" << boss->is_active()<< " entryTimer=" << spellcardEntryTimer_ << std::endl;
     if (boss->get_hp() <= 0) {
         scManager_.end(true);  // captured
         std::cout << "Spellcard captured! Converting bullets to P items." << std::endl;
         convert_boss_bullets_to_p_items();
         EnemyScManager::clear_bullets(bullet_mgr_);
-
-        // ECL Sub27: spellcard_end, drop items, boss_set(-1), delete
         std::cout << "Spellcard captured! Boss defeated." << std::endl;
         if (item_mgr_) {
             float ex = boss->get_x() + boss->get_hitbox_w() * 0.5f;
