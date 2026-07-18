@@ -428,7 +428,6 @@
   ],
   "spellcards": {
     "boss_cirno_phase1": {
-      "name": "月符「ムーンライトレイ」",
       "hp": 1200,
       "timeout": 38,
       "behavior": "boss_cirno_phase1",

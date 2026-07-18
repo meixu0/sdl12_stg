@@ -375,7 +375,8 @@
             "spriteID": 6,
             "hitboxRadius": 4,
             "lifeTime": 5,
-            "angularVelocity": 2
+            "angularVelocity": 2,
+            "isSplit": true
           }
         },
         {
@@ -391,7 +392,8 @@
             "speed": 100,
             "spriteID": 6,
             "hitboxRadius": 4,
-            "lifeTime": 5
+            "lifeTime": 5,
+            "isSplit": true
           }
         },
         {

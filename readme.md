@@ -178,8 +178,6 @@ libphysfs-dev
 | `spiral` | 5 | 螺旋 (角速度旋转，圆形散射) |
 | `spread` | 6 | 随机散射 (速度随机) |
 | `ring_aimed_variable` | 7 | 可变环形自机狙 |
-| `log_spiral` | 8 | 对数螺线 (subCnt>1 时多颗连成螺旋线) |
-| `sinwave` | 9 | 正弦波线 (subCnt>1 时多颗连成波线) |
 
 ## 2.5 难度覆盖 (difficulty)
 
@@ -259,3 +257,6 @@ Boss 行为中可加 `phases` 数组实现 ECL 风格的多阶段攻击循环：
 ```
 
 `patterns` 格式与 `attack` 相同。"difficulty" 支持覆盖 `hp` 和 `timeout`。
+---
+# 3.0
+游戏根目录下如果有youmu文件则不开启自机判定点
