@@ -5,8 +5,7 @@
     "version": 2
   },
   "behaviors": {
-    "boss_daiyousei": {
-      "_desc": "ECL ecldata2.decl — Chen-style boss patterns",
+    "boss_youmu": {
       "hp": 145000,
       "hitbox": [
         32,
@@ -33,7 +32,6 @@
       },
       "phases": [
         {
-          "_desc": "Phase 1 — Fan aimed barrage",
           "duration": 8.0,
           "patterns": [
             {
@@ -185,7 +183,6 @@
           "move_easing": 4
         },
         {
-          "_desc": "Phase 2 — Ring patterns",
           "duration": 8.0,
           "patterns": [
             {
@@ -303,7 +300,6 @@
           "move_easing": 4
         },
         {
-          "_desc": "Phase 3 — Fast rings",
           "duration": 8.0,
           "patterns": [
             {
@@ -404,7 +400,6 @@
           "move_easing": 4
         },
         {
-          "_desc": "Phase 4 — Rapid ring bursts",
           "duration": 8.0,
           "patterns": [
             {
@@ -539,7 +534,6 @@
           "move_easing": 4
         },
         {
-          "_desc": "Phase 5 — Fan aimed",
           "duration": 8.0,
           "patterns": [
             {
@@ -640,7 +634,6 @@
           "move_easing": 4
         },
         {
-          "_desc": "Phase 6 — Slow aimed",
           "duration": 8.0,
           "patterns": [
             {
@@ -707,7 +700,6 @@
           "move_easing": 4
         },
         {
-          "_desc": "Phase 7 — Fast volley",
           "duration": 8.0,
           "patterns": [
             {
@@ -859,7 +851,6 @@
           "move_easing": 4
         },
         {
-          "_desc": "Phase 8 — Mixed",
           "duration": 8.0,
           "patterns": [
             {
@@ -1001,7 +992,6 @@
           ]
         },
         {
-          "_desc": "Pause before spellcard cycle",
           "duration": 2.0,
           "patterns": []
         }
@@ -1023,7 +1013,6 @@
       "attack": []
     },
     "boss_final": {
-      "_desc": "ECL Sub46-47 — Boss death / timeout retreat HPx10",
       "hp": 24000,
       "hitbox": [
         24,
@@ -1048,7 +1037,7 @@
     {
       "delta": 0.0,
       "cmd": "spawn",
-      "behavior": "boss_daiyousei",
+      "behavior": "boss_youmu",
       "pos": [
         192,
         -32
@@ -1061,14 +1050,12 @@
     }
   ],
   "spellcards": {
-    "boss_daiyousei_sc": {
-      "name": "霜符「フロストコールド」",
+    "boss_youmu_sc": {
       "hp": 2100,
       "timeout": 40,
-      "behavior": "boss_daiyousei",
+      "behavior": "boss_youmu",
       "patterns": [
         {
-          "_desc": "Sub52 — Circle aimed + 3-way fan aimed at ±60°",
           "time": 0,
           "interval": 0.033,
           "burst": 1,

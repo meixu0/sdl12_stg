@@ -98,9 +98,9 @@ void Player::handle_input(SDL_Event &e){
 
 void Player::player_move(){
     x += xVel;
-    if((x < 0) || (x + PLAYER_HEIGHT > PLAY_WIDTH)) x -= xVel;
+    if((x < 0) || (x + PLAYER_WIDTH > PLAY_WIDTH)) x -= xVel;
     y += yVel;
-    if((y < 0) || (y + PLAYER_WIDTH > PLAY_HEIGHT)) y -= yVel;
+    if((y < 0) || (y + PLAYER_HEIGHT > PLAY_HEIGHT)) y -= yVel;
     animTimer += 1.0f / 60.0f;
 }
 
@@ -267,7 +267,7 @@ void Player::update_invincible(){
 
 void Player::show(){
     if(playerSheet == NULL) return;
-    if(isInvincible_ && (invTimer_ / 4) % 2) return; /* иак╦ */
+    if(isInvincible_ && (invTimer_ / 4) % 2) return; /* О©╫О©╫к╦ */
 
     int   frameCount;
     SDL_Rect* srcRects;

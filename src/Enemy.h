@@ -31,13 +31,13 @@ struct EnemyConfig{
     float bezierDuration;
     float moveAngle;
     float angularVelocity;
-    float acceleration; /* ±êÁ¿¼ÓËÙ¶È px/s^2 */
-    float minPlayerDist; /* ÓëÍæ¼Ò×îÐ¡¾àÀë */
+    float acceleration; /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù¶ï¿½ px/s^2 */
+    float minPlayerDist; /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ */
     int enemyType;
     int enemyID;
     bool isMidboss;
 };
-/* ©¤©¤ Phase sequencer struct (ECL Sub26 attack cycle) ©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤ */
+/* ï¿½ï¿½ï¿½ï¿½ Phase sequencer struct (ECL Sub26 attack cycle) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 struct BossPhaseDef {
     float duration;
     std::vector<EmitterConfig> patterns;
@@ -55,7 +55,7 @@ private:
     float playerX;
     float playerY;
     int hp;
-    int totalHp; /* ³õÊ¼×Ü HP */
+    int totalHp; /* ï¿½ï¿½Ê¼ï¿½ï¿½ HP */
     int enemyType;
     int enemyID;
     bool isActive;
@@ -91,20 +91,19 @@ private:
     float moveDuration;       // ECL position_interp duration (seconds)
     float moveElapsed;        // ECL position_interp elapsed time
     int   moveEasing;         // ECL easing: 0=linear, 4=decelerate
-    float moveAngle; /* µ±Ç°ÔË¶¯½Ç¶È (»¡¶È) */
-    float angularVelocity; /* ½ÇËÙ¶È (rad/s) */
-    float accel; /* ±êÁ¿¼ÓËÙ¶È (px/s^2) */
-    float minPlayerDist; /* ÓëÍæ¼Ò±£³ÖµÄ×îÐ¡¾àÀë */
-/* ECL move_bounds_set support ¡ª constrains boss movement area */
+    float moveAngle; /* ï¿½ï¿½Ç°ï¿½Ë¶ï¿½ï¿½Ç¶ï¿½ (ï¿½ï¿½ï¿½ï¿½) */
+    float angularVelocity; /* ï¿½ï¿½ï¿½Ù¶ï¿½ (rad/s) */
+    float accel; /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù¶ï¿½ (px/s^2) */
+    float minPlayerDist; /* ï¿½ï¿½ï¿½ï¿½Ò±ï¿½ï¿½Öµï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ */
     float moveMinX, moveMaxX, moveMinY, moveMaxY;
     bool  hasMoveBounds;
-    int spriteRow; /* ¾«ÁéÍ¼ÐÐË÷Òý (0-15) */
-    float spriteAnimTimer; /* ¶¯»­¼ÆÊ±Æ÷ */
+    int spriteRow; /* ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (0-15) */
+    float spriteAnimTimer; /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ */
     float clamp(float value, float min_, float max_);
     float cubic_bezier(float t, float p0, float p1, float p2, float p3);
-    void compute_axis_speed(); /* ¸ù¾Ý movePattern ¼ÆËã axisSpeed */
-    float axisSpeedX; /* ±¾Ö¡ËÙ¶È x ·ÖÁ¿ */
-    float axisSpeedY; /* ±¾Ö¡ËÙ¶È y ·ÖÁ¿ */
+    void compute_axis_speed(); /* ï¿½ï¿½ï¿½ï¿½ movePattern ï¿½ï¿½ï¿½ï¿½ axisSpeed */
+    float axisSpeedX; /* ï¿½ï¿½Ö¡ï¿½Ù¶ï¿½ x ï¿½ï¿½ï¿½ï¿½ */
+    float axisSpeedY; /* ï¿½ï¿½Ö¡ï¿½Ù¶ï¿½ y ï¿½ï¿½ï¿½ï¿½ */
     SDL_Surface* get_zako_sprite(int row);
     SDL_Surface* get_boss_sprite(int col);
     static Mix_Chunk* tan00;
@@ -150,6 +149,19 @@ public:
     float get_time_alive() const { return timeAlive; }
     float get_emerge_time() const { return emergeTime; }
     float get_duration_time() const { return durationTime; }
+    float get_remaining_time() const {
+        if (isPhasedBoss_ && currentPhase_ >= 0 && !bossPhases_.empty()) {
+            float total = 0.0f;
+            for (int p = currentPhase_; p < (int)bossPhases_.size(); p++)
+                total += bossPhases_[p].duration;
+            float rem = total - phaseTimer_;
+            return rem > 0.0f ? rem : 0.0f;
+        }
+        float alive = timeAlive - emergeTime;
+        if (alive < 0.0f) alive = 0.0f;
+        float rem = durationTime - alive;
+        return rem > 0.0f ? rem : 0.0f;
+    }
     bool get_is_midboss() const { return isMidboss; }
     int  get_enemy_type() const { return enemyType; }
     void adjust_time_alive(float offset) { timeAlive += offset; }

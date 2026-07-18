@@ -75,6 +75,9 @@ static void apply_spellcard_difficulty(SpellcardDef& sc, cJSON* entry) {
                     else if (strcmp(ptype, "spiral")              == 0) ec.patternDesc.patternType = 5;
                     else if (strcmp(ptype, "spread")              == 0) ec.patternDesc.patternType = 6;
                     else if (strcmp(ptype, "ring_aimed_variable") == 0) ec.patternDesc.patternType = 7;
+                    else if (strcmp(ptype, "log_spiral")          == 0) ec.patternDesc.patternType = 8;
+                    else if (strcmp(ptype, "sinewave")            == 0) ec.patternDesc.patternType = 9;
+                    else if (strcmp(ptype, "sinwave")             == 0) ec.patternDesc.patternType = 9;
                 }
                 ec.patternDesc.mainCnt       = cj_int(pat, "mainCnt", ec.patternDesc.mainCnt);
                 ec.patternDesc.subCnt        = cj_int(pat, "subCnt", ec.patternDesc.subCnt);
@@ -85,6 +88,7 @@ static void apply_spellcard_difficulty(SpellcardDef& sc, cJSON* entry) {
                 ec.patternDesc.spriteID      = cj_int(pat, "spriteID", ec.patternDesc.spriteID);
                 ec.patternDesc.hitboxRadius  = cj_float(pat, "hitboxRadius", ec.patternDesc.hitboxRadius);
                 ec.patternDesc.lifeTime      = cj_float(pat, "lifeTime", ec.patternDesc.lifeTime);
+                ec.patternDesc.angularVelocity = cj_float(pat, "angularVelocity", ec.patternDesc.angularVelocity);
                 ec.patternDesc.isSplit      = cj_bool(pat, "isSplit", ec.patternDesc.isSplit);
             }
         }
@@ -106,7 +110,7 @@ EmitterConfig EnemyScManager::parse_pattern(cJSON* pat_json) {
     cJSON* pd = cJSON_GetObjectItem(pat_json, "pattern");
     if (pd && cJSON_IsObject(pd)) {
         const char* ptype = cj_str(pd, "type");
-/* String ¡ú int pattern type (same table as LevelManager) */
+/* String ï¿½ï¿½ int pattern type (same table as LevelManager) */
         if (ptype) {
             if      (strcmp(ptype, "fan_aimed")           == 0) ec.patternDesc.patternType = 0;
             else if (strcmp(ptype, "fan")                 == 0) ec.patternDesc.patternType = 1;
@@ -116,6 +120,9 @@ EmitterConfig EnemyScManager::parse_pattern(cJSON* pat_json) {
             else if (strcmp(ptype, "spiral")              == 0) ec.patternDesc.patternType = 5;
             else if (strcmp(ptype, "spread")              == 0) ec.patternDesc.patternType = 6;
             else if (strcmp(ptype, "ring_aimed_variable") == 0) ec.patternDesc.patternType = 7;
+                    else if (strcmp(ptype, "log_spiral")          == 0) ec.patternDesc.patternType = 8;
+                    else if (strcmp(ptype, "sinewave")            == 0) ec.patternDesc.patternType = 9;
+                    else if (strcmp(ptype, "sinwave")             == 0) ec.patternDesc.patternType = 9;
         }
         ec.patternDesc.mainCnt       = cj_int(pd, "mainCnt", 6);
         ec.patternDesc.subCnt        = cj_int(pd, "subCnt", 1);
@@ -126,6 +133,7 @@ EmitterConfig EnemyScManager::parse_pattern(cJSON* pat_json) {
         ec.patternDesc.spriteID      = cj_int(pd, "spriteID", 0);
         ec.patternDesc.hitboxRadius  = cj_float(pd, "hitboxRadius", 4.0f);
         ec.patternDesc.lifeTime      = cj_float(pd, "lifeTime", 6.0f);
+        ec.patternDesc.angularVelocity = cj_float(pd, "angularVelocity", 0.0f);
         ec.patternDesc.isSplit      = cj_bool(pd, "isSplit", false);
     }
     return ec;
@@ -198,8 +206,6 @@ bool EnemyScManager::load(int stage) {
     }
 
     cJSON_Delete(root);
-    std::cout << "EnemyScManager: loaded " << spellcards_.size()
-              << " spellcards from " << path << std::endl;
     return true;
 }
 
@@ -239,11 +245,6 @@ bool EnemyScManager::start(int index) {
     timer_ = 0.0f;
     current_hp_ = spellcards_[index].hp;
     active_ = true;
-
-    std::cout << "Spellcard " << index << " started: \""
-              << spellcards_[index].name << "\" (HP="
-              << current_hp_ << ", timeout="
-              << spellcards_[index].timeout << "s)" << std::endl;
     return true;
 }
 
@@ -263,11 +264,6 @@ int EnemyScManager::end(bool captured) {
 
     const SpellcardDef* sc = current();
     int hp_delta = sc ? (sc->hp - current_hp_) : 0;
-
-    std::cout << "Spellcard " << current_index_
-              << " ended: " << (captured ? "CAPTURED" : "TIMEOUT")
-              << " (damage dealt: " << hp_delta << ")" << std::endl;
-
     active_ = false;
     return hp_delta;
 }

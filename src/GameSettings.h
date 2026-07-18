@@ -8,6 +8,7 @@
 #define STATE_RESULT 7
 #define STATE_SETTLEMENT 8
 #define STATE_MUSICROOM 9
+#define STATE_PAUSE 10
 
 #define SPRITE_COLS 16
 #define SPRITE_ROWS 16
@@ -15,7 +16,6 @@
 #define PLAYER_REIMU 0
 #define PLAYER_MARISA 1
 #define PLAYER_SAKUYA 2
-#define PLAYER_YOUMU 3
 
 #define SC_REIMU_TSUITI 0
 #define SC_REIMU_SOKUSHA 1

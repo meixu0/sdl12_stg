@@ -6,7 +6,6 @@
   },
   "behaviors": {
     "s2_Sub2": {
-      "_desc": "ecldata2 Sub2",
       "hp": 150,
       "hitbox": [
         24,
@@ -52,7 +51,6 @@
       }
     },
     "s2_Sub3": {
-      "_desc": "ecldata2 Sub3",
       "hp": 150,
       "hitbox": [
         24,
@@ -98,7 +96,6 @@
       }
     },
     "s2_Sub4": {
-      "_desc": "ecldata2 Sub4",
       "hp": 150,
       "hitbox": [
         24,
@@ -161,7 +158,6 @@
       }
     },
     "s2_Sub6": {
-      "_desc": "ecldata2 Sub6",
       "hp": 150,
       "hitbox": [
         24,
@@ -224,7 +220,6 @@
       }
     },
     "s2_Sub8": {
-      "_desc": "ecldata2 Sub8",
       "hp": 150,
       "hitbox": [
         24,
@@ -268,7 +263,6 @@
       }
     },
     "s2_Sub9": {
-      "_desc": "ecldata2 Sub9",
       "hp": 150,
       "hitbox": [
         24,
@@ -314,7 +308,6 @@
       }
     },
     "s2_Sub11": {
-      "_desc": "ecldata2 Sub11",
       "hp": 150,
       "hitbox": [
         24,
@@ -379,7 +372,6 @@
       }
     },
     "s2_Sub13": {
-      "_desc": "ecldata2 Sub13",
       "hp": 150,
       "hitbox": [
         24,
@@ -460,7 +452,6 @@
       }
     },
     "s2_Sub14": {
-      "_desc": "ecldata2 Sub14",
       "hp": 150,
       "hitbox": [
         24,
@@ -505,7 +496,6 @@
       }
     },
     "s2_Sub30": {
-      "_desc": "ecldata2 Sub30",
       "hp": 150,
       "hitbox": [
         24,
@@ -550,7 +540,6 @@
       }
     },
     "s2_Sub36": {
-      "_desc": "ecldata2 Sub36",
       "hp": 150,
       "hitbox": [
         24,
@@ -594,7 +583,6 @@
       }
     },
     "s2_Sub41": {
-      "_desc": "ecldata2 Sub41",
       "hp": 150,
       "hitbox": [
         24,
@@ -638,7 +626,6 @@
       }
     },
     "s2_Sub42": {
-      "_desc": "ecldata2 Sub42",
       "hp": 150,
       "hitbox": [
         24,
@@ -682,7 +669,6 @@
       }
     },
     "s2_Sub44": {
-      "_desc": "ecldata2 Sub44",
       "hp": 150,
       "hitbox": [
         24,
@@ -728,7 +714,6 @@
       }
     },
     "s2_Sub45": {
-      "_desc": "ecldata2 Sub45",
       "hp": 150,
       "hitbox": [
         24,
@@ -774,7 +759,6 @@
       }
     },
     "s2_Sub46": {
-      "_desc": "ecldata2 Sub46",
       "hp": 150,
       "hitbox": [
         24,
@@ -818,7 +802,6 @@
       }
     },
     "s2_Sub52": {
-      "_desc": "ecldata2 Sub52",
       "hp": 150,
       "hitbox": [
         24,
@@ -881,7 +864,6 @@
       }
     },
     "s2_Sub59": {
-      "_desc": "ecldata2 Sub59",
       "hp": 150,
       "hitbox": [
         24,
@@ -925,9 +907,8 @@
         }
       }
     },
-    "midboss_daiyousei": {
-      "_desc": "Midboss (ECL patterns) HPx10",
-      "hp": 150000,
+    "midboss_youmu": {
+      "hp": 5000,
       "hitbox": [
         24,
         24
@@ -1184,7 +1165,6 @@
       ]
     },
     "s2_Sub1": {
-      "_desc": "ecldata2 Sub1 - stream fairy, etFanAimed 2way",
       "hp": 10,
       "hitbox": [
         24,
@@ -1233,7 +1213,6 @@
       }
     },
     "boss_entry": {
-      "_desc": "Stage-end sentinel — triggers boss transition",
       "hp": 50,
       "hitbox": [
         40,
@@ -1392,7 +1371,7 @@
     {
       "delta": 2.333,
       "cmd": "spawn",
-      "behavior": "midboss_daiyousei",
+      "behavior": "midboss_youmu",
       "pos": [
         192.0,
         -16.0
@@ -1902,7 +1881,7 @@
     {
       "delta": 3.0,
       "cmd": "spawn",
-      "behavior": "midboss_daiyousei",
+      "behavior": "midboss_youmu",
       "pos": [
         192.0,
         -16.0

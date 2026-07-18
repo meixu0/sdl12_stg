@@ -5,8 +5,7 @@
     "version": 2
   },
   "behaviors": {
-    "boss_rumia": {
-      "_desc": "ECL Sub20 — Rumia boss with full phase sequence (Sub21-Sub26) HPx10",
+    "boss_cirno": {
       "hp": 100000,
       "hitbox": [
         48,
@@ -33,7 +32,6 @@
       },
       "phases": [
         {
-          "_desc": "Sub25 — Complex alternating rings (60 frames)",
           "duration": 1.0,
           "patterns": [
             {
@@ -134,7 +132,6 @@
           ]
         },
         {
-          "_desc": "Move to (256, 160) over 60 frames, decelerate",
           "duration": 1.0,
           "patterns": [],
           "move_after": [
@@ -145,7 +142,6 @@
           "move_easing": 4
         },
         {
-          "_desc": "Sub22 — Random spread (110 frames)",
           "duration": 1.83,
           "patterns": [
             {
@@ -183,7 +179,6 @@
           ]
         },
         {
-          "_desc": "Sub21 — Double ring barrage (60 frames)",
           "duration": 1.0,
           "patterns": [
             {
@@ -247,7 +242,6 @@
           ]
         },
         {
-          "_desc": "Move to (128, 160) over 90 frames, linear",
           "duration": 1.5,
           "patterns": [],
           "move_after": [
@@ -258,7 +252,6 @@
           "move_easing": 0
         },
         {
-          "_desc": "Sub23 — Player-aimed circle (90 frames, interval 40f)",
           "duration": 1.5,
           "patterns": [
             {
@@ -278,7 +271,6 @@
           ]
         },
         {
-          "_desc": "Sub24 — Ring barrage (60 frames)",
           "duration": 1.0,
           "patterns": [
             {
@@ -372,7 +364,6 @@
           ]
         },
         {
-          "_desc": "Move back to center (192, 128) over 60 frames, decelerate",
           "duration": 1.0,
           "patterns": [],
           "move_after": [
@@ -383,7 +374,6 @@
           "move_easing": 4
         },
         {
-          "_desc": "Pause 120 frames before looping",
           "duration": 2.0,
           "patterns": []
         }
@@ -404,7 +394,6 @@
       }
     },
     "boss_final": {
-      "_desc": "ECL Sub27 — Boss death drop HPx10",
       "hp": 24000,
       "hitbox": [
         24,
@@ -425,7 +414,7 @@
     {
       "delta": 0.0,
       "cmd": "spawn",
-      "behavior": "boss_rumia",
+      "behavior": "boss_cirno",
       "pos": [
         -32,
         32
@@ -438,14 +427,13 @@
     }
   ],
   "spellcards": {
-    "boss_rumia_phase1": {
+    "boss_cirno_phase1": {
       "name": "月符「ムーンライトレイ」",
       "hp": 1200,
       "timeout": 38,
-      "behavior": "boss_rumia_phase1",
+      "behavior": "boss_cirno_phase1",
       "patterns": [
         {
-          "_desc": "Familiar-style ring — 4 bullets repeating like Sub30",
           "time": 2.0,
           "interval": 0.5,
           "pattern": {
@@ -460,7 +448,6 @@
           }
         },
         {
-          "_desc": "Familiar-style ring with offset",
           "time": 2.0,
           "interval": 0.5,
           "pattern": {
@@ -476,7 +463,6 @@
           }
         },
         {
-          "_desc": "Player-aimed ring",
           "time": 2.5,
           "interval": 1.0,
           "pattern": {

@@ -1,6 +1,0 @@
-CompileFlags:
-  Add: 
-    - "-I/opt/homebrew/include"
-    - "-I/usr/local/include"
-    - "-I./src"
-    - "-I/opt/homebrew/include/SDL"

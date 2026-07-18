@@ -10,7 +10,7 @@ static SDL_Rect itemSrc[8] = {
 	{64,  64, 16, 16},  // Full Power
 	{80,  64, 16, 16},  // Life
 	{96,  64, 16, 16},  // Point Bullet
-	{96,  64, 16, 16}, /* Score Small£¨·û¿¨»ØÊÕµ¯µã£© */
+	{96,  64, 16, 16}, /* Score Smallï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õµï¿½ï¿½ã£© */
 };
 Mix_Chunk* ItemManager::powerup00 = NULL;
 
@@ -88,8 +88,8 @@ void ItemManager::spawn_item(float x, float y, int itemType, int state) {
 
             if (state == 2) {
                 // Random target position
-                it->targetX = x + (rand() % 289) - 144; /* x ¡À144 */
-                it->targetY = y + (rand() % 193) - 128;  // y -128..+64
+                it->targetX = x + (rand() % 289) - 144;
+                it->targetY = y + (rand() % 193) - 128;
                 if (it->targetX < 48)  it->targetX = 48;
                 if (it->targetX > 336) it->targetX = 336;
                 if (it->targetY < -64) it->targetY = -64;
@@ -128,11 +128,11 @@ void ItemManager::update(float dt) {
             }
         }
 
-        // proximity magnet: items within 100px of player center auto-collect
+        // proximity magnet: items within 50px of player center auto-collect
         float pdx = px - it->x;
         float pdy = py - it->y;
         float pdist = sqrtf(pdx * pdx + pdy * pdy);
-        bool nearPlayer = (pdist < 100.0f);
+        bool nearPlayer = (pdist < 50.0f);
 
         if (it->state == 1 || (it->state == 0 && (autoCollect || nearPlayer))) {
             it->state = 1;
@@ -180,7 +180,6 @@ void ItemManager::update(float dt) {
                         }
                         if (Player::get_power() >= MAX_POWER) {
                             Player::set_power(MAX_POWER);
-                            // TODO: TurnAllBulletsIntoPoints()
                         }
                     }
                     break;
@@ -208,7 +207,6 @@ void ItemManager::update(float dt) {
                             score += 10;
                             for (int t2 = 0; t2 < 11; t2++) {
                                 if (Player::get_power() == POWER_UP_THRESHOLDS[t2]) {
-                                    // TODO: power-up popup
                                     break;
                                 }
                             }
@@ -221,7 +219,7 @@ void ItemManager::update(float dt) {
                 }
 
                 case ITEM_POINT: {
-                    // Score based on Y position (th06 Normal: max 100000 at top, min 60000 at bottom)
+                    // Score based on Y position
                     if ((int)it->y < 128) {
                         score += 100000;
                     } else {
@@ -238,15 +236,12 @@ void ItemManager::update(float dt) {
 
                 case ITEM_LIFE: {
                     if (lives < 8) lives++;
-                    // TODO: play 1UP sound
                     break;
                 }
 
                 case ITEM_FULL_POWER: {
                     Player::set_power(MAX_POWER);
                     score += 1000;
-                    // TODO: TurnAllBulletsIntoPoints()
-                    // TODO: power-up popup
                     break;
                 }
 

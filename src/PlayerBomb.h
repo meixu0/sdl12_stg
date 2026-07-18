@@ -37,6 +37,7 @@ private:
     ItemManager* itemMgr_;
 
     void clear_zako();
+    void take_damage(float x, float y);
     void convert_bullets();
 
     void draw_portrait(const char* sheetFile);

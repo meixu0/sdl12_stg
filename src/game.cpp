@@ -306,7 +306,7 @@ void Game::update_game(float dt){
 	{ PlayerPosition pp = player1->get_player_position(); enemyBulletManager_.set_player_pos(pp.x, pp.y); }
 	enemyBulletManager_.update(dt);
 	itemManager->update(dt);
-/* 自动检测并处理关卡过渡 */
+/* 处理关卡过渡 */
 	if (levelManager->auto_transition(frameCounter)) {
 		itemManager->clear_all();
 		itemManager->update(1.0f / 30.0f);

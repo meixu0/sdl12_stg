@@ -11,7 +11,6 @@ public:
     void update_lives(Uint32 lives);
     void update_spell(Uint32 spell);
     void update_graze(Uint32 graze);
-    void update_point(Uint32 point);
     void update_time(Uint32 time);
     void render();
 };

@@ -28,6 +28,9 @@ static int str_to_pattern_type(const char* s) {
     if (strcmp(s, "spiral")             == 0) return 5;
     if (strcmp(s, "spread")             == 0) return 6;
     if (strcmp(s, "ring_aimed_variable")== 0) return 7;
+    if (strcmp(s, "log_spiral")         == 0) return 8;
+    if (strcmp(s, "sinewave")           == 0) return 9;
+    if (strcmp(s, "sinwave")            == 0) return 9;
     return 0;
 }
 
@@ -43,7 +46,7 @@ static int behavior_to_enemy_type(const char* name) {
     if (strcmp(name, "boss_patchouli")   == 0) return BOSS_PATCHOULI;
     if (strcmp(name, "boss_sakuya")      == 0) return BOSS_SAKUYA;
     if (strcmp(name, "boss_remilia")     == 0) return BOSS_REMILIA;
-    if (strcmp(name, "boss_flandre")     == 0) return BOSS_FLANDRE;
+    if (strcmp(name, "boss_youmu")     == 0) return BOSS_YOUMU;
     if (strcmp(name, "boss_extra")       == 0) return BOSS_EXTRA;
     if (strcmp(name, "fairy_red")        == 0) return FAIRY_RED;
     if (strcmp(name, "fairy_green")      == 0) return FAIRY_GREEN;
@@ -184,6 +187,7 @@ static void apply_behavior_difficulty(BehaviorDef& def, cJSON* diff_obj) {
                 ec.patternDesc.spriteID      = cjson_int(pat, "spriteID", ec.patternDesc.spriteID);
                 ec.patternDesc.hitboxRadius  = cjson_float(pat, "hitboxRadius", ec.patternDesc.hitboxRadius);
                 ec.patternDesc.lifeTime      = cjson_float(pat, "lifeTime", ec.patternDesc.lifeTime);
+                ec.patternDesc.angularVelocity = cjson_float(pat, "angularVelocity", ec.patternDesc.angularVelocity);
                 ec.patternDesc.isSplit      = cjson_bool(pat, "isSplit", ec.patternDesc.isSplit);
             }
         }
@@ -264,6 +268,7 @@ static BehaviorDef parse_behavior(cJSON* beh) {
                 ec.patternDesc.spriteID      = cjson_int(pat, "spriteID", 0);
                 ec.patternDesc.hitboxRadius  = cjson_float(pat, "hitboxRadius", 4.0f);
                 ec.patternDesc.lifeTime      = cjson_float(pat, "lifeTime", 6.0f);
+                ec.patternDesc.angularVelocity = cjson_float(pat, "angularVelocity", 0.0f);
                 ec.patternDesc.isSplit      = cjson_bool(pat, "isSplit", false);
             }
             def.emitters.push_back(ec);
@@ -560,6 +565,7 @@ void LevelManager::init_enemy_pool_v2() {
                                             ec.patternDesc.spriteID      = cjson_int(ptn, "spriteID", 0);
                                             ec.patternDesc.hitboxRadius  = cjson_float(ptn, "hitboxRadius", 4.0f);
                                             ec.patternDesc.lifeTime      = cjson_float(ptn, "lifeTime", 6.0f);
+                                            ec.patternDesc.angularVelocity = cjson_float(ptn, "angularVelocity", 0.0f);
                                             ec.patternDesc.isSplit      = cjson_bool(ptn, "isSplit", false);
                                         }
                                         phase.patterns.push_back(ec);
@@ -570,34 +576,26 @@ void LevelManager::init_enemy_pool_v2() {
                             if (!phases.empty()) {
                                 e->set_phases(phases);
                                 e->start_phases();
-                                std::cout << "Boss loaded with " << phases.size() << " ECL attack phases" << std::endl;
+                                //std::cout << "Boss loaded with " << phases.size() << " ECL attack phases" << std::endl;
                             }
                         }
                         break;
                     }
                 }
             }
-
-            // Load spellcard data but DON'T start phase 0 immediately
-            // Boss uses its own attack patterns from the behavior initially.
-            // Spellcard phase starts when boss HP drops below the threshold.
             if (scManager_.load(current_stage)) {
                 e->link_spellcard_manager(&scManager_);
                 if (scManager_.count() > 0) {
                     const SpellcardDef* firstSc = scManager_.get(0);
                     spellcardTriggerHp_ = (firstSc) ? firstSc->hp : 0;
                 }
-                std::cout << "Boss loaded with " << scManager_.count()
-                          << " spellcard(s), trigger at HP �� " << spellcardTriggerHp_
-                          << std::endl;
+                //std::cout << "Boss loaded with " << scManager_.count() << " spellcard(s), trigger at HP �� " << spellcardTriggerHp_ << std::endl;
             } else {
-                std::cout << "No spellcard data found for stage " << current_stage << std::endl;
+                //std::cout << "No spellcard data found for stage " << current_stage << std::endl;
             }
             break;
         }
     }
-
-    std::cout << "Enemy pool initialized (V2 format) with " << enemy_pool.size() << " enemies" << std::endl;
 }
 
 LevelManager::LevelManager() : stage_enemies_data(NULL), current_stage(1), stage_state(STAGE_LOADING), isClearingForMidboss(true), midbossIndex_(1e5), bullet_mgr_(NULL), item_mgr_(NULL), bgm_music_(NULL), bossEnemyIndex_(-1), spellcardTriggerHp_(0), spellcardEntryTimer_(0.0f), nonSpellcardTimer_(0.0f), midbossDefeatedProcessed_(false) {
@@ -615,7 +613,7 @@ void LevelManager::bgm_play(int stage, bool is_boss) {
     const char* music_file = NULL;
     switch (stage) {
         case 1: music_file = is_boss ? "res/music/th07_03.mid" : "res/music/th07_02.mid"; break;
-        case 2: music_file = is_boss ? "res/music/th07_05.mid" : "res/music/th07_04.mid"; break;
+        case 2: music_file = is_boss ? "res/music/th07_05.mid" : "res/music/th07_06.mid"; break;
         case 3: music_file = is_boss ? "res/music/th07_07.mid" : "res/music/th07_06.mid"; break;
         case 4: music_file = is_boss ? "res/music/th07_09.mid" : "res/music/th07_08.mid"; break;
         case 5: music_file = is_boss ? "res/music/th07_11.mid" : "res/music/th07_10.mid"; break;
@@ -635,13 +633,13 @@ void LevelManager::bgm_play(int stage, bool is_boss) {
 void LevelManager::start_stage() {
     stage_state = STAGE_RUNNING;
     if(current_stage != 1) bgm_play(current_stage, false);
-    std::cout << "Stage " << current_stage << " started." << std::endl;
+    //std::cout << "Stage " << current_stage << " started." << std::endl;
 }
 
 void LevelManager::trigger_boss() {
     stage_state = STAGE_BOSS;
     bgm_play(current_stage, true);
-    std::cout << "Stage " << current_stage << " boss triggered." << std::endl;
+    //std::cout << "Stage " << current_stage << " boss triggered." << std::endl;
 }
 
 void LevelManager::trigger_midboss() {
@@ -650,13 +648,13 @@ void LevelManager::trigger_midboss() {
 
 void LevelManager::clear_stage() {
     stage_state = STAGE_CLEAR;
-    std::cout << "Stage " << current_stage << " cleared!" << std::endl;
+    //std::cout << "Stage " << current_stage << " cleared!" << std::endl;
 }
 
 void LevelManager::next_stage() {
     if (current_stage >= TOTAL_STAGES) {
         stage_state = STAGE_ALL_CLEAR;
-        std::cout << "All stages cleared!" << std::endl;
+        //std::cout << "All stages cleared!" << std::endl;
         return;
     }
     clear_enemy_pool();
@@ -664,7 +662,7 @@ void LevelManager::next_stage() {
     load_stage(current_stage);
     init_enemy_pool();
     stage_state = STAGE_RUNNING;
-    std::cout << "Stage " << current_stage << " started." << std::endl;
+    //std::cout << "Stage " << current_stage << " started." << std::endl;
 }
 
 void LevelManager::enter_stage(int stage) {
@@ -685,7 +683,7 @@ void LevelManager::enter_boss(int stage) {
 
 bool LevelManager::auto_transition(Uint32 frameCounter) {
 	if (stage_state == STAGE_RUNNING) {
-/* ��⵱ǰ�ؿ������е����Ƿ������ɲ�ȫ�������� */
+/* ��⵱ǰ�ؿ������е����Ƿ������ɲ�ȫ��������??? */
 		for (size_t i = 0; i < enemy_pool.size(); ++i) {
 			Enemy* e = enemy_pool[i];
 			if (e == NULL) continue;
@@ -725,7 +723,7 @@ bool LevelManager::auto_transition(Uint32 frameCounter) {
 		if (next > TOTAL_STAGES) {
 			stage_state = STAGE_ALL_CLEAR;
 			clear_enemy_pool();
-			std::cout << "All stages cleared!" << std::endl;
+			//std::cout << "All stages cleared!" << std::endl;
 		} else {
 			enter_stage(next);
 		}
@@ -776,14 +774,12 @@ void LevelManager::update_spellcards(float dt) {
         bool timerTrigger = (nonSpellcardTimer_ >= 28.0f);
 
         if (hpTrigger) {
-            std::cout << "Boss HP (" << boss->get_hp() << ") �� threshold ("
-                      << spellcardTriggerHp_ << ") �� starting spellcard!" << std::endl;
+            //std::cout << "Boss HP (" << boss->get_hp() << ") �� threshold (" << spellcardTriggerHp_ << ") �� starting spellcard!" << std::endl;
             start_spellcard_phase(0);
             return;
         }
         if (timerTrigger) {
-            std::cout << "Non-spellcard timer expired (" << nonSpellcardTimer_
-                      << "s) �� starting spellcard!" << std::endl;
+            //std::cout << "Non-spellcard timer expired (" << nonSpellcardTimer_ << "s) �� starting spellcard!" << std::endl;
             start_spellcard_phase(0);
             return;
         }
@@ -801,10 +797,10 @@ void LevelManager::update_spellcards(float dt) {
     //Check timeout
     if (scManager_.is_timeout()) {
         scManager_.end(false);  // not captured
-        std::cout << "Spellcard timeout! Converting bullets to P items." << std::endl;
+        //std::cout << "Spellcard timeout! Converting bullets to P items." << std::endl;
         convert_boss_bullets_to_p_items();
         EnemyScManager::clear_bullets(bullet_mgr_);
-        std::cout << "Spellcard timeout!" << std::endl;
+        //std::cout << "Spellcard timeout!" << std::endl;
         boss->start_position_interp(60.0f / 60.0f, 4, -128.0f, 32.0f);
         boss->deactivate();
         if (item_mgr_) {
@@ -816,10 +812,10 @@ void LevelManager::update_spellcards(float dt) {
     }
     if (boss->get_hp() <= 0) {
         scManager_.end(true);  // captured
-        std::cout << "Spellcard captured! Converting bullets to P items." << std::endl;
+        //std::cout << "Spellcard captured! Converting bullets to P items." << std::endl;
         convert_boss_bullets_to_p_items();
         EnemyScManager::clear_bullets(bullet_mgr_);
-        std::cout << "Spellcard captured! Boss defeated." << std::endl;
+        //std::cout << "Spellcard captured! Boss defeated." << std::endl;
         if (item_mgr_) {
             float ex = boss->get_x() + boss->get_hitbox_w() * 0.5f;
             float ey = boss->get_y() + boss->get_hitbox_h() * 0.5f;
@@ -831,14 +827,14 @@ void LevelManager::update_spellcards(float dt) {
 
 void LevelManager::convert_boss_bullets_to_p_items() {
     if (bullet_mgr_ && item_mgr_) {
-        std::cout << "Converting all enemy bullets to P items..." << std::endl;
+        //std::cout << "Converting all enemy bullets to P items..." << std::endl;
         bullet_mgr_->convert_all_to_p_items(item_mgr_);
     }
 }
 
 void LevelManager::skip_stage_time(float seconds) {
     if (seconds <= 0) return;
-    std::cout << "Skipping stage time by " << seconds << "s..." << std::endl;
+    //std::cout << "Skipping stage time by " << seconds << "s..." << std::endl;
     for (size_t i = 0; i < enemy_pool.size(); i++) {
         if (enemy_pool[i] && enemy_pool[i]->has_pending_spawn())
             enemy_pool[i]->adjust_time_alive(seconds);
@@ -859,6 +855,7 @@ void LevelManager::display_boss_hp_line_and_remaining_time(Enemy* currentBoss){
         }else{
             SDL_FillRect(screen, &src, lineRed);
         }
+        draw_ascii_number((int)currentBoss->get_remaining_time(), 512, 9, 2);
     }else{
         SDL_Rect srcLeft = {5, 15, 62, 10};
         SDL_FillRect(screen, &srcLeft, lineRed);
@@ -942,11 +939,9 @@ void LevelManager::load_stage(int stage) {
         }
         return;
     }
-
-    // V2 format uses "meta" key instead of stage_N array
     cJSON* meta = cJSON_GetObjectItem(stage_enemies_data, "meta");
     if (meta && cJSON_IsObject(meta)) {
-        std::cout << "Successfully loaded: " << file_path << " (V2 format)" << std::endl;
+        //std::cout << "Successfully loaded: " << file_path << " (V2 format)" << std::endl;
         return;
     }
 
@@ -957,8 +952,8 @@ void LevelManager::load_stage(int stage) {
         return;
     }
 
-    std::cout << "Successfully loaded: " << file_path << std::endl;
-    std::cout << "Total enemies in " << key << ": " << cJSON_GetArraySize(stage_array) << std::endl;
+    //std::cout << "Successfully loaded: " << file_path << std::endl;
+    //std::cout << "Total enemies in " << key << ": " << cJSON_GetArraySize(stage_array) << std::endl;
 }
 
 void LevelManager::load_boss_stage(int stage) {
@@ -991,7 +986,7 @@ void LevelManager::load_boss_stage(int stage) {
             std::cerr << "JSON parse error: " << error_ptr << std::endl;
         return;
     }
-    std::cout << "Successfully loaded: " << file_path << std::endl;
+    //std::cout << "Successfully loaded: " << file_path << std::endl;
 }
 
 void LevelManager::init_enemy_pool() {
@@ -999,13 +994,12 @@ void LevelManager::init_enemy_pool() {
         std::cerr << "Error: stage_enemies_data is NULL. Call read_stage_data first." << std::endl;
         return;
     }
-/* ��ʵ��ֻ��v2��json���Ѿ���v1�Ľ���ȥ�ˣ���������ֻ����v2�Ľ������� */
     cJSON* meta = cJSON_GetObjectItem(stage_enemies_data, "meta");
     if (meta && cJSON_IsObject(meta)) {
         init_enemy_pool_v2();
         return;
     }
-    std::cout << "Enemy pool initialized with " << enemy_pool.size() << " enemies" << std::endl;
+    //std::cout << "Enemy pool initialized with " << enemy_pool.size() << " enemies" << std::endl;
 }
 
 int LevelManager::get_enemy_count() const {
@@ -1036,7 +1030,7 @@ void LevelManager::update_all_enemies(float px, float py, Uint32 &frameCounter_,
         }
         if(enemy_pool[i] != NULL && enemy_pool[i]->get_is_midboss() && enemy_pool[i]->is_active() && isClearingForMidboss){
             midbossIndex_ = i;
-            std::cout<<"it's time to trigger clear";
+            //std::cout<<"it's time to trigger clear";
             trigger_midboss_clear(frameCounter_, midbossEnterFrame_, prevStageState, currentStageState);
         }
     }
@@ -1054,12 +1048,11 @@ void LevelManager::update_all_enemies(float px, float py, Uint32 &frameCounter_,
             //std::cout << "[DEFEAT] i=" << i << " isMid=" << isMid << " isBoss=" << isBoss<< " dead=" << dead << " hpZero=" << hpZero << " hp=" << e->get_hp()<< " type=" << e->get_enemy_type() << std::endl;
             if (dead && hpZero) {
                 midbossDefeatedProcessed_ = true;
-                std::cout << "Main enemy defeated! Converting bullets to P items." << std::endl;
+                //std::cout << "Main enemy defeated! Converting bullets to P items." << std::endl;
                 convert_boss_bullets_to_p_items();
                 if (isMid) {
                     float skip_amount = (e->get_emerge_time() + e->get_duration_time()) - e->get_time_alive();
                     if (skip_amount < 0) skip_amount = 0;
-                    std::cout << "[DEFEAT] midboss time_jump: skip=" << skip_amount << " emerge=" << e->get_emerge_time() << " dur=" << e->get_duration_time() << " alive=" << e->get_time_alive() << std::endl;
                     if (skip_amount > 0) skip_stage_time(skip_amount);
                 }
                 break;

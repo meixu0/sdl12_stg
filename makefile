@@ -5,7 +5,7 @@ CFLAGS = -Wall -Isrc -g
 
 EXT =
 
-LIBS_BASE = -lSDL_image -lSDL_ttf -lSDL_mixer -lSDL_gfx -lphysfs
+LIBS_BASE = -lSDL_image -lSDL_ttf -lSDL_mixer -lphysfs
 
 ifeq ($(OS), Windows_NT)
     EXT = .exe

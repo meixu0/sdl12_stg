@@ -40,7 +40,7 @@ private:
     int bossEnemyIndex_;
     int spellcardTriggerHp_;       // Boss HP threshold to trigger spellcard
     float spellcardEntryTimer_;    // Timer for spellcard entry animation (2s)
-    float nonSpellcardTimer_;      // ECL 1680-frame (28s) timer for non-spellcard timeout
+    float nonSpellcardTimer_;
     bool midbossDefeatedProcessed_;
 
     void start_spellcard_phase(int phaseIndex);

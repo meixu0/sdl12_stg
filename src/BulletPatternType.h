@@ -6,3 +6,5 @@
 #define PAT_RANDOM_SPEED 5
 #define PAT_RANDOM_BOTH 6
 #define PAT_RING_AIMED 7
+#define PAT_SPIRAL 8
+#define PAT_SINEWAVE 9

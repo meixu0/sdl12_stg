@@ -85,8 +85,6 @@ void InfoArea::update_score(Uint32 sc)      { currentScore = sc; }
 void InfoArea::update_lives(Uint32 l)       { lives = l; }
 void InfoArea::update_spell(Uint32 s)       { spell = s; }
 void InfoArea::update_graze(Uint32 g)       { graze = g; }
-void InfoArea::update_point(Uint32 p)       { point = p; }
-void InfoArea::update_time(Uint32 t)        { time_ = t; }
 
 void InfoArea::render() {
     SDL_Rect bar = {BAR_X, 0, BAR_W, BAR_H};
@@ -119,11 +117,5 @@ void InfoArea::render() {
     draw_powers(VAL_X, ry[4], Player::get_power());
 
     draw_blit(7, LBL_X, ry[5]);  // Graze
-    draw_num(VAL_X, ry[5], graze, 5);
-
-    draw_blit(8, LBL_X, ry[6]);  // Point
-    draw_num(VAL_X, ry[6], point, 5);
-
-    draw_blit(9, LBL_X, ry[7]);  // Time
-    draw_num(VAL_X, ry[7], time_, 5);
+    draw_num(VAL_X, ry[5], graze, 3);
 }

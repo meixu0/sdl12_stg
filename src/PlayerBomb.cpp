@@ -4,6 +4,7 @@
 #include "GameBackground.h"
 #include "EnemyBulletManager.h"
 #include <cstdlib>
+#include <cmath>
 static SDL_Rect portraitRects[4] = {
     {  0, 0, 128, 512},
     {128, 0, 128, 512},
@@ -36,6 +37,7 @@ void PlayerBomb::trigger(int type, int playerType, float x, float y, LevelManage
         etamaHalfSheet = IMG_Load("res/etama/etamahalf.png");
     convert_bullets();
     clear_zako();
+    take_damage(x, y);
 }
 
 void PlayerBomb::update(float dt) {
@@ -103,6 +105,19 @@ void PlayerBomb::clear_zako() {
             e->deactivate();
     }
 }
+
+void PlayerBomb::take_damage(float x, float y){
+    if(!levelMgr_)  return;
+    int count = levelMgr_->get_enemy_count();
+    for (int i = 0; i < count; i++) {
+        Enemy* e = levelMgr_->get_enemy(i);
+        float ex = e->get_x();
+        float ey = e->get_y();
+        float distance = sqrt(std::pow((ex - x),2) + std::pow((ey - y) ,2));
+        if(distance <= 300.0f)  e->take_damage(1000);
+    }
+}
+
 void PlayerBomb::draw_portrait(const char* sheetFile) {
     static SDL_Surface* reimuSheet  = NULL;
     static SDL_Surface* marisaSheet = NULL;

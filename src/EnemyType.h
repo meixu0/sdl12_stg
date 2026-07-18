@@ -10,5 +10,5 @@
 #define BOSS_PATCHOULI 9
 #define BOSS_SAKUYA 10
 #define BOSS_REMILIA 11
-#define BOSS_FLANDRE 12
+#define BOSS_YOUMU 12
 #define BOSS_EXTRA 13

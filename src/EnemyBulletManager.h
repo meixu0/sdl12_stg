@@ -24,6 +24,11 @@ struct Bullet {
   bool fromBoss;
   int splitCount;
   float splitTimer;
+  bool isOrbiting;
+  float orbitCenterX;
+  float orbitCenterY;
+  float orbitRadius;
+  float orbitAngle;
 };
 struct EnemyBulletPatternDesc {
   int patternType;
@@ -36,11 +41,10 @@ struct EnemyBulletPatternDesc {
   int spriteID;
   float hitboxRadius;
   float lifeTime;
+  float angularVelocity;
   bool fromBoss;
   bool isSplit;
-  EnemyBulletPatternDesc() : patternType(0), mainCnt(0), subCnt(0), angleOffset(0), angleInterval(0),
-                              speed1(0), speed2(0), spriteID(0), hitboxRadius(0), lifeTime(0),
-                              fromBoss(false), isSplit(false) {}
+  EnemyBulletPatternDesc() : patternType(0), mainCnt(0), subCnt(0), angleOffset(0), angleInterval(0), speed1(0), speed2(0), spriteID(0), hitboxRadius(0), lifeTime(0), angularVelocity(0), fromBoss(false), isSplit(false) {}
 };
 struct EmitterConfig {
   float emitInterval;
@@ -63,7 +67,7 @@ private:
 public:
   EnemyBulletManager();
   ~EnemyBulletManager();
-  void spawn_bullet(float x, float y, float angle, float speed, int spriteID, float hitboxRadius, float lifeTime, int enemyType, int enemyID, bool fromBoss, bool isSplit = false, int splitGen = 0);
+  void spawn_bullet(float x, float y, float angle, float speed, int spriteID, float hitboxRadius, float lifeTime, int enemyType, int enemyID, bool fromBoss, bool isSplit = false, int splitGen = 0, float spawnAngVel = 0.0f, float spawnAccel = 0.0f, float orbitCenterX = 0.0f, float orbitCenterY = 0.0f);
   void spawn_pattern(const EnemyBulletPatternDesc &desc, float originX, float originY, float playerX, float playerY, int enemyType, int enemyID, bool fromBoss);
   void update(float dt);
   void render();

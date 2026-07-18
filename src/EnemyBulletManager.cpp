@@ -6,10 +6,10 @@ static SDL_Surface *bulletSheet = NULL;
 static SDL_Rect whiteEnemyBullet = {0, 57, 16, 16};
 static SDL_Surface *etamaHalfSheet = NULL;
 static SDL_Rect bulletSrc[4] = {
-    {128, 64, 16, 16}, /* ºì */
-    {128, 80, 16, 16}, /* ÂÌ */
-    {128, 96, 16, 16}, /* À¶ */
-    {128, 112, 16, 16}, /* »Æ */
+    {128, 64, 16, 16}, /* ï¿½ï¿½ */
+    {128, 80, 16, 16}, /* ï¿½ï¿½ */
+    {128, 96, 16, 16}, /* ï¿½ï¿½ */
+    {128, 112, 16, 16}, /* ï¿½ï¿½ */
 };
 static float randf() { return (float)rand() / (float)RAND_MAX; }
 EnemyBulletManager::EnemyBulletManager() {
@@ -21,6 +21,11 @@ EnemyBulletManager::EnemyBulletManager() {
   for (int i = 0; i < POOL_SIZE; i++) {
     bullets[i].fromBoss = false;
     bullets[i].state = SLEEPING;
+    bullets[i].isOrbiting = false;
+    bullets[i].orbitCenterX = 0.0f;
+    bullets[i].orbitCenterY = 0.0f;
+    bullets[i].orbitRadius = 0.0f;
+    bullets[i].orbitAngle = 0.0f;
     splitPool[i].fromBoss = false;
     splitPool[i].state = SLEEPING;
   }
@@ -30,7 +35,7 @@ EnemyBulletManager::EnemyBulletManager() {
 
 EnemyBulletManager::~EnemyBulletManager() {}
 
-void EnemyBulletManager::spawn_bullet(float originX, float originY, float angle, float speed, int spriteID, float hitboxRadius, float lifeTime, int enemyType, int enemyID, bool fromBoss, bool isSplit, int splitGen) {
+void EnemyBulletManager::spawn_bullet(float originX, float originY, float angle, float speed, int spriteID, float hitboxRadius, float lifeTime, int enemyType, int enemyID, bool fromBoss, bool isSplit, int splitGen, float spawnAngVel, float spawnAccel, float orbitCenterX, float orbitCenterY) {
   for (int i = 0; i < POOL_SIZE; i++) {
     int idx = (nextBulletIndex + i) % POOL_SIZE;
     if (bullets[idx].state == SLEEPING) {
@@ -47,13 +52,27 @@ void EnemyBulletManager::spawn_bullet(float originX, float originY, float angle,
       b.lifeTime = lifeTime;
       b.hitboxRadius = hitboxRadius;
       b.color = spriteID;
-      b.acceleration = 0.0f;
-      b.angularVelocity = 0.0f;
+      b.acceleration = spawnAccel;
+      b.angularVelocity = spawnAngVel;
       b.enemyType = enemyType;
       b.enemyID = enemyID;
       b.fromBoss = fromBoss;
       b.splitCount = splitGen;
       b.splitTimer = isSplit ? 1.5f : 0.0f;
+      b.isOrbiting = (orbitCenterX != 0.0f || orbitCenterY != 0.0f);
+      if (b.isOrbiting) {
+        float dx = originX - orbitCenterX;
+        float dy = originY - orbitCenterY;
+        b.orbitCenterX = orbitCenterX;
+        b.orbitCenterY = orbitCenterY;
+        b.orbitRadius = sqrtf(dx * dx + dy * dy);
+        b.orbitAngle = atan2f(dy, dx);
+      } else {
+        b.orbitCenterX = 0.0f;
+        b.orbitCenterY = 0.0f;
+        b.orbitRadius = 0.0f;
+        b.orbitAngle = 0.0f;
+      }
       nextBulletIndex = (idx + 1) % POOL_SIZE;
       return;
     }
@@ -62,56 +81,72 @@ void EnemyBulletManager::spawn_bullet(float originX, float originY, float angle,
 
 void EnemyBulletManager::spawn_pattern(const EnemyBulletPatternDesc &desc, float originX, float originY, float playerX, float playerY, int enemyType, int enemyID, bool fromBoss) {
   float aimAngle = atan2f(playerY - originY, playerX - originX);
-  for (int layer = 0; layer < desc.subCnt; layer++) {
-    float layerSpeed = desc.speed1;
-    if (desc.subCnt > 1)
-      layerSpeed = desc.speed1 - (desc.speed1 - desc.speed2) * layer / (desc.subCnt - 1);
-    for (int i = 0; i < desc.mainCnt; i++) {
-      float angle, speed;
+  for (int i = 0; i < desc.mainCnt; i++) {
+    for (int layer = 0; layer < desc.subCnt; layer++) {
+      float layerSpeed = desc.speed1;
+      if (desc.subCnt > 1)
+        layerSpeed = desc.speed1 - (desc.speed1 - desc.speed2) * layer / (desc.subCnt - 1);
+      float angle, speed, angVel, accel;
       switch (desc.patternType) {
       case PAT_FAN_AIMED:
         angle = desc.angleOffset;
-        angle +=
-            (i % 2 == 0 ? 1.0f : -1.0f) * (i / 2 + i % 2) * desc.angleInterval;
+        angle += (i % 2 == 0 ? 1.0f : -1.0f) * (i / 2 + i % 2) * desc.angleInterval;
         angle += aimAngle;
         speed = layerSpeed;
+        angVel = 0.0f; accel = 0.0f;
         break;
       case PAT_FAN:
         angle = desc.angleOffset;
         angle +=
             (i % 2 == 0 ? 1.0f : -1.0f) * (i / 2 + i % 2) * desc.angleInterval;
         speed = layerSpeed;
+        angVel = 0.0f; accel = 0.0f;
         break;
       case PAT_CIRCLE_AIMED:
         angle = aimAngle + desc.angleOffset + i * 2 * PI / desc.mainCnt + layer * desc.angleInterval;
         speed = layerSpeed;
+        angVel = 0.0f; accel = 0.0f;
         break;
       case PAT_CIRCLE:
         angle = desc.angleOffset + i * 2 * PI / desc.mainCnt + layer * desc.angleInterval;
         speed = layerSpeed;
+        angVel = 0.0f; accel = 0.0f;
         break;
       case PAT_RANDOM_ANGLE:
         angle = desc.angleOffset + randf() * (desc.angleInterval - desc.angleOffset);
         speed = layerSpeed;
+        angVel = 0.0f; accel = 0.0f;
         break;
       case PAT_RANDOM_SPEED:
         angle = desc.angleOffset + i * 2 * PI / desc.mainCnt;
         speed = desc.speed2 + randf() * (desc.speed2 - desc.speed1);
+        angVel = 0.0f; accel = 0.0f;
         break;
       case PAT_RANDOM_BOTH:
         angle = desc.angleOffset + randf() * (desc.angleInterval - desc.angleOffset);
         speed = desc.speed2 + randf() * (desc.speed2 - desc.speed1);
+        angVel = 0.0f; accel = 0.0f;
         break;
       case PAT_RING_AIMED:
         angle = aimAngle + desc.angleOffset + (i + 0.5f) * 2 * PI / desc.mainCnt + layer * desc.angleInterval;
         speed = layerSpeed;
+        angVel = 0.0f; accel = 0.0f;
+        break;
+      case PAT_SPIRAL:
+        angle = desc.angleOffset + i * 2 * PI / desc.mainCnt;
+        speed = layerSpeed;
+        angVel = desc.angularVelocity;
+        accel = speed * fabsf(desc.angularVelocity) * 0.5f;
+        break;
+      default:
+        angle = 0.0f; speed = 0.0f; angVel = 0.0f; accel = 0.0f;
         break;
       }
-      spawn_bullet(originX, originY, angle, speed, desc.spriteID,desc.hitboxRadius, desc.lifeTime, enemyType, enemyID,fromBoss, desc.isSplit);
+      spawn_bullet(originX, originY, angle, speed, desc.spriteID, desc.hitboxRadius, desc.lifeTime, enemyType, enemyID, fromBoss, desc.isSplit, 0, angVel, accel);
     }
   }
 }
-// deferred split spawn request (used in update)
+// deferred split spawn request
 struct SplitSpawnRequest {
   float x, y;
   float tangentX, tangentY;
@@ -151,7 +186,7 @@ void EnemyBulletManager::update(float dt) {
     if (b.splitTimer > 0.0f) {
       b.splitTimer -= dt;
       if (b.splitTimer <= 0.0f) {
-/* ×îÉî5´ú */
+/* ï¿½ï¿½ï¿½ï¿½5ï¿½ï¿½ */
         if (b.splitCount >= 5) {
           b.splitTimer = 0.0f;
         } else {
@@ -160,7 +195,7 @@ void EnemyBulletManager::update(float dt) {
         SplitSpawnRequest req;
         req.x = b.x;
         req.y = b.y;
-/* ½»ÌæÄæÊ±Õë/Ë³Ê±ÕëÇÐÏß·½Ïò */
+/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½/Ë³Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ß·ï¿½ï¿½ï¿½ */
         if (b.splitCount % 2 == 1) {
           req.tangentX = -b.speedY;
           req.tangentY = b.speedX;
@@ -179,7 +214,14 @@ void EnemyBulletManager::update(float dt) {
         }
       }
     }
-    if (b.acceleration != 0.0f || b.angularVelocity != 0.0f) {
+    if (b.isOrbiting) {
+      b.orbitAngle += b.angularVelocity * dt;
+      b.x = b.orbitCenterX + cosf(b.orbitAngle) * b.orbitRadius;
+      b.y = b.orbitCenterY + sinf(b.orbitAngle) * b.orbitRadius;
+      float tangentSpeed = b.orbitRadius * fabsf(b.angularVelocity);
+      b.speedX = -sinf(b.orbitAngle) * tangentSpeed;
+      b.speedY = cosf(b.orbitAngle) * tangentSpeed;
+    } else if (b.acceleration != 0.0f || b.angularVelocity != 0.0f) {
       float curSpeed = sqrtf(b.speedX * b.speedX + b.speedY * b.speedY);
       float curAngle = atan2f(b.speedY, b.speedX);
       float newAngle = curAngle + b.angularVelocity * dt;
@@ -188,15 +230,35 @@ void EnemyBulletManager::update(float dt) {
         newSpeed = 0.0f;
       b.speedX = cosf(newAngle) * newSpeed;
       b.speedY = sinf(newAngle) * newSpeed;
+      b.x += b.speedX * dt;
+      b.y += b.speedY * dt;
+    } else {
+      b.x += b.speedX * dt;
+      b.y += b.speedY * dt;
     }
-    b.x += b.speedX * dt;
-    b.y += b.speedY * dt;
     b.lifeTime -= dt;
     bool outOfBounds = (b.x > 544.0f + 16.0f) || (b.y > 600.0f + 16.0f) || (b.x < -16.0f);
     if (b.y + 16.0f < -64.0f)
       outOfBounds = true;
     if (outOfBounds) {
-      b.state = SLEEPING;
+      if (b.isOrbiting) {
+        if (b.x > 544.0f + 16.0f) {
+          b.x -= 544.0f + 32.0f;
+          b.orbitCenterX -= 544.0f + 32.0f;
+        } else if (b.x < -16.0f) {
+          b.x += 544.0f + 32.0f;
+          b.orbitCenterX += 544.0f + 32.0f;
+        }
+        if (b.y > 600.0f + 16.0f) {
+          b.y -= 600.0f + 32.0f;
+          b.orbitCenterY -= 600.0f + 32.0f;
+        } else if (b.y + 16.0f < -64.0f) {
+          b.y += 600.0f + 32.0f;
+          b.orbitCenterY += 600.0f + 32.0f;
+        }
+      } else {
+        b.state = SLEEPING;
+      }
     }
   }
   for (size_t j = 0; j < deferredSplits.size(); j++) {
