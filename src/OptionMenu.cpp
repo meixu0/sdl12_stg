@@ -51,14 +51,18 @@ void OptionMenu::handle_events(SDL_Event &e){
 void OptionMenu::render(){
     SDL_BlitSurface(select00img, NULL, screen, NULL);
     if(titleSheet == NULL) return;
-    SDL_Rect playerSrc = (currentRow == 0)
-        ? (SDL_Rect){0, 128, 96, 32}
-        : (SDL_Rect){0, 192, 96, 32};
+    SDL_Rect playerSrc;
+    if (currentRow == 0)
+        { playerSrc.x = 0; playerSrc.y = 128; playerSrc.w = 96; playerSrc.h = 32; }
+    else
+        { playerSrc.x = 0; playerSrc.y = 192; playerSrc.w = 96; playerSrc.h = 32; }
     SDL_Rect playerDst = {64, 200, 0, 0};
     SDL_BlitSurface(titleSheet, &playerSrc, screen, &playerDst);
-    SDL_Rect bombSrc = (currentRow == 1)
-        ? (SDL_Rect){80, 384, 80, 32}
-        : (SDL_Rect){80, 448, 80, 32};
+    SDL_Rect bombSrc;
+    if (currentRow == 1)
+        { bombSrc.x = 80; bombSrc.y = 384; bombSrc.w = 80; bombSrc.h = 32; }
+    else
+        { bombSrc.x = 80; bombSrc.y = 448; bombSrc.w = 80; bombSrc.h = 32; }
     SDL_Rect bombDst = {64, 300, 0, 0};
     SDL_BlitSurface(titleSheet, &bombSrc, screen, &bombDst);
     int numY_sel = 256, numY_norm = 320;
@@ -73,10 +77,10 @@ void OptionMenu::render(){
     }
 
     // Bomb
-    for(int n = 0; n < 9; n++){
-        bool sel = (n == playerBombs_ - 1);
-        SDL_Rect src = {(Sint16)(32 + n * 32), (Sint16)(sel ? numY_sel : numY_norm), 32, 32};
-        SDL_Rect dst = {(Sint16)(numStartX + n * 32), 300, 0, 0};
+    for(int n2 = 0; n2 < 9; n2++){
+        bool sel = (n2 == playerBombs_ - 1);
+        SDL_Rect src = {(Sint16)(32 + n2 * 32), (Sint16)(sel ? numY_sel : numY_norm), 32, 32};
+        SDL_Rect dst = {(Sint16)(numStartX + n2 * 32), 300, 0, 0};
         SDL_BlitSurface(titleSheet, &src, screen, &dst);
     }
 }

@@ -10,7 +10,7 @@ static SDL_Rect itemSrc[8] = {
 	{64,  64, 16, 16},  // Full Power
 	{80,  64, 16, 16},  // Life
 	{96,  64, 16, 16},  // Point Bullet
-	{96,  64, 16, 16},  // Score Smallï¼ˆç¬¦å¡å›žæ”¶å¼¹ç‚¹ï¼‰
+	{96,  64, 16, 16}, /* Score Small£¨·û¿¨»ØÊÕµ¯µã£© */
 };
 Mix_Chunk* ItemManager::powerup00 = NULL;
 
@@ -21,7 +21,7 @@ int ItemManager::powerItemCountForScore = 0;
 
 const float ItemManager::STATE2_DURATION = 1.0f;
 const float ItemManager::MAGNET_SPEED   = 480.0f;   // 8 px/frame * 60
-const float ItemManager::GRAVITY        = 108.0f;   // 0.03 px/frameÂ² * 60 * 60
+const float ItemManager::GRAVITY        = 108.0f; /* 0.03 px/frame^2 * 60 * 60 */
 const float ItemManager::MAX_FALL_SPEED = 180.0f;   // 3 px/frame * 60
 const float ItemManager::UPWARD_DRIFT   = -132.0f;  // -2.2 px/frame * 60
 const float ItemManager::COLLECT_RADIUS = 16.0f;
@@ -88,7 +88,7 @@ void ItemManager::spawn_item(float x, float y, int itemType, int state) {
 
             if (state == 2) {
                 // Random target position
-                it->targetX = x + (rand() % 289) - 144;  // x Â±144
+                it->targetX = x + (rand() % 289) - 144; /* x ¡À144 */
                 it->targetY = y + (rand() % 193) - 128;  // y -128..+64
                 if (it->targetX < 48)  it->targetX = 48;
                 if (it->targetX > 336) it->targetX = 336;
@@ -206,8 +206,8 @@ void ItemManager::update(float dt) {
                             }
                             Player::set_power(Player::get_power() + 1);
                             score += 10;
-                            for (int t = 0; t < 11; t++) {
-                                if (Player::get_power() == POWER_UP_THRESHOLDS[t]) {
+                            for (int t2 = 0; t2 < 11; t2++) {
+                                if (Player::get_power() == POWER_UP_THRESHOLDS[t2]) {
                                     // TODO: power-up popup
                                     break;
                                 }

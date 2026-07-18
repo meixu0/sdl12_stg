@@ -31,19 +31,19 @@ struct EnemyConfig{
     float bezierDuration;
     float moveAngle;
     float angularVelocity;
-    float acceleration;      // æ ‡é‡åŠ é€Ÿåº¦ px/sÂ²
-    float minPlayerDist;     // ä¸ç©å®¶æœ€å°è·ç¦»
+    float acceleration; /* ±êÁ¿¼ÓËÙ¶È px/s^2 */
+    float minPlayerDist; /* ÓëÍæ¼Ò×îĞ¡¾àÀë */
     int enemyType;
     int enemyID;
     bool isMidboss;
 };
-// â”€â”€ Phase sequencer struct (ECL Sub26 attack cycle) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+/* ©¤©¤ Phase sequencer struct (ECL Sub26 attack cycle) ©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤ */
 struct BossPhaseDef {
-    float duration;                                   // seconds this phase runs
-    std::vector<EmitterConfig> patterns;              // emitters active during this phase
-    float moveToX = 0, moveToY = 0;                   // optional move target when this phase starts
-    float moveDuration = 0;                            // position_interp duration (0 = no move)
-    int   moveEasing = 4;                              // easing: 0=linear, 4=decelerate
+    float duration;
+    std::vector<EmitterConfig> patterns;
+    float moveToX, moveToY;
+    float moveDuration;
+    int   moveEasing;
 };
 
 class Enemy{
@@ -55,7 +55,7 @@ private:
     float playerX;
     float playerY;
     int hp;
-    int totalHp;       // åˆå§‹æ€» HP
+    int totalHp; /* ³õÊ¼×Ü HP */
     int enemyType;
     int enemyID;
     bool isActive;
@@ -91,28 +91,28 @@ private:
     float moveDuration;       // ECL position_interp duration (seconds)
     float moveElapsed;        // ECL position_interp elapsed time
     int   moveEasing;         // ECL easing: 0=linear, 4=decelerate
-    float moveAngle;          // å½“å‰è¿åŠ¨è§’åº¦ (å¼§åº¦)
-    float angularVelocity;    // è§’é€Ÿåº¦ (rad/s)
-    float accel;              // æ ‡é‡åŠ é€Ÿåº¦ (px/sÂ²)
-    float minPlayerDist;      // ä¸ç©å®¶ä¿æŒçš„æœ€å°è·ç¦»
-    // ECL move_bounds_set support â€” constrains boss movement area
+    float moveAngle; /* µ±Ç°ÔË¶¯½Ç¶È (»¡¶È) */
+    float angularVelocity; /* ½ÇËÙ¶È (rad/s) */
+    float accel; /* ±êÁ¿¼ÓËÙ¶È (px/s^2) */
+    float minPlayerDist; /* ÓëÍæ¼Ò±£³ÖµÄ×îĞ¡¾àÀë */
+/* ECL move_bounds_set support ¡ª constrains boss movement area */
     float moveMinX, moveMaxX, moveMinY, moveMaxY;
     bool  hasMoveBounds;
-    int spriteRow;            // ç²¾çµå›¾è¡Œç´¢å¼• (0-15)
-    float spriteAnimTimer;    // åŠ¨ç”»è®¡æ—¶å™¨
+    int spriteRow; /* ¾«ÁéÍ¼ĞĞË÷Òı (0-15) */
+    float spriteAnimTimer; /* ¶¯»­¼ÆÊ±Æ÷ */
     float clamp(float value, float min_, float max_);
     float cubic_bezier(float t, float p0, float p1, float p2, float p3);
-    void compute_axis_speed();  // æ ¹æ® movePattern è®¡ç®— axisSpeed
-    float axisSpeedX;         // æœ¬å¸§é€Ÿåº¦ x åˆ†é‡
-    float axisSpeedY;         // æœ¬å¸§é€Ÿåº¦ y åˆ†é‡
+    void compute_axis_speed(); /* ¸ù¾İ movePattern ¼ÆËã axisSpeed */
+    float axisSpeedX; /* ±¾Ö¡ËÙ¶È x ·ÖÁ¿ */
+    float axisSpeedY; /* ±¾Ö¡ËÙ¶È y ·ÖÁ¿ */
     SDL_Surface* get_zako_sprite(int row);
     SDL_Surface* get_boss_sprite(int col);
     static Mix_Chunk* tan00;
     //Phase sequencer
     std::vector<BossPhaseDef> bossPhases_;
-    int currentPhase_ = -1;
-    float phaseTimer_ = 0.0f;
-    bool isPhasedBoss_ = false;
+    int currentPhase_;
+    float phaseTimer_;
+    bool isPhasedBoss_;
     void advance_phase();
 public:
     struct EmitterRuntime {

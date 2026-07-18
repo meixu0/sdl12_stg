@@ -47,11 +47,11 @@ private:
 	PlayerBullet* next_;
 	bool isHit;
 	float sideBulletRotateAngle_;
-	float velX_, velY_;     // é¢„è®¡ç®—é€Ÿåº¦åˆ†é‡
-	float targetX_, targetY_; // å­æœºå¼¹è¿½è¸ªç›®æ ‡
-	float homingSpeed_;      // å½“å‰è¿½è¸ªé€Ÿåº¦
-	SDL_Surface* rotatedSurface_; // å­æœºå¼¹é¢„æ—‹è½¬è´´å›¾
-	float pivotX_, pivotY_;  // å·¦ä¸‹è§’æ—‹è½¬ä¸­å¿ƒåœ¨è´´å›¾ä¸­çš„åç§»
+	float velX_, velY_; /* Ô¤¼ÆËãËÙ¶È·ÖÁ¿ */
+	float targetX_, targetY_; /* ×Ó»úµ¯×·×ÙÄ¿±ê */
+	float homingSpeed_; /* µ±Ç°×·×ÙËÙ¶È */
+	SDL_Surface* rotatedSurface_; /* ×Ó»úµ¯Ô¤Ğı×ªÌùÍ¼ */
+	float pivotX_, pivotY_; /* ×óÏÂ½ÇĞı×ªÖĞĞÄÔÚÌùÍ¼ÖĞµÄÆ«ÒÆ */
 public:
 	PlayerBullet();
 	~PlayerBullet();
@@ -67,7 +67,7 @@ public:
 	float get_hw() const { return wHitbox_ / 2.0f; }
 	float get_hh() const { return hHitbox_ / 2.0f; }
 	int   get_damage() const { return damage_; }
-	void on_hit();  // å‡»ä¸­æ•Œæœº: é€Ÿåº¦Ã·8, æ ‡è®°å›æ”¶
+	void on_hit(); /* »÷ÖĞµĞ»ú: ËÙ¶È¡Â8, ±ê¼Ç»ØÊÕ */
 	PlayerBullet* gen_next() const;
 	void set_next(PlayerBullet* next);
 	void render();
@@ -76,7 +76,7 @@ public:
 class PlayerBulletPool{
 private:
 	PlayerBullet* firstAvailable;
-	static const int POOL_SIZE = 512;
+	enum { POOL_SIZE = 512 };
 	PlayerBullet bullet[POOL_SIZE];
 public:
 	PlayerBulletPool();

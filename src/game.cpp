@@ -14,7 +14,7 @@ Game::Game() : gameBackground_(nullptr), playerBulletPool_(NULL), player1(NULL) 
 	prevStageState = STAGE_LOADING;
 	midbossEnterFrame = 0;
 
-	// load boss sprites: 9 types Ã— 12 frames, 3Ã—4 grid, 48Ã—64 per cell
+/* load boss sprites: 9 types ¡Á 12 frames, 3¡Á4 grid, 48¡Á64 per cell */
 	for(int i = 5;i < 14;i++){
 		std::ostringstream ss;
 		ss << i;
@@ -28,10 +28,10 @@ Game::Game() : gameBackground_(nullptr), playerBulletPool_(NULL), player1(NULL) 
 	itemManager = new ItemManager();
 	
 	asciiSheet = IMG_Load("res/ascii/ascii.png");
-	for(int i = 0; i < 15; i++)	uppercaseImage[i] = load_sprite("res/ascii/ascii.png", (i+1) * 16, 64, 16, 16, 16.0f, 16.0f);
-	for(int i = 0; i < 11; i++)	uppercaseImage[i+15] = load_sprite("res/ascii/ascii.png", i*16, 80, 16, 16, 16.0f, 16.0f);
-	for(int i = 0; i < 15; i++)	lowercaseImage[i] = load_sprite("res/ascii/ascii.png", (i+1) * 16, 96, 16, 16, 16.0f, 16.0f);
-	for(int i = 0; i < 11; i++)	lowercaseImage[i+15] = load_sprite("res/ascii/ascii.png", i*16, 112, 16, 16, 16.0f, 16.0f);
+	for(int i1 = 0; i1 < 15; i1++)	uppercaseImage[i1] = load_sprite("res/ascii/ascii.png", (i1+1) * 16, 64, 16, 16, 16.0f, 16.0f);
+	for(int i2 = 0; i2 < 11; i2++)	uppercaseImage[i2+15] = load_sprite("res/ascii/ascii.png", i2*16, 80, 16, 16, 16.0f, 16.0f);
+	for(int i3 = 0; i3 < 15; i3++)	lowercaseImage[i3] = load_sprite("res/ascii/ascii.png", (i3+1) * 16, 96, 16, 16, 16.0f, 16.0f);
+	for(int i4 = 0; i4 < 11; i4++)	lowercaseImage[i4+15] = load_sprite("res/ascii/ascii.png", i4*16, 112, 16, 16, 16.0f, 16.0f);
 	levelManager->load_stage(currentStage);
 	levelManager->init_enemy_pool();
 	levelManager->start_stage();
@@ -306,7 +306,7 @@ void Game::update_game(float dt){
 	{ PlayerPosition pp = player1->get_player_position(); enemyBulletManager_.set_player_pos(pp.x, pp.y); }
 	enemyBulletManager_.update(dt);
 	itemManager->update(dt);
-	// è‡ªåŠ¨æ£€æµ‹å¹¶å¤„ç†å…³å¡è¿‡æ¸¡
+/* ×Ô¶¯¼ì²â²¢´¦Àí¹Ø¿¨¹ý¶É */
 	if (levelManager->auto_transition(frameCounter)) {
 		itemManager->clear_all();
 		itemManager->update(1.0f / 30.0f);

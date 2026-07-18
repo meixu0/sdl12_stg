@@ -9,26 +9,26 @@ private:
     static Mix_Chunk*   select00;
     static Mix_Chunk*   ok00;
 
-    char name_[9];        // ç©å®¶å 8å­—ç¬¦ + null
-    int  nameLen_;        // å½“å‰å·²è¾“å…¥é•¿åº¦
-    int  kbRow_;          // é”®ç›˜é€‰ä¸­è¡Œ 0-3
-    int  kbCol_;          // é”®ç›˜é€‰ä¸­åˆ— 0-6
-    int  kbSection_;      // 0=å­—æ¯, 1=æ•°å­—, 2=Save
+    char name_[9]; /* Íæ¼ÒÃû 8×Ö·û + null */
+    int  nameLen_; /* µ±Ç°ÒÑÊäÈë³¤¶È */
+    int  kbRow_; /* ¼üÅÌÑ¡ÖĞĞĞ 0-3 */
+    int  kbCol_; /* ¼üÅÌÑ¡ÖĞÁĞ 0-6 */
+    int  kbSection_; /* 0=×ÖÄ¸, 1=Êı×Ö, 2=Save */
     bool confirmed_;
 
-    // è·å–å­—æ¯çš„æºçŸ©å½¢ï¼ˆä» ascii è¡¨ï¼‰
+/* »ñÈ¡×ÖÄ¸µÄÔ´¾ØĞÎ£¨´Ó ascii ±í£© */
     SDL_Rect get_char_src(char c) const;
-    // ç»˜åˆ¶å­—ç¬¦ä¸²
+/* »æÖÆ×Ö·û´® */
     void draw_string(const char* s, int x, int y, bool selected);
-    // ç»˜åˆ¶æ•°å­—
+/* »æÖÆÊı×Ö */
     void draw_number(int n, int x, int y, bool selected, int minW);
-    // æ·»åŠ å½“å‰é€‰ä¸­å­—æ¯åˆ°åå­—
+/* Ìí¼Óµ±Ç°Ñ¡ÖĞ×ÖÄ¸µ½Ãû×Ö */
     void add_letter();
-    // åˆ é™¤åå­—æœ€åä¸€ä¸ªå­—ç¬¦
+/* É¾³ıÃû×Ö×îºóÒ»¸ö×Ö·û */
     void del_letter();
-    // ä¿å­˜è®°å½•åˆ° record.json
+/* ±£´æ¼ÇÂ¼µ½ record.json */
     void save_record();
-    // Difficulty â†’ å­—ç¬¦ä¸²
+/* Difficulty ¡ú ×Ö·û´® */
     const char* diff_name() const;
 
 public:

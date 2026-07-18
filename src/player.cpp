@@ -157,23 +157,23 @@ void Player::render_bomb_portrait(){
 
 void Player::update_simple_shoot(){
     PlayerPowerRank* rank = &g_PlayerPowerRanks[0];
-    for(int i = 0; i < 6; i++)
-        if(playerPowerData >= g_PlayerPowerRanks[i].powerThreshold)
-            rank = &g_PlayerPowerRanks[i];
+    for(int i1 = 0; i1 < 6; i1++)
+        if(playerPowerData >= g_PlayerPowerRanks[i1].powerThreshold)
+            rank = &g_PlayerPowerRanks[i1];
 
     if(!isShooting)
-        for(int i = 0; i < MAX_BULLETS_PER_RANK; i++)
-            bulletFireTimers[i] = 0;
+        for(int i2 = 0; i2 < MAX_BULLETS_PER_RANK; i2++)
+            bulletFireTimers[i2] = 0;
 
     float spawnX = (float)(x + PLAYER_WIDTH / 2);
     float spawnY = (float)y;
 
-    for(int i = 0; i < rank->numBullets; i++){
+    for(int i3 = 0; i3 < rank->numBullets; i3++){
         update_player_bullet_collision_detection();
         if(!isShooting) continue;
-        if(bulletFireTimers[i] > 0){ bulletFireTimers[i]--; continue; }
+        if(bulletFireTimers[i3] > 0){ bulletFireTimers[i3]--; continue; }
 
-        PlayerBulletConfig cfg = rank->bullets[i];
+        PlayerBulletConfig cfg = rank->bullets[i3];
         cfg.x = spawnX + cfg.xOffset;
         cfg.y = spawnY + cfg.yOffset;
 
@@ -197,7 +197,7 @@ void Player::update_simple_shoot(){
             cfg.angle = optionStreamAngle_;
         }
         playerBulletPool_->create_bullet(cfg);
-        bulletFireTimers[i] = cfg.fireInterval;
+        bulletFireTimers[i3] = cfg.fireInterval;
     }
 }
 
@@ -267,7 +267,7 @@ void Player::update_invincible(){
 
 void Player::show(){
     if(playerSheet == NULL) return;
-    if(isInvincible_ && (invTimer_ / 4) % 2) return;  // Èó™ÁÉÅ
+    if(isInvincible_ && (invTimer_ / 4) % 2) return; /* …¡À∏ */
 
     int   frameCount;
     SDL_Rect* srcRects;

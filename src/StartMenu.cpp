@@ -7,7 +7,7 @@ ShotRects StartMenu::shotRects[4] = {
     {{0, 0, 256, 512}, {256, 0, 256, 128}, {256, 128, 256, 128}, {256, 256, 256, 128}, {256, 384, 256, 128}},
     // Sakuya
     {{0, 0, 256, 512}, {256, 0, 256, 128}, {256, 128, 256, 128}, {256, 256, 256, 128}, {256, 384, 256, 128}},
-    // Youmuï¼ˆåæ ‡å®Œå…¨ä¸€è‡´ï¼‰
+/* Youmu£¨×ø±êÍêÈ«Ò»ÖÂ£© */
     {{0, 0, 256, 512}, {256, 0, 256, 128}, {256, 128, 256, 128}, {256, 256, 256, 128}, {256, 384, 256, 128}},
 };
 
@@ -99,8 +99,8 @@ void StartMenu::render(){
     int p = currentPlayerIndex; 
     SDL_Rect portDest = {0, 44, 256, 512};
     SDL_BlitSurface(plSheet[p], &shotRects[p].portrait, screen, &portDest);
-    // scIndex å¶æ•° â†’ shotA é€‰ä¸­ / shotB æ™®é€š
-    // scIndex å¥‡æ•° â†’ shotA æ™®é€š / shotB é€‰ä¸­
+/* scIndex Å¼Êı ¡ú shotA Ñ¡ÖĞ / shotB ÆÕÍ¨ */
+/* scIndex ÆæÊı ¡ú shotA ÆÕÍ¨ / shotB Ñ¡ÖĞ */
     bool selA = (currentScIndex % 2 == 0);
     SDL_Rect* srcA = selA ? &shotRects[p].shotA_sel  : &shotRects[p].shotA_norm;
     SDL_Rect* srcB = selA ? &shotRects[p].shotB_norm : &shotRects[p].shotB_sel;

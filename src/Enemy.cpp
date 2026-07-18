@@ -8,7 +8,6 @@
 Enemy* Enemy::onScreenList[256] = {NULL};
 Mix_Chunk* Enemy::tan00 = NULL;
 int Enemy::onScreenCount = 0;
-
 namespace {
     inline float easeLinear(float t) { return 1.0f - t; }
     inline float easeDecelerate(float t) { return 1.0f - t * t; }
@@ -158,7 +157,8 @@ void Enemy::compute_axis_speed(){
                     while (diff > PI)  diff -= 2.0f * PI;
                     while (diff < -PI) diff += 2.0f * PI;
                     float maxTurn = angularVelocity * (1.0f / 60.0f);
-                    diff = std::max(-maxTurn, std::min(maxTurn, diff));
+					float min_maxTurn_diff = maxTurn < diff ? maxTurn : diff;
+                    diff = -maxTurn > min_maxTurn_diff ? -maxTurn : min_maxTurn_diff;
                     moveAngle += diff;
                 } else {
                     moveAngle = targetAngle;
@@ -238,7 +238,8 @@ void Enemy::compute_axis_speed(){
                     while (diff > PI)  diff -= 2.0f * PI;
                     while (diff < -PI) diff += 2.0f * PI;
                     float maxTurn = angularVelocity * (1.0f / 60.0f);
-                    diff = std::max(-maxTurn, std::min(maxTurn, diff));
+					float min_maxTurn_diff = maxTurn < diff ? maxTurn : diff;
+                    diff = -maxTurn > min_maxTurn_diff ? -maxTurn : min_maxTurn_diff;
                     moveAngle += diff;
                 } else {
                     moveAngle = targetAngle;
@@ -268,8 +269,7 @@ void Enemy::compute_axis_speed(){
             {
                 if (moveDuration <= 0.0f) { axisSpeedX = 0; axisSpeedY = 0; break; }
                 moveElapsed += 1.0f / 60.0f;
-                float t = std::min(moveElapsed / moveDuration, 1.0f);
-                float ease_t;
+				float t = moveElapsed / moveDuration < 1.0f ? moveElapsed / moveDuration : 1.0f;                float ease_t;
                 if (moveEasing == 4) {
                     float u = 1.0f - t;
                     ease_t = 1.0f - u * u;
@@ -361,7 +361,7 @@ void Enemy::enemy_move(float dt){
         } else {
             if (x < 8.0f)        x = 8.0f;
             if (x > 536.0f)      x = 536.0f;
-            if (y < 0.0f)        { /* å…è®¸ä»Žä¸Šæ–¹å‡ºåœº */ }
+            if (y < 0.0f)        { /* ÔÊÐí´ÓÉÏ·½³ö³¡ */ }
             if (y > 592.0f)      y = 592.0f;
         }
     }
@@ -422,7 +422,7 @@ void Enemy::enemy_attack(float dt){
 void Enemy::enemy_show(){
     if(!isActive) return;
 
-    // åŠ¨ç”»å¸§è®¡ç®—
+/* ¶¯»­Ö¡¼ÆËã */
     int colBase;
     float threshold = 5.0f;
     if (axisSpeedX < -threshold)          colBase = 12;
@@ -446,7 +446,7 @@ void Enemy::enemy_show(){
         SDL_Rect dst = {(Sint16)x, (Sint16)y, 0, 0};
         SDL_BlitSurface(sheet, &src, screen, &dst);
     } else {
-        // Zako ç²¾çµï¼šenemy.png, 16Ã—16 æ ¼ 32Ã—32
+/* Zako ¾«Áé£ºenemy.png, 16¡Á16 ¸ñ 32¡Á32 */
         static SDL_Surface* zakoSheet = NULL;
         if(zakoSheet == NULL)
             zakoSheet = IMG_Load("res/stgenm/enemy.png");
@@ -559,7 +559,7 @@ void Enemy::advance_phase() {
 
 void Enemy::boss_entry() {
     if (enemyType < BOSS_RUMIA || isMidboss) return;
-    // position_interp handles its own entry movement â€” skip boss_entry
+/* position_interp handles its own entry movement ¡ª skip boss_entry */
     if (movePattern == POSITION_INTERP) return;
     isEntering = true;
     entryTargetY = 100.0f;

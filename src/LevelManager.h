@@ -9,14 +9,14 @@
 #include "EnemyScManager.h"
 #include <SDL_mixer.h>
 class ItemManager;
-//todo:bossæ‰£è¡€åçš„ç¬¦å¡å€’è®¡æ—¶å’Œç¬¦å¡è¡€é‡æ˜¾ç¤º
+/*todo:boss¿ÛÑªºóµÄ·û¿¨µ¹¼ÆÊ±ºÍ·û¿¨ÑªÁ¿ÏÔÊ¾ */
 enum StageState {
-    STAGE_LOADING,   // å…³å¡åŠ è½½ä¸­
-    STAGE_RUNNING,   // é“ä¸­/å…³å¡è¿›è¡Œä¸­
-    STAGE_MIDBOSS,   // é“ä¸­Bossæˆ˜
-    STAGE_BOSS,      // å…³åº•Bossæˆ˜
-    STAGE_CLEAR,     // å…³å¡é€šå…³ï¼Œç­‰å¾…åˆ‡æ¢
-    STAGE_ALL_CLEAR, // å…¨éƒ¨å…³å¡é€šå…³
+    STAGE_LOADING, /* ¹Ø¿¨¼ÓÔØÖĞ */
+    STAGE_RUNNING, /* µÀÖĞ/¹Ø¿¨½øĞĞÖĞ */
+    STAGE_MIDBOSS, /* µÀÖĞBossÕ½ */
+    STAGE_BOSS, /* ¹Øµ×BossÕ½ */
+    STAGE_CLEAR, /* ¹Ø¿¨Í¨¹Ø£¬µÈ´ıÇĞ»» */
+    STAGE_ALL_CLEAR, /* È«²¿¹Ø¿¨Í¨¹Ø */
 };
 
 class LevelManager {
@@ -25,7 +25,7 @@ private:
     std::vector<Enemy*> enemy_pool;
     int current_stage;
     StageState stage_state;
-    static const int TOTAL_STAGES = 2;
+    enum { TOTAL_STAGES = 2 };
 
     void clear_enemy_pool();
     std::string stage_key() const;
@@ -41,7 +41,7 @@ private:
     int spellcardTriggerHp_;       // Boss HP threshold to trigger spellcard
     float spellcardEntryTimer_;    // Timer for spellcard entry animation (2s)
     float nonSpellcardTimer_;      // ECL 1680-frame (28s) timer for non-spellcard timeout
-    bool midbossDefeatedProcessed_ = false;
+    bool midbossDefeatedProcessed_;
 
     void start_spellcard_phase(int phaseIndex);
 
@@ -54,17 +54,17 @@ public:
     void init_enemy_pool_v2();
     void bgm_play(int stage, bool is_boss = false);
 
-    void start_stage();            // å¼€å§‹å½“å‰å…³å¡ (LOADING â†’ RUNNING)
-    void trigger_boss();           // è¿›å…¥ Boss æˆ˜ (RUNNING â†’ BOSS)
-    void trigger_midboss();        // è¿›å…¥é“ä¸­Boss (RUNNING â†’ MIDBOSS)
-    void clear_stage();            // å…³å¡é€šå…³ (BOSS â†’ CLEAR)
-    void next_stage();             // åŠ è½½ä¸‹ä¸€å…³ (CLEAR â†’ LOADING â†’ RUNNING)
+    void start_stage(); /* ¿ªÊ¼µ±Ç°¹Ø¿¨ (LOADING ¡ú RUNNING) */
+    void trigger_boss(); /* ½øÈë Boss Õ½ (RUNNING ¡ú BOSS) */
+    void trigger_midboss(); /* ½øÈëµÀÖĞBoss (RUNNING ¡ú MIDBOSS) */
+    void clear_stage(); /* ¹Ø¿¨Í¨¹Ø (BOSS ¡ú CLEAR) */
+    void next_stage(); /* ¼ÓÔØÏÂÒ»¹Ø (CLEAR ¡ú LOADING ¡ú RUNNING) */
 
     void set_bullet_manager(EnemyBulletManager* mgr) { bullet_mgr_ = mgr; }
     void set_item_manager(ItemManager* mgr) { item_mgr_ = mgr; }
-    void enter_stage(int stage);   // clean â†’ load â†’ init â†’ RUNNING
-    void enter_boss(int stage);    // clean â†’ load boss â†’ init â†’ BOSS
-    bool auto_transition(Uint32 frameCounter);  // æ£€æµ‹å¹¶è‡ªåŠ¨å¤„ç†æ‰€æœ‰å…³å¡è¿‡æ¸¡
+    void enter_stage(int stage); /* clean ¡ú load ¡ú init ¡ú RUNNING */
+    void enter_boss(int stage); /* clean ¡ú load boss ¡ú init ¡ú BOSS */
+    bool auto_transition(Uint32 frameCounter); /* ¼ì²â²¢×Ô¶¯´¦ÀíËùÓĞ¹Ø¿¨¹ı¶É */
 
     //Spellcard lifecycle
     void update_spellcards(float dt);  // advance timer, check capture/timeout, transition phases

@@ -8,9 +8,13 @@
 #include <string>
 #include <stdexcept>
 #include <cstdlib>
+#include <algorithm>
 #define UI_H
 #ifdef UI_H
 #define nullptr NULL
+#if defined(_MSC_VER) && _MSC_VER <= 1200
+#define snprintf _snprintf
+#endif
 
 static const int SCREEN_WIDTH = 800;
 static const int SCREEN_HEIGHT = 600;
@@ -30,6 +34,7 @@ extern bool isFullscreen;
 typedef void (*ButtonActionCallback)();
 typedef void (*RenderCallback)(SDL_Rect* box, SDL_Surface* dest, int state, std::string title, TTF_Font* messageFont);
 bool init();
+
 void toggle_fullscreen();
 void apply_surface(int x,int y,SDL_Surface *source,SDL_Surface *destination);
 void apply_surface_mirror(int x, int y, SDL_Surface* source, SDL_Surface* destination);

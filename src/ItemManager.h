@@ -23,10 +23,10 @@ private:
         int state;         // 0: normal physics, 1: magnet to player, 2: spawn lerp
     };
 
-    static const int MAX_ITEMS = 513;
+    enum { MAX_ITEMS = 513 };
     static const float STATE2_DURATION;  // 1.0 second lerp
     static const float MAGNET_SPEED;     // px/s toward player
-    static const float GRAVITY;          // px/s² downward acceleration
+    static const float GRAVITY; /* px/s^2 downward acceleration */
     static const float MAX_FALL_SPEED;   // px/s terminal velocity
     static const float UPWARD_DRIFT;     // px/s initial upward drift
     static const float COLLECT_RADIUS;   // player collection hitbox half-size
@@ -40,7 +40,7 @@ private:
     static int lives;
     static int bombs;
     static int powerItemCountForScore;
-    static const int MAX_POWER = 128;
+    enum { MAX_POWER = 128 };
     static const int POWER_UP_THRESHOLDS[11];
     static const int POWER_ITEM_SCORE[31];
 

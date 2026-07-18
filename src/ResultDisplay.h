@@ -4,12 +4,12 @@
 class ResultDisplay {
 private:
     static SDL_Surface* bgImage;
-    static SDL_Surface* asciiSheet;   // æœªé€‰ä¸­
-    static SDL_Surface* asciiSelSheet; // é€‰ä¸­
+    static SDL_Surface* asciiSheet; /* Î´Ñ¡ÖĞ */
+    static SDL_Surface* asciiSelSheet; /* Ñ¡ÖĞ */
 
-    cJSON* records_;       // æ‰€æœ‰è®°å½•æ•°ç»„
-    int    recordCount_;    // è®°å½•æ€»æ•°
-    int    currentPage_;    // å½“å‰é¡µ 0-based
+    cJSON* records_; /* ËùÓĞ¼ÇÂ¼Êı×é */
+    int    recordCount_; /* ¼ÇÂ¼×ÜÊı */
+    int    currentPage_; /* µ±Ç°Ò³ 0-based */
     int    selCol_;         // 0=PREV, 1=NEXT
     Uint32 highScore_;
 

@@ -6,10 +6,10 @@ static SDL_Surface *bulletSheet = NULL;
 static SDL_Rect whiteEnemyBullet = {0, 57, 16, 16};
 static SDL_Surface *etamaHalfSheet = NULL;
 static SDL_Rect bulletSrc[4] = {
-    {128, 64, 16, 16},  // çº¢
-    {128, 80, 16, 16},  // ç»¿
-    {128, 96, 16, 16},  // è“
-    {128, 112, 16, 16}, // é»„
+    {128, 64, 16, 16}, /* ºì */
+    {128, 80, 16, 16}, /* ÂÌ */
+    {128, 96, 16, 16}, /* À¶ */
+    {128, 112, 16, 16}, /* »Æ */
 };
 static float randf() { return (float)rand() / (float)RAND_MAX; }
 EnemyBulletManager::EnemyBulletManager() {
@@ -151,7 +151,7 @@ void EnemyBulletManager::update(float dt) {
     if (b.splitTimer > 0.0f) {
       b.splitTimer -= dt;
       if (b.splitTimer <= 0.0f) {
-        // æœ€æ·±5ä»£
+/* ×îÉî5´ú */
         if (b.splitCount >= 5) {
           b.splitTimer = 0.0f;
         } else {
@@ -160,7 +160,7 @@ void EnemyBulletManager::update(float dt) {
         SplitSpawnRequest req;
         req.x = b.x;
         req.y = b.y;
-        // äº¤æ›¿é€†æ—¶é’ˆ/é¡ºæ—¶é’ˆåˆ‡çº¿æ–¹å‘
+/* ½»ÌæÄæÊ±Õë/Ë³Ê±ÕëÇĞÏß·½Ïò */
         if (b.splitCount % 2 == 1) {
           req.tangentX = -b.speedY;
           req.tangentY = b.speedX;

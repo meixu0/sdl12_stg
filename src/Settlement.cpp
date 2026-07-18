@@ -28,7 +28,7 @@ Settlement::Settlement() : nameLen_(0), kbRow_(0), kbCol_(0), kbSection_(0), con
 void Settlement::reset(){
     nameLen_ = 0; kbRow_ = 0; kbCol_ = 0; kbSection_ = 0; confirmed_ = false;
     memset(name_, 0, sizeof(name_));
-    // ÂÅúÊ≠¢ÂΩìÂâç BGMÔºåÊí≠ÊîæÁªìÁÆó BGM
+/* Õ£÷πµ±«∞ BGM£¨≤•∑≈Ω·À„ BGM */
     Mix_HaltMusic();
     if(bgm == NULL)
         bgm = Mix_LoadMUS("res/music/th07_19.mid");
@@ -135,7 +135,7 @@ void Settlement::handle_events(SDL_Event &e){
             break;
         case SDLK_DOWN: Mix_PlayChannel(-1, select00, 0);
             if(kbSection_ == 0 && (kbRow_ == 2 || kbRow_ == 3)) {
-                kbSection_ = 1;  // col stays same, maps letter col‚Üídigit col
+                kbSection_ = 1; /* col stays same, maps letter col°˙digit col */
             }
             else if(kbSection_ == 1) { kbSection_ = 2; }
             else if(kbRow_ < 3) kbRow_++;
@@ -168,7 +168,7 @@ void Settlement::render(){
     draw_string(diff_name(), VALUE_X, 180, true);
     draw_number(ItemManager::get_score(), VALUE_X, 260, true, 10);
 
-    // Â≠óÊØçÈîÆÁõò A-Z (7x4)
+/* ◊÷ƒ∏º¸≈Ã A-Z (7x4) */
     int kbX = 100, kbY = 320;
     for(int r = 0; r < 4; r++){
         for(int c = 0; c < 7; c++){
@@ -180,14 +180,14 @@ void Settlement::render(){
             SDL_Surface* sheet = sel ? asciiSelSheet : asciiSheet;
             char ch;
             SDL_Rect src;
-            if(idx == 26) { ch = '<'; src = (SDL_Rect){0, 48, 16, 16}; }
+            if(idx == 26) { ch = '<'; src.x = 0; src.y = 48; src.w = 16; src.h = 16; }
             else { ch = 'A' + idx; src = get_char_src(ch); }
             SDL_Rect dst = {(Sint16)(kbX + c * 32), (Sint16)(kbY + r * 24), 0, 0};
             SDL_BlitSurface(sheet, &src, screen, &dst);
         }
     }
 
-    // Êï∞Â≠óË°å 0-9
+/*  ˝◊÷–– 0-9 */
     int digitY = kbY + 4 * 24 + 8;
     for(int d = 0; d < 10; d++){
         bool sel = (kbSection_ == 1 && kbCol_ == d);
@@ -197,7 +197,7 @@ void Settlement::render(){
         SDL_BlitSurface(sheet, &src, screen, &dst);
     }
 
-    // Save ÊåâÈíÆ
+/* Save ∞¥≈• */
     int saveX = 340, saveY = digitY + 28;
     bool sav = (kbSection_ == 2);
     draw_string("S", saveX,       saveY, sav);

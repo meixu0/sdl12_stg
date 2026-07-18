@@ -27,12 +27,12 @@ struct Bullet {
 };
 struct EnemyBulletPatternDesc {
   int patternType;
-  int mainCnt;         // 主数量 一圈/一排的子弹数量
-  int subCnt;          // 层数 速度分几档
-  float angleOffset;   // 角度偏移：扇形偏移，圆形起始角度，随机角度上限
-  float angleInterval; // 角度间隔：扇形和圆形的子弹间隔，随机角度下限
-  float speed1;        // 速度1：扇形和圆形的基础速度，随机速度下限
-  float speed2;        // 速度2：每层递减量，随机速度上限,决定出生速度
+  int mainCnt;
+  int subCnt;
+  float angleOffset;
+  float angleInterval;
+  float speed1;
+  float speed2;
   int spriteID;
   float hitboxRadius;
   float lifeTime;
@@ -43,16 +43,16 @@ struct EnemyBulletPatternDesc {
                               fromBoss(false), isSplit(false) {}
 };
 struct EmitterConfig {
-  float emitInterval;  // 发射间隔
-  int burstCount;      // 发射子弹数量
-  float burstInterval; // 连续发射时每发之间的间隔
-  float startDelay;    // 开始延迟
+  float emitInterval;
+  int burstCount;
+  float burstInterval;
+  float startDelay;
   bool isSplit;
   EnemyBulletPatternDesc patternDesc;
 };
 class EnemyBulletManager {
 private:
-  static const int POOL_SIZE = 640;
+  enum { POOL_SIZE = 640 };
   Bullet bullets[POOL_SIZE];
   Bullet splitPool[POOL_SIZE];
   int nextBulletIndex;

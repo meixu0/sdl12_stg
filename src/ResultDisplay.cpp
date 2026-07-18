@@ -30,7 +30,7 @@ ResultDisplay::~ResultDisplay() {
 }
 
 SDL_Rect ResultDisplay::get_char_src(char c) const {
-    SDL_Rect r = {0, 0, 0, 0};  // ÈªòËÆ§‰∏çÁªòÂà∂
+    SDL_Rect r = {0, 0, 0, 0}; /* ƒ¨»œ≤ªªÊ÷∆ */
     if(c >= 'a' && c <= 'z') c = c - 'a' + 'A';
     if(c >= '0' && c <= '9'){ r.x = (c - '0') * 16; r.y = 48; r.w = 16; r.h = 16; }
     else if(c >= 'A' && c <= 'O'){ r.x = 16 + (c - 'A') * 16; r.y = 64; r.w = 16; r.h = 16; }
@@ -76,7 +76,7 @@ void ResultDisplay::load_records(){
 
     recordCount_ = cJSON_GetArraySize(records_);
 
-    // ÊâæÊúÄÈ´òÂàÜ
+/* ’“◊Ó∏ﬂ∑÷ */
     for(int i = 0; i < recordCount_; i++){
         cJSON* r = cJSON_GetArrayItem(records_, i);
         if(!r) continue;
@@ -107,7 +107,7 @@ void ResultDisplay::handle_events(SDL_Event &e){
             break;
         case SDLK_ESCAPE:
             Mix_PlayChannel(-1, cancel00, 0);
-            // ËÆæÁΩÆ highScore ÂÖ®Â±Ä
+/* …Ë÷√ highScore »´æ÷ */
             ::highScore = highScore_;
             gameState = STATE_MENU;
             break;
@@ -127,7 +127,7 @@ void ResultDisplay::render(){
         int end = start + 5;
         if(end > recordCount_) end = recordCount_;
 
-        // Ë°®Â§¥
+/* ±ÌÕ∑ */
         draw_string("PLAYER",    100, 100, true);
         draw_string("DIFFICULTY",350, 100, true);
         draw_string("SCORE",     550, 100, true);
@@ -146,7 +146,7 @@ void ResultDisplay::render(){
         }
     }
 
-    // È°µÁ†Å + ÂØºËà™
+/* “≥¬Î + µº∫Ω */
     int totalPages = (recordCount_ + 4) / 5;
     if(totalPages < 1) totalPages = 1;
     char pageStr[32];

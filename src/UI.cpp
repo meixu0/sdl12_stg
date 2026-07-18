@@ -33,9 +33,11 @@ SDL_Surface* bossSprites[14][12] = {{NULL}};
 bool init(){
 	if(SDL_Init(SDL_INIT_EVERYTHING) == -1)	return false;
 	if(TTF_Init() == -1)	return false;
+#ifndef _WIN32
 	Mix_SetSoundFonts("/usr/share/soundfonts/FluidR3_GM.sf2");//only on linux
+#endif
 	if(Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 4096) == -1)	return false;
-	screen = SDL_SetVideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, SDL_SWSURFACE);
+	screen = SDL_SetVideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, 16, SDL_HWSURFACE);
 	if(screen == NULL)	return false;
 	SDL_WM_SetCaption("test", NULL);
 	return true;
@@ -192,7 +194,7 @@ SDL_Surface *load_sprite(std::string filename, int srcX, int srcY, int srcW, int
 	SDL_FreeSurface(loadedImage);
 
 	// Save the per-pixel alpha from clippedImage *before* SDL_DisplayFormat
-	// strips it.  This is the original transparency from the PNG ‚Äì it tells
+/* strips it.  This is the original transparency from the PNG ®C it tells */
 	// us exactly which pixels are background vs. sprite, regardless of RGB.
 	int clipW = clippedImage->w, clipH = clippedImage->h;
 	Uint8 *alpha = new Uint8[clipW * clipH];
@@ -230,15 +232,15 @@ SDL_Surface *load_sprite(std::string filename, int srcX, int srcY, int srcW, int
 		Uint32 *zp = (Uint32 *)zoomedImage->pixels;
 		int zw = zoomedImage->w, zh = zoomedImage->h;
 
-		// Pass 1: apply PNG alpha mask (alpha < 128 ‚Üí background).
-		for (int zy = 0; zy < zh; zy++) {
-			int cy = (int)(zy / scaleRate);
+/* Pass 1: apply PNG alpha mask (alpha < 128 °˙ background). */
+		for (int zy1 = 0; zy1 < zh; zy1++) {
+			int cy = (int)(zy1 / scaleRate);
 			if (cy >= clipH) cy = clipH - 1;
 			for (int zx = 0; zx < zw; zx++) {
 				int cx = (int)(zx / scaleRate);
 				if (cx >= clipW) cx = clipW - 1;
 				if (alpha[cy * clipW + cx] < 128)
-					zp[zy * zw + zx] = ck;
+					zp[zy1 * zw + zx] = ck;
 			}
 		}
 
@@ -248,23 +250,23 @@ SDL_Surface *load_sprite(std::string filename, int srcX, int srcY, int srcW, int
 		// typically have.  Only pixels bordering a transparent
 		// neighbour are affected, so interior details stay intact.
 		for (int pass = 0; pass < 2; pass++) {
-			for (int zy = 0; zy < zh; zy++) {
+			for (int zy2 = 0; zy2 < zh; zy2++) {
 				for (int zx = 0; zx < zw; zx++) {
-					Uint32 p = zp[zy * zw + zx];
+					Uint32 p = zp[zy2 * zw + zx];
 					if (p == ck) continue;
 					Uint8 r, g, b;
 					SDL_GetRGB(p, zoomedImage->format, &r, &g, &b);
 					if (r >= 80 || g >= 80 || b >= 80) continue;
-					if ((zx > 0      && zp[zy * zw + (zx-1)] == ck) ||
-					    (zx < zw - 1 && zp[zy * zw + (zx+1)] == ck) ||
-					    (zy > 0      && zp[(zy-1) * zw + zx] == ck) ||
-					    (zy < zh - 1 && zp[(zy+1) * zw + zx] == ck))
-						zp[zy * zw + zx] = ck;
+					if ((zx > 0      && zp[zy2 * zw + (zx-1)] == ck) ||
+					    (zx < zw - 1 && zp[zy2 * zw + (zx+1)] == ck) ||
+					    (zy2 > 0      && zp[(zy2-1) * zw + zx] == ck) ||
+					    (zy2 < zh - 1 && zp[(zy2+1) * zw + zx] == ck))
+						zp[zy2 * zw + zx] = ck;
 				}
 			}
 		}
 
-		// Pass 3: boundary erosion ‚Äì bottom row and right column have
+/* Pass 3: boundary erosion ®C bottom row and right column have */
 		// no neighbour below/right to trigger normal erosion, so dark
 		// pixels on those edges would survive as visible lines.
 		// Sprites don't typically extend to the exact edge, so treat
@@ -277,13 +279,13 @@ SDL_Surface *load_sprite(std::string filename, int srcX, int srcY, int srcW, int
 			if (r < 80 && g < 80 && b < 80)
 				zp[(zh-1) * zw + zx] = ck;
 		}
-		for (int zy = 0; zy < zh; zy++) {
-			Uint32 p = zp[zy * zw + (zw-1)];       // right column
+		for (int zy3 = 0; zy3 < zh; zy3++) {
+			Uint32 p = zp[zy3 * zw + (zw-1)];       // right column
 			if (p == ck) continue;
 			Uint8 r, g, b;
 			SDL_GetRGB(p, zoomedImage->format, &r, &g, &b);
 			if (r < 80 && g < 80 && b < 80)
-				zp[zy * zw + (zw-1)] = ck;
+				zp[zy3 * zw + (zw-1)] = ck;
 		}
 
 		if (SDL_MUSTLOCK(zoomedImage)) SDL_UnlockSurface(zoomedImage);
@@ -295,7 +297,7 @@ SDL_Surface *load_sprite(std::string filename, int srcX, int srcY, int srcW, int
 	return zoomedImage;
 }
 
-// ÈÄêÂÉèÁ¥†ÊóãËΩ¨ 90¬∞ Êï¥Êï∞ÂÄç„ÄÇturns: 1=90¬∞CW, 2=180¬∞, 3=270¬∞CW(-90¬∞)
+/* ÷œÒÀÿ–˝◊™ 90°„ ’˚ ˝±∂°£turns: 1=90°„CW, 2=180°„, 3=270°„CW(-90°„) */
 SDL_Surface* rotate_90(SDL_Surface* src, int turns){
 	turns = turns % 4;
 	if(turns == 0) return src;
@@ -326,7 +328,7 @@ SDL_Surface* rotate_90(SDL_Surface* src, int turns){
 	return dst;
 }
 
-// ÈÄêÂÉèÁ¥†ÊóãËΩ¨‰ªªÊÑèËßíÂ∫¶Ôºànearest-neighborÔºâÔºåÊó†ÊèíÂÄºÊó†ÈªëËæπ
+/* ÷œÒÀÿ–˝◊™»Œ“‚Ω«∂»£®nearest-neighbor£©£¨Œﬁ≤Â÷µŒﬁ∫⁄±ﬂ */
 SDL_Surface* rotate_nearest(SDL_Surface* src, double degrees){
 	double rad = degrees * 3.14159265 / 180.0;
 	double ca = cos(rad), sa = sin(rad);
@@ -365,30 +367,30 @@ SDL_Surface* rotate_nearest(SDL_Surface* src, double degrees){
 	return dst;
 }
 
-// ÈÄêË°åÂèçÂêëÊã∑Ë¥ùÂÉèÁ¥†ÔºåÂàõÂª∫Ê∞¥Âπ≥ÈïúÂÉè
-SDL_Surface* mirror_surface(SDL_Surface* src){
+/* Mirror surface horizontally */
+SDL_Surface* mirror_surface(SDL_Surface* source){
 	SDL_Surface* dst = SDL_CreateRGBSurface(SDL_SWSURFACE,
-		src->w, src->h,
-		src->format->BitsPerPixel,
-		src->format->Rmask, src->format->Gmask,
-		src->format->Bmask, src->format->Amask);
+		source->w, source->h,
+		source->format->BitsPerPixel,
+		source->format->Rmask, source->format->Gmask,
+		source->format->Bmask, source->format->Amask);
 	if(dst == NULL) return NULL;
-	int bpp = src->format->BytesPerPixel;
-	if(SDL_MUSTLOCK(src)) SDL_LockSurface(src);
+	int bpp = source->format->BytesPerPixel;
+	if(SDL_MUSTLOCK(source)) SDL_LockSurface(source);
 	if(SDL_MUSTLOCK(dst)) SDL_LockSurface(dst);
-	for(int y = 0; y < src->h; y++){
-		Uint8* sr = (Uint8*)src->pixels + y * src->pitch;
+	for(int y = 0; y < source->h; y++){
+		Uint8* sr = (Uint8*)source->pixels + y * source->pitch;
 		Uint8* dr = (Uint8*)dst->pixels + y * dst->pitch;
-		for(int x = 0; x < src->w; x++)
+		for(int x = 0; x < source->w; x++)
 			for(int b = 0; b < bpp; b++)
-				dr[(src->w - 1 - x) * bpp + b] = sr[x * bpp + b];
+				dr[(source->w - 1 - x) * bpp + b] = sr[x * bpp + b];
 	}
 	if(SDL_MUSTLOCK(dst)) SDL_UnlockSurface(dst);
-	if(SDL_MUSTLOCK(src)) SDL_UnlockSurface(src);
+	if(SDL_MUSTLOCK(source)) SDL_UnlockSurface(source);
 	return dst;
 }
 
-// Áî®Êú™ÈÄâ‰∏≠ ASCII Ê†∑ÂºèÁªòÂà∂Êï∞Â≠ó
+/* ”√Œ¥—°÷– ASCII —˘ ΩªÊ÷∆ ˝◊÷ */
 void draw_ascii_number(int n, int x, int y, int minW){
 	if(!asciiSheet) return;
 	char buf[16];

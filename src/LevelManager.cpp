@@ -31,7 +31,7 @@ static int str_to_pattern_type(const char* s) {
     return 0;
 }
 
-//Behavior name → enemyType mapping
+/*Behavior name �� enemyType mapping */
 
 static int behavior_to_enemy_type(const char* name) {
     if (!name) return ZAKO_BLUE;
@@ -79,24 +79,30 @@ static bool cjson_bool(cJSON* obj, const char* key, bool def) {
 
 
 struct BehaviorDef {
-    int hp = 50;
-    int hitboxW = 32, hitboxH = 32;
-    int score = 100;
-    float halfLife = 0.0f;
-    int movePattern = LINER;
-    float speedX = 0.0f, speedY = 120.0f;
-    float targetX = -1.0f, targetY = -1.0f;  // stop_and_go target; <0 means "use spawn pos"
-    float moveDuration = 0.0f;   // position_interp duration (seconds)
-    int   moveEasing = 0;        // position_interp easing: 0=linear, 4=decelerate
-    float vertAmp = 0.0f, vertPeriod = 1.0f;
-    float horizAmp = 0.0f, horizPeriod = 1.0f;
-    float angularVelocity = 0.0f;
-    float minPlayerDist = 80.0f;
-    float accel = 0.0f;
-    float lifeTime = 12.0f;
-    bool isMidboss = false;
+    int hp;
+    int hitboxW, hitboxH;
+    int score;
+    float halfLife;
+    int movePattern;
+    float speedX, speedY;
+    float targetX, targetY;
+    float moveDuration;
+    int   moveEasing;
+    float vertAmp, vertPeriod;
+    float horizAmp, horizPeriod;
+    float angularVelocity;
+    float minPlayerDist;
+    float accel;
+    float lifeTime;
+    bool isMidboss;
     std::string itemDrop;
     std::vector<EmitterConfig> emitters;
+    BehaviorDef() : hp(50), hitboxW(32), hitboxH(32), score(100), halfLife(0.0f),
+                    movePattern(LINER), speedX(0.0f), speedY(120.0f),
+                    targetX(-1.0f), targetY(-1.0f), moveDuration(0.0f), moveEasing(0),
+                    vertAmp(0.0f), vertPeriod(1.0f), horizAmp(0.0f), horizPeriod(1.0f),
+                    angularVelocity(0.0f), minPlayerDist(80.0f), accel(0.0f),
+                    lifeTime(12.0f), isMidboss(false) {}
 };
 
 //Difficulty name table (indexed by gameDifficulty 0-4)
@@ -150,7 +156,7 @@ static void apply_behavior_difficulty(BehaviorDef& def, cJSON* diff_obj) {
         def.accel           = cjson_float(move, "accel", def.accel);
     }
 
-    // Attack-pattern overrides — keyed by index string "0", "1", etc.
+/* Attack-pattern overrides �� keyed by index string "0", "1", etc. */
     cJSON* atk = cJSON_GetObjectItem(over, "attack");
     if (atk && cJSON_IsObject(atk)) {
         cJSON* child = NULL;
@@ -226,11 +232,11 @@ static BehaviorDef parse_behavior(cJSON* beh) {
         }
 
         // position_interp specific: duration (frames) and easing
-        def.moveDuration = cjson_float(move, "duration", 0.0f) / 60.0f;  // frames → seconds
+        def.moveDuration = cjson_float(move, "duration", 0.0f) / 60.0f; /* frames �� seconds */
         def.moveEasing   = cjson_int(move, "easing", 0);
     }
 
-    // attack array → emitter configs
+/* attack array �� emitter configs */
     cJSON* attack = cJSON_GetObjectItem(beh, "attack");
     if (attack && cJSON_IsArray(attack)) {
         int n = cJSON_GetArraySize(attack);
@@ -264,7 +270,7 @@ static BehaviorDef parse_behavior(cJSON* beh) {
         }
     }
 
-    // death → itemDrop
+/* death �� itemDrop */
     cJSON* death = cJSON_GetObjectItem(beh, "death");
     if (death && cJSON_IsObject(death)) {
         const char* drop = cjson_str(death, "itemDrop");
@@ -319,7 +325,7 @@ static void apply_overrides(EnemyConfig& config, cJSON* overrides) {
 void LevelManager::init_enemy_pool_v2() {
     clear_enemy_pool();
 
-    // 1. Parse behaviors → map
+/* 1. Parse behaviors �� map */
     std::map<std::string, BehaviorDef> behaviorMap;
     cJSON* behaviors = cJSON_GetObjectItem(stage_enemies_data, "behaviors");
     if (behaviors && cJSON_IsObject(behaviors)) {
@@ -369,7 +375,7 @@ void LevelManager::init_enemy_pool_v2() {
             if (it != behaviorMap.end()) {
                 def = it->second;
             } else {
-                // Unknown behavior — this shouldn't happen
+/* Unknown behavior �� this shouldn't happen */
                 std::cerr << "Warning: unknown behavior '" << bname << "'" << std::endl;
             }
 
@@ -483,11 +489,11 @@ void LevelManager::init_enemy_pool_v2() {
     //Link spellcards to boss enemy
     bossEnemyIndex_ = -1;
     spellcardTriggerHp_ = 0;
-    for (size_t i = 0; i < enemy_pool.size(); i++) {
-        Enemy* e = enemy_pool[i];
+    for (size_t ei0 = 0; ei0 < enemy_pool.size(); ei0++) {
+        Enemy* e = enemy_pool[ei0];
         if (!e) continue;
         if (e->get_enemy_type() >= BOSS_RUMIA && !e->get_is_midboss()) {
-            bossEnemyIndex_ = (int)i;
+            bossEnemyIndex_ = (int)ei0;
             e->set_duration_time(999999.0f);
 
             // Parse move_bounds from behavior if present
@@ -520,6 +526,8 @@ void LevelManager::init_enemy_pool_v2() {
                                 phase.duration  = cjson_float(ph, "duration", 1.0f);
                                 phase.moveDuration = cjson_float(ph, "move_duration", 0.0f) / 60.0f;
                                 phase.moveEasing   = cjson_int(ph, "move_easing", 4);
+                                phase.moveToX = 0;
+                                phase.moveToY = 0;
 
                                 cJSON* mv = cJSON_GetObjectItem(ph, "move_after");
                                 if (mv && cJSON_IsArray(mv) && cJSON_GetArraySize(mv) >= 2) {
@@ -580,7 +588,7 @@ void LevelManager::init_enemy_pool_v2() {
                     spellcardTriggerHp_ = (firstSc) ? firstSc->hp : 0;
                 }
                 std::cout << "Boss loaded with " << scManager_.count()
-                          << " spellcard(s), trigger at HP ≤ " << spellcardTriggerHp_
+                          << " spellcard(s), trigger at HP �� " << spellcardTriggerHp_
                           << std::endl;
             } else {
                 std::cout << "No spellcard data found for stage " << current_stage << std::endl;
@@ -677,7 +685,7 @@ void LevelManager::enter_boss(int stage) {
 
 bool LevelManager::auto_transition(Uint32 frameCounter) {
 	if (stage_state == STAGE_RUNNING) {
-		// 检测当前关卡的所有敌人是否已生成并全部被击破
+/* ��⵱ǰ�ؿ������е����Ƿ������ɲ�ȫ�������� */
 		for (size_t i = 0; i < enemy_pool.size(); ++i) {
 			Enemy* e = enemy_pool[i];
 			if (e == NULL) continue;
@@ -712,7 +720,7 @@ bool LevelManager::auto_transition(Uint32 frameCounter) {
 		return true;
 	}
 	else if (stage_state == STAGE_CLEAR) {
-		// 自动进入下一关
+/* �Զ�������һ�� */
 		int next = current_stage + 1;
 		if (next > TOTAL_STAGES) {
 			stage_state = STAGE_ALL_CLEAR;
@@ -760,7 +768,7 @@ void LevelManager::update_spellcards(float dt) {
     Enemy* boss = enemy_pool[bossEnemyIndex_];
     if (!boss || !boss->is_active()) return;
 
-    //是否触发符卡
+/*�Ƿ񴥷����� */
     if (!scManager_.is_active() && scManager_.count() > 0 && spellcardTriggerHp_ > 0) {
         nonSpellcardTimer_ += dt;
 
@@ -768,14 +776,14 @@ void LevelManager::update_spellcards(float dt) {
         bool timerTrigger = (nonSpellcardTimer_ >= 28.0f);
 
         if (hpTrigger) {
-            std::cout << "Boss HP (" << boss->get_hp() << ") ≤ threshold ("
-                      << spellcardTriggerHp_ << ") — starting spellcard!" << std::endl;
+            std::cout << "Boss HP (" << boss->get_hp() << ") �� threshold ("
+                      << spellcardTriggerHp_ << ") �� starting spellcard!" << std::endl;
             start_spellcard_phase(0);
             return;
         }
         if (timerTrigger) {
             std::cout << "Non-spellcard timer expired (" << nonSpellcardTimer_
-                      << "s) — starting spellcard!" << std::endl;
+                      << "s) �� starting spellcard!" << std::endl;
             start_spellcard_phase(0);
             return;
         }
@@ -784,7 +792,7 @@ void LevelManager::update_spellcards(float dt) {
 
     if (!scManager_.is_active()) return;
 
-    // 符卡计时器
+/* ������ʱ�� */
     spellcardEntryTimer_ += dt;
     if (spellcardEntryTimer_ >= 2.0f) {
         scManager_.update(dt);
@@ -835,7 +843,7 @@ void LevelManager::skip_stage_time(float seconds) {
         if (enemy_pool[i] && enemy_pool[i]->has_pending_spawn())
             enemy_pool[i]->adjust_time_alive(seconds);
     }
-    nonSpellcardTimer_ = std::max(0.0f, nonSpellcardTimer_ - seconds);
+    nonSpellcardTimer_ = 0.0f > nonSpellcardTimer_ - seconds ? 0.0f : nonSpellcardTimer_ - seconds;
 }
 static Uint32 lineRed   = 0;
 static Uint32 lineGray  = 0;
@@ -843,7 +851,7 @@ void LevelManager::display_boss_hp_line_and_remaining_time(Enemy* currentBoss){
     if(!lineRed)  lineRed  = SDL_MapRGBA(screen->format, 230, 124, 111, 128);
     if(!lineGray) lineGray = SDL_MapRGBA(screen->format, 177, 173, 178, 128);
     if(!currentBoss->is_using_spellcard()){
-        //全长400
+/*ȫ��400 */
         float hpRatio = (float)currentBoss->get_hp() / (float)currentBoss->get_total_hp();
         SDL_Rect src = {72, 15, (Sint16)(400.0f * hpRatio), 10};
         if(hpRatio >= 0.2f){
@@ -991,7 +999,7 @@ void LevelManager::init_enemy_pool() {
         std::cerr << "Error: stage_enemies_data is NULL. Call read_stage_data first." << std::endl;
         return;
     }
-    // 事实上只有v2的json，已经把v1的解析去了，所以这里只调用v2的解析函数
+/* ��ʵ��ֻ��v2��json���Ѿ���v1�Ľ���ȥ�ˣ���������ֻ����v2�Ľ������� */
     cJSON* meta = cJSON_GetObjectItem(stage_enemies_data, "meta");
     if (meta && cJSON_IsObject(meta)) {
         init_enemy_pool_v2();
@@ -1033,7 +1041,7 @@ void LevelManager::update_all_enemies(float px, float py, Uint32 &frameCounter_,
         }
     }
 
-    //Midboss/boss defeat detection → bullet conversion + time jump
+/*Midboss/boss defeat detection �� bullet conversion + time jump */
     if (!midbossDefeatedProcessed_) {
         for (size_t i = 0; i < enemy_pool.size(); ++i) {
             Enemy* e = enemy_pool[i];

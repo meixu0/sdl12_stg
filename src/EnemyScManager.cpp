@@ -91,8 +91,8 @@ static void apply_spellcard_difficulty(SpellcardDef& sc, cJSON* entry) {
     }
 }
 
-EnemyScManager::EnemyScManager() = default;
-EnemyScManager::~EnemyScManager() = default;
+EnemyScManager::EnemyScManager() : current_index_(0), timer_(0.0f), current_hp_(0), active_(false) {}
+EnemyScManager::~EnemyScManager() {}
 
 //Pattern parser (mirrors LevelManager::parse_behavior attack parsing)
 
@@ -106,7 +106,7 @@ EmitterConfig EnemyScManager::parse_pattern(cJSON* pat_json) {
     cJSON* pd = cJSON_GetObjectItem(pat_json, "pattern");
     if (pd && cJSON_IsObject(pd)) {
         const char* ptype = cj_str(pd, "type");
-        // String â†’ int pattern type (same table as LevelManager)
+/* String ¡ú int pattern type (same table as LevelManager) */
         if (ptype) {
             if      (strcmp(ptype, "fan_aimed")           == 0) ec.patternDesc.patternType = 0;
             else if (strcmp(ptype, "fan")                 == 0) ec.patternDesc.patternType = 1;

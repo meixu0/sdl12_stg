@@ -1,9 +1,9 @@
 #include "UI.h"
 
 struct DecorPair {
-    int yOffset;   // ç›¸å¯¹ bgLayerY çš„ Y åç§»
-    int leftX;     // å·¦è£…é¥°çš„ X åæ ‡
-    int rightX;    // å³è£…é¥°çš„ X åæ ‡
+    int yOffset; /* Ïà¶Ô bgLayerY µÄ Y Æ«ÒÆ */
+    int leftX; /* ×ó×°ÊÎµÄ X ×ø±ê */
+    int rightX; /* ÓÒ×°ÊÎµÄ X ×ø±ê */
 };
 
 class GameBackground{
